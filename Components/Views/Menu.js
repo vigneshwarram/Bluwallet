@@ -30,7 +30,7 @@ const ProfileStack = createStackNavigator({
       headerLeft: (
         <TouchableOpacity style={{alignContent:'flex-start'}} onPress={ () => navigation.toggleDrawer() }>
         <View style={{flexDirection:'row'}}>
-        <Image source={require('./menu.png')} style={{marginLeft:10}} ></Image>
+        <Image source={require('./Menu/menu.png')} style={{marginLeft:10}} ></Image>
         </View>   
         </TouchableOpacity>
       ),
@@ -52,13 +52,13 @@ const SurveyStack = createStackNavigator({
       },
       headerRight: (<TouchableOpacity style={{alignContent:'flex-start'}}>
       <View style={{flexDirection:'row'}}>
-      <Image source={require('./up_down.png')} style={{marginRight:10}} ></Image>
+      <Image source={require('./assets/up_down.png')} style={{marginRight:10}} ></Image>
       </View>   
       </TouchableOpacity>),
       headerLeft: (
         <TouchableOpacity style={{alignContent:'flex-start'}} onPress={ () => navigation.toggleDrawer() }>
         <View style={{flexDirection:'row'}}>
-        <Image source={require('./menu.png')} style={{marginLeft:10}} ></Image>
+        <Image source={require('./Menu/menu.png')} style={{marginLeft:10}} ></Image>
         </View>   
         </TouchableOpacity>
       ),
@@ -78,13 +78,13 @@ const SettingsStack = createStackNavigator({
       },
       headerRight: (<TouchableOpacity style={{alignContent:'flex-start'}}>
       <View style={{flexDirection:'row'}}>
-      <Image source={require('./up_down.png')} style={{marginRight:10}} ></Image>
+      <Image source={require('./assets/up_down.png')} style={{marginRight:10}} ></Image>
       </View>   
       </TouchableOpacity>),
       headerLeft: (
         <TouchableOpacity style={{alignContent:'flex-start'}} onPress={ () => navigation.toggleDrawer() }>
         <View style={{flexDirection:'row'}}>
-        <Image source={require('./menu.png')} style={{marginLeft:10}} ></Image>
+        <Image source={require('./Menu/menu.png')} style={{marginLeft:10}} ></Image>
         </View>   
         </TouchableOpacity>
       ),
@@ -111,7 +111,7 @@ const HelpStack = createStackNavigator({
       headerLeft: (
         <TouchableOpacity style={{alignContent:'flex-start'}} onPress={ () => navigation.toggleDrawer() }>
         <View style={{flexDirection:'row'}}>
-        <Image source={require('./menu.png')} style={{marginLeft:10}} ></Image>
+        <Image source={require('./Menu/menu.png')} style={{marginLeft:10}} ></Image>
         </View>   
         </TouchableOpacity>
       ),
@@ -135,7 +135,7 @@ const TermsStack = createStackNavigator({
       headerLeft: (
         <TouchableOpacity style={{alignContent:'flex-start'}} onPress={ () => navigation.toggleDrawer() }>
         <View style={{flexDirection:'row'}}>
-        <Image source={require('./menu.png')} style={{marginLeft:10}} ></Image>
+        <Image source={require('./Menu/menu.png')} style={{marginLeft:10}} ></Image>
         </View>   
         </TouchableOpacity>
       ),
@@ -151,7 +151,7 @@ const DrawerContent = (props) => (
         height: 200,
       }}
     >
-      <Image style={{height:205,width:300}} source={require('./menu_splash.jpg')}></Image>
+      <Image style={{height:205,width:300}} source={require('./assets/menu_splash.jpg')}></Image>
     </View>
     <DrawerItems {...props} />
     <View style={{flex:1,justifyContent:"center",
@@ -168,7 +168,7 @@ const AppDrawerNavigator=createDrawerNavigator({
       drawerLabel: "Home",
       drawerIcon: () => (
         <Image
-          source={require("./home.png")}
+          source={require("./assets/home.png")}
           resizeMode="contain"
           style={{ width: 20, height: 20}}
         />
@@ -181,7 +181,7 @@ const AppDrawerNavigator=createDrawerNavigator({
         drawerLabel: "Pay EMI & Dues Now",
         drawerIcon: () => (
           <Image
-            source={require("./emi.png")}
+            source={require("./assets/emi.png")}
             resizeMode="contain"
             style={{ width: 20, height: 20}}
           />
@@ -195,7 +195,7 @@ const AppDrawerNavigator=createDrawerNavigator({
         drawerLabel: "Our Products",
         drawerIcon: () => (
           <Image
-            source={require("./products.png")}
+            source={require("./assets/products.png")}
             resizeMode="contain"
             style={{ width: 20, height: 20}}
           />
@@ -209,7 +209,7 @@ const AppDrawerNavigator=createDrawerNavigator({
         drawerLabel: "About us",
         drawerIcon: () => (
           <Image
-            source={require("./about.png")}
+            source={require("./assets/about.png")}
             resizeMode="contain"
             style={{ width: 20, height: 20}}
           />
@@ -223,7 +223,7 @@ const AppDrawerNavigator=createDrawerNavigator({
           drawerLabel: "Login",
           drawerIcon: () => (
             <Image
-              source={require("./login.png")}
+              source={require("./assets/login.png")}
               resizeMode="contain"
               style={{ width: 20, height: 20}}
             />

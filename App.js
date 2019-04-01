@@ -6,8 +6,6 @@ import ForgotPassword from './Components/Views/ForgotPassword';
 import Login from './Components/Views/Login';
 import Menu from './Components/Views/Menu';
 import Register from './Components/Views/Register';
-import Player from './Components/Views/Player'
-import Details from './Components/Views/Details'
 import {
   createStackNavigator
 } from 'react-navigation'

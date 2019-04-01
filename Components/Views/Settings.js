@@ -33,7 +33,7 @@ return this.setState({
     headerLeft: (
       <TouchableOpacity style={{alignContent:'flex-start'}}>
       <View style={{flexDirection:'row'}}>
-      <Image source={require('./left_arrow.png')} style={{marginLeft:10}} ></Image>
+      <Image source={require('./assets/left_arrow.png')} style={{marginLeft:10}} ></Image>
       <Text style={StyleSheet.flatten({color:'#1C90C4',marginLeft:10})}>Back</Text>     
       </View>   
       </TouchableOpacity>

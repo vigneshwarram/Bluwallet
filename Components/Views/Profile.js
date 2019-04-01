@@ -114,29 +114,29 @@ export default class Profile extends Component {
       }}>
       <View style={{flexDirection:'row'}}>
       <View style={styles.SquareShapeView}>
-     <Image  style={{width: 25, height: 25}} source={require('./sign.png')}></Image>   
+     <Image  style={{width: 25, height: 25}} source={require('./assets/sign.png')}></Image>   
      <Text style={{ fontSize: 8,fontWeight:'bold'}}>SIGN IN TO VIEW DETAILS</Text>     
            </View>
            <View style={styles.SquareShapeView}>
-     <Image  style={{width: 25, height: 25}} source={require('./loan.png')}></Image>   
+     <Image  style={{width: 25, height: 25}} source={require('./assets/loan.png')}></Image>   
      <Text style={{ fontSize: 8,fontWeight:'bold'}}>APPLY FOR A LOAN</Text>     
            </View>
            <View style={styles.SquareShapeView}>
-     <Image  style={{width: 25, height: 25}} source={require('./loan.png')}></Image>   
+     <Image  style={{width: 25, height: 25}} source={require('./assets/loan.png')}></Image>   
      <Text style={{ fontSize: 8,fontWeight:'bold'}}>FREE CREDIT REPORT</Text>     
            </View>
       </View>
       <View style={{flexDirection:'row'}}>
       <View style={styles.SquareShapeView}>
-     <Image  style={{width: 25, height: 25}} source={require('./pay.png')}></Image>   
+     <Image  style={{width: 25, height: 25}} source={require('./assets/pay.png')}></Image>   
      <Text style={{ fontSize: 8,fontWeight:'bold'}}>PAY YOUR EMI AND DUES</Text>     
            </View>
            <View style={styles.SquareShapeView}>
-     <Image  style={{width: 25, height: 25}} source={require('./customer.png')}></Image>   
+     <Image  style={{width: 25, height: 25}} source={require('./assets/customer.png')}></Image>   
      <Text style={{ fontSize: 8,fontWeight:'bold'}}>CUSTOMER SERVICE</Text>     
            </View>
            <View style={styles.SquareShapeView}>
-     <Image  style={{width: 25, height: 25}} source={require('./locate.png')}></Image>   
+     <Image  style={{width: 25, height: 25}} source={require('./assets/locate.png')}></Image>   
      <Text style={{ fontSize: 8,fontWeight:'bold'}}>LOCATE BRANCHES</Text>     
            </View>
       </View>

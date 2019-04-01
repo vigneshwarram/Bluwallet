@@ -3,8 +3,8 @@ import FloatLabelTextInput from 'react-native-floating-label-text-input';
 import { NavigationActions } from 'react-navigation'
 import { View, StyleSheet, Image ,Text,ListView,TouchableHighlight,TouchableOpacity,TextInput} from 'react-native';
 import { Alert } from 'react-native';
-const image1 = require('./cirpin.png')
-const image2 = require('./right_arrowhead.png')
+const image1 = require('./assets/cirpin.png')
+const image2 = require('./assets/right_arrowhead.png')
 var data =
  [{title:"Ground Maintenance audit reports for Nuneaton site Ver.2",image2:image2, image: image1,Sent:"sent 2",Unsent:"Unsent 0"}, 
  {title:"Ground Maintenance audit reports for Nuneaton site Ver.2",image2:image2, image: image1,Sent:"sent 2",Unsent:"Unsent 0"},

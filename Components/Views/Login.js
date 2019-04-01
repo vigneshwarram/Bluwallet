@@ -57,9 +57,7 @@ export default class Login extends React.Component {
     headerRight: (<View/>),
     headerLeft: (
       <TouchableOpacity style={{alignContent:'flex-start'}} onPress={() =>navigation.goBack(null)}>
-      <View style={{flexDirection:'row'}}>
-      <Image  source={require('./left_arrow.png')} style={{marginLeft:10}} ></Image>
-      <Text style={StyleSheet.flatten({color:'#1C90C4',marginLeft:10})}>Back</Text>     
+      <View style={{flexDirection:'row'}}>    
       </View>   
       </TouchableOpacity>
     ),
