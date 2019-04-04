@@ -10,6 +10,7 @@ import {
   createStackNavigator
 } from 'react-navigation'
 const MainNavigator = createStackNavigator({
+  Menu: {screen: Menu},
   Login: {screen: Login},
   Register: {screen: Register},
   Menu: {screen: Menu},

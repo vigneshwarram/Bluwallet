@@ -6,7 +6,7 @@ import Profile from './Profile';
 import Surveys from './Surveys';
 import Help from './Help';
 import Settings from './Settings';
-import Terms from './Terms';
+import Login from './Login';
 const ProfileStack = createStackNavigator({
   Profiles: {
     screen: Profile,header:null,
@@ -122,7 +122,7 @@ const HelpStack = createStackNavigator({
 });
 const TermsStack = createStackNavigator({
   Profiles: {
-    screen: Terms,
+    screen: Login,
     navigationOptions: ({ navigation }) => ({
       title: 'TERMS',  // Title to appear in status bar
       headerTitleStyle: {
