@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Animated, View,Text, StyleSheet, Image, Dimensions, ScrollView } from 'react-native'
 import { FlatGrid } from 'react-native-super-grid';
+import firebase from 'react-native-firebase'
 import {
   Card,
   CardImage,
@@ -26,6 +27,14 @@ export default class Profile extends Component {
   animVal = new Animated.Value(0)
 
   render() {
+    firebase.messaging().getToken()
+    .then(fcmToken => {
+      if (fcmToken) {
+        Console.log('fcm '+fcmToken.toString())
+      } else {
+        // user doesn't have a device token yet
+      } 
+    });
     const items = [
       { name: 'TURQUOISE', code: '#1abc9c' }, { name: 'EMERALD', code: '#2ecc71' },
       { name: 'PETER RIVER', code: '#3498db' }, { name: 'AMETHYST', code: '#9b59b6' },
