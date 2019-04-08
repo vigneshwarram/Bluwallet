@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "1015856519233",
+    "firebase_url": "https://loan-9e0b1.firebaseio.com",
+    "project_id": "loan-9e0b1",
+    "storage_bucket": "loan-9e0b1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015856519233:android:bfeabc0a6302966e",
+        "android_client_info": {
+          "package_name": "com.mysurvey"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAq1ws3LvgNP-dmAh4jb8Mp65nF0P4iUd8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1015856519233-107mhflm4s9e1tub9kpv6iemn8hok7ro.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -11,8 +11,11 @@ import { Alert } from 'react-native';
         const url = 'https://apptest.supplynow.co.uk/api/v1/Authentication/Login'
         return url;
        };
-    
+     const ListApi=()=>{
+         const url ='https://apptest.supplynow.co.uk/api/v1/Bookings/MyBookings'
+         return url;
+     }
       
-       export default Loginlink;
+       export default ListApi;
        //export default getLink;
 
