@@ -7,6 +7,7 @@ import Login from './Components/Views/Login';
 import Menu from './Components/Views/Menu';
 import firebase from 'react-native-firebase';
 import Register from './Components/Views/Register';
+import Chat from './Components/Views/Chat'
 import {
   createStackNavigator
 } from 'react-navigation'
@@ -104,6 +105,7 @@ import {
         Register: {screen: Register},
         Menu: {screen: Menu},
         ForgotPassword: {screen: ForgotPassword},
+        Chat: {screen: Chat},
       
       
       });

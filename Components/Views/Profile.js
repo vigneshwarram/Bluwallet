@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Animated, View,Text, StyleSheet, Image, Dimensions, ScrollView } from 'react-native'
+import { Animated, View,Text, StyleSheet,TouchableOpacity, Image, Dimensions, ScrollView } from 'react-native'
 import { FlatGrid } from 'react-native-super-grid';
 import firebase from 'react-native-firebase'
 import {
@@ -9,6 +9,7 @@ import {
   CardContent,
   CardAction
 } from 'react-native-card-view';
+
 
 const deviceWidth = Dimensions.get('window').width
 const FIXED_BAR_WIDTH = 280
@@ -27,6 +28,7 @@ export default class Profile extends Component {
   animVal = new Animated.Value(0)
 
   render() {
+    const{navigate}=this.props.navigation
     firebase.messaging().getToken()
     .then(fcmToken => {
       if (fcmToken) {
@@ -141,8 +143,10 @@ export default class Profile extends Component {
      <Text style={{ fontSize: 8,fontWeight:'bold'}}>PAY YOUR EMI AND DUES</Text>     
            </View>
            <View style={styles.SquareShapeView}>
-     <Image  style={{width: 25, height: 25}} source={require('./assets/customer.png')}></Image>   
+           <TouchableOpacity onPress={()=>{navigate("Chat")}}>
+           <Image  style={{width: 25, height: 25}} source={require('./assets/customer.png')}></Image>   
      <Text style={{ fontSize: 8,fontWeight:'bold'}}>CUSTOMER SERVICE</Text>     
+           </TouchableOpacity> 
            </View>
            <View style={styles.SquareShapeView}>
      <Image  style={{width: 25, height: 25}} source={require('./assets/locate.png')}></Image>   
