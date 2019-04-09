@@ -7,7 +7,7 @@ import io.invertase.firebase.RNFirebasePackage;
 import com.swmansion.reanimated.ReanimatedPackage;
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
-
+import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -34,7 +34,8 @@ public class MainApplication extends Application implements ReactApplication {
             new RNDeviceInfo(),
             new RNFirebasePackage(),
             new RNGestureHandlerPackage(),
-            new RNFirebaseMessagingPackage()
+            new RNFirebaseMessagingPackage(),
+            new RNFirebaseNotificationsPackage()
       );
     }
 
