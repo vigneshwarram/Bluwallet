@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Animated, View,Text, StyleSheet,TouchableOpacity, Image, Dimensions, ScrollView } from 'react-native'
 import { FlatGrid } from 'react-native-super-grid';
 import firebase from 'react-native-firebase'
+import Fire from './Fire'
 import {
   Card,
   CardImage,
@@ -26,7 +27,11 @@ export default class Profile extends Component {
   numItems = images.length
   itemWidth = (FIXED_BAR_WIDTH / this.numItems) - ((this.numItems - 1) * BAR_SPACE)
   animVal = new Animated.Value(0)
-
+constructor(props){
+  super(props);
+//  Fire.shared.init;
+  
+}
   render() {
     const{navigate}=this.props.navigation
     firebase.messaging().getToken()
@@ -143,7 +148,7 @@ export default class Profile extends Component {
      <Text style={{ fontSize: 8,fontWeight:'bold'}}>PAY YOUR EMI AND DUES</Text>     
            </View>
            <View style={styles.SquareShapeView}>
-           <TouchableOpacity onPress={()=>{navigate("Chat")}}>
+           <TouchableOpacity onPress={()=>navigate("Chat",{name:'vicky'})}>
            <Image  style={{width: 25, height: 25}} source={require('./assets/customer.png')}></Image>   
      <Text style={{ fontSize: 8,fontWeight:'bold'}}>CUSTOMER SERVICE</Text>     
            </TouchableOpacity> 

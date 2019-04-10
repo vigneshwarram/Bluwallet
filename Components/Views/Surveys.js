@@ -5,27 +5,6 @@ import { View, StyleSheet, Image ,Text,ActivityIndicator,TouchableOpacity,TextIn
 import { Alert } from 'react-native';
 import Api from './Api'
 import { FlatList } from 'react-native-gesture-handler';
-const image1 = require('./assets/cirpin.png')
-const image2 = require('./assets/right_arrowhead.png')
-var data =
- [{title:"Ground Maintenance audit reports for Nuneaton site Ver.2",image2:image2, image: image1,Sent:"sent 2",Unsent:"Unsent 0"}, 
- {title:"Ground Maintenance audit reports for Nuneaton site Ver.2",image2:image2, image: image1,Sent:"sent 2",Unsent:"Unsent 0"},
- {title:"Ground Maintenance audit reports for Nuneaton site Ver.2",image2:image2,image: image1,Sent:"sent 2",Unsent:"Unsent 0"},
- {title:"Ground Maintenance audit reports for Nuneaton site Ver.2",image2:image2,image:image1,Sent:"sent 2",Unsent:"Unsent 0"},
- {title:"Ground Maintenance audit reports for Nuneaton site Ver.2",image2:image2, image: image1,Sent:"sent 2",Unsent:"Unsent 0"},
- {title:"Ground Maintenance audit reports for Nuneaton site Ver.2",image2:image2, image:image1,Sent:"sent 2",Unsent:"Unsent 0"},
- {title:"Ground Maintenance audit reports for Nuneaton site Ver.2",image2:image2, image:image1,Sent:"sent 2",Unsent:"Unsent 0"},
- {title:"Ground Maintenance audit reports for Nuneaton site Ver.2",image2:image2, image: image1,Sent:"sent 2",Unsent:"Unsent 0"},
- {title:"Ground Maintenance audit reports for Nuneaton site Ver.2",image2:image2, image:image1,Sent:"sent 2",Unsent:"Unsent 0"},
- {title:"Ground Maintenance audit reports for Nuneaton site Ver.2",image2:image2, image: image1,Sent:"sent 2",Unsent:"Unsent 0"},
- {title:"Ground Maintenance audit reports for Nuneaton site Ver.2",image2:image2, image: image1,Sent:"sent 2",Unsent:"Unsent 0"},
- {title:"Ground Maintenance audit reports for Nuneaton site Ver.2",image2:image2, image: image1,Sent:"sent 2",Unsent:"Unsent 0"},
- {title:"Ground Maintenance audit reports for Nuneaton site Ver.2",image2:image2, image: image1,Sent:"sent 2",Unsent:"Unsent 0"},
- {title:"Ground Maintenance audit reports for Nuneaton site Ver.2",image2:image2, image: image1,Sent:"sent 2",Unsent:"Unsent 0"},
- {title:"Ground Maintenance audit reports for Nuneaton site Ver.2",image2:image2, image: image1,Sent:"sent 2",Unsent:"Unsent 0"},
- {title:"Ground Maintenance audit reports for Nuneaton site Ver.2",image2:image2, image: image1,Sent:"sent 2",Unsent:"Unsent 0"},
- {title:"Ground Maintenance audit reports for Nuneaton site Ver.2",image2:image2, image: image1,Sent:"sent 2",Unsent:"Unsent 0"},
-]
 export default class Surveys extends React.Component {
   constructor(props) {
     super(props);

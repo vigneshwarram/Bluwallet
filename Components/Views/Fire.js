@@ -8,12 +8,12 @@ class Fire {
 
   init = () =>
     firebase.initializeApp({
-      apiKey: "AIzaSyBswQYtqeyfyYmBDzZkcNplLiXRN39S-ig",
-    authDomain: "loan-9e0b1.firebaseapp.com",
-    databaseURL: "https://loan-9e0b1.firebaseio.com",
-    projectId: "loan-9e0b1",
-    storageBucket: "loan-9e0b1.appspot.com",
-    messagingSenderId: "1015856519233"
+      apiKey: 'AIzaSyBswQYtqeyfyYmBDzZkcNplLiXRN39S-ig',
+    authDomain: 'loan-9e0b1.firebaseapp.com',
+    databaseURL: 'https://loan-9e0b1.firebaseio.com',
+    projectId: 'loan-9e0b1',
+    storageBucket: '',
+    messagingSenderId: '1015856519233'
     });
 
   observeAuth = () =>
@@ -49,6 +49,11 @@ class Fire {
     };
     return message;
   };
+  login = async(user, success_callback, failed_callback) => {
+    await firebase.auth()
+      .signInWithEmailAndPassword(user.email, user.password)
+    .then(success_callback, failed_callback);
+ }
 
   on = callback =>
     this.ref
@@ -76,6 +81,22 @@ class Fire {
   // close the connection to the Backend
   off() {
     this.ref.off();
+  }
+  createAccount = async (user) => {
+    firebase.auth()
+      .createUserWithEmailAndPassword(user.email, user.password)
+    .then(function() {
+      var userf = firebase.auth().currentUser;
+      userf.updateProfile({ displayName: user.name})
+      .then(function() {
+        alert("User " + user.name + " was created successfully.");
+      }, function(error) {
+        console.warn("Error update displayName.");
+      });
+    }, function(error) {
+      console.error("got error:" + error.message);
+      alert("Create account failed.");
+    });
   }
 }
 

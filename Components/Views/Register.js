@@ -1,8 +1,9 @@
 import * as React from 'react';
 import FloatLabelTextInput from 'react-native-floating-label-text-input';
-import { View, StyleSheet, KeyboardAvoidingView ,Text,Image,TouchableHighlight,TouchableOpacity,TextInput} from 'react-native';
+import { View, StyleSheet, ActivityIndicator ,Text,Image,TouchableHighlight,TouchableOpacity,TextInput} from 'react-native';
 import { Alert } from 'react-native';
 import firebase from 'firebase';
+import fire from './Fire'
 import { NavigationActions } from 'react-navigation'
 
 export default class Register extends React.Component {
@@ -12,13 +13,11 @@ export default class Register extends React.Component {
     this.handleBackButtonClick=this.handleBackButtonClick.bind(this)
     
     this.state=({
-      FirstName:null,
-      LastName:null,
       password:null,
       email:null,
-      confirmPassword:null,
       itemsvalue:[],
-      status:Boolean
+      status:Boolean,
+      animate:false
     })
   }
   static navigationOptions =({ navigation, screenProps })=> ({
@@ -43,26 +42,12 @@ export default class Register extends React.Component {
     const {navigate}=this.props.navigation;
     return (  
     <View style={{flex:1,justifyContent:'flex-start',backgroundColor: '#fbfbfb'}}> 
+      
        <View style={styles.containers}>
-    
-           <TextInput style = {styles.input} 
-               autoCapitalize="none" 
-               onSubmitEditing={() => this.passwordInput.focus()} 
-               autoCorrect={false} 
-               value={this.state.FirstName}
-               onChangeText={(FirstName)=>this.setState({FirstName})}    
-               returnKeyType="next" 
-               placeholder='FirstName' 
-               placeholderTextColor='rgba(225,225,225,0.7)'/>
-<TextInput style = {styles.input} 
-               autoCapitalize="none" 
-               onSubmitEditing={() => this.passwordInput.focus()} 
-               autoCorrect={false} 
-               value={this.state.LastName}
-               onChangeText={(LastName)=>this.setState({LastName})}  
-               returnKeyType="next" 
-               placeholder='LastName' 
-               placeholderTextColor='rgba(225,225,225,0.7)'/>
+       <View style={styles.loading}>
+      <ActivityIndicator size='large' animating = {this.state.animate}
+               color = '#bc2b78' />
+    </View>
 <TextInput style = {styles.input}   
               returnKeyType="go" 
               ref={(input)=> this.passwordInput = input} 
@@ -70,7 +55,7 @@ export default class Register extends React.Component {
                onChangeText={(email)=>this.setState({email})}   
               placeholder='Email' 
               placeholderTextColor='rgba(225,225,225,0.7)' 
-              secureTextEntry/>
+              />
   <TextInput style = {styles.input} 
                autoCapitalize="none" 
                onSubmitEditing={() => this.passwordInput.focus()} 
@@ -80,17 +65,9 @@ export default class Register extends React.Component {
                returnKeyType="next" 
                placeholder='Password' 
                placeholderTextColor='rgba(225,225,225,0.7)'/>
-<TextInput style = {styles.input} 
-               autoCapitalize="none" 
-               onSubmitEditing={() => this.passwordInput.focus()} 
-               autoCorrect={false} 
-               value={this.state.confirmPassword}
-               onChangeText={(confirmPassword)=>this.setState({confirmPassword})}    
-               returnKeyType="next" 
-               placeholder='ConfirmPassword' 
-               placeholderTextColor='rgba(225,225,225,0.7)'/>
+
 <TouchableOpacity style={styles.buttonContainer} onPress={this.handleBackButtonClick}>
-             <Text  style={styles.buttonText}>Register</Text>
+             <Text  style={styles.buttonText}>Login</Text>
 </TouchableOpacity> 
 
 
@@ -116,34 +93,36 @@ readUserData() {
 
 }
 
-handleBackButtonClick() {
-if(this.state.FirstName==null)
-{Alert.alert('please enter firstname')}
-else if(this.state.LastName==null)
-{Alert.alert('please enter lastname')}
-else if(this.state.email==null)
+handleBackButtonClick=()=> {
+  this.Load()
+ if(this.state.email==null)
 {Alert.alert('please enter email')}
 else if(this.state.password==null)
 {Alert.alert('please enter password')}
-else if(this.state.confirmPassword==null)
-{Alert.alert('please enter confirmpassword')}
   else
   {
-      firebase.database().ref('Users/').set({
-    firsname:(this.state.FirstName!=null && this.state.FirstName!='')?this.state.FirstName:'',
-    lastName:(this.state.LastName!=null && this.state.LastName!='')?this.state.LastName:'',
-    email:(this.state.email!=null && this.state.email!='')?this.state.email:'',
-    password:(this.state.password!=null && this.state.password!='')?this.state.password:'',
-    confirmpassword:(this.state.confirmPassword!=null && this.state.confirmPassword!='')?this.state.password:'',
- 
-}).then((data)=>{
-    //success callback
-   this.readUserData()
-    console.log('data ' , this.state.FirstName)
-}).catch((error)=>{
-    //error callback
-    console.log('error ' , error)
-})}
+   
+     const user={
+'email':this.state.email,
+'password':this.state.password
+     }
+     fire.shared.login(user,this.loginsuccess,this.loginfailure)
+  }
+}
+loginsuccess=()=>{
+  console.log('login successful, navigate to DshBoard.');
+  this.hide()
+  this.props.navigation.navigate('Menu')
+}
+loginfailure=()=>{
+  Alert.alert('Login failed')
+  this.hide()
+}
+Load(){
+  this.setState({animate:true})
+}
+hide(){
+  this.setState({animate:false})
 }
 }
 const styles = StyleSheet.create({
@@ -163,6 +142,15 @@ const styles = StyleSheet.create({
       borderColor: '#d6d7da',
       width: '80%',
       color: '#000'
+  },
+  loading: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   textStyle :{
     textAlign: 'center',   

@@ -8,6 +8,7 @@ import Menu from './Components/Views/Menu';
 import firebase from 'react-native-firebase';
 import Register from './Components/Views/Register';
 import Chat from './Components/Views/Chat'
+import Profile from './Components/Views/Profile'
 import {
   createStackNavigator
 } from 'react-navigation'
@@ -100,12 +101,14 @@ import {
   
     render() {
       const MainNavigator = createStackNavigator({
+        Register:{screen:Register},
         Menu: {screen: Menu},
         Login: {screen: Login},
         Register: {screen: Register},
         Menu: {screen: Menu},
         ForgotPassword: {screen: ForgotPassword},
         Chat: {screen: Chat},
+        Profile: {screen: Profile},
       
       
       });

@@ -7,6 +7,7 @@ import Surveys from './Surveys';
 import Help from './Help';
 import Settings from './Settings';
 import Login from './Login';
+import Chat from './Chat';
 const ProfileStack = createStackNavigator({
   Profiles: {
     screen: Profile,header:null,
@@ -36,6 +37,34 @@ const ProfileStack = createStackNavigator({
       ),
     })
   },
+  Chat: {
+    screen: Chat,header:null,
+    
+    navigationOptions: ({ navigation }) => ({
+    
+      title: 'Profile',  // Title to appear in status bar
+      headerStyle: {
+        backgroundColor: 'red',
+      },
+      headerTitleStyle: {
+          color:'#fff',
+          textAlign: 'center',
+          flexGrow:1,
+          alignSelf:'center',
+      },
+      headerRight: (<TouchableOpacity style={{alignContent:'flex-start'}}>
+      <View style={{flexDirection:'row'}}>
+      </View>   
+      </TouchableOpacity>),
+      headerLeft: (
+        <TouchableOpacity style={{alignContent:'flex-start'}} onPress={ () => navigation.toggleDrawer() }>
+        <View style={{flexDirection:'row'}}>
+        <Image source={require('./Menu/menu.png')} style={{marginLeft:10}} ></Image>
+        </View>   
+        </TouchableOpacity>
+      ),
+    })
+  }
    
 });
 
