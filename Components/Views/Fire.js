@@ -89,7 +89,9 @@ class Fire {
       var userf = firebase.auth().currentUser;
       userf.updateProfile({ displayName: user.name})
       .then(function() {
-        alert("User " + user.name + " was created successfully.");
+        const { navigate } = this.props.navigation;
+        navigate('Menu')
+       // alert("User " + user.name + " was created successfully.");
       }, function(error) {
         console.warn("Error update displayName.");
       });

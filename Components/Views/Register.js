@@ -11,6 +11,7 @@ export default class Register extends React.Component {
     super(props);
     this.readUserData = this.readUserData.bind(this)
     this.handleBackButtonClick=this.handleBackButtonClick.bind(this)
+    this.createUser=this.createUser.bind(this)
     
     this.state=({
       password:null,
@@ -69,7 +70,9 @@ export default class Register extends React.Component {
 <TouchableOpacity style={styles.buttonContainer} onPress={this.handleBackButtonClick}>
              <Text  style={styles.buttonText}>Login</Text>
 </TouchableOpacity> 
-
+<TouchableOpacity style={styles.buttonContainer} onPress={this.createUser}>
+             <Text  style={styles.buttonText}>Create User</Text>
+</TouchableOpacity> 
 
            </View>
     </View>
@@ -92,7 +95,9 @@ readUserData() {
   });
 
 }
-
+createUser=()=>{
+  this.props.navigation.navigate('CreateUser')
+}
 handleBackButtonClick=()=> {
   this.Load()
  if(this.state.email==null)
@@ -112,7 +117,7 @@ else if(this.state.password==null)
 loginsuccess=()=>{
   console.log('login successful, navigate to DshBoard.');
   this.hide()
-  this.props.navigation.navigate('Menu')
+  this.props.navigation.navigate('Chat',{name:this.state.email})
 }
 loginfailure=()=>{
   Alert.alert('Login failed')
