@@ -56,18 +56,16 @@ vscode-react-native-*.vsix
 */fastlane/report.xml
 */fastlane/Preview.html
 */fastlane/screenshots
-LoanApp/.vscode/.react/debuggerWorker.js
-LoanApp/.vscode/.react/index.android.bundle
-LoanApp/.vscode/.react/index.android.map
-LoanApp/.vscode/.react/.vscode/launchReactNative.js
-LoanApp/android/
-LoanApp/ios/
-LoanApp/.flowconfig
-LoanApp/.gitignore
-LoanApp/.watchmanconfig
-LoanApp/.vscode/launchReactNative.js
-LoanApp/.vscode/settings.json
-LoanApp/tsconfig.json
-LoanApp/.vscode/typings/
-# Bundle artifact
+.vscode/.react/debuggerWorker.js
+.vscode/.react/index.android.bundle
+.vscode/.react/index.android.map
+.vscode/.react/.vscode/launchReactNative.js
+.flowconfig
+.gitignore
+.watchmanconfig
+.vscode/launchReactNative.js
+.vscode/settings.json
+.tsconfig.json
+.vscode/typings/
+#Bundle artifact
 *.jsbundle
