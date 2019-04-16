@@ -40,7 +40,12 @@ yarn-error.log
 buck-out/
 \.buckd/
 *.keystore
-
+# Compiled files
+src/**/*.js
+!src/extension/appcenter/lib/**/*.js
+test/**/*.js
+**/*.js.map
+vscode-react-native-*.vsix
 # fastlane
 #
 # It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
@@ -51,6 +56,18 @@ buck-out/
 */fastlane/report.xml
 */fastlane/Preview.html
 */fastlane/screenshots
-
+LoanApp/.vscode/.react/debuggerWorker.js
+LoanApp/.vscode/.react/index.android.bundle
+LoanApp/.vscode/.react/index.android.map
+LoanApp/.vscode/.react/.vscode/launchReactNative.js
+LoanApp/android/
+LoanApp/ios/
+LoanApp/.flowconfig
+LoanApp/.gitignore
+LoanApp/.watchmanconfig
+LoanApp/.vscode/launchReactNative.js
+LoanApp/.vscode/settings.json
+LoanApp/tsconfig.json
+LoanApp/.vscode/typings/
 # Bundle artifact
 *.jsbundle
