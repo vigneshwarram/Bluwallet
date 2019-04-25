@@ -36,7 +36,16 @@ class Fire {
   get ref() {
     return firebase.database().ref('messages');
   }
-
+  readUserData() {
+    const obj=null
+    firebase.database().ref('messages').once('value', function (snapshot) {
+        console.log(snapshot.val())
+        obj=snapshot.val()
+     
+       
+    });
+    return obj
+}
   parse = snapshot => {
     const { timestamp: numberStamp, text, user } = snapshot.val();
     const { key: _id } = snapshot;
@@ -82,19 +91,20 @@ class Fire {
   off() {
     this.ref.off();
   }
-  createAccount = async (user) => {
+  createAccount = async (users) => {
     firebase.auth()
-      .createUserWithEmailAndPassword(user.email, user.password)
-    .then(function() {
-      var userf = firebase.auth().currentUser;
-      userf.updateProfile({ displayName: user.name})
-      .then(function() {
-        const { navigate } = this.props.navigation;
-        navigate('Menu')
-       // alert("User " + user.name + " was created successfully.");
-      }, function(error) {
-        console.warn("Error update displayName.");
-      });
+    .createUserWithEmailAndPassword(users.email, users.password)
+    .then(({ user }) => {
+      // Add the new user to the users table
+      firebase.database().ref()
+        .child('messages')
+        .push({
+          email: users.email,
+          uid: user.uid,
+          name: users.name,
+         // photoURL: getGravatarSrc(this.state.email),
+        });
+        alert("Create account completed.");
     }, function(error) {
       console.error("got error:" + error.message);
       alert("Create account failed.");

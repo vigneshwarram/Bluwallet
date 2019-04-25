@@ -29,6 +29,7 @@
     "react-native-super-grid": "^3.0.3",
     "react-native-swipe-list-view": "^1.5.2",
     "react-native-tab-view": "^2.0.3",
+    "react-native-touch-id": "^4.4.1",
     "react-native-video": "^4.4.0",
     "react-navigation": "^2.18.3",
     "rn-animated-tabs": "^1.0.4"

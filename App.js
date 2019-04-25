@@ -9,6 +9,7 @@ import firebase from 'react-native-firebase';
 import Register from './Components/Views/Register';
 import Chat from './Components/Views/Chat'
 import Profile from './Components/Views/Profile'
+import Contact from './Components/Views/Contact'
 import CreateUser from './Components/Views/CreateUser'
 import {
   createStackNavigator
@@ -103,6 +104,7 @@ import {
     render() {
       const MainNavigator = createStackNavigator({
         Register:{screen:Register},
+        Contact:{screen:Contact},
         Menu: {screen: Menu},
         Login: {screen: Login},
         Register: {screen: Register},

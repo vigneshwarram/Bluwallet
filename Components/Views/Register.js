@@ -1,9 +1,10 @@
 import * as React from 'react';
 import FloatLabelTextInput from 'react-native-floating-label-text-input';
-import { View, StyleSheet, ActivityIndicator ,Text,Image,TouchableHighlight,TouchableOpacity,TextInput} from 'react-native';
+import { View, StyleSheet, ActivityIndicator, AsyncStorage,Text,Image,TouchableHighlight,TouchableOpacity,TextInput} from 'react-native';
 import { Alert } from 'react-native';
 import firebase from 'firebase';
 import fire from './Fire'
+import TouchID from 'react-native-touch-id';
 import { NavigationActions } from 'react-navigation'
 
 export default class Register extends React.Component {
@@ -13,11 +14,13 @@ export default class Register extends React.Component {
     this.handleBackButtonClick=this.handleBackButtonClick.bind(this)
     this.createUser=this.createUser.bind(this)
     
+    
     this.state=({
       password:null,
       email:null,
       itemsvalue:[],
       status:Boolean,
+      locked:true,
       animate:false
     })
   }
@@ -40,6 +43,7 @@ export default class Register extends React.Component {
     ),
 });
   render() {
+  
     const {navigate}=this.props.navigation;
     return (  
     <View style={{flex:1,justifyContent:'flex-start',backgroundColor: '#fbfbfb'}}> 
@@ -73,7 +77,9 @@ export default class Register extends React.Component {
 <TouchableOpacity style={styles.buttonContainer} onPress={this.createUser}>
              <Text  style={styles.buttonText}>Create User</Text>
 </TouchableOpacity> 
-
+<TouchableOpacity style={styles.buttonContainer} onPress={this.TouchId}>
+             <Text  style={styles.buttonText}>Login with Touch ID</Text>
+</TouchableOpacity> 
            </View>
     </View>
         
@@ -111,13 +117,14 @@ else if(this.state.password==null)
 'email':this.state.email,
 'password':this.state.password
      }
+     this._storeData(this.state.email,this.state.password)
      fire.shared.login(user,this.loginsuccess,this.loginfailure)
   }
 }
 loginsuccess=()=>{
   console.log('login successful, navigate to DshBoard.');
   this.hide()
-  this.props.navigation.navigate('Chat',{name:this.state.email})
+  this.props.navigation.navigate('Contact',{name:this.state.email})
 }
 loginfailure=()=>{
   Alert.alert('Login failed')
@@ -129,6 +136,42 @@ Load(){
 hide(){
   this.setState({animate:false})
 }
+_storeData = async (email,password) => {
+  try {
+    await AsyncStorage.setItem('email', email);
+    await AsyncStorage.setItem('password', password);
+  } catch (error) {
+    // Error saving data
+  }
+};
+TouchId=()=>{
+  TouchID.authenticate(`to login with username`)
+  .then(success => {
+    this._retrieveData()
+  })
+  .catch(error => {
+    Alert.alert('Authentication Failed');
+  });
+ 
+}
+_retrieveData = async () => {
+  try {
+    const email = await AsyncStorage.getItem('email');
+    const Password = await AsyncStorage.getItem('password');
+    if (email !== null && Password!==null) {
+
+      this.setState({
+        email:email,
+        password:Password
+      })
+      this.handleBackButtonClick()
+      // We have data!!
+      console.log(value);
+    }
+  } catch (error) {
+    // Error retrieving data
+  }
+};
 }
 const styles = StyleSheet.create({
  

@@ -117,6 +117,7 @@ else if(this.state.password==null)
 'name':this.state.name
      }
      fire.shared.createAccount(user)
+     this.props.navigation.navigate('Register')
   }
 }
 loginsuccess=()=>{

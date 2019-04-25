@@ -44,6 +44,7 @@
 		7A8FD4274F82462D9CF008B1 /* libRNDeviceInfo-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1149A4B1C72D4641B5BF1D1C /* libRNDeviceInfo-tvOS.a */; };
 		AC7A96F31267449D8FB1DA3D /* libRNReanimated.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA21E4B71D2F4590B02837EC /* libRNReanimated.a */; };
 		ED377C9880F4493EB942CA2A /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B28E7AE60F6B4B3D858E15D9 /* libRNFirebase.a */; };
+		2631A9C4E44F4BBCA15B57ED /* libTouchID.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 070C90B9E5EA4C0BB253A4EC /* libTouchID.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -360,6 +361,8 @@
 		BA21E4B71D2F4590B02837EC /* libRNReanimated.a */ = {isa = PBXFileReference; name = "libRNReanimated.a"; path = "libRNReanimated.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		1BC432D8C12142BEA9D95512 /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; name = "RNFirebase.xcodeproj"; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		B28E7AE60F6B4B3D858E15D9 /* libRNFirebase.a */ = {isa = PBXFileReference; name = "libRNFirebase.a"; path = "libRNFirebase.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		79D4404E1BC04F2DA4B91E15 /* TouchID.xcodeproj */ = {isa = PBXFileReference; name = "TouchID.xcodeproj"; path = "../node_modules/react-native-touch-id/TouchID.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		070C90B9E5EA4C0BB253A4EC /* libTouchID.a */ = {isa = PBXFileReference; name = "libTouchID.a"; path = "libTouchID.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -392,6 +395,7 @@
 				E63386E81E0448EBACAE5C13 /* libRNDeviceInfo.a in Frameworks */,
 				AC7A96F31267449D8FB1DA3D /* libRNReanimated.a in Frameworks */,
 				ED377C9880F4493EB942CA2A /* libRNFirebase.a in Frameworks */,
+				2631A9C4E44F4BBCA15B57ED /* libTouchID.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,6 +590,7 @@
 				180CBC3B876A45848F005F8B /* RNDeviceInfo.xcodeproj */,
 				71EA584557C34A3EAF81ED69 /* RNReanimated.xcodeproj */,
 				1BC432D8C12142BEA9D95512 /* RNFirebase.xcodeproj */,
+				79D4404E1BC04F2DA4B91E15 /* TouchID.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1218,6 +1223,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1225,6 +1231,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-device-info\ios\RNDeviceInfo",
 					"$(SRCROOT)\..\node_modules\react-native-reanimated\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
+					"$(SRCROOT)\..\node_modules\react-native-touch-id",
 				);
 			};
 			name = Debug;
@@ -1251,6 +1258,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1258,6 +1266,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-device-info\ios\RNDeviceInfo",
 					"$(SRCROOT)\..\node_modules\react-native-reanimated\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
+					"$(SRCROOT)\..\node_modules\react-native-touch-id",
 				);
 			};
 			name = Release;
@@ -1284,6 +1293,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-device-info\ios\RNDeviceInfo",
 					"$(SRCROOT)\..\node_modules\react-native-reanimated\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
+					"$(SRCROOT)\..\node_modules\react-native-touch-id",
 				);
 			};
 			name = Debug;
@@ -1309,6 +1319,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-device-info\ios\RNDeviceInfo",
 					"$(SRCROOT)\..\node_modules\react-native-reanimated\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
+					"$(SRCROOT)\..\node_modules\react-native-touch-id",
 				);
 			};
 			name = Release;
@@ -1343,6 +1354,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1350,6 +1362,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-device-info\ios\RNDeviceInfo",
 					"$(SRCROOT)\..\node_modules\react-native-reanimated\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
+					"$(SRCROOT)\..\node_modules\react-native-touch-id",
 				);
 			};
 			name = Debug;
@@ -1384,6 +1397,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1391,6 +1405,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-device-info\ios\RNDeviceInfo",
 					"$(SRCROOT)\..\node_modules\react-native-reanimated\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
+					"$(SRCROOT)\..\node_modules\react-native-touch-id",
 				);
 			};
 			name = Release;
@@ -1424,6 +1439,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1431,6 +1447,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-device-info\ios\RNDeviceInfo",
 					"$(SRCROOT)\..\node_modules\react-native-reanimated\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
+					"$(SRCROOT)\..\node_modules\react-native-touch-id",
 				);
 			};
 			name = Debug;
@@ -1464,6 +1481,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1471,6 +1489,7 @@
 					"$(SRCROOT)\..\node_modules\react-native-device-info\ios\RNDeviceInfo",
 					"$(SRCROOT)\..\node_modules\react-native-reanimated\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
+					"$(SRCROOT)\..\node_modules\react-native-touch-id",
 				);
 			};
 			name = Release;
