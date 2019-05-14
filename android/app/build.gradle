@@ -142,6 +142,8 @@ keyPassword MYAPP_RELEASE_KEY_PASSWORD}}}
 }
 
 dependencies {
+    implementation project(':react-native-svg')
+    implementation project(':react-native-linear-gradient')
     implementation project(':react-native-touch-id')
     implementation project(':react-native-firebase')
     implementation project(':react-native-reanimated')
