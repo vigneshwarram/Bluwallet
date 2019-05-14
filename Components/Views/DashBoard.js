@@ -165,7 +165,9 @@ App2Touch=()=>{
     app3icon:require('./assets/app3.png'),
     app4icon:require('./assets/app4.png'),
     app5icon:require('./assets/app5.png'),
+  
   })
+  this.props.navigation.navigate('Vault');
 }
 App3Touch=()=>{
   this.setState({
@@ -296,7 +298,7 @@ App5Touch=()=>{
      <Text style={{marginLeft:10,color:'#5099f0',}}>880.660</Text>
      <View style={{flexDirection: 'row',marginLeft:20,marginTop:-15}}>
      <Picker
-         style={{ width: 150,color:'#5099f0' }}
+         style={{ width: 130,color:'#5099f0' }}
           selectedValue={this.state.Coin}
           itemStyle={{ backgroundColor: "#5099f0", color: "#5099f0", fontFamily:"Ebrima", fontSize:17 }}
           onValueChange={(lang) => this.setState({Coin: lang})}>
