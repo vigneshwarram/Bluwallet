@@ -19,6 +19,8 @@ export default class DashBoard extends React.Component {
     
     this.state = {
       dataSource:[],
+      cityItems:["US Doller,Indian,Eutherium"],
+      Coin: 'Us Doller',
       animate:false,
       app1icon:require('./assets/app1.png'),
       app2icon:require('./assets/app2.png'),
@@ -242,18 +244,20 @@ App5Touch=()=>{
             </View>
       <View style={{justifyContent:'space-between',flexDirection:'row'}}>
       <View style={{backgroundColor:'#f6407b',height:this.state.h,width:this.state.w,justifyContent:'center', alignItems:'flex-end',borderTopEndRadius:25,borderBottomEndRadius:25, marginTop:10}}>
+
       <TouchableOpacity onPress={this._onPress}>
        <View style={{flexDirection: 'row'}}> 
-          <Image style={{marginRight:10}}   source={require("./assets/whitebox.png")} ></Image>     
+          <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/whitebox.png")} ></Image>     
      
           </View>
           </TouchableOpacity>
+      
             </View>
             
             <View style={{flexDirection: 'row',justifyContent:'flex-start',alignItems:"center",marginTop:15}}> 
           <Image  style={{width: 30, height: 30}}  source={require("./assets/wallet.png")} ></Image>   
           <View style={{flexDirection:'column',marginTop:15}}>
-          <Text style={{marginLeft:10,marginTop:15,fontSize:18}}>Monendaro</Text>
+          <Text style={{marginLeft:10,marginTop:15,fontSize:18}}>Coin wallet</Text>
      <Text style={{marginTop:5,marginLeft:10,fontSize:20,color:'#162061'}}>Ethereum</Text>
         
           </View>  
@@ -263,7 +267,7 @@ App5Touch=()=>{
             <View style={{backgroundColor:'#34deb1',height:this.state.hr,width:this.state.wr,justifyContent:'center',alignItems:'flex-start',borderTopStartRadius:25,borderBottomStartRadius:25, marginTop:10}}>
             <TouchableOpacity onPress={this.pressRight}>
        <View style={{flexDirection: 'row'}}> 
-          <Image style={{marginLeft:10}}   source={require("./assets/walletwhite.png")} ></Image>     
+          <Image style={{marginLeft:10,width: 30, height: 30}}   source={require("./assets/app1white.png")} ></Image>     
      
           </View>
           </TouchableOpacity>
@@ -272,11 +276,11 @@ App5Touch=()=>{
       <View style={{justifyContent:'space-between',flexDirection:'row'}}>
      
      <View style={{flexDirection: 'row'}}> 
-        <Text   style={{color:'#5099f0',marginLeft:30}}  >Ripple</Text>     
+        <Text   style={{color:'#5099f0',marginLeft:30}}>Ripple</Text>     
           </View>
                     
      <View style={{flexDirection: 'row'}}> 
-     <Text   style={{color:'#5099f0',marginRight:30}}  >Monero</Text>  
+     <Text   style={{color:'#5099f0',marginRight:30}} >Monero</Text>  
    
         </View>
           
@@ -297,16 +301,18 @@ App5Touch=()=>{
     </View> 
     <View style={{flexDirection:'row',marginTop:10,marginLeft:30}}>
      
-     <View style={{flexDirection: 'row',justifyContent:'space-between'}}> 
+     <View style={{flexDirection: 'row',justifyContent:'space-between',marginLeft:30}}> 
    
      <Text style={{marginLeft:10,color:'#5099f0',}}>880.660</Text>
-     <View style={{flexDirection: 'row'}}>
-     <Text style={{marginLeft:50,color:'#5099f0',}}>UsDoller</Text>
+     <View style={{flexDirection: 'row',marginLeft:20,marginTop:-15}}>
      <Picker
-  style={{color:'#5099f0',width:30}}>
-  <Picker.Item label="UsDoller" value="US DOLLER" />
-  <Picker.Item label="JavaScript" value="US DOLLER" />
-</Picker>
+         style={{ width: 150,color:'#5099f0' }}
+          selectedValue={this.state.Coin}
+          itemStyle={{ backgroundColor: "#5099f0", color: "#5099f0", fontFamily:"Ebrima", fontSize:17 }}
+          onValueChange={(lang) => this.setState({Coin: lang})}>
+          <Picker.Item label="Us doller" value="Us doller" />
+          <Picker.Item label="Indian" value="js" />
+        </Picker>
      </View>         
           </View>                    
     </View> 
@@ -328,7 +334,7 @@ App5Touch=()=>{
                    <TouchableOpacity>
                      <View style={{flexDirection:'row',borderRadius:15,borderWidth:1,padding:5,width:70, borderColor:'#5099f0',backgroundColor:'#fff',justifyContent:'center',alignItems:'center'}}>
                        <Image source={require('./assets/down-arrow-triangle-outline.png')} style={{width:10,height:10}}></Image>
-                       <Text style={{color:'#5099f0',marginLeft:10}}>Hoy</Text>
+                       <Text style={{color:'#5099f0',marginLeft:10}}>Today</Text>
                      </View>
                    </TouchableOpacity>
                  </View>
@@ -369,14 +375,14 @@ App5Touch=()=>{
   borderRadius:25}}>
   <LinearGradient
    colors={[(item.Status=='Completed')?'#fff':'#96cef7', (item.Status=='Completed')?'#fff':'#5099f0', (item.Status=='Completed')?'#fff':'#5099f9']} style={{ borderRadius:25}}>
-        <View style={{justifyContent:'space-between',alignItems:'center',flexDirection:'row' ,padding:20}}>
+        <View style={{alignItems:'center',flexDirection:'row',padding:15}}>
         <View style={{  width: 40,
     height: 40,
     borderRadius: 40/2,
     backgroundColor: '#fff',justifyContent:'center',alignItems:"center"}} >
           <Image  style={{width: 30, height: 30}}  source={require("./assets/walletcolor.png")} ></Image>  
           </View>
-          <View style={{flexDirection:'column'}}>
+          <View style={{flexDirection:'column',marginLeft:30}}>
           <View style={{flex:1, flexDirection: 'row',justifyContent:'space-between'}}>            
          <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#162061'}}>{item.Status}</Text>       
      <View style={{flexDirection:'row'}}>
