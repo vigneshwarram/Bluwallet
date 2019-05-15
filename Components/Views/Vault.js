@@ -221,23 +221,34 @@ App5Touch=()=>{
           fill={'none'}
       />
   )
+
+   
   if(this.state.animate){  
     return <View style={{justifyContent:'center',alignItems:'center',flex:1}}>
     <ActivityIndicator
-  color = '#bc2b78'
+  color = '#1a5fe1'
   size = "large"
   style = {styles.activityIndicator}/>
   </View>
   }
     return (  
       <View style={styles.Maincontainers}>          
-      <View style={{justifyContent:'space-between',flexDirection:'row',backgroundColor:'#5099f0',borderTopLeftRadius:300,borderBottomRightRadius:200}}>
-    
-      <View style={{backgroundColor:'#f6407b',height:this.state.h,width:this.state.w,justifyContent:'center', alignItems:'flex-end',borderTopEndRadius:25,borderBottomEndRadius:25, marginTop:10}}>
+      <View >
+      <LinearGradient
+   colors={['#00a5ff','#00a5ff','#1a5fe1']} style={{justifyContent:'space-between',flexDirection:'row',borderTopLeftRadius:300,borderBottomRightRadius:200}}>
+      <View style={{backgroundColor:'#fff',height:this.state.h,width:this.state.w,justifyContent:'center',borderWidth:1, alignItems:'flex-end',borderTopEndRadius:25,borderBottomEndRadius:25,  borderWidth: 1,
+  borderColor: '#fff',
+  borderBottomWidth: 0,
+  shadowColor: '#000',
+  shadowOffset: { width: 0, height: 12 },
+  shadowOpacity: 0.8,
+  shadowRadius: 2,
+  elevation: 24,
+   marginTop:10}}>
 
 <TouchableOpacity onPress={this._onPress}>
  <View style={{flexDirection: 'row'}}> 
-    <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/whitebox.png")} ></Image>     
+    <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/iicon.png")} ></Image>     
 
     </View>
     </TouchableOpacity>
@@ -287,7 +298,7 @@ App5Touch=()=>{
           </View>
           </TouchableOpacity>
             </View>
-          
+          </LinearGradient>
       </View>    
       <View
   style={{
@@ -307,7 +318,7 @@ App5Touch=()=>{
       onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
       <View style={{backgroundColor:(item.Status=='Completed')?'#fff':'#5099f0',marginLeft:30,marginRight:30, shadowOffset: { width: 10, height: 10 },
    borderWidth: 1,
-  borderColor: '#96cef7',
+  borderColor: '#fff',
   borderBottomWidth: 0,
   shadowColor: '#000',
   shadowOffset: { width: 0, height: 12 },
@@ -316,29 +327,50 @@ App5Touch=()=>{
   elevation: 24,
   borderRadius:25}}>
   <LinearGradient
-   colors={[(item.Status=='Completed')?'#fff':'#96cef7', (item.Status=='Completed')?'#fff':'#5099f0', (item.Status=='Completed')?'#fff':'#5099f9']} style={{ borderRadius:25}}>
+   colors={[(item.Status=='Completed')?'#96cef7':'#fff', (item.Status=='Completed')?'#5099f0':'#fff', (item.Status=='Completed')?'#5099f9':'#fff']} style={{ borderRadius:25}}>
         <View style={{alignItems:'center',flexDirection:'row',padding:15}}>
-        <View style={{  width: 40,
+        <View >
+        {(item.Status=='Cancelled')? <LinearGradient
+   colors={['#f8b971','#ec663c','#f8b971']} style={{width: 40,
     height: 40,
     borderRadius: 40/2,
-    backgroundColor: '#fff',justifyContent:'center',alignItems:"center"}} >
-          <Image  style={{width: 30, height: 30}}  source={require("./assets/walletcolor.png")} ></Image>  
+    backgroundColor: '#fff',justifyContent:'center',alignItems:"center"}}>
+
+
+<Image  style={{width: 30, height: 30}}  source={require("./assets/Bicon.png")} ></Image>  
+   </LinearGradient>: <LinearGradient
+   colors={['#fff','#fff','#fff']} style={{width: 40,
+    height: 40,
+    borderRadius: 40/2,
+    backgroundColor: '#fff',justifyContent:'center',alignItems:"center"}}>
+
+
+<Image  style={{width: 30, height: 30}}  source={require("./assets/diamond-blue.png")} ></Image>  
+   </LinearGradient>}
+     
+          
+          </View>
+
+
+          <View >
+     
+          
           </View>
           <View style={{flexDirection:'column',marginLeft:30}}>
           <View style={{flex:1, flexDirection: 'row',justifyContent:'space-between'}}>            
-         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#162061'}}>{item.Status}</Text>       
+         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#162061':'#fff'}}>{item.Status}</Text>       
      <View style={{flexDirection:'row'}}>
      <Image style={{width: 25,marginTop:10, height: 25}}   source={require("./assets/plusblue.png")} ></Image>    
-     <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#162061'}}>$ 9060</Text> 
+     <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#162061':'#fff'}}>$ 9060</Text> 
      </View>
         
      </View>  
      <View style={{flex:1, flexDirection:'row',justifyContent:'space-between'}}>
  
             
-         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#162061'}}>12.38 .782</Text>       
+         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#162061':'#fff'}}>12.38 .782</Text>       
      
-      <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#162061'}}>5.4587ETH</Text>    
+      <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#162061':'#fff'}}>5.4587ETH</Text>    
      </View>  
           </View>
          

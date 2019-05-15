@@ -4,6 +4,7 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
     {
         "name": "Debug Android",
         "program": "${workspaceRoot}/.vscode/launchReactNative.js",
@@ -35,22 +36,5 @@
             "sourceMaps": true,
             "outDir": "${workspaceRoot}/.vscode/.react"
         },
-        {
-            "name": "Debug Android",
-            "program": "${workspaceRoot}/.vscode/launchReactNative.js",
-            "type": "reactnative",
-            "request": "launch",
-            "platform": "android",
-            "sourceMaps": true,
-            "outDir": "${workspaceRoot}/.vscode/.react"
-        },
-        {
-            "type": "android",
-            "name": "Android",
-            "request": "launch",
-            "appSrcRoot": "${workspaceRoot}/app/src/main",
-            "apkFile": "${workspaceRoot}/app/build/outputs/apk/debug/app-debug.apk",
-            "adbPort": 5037
-        }
     ]
 }
