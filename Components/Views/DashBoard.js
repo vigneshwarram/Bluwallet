@@ -372,7 +372,7 @@ App5Touch=()=>{
     height: 40,
     borderRadius: 40/2,
     backgroundColor: '#fff',justifyContent:'center',alignItems:"center"}} >
-          <Image  style={{width: 30, height: 30}}  source={require("./assets/walletcolor.png")} ></Image>  
+          <Image  style={{width: 30, height: 30}}  source={require("./assets/greenD.png")} ></Image>  
           </View>
           <View style={{flexDirection:'column',marginLeft:30}}>
           <View style={{flex:1, flexDirection: 'row',justifyContent:'space-between'}}>            

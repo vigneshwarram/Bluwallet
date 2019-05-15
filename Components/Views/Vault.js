@@ -230,10 +230,9 @@ App5Touch=()=>{
   </View>
   }
     return (  
-      <View style={styles.Maincontainers}>    
-<View style={{backgroundColor:'#5099f0'}}>
-      <View style={{justifyContent:'space-between',flexDirection:'row',backgroundColor:'#5099f0'}}>
-      <View style={{width:'40%',height:'40%',borderBottomEndRadius:500,backgroundColor:'#fff',justifyContent:'center',alignItems:'flex-start'}}>
+      <View style={styles.Maincontainers}>          
+      <View style={{justifyContent:'space-between',flexDirection:'row',backgroundColor:'#5099f0',borderTopLeftRadius:300,borderBottomRightRadius:200}}>
+    
       <View style={{backgroundColor:'#f6407b',height:this.state.h,width:this.state.w,justifyContent:'center', alignItems:'flex-end',borderTopEndRadius:25,borderBottomEndRadius:25, marginTop:10}}>
 
 <TouchableOpacity onPress={this._onPress}>
@@ -244,20 +243,20 @@ App5Touch=()=>{
     </TouchableOpacity>
 
       </View>
-      </View>
+      
              
-            <View style={{justifyContent:'flex-start',alignItems:'flex-start',marginTop:15}}> 
-            <View style={{flexDirection: 'row',justifyContent:'flex-start',alignItems:"flex-start",marginTop:15}}> 
+            <View style={{justifyContent:'flex-start',alignItems:'flex-start',marginTop:15,marginLeft:50}}> 
+            <View style={{flexDirection: 'row',justifyContent:'center',alignItems:"center",marginTop:15,marginLeft:50}}> 
             <Image  style={{width:30,height: 30}}  source={require("./assets/app2.png")} ></Image>
             <Text style={{marginLeft:10,marginTop:5,fontSize:18,color:"#fff"}}>Vault</Text>
              </View>         
-          <View style={{flexDirection: 'row'}}> 
-     <Image style={{width:20, height: 40,marginLeft:-30}}   source={require("./assets/plusblue.png")} ></Image>    
+          <View style={{flexDirection: 'row',marginTop:10,marginLeft:20}}> 
+     <Image style={{width:20, height: 40}}   source={require("./assets/plusblue.png")} ></Image>    
      <Text style={{fontSize:20,color:'#fff',}}>2.8066589</Text>
           </View>
-          <View style={{flexDirection: 'row',justifyContent:'space-between',marginTop:-10}}> 
+          <View style={{flexDirection: 'row',justifyContent:'space-between',marginLeft:10,marginTop:-5}}> 
    
-   <Text style={{color:'#fff',marginLeft:-20}}>880.660</Text>
+   <Text style={{color:'#fff'}}>880.660</Text>
    <View style={{flexDirection: 'row',marginLeft:10,marginTop:-16}}>
    <Picker
        style={{ width: 130,color:'#fff' ,fontSize:12 }}
@@ -273,26 +272,23 @@ App5Touch=()=>{
     height: 40,
     borderRadius: 40/2,
     backgroundColor: '#fff',justifyContent:'center',alignItems:"center"}}>
-     <Image style={{width:20,height:20}}   source={require('./assets/plus.png')} ></Image> 
+     <Image style={{width:20,height:20}}   source={require('./assets/Refresh.png')} ></Image> 
     
             
           </View>  
                  </View>       
           </View>
    
-            <View style={{backgroundColor:'#34deb1',height:this.state.hr,width:this.state.wr,justifyContent:'center',alignItems:'flex-start',borderTopStartRadius:25,borderBottomStartRadius:25, marginTop:10}}>
+            <View style={{backgroundColor:'#fff',height:this.state.hr,width:this.state.wr,justifyContent:'center',alignItems:'flex-start',borderTopStartRadius:25,borderBottomStartRadius:25, marginTop:10}}>
             <TouchableOpacity onPress={this.pressRight}>
        <View style={{flexDirection: 'row'}}> 
-          <Image style={{marginLeft:10,width: 30, height: 30}}   source={require("./assets/app1white.png")} ></Image>     
+          <Image style={{marginLeft:10,width: 30, height: 30}}   source={require("./assets/app4-blue.png")} ></Image>     
      
           </View>
           </TouchableOpacity>
             </View>
-            
+          
       </View>    
-      <View style={{width:'100%' ,backgroundColor:'#fff',height:'20%',borderTopRightRadius:100}}></View>  
-      </View>
-     
       <View
   style={{
     marginLeft:30,marginRight:30,
