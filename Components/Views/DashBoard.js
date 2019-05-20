@@ -211,6 +211,7 @@ App5Touch=()=>{
     app5icon:require('./assets/app2-blue.png'),
    
   })
+  this.props.navigation.navigate('Profile')
 }
   render() {
     const { navigate } = this.props.navigation;

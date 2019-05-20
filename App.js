@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import DashBoard from './Components/Views/DashBoard'
 import Vault from './Components/Views/Vault'
+import Profile from './Components/Views/Profile'
 import {
   createStackNavigator
 } from 'react-navigation'
@@ -9,7 +10,8 @@ import {
     render() {
       const MainNavigator = createStackNavigator({
       DashBoard:{screen:DashBoard},
-      Vault:{screen:Vault}
+      Vault:{screen:Vault},
+      Profile:{screen:Profile}
       
       });
       return (
