@@ -182,6 +182,7 @@ App3Touch=()=>{
     app4icon:require('./assets/app4.png'),
     app5icon:require('./assets/app5.png'),
   })
+  this.props.navigation.navigate('Price')
 }
 App4Touch=()=>{
   this.setState({

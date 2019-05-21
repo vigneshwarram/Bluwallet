@@ -1,13 +1,10 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,Picker,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
+import { View, StyleSheet, Image,ScrollView,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
 import { Alert } from 'react-native';
-const { UIManager } = NativeModules;
-import Logo from '../logo'
-import { AreaChart, Grid } from 'react-native-svg-charts'
-import * as shape from 'd3-shape'
+
 import LinearGradient from 'react-native-linear-gradient';
-import { FlatList } from 'react-native-gesture-handler';
+
 export default class Profile  extends React.Component {
 
   static navigationOptions = {
@@ -232,7 +229,9 @@ App5Touch=()=>{
   </View>
   }
     return (  
-      <View style={styles.Maincontainers}>            
+        
+      <View style={styles.Maincontainers}>           
+      
       <LinearGradient
    colors={['#1a5fe1','#00a5ff','#00a5ff']} style={{height:'100%',position:'absolute',left: 0,
 right: 0}}>
@@ -275,13 +274,15 @@ right: 0}}>
           
 
     
-          <View style={{backgroundColor:'#fff',borderTopRightRadius:150,borderTopLeftRadius:150, justifyContent:'flex-start',alignItems:'center',flex:1,marginTop:'30%',height:'100%',position:'absolute',left: 0,
+          <View style={{backgroundColor:'#fff',borderTopRightRadius:180,borderTopLeftRadius:180, justifyContent:'flex-start',alignItems:'center',flex:1,marginTop:'30%',height:'100%',position:'absolute',left: 0,
 right: 0}}>
-   <View style={{backgroundColor:'red',width: 100,borderRadius:25,marginTop:-50,
+   <View style={{backgroundColor:'red',width: 100,position:'absolute',left: 150,
+right: 0,borderRadius:25,marginTop:-50,
     height: 125}}></View>
-    <View style={{justifyContent:'center',alignItems:'center'}}>
+    <View style={{justifyContent:'center',alignItems:'center',marginTop:80}}>
         <Text style={{color:'#1a5fe1',fontWeight:'bold'}}>Example Name</Text>
     </View>
+   
                        <View
   style={{
       width:'100%',
@@ -463,8 +464,9 @@ right: 0}}>
             </View>
             </TouchableOpacity>
       </View>
-    
+   
       </View>
+      
     
     );
       }
