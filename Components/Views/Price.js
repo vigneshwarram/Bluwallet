@@ -4,6 +4,7 @@ import { View, StyleSheet, Image,Picker,FlatList,Text,ActivityIndicator,Touchabl
 import { Alert } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
+import Logo from '../logo'
 import LinearGradient from 'react-native-linear-gradient';
 
 export default class Price  extends React.Component {
@@ -233,7 +234,7 @@ App5Touch=()=>{
       <View style={styles.Maincontainers}>           
      
       <LinearGradient
-   colors={['#1a5fe1','#00a5ff','#00a5ff']} style={{height:'40%',position:'absolute',left: 0,
+   colors={['#1a5fe1','#00a5ff','#00a5ff']} style={{height:'35%',position:'absolute',left: 0,
 right: 0,borderBottomRightRadius:200,borderBottomLeftRadius:200}}>
     <View style={{flexDirection:'row',justifyContent:'space-between'}}>
     <View style={{backgroundColor:'#fff',height:this.state.h,width:this.state.w,justifyContent:'center',borderWidth:1, alignItems:'flex-end',
@@ -288,49 +289,66 @@ right: 0,borderBottomRightRadius:200,borderBottomLeftRadius:200}}>
     
     </View>
 
- <View style={{flex:1,backgroundColor:'#fff',marginTop:50}}>
+ <View style={{backgroundColor:'#fff',marginTop:40}}>
+ <View
+  style={{
+    marginLeft:30,marginRight:30,
+    marginTop:20,
+    borderBottomColor: '#e6e8f1',marginBottom:10,
+    borderBottomWidth: 1,
+  }}
+/>
  <FlatList 
       ItemSeparatorComponent={this.space}
       data={this.state.dataSource}
           renderItem={({item,separators})  =>
         <TouchableOpacity onShowUnderlay={separators.highlight}
       onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
-      <View style={{backgroundColor:(item.Status=='Completed')?'#fff':'#5099f0',marginLeft:30,marginRight:30, shadowOffset: { width: 10, height: 10 },
-   borderWidth: 1,
-  borderColor: '#96cef7',
-  borderBottomWidth: 0,
-  shadowColor: '#000',
-  shadowOffset: { width: 0, height: 12 },
-  shadowOpacity: 0.8,
-  shadowRadius: 2,
-  elevation: 24,
-  borderRadius:25}}>
+      <View>
   <LinearGradient
-   colors={[(item.Status=='Completed')?'#fff':'#96cef7', (item.Status=='Completed')?'#fff':'#5099f0', (item.Status=='Completed')?'#fff':'#5099f9']} style={{ borderRadius:25}}>
-        <View style={{alignItems:'center',flexDirection:'row',padding:15}}>
-        <View style={{  width: 40,
-    height: 40,
-    borderRadius: 40/2,
-    backgroundColor: '#fff',justifyContent:'center',alignItems:"center"}} >
-          <Image  style={{width: 30, height: 30}}  source={require("./assets/greenD.png")} ></Image>  
-          </View>
-          <View style={{flexDirection:'column',marginLeft:30}}>
-          <View style={{flex:1, flexDirection: 'row',justifyContent:'space-between'}}>            
-         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#162061'}}>{item.Status}</Text>       
-     <View style={{flexDirection:'row'}}>
-     <Image style={{width: 25,marginTop:10, height: 25}}   source={require("./assets/plusblue.png")} ></Image>    
-     <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#162061'}}>$ 9060</Text> 
-     </View>
+   colors={[(item.Status=='Completed')?'#fff':'#fff', (item.Status=='Completed')?'#fff':'#fff', (item.Status=='Completed')?'#fff':'#fff']}>
+        <View style={{flexDirection:'row'}}>
+       <View style={{backgroundColor:'transparent',width:'40%',height:250,marginLeft:30,borderWidth:1,borderColor:'#e6e8f1'}} >
+       <LinearGradient style={{height:'100%'}}   colors={[(item.Status=='Completed')?'#fff':'#5489ff', (item.Status=='Completed')?'#fff':'#7929ff', (item.Status=='Completed')?'#fff':'#7929ff']}>
+       <View style={{justifyContent:'center',alignItems:'center', position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 20,
+    right: 0,}}>
+    <Image  style={{width:'60%', height: '80%',marginLeft:20}}   source={require("./assets/transparent-etherem.png")} ></Image>
+    </View>
+    <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
+        <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/diablue.png")} ></Image>
+
+        </View>
+        <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
         
-     </View>  
-     <View style={{flex:1, flexDirection:'row',justifyContent:'space-between'}}>
- 
-            
-         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#162061'}}>12.38 .782</Text>       
-     
-      <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#162061'}}>5.4587ETH</Text>    
-     </View>  
-          </View>
+            <Text style={{color:'#fff',fontSize:15,fontWeight:'bold'}}>Etherium</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold'}}>ETH</Text>
+
+            <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold'}}>Price</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold'}}>132.6</Text>
+        </View>
+       </LinearGradient>
+   
+       </View>
+       <View style={{backgroundColor:'transparent',width:'40%',height:250,marginLeft:20,borderWidth:1,borderColor:'#e6e8f1'}} >
+       <LinearGradient style={{height:'100%'}}   colors={[(item.Status=='Completed')?'#fff':'#fff', (item.Status=='Completed')?'#fff':'#fff', (item.Status=='Completed')?'#fff':'#fff']}>
+    <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
+        <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/diaIcon.png")} ></Image>
+
+        </View>
+        <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
+        
+            <Text style={{color:'#000000',fontSize:15,fontWeight:'bold'}}>Ripple</Text>
+            <Text style={{color:'#1a5fe1',fontSize:15,marginTop:10,fontWeight:'bold'}}>Xrp</Text>
+
+            <Text style={{color:'#000000',fontSize:15,marginTop:30,fontWeight:'bold'}}>Price</Text>
+            <Text style={{color:'#1a5fe1',fontSize:15,marginTop:10,fontWeight:'bold'}}>121.6</Text>
+        </View>
+       </LinearGradient>
+   
+       </View>
          
         </View>
 </LinearGradient>
