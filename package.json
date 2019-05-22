@@ -31,6 +31,7 @@
     "react-native-svg": "^9.4.0",
     "react-native-svg-charts": "^5.2.0",
     "react-native-swipe-list-view": "^1.5.2",
+    "react-native-swiper": "^1.5.14",
     "react-native-tab-view": "^2.0.3",
     "react-native-touch-id": "^4.4.1",
     "react-native-video": "^4.4.0",

@@ -24,6 +24,7 @@ export default class DashBoard extends React.Component {
       Coin: 'Us Doller',
       animate:false,
       app1icon:require('./assets/app1.png'),
+      app6icon:require('./assets/app6.png'),
       app2icon:require('./assets/app2.png'),
       app3icon:require('./assets/app3.png'),
       app4icon:require('./assets/app4.png'),
@@ -41,6 +42,7 @@ export default class DashBoard extends React.Component {
       visible: false,
       hidden: false,
       app1color:'#fff',
+      app6color:'#5099f0',
       app2color:'#5099f0',
       app3color:'#5099f0',
       app4color:'#5099f0',
@@ -117,8 +119,15 @@ pressRight=()=>{
 SlideMenu=()=>{
 if(!this.state.slide){
   LayoutAnimation.spring();
-  this.setState({Awr:this.state.wr+220})
-  this.setState({slide:true})
+  if(this.state.Awr>80){
+    this.setState({Awr:80})
+    this.setState({slide:false})
+  }
+  else{
+    this.setState({Awr:this.state.Awr+250})
+    this.setState({slide:true})
+  }
+  
 }
 else{
   LayoutAnimation.spring();
@@ -146,7 +155,15 @@ AppTouch=()=>{
   })
   LayoutAnimation.spring();
   if(!this.state.clickopen){
-    this.setState({Awr:this.state.wr+220,clickopen:true})
+    if(this.state.Awr>80)
+    {
+      this.setState({Awr:80,clickopen:false})
+    }
+    else
+    {
+      this.setState({Awr:this.state.Awr+250,clickopen:true})
+    }
+   
   }
   else{
     this.setState({Awr:80,clickopen:false})
@@ -160,6 +177,8 @@ App2Touch=()=>{
     app3color:'#5099f0',
     app5color:'#5099f0',
     app4color:'#5099f0',
+    app6color:'#5099f0',
+    app6icon:require('./assets/app6.png'),
     app1icon:require('./assets/app1white.png'),
     app2icon:require('./assets/app4-blue.png'),
     app3icon:require('./assets/app3.png'),
@@ -176,6 +195,8 @@ App3Touch=()=>{
     app2color:'#5099f0',
     app5color:'#5099f0',
     app4color:'#5099f0',
+    app6color:'#5099f0',
+    app6icon:require('./assets/app6.png'),
     app1icon:require('./assets/app1white.png'),
     app2icon:require('./assets/app2.png'),
     app3icon:require('./assets/app3-blue.png'),
@@ -191,6 +212,8 @@ App4Touch=()=>{
     app2color:'#5099f0',
     app5color:'#5099f0',
     app4color:'#fff',
+    app6color:'#5099f0',
+    app6icon:require('./assets/app6.png'),
     app1icon:require('./assets/app1white.png'),
     app2icon:require('./assets/app2.png'),
     app3icon:require('./assets/app3.png'),
@@ -204,15 +227,36 @@ App5Touch=()=>{
     app1color:'#5099f0',
     app2color:'#5099f0',
     app4color:'#5099f0',
+    app6color:'#5099f0',
+    app6icon:require('./assets/app6.png'),
     app5color:'#fff',
     app1icon:require('./assets/app1white.png'),
     app2icon:require('./assets/app2.png'),
     app3icon:require('./assets/app3.png'),
     app4icon:require('./assets/app4.png'),
+    app6icon:require('./assets/app6.png'),
     app5icon:require('./assets/app2-blue.png'),
    
   })
   this.props.navigation.navigate('Profile')
+}
+App6Touch=()=>{
+  this.setState({
+    app3color:'#5099f0',
+    app1color:'#5099f0',
+    app2color:'#5099f0',
+    app4color:'#5099f0',
+    app5color:'#5099f0',
+    app6color:'#fff',
+    app1icon:require('./assets/app1white.png'),
+    app2icon:require('./assets/app2.png'),
+    app3icon:require('./assets/app3.png'),
+    app4icon:require('./assets/app4.png'),
+    app6icon:require('./assets/app6-blue.png'),
+    app5icon:require('./assets/app2.png'),
+   
+  })
+  this.props.navigation.navigate('CreditCard')
 }
   render() {
     const { navigate } = this.props.navigation;
@@ -312,7 +356,7 @@ App5Touch=()=>{
     </View> 
       <View style={styles.containers}>
       <AreaChart
-                style={{ height: 120,marginLeft:30,marginRight:30,marginBottom:10,backgroundColor:'#fff' }}
+                style={{ height: 100,marginLeft:30,marginRight:30,marginBottom:10,backgroundColor:'#fff' }}
                 data={data}
                 showGrid={ false }
                 curve={shape.curveNatural}
@@ -424,6 +468,18 @@ App5Touch=()=>{
             
           </View> 
           </TouchableOpacity>  
+
+          <TouchableOpacity onPress={this.App6Touch}>
+       <View style={{  width: 40,marginLeft:20,
+    height: 40,
+    borderRadius: 40/2,
+    backgroundColor:this.state.app6color,justifyContent:'center',alignItems:"center"}} >
+   
+    <Image  style={{width: 20, height: 20}}  source={this.state.app6icon} ></Image>
+    
+            
+          </View> 
+          </TouchableOpacity>  
           <TouchableOpacity onPress={this.App2Touch}>
           <View style={{  width: 40,marginLeft:10,
     height: 40,
@@ -492,7 +548,7 @@ const styles = StyleSheet.create({
   },
   containers: {
     backgroundColor: 'transparent',
-    marginTop:5,
+    marginTop:20,
    
   },
   activityIndicator: {

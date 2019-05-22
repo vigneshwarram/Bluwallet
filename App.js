@@ -4,6 +4,7 @@ import DashBoard from './Components/Views/DashBoard'
 import Vault from './Components/Views/Vault'
 import Profile from './Components/Views/Profile'
 import Price from './Components/Views/Price'
+import CreditCard from './Components/Views/CreditCard'
 import {
   createStackNavigator
 } from 'react-navigation'
@@ -13,7 +14,8 @@ import {
       DashBoard:{screen:DashBoard},
       Vault:{screen:Vault},
       Profile:{screen:Profile},
-      Price:{screen:Price}
+      Price:{screen:Price},
+      CreditCard:{screen:CreditCard}
       
       });
       return (

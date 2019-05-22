@@ -23,6 +23,7 @@ export default class Price  extends React.Component {
       Coin: 'Us Doller',
       animate:false,
       app1icon:require('./assets/app1.png'),
+      app6icon:require('./assets/app6.png'),
       app2icon:require('./assets/app2.png'),
       app3icon:require('./assets/app3.png'),
       app4icon:require('./assets/app4.png'),
@@ -40,6 +41,7 @@ export default class Price  extends React.Component {
       visible: false,
       hidden: false,
       app1color:'#fff',
+      app6color:'#5099f0',
       app2color:'#5099f0',
       app3color:'#5099f0',
       app4color:'#5099f0',
@@ -114,101 +116,147 @@ pressRight=()=>{
 }
 }
 SlideMenu=()=>{
-if(!this.state.slide){
-  LayoutAnimation.spring();
-  this.setState({Awr:this.state.wr+220})
-  this.setState({slide:true})
-}
-else{
-  LayoutAnimation.spring();
-  this.setState({Awr:80})
-  this.setState({slide:false})
-}
-}
-HideMenu=()=>{
-  LayoutAnimation.spring();
-  this.setState({Awr:80})
-}
-AppTouch=()=>{
-  this.setState({
-    app2color:'#5099f0',
-    app1color:'#fff',
-    app3color:'#5099f0',
-    app5color:'#5099f0',
-    app4color:'#5099f0',
-    app1icon:require('./assets/app1.png'),
-    app2icon:require('./assets/app2.png'),
-    app3icon:require('./assets/app3.png'),
-    app4icon:require('./assets/app4.png'),
-    app5icon:require('./assets/app5.png'),
-
-  })
-  LayoutAnimation.spring();
-  if(!this.state.clickopen){
-    this.setState({Awr:this.state.wr+220,clickopen:true})
+  if(!this.state.slide){
+    LayoutAnimation.spring();
+    if(this.state.Awr>80){
+      this.setState({Awr:80})
+      this.setState({slide:false})
+    }
+    else{
+      this.setState({Awr:this.state.Awr+250})
+      this.setState({slide:true})
+    }
+    
   }
   else{
-    this.setState({Awr:80,clickopen:false})
+    LayoutAnimation.spring();
+    this.setState({Awr:80})
+    this.setState({slide:false})
   }
+  }
+  HideMenu=()=>{
+    LayoutAnimation.spring();
+    this.setState({Awr:80})
+  }
+  AppTouch=()=>{
+    this.setState({
+      app2color:'#5099f0',
+      app1color:'#fff',
+      app3color:'#5099f0',
+      app5color:'#5099f0',
+      app4color:'#5099f0',
+      app1icon:require('./assets/app1.png'),
+      app2icon:require('./assets/app2.png'),
+      app3icon:require('./assets/app3.png'),
+      app4icon:require('./assets/app4.png'),
+      app5icon:require('./assets/app5.png'),
   
-}
-App2Touch=()=>{
-  this.setState({
-    app2color:'#fff',
-    app1color:'#5099f0',
-    app3color:'#5099f0',
-    app5color:'#5099f0',
-    app4color:'#5099f0',
-    app1icon:require('./assets/app1white.png'),
-    app2icon:require('./assets/app4-blue.png'),
-    app3icon:require('./assets/app3.png'),
-    app4icon:require('./assets/app4.png'),
-    app5icon:require('./assets/app5.png'),
-  })
-}
-App3Touch=()=>{
-  this.setState({
-    app3color:'#fff',
-    app1color:'#5099f0',
-    app2color:'#5099f0',
-    app5color:'#5099f0',
-    app4color:'#5099f0',
-    app1icon:require('./assets/app1white.png'),
-    app2icon:require('./assets/app2.png'),
-    app3icon:require('./assets/app3-blue.png'),
-    app4icon:require('./assets/app4.png'),
-    app5icon:require('./assets/app5.png'),
-  })
-}
-App4Touch=()=>{
-  this.setState({
-    app3color:'#5099f0',
-    app1color:'#5099f0',
-    app2color:'#5099f0',
-    app5color:'#5099f0',
-    app4color:'#fff',
-    app1icon:require('./assets/app1white.png'),
-    app2icon:require('./assets/app2.png'),
-    app3icon:require('./assets/app3.png'),
-    app5icon:require('./assets/app5.png'),
-    app4icon:require('./assets/app5-blue.png')
-  })
-}
-App5Touch=()=>{
-  this.setState({
-    app3color:'#5099f0',
-    app1color:'#5099f0',
-    app2color:'#5099f0',
-    app4color:'#5099f0',
-    app5color:'#fff',
-    app1icon:require('./assets/app1white.png'),
-    app2icon:require('./assets/app2.png'),
-    app3icon:require('./assets/app3.png'),
-    app4icon:require('./assets/app4.png'),
-    app5icon:require('./assets/app2-blue.png'),
-   
-  })
-}
+    })
+    LayoutAnimation.spring();
+    if(!this.state.clickopen){
+      if(this.state.Awr>80)
+      {
+        this.setState({Awr:80,clickopen:false})
+      }
+      else
+      {
+        this.setState({Awr:this.state.Awr+250,clickopen:true})
+      }
+     
+    }
+    else{
+      this.setState({Awr:80,clickopen:false})
+    }
+    
+  }
+  App2Touch=()=>{
+    this.setState({
+      app2color:'#fff',
+      app1color:'#5099f0',
+      app3color:'#5099f0',
+      app5color:'#5099f0',
+      app4color:'#5099f0',
+      app6color:'#5099f0',
+      app6icon:require('./assets/app6.png'),
+      app1icon:require('./assets/app1white.png'),
+      app2icon:require('./assets/app4-blue.png'),
+      app3icon:require('./assets/app3.png'),
+      app4icon:require('./assets/app4.png'),
+      app5icon:require('./assets/app5.png'),
+    
+    })
+    this.props.navigation.navigate('Vault');
+  }
+  App3Touch=()=>{
+    this.setState({
+      app3color:'#fff',
+      app1color:'#5099f0',
+      app2color:'#5099f0',
+      app5color:'#5099f0',
+      app4color:'#5099f0',
+      app6color:'#5099f0',
+      app6icon:require('./assets/app6.png'),
+      app1icon:require('./assets/app1white.png'),
+      app2icon:require('./assets/app2.png'),
+      app3icon:require('./assets/app3-blue.png'),
+      app4icon:require('./assets/app4.png'),
+      app5icon:require('./assets/app5.png'),
+    })
+    this.props.navigation.navigate('Price')
+  }
+  App4Touch=()=>{
+    this.setState({
+      app3color:'#5099f0',
+      app1color:'#5099f0',
+      app2color:'#5099f0',
+      app5color:'#5099f0',
+      app4color:'#fff',
+      app6color:'#5099f0',
+      app6icon:require('./assets/app6.png'),
+      app1icon:require('./assets/app1white.png'),
+      app2icon:require('./assets/app2.png'),
+      app3icon:require('./assets/app3.png'),
+      app5icon:require('./assets/app5.png'),
+      app4icon:require('./assets/app5-blue.png')
+    })
+  }
+  App5Touch=()=>{
+    this.setState({
+      app3color:'#5099f0',
+      app1color:'#5099f0',
+      app2color:'#5099f0',
+      app4color:'#5099f0',
+      app6color:'#5099f0',
+      app6icon:require('./assets/app6.png'),
+      app5color:'#fff',
+      app1icon:require('./assets/app1white.png'),
+      app2icon:require('./assets/app2.png'),
+      app3icon:require('./assets/app3.png'),
+      app4icon:require('./assets/app4.png'),
+      app6icon:require('./assets/app6.png'),
+      app5icon:require('./assets/app2-blue.png'),
+     
+    })
+    this.props.navigation.navigate('Profile')
+  }
+  App6Touch=()=>{
+    this.setState({
+      app3color:'#5099f0',
+      app1color:'#5099f0',
+      app2color:'#5099f0',
+      app4color:'#5099f0',
+      app5color:'#5099f0',
+      app6color:'#fff',
+      app1icon:require('./assets/app1white.png'),
+      app2icon:require('./assets/app2.png'),
+      app3icon:require('./assets/app3.png'),
+      app4icon:require('./assets/app4.png'),
+      app6icon:require('./assets/app6-blue.png'),
+      app5icon:require('./assets/app2.png'),
+     
+    })
+   // this.props.navigation.navigate('Profile')
+  }
   render() {
     const data = [ 50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100 ]
     const Line = ({ line }) => (
@@ -304,11 +352,20 @@ right: 0,borderBottomRightRadius:200,borderBottomLeftRadius:200}}>
           renderItem={({item,separators})  =>
         <TouchableOpacity onShowUnderlay={separators.highlight}
       onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
-      <View>
+      <View style={{}}>
   <LinearGradient
    colors={[(item.Status=='Completed')?'#fff':'#fff', (item.Status=='Completed')?'#fff':'#fff', (item.Status=='Completed')?'#fff':'#fff']}>
         <View style={{flexDirection:'row'}}>
-       <View style={{backgroundColor:'transparent',width:'40%',height:250,marginLeft:30,borderWidth:1,borderColor:'#e6e8f1'}} >
+       <View style={{backgroundColor:'transparent',width:'40%',height:250,marginLeft:30,borderWidth:1,borderColor:'#e6e8f1',shadowOffset: { width: 10, height: 10 },
+   borderWidth: 1,
+  borderColor: '#96cef7',
+  borderBottomWidth: 0,
+  shadowColor: '#7929ff',
+  shadowOffset: { width: 0, height: 12 },
+  shadowOpacity: 0.8,
+  shadowRadius: 2,
+  elevation: 24,
+  }} >
        <LinearGradient style={{height:'100%'}}   colors={[(item.Status=='Completed')?'#fff':'#5489ff', (item.Status=='Completed')?'#fff':'#7929ff', (item.Status=='Completed')?'#fff':'#7929ff']}>
        <View style={{justifyContent:'center',alignItems:'center', position: 'absolute',
     top: 0,
@@ -317,18 +374,30 @@ right: 0,borderBottomRightRadius:200,borderBottomLeftRadius:200}}>
     right: 0,}}>
     <Image  style={{width:'60%', height: '80%',marginLeft:20}}   source={require("./assets/transparent-etherem.png")} ></Image>
     </View>
-    <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
+     {(item.Status!='Cancelled')? <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
+        <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/micon.png")} ></Image>
+
+        </View>:<View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
         <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/diablue.png")} ></Image>
 
-        </View>
-        <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
+        </View>}
+        {(item.Status!='Cancelled')? <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
         
-            <Text style={{color:'#fff',fontSize:15,fontWeight:'bold'}}>Etherium</Text>
-            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold'}}>ETH</Text>
+        <Text style={{color:'#000000',fontSize:15,fontWeight:'bold'}}>Monero</Text>
+        <Text style={{color:'#1a5fe1',fontSize:15,marginTop:10,fontWeight:'bold'}}>XMR</Text>
 
-            <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold'}}>Price</Text>
-            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold'}}>132.6</Text>
-        </View>
+        <Text style={{color:'#000000',fontSize:15,marginTop:30,fontWeight:'bold'}}>Price</Text>
+        <Text style={{color:'#1a5fe1',fontSize:15,marginTop:10,fontWeight:'bold'}}>132.6</Text>
+    </View>:
+    <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
+        
+        <Text style={{color:'#fff',fontSize:15,fontWeight:'bold'}}>Etherium</Text>
+        <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold'}}>ETH</Text>
+
+        <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold'}}>Price</Text>
+        <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold'}}>132.6</Text>
+    </View>}
+       
        </LinearGradient>
    
        </View>
@@ -377,7 +446,18 @@ right: 0,borderBottomRightRadius:200,borderBottomLeftRadius:200}}>
     
             
           </View> 
-          </TouchableOpacity>  
+          </TouchableOpacity> 
+          <TouchableOpacity onPress={this.App6Touch}>
+       <View style={{  width: 40,marginLeft:20,
+    height: 40,
+    borderRadius: 40/2,
+    backgroundColor:this.state.app6color,justifyContent:'center',alignItems:"center"}} >
+   
+    <Image  style={{width: 20, height: 20}}  source={this.state.app6icon} ></Image>
+    
+            
+          </View> 
+          </TouchableOpacity>   
           <TouchableOpacity onPress={this.App2Touch}>
           <View style={{  width: 40,marginLeft:10,
     height: 40,

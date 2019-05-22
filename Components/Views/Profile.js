@@ -21,6 +21,7 @@ export default class Profile  extends React.Component {
       Coin: 'Us Doller',
       animate:false,
       app1icon:require('./assets/app1.png'),
+      app6icon:require('./assets/app6.png'),
       app2icon:require('./assets/app2.png'),
       app3icon:require('./assets/app3.png'),
       app4icon:require('./assets/app4.png'),
@@ -38,6 +39,7 @@ export default class Profile  extends React.Component {
       visible: false,
       hidden: false,
       app1color:'#fff',
+      app6color:'#5099f0',
       app2color:'#5099f0',
       app3color:'#5099f0',
       app4color:'#5099f0',
@@ -112,101 +114,147 @@ pressRight=()=>{
 }
 }
 SlideMenu=()=>{
-if(!this.state.slide){
-  LayoutAnimation.spring();
-  this.setState({Awr:this.state.wr+220})
-  this.setState({slide:true})
-}
-else{
-  LayoutAnimation.spring();
-  this.setState({Awr:80})
-  this.setState({slide:false})
-}
-}
-HideMenu=()=>{
-  LayoutAnimation.spring();
-  this.setState({Awr:80})
-}
-AppTouch=()=>{
-  this.setState({
-    app2color:'#5099f0',
-    app1color:'#fff',
-    app3color:'#5099f0',
-    app5color:'#5099f0',
-    app4color:'#5099f0',
-    app1icon:require('./assets/app1.png'),
-    app2icon:require('./assets/app2.png'),
-    app3icon:require('./assets/app3.png'),
-    app4icon:require('./assets/app4.png'),
-    app5icon:require('./assets/app5.png'),
-
-  })
-  LayoutAnimation.spring();
-  if(!this.state.clickopen){
-    this.setState({Awr:this.state.wr+220,clickopen:true})
+  if(!this.state.slide){
+    LayoutAnimation.spring();
+    if(this.state.Awr>80){
+      this.setState({Awr:80})
+      this.setState({slide:false})
+    }
+    else{
+      this.setState({Awr:this.state.Awr+250})
+      this.setState({slide:true})
+    }
+    
   }
   else{
-    this.setState({Awr:80,clickopen:false})
+    LayoutAnimation.spring();
+    this.setState({Awr:80})
+    this.setState({slide:false})
   }
+  }
+  HideMenu=()=>{
+    LayoutAnimation.spring();
+    this.setState({Awr:80})
+  }
+  AppTouch=()=>{
+    this.setState({
+      app2color:'#5099f0',
+      app1color:'#fff',
+      app3color:'#5099f0',
+      app5color:'#5099f0',
+      app4color:'#5099f0',
+      app1icon:require('./assets/app1.png'),
+      app2icon:require('./assets/app2.png'),
+      app3icon:require('./assets/app3.png'),
+      app4icon:require('./assets/app4.png'),
+      app5icon:require('./assets/app5.png'),
   
-}
-App2Touch=()=>{
-  this.setState({
-    app2color:'#fff',
-    app1color:'#5099f0',
-    app3color:'#5099f0',
-    app5color:'#5099f0',
-    app4color:'#5099f0',
-    app1icon:require('./assets/app1white.png'),
-    app2icon:require('./assets/app4-blue.png'),
-    app3icon:require('./assets/app3.png'),
-    app4icon:require('./assets/app4.png'),
-    app5icon:require('./assets/app5.png'),
-  })
-}
-App3Touch=()=>{
-  this.setState({
-    app3color:'#fff',
-    app1color:'#5099f0',
-    app2color:'#5099f0',
-    app5color:'#5099f0',
-    app4color:'#5099f0',
-    app1icon:require('./assets/app1white.png'),
-    app2icon:require('./assets/app2.png'),
-    app3icon:require('./assets/app3-blue.png'),
-    app4icon:require('./assets/app4.png'),
-    app5icon:require('./assets/app5.png'),
-  })
-}
-App4Touch=()=>{
-  this.setState({
-    app3color:'#5099f0',
-    app1color:'#5099f0',
-    app2color:'#5099f0',
-    app5color:'#5099f0',
-    app4color:'#fff',
-    app1icon:require('./assets/app1white.png'),
-    app2icon:require('./assets/app2.png'),
-    app3icon:require('./assets/app3.png'),
-    app5icon:require('./assets/app5.png'),
-    app4icon:require('./assets/app5-blue.png')
-  })
-}
-App5Touch=()=>{
-  this.setState({
-    app3color:'#5099f0',
-    app1color:'#5099f0',
-    app2color:'#5099f0',
-    app4color:'#5099f0',
-    app5color:'#fff',
-    app1icon:require('./assets/app1white.png'),
-    app2icon:require('./assets/app2.png'),
-    app3icon:require('./assets/app3.png'),
-    app4icon:require('./assets/app4.png'),
-    app5icon:require('./assets/app2-blue.png'),
-   
-  })
-}
+    })
+    LayoutAnimation.spring();
+    if(!this.state.clickopen){
+      if(this.state.Awr>80)
+      {
+        this.setState({Awr:80,clickopen:false})
+      }
+      else
+      {
+        this.setState({Awr:this.state.Awr+250,clickopen:true})
+      }
+     
+    }
+    else{
+      this.setState({Awr:80,clickopen:false})
+    }
+    
+  }
+  App2Touch=()=>{
+    this.setState({
+      app2color:'#fff',
+      app1color:'#5099f0',
+      app3color:'#5099f0',
+      app5color:'#5099f0',
+      app4color:'#5099f0',
+      app6color:'#5099f0',
+      app6icon:require('./assets/app6.png'),
+      app1icon:require('./assets/app1white.png'),
+      app2icon:require('./assets/app4-blue.png'),
+      app3icon:require('./assets/app3.png'),
+      app4icon:require('./assets/app4.png'),
+      app5icon:require('./assets/app5.png'),
+    
+    })
+    this.props.navigation.navigate('Vault');
+  }
+  App3Touch=()=>{
+    this.setState({
+      app3color:'#fff',
+      app1color:'#5099f0',
+      app2color:'#5099f0',
+      app5color:'#5099f0',
+      app4color:'#5099f0',
+      app6color:'#5099f0',
+      app6icon:require('./assets/app6.png'),
+      app1icon:require('./assets/app1white.png'),
+      app2icon:require('./assets/app2.png'),
+      app3icon:require('./assets/app3-blue.png'),
+      app4icon:require('./assets/app4.png'),
+      app5icon:require('./assets/app5.png'),
+    })
+    this.props.navigation.navigate('Price')
+  }
+  App4Touch=()=>{
+    this.setState({
+      app3color:'#5099f0',
+      app1color:'#5099f0',
+      app2color:'#5099f0',
+      app5color:'#5099f0',
+      app4color:'#fff',
+      app6color:'#5099f0',
+      app6icon:require('./assets/app6.png'),
+      app1icon:require('./assets/app1white.png'),
+      app2icon:require('./assets/app2.png'),
+      app3icon:require('./assets/app3.png'),
+      app5icon:require('./assets/app5.png'),
+      app4icon:require('./assets/app5-blue.png')
+    })
+  }
+  App5Touch=()=>{
+    this.setState({
+      app3color:'#5099f0',
+      app1color:'#5099f0',
+      app2color:'#5099f0',
+      app4color:'#5099f0',
+      app6color:'#5099f0',
+      app6icon:require('./assets/app6.png'),
+      app5color:'#fff',
+      app1icon:require('./assets/app1white.png'),
+      app2icon:require('./assets/app2.png'),
+      app3icon:require('./assets/app3.png'),
+      app4icon:require('./assets/app4.png'),
+      app6icon:require('./assets/app6.png'),
+      app5icon:require('./assets/app2-blue.png'),
+     
+    })
+    this.props.navigation.navigate('Profile')
+  }
+  App6Touch=()=>{
+    this.setState({
+      app3color:'#5099f0',
+      app1color:'#5099f0',
+      app2color:'#5099f0',
+      app4color:'#5099f0',
+      app5color:'#5099f0',
+      app6color:'#fff',
+      app1icon:require('./assets/app1white.png'),
+      app2icon:require('./assets/app2.png'),
+      app3icon:require('./assets/app3.png'),
+      app4icon:require('./assets/app4.png'),
+      app6icon:require('./assets/app6-blue.png'),
+      app5icon:require('./assets/app2.png'),
+     
+    })
+   // this.props.navigation.navigate('Profile')
+  }
   render() {
     const { navigate } = this.props.navigation;
     const data = [ 50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100 ]
@@ -413,6 +461,17 @@ right: 0,borderRadius:25,marginTop:-50,
     backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
    
     <Image  style={{width: 20, height: 20}}  source={this.state.app1icon} ></Image>
+    
+            
+          </View> 
+          </TouchableOpacity>  
+          <TouchableOpacity onPress={this.App6Touch}>
+       <View style={{  width: 40,marginLeft:20,
+    height: 40,
+    borderRadius: 40/2,
+    backgroundColor:this.state.app6color,justifyContent:'center',alignItems:"center"}} >
+   
+    <Image  style={{width: 20, height: 20}}  source={this.state.app6icon} ></Image>
     
             
           </View> 
