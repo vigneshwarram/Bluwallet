@@ -250,7 +250,7 @@ SlideMenu=()=>{
       app3icon:require('./assets/app3.png'),
       app4icon:require('./assets/app4.png'),
       app6icon:require('./assets/app6-blue.png'),
-      app5icon:require('./assets/app2.png'),
+      app5icon:require('./assets/app5.png'),
      
     })
    // this.props.navigation.navigate('Profile')

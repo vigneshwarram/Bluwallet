@@ -252,7 +252,7 @@ SlideMenu=()=>{
       app3icon:require('./assets/app3.png'),
       app4icon:require('./assets/app4.png'),
       app6icon:require('./assets/app6-blue.png'),
-      app5icon:require('./assets/app2.png'),
+      app5icon:require('./assets/app5.png'),
      
     })
    // this.props.navigation.navigate('Profile')
@@ -283,7 +283,7 @@ SlideMenu=()=>{
      
       <LinearGradient
    colors={['#1a5fe1','#00a5ff','#00a5ff']} style={{height:'35%',position:'absolute',left: 0,
-right: 0}}>
+right: 0,bo}}>
     <View style={{flexDirection:'row',justifyContent:'space-between'}}>
     <View style={{backgroundColor:'#fff',height:this.state.h,width:this.state.w,justifyContent:'center',borderWidth:1, alignItems:'flex-end',
   borderColor: '#fff',
@@ -312,12 +312,7 @@ right: 0}}>
   
           </LinearGradient>    
          
-      <View style={styles.containers}>    
-      <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',marginTop:50}}>
-      <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/app3.png")} ></Image> 
-    <Text style={{fontSize:18,fontWeight:'bold',color:'#fff',marginLeft:10}}>Price</Text>
-        
-    </View>  
+      <View style={styles.containers}>     
     <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',marginTop:20}}>
     <Text style={{fontSize:12,color:'#fff',marginLeft:10}}>ETH</Text>
     <Text style={{fontSize:25,fontWeight:'bold',color:'#fff',marginLeft:10}}>132.86</Text>
@@ -331,17 +326,7 @@ right: 0}}>
           <Picker.Item label="Indian" value="js" />
         </Picker>
      </View>    
-    </View>  
-    <AreaChart style={{ height: 75,marginLeft:90,marginRight:90,backgroundColor:'#00a5ff' }}
-                data={data}
-                showGrid={ false }
-                curve={shape.curveNatural}
-                svg={{ fill: '#00e2ff',stroke:'#25e2cd' }}
-            >
-                <Grid/>
-                <Line/>
-            </AreaChart>
-    
+    </View>     
     </View>
 
  <View style={{backgroundColor:'#fff',marginTop:40}}>
@@ -535,7 +520,7 @@ const styles = StyleSheet.create({
   containers: {
     backgroundColor: 'transparent',
     marginTop:5,
-   
+   height:'30%'
   },
   activityIndicator: {
     flex: 1,
