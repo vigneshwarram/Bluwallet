@@ -5,6 +5,7 @@ import Vault from './Components/Views/Vault'
 import Profile from './Components/Views/Profile'
 import Price from './Components/Views/Price'
 import CreditCard from './Components/Views/CreditCard'
+import Exchange from './Components/Views/Exchange'
 import {
   createStackNavigator
 } from 'react-navigation'
@@ -15,7 +16,8 @@ import {
       Vault:{screen:Vault},
       Profile:{screen:Profile},
       Price:{screen:Price},
-      CreditCard:{screen:CreditCard}
+      CreditCard:{screen:CreditCard},
+      Exchange:{screen:Exchange}
       
       });
       return (

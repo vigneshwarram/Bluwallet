@@ -283,7 +283,7 @@ SlideMenu=()=>{
      
       <LinearGradient
    colors={['#1a5fe1','#00a5ff','#00a5ff']} style={{height:'35%',position:'absolute',left: 0,
-right: 0,bo}}>
+right: 0,}}>
     <View style={{flexDirection:'row',justifyContent:'space-between'}}>
     <View style={{backgroundColor:'#fff',height:this.state.h,width:this.state.w,justifyContent:'center',borderWidth:1, alignItems:'flex-end',
   borderColor: '#fff',
