@@ -340,14 +340,17 @@ SlideMenu=()=>{
     <View style={{alignItems:'center',flexDirection:'row',padding:10,justifyContent:'center'}}>
     <View style={{backgroundColor:'#fff',width:150, height:150,borderWidth:1,borderColor:'#e6e8f1',borderRadius:20,justifyContent:'center',alignItems:'center'}}>
     <Image style={{width:80, height: 80}}   source={require("./assets/buy.png")} ></Image>  
+    <Text style={{fontSize:12,fontWeight:'bold',color:'#000000'}}>To Buy</Text>
     </View>
     <View style={{backgroundColor:'#fff',width:150,height:150,marginLeft:20, borderWidth:1,borderColor:'#e6e8f1',borderRadius:20,justifyContent:'center',alignItems:'center'}}>
     <Image style={{width: 80, height: 80}}   source={require("./assets/sell.png")} ></Image> 
+    <Text style={{fontSize:12,fontWeight:'bold',color:'#000000'}}>To Sell</Text>
     </View>
     </View>  
     <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',padding:10, borderRadius:20,}}>
     <View style={{backgroundColor:'#fff',width:150, height:150,borderWidth:1,borderColor:'#e6e8f1',borderRadius:20,justifyContent:'center',alignItems:'center'}}>
     <Image style={{width: 85, height: 100}}   source={require("./assets/publication.png")} ></Image> 
+    <Text style={{fontSize:12,fontWeight:'bold',color:'#000000'}}>Publications</Text>
     </View>
   
     </View> 
