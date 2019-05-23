@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet,Dimensions, Image,Picker,FlatList,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
+import { View, StyleSheet,TextInput, Image,Picker,FlatList,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
 import { Alert } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
@@ -282,16 +282,13 @@ SlideMenu=()=>{
    
       <View style={styles.Maincontainers}>     
       <LinearGradient
-   colors={['#1a5fe1','#00a5ff','#81DCF9']} style={{height:'25%',position:'absolute',left: 0,
-right: 0,}}>
-          </LinearGradient>    
-         
-      <View style={styles.containers}>     
+   colors={['#1a5fe1','#00a5ff','#81DCF9']} style={{height:'25%',}}>
+
+
+<View style={styles.containers}>     
       <LinearGradient
-   colors={['#1a5fe1','#81DCF9','#81DCF9']} style={{height:'25%',position:'absolute',left: 0,
-right: 0,marginRight:30,marginTop:30}}>
-          </LinearGradient>    
-          <View style={{justifyContent:'center',alignItems:'center'}}>
+   colors={['#1a5fe1','#81DCF9','#81DCF9']} style={{height:'100%',marginRight:30,marginTop:30}}>
+ <View style={{justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection:'row',marginTop:40}}>
           <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/app4.png")} ></Image>     
           <Text style={{fontSize:20,fontWeight:'bold',color:'#fff'}}>Exchange</Text>
@@ -322,12 +319,34 @@ right: 0,marginRight:30,marginTop:30}}>
          </View>
           
           </View>
-          <View style={{width:'80%',padding:20,borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:20}}>
-
+          <View style={{width:'80%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:20, justifyContent:"center"}}>
+<View style={{flexDirection:'row',marginLeft:20}}>
+<Image  style={{width: 20, height: 20,marginTop:10}}  source={require("./assets/Searchicon.png")} ></Image> 
+<TextInput
+          style={{height: 40,}}
+       placeholderTextColor='#ffffff'
+          placeholder="Exchange"
+          
+        />
+</View>
           </View>
           </View>   
+          </LinearGradient>    
+         
     </View>
-    <LinearGradient  colors={['#fff','#CCCFE2','#CCCFE2']} style={{position:'absolute',left:0,right:0,top:'30%'}}>
+
+
+          </LinearGradient>    
+         
+    
+    <LinearGradient  colors={['#fff','#CCCFE2','#CCCFE2']} style={{marginTop:'10%'}}>
+    <View  style={{justifyContent:'center',alignItems:'center', top: 0,marginBottom:10,position:'absolute',
+        bottom: 0,backgroundColor:'transparent',
+        left: 0,
+        right: 0,}}>
+              <Image  style={{width: 100, height: 100}}  source={require("./assets/three.png")} ></Image> 
+        </View>
+    <ScrollView style={{paddingBottom:10}}>
     <View style={{alignItems:'center',flexDirection:'row',padding:10,justifyContent:'center'}}>
     <View style={{backgroundColor:'#fff',width:150, height:150,borderWidth:1,borderColor:'#e6e8f1',borderRadius:20,justifyContent:'center',alignItems:'center'}}>
     <Image style={{width:80, height: 80}}   source={require("./assets/buy.png")} ></Image>  
@@ -342,6 +361,7 @@ right: 0,marginRight:30,marginTop:30}}>
     </View>
   
     </View> 
+   
     <View
   style={{
     marginLeft:30,marginRight:30,
@@ -385,6 +405,8 @@ right: 0,marginRight:30,marginTop:30}}>
         <View style={{alignItems:'center',flexDirection:'row',padding:15}}>
         <View style={{  width: 40,
     height: 40,
+    borderColor:'#C4BEE0',
+    borderWidth:1,
     borderRadius: 40/2,
     backgroundColor: '#fff',justifyContent:'center',alignItems:"center"}} >
           <Image  style={{width: 30, height: 30}}  source={require("./assets/exchange.png")} ></Image>  
@@ -414,12 +436,21 @@ right: 0,marginRight:30,marginTop:30}}>
   </TouchableOpacity>  
        }
     />
-    
+   
+   <View
+  style={{
+    marginLeft:30,marginRight:30,
+    marginTop:10,
+    borderBottomColor: '#000000',marginBottom:10,
+    borderBottomWidth: 1,
+  }}
+/>  
+  
+    </ScrollView>
 
 </LinearGradient>
-
-
-  
+ 
+ 
     <View  style={{justifyContent:'flex-end',alignItems:'flex-end', top: 0,marginBottom:30,position:'absolute',
         bottom: 0,
         left: 0,
