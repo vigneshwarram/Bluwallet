@@ -6,6 +6,7 @@ import Profile from './Components/Views/Profile'
 import Price from './Components/Views/Price'
 import CreditCard from './Components/Views/CreditCard'
 import Exchange from './Components/Views/Exchange'
+import Buy from './Components/Views/Buy'
 import {
   createStackNavigator
 } from 'react-navigation'
@@ -17,7 +18,8 @@ import {
       Profile:{screen:Profile},
       Price:{screen:Price},
       CreditCard:{screen:CreditCard},
-      Exchange:{screen:Exchange}
+      Exchange:{screen:Exchange},
+      Buy:{screen:Buy}
       
       });
       return (
