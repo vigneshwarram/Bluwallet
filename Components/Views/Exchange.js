@@ -327,13 +327,19 @@ right: 0,marginRight:30,marginTop:30}}>
           </View>
           </View>   
     </View>
-    <ScrollView  style={{backgroundColor:'#E6E6F2',position:'absolute',left:0,right:0,top:'30%'}}>
+    <LinearGradient  colors={['#fff','#CCCFE2','#CCCFE2']} style={{position:'absolute',left:0,right:0,top:'30%'}}>
     <View style={{alignItems:'center',flexDirection:'row',padding:10,justifyContent:'center'}}>
-    <View style={{backgroundColor:'#fff',width:150, height:150,borderWidth:1,borderColor:'#e6e8f1',borderRadius:20}}></View>
-    <View style={{backgroundColor:'#fff',width:150,height:150,marginLeft:20, borderWidth:1,borderColor:'#e6e8f1',borderRadius:20}}></View>
+    <View style={{backgroundColor:'#fff',width:150, height:150,borderWidth:1,borderColor:'#e6e8f1',borderRadius:20,justifyContent:'center',alignItems:'center'}}>
+    <Image style={{width:80, height: 80}}   source={require("./assets/buy.png")} ></Image>  
+    </View>
+    <View style={{backgroundColor:'#fff',width:150,height:150,marginLeft:20, borderWidth:1,borderColor:'#e6e8f1',borderRadius:20,justifyContent:'center',alignItems:'center'}}>
+    <Image style={{width: 80, height: 80}}   source={require("./assets/sell.png")} ></Image> 
+    </View>
     </View>  
-    <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',paddingLeft:20,paddingRight:20,borderRadius:20}}>
-    <View style={{backgroundColor:'#fff',width:150, height:150,borderWidth:1,borderColor:'#e6e8f1',borderRadius:20}}></View>
+    <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',padding:10, borderRadius:20,}}>
+    <View style={{backgroundColor:'#fff',width:150, height:150,borderWidth:1,borderColor:'#e6e8f1',borderRadius:20,justifyContent:'center',alignItems:'center'}}>
+    <Image style={{width: 85, height: 100}}   source={require("./assets/publication.png")} ></Image> 
+    </View>
   
     </View> 
     <View
@@ -364,7 +370,7 @@ right: 0,marginRight:30,marginTop:30}}>
           renderItem={({item,separators})  =>
         <TouchableOpacity onShowUnderlay={separators.highlight}
       onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
-      <View style={{backgroundColor:(item.Status=='Completed')?'#fff':'#5099f0',marginLeft:30,marginRight:30, shadowOffset: { width: 10, height: 10 },
+      <View style={{backgroundColor:(item.Status=='Completed')?'#fff':'#fff',marginLeft:30,marginRight:30, shadowOffset: { width: 10, height: 10 },
    borderWidth: 1,
   borderColor: '#96cef7',
   borderBottomWidth: 0,
@@ -375,29 +381,29 @@ right: 0,marginRight:30,marginTop:30}}>
   elevation: 24,
   borderRadius:25}}>
   <LinearGradient
-   colors={[(item.Status=='Completed')?'#fff':'#96cef7', (item.Status=='Completed')?'#fff':'#5099f0', (item.Status=='Completed')?'#fff':'#5099f9']} style={{ borderRadius:25}}>
+   colors={[(item.Status=='Completed')?'#fff':'#fff', (item.Status=='Completed')?'#fff':'#fff', (item.Status=='Completed')?'#fff':'#fff']} style={{ borderRadius:25}}>
         <View style={{alignItems:'center',flexDirection:'row',padding:15}}>
         <View style={{  width: 40,
     height: 40,
     borderRadius: 40/2,
     backgroundColor: '#fff',justifyContent:'center',alignItems:"center"}} >
-          <Image  style={{width: 30, height: 30}}  source={require("./assets/greenD.png")} ></Image>  
+          <Image  style={{width: 30, height: 30}}  source={require("./assets/exchange.png")} ></Image>  
           </View>
           <View style={{flexDirection:'column',marginLeft:30}}>
           <View style={{flex:1, flexDirection: 'row',justifyContent:'space-between'}}>            
-         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#162061'}}>{item.Status}</Text>       
+         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#000000':'#000000'}}>Exchanged</Text>       
      <View style={{flexDirection:'row'}}>
      <Image style={{width: 25,marginTop:10, height: 25}}   source={require("./assets/plusblue.png")} ></Image>    
-     <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#162061'}}>$ 9060</Text> 
+     <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#000000':'#000000'}}>$ 9060</Text> 
      </View>
         
      </View>  
      <View style={{flex:1, flexDirection:'row',justifyContent:'space-between'}}>
  
             
-         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#162061'}}>12.38 .782</Text>       
+         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#162061':'#162061'}}>12.38 .782</Text>       
      
-      <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#162061'}}>5.4587ETH</Text>    
+      <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#162061':'#162061'}}>5.4587ETH</Text>    
      </View>  
           </View>
          
@@ -410,7 +416,7 @@ right: 0,marginRight:30,marginTop:30}}>
     />
     
 
-</ScrollView>
+</LinearGradient>
 
 
   
@@ -508,10 +514,10 @@ const styles = StyleSheet.create({
  
   Maincontainers: {
     flex: 1,   
-    backgroundColor: '#E6E6F2',
+    backgroundColor: '#fff',
   },
   containers: {
-   backgroundColor: '#E6E6F2',
+   backgroundColor: '#fff',
     marginTop:5,
    height:'30%'
   },
