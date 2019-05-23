@@ -282,14 +282,11 @@ SlideMenu=()=>{
    
       <View style={styles.Maincontainers}>     
       <LinearGradient
-   colors={['#1a5fe1','#00a5ff','#81DCF9']} style={{height:'25%',}}>
-
-
-<View style={styles.containers}>     
+   colors={['#1a5fe1','#00a5ff','#81DCF9']} style={{height:'30%',}}>    
       <LinearGradient
    colors={['#1a5fe1','#81DCF9','#81DCF9']} style={{height:'100%',marginRight:30,marginTop:30}}>
  <View style={{justifyContent:'center',alignItems:'center'}}>
-          <View style={{flexDirection:'row',marginTop:40}}>
+          <View style={{flexDirection:'row',marginTop:30}}>
           <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/app4.png")} ></Image>     
           <Text style={{fontSize:20,fontWeight:'bold',color:'#fff'}}>Exchange</Text>
           </View>
@@ -333,19 +330,12 @@ SlideMenu=()=>{
           </View>   
           </LinearGradient>    
          
-    </View>
 
 
           </LinearGradient>    
-         
-    
-    <LinearGradient  colors={['#fff','#CCCFE2','#CCCFE2']} style={{marginTop:'10%'}}>
-    <View  style={{justifyContent:'center',alignItems:'center', top: 0,marginBottom:10,position:'absolute',
-        bottom: 0,backgroundColor:'transparent',
-        left: 0,
-        right: 0,}}>
-              <Image  style={{width: 100, height: 100}}  source={require("./assets/three.png")} ></Image> 
-        </View>
+    <LinearGradient  colors={['#fff','#CCCFE2','#CCCFE2']} style={{marginTop:'10%',position:'absolute',height:'100%',
+        top:'30%',left: 0,
+        right: 0}}>
     <ScrollView style={{paddingBottom:10}}>
     <View style={{alignItems:'center',flexDirection:'row',padding:10,justifyContent:'center'}}>
     <View style={{backgroundColor:'#fff',width:150, height:150,borderWidth:1,borderColor:'#e6e8f1',borderRadius:20,justifyContent:'center',alignItems:'center'}}>
@@ -449,7 +439,10 @@ SlideMenu=()=>{
     </ScrollView>
 
 </LinearGradient>
- 
+ <View  style={{justifyContent:'center',alignItems:'center', top: 130,marginBottom:10,backgroundColor:'transparent',
+        }}>
+              <Image  style={{width: 100, height: 100}}  source={require("./assets/three.png")} ></Image> 
+        </View>
  
     <View  style={{justifyContent:'flex-end',alignItems:'flex-end', top: 0,marginBottom:30,position:'absolute',
         bottom: 0,
@@ -550,7 +543,6 @@ const styles = StyleSheet.create({
   containers: {
    backgroundColor: '#fff',
     marginTop:5,
-   height:'30%'
   },
   containers: {
   flex:1,
