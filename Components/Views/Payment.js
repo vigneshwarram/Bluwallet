@@ -18,7 +18,7 @@ export default class  Payment  extends React.Component {
 
   constructor(props) {
     super(props);
-    
+    this. PaymentTrasnfer=['CryptoCurrency','Wallet Transfer','Electronic Transfer'],
     this.state = {
       dataSource:[],
       switchValue:false,
@@ -304,7 +304,7 @@ SlideMenu=()=>{
 
           <LinearGradient  colors={['#fff','#CCCFE2','#CCCFE2']} style={{marginTop:'20%',height:'100%'}}>
    <ScrollView>
-<View style={{flex:1}}>   
+<View style={{flex:1,backgroundColor:'#fff'}}>   
 
 <View
   style={{
@@ -324,18 +324,22 @@ SlideMenu=()=>{
     borderBottomWidth: 1,
   }}
 />
+{this.PaymentTrasnfer.map((item,key)=>
+(
+    <TouchableOpacity onPress={()=>this.props.navigation.navigate('Country',{SelectedCurrency:item})}>
 <View style={{justifyContent:'space-between',flexDirection:'row',marginLeft:20,marginRight:20}}>  
-<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10}}>Select a Country</Text>  
+<Text style={{fontSize:10,color:'#000000',marginTop:10,marginBottom:10}}>{item}</Text>  
 
 </View>
 <View
   style={{
     marginTop:10,
-    borderBottomColor: '#D3D3D3',marginBottom:10,
+    borderBottomColor: '#D3D3D3',
     borderBottomWidth: 1,
   }}
 />
- 
+</TouchableOpacity>
+))}
 </View>
     </ScrollView>    
 </LinearGradient>

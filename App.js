@@ -8,6 +8,8 @@ import CreditCard from './Components/Views/CreditCard'
 import Exchange from './Components/Views/Exchange'
 import Payment from './Components/Views/Payment'
 import Buy from './Components/Views/Buy'
+import Country from './Components/Views/Country'
+import BankScreen from './Components/Views/BankScreen'
 import {
   createStackNavigator
 } from 'react-navigation'
@@ -21,7 +23,9 @@ import {
       CreditCard:{screen:CreditCard},
       Exchange:{screen:Exchange},
       Payment:{screen:Payment},
-      Buy:{screen:Buy}
+      Buy:{screen:Buy},
+      Country:{screen:Country},
+      BankScreen:{screen:BankScreen}
       
       });
       return (
