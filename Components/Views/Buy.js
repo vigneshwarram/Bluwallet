@@ -3,6 +3,7 @@ import { Path } from 'react-native-svg'
 import { View, StyleSheet,TextInput, Image,Picker,ScrollView,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
 import { Alert } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts'
+import { Switch} from 'react-native'
 import * as shape from 'd3-shape'
 import Logo from '../logo'
 import LinearGradient from 'react-native-linear-gradient';
@@ -20,6 +21,7 @@ export default class  Buy  extends React.Component {
     
     this.state = {
       dataSource:[],
+      switchValue:false,
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
@@ -104,6 +106,9 @@ _onPress=()=>{
     this.setState({click:false})
   }
    
+}
+toggleSwitch=(value)=>{
+  this.setState({switchValue: value})
 }
 pressRight=()=>{
   if(!this.state.clickr){
@@ -287,7 +292,7 @@ SlideMenu=()=>{
    colors={['#1a5fe1','#81DCF9','#81DCF9']} style={{height:'100%',marginRight:30,marginTop:30}}>
  <View style={{justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection:'row',marginTop:20}}>
-          <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/app4.png")} ></Image>     
+          <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/walletpurse.png")} ></Image>     
           <Text style={{fontSize:20,fontWeight:'bold',color:'#fff'}}>Exchange</Text>
           </View>      
           <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10}}>Vendor</Text>  
@@ -321,7 +326,7 @@ SlideMenu=()=>{
 <View
   style={{
     marginTop:10,
-    borderBottomColor: '#000000',marginBottom:10,
+    borderBottomColor: '#D3D3D3',marginBottom:10,
     borderBottomWidth: 1,
   }}
 />
@@ -333,7 +338,7 @@ SlideMenu=()=>{
 <View
   style={{
     marginTop:10,
-    borderBottomColor: '#000000',marginBottom:10,
+    borderBottomColor: '#D3D3D3',marginBottom:10,
     borderBottomWidth: 1,
   }}
 />
@@ -344,7 +349,7 @@ SlideMenu=()=>{
 <View
   style={{
     marginTop:10,
-    borderBottomColor: '#000000',marginBottom:10,
+    borderBottomColor: '#D3D3D3',marginBottom:10,
     borderBottomWidth: 1,
   }}
 />
@@ -363,7 +368,7 @@ SlideMenu=()=>{
 <View
   style={{
     marginTop:10,
-    borderBottomColor: '#000000',marginBottom:10,
+    borderBottomColor: '#D3D3D3',marginBottom:10,
     borderBottomWidth: 1,
   }}
 />
@@ -374,7 +379,7 @@ SlideMenu=()=>{
 <View
   style={{
     marginTop:10,
-    borderBottomColor: '#000000',
+    borderBottomColor: '#D3D3D3',
     borderBottomWidth: 1,
   }}
 />
@@ -385,22 +390,45 @@ SlideMenu=()=>{
 <Image style={{marginLeft:10,width: 20, height: 20,marginTop:10}}   source={require("./assets/plus.png")} ></Image>
 </View>
 </View>
-<View style={{width:'90%',height:200, backgroundColor:'#4286f4',borderRadius:25,marginLeft:30,marginRight:30}}>
-<View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:20,marginRight:20}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,marginBottom:10}}>currency</Text> 
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,marginBottom:10}}>Tittle</Text> 
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,marginBottom:10}}>Plat.Elect</Text> 
+<LinearGradient  colors={['#81DCF9','#00a5ff','#1a5fe1']}  style={{width:'90%',height:200, backgroundColor:'#4286f4',borderTopRightRadius:20,borderTopLeftRadius:20,borderBottomRightRadius:20, borderBottomLeftRadius:20, marginLeft:20,marginRight:30,borderBottomWidth:15,borderBottomColor:'#42f4f4'}}>
+<View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:30,marginRight:30,marginTop:30}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>currency</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>Tittle</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>Plat.Elect</Text> 
 </View>
-<View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:20,marginRight:20}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,marginBottom:10}}>BTC</Text> 
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,marginBottom:10}}>Minimum value</Text> 
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,marginBottom:10}}>paypal</Text> 
+<View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:30,marginRight:30,marginTop:10}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>BTC</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>Minimum value</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>paypal</Text> 
 </View>
+<View style={{flexDirection:'row',marginLeft:30,marginRight:30,marginTop:30}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>Description</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:50}}>Country</Text> 
 
 </View>
-<View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:20,marginRight:20}}>
+<View style={{flexDirection:'row',marginLeft:30,marginRight:30,marginTop:10}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',}}>Transferdata...</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:50}}>Cloumbia</Text> 
+
+</View>
+<View style={{position:'absolute',left:0,right:0,top:20,bottom:0,alignItems:'flex-end'}}>
+<Image style={{marginRight:20,width: 100,opacity:0.5, height: "80%"}}   source={require("./assets/logo-white.png")} ></Image>  
+</View>
+</LinearGradient>
+<View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:20,marginRight:70,marginTop:20}}>
 <Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10,marginBottom:10}}>I accept terms and conditions</Text> 
-
+<Switch
+          style={{marginRight:30}}
+          onValueChange = {this.toggleSwitch}
+          value = {this.state.switchValue}/>
+</View>
+<View style={{flexDirection:'row',marginLeft:20,marginRight:20,marginBottom:50,marginTop:20}}>
+<LinearGradient colors={['#FC686F','#FD6A72','#F74B71']}  style={{width:'50%',padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center'}}>
+<Text style={{color:'#fff'}}>Cancel</Text>
+</LinearGradient>
+<LinearGradient colors={['#4C8DFE','#4D91FF','#5D5CFE']} style={{width:'50%',padding:10,backgroundColor:'green',justifyContent:'center',alignItems:'center',marginLeft:10}}>
+<Text style={{color:'#fff'}}>Accept</Text>
+</LinearGradient>
 </View>
 </View>
    
