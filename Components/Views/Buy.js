@@ -287,16 +287,16 @@ SlideMenu=()=>{
    
       <View style={styles.Maincontainers}>     
       <LinearGradient
-   colors={['#1a5fe1','#00a5ff','#81DCF9']} style={{height:'30%',}}>    
+   colors={['#1a5fe1','#00a5ff','#81DCF9']} style={{height:200,}}>    
       <LinearGradient
-   colors={['#1a5fe1','#81DCF9','#81DCF9']} style={{height:'100%',marginRight:30,marginTop:30}}>
+   colors={['#1a5fe1','#81DCF9','#81DCF9']} style={{height:250,marginRight:30,marginTop:30}}>
  <View style={{justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection:'row',marginTop:20}}>
-          <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/walletpurse.png")} ></Image>     
-          <Text style={{fontSize:20,fontWeight:'bold',color:'#fff'}}>Exchange</Text>
+          <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/app4.png")} ></Image>     
+          <Text style={{fontSize:18,fontWeight:'bold',color:'#fff'}}>Exchange</Text>
           </View>      
           <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10}}>Vendor</Text>  
-          <Text style={{fontSize:25,fontWeight:'bold',color:'#fff',marginTop:10}}>-2.258978</Text>   
+          <Text style={{fontSize:20,fontWeight:'bold',color:'#fff',marginTop:10}}>-2.258978</Text>   
           <View style={{flexDirection: 'row',marginLeft:20}}>
           <Text style={{marginLeft:10,color:' #000000',marginTop:15}}>880.660</Text>
      <Picker
@@ -319,9 +319,9 @@ SlideMenu=()=>{
           
 <View style={{flex:1}}>
 
-          <LinearGradient  colors={['#fff','#fff','#fff']} style={{marginTop:'10%',height:'100%'}}>
+          <LinearGradient  colors={['#fff','#CCCFE2','#CCCFE2']} style={{marginTop:60}} >
    <ScrollView>
-<View style={{marginTop:20,flex:1}}>   
+<View style={{marginTop:20}}>   
 
 <View
   style={{
@@ -408,7 +408,7 @@ SlideMenu=()=>{
 </View>
 <View style={{flexDirection:'row',marginLeft:30,marginRight:30,marginTop:10}}>
 <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',}}>Transferdata...</Text> 
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:50}}>Cloumbia</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:30}}>Cloumbia</Text> 
 
 </View>
 <View style={{position:'absolute',left:0,right:0,top:20,bottom:0,alignItems:'flex-end'}}>
@@ -424,10 +424,13 @@ SlideMenu=()=>{
 </View>
 <View style={{flexDirection:'row',marginLeft:20,marginRight:20,marginBottom:50,marginTop:20}}>
 <LinearGradient colors={['#FC686F','#FD6A72','#F74B71']}  style={{width:'50%',padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center'}}>
+<TouchableOpacity>
 <Text style={{color:'#fff'}}>Cancel</Text>
+</TouchableOpacity>
 </LinearGradient>
 <LinearGradient colors={['#4C8DFE','#4D91FF','#5D5CFE']} style={{width:'50%',padding:10,backgroundColor:'green',justifyContent:'center',alignItems:'center',marginLeft:10}}>
-<Text style={{color:'#fff'}}>Accept</Text>
+<TouchableOpacity onPress={()=>this.props.navigation.navigate('Payment')}>
+<Text style={{color:'#fff'}}>Accept</Text></TouchableOpacity>
 </LinearGradient>
 </View>
 </View>
@@ -438,12 +441,12 @@ SlideMenu=()=>{
    
       
     
-         <LinearGradient colors={['#81DCF9','#5099f0','#1a5fe1']} style={{  width: 100,marginLeft:20,position:'absolute',top:-35,left:120,right:100,bottom:50,
+         <LinearGradient colors={['#81DCF9','#5099f0','#1a5fe1']} style={{  width: 100,marginLeft:20,position:'absolute',top:-20,left:120,right:100,bottom:50,
     height: 100,
     borderRadius: 100/2,
     backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
    
-    <Image  style={{width: 35, height: 35}}  source={require('./assets/app4.png')} ></Image>
+    <Image  style={{width: 60, height: 60}}  source={require('./assets/walletpurse.png')} ></Image>
     
             
           </LinearGradient> 
