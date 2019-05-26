@@ -10,6 +10,7 @@ import Payment from './Components/Views/Payment'
 import Buy from './Components/Views/Buy'
 import Country from './Components/Views/Country'
 import BankScreen from './Components/Views/BankScreen'
+import Publish from './Components/Views/Publish'
 import {
   createStackNavigator
 } from 'react-navigation'
@@ -25,7 +26,8 @@ import {
       Payment:{screen:Payment},
       Buy:{screen:Buy},
       Country:{screen:Country},
-      BankScreen:{screen:BankScreen}
+      BankScreen:{screen:BankScreen},
+      Publish:{screen:Publish}
       
       });
       return (
