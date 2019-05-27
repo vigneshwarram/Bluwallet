@@ -336,110 +336,212 @@ right: 0,borderRadius:25,marginTop:-50,
       width:'100%',
     marginTop:60,
     borderBottomColor:'#e6e8f1',
-    borderBottomWidth:1
+    borderBottomWidth:0
   }}>
 </View>
-<View style={{width:'100%',justifyContent:'space-between',flexDirection:'row',marginTop:10}}>
-    <Text style={{color:'#00a5ff',fontSize:15,fontWeight:'bold',marginLeft:20}}>ID</Text>
-    <Text style={{color:'#000000',fontSize:15,fontWeight:'bold',marginRight:40}}>1901</Text>
-</View>
- <View
-  style={{
-      width:'100%',
-    marginTop:10,
-    borderBottomColor:'#e6e8f1',
-    borderBottomWidth:1
-  }}></View>
-  <View style={{width:'100%',justifyContent:'space-between',flexDirection:'row',marginTop:10}}>
-    <Text style={{color:'#00a5ff',fontSize:15,fontWeight:'bold',marginLeft:20}}>Celular</Text>
-    <Text style={{color:'#000000',fontSize:15,marginRight:40}}>+57845896584</Text>
-</View>
-<View
-  style={{
-      width:'100%',
-    marginTop:10,
-    borderBottomColor:'#e6e8f1',
-    borderBottomWidth:1
-  }}></View>
-  <View style={{width:'100%',justifyContent:'space-between',flexDirection:'row',marginTop:10}}>
-    <Text style={{color:'#00a5ff',fontSize:15,fontWeight:'bold',marginLeft:20}}>Register</Text>
-    <Text style={{color:'#000000',fontSize:15,marginRight:40}}>2010 03 17</Text>
-</View>
+<View  style={{flex:1,width:'100%',marginBottom:10}}>
+<ScrollView>
+<View style={{marginTop:20,backgroundColor:'#fff'}}>   
 
 <View
   style={{
-      width:'100%',
-      marginTop:10,
-  borderWidth:1,
-  borderColor:'#e6e8f1',
-  backgroundColor:'#e6e8f1',
-  padding:8
-  
-  }}></View>
-  <View style={{width:'100%',justifyContent:'space-between',flexDirection:'row',marginTop:10}}>
-    <Text style={{color:'#00a5ff',fontSize:15,fontWeight:'bold',marginLeft:20}}>Pais</Text>
-    <Text style={{color:'#000000',fontSize:15,marginRight:40}}>Coloumbia</Text>
-</View>
-<View
-  style={{
-      width:'100%',
     marginTop:10,
-    borderBottomColor:'#e6e8f1',
-    borderBottomWidth:1
-  }}></View>
-  <View style={{width:'100%',justifyContent:'space-between',flexDirection:'row',marginTop:10}}>
-    <Text style={{color:'#00a5ff',fontSize:15,fontWeight:'bold',marginLeft:20}}>E-mail</Text>
-    <Text style={{color:'#000000',fontSize:15,marginRight:40}}>vickyrams20@gmail.com</Text>
-</View>
-<View
-  style={{
-      width:'100%',
-    marginTop:10,
-    borderBottomColor:'#e6e8f1',
-    borderBottomWidth:1
-  }}></View>
-   <View style={{width:'100%',justifyContent:'space-between',flexDirection:'row',marginTop:10}}>
-    <Text style={{color:'#00a5ff',fontSize:15,fontWeight:'bold',marginLeft:20}}>Monentro</Text>
-    <Text style={{color:'#000000',fontSize:15,marginRight:40}}>Bitcoin</Text>
-</View>
-<View
-  style={{
-      width:'100%',
-    marginTop:10,
-    borderBottomColor:'#e6e8f1',
-    borderBottomWidth:1
-  }}></View>
-   <View style={{width:'100%',justifyContent:'space-between',flexDirection:'row',marginTop:10}}>
-    <Text style={{color:'#00a5ff',fontSize:15,fontWeight:'bold',marginLeft:20}}>Version</Text>
-    <Text style={{color:'#000000',fontSize:15,marginRight:40}}>2.0.4</Text>
-</View>
-<View
-  style={{
-      width:'100%',
-    marginTop:10,
-    borderBottomColor:'#e6e8f1',
-    borderBottomWidth:1
-  }}></View>
-  <View style={{backgroundColor:'#e6e8f1',height:'100%', width:'100%'}}>
-  <View style={{justifyContent:'center',alignItems:'center',marginTop:10}}>
-  <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-  <Image style={{marginLeft:10,width: 30, height: 30}}   source={require('./assets/keys.png')} ></Image>    
-  <Text style={{color:'#000000',fontSize:15,marginRight:40,marginTop:10,marginLeft:20}}>Segundo Factor</Text>
-  </View>
-  <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:10}}>
-  <Image style={{marginLeft:10,width: 30, height: 30}}   source={require("./assets/monitor.PNG.png")} ></Image>    
-  <Text style={{color:'#000000',fontSize:15,marginRight:40,marginLeft:20}}>E-wallet web</Text>
-  </View>
-  </View>
+    borderBottomColor: '#D3D3D3',marginBottom:10,
+    borderBottomWidth: 1,
+  }}
+/>
+<View style={{flexDirection:'row',marginLeft:30}}>
+<View style={{flex:1}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>ID</Text>
+</View>  
 
-<View style={{flexDirection:'row', marginTop:20,marginLeft:50,marginRight:20}}>
-<Image style={{marginLeft:40,width: 30, height: 40}}   source={require('./assets/notify.png')} ></Image>   
-<Image style={{marginLeft:40,width: 30, height: 40}}   source={require('./assets/secure-user.png')} ></Image>  
-<Image style={{marginLeft:40,width: 30, height: 40}}   source={require('./assets/notepad.png')} ></Image>  
+<View style={{flexDirection:'row',flex:1}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10,textAlign:'center'}}>1901</Text> 
+</View>  
 
 </View>
+<View
+  style={{
+    marginTop:10,
+    borderBottomColor: '#D3D3D3',marginBottom:10,
+    borderBottomWidth: 1,
+  }}
+/>
+<View style={{flexDirection:'row',marginLeft:30}}>  
+<View style={{flex:1}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Celular</Text>
+</View>
+
+<View style={{flexDirection:'row',flex:1}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10}}>+53 31265 845</Text> 
+</View>  
+
+</View>
+<View
+  style={{
+    marginTop:10,
+    borderBottomColor: '#D3D3D3',marginBottom:10,
+    borderBottomWidth: 1,
+  }}
+/>
+<View style={{flexDirection:'row',marginLeft:30}}>  
+<View  style={{flex:1}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Register</Text>  
+</View>
+<View style={{flex:1}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10}}>2019 03 17</Text> 
+</View>
+</View>
+<View
+  style={{
+    marginTop:10,
+    borderBottomColor: '#D3D3D3',
+    borderBottomWidth: 1,
+  }}
+/>
+<View style={{height:30,width:'100%',backgroundColor:'#eaeaf9'}}></View>
+<View style={{flexDirection:'row',marginLeft:30}}>  
+<View style={{flex:1}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Country</Text>
+</View>
+  <View style={{flex:1}}>
+  <Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10}}>Colombia</Text> 
   </View>
+
+</View>
+<View
+  style={{
+    marginTop:10,
+    borderBottomColor: '#D3D3D3',
+    borderBottomWidth: 1,
+  }}
+/>
+<View style={{flexDirection:'row',marginLeft:30}}>  
+<View style={{flex:1}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>E-mail</Text>
+</View>
+  <View style={{flex:1}}>
+  <Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10}}>vickyrams20@gmail.com</Text> 
+  </View>
+
+</View>
+<View
+  style={{
+    marginTop:10,
+    borderBottomColor: '#D3D3D3',
+    borderBottomWidth: 1,
+  }}
+/>
+
+<View style={{flexDirection:'row',marginLeft:30}}>  
+<View style={{flex:1}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Coin purse</Text>  
+</View>
+<View style={{flex:1}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10}}>Bit coin</Text> 
+</View>
+
+</View>
+<View
+  style={{
+    marginTop:10,
+    borderBottomColor: '#D3D3D3',
+    borderBottomWidth: 1,
+  }}
+/>
+<View style={{flexDirection:'row',marginLeft:30}}>  
+<View style={{flex:1}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Version</Text>  
+</View>
+<View style={{flex:1}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10,}}>2.0.4</Text> 
+</View>
+
+
+</View>
+<View
+  style={{
+    marginTop:10,
+    borderBottomColor: '#D3D3D3',
+    borderBottomWidth: 1,
+  }}
+/>  
+<View>
+  <LinearGradient  colors={['#fff','#CCCFE2','#CCCFE2']}>
+ <View style={{justifyContent:'center',alignItems:'center'}}>
+ <View style={{flexDirection:'row',marginTop:20,justifyContent:'space-between',alignItems:'center'}}>
+  <Image style={{width: 30, height: 30}}   source={require('./assets/keys.png')} ></Image>    
+  <Text style={{color:'#000000',fontSize:15,marginRight:20,marginTop:10,marginLeft:20}}>Segundo Factor</Text>
+  </View>
+  <View style={{flexDirection:'row',marginTop:20,justifyContent:'space-between',alignItems:'center'}}>
+  <Image style={{width: 30, height: 30}}   source={require("./assets/monitor.PNG.png")} ></Image> 
+  <Text style={{color:'#000000',fontSize:15,marginRight:20,marginTop:10,marginLeft:20}}>E-wallet web</Text>
+</View>
+ </View>
+ 
+
+<View style={{flexDirection:'row', marginTop:20,marginLeft:20,marginRight:20}}>
+
+<View style={{flex:1}}>
+<Image style={{width: 30, height: 40}}   source={require('./assets/notify.png')} ></Image> 
+
+<Text style={{color:'#000000',fontSize:10}}>Notification</Text>
+
+
+</View>
+<View style={{flex:1}}>
+<Image style={{width: 30, height: 40}}   source={require('./assets/secure-user.png')} ></Image> 
+
+<Text style={{color:'#000000',fontSize:10}}>Security</Text>
+
+
+</View>
+<View style={{flex:1}}>
+<Image style={{width: 30, height: 40}}   source={require('./assets/notepad.png')} ></Image> 
+
+<Text style={{color:'#000000',fontSize:10}}>Terms of use</Text>
+
+
+</View>
+<View style={{flex:1}}>
+<Image style={{width: 30, height: 40}}   source={require('./assets/notepad.png')} ></Image> 
+
+<Text style={{color:'#000000',fontSize:10}}>Invite Friends</Text>
+
+
+</View>
+</View>
+
+<View style={{marginTop:30,marginBottom:100}}>
+<View style={{flexDirection:"row"}}>
+<View style={{width:'50%'}}>
+<LinearGradient colors={['#FC686F','#FD6A72','#F74B71']}  style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderBottomRightRadius:50}}>
+<TouchableOpacity>
+<Text style={{color:'#fff'}}>Your email is not verified</Text>
+</TouchableOpacity>
+</LinearGradient>
+</View>
+<View style={{width:'70%',marginLeft:-30}}>
+<LinearGradient colors={['#4C8DFE','#4D91FF','#5D5CFE']}  style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderTopLeftRadius:50}}>
+<TouchableOpacity>
+<Text style={{color:'#fff'}}>Resend e-mail</Text>
+</TouchableOpacity>
+</LinearGradient>
+</View>
+</View>
+
+
+</View>
+</LinearGradient>
+  </View>
+</View>
+
+    </ScrollView>    
           </View>
+
+
+</View>
+
       
      
       <View style={styles.containers}>      
