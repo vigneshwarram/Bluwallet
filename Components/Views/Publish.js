@@ -286,7 +286,7 @@ SlideMenu=()=>{
       <LinearGradient
    colors={['#1a5fe1','#5DBCD2','#81DCF9']} style={{height:'100%',marginRight:30,marginTop:30}}>
  <View style={{justifyContent:'center',alignItems:'center'}}>
-          <View style={{flexDirection:'row',marginTop:30}}>
+          <View style={{flexDirection:'row',marginTop:10}}>
           <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/app4.png")} ></Image>     
           <Text style={{fontSize:20,fontWeight:'bold',color:'#fff'}}>Exchange</Text>
           </View>
@@ -349,7 +349,7 @@ SlideMenu=()=>{
   style={{
     marginLeft:30,marginRight:30,
     marginTop:10,
-    borderBottomColor: '#000000',marginBottom:10,
+    borderBottomColor: '#D3D3D3',marginBottom:10,
     borderBottomWidth: 1,
   }}
 />  
@@ -362,7 +362,7 @@ SlideMenu=()=>{
       onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
       <View style={{backgroundColor:(item.Status=='Completed')?'#fff':'#fff',marginLeft:30,marginRight:30, shadowOffset: { width: 10, height: 10 },
    borderWidth: 1,
-  borderColor: '#96cef7',
+  borderColor: '#D3D3D3',
   borderBottomWidth: 0,
   shadowColor: '#000',
   shadowOffset: { width: 0, height: 12 },
@@ -372,33 +372,35 @@ SlideMenu=()=>{
   borderRadius:25}}>
   <LinearGradient
    colors={[(item.Status=='Completed')?'#fff':'#fff', (item.Status=='Completed')?'#fff':'#fff', (item.Status=='Completed')?'#fff':'#fff']} style={{ borderRadius:25}}>
-        <View style={{alignItems:'center',flexDirection:'row',padding:15}}>
-        <View style={{  width: 40,
-    height: 40,
-    borderColor:'#C4BEE0',
-    borderWidth:1,
-    borderRadius: 40/2,
-    backgroundColor: '#fff',justifyContent:'center',alignItems:"center"}} >
-          <Image  style={{width: 30, height: 30}}  source={require("./assets/exchange.png")} ></Image>  
-          </View>
-          <View style={{flexDirection:'column',marginLeft:30}}>
-          <View style={{flex:1, flexDirection: 'row',justifyContent:'space-between'}}>            
-         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#000000':'#000000'}}>Exchanged</Text>       
+        <View style={{flexDirection:'row',padding:10,justifyContent:'space-between'}}>
+          <View style={{flexDirection:'column'}}>
+                  
+     
+     <View style={{flex:1, flexDirection:'row',justifyContent:'space-between'}}>
      <View style={{flexDirection:'row'}}>
-     <Image style={{width: 25,marginTop:10, height: 25}}   source={require("./assets/plusblue.png")} ></Image>    
-     <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#000000':'#000000'}}>$ 9060</Text> 
+     <Text  style={{marginRight:10,marginTop:10,color:(item.Status!='Completed')?'#000000':'#000000'}}>{(item.Status=='Completed')?'etemplario':'santiagolp92'}</Text>  
+     <Text  style={{marginRight:10,marginTop:10,fontSize:7,color:(item.Status!='Completed')?'#42f477':'#42f477'}}>500+</Text>      
+     <Text  style={{marginRight:10,marginTop:10,marginLeft:10, color:(item.Status!='Completed')?'#000000':'#000000'}}>{(item.Status=='Completed')?'15,650,000.0':'5000$'}</Text> 
+     </View>   
      </View>
         
-     </View>  
+   
      <View style={{flex:1, flexDirection:'row',justifyContent:'space-between'}}>
  
-            
-         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#162061':'#162061'}}>12.38 .782</Text>       
-     
-      <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#162061':'#162061'}}>5.4587ETH</Text>    
+     <View style={{flexDirection:'row'}}>
+     <Text  style={{marginRight:10,marginTop:10,color:(item.Status!='Completed')?'#5099f0':'#5099f0'}}>{(item.Status=='Completed')?'Cryptocurrency':'wiretransfer'}</Text>          
+     <Text  style={{marginTop:10,marginLeft:20, color:(item.Status!='Completed')?'#5099f0':'#5099f0'}}>{(item.Status=='Completed')?'COP':'PAYPAL'}</Text>  
+     </View>      
+      <View style={{width:'35%',marginLeft:30}}>
+          <LinearGradient colors={['#5877ff','#5b6cff','#6055ff']} style={{padding:7,borderRadius:10,backgroundColor:'green',justifyContent:'center',alignItems:'center'}}>
+<TouchableOpacity onPress={()=>this.props.navigation.navigate('Payment')}>
+<Text style={{color:'#fff'}}>To Buy</Text></TouchableOpacity>
+</LinearGradient>
+          </View>
+           
      </View>  
           </View>
-         
+          
         </View>
 </LinearGradient>
   </View>
