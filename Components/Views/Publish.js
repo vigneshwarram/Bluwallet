@@ -333,7 +333,7 @@ SlideMenu=()=>{
     borderRadius: 100/2,
     backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
    
-    <Image  style={{width: 60, height: 60}}  source={require('./assets/walletpurse.png')} ></Image>
+    <Image  style={{width: 60, height: 60}}  source={require('./assets/publication.png')} ></Image>
     
             
           </LinearGradient> 

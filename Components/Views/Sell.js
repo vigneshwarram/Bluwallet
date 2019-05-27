@@ -9,7 +9,7 @@ import Logo from '../logo'
 import LinearGradient from 'react-native-linear-gradient';
 
 
-export default class  Buy  extends React.Component {
+export default class  Sell  extends React.Component {
 
   static navigationOptions = {
     header: null
@@ -295,30 +295,18 @@ SlideMenu=()=>{
           <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/app4.png")} ></Image>     
           <Text style={{fontSize:18,fontWeight:'bold',color:'#fff'}}>Exchange</Text>
           </View>      
-          <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10}}>How Much do you want to buy?</Text>           
+          <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10}}>Vendor</Text>  
+          <Text style={{fontSize:20,fontWeight:'bold',color:'#fff',marginTop:10}}>-2.258978</Text>   
           <View style={{flexDirection: 'row',marginLeft:20}}>
-          <View style={{width:'40%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:10, justifyContent:"center"}}>
-<View style={{flexDirection:'row',marginLeft:20}}> 
-<TextInput
-          style={{height: 40,}}
-       placeholderTextColor='#ffffff'
-          placeholder="COP 0.000"
-          
-        />
-</View>
-          </View>
-          <View style={{width:'40%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:10,marginLeft:10, justifyContent:"center"}}>
-<View style={{flexDirection:'row',marginLeft:20}}>
-
-<TextInput
-          style={{height: 40,}}
-       placeholderTextColor='#ffffff'
-          placeholder="BTC 00.0"
-          
-        />
-</View>
-          </View>
-    
+          <Text style={{marginLeft:10,color:' #000000',marginTop:15}}>880.660</Text>
+     <Picker
+         style={{ width: 130,color:'#000000',marginLeft:10 }}
+          selectedValue={this.state.Coin}
+          itemStyle={{ backgroundColor: "#000000", color: "#000000", fontFamily:"Ebrima", fontSize:17 }}
+          onValueChange={(lang) => this.setState({Coin: lang})}>
+          <Picker.Item label="Us doller" value="Us doller" />
+          <Picker.Item label="Indian" value="js" />
+        </Picker>
      </View>            
           </View>
          <View>  
@@ -333,7 +321,7 @@ SlideMenu=()=>{
 
           <LinearGradient  colors={['#fff','#CCCFE2','#CCCFE2']} style={{marginTop:60}} >
    <ScrollView>
-<View style={{marginTop:20,backgroundColor:'#fff'}}>   
+<View style={{marginTop:20}}>   
 
 <View
   style={{
@@ -342,15 +330,39 @@ SlideMenu=()=>{
     borderBottomWidth: 1,
   }}
 />
-<View style={{flexDirection:'row',marginLeft:20}}>
-<View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10}}>User</Text>
-</View>  
-
-<View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,textAlign:'center'}}>Yotemplario</Text> 
-<Text style={{fontSize:12,fontWeight:'bold',color:'#42f477',marginTop:-5}}>500+</Text> 
-</View>  
+ 
+<View style={{justifyContent:'space-between',flexDirection:'row',marginLeft:20,marginRight:20}}>  
+<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10}}>Fraction</Text>  
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,marginRight:90}}>1</Text> 
+</View>
+<View
+  style={{
+    marginTop:10,
+    borderBottomColor: '#D3D3D3',marginBottom:10,
+    borderBottomWidth: 1,
+  }}
+/>
+<View style={{justifyContent:'space-between',flexDirection:'row',marginLeft:20,marginRight:20}}>  
+<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10}}>Fraction Value</Text>  
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,marginRight:90}}>1</Text> 
+</View>
+<View
+  style={{
+    marginTop:10,
+    borderBottomColor: '#D3D3D3',marginBottom:10,
+    borderBottomWidth: 1,
+  }}
+/>
+<View style={{justifyContent:'space-between',flexDirection:'row',marginLeft:20,marginRight:20}}>  
+<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10}}>Market Rate</Text>  
+<View style={{flexDirection:'row',width:90,height:30,marginRight:50,marginTop:10}}>
+<View style={{justifyContent:'center',width:40,alignItems:'center',borderWidth:1,borderColor:'#000000', backgroundColor:'#4286f4'}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>Yes</Text> 
+</View>
+<View style={{justifyContent:'center',width:40,alignItems:'center',borderWidth:1,borderColor:'#000000'}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#000000'}}>No</Text> 
+</View>
+</View>
 
 </View>
 <View
@@ -360,82 +372,9 @@ SlideMenu=()=>{
     borderBottomWidth: 1,
   }}
 />
-<View style={{flexDirection:'row',marginLeft:20}}>  
-<View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10}}>Price</Text>
-</View>
-
-<View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>15,650,000.0 COP</Text> 
-</View>  
-
-</View>
-<View
-  style={{
-    marginTop:10,
-    borderBottomColor: '#D3D3D3',marginBottom:10,
-    borderBottomWidth: 1,
-  }}
-/>
-<View style={{flexDirection:'row',marginLeft:20}}>  
-<View  style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10}}>Country</Text>  
-</View>
-<View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Columbia</Text> 
-</View>
-</View>
-<View
-  style={{
-    marginTop:10,
-    borderBottomColor: '#D3D3D3',
-    borderBottomWidth: 1,
-  }}
-/>
-<View style={{flexDirection:'row',marginLeft:20}}>  
-<View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10}}>Commercial Limits</Text>
-</View>
-  <View style={{flex:1}}>
-  <Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>1000-100,00,00 COP</Text> 
-  </View>
-
-</View>
-<View
-  style={{
-    marginTop:10,
-    borderBottomColor: '#D3D3D3',
-    borderBottomWidth: 1,
-  }}
-/>
-<View style={{height:70,width:'100%',backgroundColor:'#eaeaf9'}}></View>
-<View style={{flexDirection:'row',marginLeft:20}}>  
-<View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10}}>Title</Text>  
-</View>
-<View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Bank Transfer</Text> 
-</View>
-
-</View>
-<View
-  style={{
-    marginTop:10,
-    borderBottomColor: '#D3D3D3',
-    borderBottomWidth: 1,
-  }}
-/>
-<View style={{flexDirection:'row',marginLeft:20}}>  
-<View style={{flex:2.2}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10}}>Description</Text>  
-</View>
-<View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,marginLeft:-10}}>Transfer data</Text> 
-</View>
-<View style={{flex:1}}>
-<Text style={{fontSize:20,fontWeight:'bold',color:'#4286f4',marginTop:-5}}>...</Text> 
-</View>
-
+<View style={{justifyContent:'space-between',flexDirection:'row',marginLeft:20,marginRight:20}}>  
+<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10}}>Minimum Value</Text>  
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,marginRight:90}}>0.000</Text> 
 </View>
 <View
   style={{
@@ -445,15 +384,54 @@ SlideMenu=()=>{
   }}
 />
 <View style={{backgroundColor:'#CCCFE2'}}>
-<View style={{marginLeft:30,marginRight:30,marginTop:30,marginBottom:100,width:"100%"}}>
-<View style={{width:"80%",borderRadius:10}}>
-<LinearGradient colors={['#41da9c','#36deaf','#26e3ca']} style={{padding:12,backgroundColor:'green',justifyContent:'center',alignItems:'center',marginLeft:10}}>
-<TouchableOpacity onPress={()=>this.props.navigation.navigate('Payment')}>
-<Text style={{color:'#fff'}}>Send Exchange request</Text></TouchableOpacity>
-</LinearGradient>
+<View style={{justifyContent:'center',alignItems:'center'}}>
+<View style={{flexDirection:'row'}}>  
+<Text style={{fontSize:15,fontWeight:'bold',color:'#000000',marginTop:10,marginBottom:10}}>Payment Methods</Text>  
+<Image style={{marginLeft:10,width: 20, height: 20,marginTop:10}}   source={require("./assets/plus.png")} ></Image>
+</View>
+</View>
+<LinearGradient  colors={['#81DCF9','#00a5ff','#1a5fe1']}  style={{width:'90%',height:200, backgroundColor:'#4286f4',borderTopRightRadius:20,borderTopLeftRadius:20,borderBottomRightRadius:20, borderBottomLeftRadius:20, marginLeft:20,marginRight:30,borderBottomWidth:15,borderBottomColor:'#42f4f4'}}>
+<View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:30,marginRight:30,marginTop:30}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>currency</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>Tittle</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>Plat.Elect</Text> 
+</View>
+<View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:30,marginRight:30,marginTop:10}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>BTC</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>Minimum value</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>paypal</Text> 
+</View>
+<View style={{flexDirection:'row',marginLeft:30,marginRight:30,marginTop:30}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>Description</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:50}}>Country</Text> 
 
 </View>
+<View style={{flexDirection:'row',marginLeft:30,marginRight:30,marginTop:10}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',}}>Transferdata...</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:30}}>Cloumbia</Text> 
 
+</View>
+<View style={{position:'absolute',left:0,right:0,top:20,bottom:0,alignItems:'flex-end'}}>
+<Image style={{marginRight:20,width: 100,opacity:0.5, height: "80%"}}   source={require("./assets/logo-white.png")} ></Image>  
+</View>
+</LinearGradient>
+<View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:20,marginRight:70,marginTop:20}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10,marginBottom:10}}>I accept terms and conditions</Text> 
+<Switch
+          style={{marginRight:30}}
+          onValueChange = {this.toggleSwitch}
+          value = {this.state.switchValue}/>
+</View>
+<View style={{flexDirection:'row',marginLeft:20,marginRight:20,marginBottom:50,marginTop:20}}>
+<LinearGradient colors={['#FC686F','#FD6A72','#F74B71']}  style={{width:'50%',padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center'}}>
+<TouchableOpacity>
+<Text style={{color:'#fff'}}>Cancel</Text>
+</TouchableOpacity>
+</LinearGradient>
+<LinearGradient colors={['#4C8DFE','#4D91FF','#5D5CFE']} style={{width:'50%',padding:10,backgroundColor:'green',justifyContent:'center',alignItems:'center',marginLeft:10}}>
+<TouchableOpacity onPress={()=>this.props.navigation.navigate('Payment')}>
+<Text style={{color:'#fff'}}>Accept</Text></TouchableOpacity>
+</LinearGradient>
 </View>
 </View>
    

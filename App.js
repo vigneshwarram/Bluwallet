@@ -8,6 +8,7 @@ import CreditCard from './Components/Views/CreditCard'
 import Exchange from './Components/Views/Exchange'
 import Payment from './Components/Views/Payment'
 import Buy from './Components/Views/Buy'
+import Sell from './Components/Views/Sell'
 import Country from './Components/Views/Country'
 import BankScreen from './Components/Views/BankScreen'
 import Publish from './Components/Views/Publish'
@@ -25,6 +26,7 @@ import {
       Exchange:{screen:Exchange},
       Payment:{screen:Payment},
       Buy:{screen:Buy},
+      Sell:{screen:Sell},
       Country:{screen:Country},
       BankScreen:{screen:BankScreen},
       Publish:{screen:Publish}
