@@ -25,7 +25,7 @@ export default class Profile  extends React.Component {
       app2icon:require('./assets/app2.png'),
       app3icon:require('./assets/app3.png'),
       app4icon:require('./assets/app4.png'),
-      app5icon:require('./assets/app5.png'),
+      app5icon:require('./assets/app2-blue.png'),
       w: 50,
       h: 45,
       wr:50,
@@ -39,11 +39,7 @@ export default class Profile  extends React.Component {
       visible: false,
       hidden: false,
       app1color:'#fff',
-      app6color:'#5099f0',
-      app2color:'#5099f0',
-      app3color:'#5099f0',
-      app4color:'#5099f0',
-      app5color:'#5099f0'
+      app5color:'#fff'
     };
   
   }
@@ -322,13 +318,17 @@ right: 0}}>
           
 
     
-          <View style={{backgroundColor:'#fff',borderTopRightRadius:180,borderTopLeftRadius:180, justifyContent:'flex-start',alignItems:'center',flex:1,marginTop:'30%',height:'100%',position:'absolute',left: 0,
+          <View style={{backgroundColor:'#2b3f74',borderTopRightRadius:180,borderTopLeftRadius:180, justifyContent:'flex-start',alignItems:'center',flex:1,marginTop:'30%',height:'100%',position:'absolute',left: 0,marginBottom:0,
 right: 0}}>
-   <View style={{backgroundColor:'red',width: 100,position:'absolute',left: 150,
+   <View style={{width: 100,position:'absolute',left: 150,
 right: 0,borderRadius:25,marginTop:-50,
-    height: 125}}></View>
+    height: 125}}>
+
+<Image style={{width:100,height:125,borderRadius:25}}   source={require("./assets/building.png")} ></Image> 
+
+    </View>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:80}}>
-        <Text style={{color:'#1a5fe1',fontWeight:'bold'}}>Example Name</Text>
+        <Text style={{color:'#fff',fontWeight:'bold',opacity:0.7}}>Example Name</Text>
     </View>
    
                        <View
@@ -339,14 +339,14 @@ right: 0,borderRadius:25,marginTop:-50,
     borderBottomWidth:0
   }}>
 </View>
-<View  style={{flex:1,width:'100%',marginBottom:10}}>
+<View  style={{flex:1,width:'100%'}}>
 <ScrollView>
 <View style={{marginTop:20,backgroundColor:'#fff'}}>   
-
+<LinearGradient colors= {['#2b3f74','#2c548f','#223458']}>
 <View
   style={{
     marginTop:10,
-    borderBottomColor: '#D3D3D3',marginBottom:10,
+    borderBottomColor: '#43549c',marginBottom:10,
     borderBottomWidth: 1,
   }}
 />
@@ -356,14 +356,14 @@ right: 0,borderRadius:25,marginTop:-50,
 </View>  
 
 <View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10,textAlign:'center'}}>1901</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,textAlign:'center',opacity:0.7}}>1901</Text> 
 </View>  
 
 </View>
 <View
   style={{
     marginTop:10,
-    borderBottomColor: '#D3D3D3',marginBottom:10,
+    borderBottomColor: '#43549c',marginBottom:10,
     borderBottomWidth: 1,
   }}
 />
@@ -373,14 +373,14 @@ right: 0,borderRadius:25,marginTop:-50,
 </View>
 
 <View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10}}>+53 31265 845</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7}}>+53 31265 845</Text> 
 </View>  
 
 </View>
 <View
   style={{
     marginTop:10,
-    borderBottomColor: '#D3D3D3',marginBottom:10,
+    borderBottomColor: '#43549c',marginBottom:10,
     borderBottomWidth: 1,
   }}
 />
@@ -389,30 +389,30 @@ right: 0,borderRadius:25,marginTop:-50,
 <Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Register</Text>  
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10}}>2019 03 17</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7}}>2019 03 17</Text> 
 </View>
 </View>
 <View
   style={{
     marginTop:10,
-    borderBottomColor: '#D3D3D3',
+    borderBottomColor: '#43549c',
     borderBottomWidth: 1,
   }}
 />
-<View style={{height:30,width:'100%',backgroundColor:'#eaeaf9'}}></View>
+<View style={{height:30,width:'100%',backgroundColor:'#2b3f74'}}></View>
 <View style={{flexDirection:'row',marginLeft:30}}>  
 <View style={{flex:1}}>
 <Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Country</Text>
 </View>
   <View style={{flex:1}}>
-  <Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10}}>Colombia</Text> 
+  <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7}}>Colombia</Text> 
   </View>
 
 </View>
 <View
   style={{
     marginTop:10,
-    borderBottomColor: '#D3D3D3',
+    borderBottomColor: '#43549c',
     borderBottomWidth: 1,
   }}
 />
@@ -421,14 +421,14 @@ right: 0,borderRadius:25,marginTop:-50,
 <Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>E-mail</Text>
 </View>
   <View style={{flex:1}}>
-  <Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10}}>vickyrams20@gmail.com</Text> 
+  <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7}}>vickyrams20@gmail.com</Text> 
   </View>
 
 </View>
 <View
   style={{
     marginTop:10,
-    borderBottomColor: '#D3D3D3',
+    borderBottomColor: '#43549c',
     borderBottomWidth: 1,
   }}
 />
@@ -438,14 +438,14 @@ right: 0,borderRadius:25,marginTop:-50,
 <Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Coin purse</Text>  
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10}}>Bit coin</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7}}>Bit coin</Text> 
 </View>
 
 </View>
 <View
   style={{
     marginTop:10,
-    borderBottomColor: '#D3D3D3',
+    borderBottomColor: '#43549c',
     borderBottomWidth: 1,
   }}
 />
@@ -454,7 +454,7 @@ right: 0,borderRadius:25,marginTop:-50,
 <Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Version</Text>  
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10,}}>2.0.4</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7}}>2.0.4</Text> 
 </View>
 
 
@@ -462,20 +462,20 @@ right: 0,borderRadius:25,marginTop:-50,
 <View
   style={{
     marginTop:10,
-    borderBottomColor: '#D3D3D3',
+    borderBottomColor: '#43549c',
     borderBottomWidth: 1,
   }}
 />  
 <View>
-  <LinearGradient  colors={['#fff','#CCCFE2','#CCCFE2']}>
+  <LinearGradient  colors= {['#2b3f74','#2c548f','#223458']}>
  <View style={{justifyContent:'center',alignItems:'center'}}>
  <View style={{flexDirection:'row',marginTop:20,justifyContent:'space-between',alignItems:'center'}}>
   <Image style={{width: 30, height: 30}}   source={require('./assets/keys.png')} ></Image>    
-  <Text style={{color:'#000000',fontSize:15,marginRight:20,marginTop:10,marginLeft:20}}>Segundo Factor</Text>
+  <Text style={{color:'#4286f4',fontSize:15,marginRight:20,marginTop:10,marginLeft:20}}>Segundo Factor</Text>
   </View>
   <View style={{flexDirection:'row',marginTop:20,justifyContent:'space-between',alignItems:'center'}}>
   <Image style={{width: 30, height: 30}}   source={require("./assets/monitor.PNG.png")} ></Image> 
-  <Text style={{color:'#000000',fontSize:15,marginRight:20,marginTop:10,marginLeft:20}}>E-wallet web</Text>
+  <Text style={{color:'#4286f4',fontSize:15,marginRight:20,marginTop:10,marginLeft:20}}>E-wallet web</Text>
 </View>
  </View>
  
@@ -485,58 +485,143 @@ right: 0,borderRadius:25,marginTop:-50,
 <View style={{flex:1}}>
 <Image style={{width: 30, height: 40}}   source={require('./assets/notify.png')} ></Image> 
 
-<Text style={{color:'#000000',fontSize:10}}>Notification</Text>
+<Text style={{color:'#4286f4',fontSize:10}}>Notification</Text>
 
 
 </View>
 <View style={{flex:1}}>
 <Image style={{width: 30, height: 40}}   source={require('./assets/secure-user.png')} ></Image> 
 
-<Text style={{color:'#000000',fontSize:10}}>Security</Text>
+<Text style={{color:'#4286f4',fontSize:10}}>Security</Text>
 
 
 </View>
 <View style={{flex:1}}>
 <Image style={{width: 30, height: 40}}   source={require('./assets/notepad.png')} ></Image> 
 
-<Text style={{color:'#000000',fontSize:10}}>Terms of use</Text>
+<Text style={{color:'#4286f4',fontSize:10}}>Terms of use</Text>
 
 
 </View>
 <View style={{flex:1}}>
 <Image style={{width: 30, height: 40}}   source={require('./assets/notepad.png')} ></Image> 
 
-<Text style={{color:'#000000',fontSize:10}}>Invite Friends</Text>
+<Text style={{color:'#4286f4',fontSize:10}}>Invite Friends</Text>
 
 
 </View>
 </View>
 
-<View style={{marginTop:30,marginBottom:100}}>
-<View style={{flexDirection:"row"}}>
-<View style={{width:'50%'}}>
-<LinearGradient colors={['#FC686F','#FD6A72','#F74B71']}  style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderBottomRightRadius:50}}>
+<View style={{marginTop:30,marginBottom:100,justifyContent:'center',alignItems:"center"}}>
+
+<View style={{width:'70%'}}>
+<LinearGradient colors={['#f4347f','#f85276','#fe7a6e']}  style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:10}}>
 <TouchableOpacity>
-<Text style={{color:'#fff'}}>Your email is not verified</Text>
+<Text style={{color:'#fff'}}>Your email is'nt verified</Text>
 </TouchableOpacity>
 </LinearGradient>
 </View>
-<View style={{width:'70%',marginLeft:-30}}>
-<LinearGradient colors={['#4C8DFE','#4D91FF','#5D5CFE']}  style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderTopLeftRadius:50}}>
+<View style={{width:'50%',marginTop:20}}>
+<LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:10}}>
 <TouchableOpacity>
 <Text style={{color:'#fff'}}>Resend e-mail</Text>
 </TouchableOpacity>
 </LinearGradient>
-</View>
 </View>
 
 
 </View>
 </LinearGradient>
   </View>
+  </LinearGradient>
 </View>
 
     </ScrollView>    
+    <LinearGradient colors= {['#1a5fe1','#00a5ff','#00a5ff']} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
+    <View style={{flexDirection: 'row',marginRight:20,marginLeft:20,alignItems:"center",justifyContent:'center'}}> 
+       <TouchableOpacity onPress={this.AppTouch}>
+    
+       <View style={{ width: 40,marginLeft:10,backgroundColor:this.state.app5color,
+    height: 40,
+    borderRadius: 40/2,
+  justifyContent:'center',alignItems:"center"}} >
+  
+    <Image style={{width:20,height:20}}   source={this.state.app5icon} ></Image> 
+          </View>  
+       
+          </TouchableOpacity>  
+          <TouchableOpacity onPress={this.App6Touch}>
+      
+          <View style={{  width: 40,marginLeft:20,
+    height: 40,
+    borderRadius: 40/2,
+   justifyContent:'center',alignItems:"center"}} >
+   
+    <Image  style={{width: 20, height: 20}}  source={this.state.app6icon} ></Image>
+    
+            
+          </View> 
+       
+       
+          </TouchableOpacity>  
+          <TouchableOpacity onPress={this.App2Touch}>
+    
+          <View style={{  width: 40,marginLeft:10,
+    height: 40,
+    borderRadius: 40/2,
+  justifyContent:'center',alignItems:"center"}} >
+  
+    <Image style={{width:20,height:20}}   source={this.state.app2icon} ></Image> 
+   
+        
+          </View> 
+      
+          
+          </TouchableOpacity>  
+          <TouchableOpacity onPress={this.App3Touch}>
+   
+          <View style={{  width: 40,marginLeft:10,
+    height: 40,
+    borderRadius: 40/2,
+   justifyContent:'center',alignItems:"center"}} >
+    
+     <Image style={{width:20,height:20}}   source={this.state.app3icon} ></Image>
+    
+           
+          </View>   
+       
+         
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.App4Touch}>
+     
+          <View style={{  width: 40,marginLeft:10,
+    height: 40,
+    borderRadius: 40/2,
+   justifyContent:'center',alignItems:"center"}} >
+    
+     <Image style={{width:20,height:20}}   source={this.state.app4icon} ></Image> 
+    
+            
+          </View>  
+         
+          </TouchableOpacity> 
+          <TouchableOpacity onPress={this.App5Touch}>
+       
+          <View style={{ width: 40,marginLeft:10,
+    height: 40,
+    borderRadius: 40/2,
+  justifyContent:'center',alignItems:"center"}} >
+  
+    <Image style={{width:20,height:20}}   source={this.state.app1icon} ></Image> 
+          </View>    
+        
+               
+          </TouchableOpacity>
+     
+          </View>
+          </LinearGradient>
+  
+    
           </View>
 
 
@@ -546,85 +631,6 @@ right: 0,borderRadius:25,marginTop:-50,
      
       <View style={styles.containers}>      
     </View>
-
- 
-    <View  style={{justifyContent:'flex-end',alignItems:'flex-end', top: 0,marginBottom:30,position:'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,}}>
-     <TouchableOpacity onPress={this.SlideMenu}>
-     <View style={{backgroundColor:'#5099f0',height:this.state.Ahr,width:this.state.Awr,justifyContent:'center',alignItems:'flex-start',borderTopStartRadius:40,borderBottomStartRadius:40, marginTop:10}}>
-           
-       <View style={{flexDirection: 'row',marginRight:20,}}> 
-       <TouchableOpacity onPress={this.AppTouch}>
-       <View style={{  width: 40,marginLeft:20,
-    height: 40,
-    borderRadius: 40/2,
-    backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
-   
-    <Image  style={{width: 20, height: 20}}  source={this.state.app1icon} ></Image>
-    
-            
-          </View> 
-          </TouchableOpacity>  
-          <TouchableOpacity onPress={this.App6Touch}>
-       <View style={{  width: 40,marginLeft:20,
-    height: 40,
-    borderRadius: 40/2,
-    backgroundColor:this.state.app6color,justifyContent:'center',alignItems:"center"}} >
-   
-    <Image  style={{width: 20, height: 20}}  source={this.state.app6icon} ></Image>
-    
-            
-          </View> 
-          </TouchableOpacity>  
-          <TouchableOpacity onPress={this.App2Touch}>
-          <View style={{  width: 40,marginLeft:10,
-    height: 40,
-    borderRadius: 40/2,
-    backgroundColor:this.state.app2color,justifyContent:'center',alignItems:"center"}} >
-  
-    <Image style={{width:20,height:20}}   source={this.state.app2icon} ></Image> 
-   
-        
-          </View> 
-          </TouchableOpacity>  
-          <TouchableOpacity onPress={this.App3Touch}>
-          <View style={{  width: 40,marginLeft:10,
-    height: 40,
-    borderRadius: 40/2,
-    backgroundColor: this.state.app3color,justifyContent:'center',alignItems:"center"}} >
-    
-     <Image style={{width:20,height:20}}   source={this.state.app3icon} ></Image>
-    
-           
-          </View>   
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.App4Touch}>
-          <View style={{  width: 40,marginLeft:10,
-    height: 40,
-    borderRadius: 40/2,
-    backgroundColor: this.state.app4color,justifyContent:'center',alignItems:"center"}} >
-    
-     <Image style={{width:20,height:20}}   source={this.state.app4icon} ></Image> 
-    
-            
-          </View>  
-          </TouchableOpacity> 
-          <TouchableOpacity onPress={this.App5Touch}>
-          <View style={{ backgroundColor:'red',width: 40,marginLeft:10,
-    height: 40,
-    borderRadius: 40/2,
-    backgroundColor: this.state.app5color,justifyContent:'center',alignItems:"center"}} >
-  
-    <Image style={{width:20,height:20}}   source={this.state.app5icon} ></Image> 
-          </View>         
-          </TouchableOpacity>
-     
-          </View>
-            </View>
-            </TouchableOpacity>
-      </View>
    
       </View>
       
