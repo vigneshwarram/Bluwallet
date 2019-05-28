@@ -324,7 +324,7 @@ right: 0}}>
 right: 0,borderRadius:25,marginTop:-50,
     height: 125}}>
 
-<Image style={{width:100,height:125,borderRadius:25}}   source={require("./assets/building.png")} ></Image> 
+<Image style={{width:100,height:125,borderRadius:25}}   source={require("./assets/build.png")} ></Image> 
 
     </View>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:80}}>
@@ -480,31 +480,29 @@ right: 0,borderRadius:25,marginTop:-50,
  </View>
  
 
-<View style={{flexDirection:'row', marginTop:20,marginLeft:20,marginRight:20}}>
+<View style={{flexDirection:'row', marginTop:20,marginLeft:20,marginRight:20,justifyContent:'space-between'}}>
 
-<View style={{flex:1}}>
-<Image style={{width: 30, height: 40}}   source={require('./assets/notify.png')} ></Image> 
-
+<View>
+<Image style={{width: 30, height: 30}}   source={require("./assets/notify.png")} ></Image> 
 <Text style={{color:'#4286f4',fontSize:10}}>Notification</Text>
 
-
 </View>
-<View style={{flex:1}}>
-<Image style={{width: 30, height: 40}}   source={require('./assets/secure-user.png')} ></Image> 
 
+
+
+<View>
+<Image style={{width: 30, height: 30}}   source={require("./assets/secure-user.png")} ></Image> 
 <Text style={{color:'#4286f4',fontSize:10}}>Security</Text>
-
-
 </View>
-<View style={{flex:1}}>
-<Image style={{width: 30, height: 40}}   source={require('./assets/notepad.png')} ></Image> 
+<View >
+<Image style={{width: 30, height: 30}}   source={require("./assets/terms.png")} ></Image> 
 
 <Text style={{color:'#4286f4',fontSize:10}}>Terms of use</Text>
 
 
 </View>
-<View style={{flex:1}}>
-<Image style={{width: 30, height: 40}}   source={require('./assets/notepad.png')} ></Image> 
+<View >
+<Image style={{width: 30, height: 30}}   source={require("./assets/Share.png")} ></Image> 
 
 <Text style={{color:'#4286f4',fontSize:10}}>Invite Friends</Text>
 
@@ -537,7 +535,17 @@ right: 0,borderRadius:25,marginTop:-50,
 </View>
 
     </ScrollView>    
-    <LinearGradient colors= {['#1a5fe1','#00a5ff','#00a5ff']} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
+   
+          </View>
+          
+</View>  
+<View style={{ width: '100%',
+    height: 70,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute', 
+    bottom: 0,}}>
+<LinearGradient colors= {['#1a5fe1','#00a5ff','#00a5ff']} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
     <View style={{flexDirection: 'row',marginRight:20,marginLeft:20,alignItems:"center",justifyContent:'center'}}> 
        <TouchableOpacity onPress={this.AppTouch}>
     
@@ -614,25 +622,13 @@ right: 0,borderRadius:25,marginTop:-50,
   
     <Image style={{width:20,height:20}}   source={this.state.app1icon} ></Image> 
           </View>    
-        
-               
-          </TouchableOpacity>
-     
+                 
+          </TouchableOpacity>    
           </View>
-          </LinearGradient>
-  
-    
-          </View>
-
-
+          </LinearGradient>  
 </View>
-
-      
      
-      <View style={styles.containers}>      
-    </View>
-   
-      </View>
+     </View>
       
     
     );
