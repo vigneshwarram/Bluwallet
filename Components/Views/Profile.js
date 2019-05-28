@@ -506,7 +506,7 @@ right: 0,borderRadius:25,marginTop:-50,
 <View style={{flex:1}}>
 <Image style={{width: 30, height: 40}}   source={require('./assets/notepad.png')} ></Image> 
 
-<Text style={{color:'#4286f4',fontSize:10}}>Invite Friends</Text>
+<Text style={{color:'#4286f4',fontSize:10}}></Text>
 
 
 </View>
