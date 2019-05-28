@@ -261,7 +261,7 @@ App6Touch=()=>{
 }
   render() {
     const { navigate } = this.props.navigation;
-    const data = [ 50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100 ]
+    const data = [ 100, 500, 1000, 500, 400, 600,800,400,300,500 ]
     const Line = ({ line }) => (
       <Path
           key={'line'}
@@ -280,140 +280,163 @@ App6Touch=()=>{
   }
     return (  
       <View style={styles.Maincontainers}>    
-       <Logo/>
-      <View style={{justifyContent:'space-between',flexDirection:'row'}}>
-      <View style={{backgroundColor:'#f6407b',height:this.state.h,width:this.state.w,justifyContent:'center', alignItems:'flex-end',borderTopEndRadius:25,borderBottomEndRadius:25, marginTop:10}}>
-
-      <TouchableOpacity onPress={this._onPress}>
+      <LinearGradient colors= {['#2b3f74','#232d51','#232d51']}>
+      <View style={{justifyContent:'space-between',flexDirection:'row'}}>  
+<LinearGradient colors={['#f4347f','#f85276','#fe7a6e']} style={{justifyContent:'center',height:this.state.h,width:this.state.w, alignItems:'flex-end', marginTop:10,borderTopRightRadius:25,borderBottomRightRadius:25}}>
+<TouchableOpacity onPress={this._onPress}>
        <View style={{flexDirection: 'row'}}> 
           <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/whitebox.png")} ></Image>     
      
           </View>
           </TouchableOpacity>
-      
-            </View>
+</LinearGradient>    
+         
             
             <View style={{flexDirection: 'row',justifyContent:'flex-start',alignItems:"center",marginTop:15}}> 
-          <Image  style={{width: 30, height: 30}}  source={require("./assets/wallet.png")} ></Image>   
-          <View style={{flexDirection:'column',marginTop:15}}>
-          <Text style={{marginLeft:10,marginTop:15,fontSize:18}}>Coin wallet</Text>
-     <Text style={{marginTop:5,marginLeft:10,fontSize:20,color:'#162061'}}>Ethereum</Text>
-        
-          </View>  
-     
+          <Image  style={{width: 30, height: 30}}  source={require("./assets/app1white.png")} ></Image>   
+          <View style={{flexDirection:'column'}}>
+          <Text style={{marginLeft:10,fontSize:18,fontWeight:'bold',color:'#fff'}}>Wallet</Text>       
+          </View>       
           </View>
     
-            <View style={{backgroundColor:'#34deb1',height:this.state.hr,width:this.state.wr,justifyContent:'center',alignItems:'flex-start',borderTopStartRadius:25,borderBottomStartRadius:25, marginTop:10}}>
+            <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']} style={{height:this.state.hr,width:this.state.wr,justifyContent:'center',alignItems:'flex-start',borderTopLeftRadius:25,borderBottomLeftRadius:25, marginTop:10}}>
             <TouchableOpacity onPress={this.pressRight}>
        <View style={{flexDirection: 'row'}}> 
           <Image style={{marginLeft:10,width: 30, height: 30}}   source={require("./assets/app1white.png")} ></Image>     
      
           </View>
           </TouchableOpacity>
-            </View>
+            </LinearGradient>
       </View>
-      <View style={{justifyContent:'space-between',flexDirection:'row'}}>
-     
-     <View style={{flexDirection: 'row'}}> 
-        <Text   style={{color:'#5099f0',marginLeft:30}}>Ripple</Text>     
-          </View>
-                    
-     <View style={{flexDirection: 'row'}}> 
-     <Text   style={{color:'#5099f0',marginRight:30}} >Monero</Text>  
    
-        </View>
-          
-    </View>
       
-    <View style={{justifyContent:'space-between',flexDirection:'row' ,marginTop:15}}>
-     
-     <View style={{flexDirection: 'row'}}> 
-     <Image style={{width: 15, height: 15,marginLeft:30,marginTop:15}}   source={require("./assets/plus.png")} ></Image>    
-     <Text style={{marginLeft:10,fontSize:30,color:'#162061',}}>2.8066589</Text>
-          </View>
-                    
-     <View style={{flexDirection: 'row'}}> 
-     <Image  style={{width: 30, height: 30,marginRight:30}}  source={require("./assets/Refresh.png")} ></Image>     
+    <View style={{marginTop:10,justifyContent:'center',alignItems:'center'}}>  
+    <View style={{justifyContent:'space-between',flexDirection:'row'}}>
+    <View>
+    <Text style={{marginLeft:10,marginTop:15,fontSize:12,fontWeight:'bold',color:'#4d6bc1'}}>Monerp</Text> 
+    <Image style={{marginLeft:10,width: 30, height: 30,opacity:0.5,marginTop:10}}   source={require("./assets/Bicon.png")} ></Image>     
+    </View>          
    
-        </View>
-          
-    </View> 
-    <View style={{flexDirection:'row',marginTop:10,marginLeft:30}}>
+    <View>
+    <Text style={{marginLeft:10,marginTop:15,fontSize:12,fontWeight:'bold',color:'#fff'}}>Etherium</Text> 
+    <Image style={{marginLeft:10,width: 60, height: 100,marginTop:10}}   source={require("./assets/diablue.png")} ></Image>     
+    </View>      
      
-     <View style={{flexDirection: 'row',justifyContent:'space-between',marginLeft:30}}> 
-   
-     <Text style={{marginLeft:10,color:'#5099f0',}}>880.660</Text>
-     <View style={{flexDirection: 'row',marginLeft:20,marginTop:-15}}>
-     <Picker
-         style={{ width: 130,color:'#5099f0' }}
-          selectedValue={this.state.Coin}
-          itemStyle={{ backgroundColor: "#5099f0", color: "#5099f0", fontFamily:"Ebrima", fontSize:17 }}
-          onValueChange={(lang) => this.setState({Coin: lang})}>
-          <Picker.Item label="Us doller" value="Us doller" />
-          <Picker.Item label="Indian" value="js" />
-        </Picker>
-     </View>         
-          </View>                    
+    <View>
+    <Text style={{marginLeft:10,marginTop:15,fontSize:12,fontWeight:'bold',color:'#4d6bc1'}}>Bitcoin</Text> 
+    <Image style={{marginLeft:10,width: 30, height: 30,opacity:0.5,marginTop:10}}   source={require("./assets/Bicon.png")} ></Image>          
+    </View>    
+    </View>
+    
+    
     </View> 
       <View style={styles.containers}>
+    
       <AreaChart
-                style={{ height: 100,marginLeft:30,marginRight:30,marginBottom:10,backgroundColor:'#fff' }}
+                style={{ height: 100,marginLeft:-20, marginRight:30,marginBottom:10,backgroundColor:'transparent',position:'absolute',top:0,bottom:0,left:0,right:0 }}
                 data={data}
                 showGrid={ false }
                 curve={shape.curveNatural}
-                svg={{ fill: 'rgba(150,206,247,0.4)',stroke:'#fff' }}
+                svg={{ fill: '#28489d',stroke:'#fff' }}
             >
                 <Grid/>
                 <Line/>
             </AreaChart>
-        
-               
-               <View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:30,marginRight:3}}>
-                 <View>
-                   <TouchableOpacity>
-                     <View style={{flexDirection:'row',borderRadius:15,borderWidth:1,padding:5,width:70, borderColor:'#5099f0',backgroundColor:'#fff',justifyContent:'center',alignItems:'center'}}>
-                       <Image source={require('./assets/down-arrow-triangle-outline.png')} style={{width:10,height:10}}></Image>
-                       <Text style={{color:'#5099f0',marginLeft:10}}>Today</Text>
-                     </View>
-                   </TouchableOpacity>
+            <View style={{justifyContent:'center',alignItems:'center',marginTop:60}}>
+                 <Text style={{marginLeft:10,marginTop:15,fontSize:15,fontWeight:'bold',color:'#4d6bc1'}}>Balance</Text> 
                  </View>
+               
+               <View style={{ marginTop:30,justifyContent:'center',alignItems:'center'}}>
+                 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
                  <View>
-                   <TouchableOpacity>
-                     <View style={{flexDirection:'row', marginRight:20}} >
-                     <Image style={{width: 25, height: 25}}   source={require("./assets/plusblue.png")} ></Image>    
-                     <Text style={{fontSize:18,color:'#162061',}}>2.8066589</Text>
-                     <Image style={{width: 25, height: 25}}   source={require("./assets/diamond.png")} ></Image> 
-                     </View>
-                   </TouchableOpacity>
+                <LinearGradient colors= {['#8be6f8','#5dabf5','#4984e0']} style={{ width: 40,marginLeft:10,
+ height: 40,
+ borderRadius: 40/2,
+justifyContent:'center',alignItems:"center"}} >
+
+ <Image style={{width:20,height:20}}    source={require("./assets/refresh-arrow.png")} ></Image> 
+       </LinearGradient>   
+                </View>
+                <View>
+                <View style={{flexDirection:'row'}}>
+                <Text style={{marginLeft:30,fontSize:30,fontWeight:'bold',color:'#fff'}}>2.80258789</Text>
+                <View style={{marginTop:-10,marginLeft:5}}>
+                <LinearGradient colors= {['#8392f7','#aa83f6','#c17df8']} style={{ width: 60,borderRadius:5, padding:5,
+justifyContent:'center',alignItems:"center"}} >
+   <Text style={{fontSize:8,fontWeight:'bold',color:'#fff',textAlign:'center'}}>^15%</Text> 
+</LinearGradient>
+                </View>
+                </View>
+                 
+                </View>
+                 </View>
+                 <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:20}}>
+                 <View style={{flexDirection: 'row',marginLeft:20}}>
+                 <Text style={{fontSize:15,fontWeight:'bold',color:'#4d6bc1',textAlign:'center'}}>880.660</Text> 
+     <Picker
+         style={{ width: 150,color:'#4d6bc1',marginTop:-17,marginLeft:20 }}
+          selectedValue={this.state.Coin}
+          itemStyle={{ backgroundColor: "#4d6bc1", color: "#4d6bc1", fontSize:15,fontWeight:'bold' }}
+          onValueChange={(lang) => this.setState({Coin: lang})}>
+          <Picker.Item label="USDollar" value="Us doller" />
+          <Picker.Item label="Indian" value="js" />
+        </Picker>
+     </View> 
+                 </View>            
+                 <View style={{flexDirection:'row',marginLeft:60,marginRight:20}}> 
+                 <View style={{flex:1,flexDirection:'row'}}>
+                 <Text style={{fontSize:15,fontWeight:'bold',color:'#4d6bc1'}}>ETH</Text> 
+                 <Image style={{marginLeft:10,width: 10, height: 10,}}   source={require("./assets/red.png")} ></Image>          
+                 </View>
+               
+                 <View style={{flex:1,flexDirection:'row'}}>
+                 <Text style={{marginLeft:20,fontSize:15,fontWeight:'bold',color:'#4d6bc1'}}>BTC</Text> 
+                 <Image style={{marginLeft:10,width: 10, height: 10,}}   source={require("./assets/green.png")} ></Image> 
+                 </View>
+                 
+                 <View style={{flex:1,flexDirection:'row'}}>
+                 <Text style={{marginLeft:20,fontSize:15,fontWeight:'bold',color:'#4d6bc1'}}>XRP</Text> 
+                 <Image style={{marginLeft:10,width: 10, height: 10,}}   source={require("./assets/green.png")} ></Image> 
+                 </View>
+
+                 </View>
+                 <View style={{flexDirection:'row',marginLeft:60,marginRight:20}}>
+                 <View style={{flex:1}}>
+                 <Text style={{marginTop:1,fontSize:15,fontWeight:'bold',color:'#fff'}}>435$</Text> 
+                 </View>
+                
+                 <View style={{flex:1}}>
+                 <Text style={{marginLeft:20,marginTop:1,fontSize:15,fontWeight:'bold',color:'#fff'}}>20.000$</Text>
+                 </View>
+          
+                 <View style={{flex:1}}>
+                 <Text style={{marginLeft:20,marginTop:1,fontSize:15,fontWeight:'bold',color:'#fff'}}>50$</Text> 
+                 </View> 
+                
+                 </View>             
+                 <View>
+                  
                  </View>
                </View>
-                <View
-  style={{
-    marginLeft:30,marginRight:30,
-    marginTop:10,
-    borderBottomColor: '#5099f0',marginBottom:10,
-    borderBottomWidth: 1,
-  }}
-/>
 
-                 <FlatList 
+                 <FlatList  style={{marginTop:20}}
       ItemSeparatorComponent={this.space}
       data={this.state.dataSource}
           renderItem={({item,separators})  =>
         <TouchableOpacity onShowUnderlay={separators.highlight}
       onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
-      <View style={{backgroundColor:(item.Status=='Completed')?'#fff':'#5099f0',marginLeft:30,marginRight:30, shadowOffset: { width: 10, height: 10 },
+      <View style={{marginLeft:30,marginRight:30, shadowOffset: { width: 10, height: 10 },
    borderWidth: 1,
-  borderColor: '#96cef7',
+  borderColor: '#394d88',
   borderBottomWidth: 0,
-  shadowColor: '#000',
+  shadowColor: '#394d88',
   shadowOffset: { width: 0, height: 12 },
   shadowOpacity: 0.8,
   shadowRadius: 2,
   elevation: 24,
   borderRadius:25}}>
   <LinearGradient
-   colors={[(item.Status=='Completed')?'#fff':'#96cef7', (item.Status=='Completed')?'#fff':'#5099f0', (item.Status=='Completed')?'#fff':'#5099f9']} style={{ borderRadius:25}}>
+   colors={['#374c8d', '#32437b','#2c3868']} style={{ borderRadius:25}}>
         <View style={{alignItems:'center',flexDirection:'row',padding:15}}>
         <View style={{  width: 40,
     height: 40,
@@ -448,89 +471,99 @@ App6Touch=()=>{
     />
        
     </View>
-
- 
-    <View  style={{justifyContent:'flex-end',alignItems:'flex-end', top: 0,marginBottom:30,position:'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,}}>
-     <TouchableOpacity onPress={this.SlideMenu}>
-     <View style={{backgroundColor:'#5099f0',height:this.state.Ahr,width:this.state.Awr,justifyContent:'center',alignItems:'flex-start',borderTopStartRadius:40,borderBottomStartRadius:40, marginTop:10}}>
-           
-       <View style={{flexDirection: 'row',marginRight:20,}}> 
+      
+</LinearGradient>
+<View style={{ width: '100%',
+    height: 70,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute', 
+    bottom: 0,}}>
+<LinearGradient colors= {['#1a5fe1','#00a5ff','#00a5ff']} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
+    <View style={{flexDirection: 'row',marginRight:20,marginLeft:20,alignItems:"center",justifyContent:'center'}}> 
        <TouchableOpacity onPress={this.AppTouch}>
-       <View style={{  width: 40,marginLeft:20,
-    height: 40,
-    borderRadius: 40/2,
-    backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
-   
-    <Image  style={{width: 20, height: 20}}  source={this.state.app1icon} ></Image>
     
-            
-          </View> 
-          </TouchableOpacity>  
-
-          <TouchableOpacity onPress={this.App6Touch}>
-       <View style={{  width: 40,marginLeft:20,
+       <View style={{ width: 40,marginLeft:10,
     height: 40,
     borderRadius: 40/2,
-    backgroundColor:this.state.app6color,justifyContent:'center',alignItems:"center"}} >
+  justifyContent:'center',alignItems:"center"}} >
+  
+    <Image style={{width:20,height:20}}   source={this.state.app5icon} ></Image> 
+          </View>  
+       
+          </TouchableOpacity>  
+          <TouchableOpacity onPress={this.App5Touch}>
+       
+       <View style={{ width: 40,marginLeft:10,backgroundColor:this.state.app1color,
+ height: 40,
+ borderRadius: 40/2,
+justifyContent:'center',alignItems:"center"}} >
+
+ <Image style={{width:20,height:20}}   source={this.state.app1icon} ></Image> 
+       </View>    
+              
+       </TouchableOpacity>   
+          <TouchableOpacity onPress={this.App6Touch}>
+      
+          <View style={{  width: 40,marginLeft:20,
+    height: 40,
+    borderRadius: 40/2,
+   justifyContent:'center',alignItems:"center"}} >
    
     <Image  style={{width: 20, height: 20}}  source={this.state.app6icon} ></Image>
     
             
           </View> 
+       
+       
           </TouchableOpacity>  
           <TouchableOpacity onPress={this.App2Touch}>
+    
           <View style={{  width: 40,marginLeft:10,
     height: 40,
     borderRadius: 40/2,
-    backgroundColor:this.state.app2color,justifyContent:'center',alignItems:"center"}} >
+  justifyContent:'center',alignItems:"center"}} >
   
     <Image style={{width:20,height:20}}   source={this.state.app2icon} ></Image> 
    
         
           </View> 
+      
+          
           </TouchableOpacity>  
           <TouchableOpacity onPress={this.App3Touch}>
+   
           <View style={{  width: 40,marginLeft:10,
     height: 40,
     borderRadius: 40/2,
-    backgroundColor: this.state.app3color,justifyContent:'center',alignItems:"center"}} >
+   justifyContent:'center',alignItems:"center"}} >
     
      <Image style={{width:20,height:20}}   source={this.state.app3icon} ></Image>
     
            
           </View>   
+       
+         
           </TouchableOpacity>
           <TouchableOpacity onPress={this.App4Touch}>
+     
           <View style={{  width: 40,marginLeft:10,
     height: 40,
     borderRadius: 40/2,
-    backgroundColor: this.state.app4color,justifyContent:'center',alignItems:"center"}} >
+   justifyContent:'center',alignItems:"center"}} >
     
      <Image style={{width:20,height:20}}   source={this.state.app4icon} ></Image> 
     
             
           </View>  
+         
           </TouchableOpacity> 
-          <TouchableOpacity onPress={this.App5Touch}>
-          <View style={{ backgroundColor:'red',width: 40,marginLeft:10,
-    height: 40,
-    borderRadius: 40/2,
-    backgroundColor: this.state.app5color,justifyContent:'center',alignItems:"center"}} >
-  
-    <Image style={{width:20,height:20}}   source={this.state.app5icon} ></Image> 
-          </View>         
-          </TouchableOpacity>
-     
+          
           </View>
-            </View>
-            </TouchableOpacity>
+          </LinearGradient>  
+</View>
       </View>
-    
-      </View>
-    
+  
     );
       }
       clickedItemText=(item)=>

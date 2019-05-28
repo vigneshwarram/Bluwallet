@@ -20,7 +20,7 @@ export default class Profile  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
-      app1icon:require('./assets/app1.png'),
+      app1icon:require('./assets/app1white.png'),
       app6icon:require('./assets/app6.png'),
       app2icon:require('./assets/app2.png'),
       app3icon:require('./assets/app3.png'),
@@ -215,23 +215,7 @@ SlideMenu=()=>{
     })
   }
   App5Touch=()=>{
-    this.setState({
-      app3color:'#5099f0',
-      app1color:'#5099f0',
-      app2color:'#5099f0',
-      app4color:'#5099f0',
-      app6color:'#5099f0',
-      app6icon:require('./assets/app6.png'),
-      app5color:'#fff',
-      app1icon:require('./assets/app1white.png'),
-      app2icon:require('./assets/app2.png'),
-      app3icon:require('./assets/app3.png'),
-      app4icon:require('./assets/app4.png'),
-      app6icon:require('./assets/app6.png'),
-      app5icon:require('./assets/app2-blue.png'),
-     
-    })
-    this.props.navigation.navigate('Profile')
+    this.props.navigation.navigate('DashBoard')
   }
   App6Touch=()=>{
     this.setState({
@@ -558,6 +542,17 @@ right: 0,borderRadius:25,marginTop:-50,
           </View>  
        
           </TouchableOpacity>  
+          <TouchableOpacity onPress={this.App5Touch}>
+       
+       <View style={{ width: 40,marginLeft:10,
+ height: 40,
+ borderRadius: 40/2,
+justifyContent:'center',alignItems:"center"}} >
+
+ <Image style={{width:20,height:20}}   source={this.state.app1icon} ></Image> 
+       </View>    
+              
+       </TouchableOpacity>   
           <TouchableOpacity onPress={this.App6Touch}>
       
           <View style={{  width: 40,marginLeft:20,
@@ -613,17 +608,7 @@ right: 0,borderRadius:25,marginTop:-50,
           </View>  
          
           </TouchableOpacity> 
-          <TouchableOpacity onPress={this.App5Touch}>
-       
-          <View style={{ width: 40,marginLeft:10,
-    height: 40,
-    borderRadius: 40/2,
-  justifyContent:'center',alignItems:"center"}} >
-  
-    <Image style={{width:20,height:20}}   source={this.state.app1icon} ></Image> 
-          </View>    
-                 
-          </TouchableOpacity>    
+          
           </View>
           </LinearGradient>  
 </View>
