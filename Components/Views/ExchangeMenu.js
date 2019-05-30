@@ -38,7 +38,9 @@ export default class  ExchangeMenu  extends React.Component {
        Exchangecolor3:'transparent',
 
        ExchangeIcon:require("./assets/exchangenew.png"), 
-
+       PublicIcon:require('./assets/publication.png'),
+       BuyIcon:require('./assets/buy.png'),
+       SellIcon:require('./assets/sell.png'),
       Coin: 'Us Doller',
       animate:false,
       app1icon:require('./assets/app1.png'),
@@ -363,7 +365,7 @@ SlideMenu=()=>{
     <View >
     <LinearGradient style={{backgroundColor:'transparent',width:130, height:130,borderWidth:1,borderColor:'#415b94',borderRadius:20,justifyContent:'center',alignItems:'center'}}
    colors={[this.state.Buycolor1,this.state.Buycolor2,this.state.Buycolor3]}>
-     <Image style={{width:80, height: 80}}   source={require("./assets/buy.png")} ></Image>  
+     <Image style={{width:80, height: 80}}   source={this.state.BuyIcon} ></Image>  
     <Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4'}}>To Buy</Text>
    </LinearGradient>
     </View>
@@ -372,7 +374,7 @@ SlideMenu=()=>{
     <View >
     <LinearGradient style={{backgroundColor:'transparent',width:130,height:130,marginLeft:20, borderWidth:1,borderColor:'#415b94',borderRadius:20,justifyContent:'center',alignItems:'center'}}
    colors={[this.state.sellcolor1,this.state.sellcolor2,this.state.sellcolor3]}>
-    <Image style={{width: 80, height: 80}}   source={require("./assets/sell.png")} ></Image> 
+    <Image style={{width: 80, height: 80}}   source={this.state.SellIcon} ></Image> 
     <Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4'}}>To Sell</Text>
     </LinearGradient>
     </View>
@@ -383,7 +385,7 @@ SlideMenu=()=>{
     <View >
     <LinearGradient style={{backgroundColor:'transparent',width:130, height:130,borderWidth:1,borderColor:'#415b94',borderRadius:20,justifyContent:'center',alignItems:'center'}}
    colors={[this.state.publishcolor1,this.state.publishcolor2,this.state.publishcolor3]}>
-     <Image style={{width:80, height: 80}}   source={require("./assets/publication.png")} ></Image>  
+     <Image style={{width:80, height: 80}}   source={this.state.PublicIcon} ></Image>  
     <Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4'}}>Publications</Text>
    </LinearGradient>
     
@@ -573,6 +575,44 @@ justifyContent:'center',alignItems:"center"}} >
       {
           Alert.alert(item.Status)
       }
+
+buyClick=()=>{
+  this.setState({
+    BuyIcon:require('./assets/buywhite.png'),
+    Buycolor1:'#81DCF9',
+    Buycolor2:'#00a5ff',
+    Buycolor3:'#1a5fe1'
+            })
+            this.ExchangeReset()
+            this.Publicreset()
+            this.SellReset()
+            this.props.navigation.navigate('Buy')
+}
+SellClick=()=>{
+  this.setState({
+    SellIcon:require('./assets/sellwhite.png'),
+    sellcolor1:'#81DCF9',
+    sellcolor2:'#00a5ff',
+    sellcolor3:'#1a5fe1'
+            })
+            this.ExchangeReset()
+            this.Publicreset()
+            this.BuyReset()
+            this.props.navigation.navigate('Sell')
+}
+publicClick=()=>{
+  this.setState({
+    PublicIcon:require('./assets/publicationwhite.png'),
+    publishcolor1:'#81DCF9',
+    publishcolor2:'#00a5ff',
+    publishcolor3:'#1a5fe1'
+            })
+            this.ExchangeReset()
+            this.BuyReset()
+            this.SellReset()
+            this.props.navigation.navigate('Publish')
+}
+
       ExchangeClick=()=>{
          
         this.setState({
@@ -581,7 +621,50 @@ Exchangecolor1:'#81DCF9',
 Exchangecolor2:'#00a5ff',
 Exchangecolor3:'#1a5fe1'
         })
+        this.BuyReset()
+        this.Publicreset()
+        this.SellReset()
         this.props.navigation.navigate('Exchange')
+
+      }
+
+
+      ExchangeReset=()=>{
+        this.setState({
+          ExchangeIcon:require('./assets/exchangenew.png'),
+          Exchangecolor1:'transparent',
+          Exchangecolor2:'transparent',
+          Exchangecolor3:'transparent'
+                  })
+
+      }
+      SellReset=()=>{
+        this.setState({
+          SellIcon:require('./assets/sell.png'),
+          sellcolor1:'transparent',
+          sellcolor2:'transparent',
+          sellcolor3:'transparent'
+                  })
+
+      }
+      BuyReset=()=>{
+        this.setState({
+         BuyIcon:require('./assets/buy.png'),
+         Buycolor1:'transparent',
+         Buycolor2:'transparent',
+         Buycolor3:'transparent',
+     
+                  })
+
+      }
+      Publicreset=()=>{
+        this.setState({
+        PublicIcon:require('./assets/publication.png'),
+        publishcolor1:'transparent',
+        publishcolor2:'transparent',
+        publishcolor3:'transparent',
+     
+                  })
 
       }
 }

@@ -331,24 +331,24 @@ SlideMenu=()=>{
           
 <View style={{flex:1}}>
 
-          <LinearGradient  colors={['#fff','#CCCFE2','#CCCFE2']} style={{marginTop:60}} >
+          <LinearGradient  colors= {['#2b3f74','#232d51','#232d51']} style={{marginTop:60}} >
    <ScrollView>
-<View style={{marginTop:20,backgroundColor:'#fff'}}>   
+<View style={{marginTop:20,backgroundColor:'transparent'}}>   
 
 <View
   style={{
     marginTop:10,
-    borderBottomColor: '#D3D3D3',marginBottom:10,
+    borderBottomColor: '#394d88',marginBottom:10,
     borderBottomWidth: 1,
   }}
 />
 <View style={{flexDirection:'row',marginLeft:20}}>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10}}>User</Text>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>User</Text>
 </View>  
 
 <View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,textAlign:'center'}}>Yotemplario</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10,textAlign:'center'}}>Yotemplario</Text> 
 <Text style={{fontSize:12,fontWeight:'bold',color:'#42f477',marginTop:-5}}>500+</Text> 
 </View>  
 
@@ -356,95 +356,95 @@ SlideMenu=()=>{
 <View
   style={{
     marginTop:10,
-    borderBottomColor: '#D3D3D3',marginBottom:10,
+    borderBottomColor: '#394d88',marginBottom:10,
     borderBottomWidth: 1,
   }}
 />
 <View style={{flexDirection:'row',marginLeft:20}}>  
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10}}>Price</Text>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Price</Text>
 </View>
 
 <View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>15,650,000.0 COP</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10}}>15,650,000.0 COP</Text> 
 </View>  
 
 </View>
 <View
   style={{
     marginTop:10,
-    borderBottomColor: '#D3D3D3',marginBottom:10,
+    borderBottomColor: '#394d88',marginBottom:10,
     borderBottomWidth: 1,
   }}
 />
 <View style={{flexDirection:'row',marginLeft:20}}>  
 <View  style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10}}>Country</Text>  
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Country</Text>  
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Columbia</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10}}>Columbia</Text> 
 </View>
 </View>
 <View
   style={{
     marginTop:10,
-    borderBottomColor: '#D3D3D3',
+    borderBottomColor: '#394d88',
     borderBottomWidth: 1,
   }}
 />
 <View style={{flexDirection:'row',marginLeft:20}}>  
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10}}>Commercial Limits</Text>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Commercial Limits</Text>
 </View>
   <View style={{flex:1}}>
-  <Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>1000-100,00,00 COP</Text> 
+  <Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10}}>1000-100,00,00 COP</Text> 
   </View>
 
 </View>
 <View
   style={{
     marginTop:10,
-    borderBottomColor: '#D3D3D3',
+    borderBottomColor: '#394d88',
     borderBottomWidth: 1,
   }}
 />
-<View style={{height:70,width:'100%',backgroundColor:'#eaeaf9'}}></View>
+<View style={{height:70,width:'100%',backgroundColor:'transparent'}}></View>
 <View style={{flexDirection:'row',marginLeft:20}}>  
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10}}>Title</Text>  
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Title</Text>  
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Bank Transfer</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10}}>Bank Transfer</Text> 
 </View>
 
 </View>
 <View
   style={{
     marginTop:10,
-    borderBottomColor: '#D3D3D3',
+    borderBottomColor: '#394d88',
     borderBottomWidth: 1,
   }}
 />
 <View style={{flexDirection:'row',marginLeft:20}}>  
 <View style={{flex:2.2}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#000000',marginTop:10}}>Description</Text>  
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Description</Text>  
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,marginLeft:-10}}>Transfer data</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10,marginLeft:-10}}>Transfer data</Text> 
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:20,fontWeight:'bold',color:'#4286f4',marginTop:-5}}>...</Text> 
+<Text style={{fontSize:20,fontWeight:'bold',color:'#a9b4d4',marginTop:-5}}>...</Text> 
 </View>
 
 </View>
 <View
   style={{
     marginTop:10,
-    borderBottomColor: '#D3D3D3',
+    borderBottomColor: '#394d88',
     borderBottomWidth: 1,
   }}
 />
-<View style={{backgroundColor:'#CCCFE2'}}>
+<View style={{backgroundColor:'transparent'}}>
 <View style={{marginLeft:30,marginRight:30,marginTop:30,marginBottom:100,width:"100%"}}>
 <View style={{width:"80%",borderRadius:10}}>
 <LinearGradient colors={['#41da9c','#36deaf','#26e3ca']} style={{padding:12,backgroundColor:'green',justifyContent:'center',alignItems:'center',marginLeft:10}}>
@@ -468,88 +468,100 @@ SlideMenu=()=>{
     borderRadius: 100/2,
     backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
    
-    <Image  style={{width: 60, height: 60}}  source={require('./assets/walletpurse.png')} ></Image>
+    <Image  style={{width: 60, height: 60}}  source={require('./assets/buywhite.png')} ></Image>
     
             
           </LinearGradient> 
  
-    <View  style={{justifyContent:'flex-end',alignItems:'flex-end', top: 0,marginBottom:30,position:'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,}}>
-     <TouchableOpacity onPress={this.SlideMenu}>
-     <View style={{backgroundColor:'#5099f0',height:this.state.Ahr,width:this.state.Awr,justifyContent:'center',alignItems:'flex-start',borderTopStartRadius:40,borderBottomStartRadius:40, marginTop:10}}>
-           
-       <View style={{flexDirection: 'row',marginRight:20,}}> 
+          <View style={{ width: '100%',
+    height: 70,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute', 
+    bottom: 0,}}>
+<LinearGradient colors= {['#1a5fe1','#00a5ff','#00a5ff']} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
+    <View style={{flexDirection: 'row',marginRight:20,marginLeft:20,alignItems:"center",justifyContent:'center'}}> 
        <TouchableOpacity onPress={this.AppTouch}>
-       <View style={{  width: 40,marginLeft:20,
-    height: 40,
-    borderRadius: 40/2,
-    backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
-   
-    <Image  style={{width: 20, height: 20}}  source={this.state.app1icon} ></Image>
     
-            
-          </View> 
-          </TouchableOpacity> 
-          <TouchableOpacity onPress={this.App6Touch}>
-       <View style={{  width: 40,marginLeft:20,
+       <View style={{ width: 40,marginLeft:10,
     height: 40,
     borderRadius: 40/2,
-    backgroundColor:this.state.app6color,justifyContent:'center',alignItems:"center"}} >
+  justifyContent:'center',alignItems:"center"}} >
+  
+    <Image style={{width:20,height:20}}   source={this.state.app5icon} ></Image> 
+          </View>  
+       
+          </TouchableOpacity>  
+          <TouchableOpacity >
+       
+       <View style={{ width: 40,marginLeft:10,backgroundColor:this.state.app1color,
+ height: 40,
+ borderRadius: 40/2,
+justifyContent:'center',alignItems:"center"}} >
+
+ <Image style={{width:20,height:20}}   source={this.state.app1icon} ></Image> 
+       </View>    
+              
+       </TouchableOpacity>   
+          <TouchableOpacity onPress={this.App6Touch}>
+      
+          <View style={{  width: 40,marginLeft:20,
+    height: 40,
+    borderRadius: 40/2,
+   justifyContent:'center',alignItems:"center"}} >
    
     <Image  style={{width: 20, height: 20}}  source={this.state.app6icon} ></Image>
     
             
           </View> 
-          </TouchableOpacity>   
+       
+       
+          </TouchableOpacity>  
           <TouchableOpacity onPress={this.App2Touch}>
+    
           <View style={{  width: 40,marginLeft:10,
     height: 40,
     borderRadius: 40/2,
-    backgroundColor:this.state.app2color,justifyContent:'center',alignItems:"center"}} >
+  justifyContent:'center',alignItems:"center"}} >
   
     <Image style={{width:20,height:20}}   source={this.state.app2icon} ></Image> 
    
         
           </View> 
+      
+          
           </TouchableOpacity>  
           <TouchableOpacity onPress={this.App3Touch}>
+   
           <View style={{  width: 40,marginLeft:10,
     height: 40,
     borderRadius: 40/2,
-    backgroundColor: this.state.app3color,justifyContent:'center',alignItems:"center"}} >
+   justifyContent:'center',alignItems:"center"}} >
     
      <Image style={{width:20,height:20}}   source={this.state.app3icon} ></Image>
     
            
           </View>   
+       
+         
           </TouchableOpacity>
           <TouchableOpacity onPress={this.App4Touch}>
+     
           <View style={{  width: 40,marginLeft:10,
     height: 40,
     borderRadius: 40/2,
-    backgroundColor: this.state.app4color,justifyContent:'center',alignItems:"center"}} >
+   justifyContent:'center',alignItems:"center"}} >
     
      <Image style={{width:20,height:20}}   source={this.state.app4icon} ></Image> 
     
             
           </View>  
+         
           </TouchableOpacity> 
-          <TouchableOpacity onPress={this.App5Touch}>
-          <View style={{ backgroundColor:'red',width: 40,marginLeft:10,
-    height: 40,
-    borderRadius: 40/2,
-    backgroundColor: this.state.app5color,justifyContent:'center',alignItems:"center"}} >
-  
-    <Image style={{width:20,height:20}}   source={this.state.app5icon} ></Image> 
-          </View>         
-          </TouchableOpacity>
-     
+          
           </View>
-            </View>
-            </TouchableOpacity>
-      </View>
+          </LinearGradient>  
+</View>
       </View>
      </View>
   
@@ -568,7 +580,7 @@ const styles = StyleSheet.create({
  
   Maincontainers: {
     flex: 1,   
-    backgroundColor: '#fff',
+    backgroundColor: '#2b3f74',
   },
   containers: {
    backgroundColor: '#fff',

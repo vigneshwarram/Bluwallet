@@ -41,6 +41,10 @@ export default class  Publish  extends React.Component {
       slide:false,
       visible: false,
       hidden: false,
+      PurchaseColor:'#fff',
+      SalesColor:'transparent',
+      PurchaseOpacity:1,
+      SalesOpacity:0.6,
       app1color:'#fff',
       app6color:'#5099f0',
       app2color:'#5099f0',
@@ -258,6 +262,23 @@ SlideMenu=()=>{
     })
    // this.props.navigation.navigate('Profile')
   }
+  PurchaseTab=()=>{
+    this.setState({
+      PurchaseOpacity:1,
+      SalesOpacity:0.5,
+      SalesColor:'transparent',
+      PurchaseColor:'#fff'
+    })
+  }
+  SalesTab=()=>{
+    this.setState({
+  PurchaseOpacity:0.5,
+  SalesOpacity:1,
+  SalesColor:'#fff',
+  PurchaseColor:'transparent'
+
+    })
+  }
   render() {
     const data = [ 50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100 ]
     const Line = ({ line }) => (
@@ -286,34 +307,43 @@ SlideMenu=()=>{
       <LinearGradient
    colors={['#1a5fe1','#5DBCD2','#81DCF9']} style={{height:'100%',marginRight:30,marginTop:30}}>
  <View style={{justifyContent:'center',alignItems:'center'}}>
+
           <View style={{flexDirection:'row',marginTop:10}}>
           <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/app4.png")} ></Image>     
           <Text style={{fontSize:20,fontWeight:'bold',color:'#fff'}}>Exchange</Text>
           </View>
+         
           <View style={{flexDirection:'row',marginTop:10}}>
+          <TouchableOpacity onPress={this.PurchaseTab}>
           <View>
-          <Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>Purchases</Text>  
+          <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',opacity:this.state.PurchaseOpacity}}>Purchases</Text>  
           <View
   style={{
     marginLeft:10,marginRight:10,
     marginTop:5,
     width:'50%',
-    borderBottomColor: '#fff',marginBottom:10,
+    borderBottomColor: this.state.PurchaseColor,marginBottom:10,
     borderBottomWidth: 1,
   }}
 />  
           </View>
-         <View>
-         <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:30}}>Sales</Text>
+          </TouchableOpacity>
+
+        <TouchableOpacity onPress={this.SalesTab}>
+        <View>
+         <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:30,opacity:this.state.SalesOpacity}}>Sales</Text>
          <View
   style={{
     marginLeft:30,marginRight:30,
     marginTop:5,
-    borderBottomColor: '#fff',marginBottom:10,
+    width:'50%',
+    borderBottomColor: this.state.SalesColor,marginBottom:10,
     borderBottomWidth: 1,
   }}
 />  
          </View>
+        </TouchableOpacity>
+       
           
           </View>
           <View style={{width:'80%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:20, justifyContent:"center"}}>
@@ -333,7 +363,7 @@ SlideMenu=()=>{
     borderRadius: 100/2,
     backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
    
-    <Image  style={{width: 60, height: 60}}  source={require('./assets/publication.png')} ></Image>
+    <Image  style={{width: 60, height: 60}}  source={require('./assets/publicationwhite.png')} ></Image>
     
             
           </LinearGradient> 
@@ -342,63 +372,49 @@ SlideMenu=()=>{
 
 
           </LinearGradient>    
-    <LinearGradient  colors={['#fff','#CCCFE2','#CCCFE2']} style={{marginTop:'20%',position:'absolute',height:'100%',
+    <LinearGradient  colors= {['#2b3f74','#232d51','#232d51']} style={{marginTop:'20%',position:'absolute',height:'100%',
         top:'30%',left: 0,
         right: 0}}>
-    <View
-  style={{
-    marginLeft:30,marginRight:30,
-    marginTop:10,
-    borderBottomColor: '#D3D3D3',marginBottom:10,
-    borderBottomWidth: 1,
-  }}
-/>  
-
 <FlatList 
       ItemSeparatorComponent={this.space}
       data={this.state.dataSource}
           renderItem={({item,separators})  =>
         <TouchableOpacity onShowUnderlay={separators.highlight}
       onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
-      <View style={{backgroundColor:(item.Status=='Completed')?'#fff':'#fff',marginLeft:30,marginRight:30, shadowOffset: { width: 10, height: 10 },
+      <View style={{marginLeft:30,marginRight:30, shadowOffset: { width: 10, height: 10 },
    borderWidth: 1,
-  borderColor: '#D3D3D3',
+  borderColor: '#394d88',
   borderBottomWidth: 0,
-  shadowColor: '#000',
+  shadowColor: '#394d88',
   shadowOffset: { width: 0, height: 12 },
   shadowOpacity: 0.8,
   shadowRadius: 2,
   elevation: 24,
   borderRadius:25}}>
   <LinearGradient
-   colors={[(item.Status=='Completed')?'#fff':'#fff', (item.Status=='Completed')?'#fff':'#fff', (item.Status=='Completed')?'#fff':'#fff']} style={{ borderRadius:25}}>
+   colors={['#374c8d', '#32437b','#2c3868']} style={{ borderRadius:25}}>
         <View style={{flexDirection:'row',padding:10,justifyContent:'space-between'}}>
           <View style={{flexDirection:'column'}}>
                   
      
      <View style={{flex:1, flexDirection:'row',justifyContent:'space-between'}}>
      <View style={{flexDirection:'row'}}>
-     <Text  style={{marginRight:10,marginTop:10,color:(item.Status!='Completed')?'#000000':'#000000'}}>{(item.Status=='Completed')?'etemplario':'santiagolp92'}</Text>  
-     <Text  style={{marginRight:10,marginTop:10,fontSize:7,color:(item.Status!='Completed')?'#42f477':'#42f477'}}>500+</Text>      
-     <Text  style={{marginRight:10,marginTop:10,marginLeft:10, color:(item.Status!='Completed')?'#000000':'#000000'}}>{(item.Status=='Completed')?'15,650,000.0':'5000$'}</Text> 
+     <Text  style={{marginRight:10,marginTop:10,color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>{(item.Status=='Completed')?'etemplario':'santiagolp92'}</Text>  
+     <Text  style={{marginRight:10,marginTop:10,fontSize:10,color:(item.Status!='Completed')?'#5280d5':'#5280d5'}}>100</Text>         
      </View>   
-     </View>
-        
-   
-     <View style={{flex:1, flexDirection:'row',justifyContent:'space-between'}}>
- 
-     <View style={{flexDirection:'row'}}>
-     <Text  style={{marginRight:10,marginTop:10,color:(item.Status!='Completed')?'#5099f0':'#5099f0'}}>{(item.Status=='Completed')?'Cryptocurrency':'wiretransfer'}</Text>          
-     <Text  style={{marginTop:10,marginLeft:20, color:(item.Status!='Completed')?'#5099f0':'#5099f0'}}>{(item.Status=='Completed')?'COP':'PAYPAL'}</Text>  
-     </View>      
-      <View style={{width:'35%',marginLeft:30}}>
-          <LinearGradient colors={['#5877ff','#5b6cff','#6055ff']} style={{padding:7,borderRadius:10,backgroundColor:'green',justifyContent:'center',alignItems:'center'}}>
+     <View>
+     <Text  style={{marginRight:10,marginTop:10,marginLeft:10, color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>{(item.Status=='Completed')?'90.000':'90.000'}</Text> 
+     <Text  style={{marginTop:10,marginLeft:10, color:(item.Status!='Completed')?'#5280d5':'#5280d5'}}>{(item.Status=='Completed')?'ETH':'BTC'}</Text>  
+     </View>  
+     <View style={{width:'35%',marginTop:30}}>
+          <LinearGradient colors={['#8595e0','#9a89f9','#c37bf8']} style={{padding:7,borderRadius:10,backgroundColor:'green',justifyContent:'center',alignItems:'center'}}>
 <TouchableOpacity onPress={()=>this.props.navigation.navigate('Payment')}>
-<Text style={{color:'#fff'}}>To Buy</Text></TouchableOpacity>
+<Text style={{color:'#fff'}}>Exchange</Text></TouchableOpacity>
 </LinearGradient>
           </View>
-           
-     </View>  
+     </View>
+        
+  
           </View>
           
         </View>
@@ -426,83 +442,95 @@ SlideMenu=()=>{
 
 
  
-    <View  style={{justifyContent:'flex-end',alignItems:'flex-end', top: 0,marginBottom:30,position:'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,}}>
-     <TouchableOpacity onPress={this.SlideMenu}>
-     <View style={{backgroundColor:'#5099f0',height:this.state.Ahr,width:this.state.Awr,justifyContent:'center',alignItems:'flex-start',borderTopStartRadius:40,borderBottomStartRadius:40, marginTop:10}}>
-           
-       <View style={{flexDirection: 'row',marginRight:20,}}> 
+<View style={{ width: '100%',
+    height: 70,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute', 
+    bottom: 0,}}>
+<LinearGradient colors= {['#1a5fe1','#00a5ff','#00a5ff']} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
+    <View style={{flexDirection: 'row',marginRight:20,marginLeft:20,alignItems:"center",justifyContent:'center'}}> 
        <TouchableOpacity onPress={this.AppTouch}>
-       <View style={{  width: 40,marginLeft:20,
-    height: 40,
-    borderRadius: 40/2,
-    backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
-   
-    <Image  style={{width: 20, height: 20}}  source={this.state.app1icon} ></Image>
     
-            
-          </View> 
-          </TouchableOpacity> 
-          <TouchableOpacity onPress={this.App6Touch}>
-       <View style={{  width: 40,marginLeft:20,
+       <View style={{ width: 40,marginLeft:10,
     height: 40,
     borderRadius: 40/2,
-    backgroundColor:this.state.app6color,justifyContent:'center',alignItems:"center"}} >
+  justifyContent:'center',alignItems:"center"}} >
+  
+    <Image style={{width:20,height:20}}   source={this.state.app5icon} ></Image> 
+          </View>  
+       
+          </TouchableOpacity>  
+          <TouchableOpacity >
+       
+       <View style={{ width: 40,marginLeft:10,backgroundColor:this.state.app1color,
+ height: 40,
+ borderRadius: 40/2,
+justifyContent:'center',alignItems:"center"}} >
+
+ <Image style={{width:20,height:20}}   source={this.state.app1icon} ></Image> 
+       </View>    
+              
+       </TouchableOpacity>   
+          <TouchableOpacity onPress={this.App6Touch}>
+      
+          <View style={{  width: 40,marginLeft:20,
+    height: 40,
+    borderRadius: 40/2,
+   justifyContent:'center',alignItems:"center"}} >
    
     <Image  style={{width: 20, height: 20}}  source={this.state.app6icon} ></Image>
     
             
           </View> 
-          </TouchableOpacity>   
+       
+       
+          </TouchableOpacity>  
           <TouchableOpacity onPress={this.App2Touch}>
+    
           <View style={{  width: 40,marginLeft:10,
     height: 40,
     borderRadius: 40/2,
-    backgroundColor:this.state.app2color,justifyContent:'center',alignItems:"center"}} >
+  justifyContent:'center',alignItems:"center"}} >
   
     <Image style={{width:20,height:20}}   source={this.state.app2icon} ></Image> 
    
         
           </View> 
+      
+          
           </TouchableOpacity>  
           <TouchableOpacity onPress={this.App3Touch}>
+   
           <View style={{  width: 40,marginLeft:10,
     height: 40,
     borderRadius: 40/2,
-    backgroundColor: this.state.app3color,justifyContent:'center',alignItems:"center"}} >
+   justifyContent:'center',alignItems:"center"}} >
     
      <Image style={{width:20,height:20}}   source={this.state.app3icon} ></Image>
     
            
           </View>   
+       
+         
           </TouchableOpacity>
           <TouchableOpacity onPress={this.App4Touch}>
+     
           <View style={{  width: 40,marginLeft:10,
     height: 40,
     borderRadius: 40/2,
-    backgroundColor: this.state.app4color,justifyContent:'center',alignItems:"center"}} >
+   justifyContent:'center',alignItems:"center"}} >
     
      <Image style={{width:20,height:20}}   source={this.state.app4icon} ></Image> 
     
             
           </View>  
+         
           </TouchableOpacity> 
-          <TouchableOpacity onPress={this.App5Touch}>
-          <View style={{ backgroundColor:'red',width: 40,marginLeft:10,
-    height: 40,
-    borderRadius: 40/2,
-    backgroundColor: this.state.app5color,justifyContent:'center',alignItems:"center"}} >
-  
-    <Image style={{width:20,height:20}}   source={this.state.app5icon} ></Image> 
-          </View>         
-          </TouchableOpacity>
-     
+          
           </View>
-            </View>
-            </TouchableOpacity>
-      </View>
+          </LinearGradient>  
+</View>
      </View>
   
     
@@ -520,7 +548,7 @@ const styles = StyleSheet.create({
  
   Maincontainers: {
     flex: 1,   
-    backgroundColor: '#fff',
+    backgroundColor: '#2b3f74',
   },
   containers: {
    backgroundColor: '#fff',

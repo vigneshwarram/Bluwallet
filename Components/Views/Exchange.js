@@ -121,6 +121,7 @@ pressRight=()=>{
     this.setState({clickr:false})
 }
 }
+
 SlideMenu=()=>{
   if(!this.state.slide){
     LayoutAnimation.spring();
@@ -333,11 +334,14 @@ SlideMenu=()=>{
 
           <LinearGradient  colors= {['#2b3f74','#232d51','#232d51']} style={{marginTop:60}} >
    <ScrollView>
-<View style={{marginTop:20,backgroundColor:'transparent'}}>   
+<View style={{marginTop:20,backgroundColor:'transparent'}}>  
+<View style={{justifyContent:'center',alignItems:'center'}}>
+<Text style={{fontSize:30,fontWeight:'bold',color:'#fff',marginTop:10}}>$ 0.00</Text>
+</View> 
 
 <View
   style={{
-    marginTop:10,
+    marginTop:30,
     borderBottomColor: '#394d88',marginBottom:10,
     borderBottomWidth: 1,
   }}
@@ -463,7 +467,7 @@ SlideMenu=()=>{
    
       
     
-         <LinearGradient colors={['#81DCF9','#5099f0','#1a5fe1']} style={{  width: 100,marginLeft:20,position:'absolute',top:-20,left:120,right:100,bottom:50,
+         <LinearGradient colors={['#81DCF9','#5099f0','#1a5fe1']} style={{  width: 100,marginLeft:35,position:'absolute',top:-20,left:120,right:100,bottom:50,
     height: 100,
     borderRadius: 100/2,
     backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
