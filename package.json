@@ -12,6 +12,7 @@
     "react": "16.6.3",
     "react-native": "0.58.4",
     "react-native-card-view": "0.0.3",
+    "react-native-custom-picker": "^0.4.0",
     "react-native-device-detection": "^0.2.0",
     "react-native-device-info": "^1.1.0",
     "react-native-firebase": "^5.2.5",

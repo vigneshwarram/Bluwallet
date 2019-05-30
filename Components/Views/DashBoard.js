@@ -7,7 +7,7 @@ import Logo from '../logo'
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
 import LinearGradient from 'react-native-linear-gradient';
-import { FlatList } from 'react-native-gesture-handler';
+import { FlatList, ScrollView } from 'react-native-gesture-handler';
 export default class DashBoard extends React.Component {
 
   static navigationOptions = {
@@ -141,33 +141,8 @@ HideMenu=()=>{
 }
 AppTouch=()=>{
   this.setState({
-    app2color:'#5099f0',
-    app1color:'#fff',
-    app3color:'#5099f0',
-    app5color:'#5099f0',
-    app4color:'#5099f0',
-    app1icon:require('./assets/app1.png'),
-    app2icon:require('./assets/app2.png'),
-    app3icon:require('./assets/app3.png'),
-    app4icon:require('./assets/app4.png'),
-    app5icon:require('./assets/app5.png'),
-
   })
-  LayoutAnimation.spring();
-  if(!this.state.clickopen){
-    if(this.state.Awr>80)
-    {
-      this.setState({Awr:80,clickopen:false})
-    }
-    else
-    {
-      this.setState({Awr:this.state.Awr+250,clickopen:true})
-    }
-   
-  }
-  else{
-    this.setState({Awr:80,clickopen:false})
-  }
+  this.props.navigation.navigate('Profile');
   
 }
 App2Touch=()=>{
@@ -260,6 +235,7 @@ App6Touch=()=>{
   this.props.navigation.navigate('CreditCard')
 }
   render() {
+
     const { navigate } = this.props.navigation;
     const data = [ 100, 500, 1000, 500, 400, 600,800,400,300,500 ]
     const Line = ({ line }) => (
@@ -281,6 +257,7 @@ App6Touch=()=>{
     return (  
       <View style={styles.Maincontainers}>    
       <LinearGradient colors= {['#2b3f74','#232d51','#232d51']}>
+      <ScrollView>
       <View style={{justifyContent:'space-between',flexDirection:'row'}}>  
 <LinearGradient colors={['#f4347f','#f85276','#fe7a6e']} style={{justifyContent:'center',height:this.state.h,width:this.state.w, alignItems:'flex-end', marginTop:10,borderTopRightRadius:25,borderBottomRightRadius:25}}>
 <TouchableOpacity onPress={this._onPress}>
@@ -310,21 +287,22 @@ App6Touch=()=>{
       </View>
    
       
-    <View style={{marginTop:10,justifyContent:'center',alignItems:'center'}}>  
-    <View style={{justifyContent:'space-between',flexDirection:'row'}}>
-    <View>
+    <View style={{marginTop:10}}>  
+    <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',marginLeft:50}}>
+    <View style={{flex:1}}>
     <Text style={{marginLeft:10,marginTop:15,fontSize:12,fontWeight:'bold',color:'#4d6bc1'}}>Monerp</Text> 
-    <Image style={{marginLeft:10,width: 30, height: 30,opacity:0.5,marginTop:10}}   source={require("./assets/Bicon.png")} ></Image>     
+    <Image style={{height:80,width:60,opacity:0.1,marginTop:10}}   source={require("./assets/micon.png")} ></Image>     
     </View>          
    
-    <View>
-    <Text style={{marginLeft:10,marginTop:15,fontSize:12,fontWeight:'bold',color:'#fff'}}>Etherium</Text> 
-    <Image style={{marginLeft:10,width: 60, height: 100,marginTop:10}}   source={require("./assets/diablue.png")} ></Image>     
+    <View style={{flex:1}}>
+    <Text style={{marginTop:15,fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:20}}>Etherium</Text> 
+    <Image
+        style={{height:140,width:80 ,marginTop:10,opacity:1,shadowOpacity:1,shadowColor:'#4d6bc1'}}   source={require("./assets/etherem.png")} ></Image>     
     </View>      
      
-    <View>
+    <View style={{flex:1}} >
     <Text style={{marginLeft:10,marginTop:15,fontSize:12,fontWeight:'bold',color:'#4d6bc1'}}>Bitcoin</Text> 
-    <Image style={{marginLeft:10,width: 30, height: 30,opacity:0.5,marginTop:10}}   source={require("./assets/Bicon.png")} ></Image>          
+    <Image style={{height:80,width:60,opacity:0.1,marginTop:10}}   source={require("./assets/bgbicon.png")} ></Image>
     </View>    
     </View>
     
@@ -414,12 +392,24 @@ justifyContent:'center',alignItems:"center"}} >
                  </View> 
                 
                  </View>             
-                 <View>
-                  
-                 </View>
+                 
                </View>
-
-                 <FlatList  style={{marginTop:20}}
+<View style={{height:'100%'}}>
+<View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:30,marginRight:30,marginTop:10}}>
+                 <Text style={{marginLeft:20,fontSize:15,fontWeight:'bold',color:'#4d6bc1'}}>Activity</Text>
+                 <View style={{padding:5,backgroundColor:'#2b4599',justifyContent:'center',alignItems:'center',borderRadius:20}}>
+                 <Picker selectedValue={this.state.language}
+  itemStyle={{ backgroundColor: "#fff", color: "#fff", fontSize:10,fontWeight:'bold' }}
+  style={{height: 20, width: 50}}
+  onValueChange={(itemValue, itemIndex) =>
+    this.setState({language: itemValue})
+  }>
+  <Picker.Item label="Java" value="java" />
+  <Picker.Item label="JavaScript" value="js" />
+</Picker>
+                 </View>
+                 </View>
+<FlatList  style={{marginTop:10}}
       ItemSeparatorComponent={this.space}
       data={this.state.dataSource}
           renderItem={({item,separators})  =>
@@ -438,27 +428,32 @@ justifyContent:'center',alignItems:"center"}} >
   <LinearGradient
    colors={['#374c8d', '#32437b','#2c3868']} style={{ borderRadius:25}}>
         <View style={{alignItems:'center',flexDirection:'row',padding:15}}>
-        <View style={{  width: 40,
-    height: 40,
-    borderRadius: 40/2,
-    backgroundColor: '#fff',justifyContent:'center',alignItems:"center"}} >
-          <Image  style={{width: 30, height: 30}}  source={require("./assets/greenD.png")} ></Image>  
+        {(
+          (item.Status!='Completed')?<View style={{
+     justifyContent:'center',alignItems:"center"}} >
+          <Image  style={{width: 30, height: 30}}  source={require("./assets/redicon.png")} ></Image>  
+          </View>:  <View style={{
+     justifyContent:'center',alignItems:"center"}} >
+          <Image  style={{width: 30, height: 30}}  source={require("./assets/exchange.png")} ></Image>  
           </View>
+
+        )}
+      
           <View style={{flexDirection:'column',marginLeft:30}}>
           <View style={{flex:1, flexDirection: 'row',justifyContent:'space-between'}}>            
-         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#162061'}}>{item.Status}</Text>       
+         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff'}}>{(item.Status!='Completed')?'Sent to Dan23':"Confirmed"}</Text>       
      <View style={{flexDirection:'row'}}>
      <Image style={{width: 25,marginTop:10, height: 25}}   source={require("./assets/plusblue.png")} ></Image>    
-     <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#162061'}}>$ 9060</Text> 
+     <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff'}}>$ 9060</Text> 
      </View>
         
      </View>  
      <View style={{flex:1, flexDirection:'row',justifyContent:'space-between'}}>
  
             
-         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#162061'}}>12.38 .782</Text>       
+         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#4d6bc1':'#4d6bc1',fontWeight:'bold'}}>Feb 23 2019  . 11.05</Text>       
      
-      <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#162061'}}>5.4587ETH</Text>    
+      <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#4d6bc1':'#4d6bc1'}}>5.4587ETH</Text>    
      </View>  
           </View>
          
@@ -469,9 +464,11 @@ justifyContent:'center',alignItems:"center"}} >
   </TouchableOpacity>  
        }
     />
+</View>
+                
        
     </View>
-      
+    </ScrollView>
 </LinearGradient>
 <View style={{ width: '100%',
     height: 70,
@@ -492,7 +489,7 @@ justifyContent:'center',alignItems:"center"}} >
           </View>  
        
           </TouchableOpacity>  
-          <TouchableOpacity onPress={this.App5Touch}>
+          <TouchableOpacity >
        
        <View style={{ width: 40,marginLeft:10,backgroundColor:this.state.app1color,
  height: 40,
@@ -583,7 +580,6 @@ const styles = StyleSheet.create({
   containers: {
     backgroundColor: 'transparent',
     marginTop:20,
-   
   },
   activityIndicator: {
     flex: 1,

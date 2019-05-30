@@ -135,32 +135,18 @@ SlideMenu=()=>{
   AppTouch=()=>{
     this.setState({
       app2color:'#5099f0',
-      app1color:'#fff',
+      app1color:'#5099f0',
       app3color:'#5099f0',
-      app5color:'#5099f0',
+    //  app5color:'#fff',
       app4color:'#5099f0',
-      app1icon:require('./assets/app1.png'),
-      app2icon:require('./assets/app2.png'),
+      app1icon:require('./assets/app1white.png'),
+      app2icon:require('./assets/app2-blue.png'),
       app3icon:require('./assets/app3.png'),
       app4icon:require('./assets/app4.png'),
       app5icon:require('./assets/app5.png'),
   
     })
-    LayoutAnimation.spring();
-    if(!this.state.clickopen){
-      if(this.state.Awr>80)
-      {
-        this.setState({Awr:80,clickopen:false})
-      }
-      else
-      {
-        this.setState({Awr:this.state.Awr+250,clickopen:true})
-      }
-     
-    }
-    else{
-      this.setState({Awr:80,clickopen:false})
-    }
+
     
   }
   App2Touch=()=>{
@@ -199,20 +185,7 @@ SlideMenu=()=>{
     this.props.navigation.navigate('Price')
   }
   App4Touch=()=>{
-    this.setState({
-      app3color:'#5099f0',
-      app1color:'#5099f0',
-      app2color:'#5099f0',
-      app5color:'#5099f0',
-      app4color:'#fff',
-      app6color:'#5099f0',
-      app6icon:require('./assets/app6.png'),
-      app1icon:require('./assets/app1white.png'),
-      app2icon:require('./assets/app2.png'),
-      app3icon:require('./assets/app3.png'),
-      app5icon:require('./assets/app5.png'),
-      app4icon:require('./assets/app5-blue.png')
-    })
+    this.props.navigation.navigate('Exchange')
   }
   App5Touch=()=>{
     this.props.navigation.navigate('DashBoard')
@@ -230,7 +203,7 @@ SlideMenu=()=>{
       app3icon:require('./assets/app3.png'),
       app4icon:require('./assets/app4.png'),
       app6icon:require('./assets/app6-blue.png'),
-      app5icon:require('./assets/app5.png'),
+      app5icon:require('./assets/app2-blue.png'),
      
     })
    // this.props.navigation.navigate('Profile')
@@ -531,7 +504,7 @@ right: 0,borderRadius:25,marginTop:-50,
     bottom: 0,}}>
 <LinearGradient colors= {['#1a5fe1','#00a5ff','#00a5ff']} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
     <View style={{flexDirection: 'row',marginRight:20,marginLeft:20,alignItems:"center",justifyContent:'center'}}> 
-       <TouchableOpacity onPress={this.AppTouch}>
+       <TouchableOpacity>
     
        <View style={{ width: 40,marginLeft:10,backgroundColor:this.state.app5color,
     height: 40,

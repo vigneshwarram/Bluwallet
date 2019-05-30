@@ -280,7 +280,9 @@ SlideMenu=()=>{
   }
     return (  
    
-      <View style={styles.Maincontainers}>     
+      <View style={styles.Maincontainers}> 
+      <LinearGradient colors= {['#2b3f74','#232d51','#232d51']} style={styles.Maincontainers}>
+
       <LinearGradient
    colors={['#1a5fe1','#00a5ff','#81DCF9']} style={{height:'30%',}}>    
       <LinearGradient
@@ -334,33 +336,38 @@ SlideMenu=()=>{
 
 
           </LinearGradient>    
-    <LinearGradient  colors={['#fff','#CCCFE2','#CCCFE2']} style={{marginTop:'10%',position:'absolute',height:'100%',
+    <LinearGradient  colors= {['#2b3f74','#232d51','#232d51']} style={{marginTop:'10%',position:'absolute',height:'100%',
         top:'30%',left: 0,
         right: 0}}>
     <ScrollView style={{paddingBottom:10}}>
-    <View style={{alignItems:'center',flexDirection:'row',padding:10,justifyContent:'center'}}>
+    <View style={{flexDirection:'row',padding:10,justifyContent:'space-between',marginLeft:20,marginRight:20}}>
     <TouchableOpacity onPress={()=>this.props.navigation.navigate('Buy')}>
-    <View style={{backgroundColor:'#fff',width:150, height:150,borderWidth:1,borderColor:'#e6e8f1',borderRadius:20,justifyContent:'center',alignItems:'center'}}>
+    <View style={{backgroundColor:'transparent',width:130, height:130,borderWidth:1,borderColor:'#415b94',borderRadius:20,justifyContent:'center',alignItems:'center'}}>
     <Image style={{width:80, height: 80}}   source={require("./assets/buy.png")} ></Image>  
-    <Text style={{fontSize:12,fontWeight:'bold',color:'#000000'}}>To Buy</Text>
+    <Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4'}}>To Buy</Text>
     </View>
     </TouchableOpacity>
     <TouchableOpacity onPress={()=>this.props.navigation.navigate('Sell')}>
-    <View style={{backgroundColor:'#fff',width:150,height:150,marginLeft:20, borderWidth:1,borderColor:'#e6e8f1',borderRadius:20,justifyContent:'center',alignItems:'center'}}>
+    <View style={{backgroundColor:'transparentf',width:130,height:130,marginLeft:20, borderWidth:1,borderColor:'#415b94',borderRadius:20,justifyContent:'center',alignItems:'center'}}>
     <Image style={{width: 80, height: 80}}   source={require("./assets/sell.png")} ></Image> 
-    <Text style={{fontSize:12,fontWeight:'bold',color:'#000000'}}>To Sell</Text>
+    <Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4'}}>To Sell</Text>
     </View>
     </TouchableOpacity>
     </View>  
-    <TouchableOpacity onPress={()=>this.props.navigation.navigate('Publish')}>
-    <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',padding:10, borderRadius:20,}}>
-    <View style={{backgroundColor:'#fff',width:150, height:150,borderWidth:1,borderColor:'#e6e8f1',borderRadius:20,justifyContent:'center',alignItems:'center'}}>
-    <Image style={{width: 85, height: 100}}   source={require("./assets/publication.png")} ></Image> 
-    <Text style={{fontSize:12,fontWeight:'bold',color:'#000000'}}>Publications</Text>
+    <View style={{flexDirection:'row',padding:10,justifyContent:'space-between',marginLeft:20,marginRight:20}}>
+    <TouchableOpacity onPress={()=>this.props.navigation.navigate('Buy')}>
+    <View style={{backgroundColor:'transparent',width:130, height:130,borderWidth:1,borderColor:'#415b94',borderRadius:20,justifyContent:'center',alignItems:'center'}}>
+    <Image style={{width:80, height: 80}}   source={require("./assets/buy.png")} ></Image>  
+    <Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4'}}>To Buy</Text>
     </View>
-
-    </View> 
     </TouchableOpacity>
+    <TouchableOpacity onPress={()=>this.props.navigation.navigate('Sell')}>
+    <View style={{backgroundColor:'transparent',width:130,height:130,marginLeft:20, borderWidth:1,borderColor:'#415b94',borderRadius:20,justifyContent:'center',alignItems:'center'}}>
+    <Image style={{width: 80, height: 80}}   source={require("./assets/sell.png")} ></Image> 
+    <Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4'}}>To Sell</Text>
+    </View>
+    </TouchableOpacity>
+    </View>  
     <View
   style={{
     marginLeft:30,marginRight:30,
@@ -369,62 +376,51 @@ SlideMenu=()=>{
     borderBottomWidth: 1,
   }}
 />  
-<View style={{justifyContent:'space-between',flexDirection:'row',marginLeft:20,marginRight:20}}>
-<Text style={{fontSize:20,fontWeight:'bold',color:'#000000',}}>History</Text>
-<View style={{flexDirection: 'row',marginLeft:20,marginTop:-15}}>
-     <Picker
-         style={{ width: 130,color:'#000000' }}
-          selectedValue={this.state.Coin}
-          itemStyle={{ backgroundColor: "#000000", color: "#000000", fontFamily:"Ebrima", fontSize:15 }}
-          onValueChange={(lang) => this.setState({Coin: lang})}>
-          <Picker.Item label="Purchases" value="Us doller" />
-          <Picker.Item label="Indian" value="js" />
-        </Picker>
-     </View>         
-</View>
-
-<FlatList 
+<FlatList  style={{marginTop:10}}
       ItemSeparatorComponent={this.space}
       data={this.state.dataSource}
           renderItem={({item,separators})  =>
         <TouchableOpacity onShowUnderlay={separators.highlight}
       onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
-      <View style={{backgroundColor:(item.Status=='Completed')?'#fff':'#fff',marginLeft:30,marginRight:30, shadowOffset: { width: 10, height: 10 },
+      <View style={{marginLeft:30,marginRight:30, shadowOffset: { width: 10, height: 10 },
    borderWidth: 1,
-  borderColor: '#96cef7',
+  borderColor: '#394d88',
   borderBottomWidth: 0,
-  shadowColor: '#000',
+  shadowColor: '#394d88',
   shadowOffset: { width: 0, height: 12 },
   shadowOpacity: 0.8,
   shadowRadius: 2,
   elevation: 24,
   borderRadius:25}}>
   <LinearGradient
-   colors={[(item.Status=='Completed')?'#fff':'#fff', (item.Status=='Completed')?'#fff':'#fff', (item.Status=='Completed')?'#fff':'#fff']} style={{ borderRadius:25}}>
+   colors={['#374c8d', '#32437b','#2c3868']} style={{ borderRadius:25}}>
         <View style={{alignItems:'center',flexDirection:'row',padding:15}}>
-        <View style={{  width: 40,
-    height: 40,
-    borderColor:'#C4BEE0',
-    borderWidth:1,
-    borderRadius: 40/2,
-    backgroundColor: '#fff',justifyContent:'center',alignItems:"center"}} >
+        {(
+          (item.Status!='Completed')?<View style={{
+     justifyContent:'center',alignItems:"center"}} >
+          <Image  style={{width: 30, height: 30}}  source={require("./assets/redicon.png")} ></Image>  
+          </View>:  <View style={{
+     justifyContent:'center',alignItems:"center"}} >
           <Image  style={{width: 30, height: 30}}  source={require("./assets/exchange.png")} ></Image>  
           </View>
+
+        )}
+      
           <View style={{flexDirection:'column',marginLeft:30}}>
           <View style={{flex:1, flexDirection: 'row',justifyContent:'space-between'}}>            
-         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#000000':'#000000'}}>Exchanged</Text>       
+         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff'}}>{(item.Status!='Completed')?'Sent to Dan23':"Confirmed"}</Text>       
      <View style={{flexDirection:'row'}}>
      <Image style={{width: 25,marginTop:10, height: 25}}   source={require("./assets/plusblue.png")} ></Image>    
-     <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#000000':'#000000'}}>$ 9060</Text> 
+     <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff'}}>$ 9060</Text> 
      </View>
         
      </View>  
      <View style={{flex:1, flexDirection:'row',justifyContent:'space-between'}}>
  
             
-         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#162061':'#162061'}}>12.38 .782</Text>       
+         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#4d6bc1':'#4d6bc1',fontWeight:'bold'}}>Feb 23 2019  . 11.05</Text>       
      
-      <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#162061':'#162061'}}>5.4587ETH</Text>    
+      <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#4d6bc1':'#4d6bc1'}}>5.4587ETH</Text>    
      </View>  
           </View>
          
@@ -451,88 +447,98 @@ SlideMenu=()=>{
 
 <View  style={{justifyContent:'center',alignItems:'center', top: 130,marginBottom:10,backgroundColor:'transparent',
         }}>
-              <Image  style={{width: 100, height: 100}}  source={require("./assets/three.png")} ></Image> 
+              <Image  style={{width: 100, height: 150}}  source={require("./assets/threelogo.png")} ></Image> 
         </View>
-
-
- 
-    <View  style={{justifyContent:'flex-end',alignItems:'flex-end', top: 0,marginBottom:30,position:'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,}}>
-     <TouchableOpacity onPress={this.SlideMenu}>
-     <View style={{backgroundColor:'#5099f0',height:this.state.Ahr,width:this.state.Awr,justifyContent:'center',alignItems:'flex-start',borderTopStartRadius:40,borderBottomStartRadius:40, marginTop:10}}>
-           
-       <View style={{flexDirection: 'row',marginRight:20,}}> 
+        <View style={{ width: '100%',
+    height: 70,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute', 
+    bottom: 0,}}>
+<LinearGradient colors= {['#1a5fe1','#00a5ff','#00a5ff']} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
+    <View style={{flexDirection: 'row',marginRight:20,marginLeft:20,alignItems:"center",justifyContent:'center'}}> 
        <TouchableOpacity onPress={this.AppTouch}>
-       <View style={{  width: 40,marginLeft:20,
-    height: 40,
-    borderRadius: 40/2,
-    backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
-   
-    <Image  style={{width: 20, height: 20}}  source={this.state.app1icon} ></Image>
     
-            
-          </View> 
-          </TouchableOpacity> 
-          <TouchableOpacity onPress={this.App6Touch}>
-       <View style={{  width: 40,marginLeft:20,
+       <View style={{ width: 40,marginLeft:10,
     height: 40,
     borderRadius: 40/2,
-    backgroundColor:this.state.app6color,justifyContent:'center',alignItems:"center"}} >
+  justifyContent:'center',alignItems:"center"}} >
+  
+    <Image style={{width:20,height:20}}   source={this.state.app5icon} ></Image> 
+          </View>  
+       
+          </TouchableOpacity>  
+          <TouchableOpacity >
+       
+       <View style={{ width: 40,marginLeft:10,backgroundColor:this.state.app1color,
+ height: 40,
+ borderRadius: 40/2,
+justifyContent:'center',alignItems:"center"}} >
+
+ <Image style={{width:20,height:20}}   source={this.state.app1icon} ></Image> 
+       </View>    
+              
+       </TouchableOpacity>   
+          <TouchableOpacity onPress={this.App6Touch}>
+      
+          <View style={{  width: 40,marginLeft:20,
+    height: 40,
+    borderRadius: 40/2,
+   justifyContent:'center',alignItems:"center"}} >
    
     <Image  style={{width: 20, height: 20}}  source={this.state.app6icon} ></Image>
     
             
           </View> 
-          </TouchableOpacity>   
+       
+       
+          </TouchableOpacity>  
           <TouchableOpacity onPress={this.App2Touch}>
+    
           <View style={{  width: 40,marginLeft:10,
     height: 40,
     borderRadius: 40/2,
-    backgroundColor:this.state.app2color,justifyContent:'center',alignItems:"center"}} >
+  justifyContent:'center',alignItems:"center"}} >
   
     <Image style={{width:20,height:20}}   source={this.state.app2icon} ></Image> 
    
         
           </View> 
+      
+          
           </TouchableOpacity>  
           <TouchableOpacity onPress={this.App3Touch}>
+   
           <View style={{  width: 40,marginLeft:10,
     height: 40,
     borderRadius: 40/2,
-    backgroundColor: this.state.app3color,justifyContent:'center',alignItems:"center"}} >
+   justifyContent:'center',alignItems:"center"}} >
     
      <Image style={{width:20,height:20}}   source={this.state.app3icon} ></Image>
     
            
           </View>   
+       
+         
           </TouchableOpacity>
           <TouchableOpacity onPress={this.App4Touch}>
+     
           <View style={{  width: 40,marginLeft:10,
     height: 40,
     borderRadius: 40/2,
-    backgroundColor: this.state.app4color,justifyContent:'center',alignItems:"center"}} >
+   justifyContent:'center',alignItems:"center"}} >
     
      <Image style={{width:20,height:20}}   source={this.state.app4icon} ></Image> 
     
             
           </View>  
+         
           </TouchableOpacity> 
-          <TouchableOpacity onPress={this.App5Touch}>
-          <View style={{ backgroundColor:'red',width: 40,marginLeft:10,
-    height: 40,
-    borderRadius: 40/2,
-    backgroundColor: this.state.app5color,justifyContent:'center',alignItems:"center"}} >
-  
-    <Image style={{width:20,height:20}}   source={this.state.app5icon} ></Image> 
-          </View>         
-          </TouchableOpacity>
-     
+          
           </View>
-            </View>
-            </TouchableOpacity>
-      </View>
+          </LinearGradient>  
+</View>
+      </LinearGradient>
      </View>
   
     
