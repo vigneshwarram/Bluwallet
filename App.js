@@ -5,10 +5,11 @@ import Vault from './Components/Views/Vault'
 import Profile from './Components/Views/Profile'
 import Price from './Components/Views/Price'
 import CreditCard from './Components/Views/CreditCard'
-import Exchange from './Components/Views/Exchange'
+import ExchangeMenu from './Components/Views/ExchangeMenu'
 import Payment from './Components/Views/Payment'
 import Buy from './Components/Views/Buy'
 import Sell from './Components/Views/Sell'
+import Exchange from './Components/Views/Exchange'
 import Country from './Components/Views/Country'
 import BankScreen from './Components/Views/BankScreen'
 import Publish from './Components/Views/Publish'
@@ -23,6 +24,7 @@ import {
       Vault:{screen:Vault},
       Price:{screen:Price},
       CreditCard:{screen:CreditCard},
+      ExchangeMenu:{screen:ExchangeMenu},
       Exchange:{screen:Exchange},
       Payment:{screen:Payment},
       Buy:{screen:Buy},

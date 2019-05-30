@@ -185,7 +185,7 @@ SlideMenu=()=>{
     this.props.navigation.navigate('Price')
   }
   App4Touch=()=>{
-    this.props.navigation.navigate('Exchange')
+    this.props.navigation.navigate('ExchangeMenu')
   }
   App5Touch=()=>{
     this.props.navigation.navigate('DashBoard')

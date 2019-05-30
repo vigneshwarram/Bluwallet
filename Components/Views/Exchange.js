@@ -1,14 +1,15 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet,TextInput, Image,Picker,FlatList,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
+import { View, StyleSheet,TextInput, Image,Picker,ScrollView,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
 import { Alert } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts'
+import { Switch} from 'react-native'
 import * as shape from 'd3-shape'
 import Logo from '../logo'
 import LinearGradient from 'react-native-linear-gradient';
-import { ScrollView } from 'react-native-gesture-handler';
 
-export default class  Exchange  extends React.Component {
+
+export default class  Buy  extends React.Component {
 
   static navigationOptions = {
     header: null
@@ -20,6 +21,7 @@ export default class  Exchange  extends React.Component {
     
     this.state = {
       dataSource:[],
+      switchValue:false,
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
@@ -104,6 +106,9 @@ _onPress=()=>{
     this.setState({click:false})
   }
    
+}
+toggleSwitch=(value)=>{
+  this.setState({switchValue: value})
 }
 pressRight=()=>{
   if(!this.state.clickr){
@@ -280,176 +285,197 @@ SlideMenu=()=>{
   }
     return (  
    
-      <View style={styles.Maincontainers}> 
-      <LinearGradient colors= {['#2b3f74','#232d51','#232d51']} style={styles.Maincontainers}>
-
+      <View style={styles.Maincontainers}>     
       <LinearGradient
-   colors={['#1a5fe1','#00a5ff','#81DCF9']} style={{height:'30%',}}>    
+   colors={['#1a5fe1','#00a5ff','#81DCF9']} style={{height:200,}}>    
       <LinearGradient
-   colors={['#1a5fe1','#5DBCD2','#81DCF9']} style={{height:'100%',marginRight:30,marginTop:30}}>
+   colors={['#1a5fe1','#81DCF9','#81DCF9']} style={{height:250,marginRight:30,marginTop:30}}>
  <View style={{justifyContent:'center',alignItems:'center'}}>
-          <View style={{flexDirection:'row',marginTop:30}}>
+          <View style={{flexDirection:'row',marginTop:20}}>
           <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/app4.png")} ></Image>     
-          <Text style={{fontSize:20,fontWeight:'bold',color:'#fff'}}>Exchange</Text>
-          </View>
-          <View style={{flexDirection:'row',marginTop:10}}>
-          <View>
-          <Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>Purchases</Text>  
-          <View
-  style={{
-    marginLeft:10,marginRight:10,
-    marginTop:5,
-    width:'50%',
-    borderBottomColor: '#fff',marginBottom:10,
-    borderBottomWidth: 1,
-  }}
-/>  
-          </View>
-         <View>
-         <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:30}}>Sales</Text>
-         <View
-  style={{
-    marginLeft:30,marginRight:30,
-    marginTop:5,
-    borderBottomColor: '#fff',marginBottom:10,
-    borderBottomWidth: 1,
-  }}
-/>  
-         </View>
-          
-          </View>
-          <View style={{width:'80%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:20, justifyContent:"center"}}>
-<View style={{flexDirection:'row',marginLeft:20}}>
-<Image  style={{width: 20, height: 20,marginTop:10}}  source={require("./assets/Searchicon.png")} ></Image> 
+          <Text style={{fontSize:18,fontWeight:'bold',color:'#fff'}}>Exchange</Text>
+          </View>      
+          <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10}}>How Much do you want to buy?</Text>           
+          <View style={{flexDirection: 'row',marginLeft:20}}>
+          <View style={{width:'40%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:10, justifyContent:"center"}}>
+<View style={{flexDirection:'row',marginLeft:20}}> 
 <TextInput
           style={{height: 40,}}
        placeholderTextColor='#ffffff'
-          placeholder="Exchange"
+          placeholder="COP 0.000"
           
         />
 </View>
           </View>
-          </View>   
+          <View style={{width:'40%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:10,marginLeft:10, justifyContent:"center"}}>
+<View style={{flexDirection:'row',marginLeft:20}}>
+
+<TextInput
+          style={{height: 40,}}
+       placeholderTextColor='#ffffff'
+          placeholder="BTC 00.0"
           
+        />
+</View>
+          </View>
+    
+     </View>            
+          </View>
+         <View>  
+          </View>
           </LinearGradient>    
          
 
 
-          </LinearGradient>    
-    <LinearGradient  colors= {['#2b3f74','#232d51','#232d51']} style={{marginTop:'10%',position:'absolute',height:'100%',
-        top:'30%',left: 0,
-        right: 0}}>
-    <ScrollView style={{paddingBottom:10}}>
-    <View style={{flexDirection:'row',padding:10,justifyContent:'space-between',marginLeft:20,marginRight:20}}>
-    <TouchableOpacity onPress={()=>this.props.navigation.navigate('Buy')}>
-    <View style={{backgroundColor:'transparent',width:130, height:130,borderWidth:1,borderColor:'#415b94',borderRadius:20,justifyContent:'center',alignItems:'center'}}>
-    <Image style={{width:80, height: 80}}   source={require("./assets/buy.png")} ></Image>  
-    <Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4'}}>To Buy</Text>
-    </View>
-    </TouchableOpacity>
-    <TouchableOpacity onPress={()=>this.props.navigation.navigate('Sell')}>
-    <View style={{backgroundColor:'transparentf',width:130,height:130,marginLeft:20, borderWidth:1,borderColor:'#415b94',borderRadius:20,justifyContent:'center',alignItems:'center'}}>
-    <Image style={{width: 80, height: 80}}   source={require("./assets/sell.png")} ></Image> 
-    <Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4'}}>To Sell</Text>
-    </View>
-    </TouchableOpacity>
-    </View>  
-    <View style={{flexDirection:'row',padding:10,justifyContent:'space-between',marginLeft:20,marginRight:20}}>
-    <TouchableOpacity onPress={()=>this.props.navigation.navigate('Buy')}>
-    <View style={{backgroundColor:'transparent',width:130, height:130,borderWidth:1,borderColor:'#415b94',borderRadius:20,justifyContent:'center',alignItems:'center'}}>
-    <Image style={{width:80, height: 80}}   source={require("./assets/buy.png")} ></Image>  
-    <Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4'}}>To Buy</Text>
-    </View>
-    </TouchableOpacity>
-    <TouchableOpacity onPress={()=>this.props.navigation.navigate('Sell')}>
-    <View style={{backgroundColor:'transparent',width:130,height:130,marginLeft:20, borderWidth:1,borderColor:'#415b94',borderRadius:20,justifyContent:'center',alignItems:'center'}}>
-    <Image style={{width: 80, height: 80}}   source={require("./assets/sell.png")} ></Image> 
-    <Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4'}}>To Sell</Text>
-    </View>
-    </TouchableOpacity>
-    </View>  
-    <View
+          </LinearGradient> 
+          
+<View style={{flex:1}}>
+
+          <LinearGradient  colors= {['#2b3f74','#232d51','#232d51']} style={{marginTop:60}} >
+   <ScrollView>
+<View style={{marginTop:20,backgroundColor:'transparent'}}>   
+
+<View
   style={{
-    marginLeft:30,marginRight:30,
     marginTop:10,
-    borderBottomColor: '#000000',marginBottom:10,
+    borderBottomColor: '#394d88',marginBottom:10,
     borderBottomWidth: 1,
   }}
-/>  
-<FlatList  style={{marginTop:10}}
-      ItemSeparatorComponent={this.space}
-      data={this.state.dataSource}
-          renderItem={({item,separators})  =>
-        <TouchableOpacity onShowUnderlay={separators.highlight}
-      onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
-      <View style={{marginLeft:30,marginRight:30, shadowOffset: { width: 10, height: 10 },
-   borderWidth: 1,
-  borderColor: '#394d88',
-  borderBottomWidth: 0,
-  shadowColor: '#394d88',
-  shadowOffset: { width: 0, height: 12 },
-  shadowOpacity: 0.8,
-  shadowRadius: 2,
-  elevation: 24,
-  borderRadius:25}}>
-  <LinearGradient
-   colors={['#374c8d', '#32437b','#2c3868']} style={{ borderRadius:25}}>
-        <View style={{alignItems:'center',flexDirection:'row',padding:15}}>
-        {(
-          (item.Status!='Completed')?<View style={{
-     justifyContent:'center',alignItems:"center"}} >
-          <Image  style={{width: 30, height: 30}}  source={require("./assets/redicon.png")} ></Image>  
-          </View>:  <View style={{
-     justifyContent:'center',alignItems:"center"}} >
-          <Image  style={{width: 30, height: 30}}  source={require("./assets/exchange.png")} ></Image>  
-          </View>
+/>
+<View style={{flexDirection:'row',marginLeft:20}}>
+<View style={{flex:1}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#5280d5',marginTop:10}}>BTC Price</Text>
+</View>  
 
-        )}
-      
-          <View style={{flexDirection:'column',marginLeft:30}}>
-          <View style={{flex:1, flexDirection: 'row',justifyContent:'space-between'}}>            
-         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff'}}>{(item.Status!='Completed')?'Sent to Dan23':"Confirmed"}</Text>       
-     <View style={{flexDirection:'row'}}>
-     <Image style={{width: 25,marginTop:10, height: 25}}   source={require("./assets/plusblue.png")} ></Image>    
-     <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff'}}>$ 9060</Text> 
-     </View>
-        
-     </View>  
-     <View style={{flex:1, flexDirection:'row',justifyContent:'space-between'}}>
- 
-            
-         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#4d6bc1':'#4d6bc1',fontWeight:'bold'}}>Feb 23 2019  . 11.05</Text>       
-     
-      <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#4d6bc1':'#4d6bc1'}}>5.4587ETH</Text>    
-     </View>  
-          </View>
-         
-        </View>
-</LinearGradient>
+<View style={{flexDirection:'row',flex:1}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10,textAlign:'center'}}>121ETH</Text> 
+
+</View>  
+
+</View>
+<View
+  style={{
+    marginTop:10,
+    borderBottomColor: '#394d88',marginBottom:10,
+    borderBottomWidth: 1,
+  }}
+/>
+<View style={{flexDirection:'row',marginLeft:20}}>  
+<View style={{flex:1}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#5280d5',marginTop:10}}>BTC price Dolar</Text>
+</View>
+
+<View style={{flexDirection:'row',flex:1}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10}}>455$</Text> 
+</View>  
+
+</View>
+<View
+  style={{
+    marginTop:10,
+    borderBottomColor: '#394d88',marginBottom:10,
+    borderBottomWidth: 1,
+  }}
+/>
+<View style={{flexDirection:'row',marginLeft:20}}>  
+<View  style={{flex:1}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#5280d5',marginTop:10}}>Network fees</Text>  
+</View>
+<View style={{flex:1}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10}}>12ETH-199BTC</Text> 
+</View>
+</View>
+<View
+  style={{
+    marginTop:10,
+    borderBottomColor: '#394d88',
+    borderBottomWidth: 1,
+  }}
+/>
+<View style={{flexDirection:'row',marginLeft:20}}>  
+<View style={{flex:1}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#5280d5',marginTop:10}}>Commercial Limits</Text>
+</View>
+  <View style={{flex:1}}>
+  <Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10}}>1000-100,00,00 COP</Text> 
   </View>
-       
-  </TouchableOpacity>  
-       }
-    />
-   
-   <View
+
+</View>
+<View
   style={{
-    marginLeft:30,marginRight:30,
     marginTop:10,
-    borderBottomColor: '#000000',marginBottom:10,
+    borderBottomColor: '#394d88',
     borderBottomWidth: 1,
   }}
-/>  
-  
-    </ScrollView>
+/>
+<View style={{height:70,width:'100%',backgroundColor:'transparent'}}></View>
+<View style={{flexDirection:'row',marginLeft:20}}>  
+<View style={{flex:1}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#5280d5',marginTop:10}}>Send</Text>  
+</View>
+<View style={{flex:1}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10}}>20ETH</Text> 
+</View>
 
+</View>
+<View
+  style={{
+    marginTop:10,
+    borderBottomColor: '#394d88',
+    borderBottomWidth: 1,
+  }}
+/>
+<View style={{flexDirection:'row',marginLeft:20}}>  
+<View style={{flex:2.2}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#5280d5',marginTop:10}}>Description</Text>  
+</View>
+<View style={{flex:1}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10,marginLeft:-10}}>Transfer data</Text> 
+</View>
+<View style={{flex:1}}>
+<Text style={{fontSize:20,fontWeight:'bold',color:'#a9b4d4',marginTop:-5}}>...</Text> 
+</View>
+
+</View>
+<View
+  style={{
+    marginTop:10,
+    borderBottomColor: '#394d88',
+    borderBottomWidth: 1,
+  }}
+/>
+<View style={{backgroundColor:'#232d51'}}>
+<View style={{justifyContent:'center',alignItems:'center',marginBottom:100,width:"100%",marginTop:30}}>
+<View style={{width:"50%"}}>
+<LinearGradient colors={['#41da9c','#36deaf','#26e3ca']} style={{borderRadius:15,padding:12,backgroundColor:'green',justifyContent:'center',alignItems:'center',marginLeft:10}}>
+<TouchableOpacity onPress={()=>this.props.navigation.navigate('Payment')}>
+<Text style={{color:'#fff'}}>Exchange</Text></TouchableOpacity>
 </LinearGradient>
 
-<View  style={{justifyContent:'center',alignItems:'center', top: 130,marginBottom:10,backgroundColor:'transparent',
-        }}>
-              <Image  style={{width: 100, height: 150}}  source={require("./assets/threelogo.png")} ></Image> 
-        </View>
-        <View style={{ width: '100%',
+</View>
+
+</View>
+</View>
+   
+</View>
+    </ScrollView>    
+</LinearGradient>
+   
+      
+    
+         <LinearGradient colors={['#81DCF9','#5099f0','#1a5fe1']} style={{  width: 100,marginLeft:20,position:'absolute',top:-20,left:120,right:100,bottom:50,
+    height: 100,
+    borderRadius: 100/2,
+    backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
+   
+    <Image  style={{width: 60, height: 60}}  source={require('./assets/exchangewhite.png')} ></Image>
+    
+            
+          </LinearGradient> 
+ 
+  
+      </View>
+      <View style={{ width: '100%',
     height: 70,
     justifyContent: 'center',
     alignItems: 'center',
@@ -538,7 +564,6 @@ justifyContent:'center',alignItems:"center"}} >
           </View>
           </LinearGradient>  
 </View>
-      </LinearGradient>
      </View>
   
     
@@ -556,10 +581,10 @@ const styles = StyleSheet.create({
  
   Maincontainers: {
     flex: 1,   
-    backgroundColor: '#fff',
+    backgroundColor: '#2b3f74',
   },
   containers: {
-   backgroundColor: '#fff',
+   backgroundColor: 'transparent',
     marginTop:5,
   },
   containers: {

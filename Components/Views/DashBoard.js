@@ -195,7 +195,7 @@ App4Touch=()=>{
     app5icon:require('./assets/app5.png'),
     app4icon:require('./assets/app5-blue.png')
   })
-  this.props.navigation.navigate('Exchange')
+  this.props.navigation.navigate('ExchangeMenu')
 }
 App5Touch=()=>{
   this.setState({
