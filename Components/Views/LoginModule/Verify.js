@@ -228,7 +228,7 @@ SlideMenu=()=>{
           Alert.alert(item.Status)
       }
       BeginAction=()=>{
-        this.props.navigation.navigate('Verify');
+        this.props.navigation.navigate('Address');
       }
 }
 

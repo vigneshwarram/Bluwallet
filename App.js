@@ -15,6 +15,7 @@ import BankScreen from './Components/Views/BankScreen'
 import Publish from './Components/Views/Publish'
 import Welcome from './Components/Views/LoginModule/Welcome'
 import Verify from './Components/Views/LoginModule/Verify'
+import Address from  './Components/Views/LoginModule/Address'
 import {
   createStackNavigator
 } from 'react-navigation'
@@ -23,6 +24,7 @@ import {
       const MainNavigator = createStackNavigator({
       Welcome:{screen:Welcome},
       Verify:{screen:Verify},
+      Address:{screen:Address},
       Profile:{screen:Profile},
       DashBoard:{screen:DashBoard},
       Vault:{screen:Vault},
