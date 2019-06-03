@@ -13,12 +13,14 @@ import Exchange from './Components/Views/Exchange'
 import Country from './Components/Views/Country'
 import BankScreen from './Components/Views/BankScreen'
 import Publish from './Components/Views/Publish'
+import Welcome from './Components/Views/Welcome'
 import {
   createStackNavigator
 } from 'react-navigation'
  class App extends Component {
     render() {
       const MainNavigator = createStackNavigator({
+      Welcome:{screen:Welcome},
       Profile:{screen:Profile},
       DashBoard:{screen:DashBoard},
       Vault:{screen:Vault},

@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     alignItems:'center',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-end'
  },
    img: {
     width: '30%',
