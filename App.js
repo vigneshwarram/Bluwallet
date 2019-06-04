@@ -20,6 +20,7 @@ import CountrySearch from  './Components/Views/LoginModule/CountrySearch'
 import PinCode from  './Components/Views/LoginModule/PinCode'
 import ProfileRegister from  './Components/Views/LoginModule/ProfileRegister'
 import NewWallet from  './Components/Views/LoginModule/NewWallet'
+import Sms from  './Components/Views/LoginModule/Sms'
 import {
   createStackNavigator
 } from 'react-navigation'
@@ -45,7 +46,8 @@ import {
       Sell:{screen:Sell},
       Country:{screen:Country},
       BankScreen:{screen:BankScreen},
-      Publish:{screen:Publish}
+      Publish:{screen:Publish},
+      Sms:{screen:Sms}
       
       });
       return (
