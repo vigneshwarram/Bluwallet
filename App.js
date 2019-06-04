@@ -18,6 +18,8 @@ import Verify from './Components/Views/LoginModule/Verify'
 import Address from  './Components/Views/LoginModule/Address'
 import CountrySearch from  './Components/Views/LoginModule/CountrySearch'
 import PinCode from  './Components/Views/LoginModule/PinCode'
+import ProfileRegister from  './Components/Views/LoginModule/ProfileRegister'
+import NewWallet from  './Components/Views/LoginModule/NewWallet'
 import {
   createStackNavigator
 } from 'react-navigation'
@@ -29,6 +31,8 @@ import {
       CountrySearch:{screen:CountrySearch},
       PinCode:{screen:PinCode},
       Address:{screen:Address},
+      NewWallet:{screen:NewWallet},
+      ProfileRegister:{screen:ProfileRegister},
       Profile:{screen:Profile},
       DashBoard:{screen:DashBoard},
       Vault:{screen:Vault},

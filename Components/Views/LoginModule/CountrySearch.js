@@ -209,7 +209,7 @@ export default class CountrySearch extends React.Component {
     );
   }
   BeginAction=()=>{
-    this.props.navigation.navigate('PinCode');
+    this.props.navigation.navigate('ProfileRegister');
   }
 }
 
