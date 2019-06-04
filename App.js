@@ -16,6 +16,8 @@ import Publish from './Components/Views/Publish'
 import Welcome from './Components/Views/LoginModule/Welcome'
 import Verify from './Components/Views/LoginModule/Verify'
 import Address from  './Components/Views/LoginModule/Address'
+import CountrySearch from  './Components/Views/LoginModule/CountrySearch'
+import PinCode from  './Components/Views/LoginModule/PinCode'
 import {
   createStackNavigator
 } from 'react-navigation'
@@ -24,6 +26,8 @@ import {
       const MainNavigator = createStackNavigator({
       Welcome:{screen:Welcome},
       Verify:{screen:Verify},
+      CountrySearch:{screen:CountrySearch},
+      PinCode:{screen:PinCode},
       Address:{screen:Address},
       Profile:{screen:Profile},
       DashBoard:{screen:DashBoard},
