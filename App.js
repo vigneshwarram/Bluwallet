@@ -21,6 +21,7 @@ import PinCode from  './Components/Views/LoginModule/PinCode'
 import ProfileRegister from  './Components/Views/LoginModule/ProfileRegister'
 import NewWallet from  './Components/Views/LoginModule/NewWallet'
 import Sms from  './Components/Views/LoginModule/Sms'
+import MoreInfo from  './Components/Views/LoginModule/MoreInfo'
 import {
   createStackNavigator
 } from 'react-navigation'
@@ -47,7 +48,8 @@ import {
       Country:{screen:Country},
       BankScreen:{screen:BankScreen},
       Publish:{screen:Publish},
-      Sms:{screen:Sms}
+      Sms:{screen:Sms},
+      MoreInfo:{screen:MoreInfo}
       
       });
       return (

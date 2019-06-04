@@ -197,11 +197,15 @@ SlideMenu=()=>{
                 source={require('../assets/dlogo.png')}
             />            
         </View>  
+        <TouchableOpacity onPress={this.BeginAction}>
+        <View>
+      
         <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:15,justifyContent:'center',alignItems:'center',marginTop:150}}>
-<TouchableOpacity onPress={this.BeginAction}>
 <Text style={{color:'#fff'}}>Enable</Text>
-</TouchableOpacity>
 </LinearGradient>
+        </View>
+        </TouchableOpacity>
+        
 <View>
 <LinearGradient colors={['#fff','#fff','#fff']}  style={{padding:15,justifyContent:'center',alignItems:'center'}}>
 <TouchableOpacity onPress={this.BeginAction}>

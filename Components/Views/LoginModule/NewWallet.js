@@ -155,9 +155,11 @@ SlideMenu=()=>{
    colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>   
    
     <View style={{flexDirection:'row',justifyContent:'space-between',backgroundColor:'#fff'}}>
+    <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
     <View style={{justifyContent:'center',alignItems:'center'}}>
     <Image  style={{width: 20, height: 20,marginLeft:20,marginTop:30}}  source={require("../assets/left-arrow.png")} ></Image> 
     </View>
+    </TouchableOpacity>
     <View style={{justifyContent:'center',alignItems:'center'}}>
     <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:30}}>Create a New Wallet</Text>
     </View>

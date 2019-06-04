@@ -195,14 +195,15 @@ SlideMenu=()=>{
 
         <View style={{marginTop:150}}>
         
-        
-       
-<LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:15,justifyContent:'center',alignItems:'center'}}>
-<TouchableOpacity onPress={this.BeginAction}>
+        <TouchableOpacity onPress={this.BeginAction}>
+    <View>
+    <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:15,justifyContent:'center',alignItems:'center'}}>
 <Text style={{color:'#fff'}}>Begin Now</Text>
-</TouchableOpacity>
 </LinearGradient>
+    </View>   
+</TouchableOpacity>
 </View>
+
 <View>
 <LinearGradient colors={['#354e91','#354e91','#354e91']}  style={{padding:15,alignItems:'center'}}>
 <TouchableOpacity>

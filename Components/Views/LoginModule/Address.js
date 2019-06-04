@@ -155,9 +155,12 @@ SlideMenu=()=>{
    colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>   
    
     <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+    <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
     <View style={{justifyContent:'center',alignItems:'center'}}>
     <Image  style={{width: 20, height: 20,marginLeft:20,marginTop:30}}  source={require("../assets/left-arrow.png")} ></Image> 
     </View>
+    </TouchableOpacity>
+   
     <View style={{justifyContent:'center',alignItems:'center'}}>
     <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:30}}>Home Address</Text>
     </View>
@@ -244,11 +247,15 @@ SlideMenu=()=>{
                 source={require('../assets/dlogo.png')}
             />            
         </View>  
+        <TouchableOpacity onPress={this.BeginAction}>
+        <View>
         <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:15,justifyContent:'center',alignItems:'center',marginTop:150}}>
-<TouchableOpacity onPress={this.BeginAction}>
+
 <Text style={{color:'#fff'}}>Send</Text>
-</TouchableOpacity>
+
 </LinearGradient>
+        </View>
+        </TouchableOpacity>
 <View>
 <LinearGradient colors={['#354e91','#354e91','#354e91']}  style={{padding:15,alignItems:'center'}}>
 <TouchableOpacity>

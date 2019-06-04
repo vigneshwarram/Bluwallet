@@ -155,9 +155,11 @@ export default class ProfileRegister extends React.Component {
 <LinearGradient
 colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>   
         <View style={{flexDirection:'row',justifyContent:'space-between',backgroundColor:'#fff'}}>
+        <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
     <View style={{justifyContent:'center',alignItems:'center'}}>
     <Image  style={{width: 20, height: 20,marginLeft:20,marginTop:30}}  source={require("../assets/left-arrow.png")} ></Image> 
     </View>
+    </TouchableOpacity>
     <View style={{justifyContent:'center',alignItems:'center'}}>
     <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:30}}>Profile</Text>
     </View>
@@ -208,7 +210,12 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
                 source={require('../assets/dlogo.png')}
             />            
         </View>  
-        <View style={{position:'absolute',bottom:0,width:'100%'}}>       
+       
+       
+
+    </LinearGradient>
+    </View>
+    <View style={{position:'absolute',bottom:0,width:'100%'}}>       
         <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
 <TouchableOpacity onPress={this.BeginAction}>
 <Text style={{color:'#fff'}}>Next</Text>
@@ -226,10 +233,6 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
 </TouchableOpacity>
 </LinearGradient>
         </View>
-       
-
-    </LinearGradient>
-    </View>
       </View>
     );
   }
