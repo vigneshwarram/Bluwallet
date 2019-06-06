@@ -2,6 +2,7 @@
 import React, {Component} from 'react';
 import DashBoard from './Components/Views/DashBoard'
 import Vault from './Components/Views/Vault'
+import VaultFilter from './Components/Views/VaultFilter'
 import Profile from './Components/Views/Profile'
 import Price from './Components/Views/Price'
 import CreditCard from './Components/Views/CreditCard'
@@ -30,6 +31,7 @@ import {
  class App extends Component {
     render() {
       const MainNavigator = createStackNavigator({
+      VaultFilter:{screen:VaultFilter},
       Welcome:{screen:Welcome},
       Verify:{screen:Verify},
       CountrySearch:{screen:CountrySearch},
@@ -53,7 +55,8 @@ import {
       Sms:{screen:Sms},
       MoreInfo:{screen:MoreInfo},
       ChooseCountry:{screen:ChooseCountry},
-      VerificationCards:{screen:VerificationCards}
+      VerificationCards:{screen:VerificationCards},
+     
       
       });
       return (

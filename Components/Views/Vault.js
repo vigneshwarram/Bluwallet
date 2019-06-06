@@ -313,7 +313,8 @@ App6Touch=()=>{
       onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
             <TouchableOpacity onPress={this.App2Touch}>
             <View style={{flexDirection:'row'}}>
-    <View>
+            <TouchableOpacity>
+            <View>
 <LinearGradient style={{  width: 90,marginLeft:10,
 height: 90,
 borderRadius: 90/2,
@@ -322,6 +323,8 @@ justifyContent:'center',alignItems:"center"}} colors= {['#f8bc73','#f0824d','#ec
 </LinearGradient>
 
     </View> 
+            </TouchableOpacity>
+    <TouchableOpacity onPress={()=>this.props.navigation.navigate('VaultFilter')}>
     <View>
 <LinearGradient style={{  width: 90,marginLeft:-20,
 height: 90,
@@ -331,6 +334,8 @@ justifyContent:'center',alignItems:"center"}} colors= {['#5582ff','#5e5cff','#67
 </LinearGradient>
 
     </View> 
+    </TouchableOpacity>
+    <TouchableOpacity>
     <View>
 <LinearGradient style={{  width: 90,marginLeft:-20,
 height: 90,
@@ -340,6 +345,8 @@ justifyContent:'center',alignItems:"center"}} colors= {['#8be6f8','#59a7f2','#36
 </LinearGradient>
  
     </View> 
+    </TouchableOpacity>
+    <TouchableOpacity>
     <View>
 <LinearGradient style={{  width: 90,marginLeft:-20,marginRight:-20,
 height: 90,
@@ -349,6 +356,8 @@ justifyContent:'center',alignItems:"center"}} colors= {['#faaf15','#fbcc0a','#fd
 </LinearGradient>
  
     </View> 
+    </TouchableOpacity>
+    <TouchableOpacity>
     <View>
 <LinearGradient style={{  width: 90,marginRight:10,
 height: 90,
@@ -358,6 +367,8 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
 </LinearGradient>
  
     </View> 
+    </TouchableOpacity>
+    
     </View>
     </TouchableOpacity>  
   </TouchableOpacity>  
