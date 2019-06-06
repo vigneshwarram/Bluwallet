@@ -4,6 +4,7 @@ import AlphaScrollFlatList from 'alpha-scroll-flat-list';
 const WIDTH = Dimensions.get('window').width;
 const ITEM_HEIGHT = 50;
 import LinearGradient from 'react-native-linear-gradient';
+import Modal from "react-native-simple-modal";
 export default class ProfileRegister extends React.Component {
   static navigationOptions = {
     header: null
@@ -16,6 +17,7 @@ export default class ProfileRegister extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
+      open:false,
       data: [
         {
           "id": "5b588d4acb1fe7c48301af77",
@@ -148,9 +150,10 @@ export default class ProfileRegister extends React.Component {
   }
 
   render() {
+ 
     return (
       <View style={styles.container}>
-      <View style={{paddingBottom:30}}> 
+      <View> 
 
 <LinearGradient
 colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>   
@@ -167,7 +170,7 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
     </View>
     <View style={{justifyContent:'center',alignItems:'center',flexDirection:"row" ,marginTop:30}}>
       <View>
-      <Image  style={{width: 100, height: 100,}}  source={require("../assets/card.png")} ></Image> 
+      <Image  style={{width: 120, height: 100,}}  source={require("../assets/card.png")} ></Image> 
       </View>
       <View>
       <Image  style={{width: 100, height: 100,}}  source={require("../assets/man.png")} ></Image> 
@@ -179,8 +182,7 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
     <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10,backgroundColor:'#facbcc'}}> You need to verificate your mobile number,a</Text>
     <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc'}}> national identity and selfie</Text>
           </View>
-    </LinearGradient>
-    <View style={{position:'absolute',width:'100%',bottom:0}}>
+          <View style={{position:'absolute',width:'100%',bottom:0}}>
     <LinearGradient colors={['#fff','#fff','#fff']}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
 <TouchableOpacity onPress={this.BeginAction}>
 <Text style={{color:'#d2e4ff'}}>Ahora no</Text>
@@ -193,13 +195,62 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
 </LinearGradient>
 
         </View>
-    </View>
+    </LinearGradient>
     
+    </View>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center",position:'absolute',top:0,bottom:0,left:0,right:0}}>
+        <Modal
+          offset={this.state.offset}
+          open={this.state.open}
+          animationTension={40}
+          closeOnTouchOutside={false}
+        >
+        <View>
+         <View style={{flexDirection:'row',justifyContent:'flex-end'}}>
+      <View style={{backgroundColor:'#fd6d71',height:this.state.hr,width:this.state.wr,justifyContent:'center', borderTopStartRadius:25,borderBottomStartRadius:25, marginTop:10,marginRight:-10}}>
+            <TouchableOpacity onPress={this.pressRight}>
+       <View style={{flexDirection: 'row'}}> 
+          <Image style={{marginLeft:10,width: 20, height: 20}}   source={require("../assets/cancel.png")} ></Image>     
+     
+          </View>
+          </TouchableOpacity>
+            </View>
+    </View>
+    <View style={{ alignItems: "center" }}>
+            <Text style={{ fontSize: 12, fontWeight:'bold',color:'#354e91' }}>Need some Help!</Text>
+            <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10,backgroundColor:'#facbcc'}}>If you need any help remember</Text>
+             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc'}}>That we got the best team of</Text>
+             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc'}}>so try and contact us.</Text>
+             <View style={{marginTop:30,width:'80%'}}>
+             <TouchableOpacity onPress={this.ContactAction}>
+             <View >
+             <LinearGradient colors={['#3757c1','#4986e2','#74e5fb']}  style={{padding:10,justifyContent:'center',alignItems:'center',borderRadius:15}}>
+
+<Text style={{color:'#fff'}}>Contact Support</Text>
+
+</LinearGradient>
+             </View>
+             </TouchableOpacity>
+             </View>
+            </View>
+            </View>
+        </Modal>
+      </View>
       </View>
     );
   }
   BeginAction=()=>{
-    this.props.navigation.navigate('NewWallet');
+   this.setState({
+     open:true
+   })
+  }
+  pressRight=()=>{
+    this.setState({
+      open:false
+    })
+  }
+  ContactAction=()=>{
+    this.props.navigation.navigate('ChooseCountry')
   }
 }
 

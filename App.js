@@ -22,6 +22,8 @@ import ProfileRegister from  './Components/Views/LoginModule/ProfileRegister'
 import NewWallet from  './Components/Views/LoginModule/NewWallet'
 import Sms from  './Components/Views/LoginModule/Sms'
 import MoreInfo from  './Components/Views/LoginModule/MoreInfo'
+import ChooseCountry from  './Components/Views/LoginModule/ChooseCountry'
+import VerificationCards from  './Components/Views/LoginModule/VerificationCards'
 import {
   createStackNavigator
 } from 'react-navigation'
@@ -49,7 +51,9 @@ import {
       BankScreen:{screen:BankScreen},
       Publish:{screen:Publish},
       Sms:{screen:Sms},
-      MoreInfo:{screen:MoreInfo}
+      MoreInfo:{screen:MoreInfo},
+      ChooseCountry:{screen:ChooseCountry},
+      VerificationCards:{screen:VerificationCards}
       
       });
       return (
