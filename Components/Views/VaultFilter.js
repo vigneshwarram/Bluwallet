@@ -31,18 +31,12 @@ export default class VaultFilter extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
-      app1icon:require('./assets/app1.png'),
+      app1icon:require('./assets/app1white.png'),
       app6icon:require('./assets/app6.png'),
-      app2icon:require('./assets/app2.png'),
+      app2icon:require('./assets/app4-blue.png'),
       app3icon:require('./assets/app3.png'),
       app4icon:require('./assets/app4.png'),
       app5icon:require('./assets/app5.png'),
-      urls : [
-        require('./assets/biconback.png'),
-        require('./assets/biconback.png'),
-        require('./assets/biconback.png'),
-        require('./assets/biconback.png'),
-      ],
       w: 50,
       h: 45,
       wr:50,
@@ -55,9 +49,9 @@ export default class VaultFilter extends React.Component {
       slide:false,
       visible: false,
       hidden: false,
-      app1color:'#fff',
+      app1color:'#5099f0',
       app6color:'#5099f0',
-      app2color:'#5099f0',
+      app2color:'#fff',
       app3color:'#5099f0',
       app4color:'#5099f0',
       app5color:'#5099f0'
@@ -153,46 +147,18 @@ HideMenu=()=>{
   LayoutAnimation.spring();
   this.setState({Awr:80})
 }
-AppTouch=()=>{
+ProfileTouch=()=>{
   this.setState({
   })
   this.props.navigation.navigate('Profile');
   
 }
-App2Touch=()=>{
-  this.setState({
-    app2color:'#fff',
-    app1color:'#5099f0',
-    app3color:'#5099f0',
-    app5color:'#5099f0',
-    app4color:'#5099f0',
-    app6color:'#5099f0',
-    app6icon:require('./assets/app6.png'),
-    app1icon:require('./assets/app1white.png'),
-    app2icon:require('./assets/app4-blue.png'),
-    app3icon:require('./assets/app3.png'),
-    app4icon:require('./assets/app4.png'),
-    app5icon:require('./assets/app5.png'),
-  
-  })
-  this.props.navigation.navigate('Vault');
+DashBoardTouch=()=>{
+  this.props.navigation.navigate('DashBoard')
 }
-App3Touch=()=>{
-  this.setState({
-    app3color:'#fff',
-    app1color:'#5099f0',
-    app2color:'#5099f0',
-    app5color:'#5099f0',
-    app4color:'#5099f0',
-    app6color:'#5099f0',
-    app6icon:require('./assets/app6.png'),
-    app1icon:require('./assets/app1white.png'),
-    app2icon:require('./assets/app2.png'),
-    app3icon:require('./assets/app3-blue.png'),
-    app4icon:require('./assets/app4.png'),
-    app5icon:require('./assets/app5.png'),
-  })
-  this.props.navigation.navigate('Price')
+
+CreditCardTouch=()=>{
+  Alert.alert('Development Progressing');
 }
 App4Touch=()=>{
   this.setState({
@@ -248,22 +214,7 @@ App6Touch=()=>{
   })
   this.props.navigation.navigate('CreditCard')
 }
-_renderItem ({item, index}) {
-    return (
-        <View style={{justifyContent:'center',alignItems:'center'}}>
-            <View>
-        <LinearGradient style={{  width: 90,
-        height: 90,
-        borderRadius: 90/2,
-        justifyContent:'center',alignItems:"center"}} colors= {['#5582ff','#5e5cff','#6730ff']}>
-           <Image style={{width: 50, height: 50}}   source={item.image} ></Image> 
-        </LinearGradient>
-        
-            </View> 
-        </View>
-        
-    );
-}
+
   render() {
 
     const { navigate } = this.props.navigation;
@@ -327,21 +278,31 @@ _renderItem ({item, index}) {
     <Text style={{marginLeft:20,marginTop:15,fontSize:15,fontWeight:'bold',color:'#fff',opacity:0.5}}>Completed</Text> 
     </View>
     </View> 
-    <View style={{justifyContent:'space-between',alignItems:'center',flexDirection:'row',paddingLeft:50,paddingRight:50}}>
- <Text style={{marginTop:15,fontSize:15,fontWeight:'bold',color:'#fff',opacity:0.5}}>Monero</Text> 
- <Text style={{marginTop:15,fontSize:15,fontWeight:'bold',color:'#fff',opacity:1}}>Ethereum</Text> 
- <Text style={{marginTop:15,fontSize:15,fontWeight:'bold',color:'#fff',opacity:0.5}}>Bitcoin</Text> 
-    </View>
    <View style={{marginTop:20}}>
+   <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',marginLeft:50}}>
+    <View style={{flex:1}}>
+    <Text style={{marginLeft:10,marginTop:15,fontSize:12,fontWeight:'bold',color:'#4d6bc1'}}>Monerp</Text> 
+    <Image style={{height:80,width:60,opacity:0.1,marginTop:10}}   source={require("./assets/micon.png")} ></Image>     
+    </View>          
    
-   <Carousel
-              ref={(c) => { this._carousel = c; }}
-              data={this.state.ImageData}
-              renderItem={this._renderItem}
-              sliderWidth={300}
-              itemWidth={150}
-            />
+    <View style={{flex:1}}>
+    <Text style={{marginTop:8,fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:10}}>Etherium</Text> 
+    <View style={{marginTop:8,marginLeft:-20}}>
+<LinearGradient style={{  width: 110,
+height: 110,
+borderRadius: 110/2,
+justifyContent:'center',alignItems:"center"}} colors= {['#5582ff','#5e5cff','#6730ff']}>
+   <Image style={{width: 60, height: 60}}   source={require("./assets/etheremicon.png")} ></Image> 
+</LinearGradient>
 
+    </View>
+    </View>      
+     
+    <View style={{flex:1}} >
+    <Text style={{marginLeft:10,marginTop:15,fontSize:12,fontWeight:'bold',color:'#4d6bc1'}}>Bitcoin</Text> 
+    <Image style={{height:80,width:60,opacity:0.1,marginTop:10}}   source={require("./assets/bgbicon.png")} ></Image>
+    </View>    
+    </View>
    </View>
     </View> 
       <View style={styles.containers}>
@@ -468,7 +429,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#5582ff','#5e5cff','#67
     bottom: 0,}}>
 <LinearGradient colors= {['#1a5fe1','#00a5ff','#00a5ff']} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
     <View style={{flexDirection: 'row',marginRight:20,marginLeft:20,alignItems:"center",justifyContent:'center'}}> 
-       <TouchableOpacity onPress={this.AppTouch}>
+       <TouchableOpacity onPress={this.ProfileTouch}>
     
        <View style={{ width: 40,marginLeft:10,
     height: 40,
@@ -479,9 +440,9 @@ justifyContent:'center',alignItems:"center"}} colors= {['#5582ff','#5e5cff','#67
           </View>  
        
           </TouchableOpacity>  
-          <TouchableOpacity >
+          <TouchableOpacity  onPress={this.DashBoardTouch}>
        
-       <View style={{ width: 40,marginLeft:10,backgroundColor:this.state.app1color,
+       <View style={{ width: 40,marginLeft:10,
  height: 40,
  borderRadius: 40/2,
 justifyContent:'center',alignItems:"center"}} >
@@ -490,9 +451,9 @@ justifyContent:'center',alignItems:"center"}} >
        </View>    
               
        </TouchableOpacity>   
-          <TouchableOpacity onPress={this.App6Touch}>
+          <TouchableOpacity onPress={this.CreditCardTouch}>
       
-          <View style={{  width: 40,marginLeft:20,
+          <View style={{  width: 40,marginLeft:10,
     height: 40,
     borderRadius: 40/2,
    justifyContent:'center',alignItems:"center"}} >
@@ -504,9 +465,9 @@ justifyContent:'center',alignItems:"center"}} >
        
        
           </TouchableOpacity>  
-          <TouchableOpacity onPress={this.App2Touch}>
+          <TouchableOpacity>
     
-          <View style={{  width: 40,marginLeft:10,
+          <View style={{  width: 40,marginLeft:10,backgroundColor:this.state.app2color,
     height: 40,
     borderRadius: 40/2,
   justifyContent:'center',alignItems:"center"}} >

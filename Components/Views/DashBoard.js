@@ -145,38 +145,15 @@ AppTouch=()=>{
   this.props.navigation.navigate('Profile');
   
 }
-App2Touch=()=>{
+VaultTouch=()=>{
   this.setState({
-    app2color:'#fff',
-    app1color:'#5099f0',
-    app3color:'#5099f0',
-    app5color:'#5099f0',
-    app4color:'#5099f0',
-    app6color:'#5099f0',
-    app6icon:require('./assets/app6.png'),
-    app1icon:require('./assets/app1white.png'),
-    app2icon:require('./assets/app4-blue.png'),
-    app3icon:require('./assets/app3.png'),
-    app4icon:require('./assets/app4.png'),
-    app5icon:require('./assets/app5.png'),
-  
+    app2color:'#fff', 
   })
   this.props.navigation.navigate('Vault');
 }
 App3Touch=()=>{
   this.setState({
     app3color:'#fff',
-    app1color:'#5099f0',
-    app2color:'#5099f0',
-    app5color:'#5099f0',
-    app4color:'#5099f0',
-    app6color:'#5099f0',
-    app6icon:require('./assets/app6.png'),
-    app1icon:require('./assets/app1white.png'),
-    app2icon:require('./assets/app2.png'),
-    app3icon:require('./assets/app3-blue.png'),
-    app4icon:require('./assets/app4.png'),
-    app5icon:require('./assets/app5.png'),
   })
   this.props.navigation.navigate('Price')
 }
@@ -216,23 +193,8 @@ App5Touch=()=>{
   })
   this.props.navigation.navigate('Profile')
 }
-App6Touch=()=>{
-  this.setState({
-    app3color:'#5099f0',
-    app1color:'#5099f0',
-    app2color:'#5099f0',
-    app4color:'#5099f0',
-    app5color:'#5099f0',
-    app6color:'#fff',
-    app1icon:require('./assets/app1white.png'),
-    app2icon:require('./assets/app2.png'),
-    app3icon:require('./assets/app3.png'),
-    app4icon:require('./assets/app4.png'),
-    app6icon:require('./assets/app6-blue.png'),
-    app5icon:require('./assets/app5.png'),
-   
-  })
-  this.props.navigation.navigate('CreditCard')
+CreditCardTouch=()=>{
+ Alert.alert('Development Progressing');
 }
   render() {
 
@@ -500,9 +462,9 @@ justifyContent:'center',alignItems:"center"}} >
        </View>    
               
        </TouchableOpacity>   
-          <TouchableOpacity onPress={this.App6Touch}>
+          <TouchableOpacity onPress={this.CreditCardTouch}>
       
-          <View style={{  width: 40,marginLeft:20,
+          <View style={{  width: 40,marginLeft:10,
     height: 40,
     borderRadius: 40/2,
    justifyContent:'center',alignItems:"center"}} >
@@ -514,7 +476,7 @@ justifyContent:'center',alignItems:"center"}} >
        
        
           </TouchableOpacity>  
-          <TouchableOpacity onPress={this.App2Touch}>
+          <TouchableOpacity onPress={this.VaultTouch}>
     
           <View style={{  width: 40,marginLeft:10,
     height: 40,

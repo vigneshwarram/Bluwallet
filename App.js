@@ -31,7 +31,7 @@ import {
  class App extends Component {
     render() {
       const MainNavigator = createStackNavigator({
-      VaultFilter:{screen:VaultFilter},
+      Profile:{screen:Profile},
       Welcome:{screen:Welcome},
       Verify:{screen:Verify},
       CountrySearch:{screen:CountrySearch},
@@ -39,7 +39,6 @@ import {
       Address:{screen:Address},
       NewWallet:{screen:NewWallet},
       ProfileRegister:{screen:ProfileRegister},
-      Profile:{screen:Profile},
       DashBoard:{screen:DashBoard},
       Vault:{screen:Vault},
       Price:{screen:Price},
@@ -56,6 +55,7 @@ import {
       MoreInfo:{screen:MoreInfo},
       ChooseCountry:{screen:ChooseCountry},
       VerificationCards:{screen:VerificationCards},
+      VaultFilter:{screen:VaultFilter},
      
       
       });

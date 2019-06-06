@@ -149,21 +149,10 @@ SlideMenu=()=>{
 
     
   }
-  App2Touch=()=>{
+  VaultTouch=()=>{
     this.setState({
       app2color:'#fff',
-      app1color:'#5099f0',
-      app3color:'#5099f0',
-      app5color:'#5099f0',
-      app4color:'#5099f0',
-      app6color:'#5099f0',
-      app6icon:require('./assets/app6.png'),
-      app1icon:require('./assets/app1white.png'),
-      app2icon:require('./assets/app4-blue.png'),
-      app3icon:require('./assets/app3.png'),
-      app4icon:require('./assets/app4.png'),
-      app5icon:require('./assets/app5.png'),
-    
+      app2icon:require('./assets/app2.png')    
     })
     this.props.navigation.navigate('Vault');
   }
@@ -184,15 +173,15 @@ SlideMenu=()=>{
     })
     this.props.navigation.navigate('Price')
   }
-  App4Touch=()=>{
+  ExchangeTouch=()=>{
     this.props.navigation.navigate('ExchangeMenu')
   }
-  App5Touch=()=>{
+  DashBoardTounch=()=>{
     this.props.navigation.navigate('DashBoard')
   }
-  App6Touch=()=>{
+  CreditCardTouch=()=>{
    
-   this.props.navigation.navigate('Vault')
+    Alert.alert('Development Progressing');
   }
   render() {
     const { navigate } = this.props.navigation;
@@ -501,7 +490,7 @@ right: 0,borderRadius:25,marginTop:-50,
           </View>  
        
           </TouchableOpacity>  
-          <TouchableOpacity onPress={this.App5Touch}>
+          <TouchableOpacity onPress={this.DashBoardTounch}>
        
        <View style={{ width: 40,marginLeft:10,
  height: 40,
@@ -512,9 +501,9 @@ justifyContent:'center',alignItems:"center"}} >
        </View>    
               
        </TouchableOpacity>   
-          <TouchableOpacity onPress={this.App6Touch}>
+          <TouchableOpacity onPress={this.CreditCardTouch}>
       
-          <View style={{  width: 40,marginLeft:20,
+          <View style={{  width: 40,marginLeft:10,
     height: 40,
     borderRadius: 40/2,
    justifyContent:'center',alignItems:"center"}} >
@@ -526,7 +515,7 @@ justifyContent:'center',alignItems:"center"}} >
        
        
           </TouchableOpacity>  
-          <TouchableOpacity onPress={this.App2Touch}>
+          <TouchableOpacity onPress={this.VaultTouch}>
     
           <View style={{  width: 40,marginLeft:10,
     height: 40,
@@ -554,7 +543,7 @@ justifyContent:'center',alignItems:"center"}} >
        
          
           </TouchableOpacity>
-          <TouchableOpacity onPress={this.App4Touch}>
+          <TouchableOpacity onPress={this.ExchangeTouch}>
      
           <View style={{  width: 40,marginLeft:10,
     height: 40,
