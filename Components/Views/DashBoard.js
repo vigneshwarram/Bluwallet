@@ -21,6 +21,7 @@ export default class DashBoard extends React.Component {
     this.state = {
       dataSource:[],
       cityItems:["US Doller,Indian,Eutherium"],
+      Country:'Today',
       Coin: 'Us Doller',
       animate:false,
       app1icon:require('./assets/app1.png'),
@@ -357,19 +358,29 @@ justifyContent:'center',alignItems:"center"}} >
                  
                </View>
 <View style={{height:'100%'}}>
-<View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:30,marginRight:30,marginTop:10}}>
+                 <View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:30,marginRight:30,marginTop:10}}>
                  <Text style={{marginLeft:20,fontSize:15,fontWeight:'bold',color:'#4d6bc1'}}>Activity</Text>
-                 <View style={{padding:5,backgroundColor:'#2b4599',justifyContent:'center',alignItems:'center',borderRadius:20}}>
-                 <Picker selectedValue={this.state.language}
-  itemStyle={{ backgroundColor: "#fff", color: "#fff", fontSize:10,fontWeight:'bold' }}
-  style={{height: 20, width: 50}}
-  onValueChange={(itemValue, itemIndex) =>
-    this.setState({language: itemValue})
-  }>
-  <Picker.Item label="Java" value="java" />
-  <Picker.Item label="JavaScript" value="js" />
-</Picker>
-                 </View>
+                                
+        <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',padding:5,backgroundColor:'#2b4599',borderRadius:20}}>
+        <Image  style={{width: 10, height: 10}}  source={require("./assets/down_arrow.png")} ></Image> 
+        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginLeft:5}}>{this.state.Country}</Text>      
+        </View>
+        
+  <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000 }}
+   selectedValue={this.state.Country}
+  onValueChange={(itemValue, itemIndex) => this.selectedCountry(itemValue,itemIndex)}>
+  
+  <Picker.Item label="India" value="India" />
+  <Picker.Item label="Aus" value="Aus" />
+  <Picker.Item label="USA" value="USA" />
+  <Picker.Item label="German" value="German" />
+  <Picker.Item label="Italy" value="Italy" />
+  <Picker.Item label="Aus" value="Aus" />
+  <Picker.Item label="India" value="India" />
+  <Picker.Item label="Aus" value="Aus" />
+  </Picker>
+
+               
                  </View>
 <FlatList  style={{marginTop:10}}
       ItemSeparatorComponent={this.space}
