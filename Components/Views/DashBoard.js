@@ -21,8 +21,8 @@ export default class DashBoard extends React.Component {
     this.state = {
       dataSource:[],
       cityItems:["US Doller,Indian,Eutherium"],
-      Country:'Today',
-      Coin: 'Us Doller',
+      Amount: 'USDoller',
+      Time: 'Today',
       animate:false,
       app1icon:require('./assets/app1.png'),
       app6icon:require('./assets/app6.png'),
@@ -250,21 +250,23 @@ CreditCardTouch=()=>{
       </View>
    
       
-    <View style={{marginTop:10}}>  
-    <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',marginLeft:50}}>
-    <View style={{flex:1}}>
-    <Text style={{marginLeft:10,marginTop:15,fontSize:12,fontWeight:'bold',color:'#4d6bc1'}}>Monerp</Text> 
+    <View style={{marginTop:10,marginLeft:-20}}>  
+    <View style={{justifyContent:'space-evenly',alignItems:'center',flexDirection:'row',marginLeft:50}}>
+    <View >
+    <Text style={{marginTop:15,fontSize:12,fontWeight:'bold',color:'#4d6bc1'}}>Monerp</Text> 
     <Image style={{height:80,width:60,opacity:0.1,marginTop:10}}   source={require("./assets/micon.png")} ></Image>     
     </View>          
    
-    <View style={{flex:1}}>
+    <View >
     <Text style={{marginTop:15,fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:20}}>Etherium</Text> 
     <Image
-        style={{height:140,width:80 ,marginTop:10,opacity:1,shadowOpacity:1,shadowColor:'#4d6bc1'}}   source={require("./assets/etherem.png")} ></Image>     
+        style={{height:140,width:100 ,marginTop:10,opacity:1,shadowOpacity:1,shadowColor:'#4d6bc1'}} source={require("./assets/etherem.png")} ></Image>     
+ 
+    
     </View>      
      
-    <View style={{flex:1}} >
-    <Text style={{marginLeft:10,marginTop:15,fontSize:12,fontWeight:'bold',color:'#4d6bc1'}}>Bitcoin</Text> 
+    <View  >
+    <Text style={{marginTop:15,fontSize:12,fontWeight:'bold',color:'#4d6bc1'}}>Bitcoin</Text> 
     <Image style={{height:80,width:60,opacity:0.1,marginTop:10}}   source={require("./assets/bgbicon.png")} ></Image>
     </View>    
     </View>
@@ -311,20 +313,30 @@ justifyContent:'center',alignItems:"center"}} >
                  
                 </View>
                  </View>
-                 <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:20}}>
-                 <View style={{flexDirection: 'row',marginLeft:20}}>
-                 <Text style={{fontSize:15,fontWeight:'bold',color:'#4d6bc1',textAlign:'center'}}>880.660</Text> 
-     <Picker
-         style={{ width: 150,color:'#4d6bc1',marginTop:-17,marginLeft:20 }}
-          selectedValue={this.state.Coin}
-          itemStyle={{ backgroundColor: "#4d6bc1", color: "#4d6bc1", fontSize:15,fontWeight:'bold' }}
-          onValueChange={(lang) => this.setState({Coin: lang})}>
-          <Picker.Item label="USDollar" value="Us doller" />
-          <Picker.Item label="Indian" value="js" />
-        </Picker>
-     </View> 
-                 </View>            
-                 <View style={{flexDirection:'row',marginLeft:60,marginRight:20}}> 
+                 <View style={{flexDirection:'row',justifyContent:'center',width:'100%',marginTop:20,alignItems:'center'}}>       		
+				 <Text style={{fontSize:15,fontWeight:'bold',color:'#4d6bc1'}}>880.889</Text>                                          
+        <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:20}}>
+        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12}}>{this.state.Amount}</Text>
+        <Image  style={{width: 10, height: 10,marginLeft:10}}  source={require("./assets/down_arrow.png")} ></Image>
+        <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000 }}
+   selectedValue={this.state.Amount}
+  onValueChange={(itemValue, itemIndex) => this.selectedAmount(itemValue,itemIndex)}>
+  
+  <Picker.Item label="USDoller" value="USDoller" />
+  <Picker.Item label="Inr" value="Inr" />
+  <Picker.Item label="USA" value="USA" />
+  <Picker.Item label="German" value="German" />
+  <Picker.Item label="Italy" value="Italy" />
+  <Picker.Item label="Aus" value="Aus" />
+  <Picker.Item label="India" value="India" />
+  <Picker.Item label="Aus" value="Aus" />
+  </Picker>
+        </View>
+        
+  
+     
+                 </View>       
+                 <View style={{flexDirection:'row',marginLeft:60,marginRight:20,marginTop:20}}> 
                  <View style={{flex:1,flexDirection:'row'}}>
                  <Text style={{fontSize:15,fontWeight:'bold',color:'#4d6bc1'}}>ETH</Text> 
                  <Image style={{marginLeft:10,width: 10, height: 10,}}   source={require("./assets/red.png")} ></Image>          
@@ -363,12 +375,10 @@ justifyContent:'center',alignItems:"center"}} >
                                 
         <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',padding:5,backgroundColor:'#2b4599',borderRadius:20}}>
         <Image  style={{width: 10, height: 10}}  source={require("./assets/down_arrow.png")} ></Image> 
-        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginLeft:5}}>{this.state.Country}</Text>      
-        </View>
-        
-  <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000 }}
-   selectedValue={this.state.Country}
-  onValueChange={(itemValue, itemIndex) => this.selectedCountry(itemValue,itemIndex)}>
+        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginLeft:5}}>{this.state.Time}</Text> 
+        <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000 }}
+   selectedValue={this.state.Time}
+  onValueChange={(itemValue, itemIndex) => this.selectedTime(itemValue,itemIndex)}>
   
   <Picker.Item label="India" value="India" />
   <Picker.Item label="Aus" value="Aus" />
@@ -378,7 +388,10 @@ justifyContent:'center',alignItems:"center"}} >
   <Picker.Item label="Aus" value="Aus" />
   <Picker.Item label="India" value="India" />
   <Picker.Item label="Aus" value="Aus" />
-  </Picker>
+  </Picker>     
+        </View>
+        
+  
 
                
                  </View>
@@ -539,6 +552,16 @@ justifyContent:'center',alignItems:"center"}} >
       clickedItemText=(item)=>
       {
           Alert.alert(item.Status)
+      }
+      selectedAmount=(item,itemIndex)=>{
+        this.setState({
+            Amount:item
+        })
+      }
+      selectedTime=(item,itemIndex)=>{
+        this.setState({
+        Time:item
+        })
       }
 }
 

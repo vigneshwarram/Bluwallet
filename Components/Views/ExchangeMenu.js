@@ -21,6 +21,7 @@ export default class  ExchangeMenu  extends React.Component {
     this.state = {
       dataSource:[],
       cityItems:["US Doller,Indian,Eutherium"],
+      Amount:'COP',
        Buycolor1:'transparent',
        Buycolor2:'transparent',
        Buycolor3:'transparent',
@@ -297,7 +298,7 @@ SlideMenu=()=>{
          </View>
           
           </View>
-          <View style={{width:'80%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:20, justifyContent:"center"}}>
+          <View style={{width:'80%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:20, justifyContent:'space-between',flexDirection:'row'}}>
 <View style={{flexDirection:'row',marginLeft:20}}>
 <Image  style={{width: 20, height: 20,marginTop:10}}  source={require("./assets/Searchicon.png")} ></Image> 
 <TextInput
@@ -307,6 +308,25 @@ SlideMenu=()=>{
           
         />
 </View>
+<View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center'}}>
+        <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12}}>{this.state.Amount}</Text>
+        <Image  style={{width: 10, height: 10,marginLeft:10,marginRight:10}}  source={require("./assets/White-Caret.png")} ></Image> 
+        <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}
+   selectedValue={this.state.Amount}
+  onValueChange={(itemValue, itemIndex) => this.selectedCop(itemValue,itemIndex)}>
+  
+  <Picker.Item label="COP" value="COP" />
+  <Picker.Item label="Inr" value="Inr" />
+  <Picker.Item label="USA" value="USA" />
+  <Picker.Item label="German" value="German" />
+  <Picker.Item label="Italy" value="Italy" />
+  <Picker.Item label="Aus" value="Aus" />
+  <Picker.Item label="India" value="India" />
+  <Picker.Item label="Aus" value="Aus" />
+  </Picker>
+        </View>
+        
+  
           </View>
           </View>   
           
@@ -361,7 +381,7 @@ SlideMenu=()=>{
     </View>
     </TouchableOpacity>
     </View>  
-    <View  style={{justifyContent:'center',alignItems:'center', top: 100,marginBottom:10,backgroundColor:'transparent',position:'absolute',left:150
+    <View  style={{justifyContent:'center',alignItems:'center', top:100,marginBottom:10,backgroundColor:'transparent',position:'absolute',left:150
         }}>
               <Image  style={{width: 100, height: 150}}  source={require("./assets/threelogo.png")} ></Image> 
         </View>
@@ -534,7 +554,11 @@ justifyContent:'center',alignItems:"center"}} >
       {
           Alert.alert(item.Status)
       }
-
+      selectedCop=(item,itemIndex)=>{
+        this.setState({
+          Amount:item
+        })
+      }
 buyClick=()=>{
   this.setState({
     BuyIcon:require('./assets/buywhite.png'),

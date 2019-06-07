@@ -21,6 +21,7 @@ export default class Vault extends React.Component {
     this.state = {
       dataSource:[],
       ImagArray:['image1'],
+      Amount:'USDoller',
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
@@ -366,25 +367,39 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
                                         
                 </View>
                  </View>
-                 <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:20}}>
-                 <View style={{flexDirection: 'row',marginLeft:20}}>
+                 <View style={{flexDirection:'row',justifyContent:'space-around',width:'100%',marginTop:20}}>
                  <View style={{width:40,height:15,backgroundColor:'#314985',justifyContent:'center',alignItems:'center',marginTop:-10,marginRight:30}}>
                 <Text style={{fontSize:12,fontWeight:'bold',color:'#4d6bc1'}}>All</Text>
-                </View>  
-                 <Text style={{fontSize:15,fontWeight:'bold',color:'#4d6bc1',textAlign:'center'}}>880.660</Text> 
-     <Picker
-         style={{ width: 150,color:'#4d6bc1',marginTop:-17,marginLeft:20 }}
-          selectedValue={this.state.Coin}
-          itemStyle={{ backgroundColor: "#4d6bc1", color: "#4d6bc1", fontSize:15,fontWeight:'bold' }}
-          onValueChange={(lang) => this.setState({Coin: lang})}>
-          <Picker.Item label="USDollar" value="Us doller" />
-          <Picker.Item label="Indian" value="js" />
-        </Picker>
-     </View> 
+                </View>
+				
+				
+				 <Text style={{fontSize:12,fontWeight:'bold',color:'#4d6bc1',marginLeft:-40}}>880.889</Text>
+                  
+               
+                
+        <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:-60}}>
+        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12}}>{this.state.Amount}</Text>
+        <Image  style={{width: 10, height: 10,marginLeft:10}}  source={require("./assets/down_arrow.png")} ></Image> 
+        </View>
+        
+  <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000 }}
+   selectedValue={this.state.Amount}
+  onValueChange={(itemValue, itemIndex) => this.selectedPrice(itemValue,itemIndex)}>
+  
+  <Picker.Item label="USDoller" value="USDoller" />
+  <Picker.Item label="Inr" value="Inr" />
+  <Picker.Item label="USA" value="USA" />
+  <Picker.Item label="German" value="German" />
+  <Picker.Item label="Italy" value="Italy" />
+  <Picker.Item label="Aus" value="Aus" />
+  <Picker.Item label="India" value="India" />
+  <Picker.Item label="Aus" value="Aus" />
+  </Picker>
+     
                  </View>                                    
                </View>
 <View style={{height:'100%'}}>
-<FlatList  style={{marginTop:10}}
+<FlatList  style={{marginTop:20}}
       ItemSeparatorComponent={this.space}
       data={this.state.dataSource}
           renderItem={({item,separators})  =>
@@ -559,6 +574,11 @@ justifyContent:'center',alignItems:"center"}} >
       clickedItemText=(item)=>
       {
           Alert.alert(item.Status)
+      }
+      selectedPrice=(item,itemIndex)=>{
+        this.setState({
+          Amount:item
+        })
       }
 }
 
