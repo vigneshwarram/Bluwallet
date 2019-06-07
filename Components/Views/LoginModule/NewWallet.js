@@ -3,9 +3,8 @@ import { Path } from 'react-native-svg'
 import { View, StyleSheet, Image,TextInput,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
-
+import RNPasswordStrengthMeter from 'react-native-password-strength-meter';
 import LinearGradient from 'react-native-linear-gradient';
-
 export default class NewWallet  extends React.Component {
 
   static navigationOptions = {
@@ -37,7 +36,6 @@ export default class NewWallet  extends React.Component {
       app1color:'#fff',
       app5color:'#fff'
     };
-  
   }
   
   componentDidMount()
@@ -124,6 +122,7 @@ SlideMenu=()=>{
     this.setState({slide:false})
   }
   }
+  
   render() {
     const { navigate } = this.props.navigation;
     const data = [ 50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100 ]
@@ -170,7 +169,7 @@ SlideMenu=()=>{
 <View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
 
 <TextInput
-          style={{height: 50,padding:10}}
+          style={{height: 80,padding:10}}
         placeholderTextColor='#9ab8db'
           placeholder="Email"
           
@@ -178,24 +177,24 @@ SlideMenu=()=>{
 </View>
           </View>
           <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
-<View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
+<View style={{flexDirection:'row',justifyContent:'flex-start',alignItems:'center'}}>
 
-<TextInput
-          style={{height: 50,padding:10}}
-        placeholderTextColor='#9ab8db'
-          placeholder="Password"
-          
+<RNPasswordStrengthMeter
+          onChangeText={this.onChange}
+          inputProps={{placeholder:'Password'}}
+          meterType="box"
         />
 </View>
           </View>
           <View style={{width:'100%',backgroundColor:'#fff',borderColor:'#d7dee8', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
-<View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
+<View style={{flexDirection:'row',justifyContent:'flex-start',alignItems:'center'}}>
 
-<TextInput
-          style={{height: 50,padding:10}}
-        placeholderTextColor='#9ab8db'
-          placeholder="Verification Password"
-          
+<RNPasswordStrengthMeter
+
+          onChangeText={this.onChange}
+          inputProps={{placeholder:'Validate Password'}}
+          barColor='transparent'
+          meterType="box"
         />
 </View>
           </View>
@@ -248,6 +247,9 @@ SlideMenu=()=>{
       }
       BeginAction=()=>{
         this.props.navigation.navigate('Sms');
+      }
+      onChange = (password, score, { label, labelColor, activeBarColor }) => {
+        console.log(password, score, { label, labelColor, activeBarColor });
       }
 }
 
