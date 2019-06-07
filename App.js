@@ -31,12 +31,12 @@ import {
  class App extends Component {
     render() {
       const MainNavigator = createStackNavigator({
-        NewWallet:{screen:NewWallet},
+      PinCode:{screen:PinCode},
       Welcome:{screen:Welcome},
+      NewWallet:{screen:NewWallet},
       Profile:{screen:Profile},
       Verify:{screen:Verify},
       CountrySearch:{screen:CountrySearch},
-      PinCode:{screen:PinCode},
       Address:{screen:Address},
       ProfileRegister:{screen:ProfileRegister},
       DashBoard:{screen:DashBoard},

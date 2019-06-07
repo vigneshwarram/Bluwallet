@@ -28,6 +28,7 @@
     "react-native-linear-gradient": "^2.5.4",
     "react-native-my-library": "^1.0.2",
     "react-native-off-canvas-menu": "^0.1.32",
+    "react-native-otp": "^1.0.0",
     "react-native-otp-input": "^1.0.12",
     "react-native-password-strength-checker": "^1.0.13",
     "react-native-password-strength-meter": "0.0.2",

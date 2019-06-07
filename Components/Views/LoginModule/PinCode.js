@@ -5,7 +5,7 @@ import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 import { PinScreen } from 'react-native-awesome-pin';
 import LinearGradient from 'react-native-linear-gradient';
-
+import OTPInput from 'react-native-otp';
 export default class PinCode  extends React.Component {
 
   static navigationOptions = {
@@ -150,19 +150,33 @@ SlideMenu=()=>{
       <View style={styles.Maincontainers}>  
        
       <View> 
-
        <LinearGradient
-   colors={['#4261b4','#344681','#314178']} style={{height:'100%'}}>   
-   <PinScreen
-    logo={ require('../assets/threelogo.png') }
-    onRef={ ref => (this.pinScreen = ref) }
-    keyboardStyle={{color:'#3f5caa',backgroundColor:'#fff'}}
-    keyTextStyle={{color:'#3f5caa',}}
-    tagline='Please enter your PIN'
-    containerStyle={{ backgroundColor: '#AAA' }}
-    keyDown={ this.recievePin.bind(this) }
+  colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>   
+   <View  style={{justifyContent:'center',alignItems:'center',marginTop:30
+        }}>
+              <Image  style={{width: 100, height: 150}}  source={require("../assets/threelogo.png")} ></Image> 
+                       
+        </View>
+      
+        <View  style={{justifyContent:'center',alignItems:'center'
+        }}>
+               <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:18,marginTop:20}}>Please Introduce your new pin</Text>
+                       
+        </View>
+        <View  style={{justifyContent:'center',alignItems:'center', marginTop:20
+        }}>
+             <OTPInput
+  value={this.state.otp}
+  onChange={this.handleOTPChange}
+  tintColor="#FB6C6A"
+  offTintColor="#BBBCBE"
+  otpLength={4}
 />
-        
+      
+                       
+        </View>
+      
+  
  </LinearGradient> 
  </View>
  
