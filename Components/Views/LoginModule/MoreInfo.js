@@ -187,12 +187,16 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
 <TouchableOpacity onPress={this.BeginAction}>
 <Text style={{color:'#d2e4ff'}}>Ahora no</Text>
 </TouchableOpacity>
-</LinearGradient>       
-        <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
-<TouchableOpacity onPress={this.BeginAction}>
+</LinearGradient>     
+<TouchableOpacity onPress={this.BeginAction}> 
+<View>
+<LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
+
 <Text style={{color:'#fff'}}>Continue</Text>
-</TouchableOpacity>
+
 </LinearGradient>
+</View>
+        </TouchableOpacity> 
 
         </View>
     </LinearGradient>

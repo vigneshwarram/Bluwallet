@@ -31,9 +31,10 @@ import {
  class App extends Component {
     render() {
       const MainNavigator = createStackNavigator({
+        Welcome:{screen:Welcome},
         Profile:{screen:Profile},
         DashBoard:{screen:DashBoard},
-      Welcome:{screen:Welcome},
+     
       PinCode:{screen:PinCode},
       NewWallet:{screen:NewWallet},
     

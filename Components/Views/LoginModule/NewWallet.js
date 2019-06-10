@@ -5,6 +5,7 @@ import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 import RNPasswordStrengthMeter from 'react-native-password-strength-meter';
 import LinearGradient from 'react-native-linear-gradient';
+import { ScrollView } from 'react-native-gesture-handler';
 export default class NewWallet  extends React.Component {
 
   static navigationOptions = {
@@ -147,62 +148,62 @@ SlideMenu=()=>{
     return (  
         
       <View style={styles.Maincontainers}>  
-       
-      <View> 
+       <ScrollView>
+       <View> 
 
-       <LinearGradient
-   colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>   
-   
-    <View style={{flexDirection:'row',justifyContent:'space-between',backgroundColor:'#fff'}}>
-    <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
-    <View style={{justifyContent:'center',alignItems:'center'}}>
-    <Image  style={{width: 20, height: 20,marginLeft:20,marginTop:30}}  source={require("../assets/left-arrow.png")} ></Image> 
-    </View>
-    </TouchableOpacity>
-    <View style={{justifyContent:'center',alignItems:'center'}}>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:30}}>Create a New Wallet</Text>
-    </View>
-    <View></View>
-    </View>
-    <View style={{justifyContent:'center',alignItems:'center',backgroundColor:'#fff'}}>
-          <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff',marginTop:30, justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
+<LinearGradient
+colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>   
+
+<View style={{flexDirection:'row',justifyContent:'space-between',backgroundColor:'#fff'}}>
+<TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
+<View style={{justifyContent:'center',alignItems:'center'}}>
+<Image  style={{width: 20, height: 20,marginLeft:20,marginTop:30}}  source={require("../assets/left-arrow.png")} ></Image> 
+</View>
+</TouchableOpacity>
+<View style={{justifyContent:'center',alignItems:'center'}}>
+<Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:30}}>Create a New Wallet</Text>
+</View>
+<View></View>
+</View>
+<View style={{justifyContent:'center',alignItems:'center',backgroundColor:'#fff'}}>
+   <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff',marginTop:30, justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
 <View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
 
 <TextInput
-          style={{height: 80,padding:10}}
-        placeholderTextColor='#9ab8db'
-          placeholder="Email"
-          
-        />
+   style={{height: 80,padding:10}}
+ placeholderTextColor='#9ab8db'
+   placeholder="Email"
+   
+ />
 </View>
-          </View>
-          <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
+   </View>
+   <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
 <View style={{flexDirection:'row',justifyContent:'flex-start',alignItems:'center'}}>
 
 <RNPasswordStrengthMeter
-          onChangeText={this.onChange}
-          inputProps={{placeholder:'Password'}}
-          meterType="box"
-        />
+   onChangeText={this.onChange}
+   inputProps={{placeholder:'Password'}}
+   meterType="box"
+ />
 </View>
-          </View>
-          <View style={{width:'100%',backgroundColor:'#fff',borderColor:'#d7dee8', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
+   </View>
+   <View style={{width:'100%',backgroundColor:'#fff',borderColor:'#d7dee8', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
 <View style={{flexDirection:'row',justifyContent:'flex-start',alignItems:'center'}}>
 
 <RNPasswordStrengthMeter
 
-          onChangeText={this.onChange}
-          inputProps={{placeholder:'Validate Password'}}
-          barColor='transparent'
-          meterType="box"
-        />
+   onChangeText={this.onChange}
+   inputProps={{placeholder:'Validate Password'}}
+   barColor='transparent'
+   meterType="box"
+ />
 </View>
-          </View>
+   </View>
 
-          
-         
-    </View>
-    <View style={{marginTop:30}}>
+   
+  
+</View>
+<View style={{marginTop:30}}>
 <LinearGradient colors={['#354e91','#354e91','#354e91']}  style={{padding:15,alignItems:'center'}}>
 <TouchableOpacity>
 <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc',marginLeft:-30}}>when you "sent",you accept</Text>
@@ -215,27 +216,34 @@ SlideMenu=()=>{
 </TouchableOpacity>
 </LinearGradient>
 </View> 
-    <View style={{alignContent:'center',alignSelf:'auto'}}> 
-        
-        <View style={{justifyContent:'center',alignItems:'center',position:'absolute',bottom:-20,right:100,left:100}}>
-        <Image
-                style={{width:220,height:200,resizeMode: 'cover',}}
-                source={require('../assets/dlogo.png')}
-            />            
-        </View>  
-        <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:15,justifyContent:'center',alignItems:'center',marginTop:200}}>
-<TouchableOpacity onPress={this.BeginAction}>
-<Text style={{color:'#fff'}}>Create Wallet</Text>
-</TouchableOpacity>
-</LinearGradient>
-
-    
-            
-</View>    
-        
- </LinearGradient> 
- </View>
+<View style={{alignContent:'center'}}> 
  
+ <View style={{justifyContent:'center',alignItems:'center',position:'absolute',bottom:-20,right:100,left:100}}>
+ <Image
+         style={{width:220,height:200,resizeMode: 'cover',}}
+         source={require('../assets/dlogo.png')}
+     />            
+ </View> 
+ <TouchableOpacity onPress={this.BeginAction}>
+ <View>
+ <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:15,justifyContent:'center',alignItems:'center',marginTop:200}}>
+
+<Text style={{color:'#fff'}}>Create Wallet</Text>
+
+</LinearGradient>
+ </View> 
+ </TouchableOpacity>
+ 
+
+
+     
+</View> 
+ 
+</LinearGradient> 
+</View>
+       </ScrollView>
+    
+   
      </View>
       
     

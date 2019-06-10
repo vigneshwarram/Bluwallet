@@ -5,6 +5,7 @@ import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 
 import LinearGradient from 'react-native-linear-gradient';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export default class VerificationCards  extends React.Component {
 
@@ -148,111 +149,116 @@ SlideMenu=()=>{
     return (  
         
       <View style={styles.Maincontainers}>  
-       
-      <View> 
+       <ScrollView>
+       <View> 
 
-       <LinearGradient
-   colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>   
-   
-    <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-    <View></View>
-    <View style={{justifyContent:'center',alignItems:'center',marginLeft:40}}>
-    </View>
-      <View style={{backgroundColor:'#fd6d71',height:this.state.hr,width:this.state.wr,justifyContent:'center', borderTopStartRadius:25,borderBottomStartRadius:25, marginTop:10}}>
-            <TouchableOpacity onPress={this.pressRight}>
-       <View style={{flexDirection: 'row'}}> 
-          <Image style={{marginLeft:10,width: 20, height: 20}}   source={require("../assets/cancel.png")} ></Image>     
+<LinearGradient
+colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>   
+
+<View style={{flexDirection:'row',justifyContent:'space-between'}}>
+<View></View>
+<View style={{justifyContent:'center',alignItems:'center',marginLeft:40}}>
+</View>
+<View style={{backgroundColor:'#fd6d71',height:this.state.hr,width:this.state.wr,justifyContent:'center', borderTopStartRadius:25,borderBottomStartRadius:25, marginTop:10}}>
+     <TouchableOpacity onPress={this.pressRight}>
+<View style={{flexDirection: 'row'}}> 
+   <Image style={{marginLeft:10,width: 20, height: 20}}   source={require("../assets/cancel.png")} ></Image>     
+
+   </View>
+   </TouchableOpacity>
+     </View>
+</View>
+<View style={{marginTop:20}}> 
+
+      <View>
+  
+      <View  style={{justifyContent:'center',alignItems:'center'
+ }}>
+       <Image  style={{width: 100, height: 150}}  source={require("../assets/threelogo.png")} ></Image> 
+          
      
-          </View>
-          </TouchableOpacity>
-            </View>
-    </View>
-    <View style={{marginTop:20}}> 
-   
-             <View>
-         
-             <View  style={{justifyContent:'center',alignItems:'center'
-        }}>
-              <Image  style={{width: 100, height: 150}}  source={require("../assets/threelogo.png")} ></Image> 
-                 
-            
-        </View>
-      
-        <View  style={{justifyContent:'center',alignItems:'center',marginTop:20
-        }}>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10}}>Lets Verified!</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10,backgroundColor:'#facbcc'}}>Please choose the country where your document was</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc'}}>Issued</Text>
-         
-             
-        </View>  
-        <View style={{justifyContent:'center',alignItems:'center'}}> 
-        <View style={{justifyContent:'space-around',alignItems:'center',flexDirection:'row'}}>
-        <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff',marginTop:30, justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
-<View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
-
-<TextInput
-          style={{height: 50,padding:10}}
-        placeholderTextColor='#5496ff'
-          placeholder="Passport"
-          
-        />
-</View>
-          </View>
-        </View> 
-        <View style={{justifyContent:'space-around',alignItems:'center',flexDirection:'row'}}>
-        <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
-<View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
-
-<TextInput
-          style={{height: 50,padding:10}}
-        placeholderTextColor='#5496ff'
-          placeholder="Id-Card"
-          
-        />
-</View>
-          </View>
-        </View> 
-        <View style={{justifyContent:'space-around',alignItems:'center',flexDirection:'row'}}>
-        <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
-<View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
-
-<TextInput
-          style={{height: 50,padding:10}}
-        placeholderTextColor='#5496ff'
-          placeholder="Residence Permit"
-          
-        />
-</View>
-          </View>
-        </View> 
-        <View style={{justifyContent:'space-around',alignItems:'center',flexDirection:'row'}}>
-        <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
-<View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
-
-<TextInput
-          style={{height: 50,padding:10}}
-        placeholderTextColor='#5496ff'
-          placeholder="Drivers's License"
-          
-        />
-</View>
-          </View>
-        </View> 
-        </View>   
-
-             </View>    
-</View>  
-        
-        
- </LinearGradient> 
  </View>
- <View style={{position:'absolute',bottom:0,width:'100%'}}>       
-        <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
-<TouchableOpacity onPress={this.BeginAction}>
+
+ <View  style={{justifyContent:'center',alignItems:'center',marginTop:20
+ }}>
+      <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10}}>Lets Verified!</Text>
+      <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10,backgroundColor:'#facbcc'}}>Please choose the country where your document was</Text>
+      <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc'}}>Issued</Text>
+  
+      
+ </View>  
+ <View style={{justifyContent:'center',alignItems:'center'}}> 
+ <View style={{justifyContent:'space-around',alignItems:'center',flexDirection:'row'}}>
+ <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff',marginTop:30, justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
+<View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
+
+<TextInput
+   style={{height: 50,padding:10}}
+ placeholderTextColor='#5496ff'
+   placeholder="Passport"
+   
+ />
+</View>
+   </View>
+ </View> 
+ <View style={{justifyContent:'space-around',alignItems:'center',flexDirection:'row'}}>
+ <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
+<View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
+
+<TextInput
+   style={{height: 50,padding:10}}
+ placeholderTextColor='#5496ff'
+   placeholder="Id-Card"
+   
+ />
+</View>
+   </View>
+ </View> 
+ <View style={{justifyContent:'space-around',alignItems:'center',flexDirection:'row'}}>
+ <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
+<View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
+
+<TextInput
+   style={{height: 50,padding:10}}
+ placeholderTextColor='#5496ff'
+   placeholder="Residence Permit"
+   
+ />
+</View>
+   </View>
+ </View> 
+ <View style={{justifyContent:'space-around',alignItems:'center',flexDirection:'row'}}>
+ <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
+<View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
+
+<TextInput
+   style={{height: 50,padding:10}}
+ placeholderTextColor='#5496ff'
+   placeholder="Drivers's License"
+   
+ />
+</View>
+   </View>
+ </View> 
+ </View>   
+
+      </View>    
+</View>  
+ 
+ 
+</LinearGradient> 
+</View>
+       </ScrollView>
+    
+ <View style={{position:'absolute',bottom:0,width:'100%'}}>
+ <TouchableOpacity onPress={this.BeginAction}>  
+ <View>
+ <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
+
 <Text style={{color:'#fff'}}>Start</Text>
-</TouchableOpacity>
 </LinearGradient>
+ </View>     
+ </TouchableOpacity> 
 <LinearGradient colors={['#354e91','#354e91','#354e91']}  style={{padding:15,alignItems:'center'}}>
 <TouchableOpacity>
 <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc',marginLeft:-30}}>when you "sent",you accept</Text>

@@ -215,12 +215,17 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
 
     </LinearGradient>
     </View>
-    <View style={{position:'absolute',bottom:0,width:'100%'}}>       
-        <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
-<TouchableOpacity onPress={this.BeginAction}>
+    <View style={{position:'absolute',bottom:0,width:'100%'}}>  
+    <TouchableOpacity onPress={this.BeginAction}>   
+    <View>
+    <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
+
 <Text style={{color:'#fff'}}>Next</Text>
-</TouchableOpacity>
+
 </LinearGradient>
+    </View> 
+    </TouchableOpacity> 
+        
 <LinearGradient colors={['#354e91','#354e91','#354e91']}  style={{padding:15,alignItems:'center'}}>
 <TouchableOpacity>
 <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc',marginLeft:-30}}>when you "sent",you accept</Text>
