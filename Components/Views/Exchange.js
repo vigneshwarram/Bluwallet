@@ -25,11 +25,11 @@ export default class  Buy  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
-      app1icon:require('./assets/app1.png'),
+      app1icon:require('./assets/app1white.png'),
       app6icon:require('./assets/app6.png'),
       app2icon:require('./assets/app2.png'),
       app3icon:require('./assets/app3.png'),
-      app4icon:require('./assets/app4.png'),
+      app4icon:require('./assets/app5-blue.png'),
       app5icon:require('./assets/app5.png'),
       w: 50,
       h: 45,
@@ -47,7 +47,7 @@ export default class  Buy  extends React.Component {
       app6color:'#5099f0',
       app2color:'#5099f0',
       app3color:'#5099f0',
-      app4color:'#5099f0',
+      app4color:'#fff',
       app5color:'#5099f0'
     };
   
@@ -145,71 +145,19 @@ SlideMenu=()=>{
     LayoutAnimation.spring();
     this.setState({Awr:80})
   }
-  AppTouch=()=>{
-    this.setState({
-      app2color:'#5099f0',
-      app1color:'#fff',
-      app3color:'#5099f0',
-      app5color:'#5099f0',
-      app4color:'#5099f0',
-      app1icon:require('./assets/app1.png'),
-      app2icon:require('./assets/app2.png'),
-      app3icon:require('./assets/app3.png'),
-      app4icon:require('./assets/app4.png'),
-      app5icon:require('./assets/app5.png'),
-  
-    })
-    LayoutAnimation.spring();
-    if(!this.state.clickopen){
-      if(this.state.Awr>80)
-      {
-        this.setState({Awr:80,clickopen:false})
-      }
-      else
-      {
-        this.setState({Awr:this.state.Awr+250,clickopen:true})
-      }
-     
-    }
-    else{
-      this.setState({Awr:80,clickopen:false})
-    }
-    
+  ProfileTouch=()=>
+  {
+    this.props.navigation.navigate('Profile')  
   }
-  App2Touch=()=>{
-    this.setState({
-      app2color:'#fff',
-      app1color:'#5099f0',
-      app3color:'#5099f0',
-      app5color:'#5099f0',
-      app4color:'#5099f0',
-      app6color:'#5099f0',
-      app6icon:require('./assets/app6.png'),
-      app1icon:require('./assets/app1white.png'),
-      app2icon:require('./assets/app4-blue.png'),
-      app3icon:require('./assets/app3.png'),
-      app4icon:require('./assets/app4.png'),
-      app5icon:require('./assets/app5.png'),
-    
-    })
-    this.props.navigation.navigate('Vault');
+  DashBoardTouch=()=>
+  {  
+    this.props.navigation.navigate('DashBoard');
   }
   App3Touch=()=>{
-    this.setState({
-      app3color:'#fff',
-      app1color:'#5099f0',
-      app2color:'#5099f0',
-      app5color:'#5099f0',
-      app4color:'#5099f0',
-      app6color:'#5099f0',
-      app6icon:require('./assets/app6.png'),
-      app1icon:require('./assets/app1white.png'),
-      app2icon:require('./assets/app2.png'),
-      app3icon:require('./assets/app3-blue.png'),
-      app4icon:require('./assets/app4.png'),
-      app5icon:require('./assets/app5.png'),
-    })
-    this.props.navigation.navigate('Price')
+   Alert.alert('Development Processing...')
+  }
+  VaultTouch=()=>{
+    this.props.navigation.navigate('Vault');
   }
   App4Touch=()=>{
     this.setState({
@@ -246,24 +194,10 @@ SlideMenu=()=>{
     })
     this.props.navigation.navigate('Profile')
   }
-  App6Touch=()=>{
-    this.setState({
-      app3color:'#5099f0',
-      app1color:'#5099f0',
-      app2color:'#5099f0',
-      app4color:'#5099f0',
-      app5color:'#5099f0',
-      app6color:'#fff',
-      app1icon:require('./assets/app1white.png'),
-      app2icon:require('./assets/app2.png'),
-      app3icon:require('./assets/app3.png'),
-      app4icon:require('./assets/app4.png'),
-      app6icon:require('./assets/app6-blue.png'),
-      app5icon:require('./assets/app5.png'),
-     
-    })
-   // this.props.navigation.navigate('Profile')
-  }
+  CreditCardTouch=()=>{
+    Alert.alert('Develpment Processing...')
+    // this.props.navigation.navigate('Profile')
+   }
   render() {
     const data = [ 50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100 ]
     const Line = ({ line }) => (
@@ -286,11 +220,13 @@ SlideMenu=()=>{
   }
     return (  
    
-      <View style={styles.Maincontainers}>     
+      <View style={styles.Maincontainers}>  
+       
       <LinearGradient
-   colors={['#1a5fe1','#00a5ff','#81DCF9']} style={{height:200,}}>    
+   colors={['#1a5fe1','#00a5ff','#81DCF9']} style={{height:200,}}>     
       <LinearGradient
    colors={['#1a5fe1','#81DCF9','#81DCF9']} style={{height:250,marginRight:30,marginTop:30}}>
+ 
  <View style={{justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection:'row',marginTop:20}}>
           <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/app4.png")} ></Image>     
@@ -487,7 +423,7 @@ SlideMenu=()=>{
     bottom: 0,}}>
 <LinearGradient colors= {['#1a5fe1','#00a5ff','#00a5ff']} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
     <View style={{flexDirection: 'row',marginRight:20,marginLeft:20,alignItems:"center",justifyContent:'center'}}> 
-       <TouchableOpacity onPress={this.AppTouch}>
+       <TouchableOpacity onPress={this.ProfileTouch}>
     
        <View style={{ width: 40,marginLeft:10,
     height: 40,
@@ -498,9 +434,9 @@ SlideMenu=()=>{
           </View>  
        
           </TouchableOpacity>  
-          <TouchableOpacity >
+          <TouchableOpacity   onPress={this.DashBoardTouch}>
        
-       <View style={{ width: 40,marginLeft:10,backgroundColor:this.state.app1color,
+       <View style={{ width: 40,marginLeft:10,
  height: 40,
  borderRadius: 40/2,
 justifyContent:'center',alignItems:"center"}} >
@@ -509,7 +445,7 @@ justifyContent:'center',alignItems:"center"}} >
        </View>    
               
        </TouchableOpacity>   
-          <TouchableOpacity onPress={this.App6Touch}>
+          <TouchableOpacity onPress={this.CreditCardTouch}>
       
           <View style={{  width: 40,marginLeft:20,
     height: 40,
@@ -523,7 +459,7 @@ justifyContent:'center',alignItems:"center"}} >
        
        
           </TouchableOpacity>  
-          <TouchableOpacity onPress={this.App2Touch}>
+          <TouchableOpacity onPress={this.VaultTouch}>
     
           <View style={{  width: 40,marginLeft:10,
     height: 40,
@@ -553,7 +489,7 @@ justifyContent:'center',alignItems:"center"}} >
           </TouchableOpacity>
           <TouchableOpacity onPress={this.App4Touch}>
      
-          <View style={{  width: 40,marginLeft:10,
+          <View style={{  width: 40,marginLeft:10,backgroundColor:this.state.app4color,
     height: 40,
     borderRadius: 40/2,
    justifyContent:'center',alignItems:"center"}} >

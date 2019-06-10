@@ -160,18 +160,8 @@ App3Touch=()=>{
 }
 App4Touch=()=>{
   this.setState({
-    app3color:'#5099f0',
-    app1color:'#5099f0',
-    app2color:'#5099f0',
-    app5color:'#5099f0',
-    app4color:'#fff',
-    app6color:'#5099f0',
-    app6icon:require('./assets/app6.png'),
-    app1icon:require('./assets/app1white.png'),
-    app2icon:require('./assets/app2.png'),
-    app3icon:require('./assets/app3.png'),
-    app5icon:require('./assets/app5.png'),
-    app4icon:require('./assets/app5-blue.png')
+    app1color:'#fff',
+    app1icon:require('./assets/app1.png'), 
   })
   this.props.navigation.navigate('ExchangeMenu')
 }

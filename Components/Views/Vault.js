@@ -45,8 +45,7 @@ export default class Vault extends React.Component {
       hidden: false,
       app1color:'#5099f0',
       app6color:'#5099f0',
-      app2color:'#fff',
-      app3color:'#5099f0',
+      app3color:'#fff',
       app4color:'#5099f0',
       app5color:'#5099f0'
     };
@@ -177,10 +176,10 @@ App4Touch=()=>{
     app6color:'#5099f0',
     app6icon:require('./assets/app6.png'),
     app1icon:require('./assets/app1white.png'),
-    app2icon:require('./assets/app2.png'),
+    app2icon:require('./assets/app4-blue.png'),
     app3icon:require('./assets/app3.png'),
     app5icon:require('./assets/app5.png'),
-    app4icon:require('./assets/app5-blue.png')
+    app4icon:require('./assets/app4.png')
   })
   this.props.navigation.navigate('ExchangeMenu')
 }
@@ -524,7 +523,7 @@ justifyContent:'center',alignItems:"center"}} >
           </TouchableOpacity>  
           <TouchableOpacity>
     
-          <View style={{  width: 40,marginLeft:10,backgroundColor:this.state.app2color,
+          <View style={{  width: 40,marginLeft:10,backgroundColor:'#fff',
     height: 40,
     borderRadius: 40/2,
   justifyContent:'center',alignItems:"center"}} >
