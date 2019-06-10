@@ -47,7 +47,10 @@ export default class Vault extends React.Component {
       app6color:'#5099f0',
       app3color:'#fff',
       app4color:'#5099f0',
-      app5color:'#5099f0'
+      app5color:'#5099f0',
+      ActiveOpacity:1,
+      CompleteOpacity:0.5
+
     };
   
   }
@@ -205,6 +208,18 @@ App5Touch=()=>{
 CreditCardTouch=()=>{
   Alert.alert('Development Progressing');
 }
+ActiveTouch=()=>{
+  this.setState({
+    ActiveOpacity:1,
+    CompleteOpacity:0.5
+  })
+}
+CompleteTouch=()=>{
+  this.setState({
+    ActiveOpacity:0.5,
+    CompleteOpacity:1
+  })
+}
   render() {
 
     const { navigate } = this.props.navigation;
@@ -230,7 +245,7 @@ CreditCardTouch=()=>{
       <LinearGradient colors= {['#2b3f74','#232d51','#232d51']}>
       <ScrollView>
       <View style={{justifyContent:'space-between',flexDirection:'row'}}>  
-<LinearGradient colors={['transparent','transparent','transparent']} style={{justifyContent:'center',height:this.state.h,width:this.state.w, alignItems:'flex-end', marginTop:10,borderTopRightRadius:25,borderBottomRightRadius:25,borderColor:'#c978f8',borderWidth:1}}>
+<LinearGradient colors={['transparent','transparent','transparent']} style={{justifyContent:'center',height:this.state.h,width:this.state.w, alignItems:'flex-end', marginTop:10,borderTopRightRadius:25,borderBottomRightRadius:25,borderColor:'#c978f8',borderWidth:1,position:'absolute'}}>
 <TouchableOpacity onPress={this._onPress}>
        <View style={{flexDirection: 'row'}}> 
           <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/iicon.png")} ></Image>     
@@ -239,15 +254,8 @@ CreditCardTouch=()=>{
           </TouchableOpacity>
 </LinearGradient>    
          
-            
-            <View style={{flexDirection: 'row',justifyContent:'flex-start',alignItems:"center",marginTop:15}}> 
-          <Image  style={{width: 30, height: 30}}  source={require("./assets/app2.png")} ></Image>   
-          <View style={{flexDirection:'column'}}>
-          <Text style={{marginLeft:10,fontSize:18,fontWeight:'bold',color:'#fff'}}>Vault</Text>       
-          </View>       
-          </View>
-    
-            <LinearGradient colors={['#fff','#fff','#fff']} style={{height:this.state.hr,width:this.state.wr,justifyContent:'center',alignItems:'flex-start',borderTopLeftRadius:25,borderBottomLeftRadius:25, marginTop:10}}>
+              
+            <LinearGradient colors={['#fff','#fff','#fff']} style={{height:this.state.hr,width:this.state.wr,justifyContent:'center',alignItems:'flex-start',borderTopLeftRadius:25,borderBottomLeftRadius:25, marginTop:10,position:'absolute',right:0}}>
             <TouchableOpacity onPress={this.pressRight}>
        <View style={{flexDirection: 'row'}}> 
           <Image style={{marginLeft:10,width: 30, height: 30}}   source={require("./assets/app4-blue.png")} ></Image>     
@@ -258,15 +266,25 @@ CreditCardTouch=()=>{
       </View>
    
       
-    <View style={{marginTop:10}}> 
-    
-    <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',marginLeft:70}}>
+    <View style={{marginTop:20}}> 
+    <View style={{flexDirection: 'row',justifyContent:'center',alignItems:"center" }}> 
+          <Image  style={{width: 30, height: 30}}  source={require("./assets/app2.png")} ></Image>   
+          <View style={{flexDirection:'column'}}>
+          <Text style={{marginLeft:10,fontSize:18,fontWeight:'bold',color:'#fff'}}>Vault</Text>       
+          </View>       
+          </View>
+    <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',marginLeft:70,marginTop:10}}>
+    <TouchableOpacity onPress={this.ActiveTouch}>
     <View style={{width:80,height:50,borderRightWidth:1,borderRightColor:'#4d6bc1'}}>
-    <Text style={{marginLeft:10,marginTop:15,fontSize:15,fontWeight:'bold',color:'#fff'}}>Active</Text> 
+    <Text style={{marginLeft:10,marginTop:15,fontSize:15,fontWeight:'bold',color:'#fff',opacity:this.state.ActiveOpacity}}>Active</Text> 
     </View>
-    <View style={{width:150,height:50}}>
-    <Text style={{marginLeft:20,marginTop:15,fontSize:15,fontWeight:'bold',color:'#fff',opacity:0.5}}>Completed</Text> 
+    </TouchableOpacity>
+   <TouchableOpacity onPress={this.CompleteTouch}>
+   <View style={{width:150,height:50}}>
+    <Text style={{marginLeft:20,marginTop:15,fontSize:15,fontWeight:'bold',color:'#fff',opacity:this.state.CompleteOpacity}}>Completed</Text> 
     </View>
+   </TouchableOpacity>
+    
     </View> 
     <View style={{justifyContent:'space-between',alignItems:'center',flexDirection:'row',paddingLeft:50,paddingRight:50}}>
  <Text style={{marginTop:15,fontSize:15,fontWeight:'bold',color:'#fff',opacity:0.5}}>Monero</Text> 

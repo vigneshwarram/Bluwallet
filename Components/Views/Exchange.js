@@ -226,7 +226,14 @@ SlideMenu=()=>{
    colors={['#1a5fe1','#00a5ff','#81DCF9']} style={{height:200,}}>     
       <LinearGradient
    colors={['#1a5fe1','#81DCF9','#81DCF9']} style={{height:250,marginRight:30,marginTop:30}}>
- 
+ <LinearGradient colors={['#fff','#fff','#CCCFE2']} style={{justifyContent:'center',marginTop:-10,height:this.state.h,width:this.state.w, alignItems:'flex-end',borderTopRightRadius:25,borderBottomRightRadius:25,position:'absolute'}}>
+<TouchableOpacity onPress={this._onPress}>
+       <View style={{flexDirection: 'row'}}> 
+          <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/note.PNG.png")} ></Image>     
+     
+          </View>
+          </TouchableOpacity>
+</LinearGradient> 
  <View style={{justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection:'row',marginTop:20}}>
           <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/app4.png")} ></Image>     
@@ -348,7 +355,7 @@ SlideMenu=()=>{
     borderBottomWidth: 1,
   }}
 />
-<View style={{height:70,width:'100%',backgroundColor:'transparent'}}></View>
+<View style={{height:40,width:'100%',backgroundColor:'transparent'}}></View>
 <View style={{flexDirection:'row',marginLeft:20}}>  
 <View style={{flex:1}}>
 <Text style={{fontSize:12,fontWeight:'bold',color:'#5280d5',marginTop:10}}>Send</Text>  
