@@ -360,7 +360,8 @@ SlideMenu=()=>{
         }}>
               <Image  style={{width: 100, height: 150}}  source={require("./assets/threelogo.png")} ></Image> 
         </View>
-<FlatList  style={{marginTop:10}}
+        <View style={{flex:1,marginBottom:90}}>
+        <FlatList  style={{marginTop:10}}
       ItemSeparatorComponent={this.space}
       data={this.state.dataSource}
           renderItem={({item,separators})  =>
@@ -415,6 +416,8 @@ SlideMenu=()=>{
   </TouchableOpacity>  
        }
     />
+        </View>
+
    
    <View
   style={{

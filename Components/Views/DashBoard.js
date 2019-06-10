@@ -385,7 +385,8 @@ justifyContent:'center',alignItems:"center"}} >
 
                
                  </View>
-<FlatList  style={{marginTop:10}}
+                 <View style={{flex:1,marginBottom:90}}>
+                 <FlatList  style={{marginTop:10}}
       ItemSeparatorComponent={this.space}
       data={this.state.dataSource}
           renderItem={({item,separators})  =>
@@ -440,6 +441,8 @@ justifyContent:'center',alignItems:"center"}} >
   </TouchableOpacity>  
        }
     />
+                 </View>
+
 </View>
                 
        

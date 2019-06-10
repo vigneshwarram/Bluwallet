@@ -341,21 +341,23 @@ SlideMenu=()=>{
 </View>
 <View style={{flexDirection:'row',marginLeft:30,marginRight:30,marginTop:30}}>
 <Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>Description</Text> 
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:50}}>Country</Text> 
-
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:70}}>Country</Text> 
+ 
 </View>
-<View style={{flexDirection:'row',marginLeft:30,marginRight:30,marginTop:10}}>
+<View style={{flexDirection:'row',marginTop:10,marginLeft:30,marginRight:30}}>
 <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',}}>Transferdata...</Text> 
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:30}}>Cloumbia</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:50}}>Cloumbia</Text> 
+
 
 </View>
-<View style={{position:'absolute',left:0,right:0,top:20,bottom:0,alignItems:'flex-end'}}>
-<Image style={{marginRight:20,width: 100,opacity:0.5, height: "80%"}}   source={require("./assets/logo-white.png")} ></Image>  
+<View style={{position:'absolute',left:0,right:15,top:0,bottom:0,alignItems:'flex-end'}}>
+<Image style={{width: 120,opacity:0.2, height: "100%",tintColor:'#fff'}}   source={require("./assets/three.png")} ></Image>  
 </View>
 </LinearGradient>
 <View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:20,marginRight:70,marginTop:20}}>
 <Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,marginBottom:10}}>I accept terms and conditions</Text> 
 <Switch
+          trackColor={{true: '#25e2cd'}}
           style={{marginRight:30}}
           onValueChange = {this.toggleSwitch}
           value = {this.state.switchValue}/>
@@ -366,7 +368,7 @@ SlideMenu=()=>{
 <Text style={{color:'#fff'}}>Cancel</Text>
 </TouchableOpacity>
 </LinearGradient>
-<LinearGradient colors={['#4C8DFE','#4D91FF','#5D5CFE']} style={{width:'50%',padding:10,backgroundColor:'green',justifyContent:'center',alignItems:'center',marginLeft:10}}>
+<LinearGradient  colors={['#41da9c','#36deaf','#26e3ca']} style={{width:'50%',padding:10,backgroundColor:'green',justifyContent:'center',alignItems:'center',marginLeft:10}}>
 <TouchableOpacity onPress={()=>this.props.navigation.navigate('Payment')}>
 <Text style={{color:'#fff'}}>Accept</Text></TouchableOpacity>
 </LinearGradient>

@@ -309,7 +309,8 @@ SlideMenu=()=>{
     <LinearGradient  colors= {['#2b3f74','#232d51','#232d51']} style={{marginTop:'20%',position:'absolute',height:'100%',
         top:'30%',left: 0,
         right: 0}}>
-<FlatList 
+         <View style={{flex:1,marginBottom:90}}>
+         <FlatList 
       ItemSeparatorComponent={this.space}
       data={this.state.dataSource}
           renderItem={({item,separators})  =>
@@ -358,6 +359,8 @@ SlideMenu=()=>{
   </TouchableOpacity>  
        }
     />
+         </View>
+
    
    <View
   style={{
