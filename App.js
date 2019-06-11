@@ -5,7 +5,9 @@ import Vault from './Components/Views/Vault'
 import VaultFilter from './Components/Views/VaultFilter'
 import Profile from './Components/Views/Profile'
 import Price from './Components/Views/Price'
-import CreditCard from './Components/Views/CreditCard'
+import CreditCard from './Components/Views/CreditCardModule/CreditCard'
+import CardDetails from './Components/Views/CreditCardModule/CardDetails'
+import CreditTransaction from './Components/Views/CreditCardModule/CreditTransaction'
 import ExchangeMenu from './Components/Views/ExchangeMenu'
 import Payment from './Components/Views/Payment'
 import Buy from './Components/Views/Buy'
@@ -32,6 +34,8 @@ import {
     render() {
       const MainNavigator = createStackNavigator({
         CreditCard:{screen:CreditCard},
+        CreditTransaction:{screen:CreditTransaction},
+        CardDetails:{screen:CardDetails},
         Welcome:{screen:Welcome},
         Profile:{screen:Profile},
         DashBoard:{screen:DashBoard},
