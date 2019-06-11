@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet,Dimensions, Image,Picker,FlatList,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
+import { View, StyleSheet, Image,ScrollView,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
 import { Alert } from 'react-native';
-import { AreaChart, Grid } from 'react-native-svg-charts'
-import * as shape from 'd3-shape'
-import Logo from '../logo'
+
+
 import LinearGradient from 'react-native-linear-gradient';
 
 export default class CreditCard  extends React.Component {
@@ -22,12 +21,13 @@ export default class CreditCard  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
-      app1icon:require('./assets/app1.png'),
+  
+      app1icon:require('./assets/app1white.png'),
       app6icon:require('./assets/app6.png'),
       app2icon:require('./assets/app2.png'),
       app3icon:require('./assets/app3.png'),
       app4icon:require('./assets/app4.png'),
-      app5icon:require('./assets/app5.png'),
+      app5icon:require('./assets/app2-blue.png'),
       w: 50,
       h: 45,
       wr:50,
@@ -41,18 +41,14 @@ export default class CreditCard  extends React.Component {
       visible: false,
       hidden: false,
       app1color:'#fff',
-      app6color:'#5099f0',
-      app2color:'#5099f0',
-      app3color:'#5099f0',
-      app4color:'#5099f0',
-      app5color:'#5099f0'
+      app5color:'#fff'
     };
   
   }
   
   componentDidMount()
   {
-    this.GetListData()
+    //this.GetListData()
   }
   GetListData=()=>{
     this.Load()
@@ -134,136 +130,14 @@ SlideMenu=()=>{
     this.setState({slide:false})
   }
   }
-  HideMenu=()=>{
-    LayoutAnimation.spring();
-    this.setState({Awr:80})
-  }
-  AppTouch=()=>{
-    this.setState({
-      app2color:'#5099f0',
-      app1color:'#fff',
-      app3color:'#5099f0',
-      app5color:'#5099f0',
-      app4color:'#5099f0',
-      app1icon:require('./assets/app1.png'),
-      app2icon:require('./assets/app2.png'),
-      app3icon:require('./assets/app3.png'),
-      app4icon:require('./assets/app4.png'),
-      app5icon:require('./assets/app5.png'),
-  
-    })
-    LayoutAnimation.spring();
-    if(!this.state.clickopen){
-      if(this.state.Awr>80)
-      {
-        this.setState({Awr:80,clickopen:false})
-      }
-      else
-      {
-        this.setState({Awr:this.state.Awr+250,clickopen:true})
-      }
-     
-    }
-    else{
-      this.setState({Awr:80,clickopen:false})
-    }
-    
-  }
-  App2Touch=()=>{
-    this.setState({
-      app2color:'#fff',
-      app1color:'#5099f0',
-      app3color:'#5099f0',
-      app5color:'#5099f0',
-      app4color:'#5099f0',
-      app6color:'#5099f0',
-      app6icon:require('./assets/app6.png'),
-      app1icon:require('./assets/app1white.png'),
-      app2icon:require('./assets/app4-blue.png'),
-      app3icon:require('./assets/app3.png'),
-      app4icon:require('./assets/app4.png'),
-      app5icon:require('./assets/app5.png'),
-    
-    })
-    this.props.navigation.navigate('Vault');
-  }
-  App3Touch=()=>{
-    this.setState({
-      app3color:'#fff',
-      app1color:'#5099f0',
-      app2color:'#5099f0',
-      app5color:'#5099f0',
-      app4color:'#5099f0',
-      app6color:'#5099f0',
-      app6icon:require('./assets/app6.png'),
-      app1icon:require('./assets/app1white.png'),
-      app2icon:require('./assets/app2.png'),
-      app3icon:require('./assets/app3-blue.png'),
-      app4icon:require('./assets/app4.png'),
-      app5icon:require('./assets/app5.png'),
-    })
-    this.props.navigation.navigate('Price')
-  }
-  App4Touch=()=>{
-    this.setState({
-      app3color:'#5099f0',
-      app1color:'#5099f0',
-      app2color:'#5099f0',
-      app5color:'#5099f0',
-      app4color:'#fff',
-      app6color:'#5099f0',
-      app6icon:require('./assets/app6.png'),
-      app1icon:require('./assets/app1white.png'),
-      app2icon:require('./assets/app2.png'),
-      app3icon:require('./assets/app3.png'),
-      app5icon:require('./assets/app5.png'),
-      app4icon:require('./assets/app5-blue.png')
-    })
-  }
-  App5Touch=()=>{
-    this.setState({
-      app3color:'#5099f0',
-      app1color:'#5099f0',
-      app2color:'#5099f0',
-      app4color:'#5099f0',
-      app6color:'#5099f0',
-      app6icon:require('./assets/app6.png'),
-      app5color:'#fff',
-      app1icon:require('./assets/app1white.png'),
-      app2icon:require('./assets/app2.png'),
-      app3icon:require('./assets/app3.png'),
-      app4icon:require('./assets/app4.png'),
-      app6icon:require('./assets/app6.png'),
-      app5icon:require('./assets/app2-blue.png'),
-     
-    })
-    this.props.navigation.navigate('Profile')
-  }
-  App6Touch=()=>{
-    this.setState({
-      app3color:'#5099f0',
-      app1color:'#5099f0',
-      app2color:'#5099f0',
-      app4color:'#5099f0',
-      app5color:'#5099f0',
-      app6color:'#fff',
-      app1icon:require('./assets/app1white.png'),
-      app2icon:require('./assets/app2.png'),
-      app3icon:require('./assets/app3.png'),
-      app4icon:require('./assets/app4.png'),
-      app6icon:require('./assets/app6-blue.png'),
-      app5icon:require('./assets/app5.png'),
-     
-    })
-   // this.props.navigation.navigate('Profile')
-  }
   render() {
+    const { navigate } = this.props.navigation;
     const data = [ 50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100 ]
     const Line = ({ line }) => (
       <Path
           key={'line'}
           d={line}
-          stroke={'#25e2cd'}
+          stroke={'#5099f0'}
           fill={'none'}
       />
   )
@@ -279,226 +153,169 @@ SlideMenu=()=>{
   }
     return (  
         
-      <View style={styles.Maincontainers}>           
-     
-      <LinearGradient
-   colors={['#1a5fe1','#00a5ff','#00a5ff']} style={{height:'35%',position:'absolute',left: 0,
-right: 0,}}>
+      <View style={styles.Maincontainers}>  
+       
+      <View> 
+
+       <LinearGradient
+   colors= {['#2b3f74','#2c548f','#223458']} style={{height:'100%'}}>   
+   
     <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-    <View style={{backgroundColor:'#fff',height:this.state.h,width:this.state.w,justifyContent:'center',borderWidth:1, alignItems:'flex-end',
-  borderColor: '#fff',
+    <View style={{backgroundColor:'transparent',height:this.state.h,width:this.state.w,justifyContent:'center',borderRightWidth:1,borderTopWidth:1,borderBottomWidth:1, alignItems:'flex-end',position:'absolute',
+  borderColor: '#436ab7',
   marginTop:10,
   borderTopEndRadius:25,borderBottomEndRadius:25,
   }}>
 
 <TouchableOpacity onPress={this._onPress}>
  <View style={{flexDirection: 'row'}}> 
-    <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/note.PNG.png")} ></Image>     
+    <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/icon13.png")} ></Image>     
 
     </View>
     </TouchableOpacity>
- 
-    
+
       </View>
-      <View style={{backgroundColor:'#fff',height:this.state.hr,width:this.state.wr,justifyContent:'center', borderTopStartRadius:25,borderBottomStartRadius:25, marginTop:10}}>
+      <View style={{backgroundColor:'transparent', borderColor: '#436ab7',height:this.state.hr,width:this.state.wr,justifyContent:'center', borderTopStartRadius:25,borderBottomStartRadius:25, marginTop:10,borderLeftWidth:1,borderTopWidth:1,borderBottomWidth:1,position:'absolute',right:0}}>
             <TouchableOpacity onPress={this.pressRight}>
        <View style={{flexDirection: 'row'}}> 
-          <Image style={{marginLeft:10,width: 30, height: 30}}   source={require("./assets/logout.png")} ></Image>     
+          <Image style={{marginLeft:10,width: 20, height: 20}}   source={require("./assets/icon14.png")} ></Image>     
      
           </View>
           </TouchableOpacity>
             </View>
     </View>
-  
-          </LinearGradient>    
-         
-      <View style={styles.containers}>     
     <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',marginTop:20}}>
-    <Text style={{fontSize:12,color:'#fff',marginLeft:10}}>ETH</Text>
-    <Text style={{fontSize:25,fontWeight:'bold',color:'#fff',marginLeft:10}}>132.86</Text>
-    <View style={{flexDirection: 'row',marginLeft:10}}>
-     <Picker
-         style={{ width: 130,color:'#fff' }}
-          selectedValue={this.state.Coin}
-          itemStyle={{ backgroundColor: "#fff", color: "#fff", fontFamily:"Ebrima", fontSize:17 }}
-          onValueChange={(lang) => this.setState({Coin: lang})}>
-          <Picker.Item label="USDoller" value="USDoller" />
-          <Picker.Item label="Indian" value="js" />
-        </Picker>
-     </View>    
-    </View>     
+    <View>
+    <Image style={{marginLeft:10,width: 30, height: 30}}   source={require("./assets/app6.png")} ></Image>     
     </View>
-
- <View style={{backgroundColor:'#fff',marginTop:40}}>
- <View
-  style={{
-    marginLeft:30,marginRight:30,
-    marginTop:20,
-    borderBottomColor: '#e6e8f1',marginBottom:10,
-    borderBottomWidth: 1,
-  }}
-/>
- <FlatList 
-      ItemSeparatorComponent={this.space}
-      data={this.state.dataSource}
-          renderItem={({item,separators})  =>
-        <TouchableOpacity onShowUnderlay={separators.highlight}
-      onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
-      <View style={{}}>
-  <LinearGradient
-   colors={[(item.Status=='Completed')?'#fff':'#fff', (item.Status=='Completed')?'#fff':'#fff', (item.Status=='Completed')?'#fff':'#fff']}>
-        <View style={{flexDirection:'row'}}>
-       <View style={{backgroundColor:'transparent',width:'40%',height:250,marginLeft:30,borderWidth:1,borderColor:'#e6e8f1',shadowOffset: { width: 10, height: 10 },
-   borderWidth: 1,
-  borderColor: '#96cef7',
-  borderBottomWidth: 0,
-  shadowColor: '#7929ff',
-  shadowOffset: { width: 0, height: 12 },
-  shadowOpacity: 0.8,
-  shadowRadius: 2,
-  elevation: 24,
-  }} >
-       <LinearGradient style={{height:'100%'}}   colors={[(item.Status=='Completed')?'#fff':'#5489ff', (item.Status=='Completed')?'#fff':'#7929ff', (item.Status=='Completed')?'#fff':'#7929ff']}>
-       <View style={{justifyContent:'center',alignItems:'center', position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: 20,
-    right: 0,}}>
-    <Image  style={{width:'60%', height: '80%',marginLeft:20}}   source={require("./assets/transparent-etherem.png")} ></Image>
+        <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:15,marginLeft:20}}>Credit Card</Text>
     </View>
-     {(item.Status!='Cancelled')? <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
-        <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/micon.png")} ></Image>
-
-        </View>:<View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
-        <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/diablue.png")} ></Image>
-
-        </View>}
-        {(item.Status!='Cancelled')? <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
-        
-        <Text style={{color:'#000000',fontSize:15,fontWeight:'bold'}}>Monero</Text>
-        <Text style={{color:'#1a5fe1',fontSize:15,marginTop:10,fontWeight:'bold'}}>XMR</Text>
-
-        <Text style={{color:'#000000',fontSize:15,marginTop:30,fontWeight:'bold'}}>Price</Text>
-        <Text style={{color:'#1a5fe1',fontSize:15,marginTop:10,fontWeight:'bold'}}>132.6</Text>
-    </View>:
-    <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
-        
-        <Text style={{color:'#fff',fontSize:15,fontWeight:'bold'}}>Etherium</Text>
-        <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold'}}>ETH</Text>
-
-        <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold'}}>Price</Text>
-        <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold'}}>132.6</Text>
-    </View>}
-       
-       </LinearGradient>
+    <View style={{marginTop:80}}> 
    
-       </View>
-       <View style={{backgroundColor:'transparent',width:'40%',height:250,marginLeft:20,borderWidth:1,borderColor:'#e6e8f1'}} >
-       <LinearGradient style={{height:'100%'}}   colors={[(item.Status=='Completed')?'#fff':'#fff', (item.Status=='Completed')?'#fff':'#fff', (item.Status=='Completed')?'#fff':'#fff']}>
-    <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
-        <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/diaIcon.png")} ></Image>
-
-        </View>
-        <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
-        
-            <Text style={{color:'#000000',fontSize:15,fontWeight:'bold'}}>Ripple</Text>
-            <Text style={{color:'#1a5fe1',fontSize:15,marginTop:10,fontWeight:'bold'}}>Xrp</Text>
-
-            <Text style={{color:'#000000',fontSize:15,marginTop:30,fontWeight:'bold'}}>Price</Text>
-            <Text style={{color:'#1a5fe1',fontSize:15,marginTop:10,fontWeight:'bold'}}>121.6</Text>
-        </View>
-       </LinearGradient>
-   
-       </View>
+             <View>
          
-        </View>
-</LinearGradient>
-  </View>
-       
-  </TouchableOpacity>  
-       }
-    />
-
- </View>
-    <View  style={{justifyContent:'flex-end',alignItems:'flex-end', top: 0,marginBottom:30,position:'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,}}>
-     <TouchableOpacity onPress={this.SlideMenu}>
-     <View style={{backgroundColor:'#5099f0',height:this.state.Ahr,width:this.state.Awr,justifyContent:'center',alignItems:'flex-start',borderTopStartRadius:40,borderBottomStartRadius:40, marginTop:10}}>
-           
-       <View style={{flexDirection: 'row',marginRight:20,}}> 
-       <TouchableOpacity onPress={this.AppTouch}>
-       <View style={{  width: 40,marginLeft:20,
-    height: 40,
-    borderRadius: 40/2,
-    backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
-   
-    <Image  style={{width: 20, height: 20}}  source={this.state.app1icon} ></Image>
-    
+             <View  style={{justifyContent:'center',alignItems:'center'
+        }}>
+              <Image  style={{width: 100, height: 150}}  source={require("./assets/threelogo.png")} ></Image> 
+                 
             
-          </View> 
-          </TouchableOpacity> 
-          <TouchableOpacity onPress={this.App6Touch}>
-       <View style={{  width: 40,marginLeft:20,
+        </View>
+      
+
+        <View style={{marginTop:60}}>
+        
+        <View  style={{justifyContent:'center',alignItems:'center',flexDirection:'row'
+        }}>
+ <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:20,marginLeft:10}}>Request a Card</Text>
+ <TouchableOpacity onPress={{}}>
+ <View>
+<Image  style={{width: 40, height: 40,marginLeft:10}}  source={require("./assets/plusflash.png")} ></Image> 
+</View>
+ </TouchableOpacity>
+
+        </View>
+        <View  style={{ marginTop:10,marginLeft:20
+        }}>
+<Image  style={{  aspectRatio: 1.4, 
+    resizeMode: 'contain',}} source={require("./assets/creditCard.png")} ></Image> 
+</View>
+</View>
+
+
+</View>
+             </View>          
+ </LinearGradient> 
+ </View>
+ <View style={{ width: '100%',
+    height: 70,
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute', 
+    bottom: 0,}}>
+<LinearGradient colors= {['#1a5fe1','#00a5ff','#00a5ff']} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
+    <View style={{flexDirection: 'row',marginRight:20,marginLeft:20,alignItems:"center",justifyContent:'center'}}> 
+       <TouchableOpacity>
+    
+       <View style={{ width: 40,marginLeft:10,backgroundColor:this.state.app5color,
     height: 40,
     borderRadius: 40/2,
-    backgroundColor:this.state.app6color,justifyContent:'center',alignItems:"center"}} >
+  justifyContent:'center',alignItems:"center"}} >
+  
+    <Image style={{width:20,height:20}}   source={this.state.app5icon} ></Image> 
+          </View>  
+       
+          </TouchableOpacity>  
+          <TouchableOpacity onPress={this.DashBoardTounch}>
+       
+       <View style={{ width: 40,marginLeft:10,
+ height: 40,
+ borderRadius: 40/2,
+justifyContent:'center',alignItems:"center"}} >
+
+ <Image style={{width:20,height:20}}   source={this.state.app1icon} ></Image> 
+       </View>    
+              
+       </TouchableOpacity>   
+          <TouchableOpacity onPress={this.CreditCardTouch}>
+      
+          <View style={{  width: 40,marginLeft:10,
+    height: 40,
+    borderRadius: 40/2,
+   justifyContent:'center',alignItems:"center"}} >
    
     <Image  style={{width: 20, height: 20}}  source={this.state.app6icon} ></Image>
     
             
           </View> 
-          </TouchableOpacity>   
-          <TouchableOpacity onPress={this.App2Touch}>
+       
+       
+          </TouchableOpacity>  
+          <TouchableOpacity onPress={this.VaultTouch}>
+    
           <View style={{  width: 40,marginLeft:10,
     height: 40,
     borderRadius: 40/2,
-    backgroundColor:this.state.app2color,justifyContent:'center',alignItems:"center"}} >
+  justifyContent:'center',alignItems:"center"}} >
   
     <Image style={{width:20,height:20}}   source={this.state.app2icon} ></Image> 
    
         
           </View> 
+      
+          
           </TouchableOpacity>  
           <TouchableOpacity onPress={this.App3Touch}>
+   
           <View style={{  width: 40,marginLeft:10,
     height: 40,
     borderRadius: 40/2,
-    backgroundColor: this.state.app3color,justifyContent:'center',alignItems:"center"}} >
+   justifyContent:'center',alignItems:"center"}} >
     
      <Image style={{width:20,height:20}}   source={this.state.app3icon} ></Image>
     
            
           </View>   
+       
+         
           </TouchableOpacity>
-          <TouchableOpacity onPress={this.App4Touch}>
+          <TouchableOpacity onPress={this.ExchangeTouch}>
+     
           <View style={{  width: 40,marginLeft:10,
     height: 40,
     borderRadius: 40/2,
-    backgroundColor: this.state.app4color,justifyContent:'center',alignItems:"center"}} >
+   justifyContent:'center',alignItems:"center"}} >
     
      <Image style={{width:20,height:20}}   source={this.state.app4icon} ></Image> 
     
             
           </View>  
+         
           </TouchableOpacity> 
-          <TouchableOpacity onPress={this.App5Touch}>
-          <View style={{ backgroundColor:'red',width: 40,marginLeft:10,
-    height: 40,
-    borderRadius: 40/2,
-    backgroundColor: this.state.app5color,justifyContent:'center',alignItems:"center"}} >
-  
-    <Image style={{width:20,height:20}}   source={this.state.app5icon} ></Image> 
-          </View>         
-          </TouchableOpacity>
-     
+          
           </View>
-            </View>
-            </TouchableOpacity>
-      </View>
-   
-      </View>
+          </LinearGradient>  
+</View>  
+     </View>
       
     
     );
@@ -507,6 +324,9 @@ right: 0,}}>
       {
           Alert.alert(item.Status)
       }
+      BeginAction=()=>{
+        this.props.navigation.navigate('Verify');
+      }
 }
 
 
@@ -514,13 +334,13 @@ right: 0,}}>
 const styles = StyleSheet.create({
  
   Maincontainers: {
-    flex: 1,   
-    backgroundColor: '#fff',
+    flex: 1, 
+    height:'100%'
   },
   containers: {
     backgroundColor: 'transparent',
     marginTop:5,
-   height:'30%'
+   
   },
   activityIndicator: {
     flex: 1,
