@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Path } from 'react-native-svg'
 import { View, StyleSheet, Image,ScrollView,Picker,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,FlatList} from 'react-native';
 import { Alert } from 'react-native';
-
+import PureChart from 'react-native-pure-chart';
 
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -23,7 +23,11 @@ export default class CreditTransaction  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
-  
+      GraphWidth:0,
+      ActivityWidth:1,
+      ActivityOpacity:1,
+      GraphOpacity:0.5,
+      ActivityView:true,
       app1icon:require('../assets/app1white.png'),
       app6icon:require('../assets/app6.png'),
       app2icon:require('../assets/app2.png'),
@@ -134,6 +138,30 @@ SlideMenu=()=>{
   }
   render() {
     const { navigate } = this.props.navigation;
+    let sampleData = [
+      {
+        seriesName: 'series1',
+        data: [
+          {x: '2018-02-01', y: 30},
+          {x: '2018-02-02', y: 200},
+          {x: '2018-02-03', y: 170},
+          {x: '2018-02-04', y: 250},
+          {x: '2018-02-05', y: 10}
+        ],
+        color: '#297AB1'
+      },
+      {
+        seriesName: 'series2',
+        data: [
+          {x: '2018-02-01', y: 20},
+          {x: '2018-02-02', y: 100},
+          {x: '2018-02-03', y: 140},
+          {x: '2018-02-04', y: 550},
+          {x: '2018-02-05', y: 40}
+        ],
+        color: 'yellow'
+      }
+    ]
     const data = [ 50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100 ]
     const Line = ({ line }) => (
       <Path
@@ -206,17 +234,31 @@ SlideMenu=()=>{
     resizeMode: 'contain',}} source={require("../assets/creditcardlogo.png")} ></Image> 
 </View>
 <View style={{justifyContent:'space-around',alignItems:'center',flexDirection:'row',marginTop:10}}> 
+<TouchableOpacity onPress={this.ActivityTouch}>
 <View>
-<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:15,marginLeft:40}}>Activity</Text>
+<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:15,marginLeft:40,opacity:this.state.ActivityOpacity}}>Activity</Text>
 <View
   style={{
     borderBottomColor: '#fff',width:60,marginLeft:40,marginTop:3,
-    borderBottomWidth: 1,
+    borderBottomWidth:this.state.ActivityWidth,
   }}
 />
 </View>
+</TouchableOpacity>
 
-<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:15,marginRight:40}}>Graph</Text>
+
+
+<TouchableOpacity onPress={this.GraphTouch}>
+<View>
+<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:15,marginLeft:40,opacity:this.state.GraphOpacity}}>Graph</Text>
+<View
+  style={{
+    borderBottomColor: '#fff',width:60,marginLeft:40,marginTop:3,
+    borderBottomWidth:this.state.GraphWidth,
+  }}
+/>
+</View>
+</TouchableOpacity>
 </View>
  <View style={{flexDirection:'row',alignItems:'center',padding:10,backgroundColor:'#2b4599',borderRadius:20,width:80,marginTop:10,marginLeft:20}}>
         <Image  style={{width: 10, height: 10}}  source={require("../assets/down_arrow.png")} ></Image> 
@@ -235,7 +277,7 @@ SlideMenu=()=>{
   <Picker.Item label="Aus" value="Aus" />
   </Picker>     
         </View>
-         <FlatList  style={{marginTop:10}}
+        {((this.state.ActivityView)? <FlatList  style={{marginTop:10}}
       ItemSeparatorComponent={this.space}
       data={this.state.dataSource}
           renderItem={({item,separators})  =>
@@ -289,7 +331,13 @@ SlideMenu=()=>{
        
   </TouchableOpacity>  
        }
-    />
+    />:<View style={{marginTop:20}}>
+      <PureChart data={sampleData} type='line' />
+    </View>
+        
+        
+        )}
+      
        
 </View>
 </View>
@@ -405,6 +453,26 @@ justifyContent:'center',alignItems:"center"}} >
       selectedTime=(Item,itemIndex)=>{
         this.setState({
           Time:Item
+        })
+      }
+      ActivityTouch=()=>{
+        this.setState({
+          ActivityOpacity:1,
+          GraphOpacity:0.5,
+          ActivityWidth:1,
+          GraphWidth:0,
+          ActivityView:true
+
+        })
+      }
+      GraphTouch=()=>{
+        this.setState({
+          ActivityOpacity:0.5,
+          GraphOpacity:1,
+          ActivityWidth:0,
+          GraphWidth:1,
+          ActivityView:false
+
         })
       }
 }
