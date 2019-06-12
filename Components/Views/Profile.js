@@ -181,7 +181,7 @@ SlideMenu=()=>{
   }
   CreditCardTouch=()=>{
    
-    Alert.alert('Development Progressing');
+    this.props.navigation.navigate('CreditCard')
   }
   render() {
     const { navigate } = this.props.navigation;

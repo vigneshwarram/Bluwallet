@@ -23,11 +23,11 @@ export default class CardDetails  extends React.Component {
       animate:false,
   
       app1icon:require('../assets/app1white.png'),
-      app6icon:require('../assets/app6.png'),
+      app6icon:require('../assets/app6-blue.png'),
       app2icon:require('../assets/app2.png'),
       app3icon:require('../assets/app3.png'),
       app4icon:require('../assets/app4.png'),
-      app5icon:require('../assets/app2-blue.png'),
+      app5icon:require('../assets/app5.png'),
       w: 50,
       h: 45,
       wr:50,
@@ -111,25 +111,27 @@ pressRight=()=>{
     this.setState({clickr:false})
 }
 }
-SlideMenu=()=>{
-  if(!this.state.slide){
-    LayoutAnimation.spring();
-    if(this.state.Awr>80){
-      this.setState({Awr:80})
-      this.setState({slide:false})
-    }
-    else{
-      this.setState({Awr:this.state.Awr+250})
-      this.setState({slide:true})
-    }
-    
-  }
-  else{
-    LayoutAnimation.spring();
-    this.setState({Awr:80})
-    this.setState({slide:false})
-  }
-  }
+AppTouch=()=>{
+}
+VaultTouch=()=>{
+  this.setState({
+    app2color:'#fff',
+    app2icon:require('../assets/app2.png')    
+  })
+  this.props.navigation.navigate('Vault');
+}
+App3Touch=()=>{
+  this.props.navigation.navigate('Price')
+}
+ExchangeTouch=()=>{
+  this.props.navigation.navigate('ExchangeMenu')
+}
+DashBoardTounch=()=>{
+  this.props.navigation.navigate('DashBoard')
+}
+ProfileTouch=()=>{
+  this.props.navigation.navigate('Profile')
+}
   render() {
     const { navigate } = this.props.navigation;
     const data = [ 50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100 ]
@@ -353,9 +355,9 @@ borderBottomWidth: 1,
     bottom: 0,}}>
 <LinearGradient colors= {['#1a5fe1','#00a5ff','#00a5ff']} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
     <View style={{flexDirection: 'row',marginRight:20,marginLeft:20,alignItems:"center",justifyContent:'center'}}> 
-       <TouchableOpacity>
+       <TouchableOpacity onPress={this.ProfileTouch}>
     
-       <View style={{ width: 40,marginLeft:10,backgroundColor:this.state.app5color,
+       <View style={{ width: 40,marginLeft:10,
     height: 40,
     borderRadius: 40/2,
   justifyContent:'center',alignItems:"center"}} >
@@ -377,7 +379,7 @@ justifyContent:'center',alignItems:"center"}} >
        </TouchableOpacity>   
           <TouchableOpacity onPress={this.CreditCardTouch}>
       
-          <View style={{  width: 40,marginLeft:10,
+          <View style={{  width: 40,marginLeft:10,backgroundColor:this.state.app5color,
     height: 40,
     borderRadius: 40/2,
    justifyContent:'center',alignItems:"center"}} >

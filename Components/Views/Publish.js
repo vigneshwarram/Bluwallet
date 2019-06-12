@@ -193,8 +193,7 @@ SlideMenu=()=>{
     this.props.navigation.navigate('Profile')
   }
   CreditCardTouch=()=>{
-   Alert.alert('Develpment Processing...')
-   // this.props.navigation.navigate('Profile')
+    this.props.navigation.navigate('CreditCard')
   }
   PurchaseTab=()=>{
     this.setState({

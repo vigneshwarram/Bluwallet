@@ -158,7 +158,7 @@ DashBoardTouch=()=>{
 }
 
 CreditCardTouch=()=>{
-  Alert.alert('Development Progressing');
+  this.props.navigation.navigate('CreditCard')
 }
 App4Touch=()=>{
   this.setState({

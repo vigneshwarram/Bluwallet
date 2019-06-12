@@ -195,8 +195,7 @@ SlideMenu=()=>{
     this.props.navigation.navigate('Profile')
   }
   CreditCardTouch=()=>{
-    Alert.alert('Develpment Processing...')
-    // this.props.navigation.navigate('Profile')
+    this.props.navigation.navigate('CreditCard')
    }
   render() {
     const data = [ 50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100 ]

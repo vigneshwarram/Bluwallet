@@ -206,7 +206,7 @@ App5Touch=()=>{
   this.props.navigation.navigate('Profile')
 }
 CreditCardTouch=()=>{
-  Alert.alert('Development Progressing');
+  this.props.navigation.navigate('CreditCard')
 }
 ActiveTouch=()=>{
   this.setState({
