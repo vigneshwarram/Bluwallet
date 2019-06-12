@@ -147,22 +147,13 @@ AppTouch=()=>{
   
 }
 VaultTouch=()=>{
-  this.setState({
-    app2color:'#fff', 
-  })
+ 
   this.props.navigation.navigate('Vault');
 }
 App3Touch=()=>{
-  this.setState({
-    app3color:'#fff',
-  })
   this.props.navigation.navigate('Price')
 }
 App4Touch=()=>{
-  this.setState({
-    app1color:'#fff',
-    app1icon:require('./assets/app1.png'), 
-  })
   this.props.navigation.navigate('ExchangeMenu')
 }
 App5Touch=()=>{

@@ -33,7 +33,9 @@ import {
  class App extends Component {
     render() {
       const MainNavigator = createStackNavigator({
+       
         Welcome:{screen:Welcome},
+        Price:{screen:Price},    
         CreditCard:{screen:CreditCard},
         CreditTransaction:{screen:CreditTransaction},
         CardDetails:{screen:CardDetails},       
@@ -46,7 +48,7 @@ import {
         Address:{screen:Address},
         ProfileRegister:{screen:ProfileRegister},  
         Vault:{screen:Vault},
-        Price:{screen:Price},    
+      
         ExchangeMenu:{screen:ExchangeMenu},
         Exchange:{screen:Exchange},
         Payment:{screen:Payment},
