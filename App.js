@@ -27,13 +27,14 @@ import Sms from  './Components/Views/LoginModule/Sms'
 import MoreInfo from  './Components/Views/LoginModule/MoreInfo'
 import ChooseCountry from  './Components/Views/LoginModule/ChooseCountry'
 import VerificationCards from  './Components/Views/LoginModule/VerificationCards'
+import Launch from  './Components/Views/LoginModule/Launch'
 import {
   createStackNavigator
 } from 'react-navigation'
  class App extends Component {
     render() {
       const MainNavigator = createStackNavigator({
-       
+        Launch:{screen:Launch},
         Welcome:{screen:Welcome},
         Price:{screen:Price},    
         CreditCard:{screen:CreditCard},
