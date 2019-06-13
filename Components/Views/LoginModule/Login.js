@@ -174,22 +174,21 @@ SlideMenu=()=>{
       <View style={{flexDirection:'row'}}>
       <Image  style={{width:20,height:20,marginTop:10}}  source={require("../assets/userIcon.png")} ></Image> 
       <TextInput
-          style={{height: 45,width: "90%"}}
+        
           // Adding hint in TextInput using Placeholder option.
           placeholder="User"
           placeholderTextColor="#3d5498" 
-          underlineColorAndroid="#3d5498"
-          
+          style={styles.inputBox}
         />
       </View>
       <View style={{flexDirection:'row'}}>
       <Image  style={{width:20,height:20,marginTop:10}}  source={require("../assets/passwordIcon.png")} ></Image> 
       <TextInput
-          style={{height: 45,width: "90%"}}
+         
           // Adding hint in TextInput using Placeholder option.
           placeholder="Password"
           placeholderTextColor="#3d5498" 
-          underlineColorAndroid="#3d5498"
+          style={styles.inputBox}
           
         />
       </View>
@@ -210,7 +209,7 @@ SlideMenu=()=>{
 <View>
 <LinearGradient colors={['#4476d7','#4f92e9','#61bff2']}  style={{padding:15,justifyContent:'center',alignItems:'center'}}>
 
-<Text style={{color:'#d2e4ff',fontFamily:'Exo2*',fontWeight:'bold'}}>LOGIN</Text>
+<Text style={{color:'#d2e4ff',fontWeight:'bold'}}>LOGIN</Text>
 
 </LinearGradient>
 </View>
@@ -308,5 +307,12 @@ const styles = StyleSheet.create({
       color: '#fff',
       textAlign: 'center',
       fontWeight: '700'
-  }
+  },
+  inputBox: {
+    
+    borderBottomWidth: 1,
+    borderBottomColor: '#3d5498',
+    height: 45,width: "90%"
+   
+}
 });

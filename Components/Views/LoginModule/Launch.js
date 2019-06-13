@@ -198,7 +198,7 @@ SlideMenu=()=>{
         <TouchableOpacity  onPress={this.CreateWallet}>
 <View>
 <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:15,justifyContent:'center',alignItems:'center',marginTop:150}}>
-<Text style={{color:'#fff',fontFamily:'Exo2*',fontWeight:'bold'}}>Create a Wallet</Text>
+<Text style={{color:'#fff',fontWeight:'bold'}}>Create a Wallet</Text>
 </LinearGradient>
 </View>
 
@@ -213,7 +213,7 @@ SlideMenu=()=>{
 <View>
 <LinearGradient colors={['#4476d7','#4f92e9','#61bff2']}  style={{padding:15,justifyContent:'center',alignItems:'center'}}>
 
-<Text style={{color:'#d2e4ff',fontFamily:'Exo2*',fontWeight:'bold'}}>LOGIN</Text>
+<Text style={{color:'#d2e4ff',fontWeight:'bold'}}>LOGIN</Text>
 
 </LinearGradient>
 
