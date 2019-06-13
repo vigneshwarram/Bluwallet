@@ -195,6 +195,11 @@ SlideMenu=()=>{
       recievePin(pin){
         // Check if the PIN is correct here
      }
+     handleOTPChange=(otp)=>{
+       if(otp.length>=4){
+        this.props.navigation.navigate('Sms');
+       }
+     }
 }
 
 

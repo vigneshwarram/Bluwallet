@@ -28,6 +28,7 @@ import MoreInfo from  './Components/Views/LoginModule/MoreInfo'
 import ChooseCountry from  './Components/Views/LoginModule/ChooseCountry'
 import VerificationCards from  './Components/Views/LoginModule/VerificationCards'
 import Launch from  './Components/Views/LoginModule/Launch'
+import Login from  './Components/Views/LoginModule/Login'
 import {
   createStackNavigator
 } from 'react-navigation'
@@ -36,6 +37,7 @@ import {
       const MainNavigator = createStackNavigator({
         Launch:{screen:Launch},
         Welcome:{screen:Welcome},
+        Login:{screen:Login},
         Price:{screen:Price},    
         CreditCard:{screen:CreditCard},
         CreditTransaction:{screen:CreditTransaction},
