@@ -43,7 +43,6 @@
 		E63386E81E0448EBACAE5C13 /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9561DAA2F3E4389A0BB9EE4 /* libRNDeviceInfo.a */; };
 		7A8FD4274F82462D9CF008B1 /* libRNDeviceInfo-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1149A4B1C72D4641B5BF1D1C /* libRNDeviceInfo-tvOS.a */; };
 		AC7A96F31267449D8FB1DA3D /* libRNReanimated.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA21E4B71D2F4590B02837EC /* libRNReanimated.a */; };
-		ED377C9880F4493EB942CA2A /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B28E7AE60F6B4B3D858E15D9 /* libRNFirebase.a */; };
 		2631A9C4E44F4BBCA15B57ED /* libTouchID.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 070C90B9E5EA4C0BB253A4EC /* libTouchID.a */; };
 		F574C4E2173648DFA96D68C1 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABC33BF792874DD9A2FB1DBF /* libBVLinearGradient.a */; };
 		192C0171FD8E4768929AD9EC /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0270F5592F2A46A587130949 /* libRNSVG.a */; };
@@ -362,8 +361,7 @@
 		1149A4B1C72D4641B5BF1D1C /* libRNDeviceInfo-tvOS.a */ = {isa = PBXFileReference; name = "libRNDeviceInfo-tvOS.a"; path = "libRNDeviceInfo-tvOS.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		71EA584557C34A3EAF81ED69 /* RNReanimated.xcodeproj */ = {isa = PBXFileReference; name = "RNReanimated.xcodeproj"; path = "../node_modules/react-native-reanimated/ios/RNReanimated.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		BA21E4B71D2F4590B02837EC /* libRNReanimated.a */ = {isa = PBXFileReference; name = "libRNReanimated.a"; path = "libRNReanimated.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
-		1BC432D8C12142BEA9D95512 /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; name = "RNFirebase.xcodeproj"; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		B28E7AE60F6B4B3D858E15D9 /* libRNFirebase.a */ = {isa = PBXFileReference; name = "libRNFirebase.a"; path = "libRNFirebase.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		
 		79D4404E1BC04F2DA4B91E15 /* TouchID.xcodeproj */ = {isa = PBXFileReference; name = "TouchID.xcodeproj"; path = "../node_modules/react-native-touch-id/TouchID.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		070C90B9E5EA4C0BB253A4EC /* libTouchID.a */ = {isa = PBXFileReference; name = "libTouchID.a"; path = "libTouchID.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		48FB33BCB2EE415D84EDBB79 /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; name = "BVLinearGradient.xcodeproj"; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
@@ -402,7 +400,6 @@
 				505F545D3E2441519CD51F9E /* libRNGestureHandler.a in Frameworks */,
 				E63386E81E0448EBACAE5C13 /* libRNDeviceInfo.a in Frameworks */,
 				AC7A96F31267449D8FB1DA3D /* libRNReanimated.a in Frameworks */,
-				ED377C9880F4493EB942CA2A /* libRNFirebase.a in Frameworks */,
 				2631A9C4E44F4BBCA15B57ED /* libTouchID.a in Frameworks */,
 				F574C4E2173648DFA96D68C1 /* libBVLinearGradient.a in Frameworks */,
 				192C0171FD8E4768929AD9EC /* libRNSVG.a in Frameworks */,
@@ -600,7 +597,6 @@
 				7897F471FD6D4EB0B0381A98 /* RNGestureHandler.xcodeproj */,
 				180CBC3B876A45848F005F8B /* RNDeviceInfo.xcodeproj */,
 				71EA584557C34A3EAF81ED69 /* RNReanimated.xcodeproj */,
-				1BC432D8C12142BEA9D95512 /* RNFirebase.xcodeproj */,
 				79D4404E1BC04F2DA4B91E15 /* TouchID.xcodeproj */,
 				48FB33BCB2EE415D84EDBB79 /* BVLinearGradient.xcodeproj */,
 				BA80DE93328D4443AE826B1C /* RNSVG.xcodeproj */,
@@ -1239,7 +1235,6 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1286,7 +1281,6 @@
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-device-info\ios\RNDeviceInfo",
 					"$(SRCROOT)\..\node_modules\react-native-reanimated\ios/**",
-					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
 					"$(SRCROOT)\..\node_modules\react-native-touch-id",
 					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
@@ -1315,7 +1309,6 @@
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-device-info\ios\RNDeviceInfo",
 					"$(SRCROOT)\..\node_modules\react-native-reanimated\ios/**",
-					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
 					"$(SRCROOT)\..\node_modules\react-native-touch-id",
 					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
@@ -1343,7 +1336,6 @@
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-device-info\ios\RNDeviceInfo",
 					"$(SRCROOT)\..\node_modules\react-native-reanimated\ios/**",
-					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
 					"$(SRCROOT)\..\node_modules\react-native-touch-id",
 					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
@@ -1384,14 +1376,12 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-device-info\ios\RNDeviceInfo",
 					"$(SRCROOT)\..\node_modules\react-native-reanimated\ios/**",
-					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
 					"$(SRCROOT)\..\node_modules\react-native-touch-id",
 					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
@@ -1424,7 +1414,6 @@
 				TVOS_DEPLOYMENT_TARGET = 9.2;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1479,14 +1468,14 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-device-info\ios\RNDeviceInfo",
 					"$(SRCROOT)\..\node_modules\react-native-reanimated\ios/**",
-					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
+				
 					"$(SRCROOT)\..\node_modules\react-native-touch-id",
 					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
@@ -1533,7 +1522,6 @@
 					"$(SRCROOT)\..\node_modules\react-native-gesture-handler\ios/**",
 					"$(SRCROOT)\..\node_modules\react-native-device-info\ios\RNDeviceInfo",
 					"$(SRCROOT)\..\node_modules\react-native-reanimated\ios/**",
-					"$(SRCROOT)\..\node_modules\react-native-firebase\ios\RNFirebase/**",
 					"$(SRCROOT)\..\node_modules\react-native-touch-id",
 					"$(SRCROOT)\..\node_modules\react-native-linear-gradient\BVLinearGradient",
 					"$(SRCROOT)\..\node_modules\react-native-svg\ios/**",
