@@ -254,7 +254,7 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
           Alert.alert(item.Status)
       }
       BeginAction=()=>{
-        this.props.navigation.navigate('Sms');
+        this.props.navigation.navigate('PinCode');
       }
       onChange = (password, score, { label, labelColor, activeBarColor }) => {
         console.log(password, score, { label, labelColor, activeBarColor });

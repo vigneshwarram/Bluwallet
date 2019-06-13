@@ -160,21 +160,19 @@ SlideMenu=()=>{
     </View>
      
     </View>
-    <View style={{marginTop:40}}> 
-   
-             <View>
+    <View style={{marginTop:40}}>          
          
              <View  style={{justifyContent:'center',alignItems:'center'
         }}>
               <Image  style={{aspectRatio:1.5,resizeMode:'contain'}}  source={require("../assets/app-logo.png")} ></Image> 
-                 
-            
-        </View>
-      
-        <View  style={{marginTop:30,marginLeft:20
+                           
+        </View>                   
+             
+</View>  
+<View  style={{marginTop:100,marginLeft:20
         }}>
       <View style={{flexDirection:'row'}}>
-      <Image  style={{width:30,height:30}}  source={require("../assets/userIcon.png")} ></Image> 
+      <Image  style={{width:20,height:20,marginTop:10}}  source={require("../assets/userIcon.png")} ></Image> 
       <TextInput
           style={{height: 45,width: "90%"}}
           // Adding hint in TextInput using Placeholder option.
@@ -185,7 +183,7 @@ SlideMenu=()=>{
         />
       </View>
       <View style={{flexDirection:'row'}}>
-      <Image  style={{width:30,height:30}}  source={require("../assets/passwordIcon.png")} ></Image> 
+      <Image  style={{width:20,height:20,marginTop:10}}  source={require("../assets/passwordIcon.png")} ></Image> 
       <TextInput
           style={{height: 45,width: "90%"}}
           // Adding hint in TextInput using Placeholder option.
@@ -196,12 +194,13 @@ SlideMenu=()=>{
         />
       </View>
              
+        </View>
+ <View style={{position:'absolute',bottom:20}}>
+        <Image
+                style={{aspectRatio:1,resizeMode: 'contain',opacity:0.1}}
+                source={require('../assets/bgLogo.png')}
+            />            
         </View>  
-        
-
-             </View> 
-             
-</View>  
         <View style={{flex: 1,
   justifyContent: 'flex-end',
   marginBottom: 150}}>
@@ -217,15 +216,10 @@ SlideMenu=()=>{
 </View>
 </TouchableOpacity> 
 <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
-<Text style={{color:'#fff',fontSize:20,fontFamily:'Exo2*'}}>Forgot the Password</Text>
+<Text style={{color:'#3d5498',fontSize:18}}>Forgot the Password</Text>
 </View>
         </View>      
-        <View style={{position:'absolute',bottom:20,left:50}}>
-        <Image
-                style={{aspectRatio:2,resizeMode: 'contain',tintColor:'#fff',opacity:0.1}}
-                source={require('../assets/threelogo.png')}
-            />            
-        </View>  
+       
  </LinearGradient> 
  </View>
  
@@ -238,8 +232,8 @@ SlideMenu=()=>{
       {
           Alert.alert(item.Status)
       }
-      BeginAction=()=>{
-        this.props.navigation.navigate('Address');
+      LoginAction=()=>{
+        this.props.navigation.navigate('Profile');
       }
 }
 

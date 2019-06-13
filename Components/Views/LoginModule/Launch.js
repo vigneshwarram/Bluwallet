@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,ScrollView,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
+import { View, StyleSheet, Image,ScrollView,TouchableOpacity,Text,ActivityIndicator,LayoutAnimation,} from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 
 import LinearGradient from 'react-native-linear-gradient';
+
 
 export default class Launch  extends React.Component {
 
@@ -182,40 +183,53 @@ SlideMenu=()=>{
              </View> 
              
 </View>  
+ <View style={{bottom:20,position:'absolute'}}>
+        <Image
+                style={{aspectRatio:1,resizeMode: 'contain',opacity:0.1}}
+                source={require('../assets/bgLogo.png')}
+            />            
+        </View>  
         <View style={{flex: 1,
   justifyContent: 'flex-end',
   marginBottom: 150}}>
         
-        <TouchableOpacity onPress={this.CreateWallet}>
+       
         <View>
-      
-        <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:15,justifyContent:'center',alignItems:'center',marginTop:150}}>
+        <TouchableOpacity  onPress={this.CreateWallet}>
+<View>
+<LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:15,justifyContent:'center',alignItems:'center',marginTop:150}}>
 <Text style={{color:'#fff',fontFamily:'Exo2*',fontWeight:'bold'}}>Create a Wallet</Text>
 </LinearGradient>
-        </View>
+</View>
+
         </TouchableOpacity>
-        <TouchableOpacity onPress={this.LoginAction}>    
+        
+
+        </View>
+        
+          
+<View>
+<TouchableOpacity  onPress={this.LoginAction}>
 <View>
 <LinearGradient colors={['#4476d7','#4f92e9','#61bff2']}  style={{padding:15,justifyContent:'center',alignItems:'center'}}>
 
 <Text style={{color:'#d2e4ff',fontFamily:'Exo2*',fontWeight:'bold'}}>LOGIN</Text>
 
 </LinearGradient>
+
+
+</View>
+  </TouchableOpacity >
 </View> 
-</TouchableOpacity>
+
 <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
-<Text style={{color:'#fff',fontSize:20,fontFamily:'Exo2*'}}>Recover Funds</Text>
+<Text style={{color:'#fff',fontSize:20,}}>Recover Funds</Text>
 </View>
         </View>      
-        <View style={{position:'absolute',bottom:20,left:50}}>
-        <Image
-                style={{aspectRatio:2,resizeMode: 'contain',tintColor:'#fff',opacity:0.1}}
-                source={require('../assets/threelogo.png')}
-            />            
-        </View>  
+        
  </LinearGradient> 
  </View>
- 
+
      </View>
       
     
