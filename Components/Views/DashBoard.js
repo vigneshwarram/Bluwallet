@@ -1,13 +1,17 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,Picker,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
+import { View, StyleSheet, Image,Picker,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation, Animated,
+  Easing,Dimensions} from 'react-native';
 import { Alert } from 'react-native';
 const { UIManager } = NativeModules;
-import Logo from '../logo'
+import Carousel from 'react-native-snap-carousel';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
 import LinearGradient from 'react-native-linear-gradient';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
+const { width } = Dimensions.get('window');
+const height = width * 0.8;
+
 export default class DashBoard extends React.Component {
 
   static navigationOptions = {
@@ -17,11 +21,14 @@ export default class DashBoard extends React.Component {
 
   constructor(props) {
     super(props);
-    
+   
     this.state = {
       dataSource:[],
+      dataImage:[{'image1':require("./assets/etherem.png"),'image1':require("./assets/etherem.png")}],
       cityItems:["US Doller,Indian,Eutherium"],
       Amount: 'USDoller',
+      currentIndex:0,
+      data1:[require('./assets/biconback.png'),require('./assets/etherem.png'),require('./assets/biconback.png'),require('./assets/etherem.png')],
       Time: 'Today',
       animate:false,
       app1icon:require('./assets/app1.png'),
@@ -47,8 +54,30 @@ export default class DashBoard extends React.Component {
       app2color:'#5099f0',
       app3color:'#5099f0',
       app4color:'#5099f0',
-      app5color:'#5099f0'
-    };
+      app5color:'#5099f0',
+      carouselItems: [
+        {
+         
+        ShadowImages:require('./assets/etherem.png'),
+         
+            title:"Etherium"
+        },
+        {
+          ShadowImages:require('./assets/mshadow.png'),
+       
+            title:"Micon"
+        },
+        {
+          ShadowImages:require('./assets/bshadow.png'),
+            title:"Bicon"
+        },
+        {
+          ShadowImages:require('./assets/zshadow.png'),
+            title:"Zcoin"
+        },
+       
+    ]}
+    
   
   }
   
@@ -161,6 +190,7 @@ App5Touch=()=>{
     app3color:'#5099f0',
     app1color:'#5099f0',
     app2color:'#5099f0',
+    currentIndex: 0,
     app4color:'#5099f0',
     app6color:'#5099f0',
     app6icon:require('./assets/app6.png'),
@@ -179,7 +209,8 @@ CreditCardTouch=()=>{
   this.props.navigation.navigate('CreditCard')
 }
   render() {
-
+    const { width } = Dimensions.get('window');
+    const contentOffset = (width - 50) / 2;
     const { navigate } = this.props.navigation;
     const data = [ 100, 500, 1000, 500, 400, 600,800,400,300,500 ]
     const Line = ({ line }) => (
@@ -229,31 +260,17 @@ CreditCardTouch=()=>{
           </TouchableOpacity>
             </LinearGradient>
       </View>
-   
+      <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
+      <Carousel
+                    data={this.state.carouselItems}
+                    sliderWidth={250}
+                    itemWidth={250}
+                    renderItem={this._renderItem}
+                />
       
-    <View style={{marginTop:10,marginLeft:-20}}>  
-    <View style={{justifyContent:'space-evenly',alignItems:'center',flexDirection:'row',marginLeft:50}}>
-    <View >
-    <Text style={{marginTop:15,fontSize:12,fontWeight:'bold',color:'#4d6bc1'}}>Monerp</Text> 
-    <Image style={{height:80,width:60,opacity:0.1,marginTop:10}}   source={require("./assets/micon.png")} ></Image>     
-    </View>          
-   
-    <View >
-    <Text style={{marginTop:15,fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:20}}>Etherium</Text> 
-    <Image
-        style={{height:140,width:100 ,marginTop:10,opacity:1,shadowOpacity:1,shadowColor:'#4d6bc1'}} source={require("./assets/etherem.png")} ></Image>     
- 
+      </View>
+      
     
-    </View>      
-     
-    <View  >
-    <Text style={{marginTop:15,fontSize:12,fontWeight:'bold',color:'#4d6bc1'}}>Bitcoin</Text> 
-    <Image style={{height:80,width:60,opacity:0.1,marginTop:10}}   source={require("./assets/bgbicon.png")} ></Image>
-    </View>    
-    </View>
-    
-    
-    </View> 
       <View style={styles.containers}>
     
       <AreaChart
@@ -547,6 +564,18 @@ justifyContent:'center',alignItems:"center"}} >
         Time:item
         })
       }
+      _renderItem({item,index}){
+        return (
+            <View style={{flex:1,justifyContent:'center',alignItems:'center'}}> 
+            <Text style={{color:'#fff',marginTop:10}} >{item.title}</Text>
+                <Image style={{aspectRatio:1,resizeMode:'contain'}}
+                    source={item.ShadowImages}
+                    />
+                
+            </View>
+        )
+    
+    }
 }
 
 

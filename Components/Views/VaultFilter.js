@@ -3,11 +3,11 @@ import { Path } from 'react-native-svg'
 import { View, StyleSheet, Image,Picker,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
 import { Alert } from 'react-native';
 const { UIManager } = NativeModules;
+import Carousel from 'react-native-snap-carousel';
 import Logo from '../logo'
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
 import LinearGradient from 'react-native-linear-gradient';
-import Carousel from 'react-native-snap-carousel';
 import ImageCarousel from 'react-native-image-carousel';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 export default class VaultFilter extends React.Component {
@@ -54,8 +54,36 @@ export default class VaultFilter extends React.Component {
       app2color:'#fff',
       app3color:'#5099f0',
       app4color:'#5099f0',
-      app5color:'#5099f0'
-    };
+      app5color:'#5099f0',
+      carouselItems: [
+        {
+         
+           ShadowImages:require('./assets/etheremicon.png'),
+            colo1:'#5582ff',color2:'#5e5cff',color3:'#6730ff',
+            title:"Etherium"
+        },
+        {
+          ShadowImages:require('./assets/miconback.png'),
+          colo1:'#fd7170',color2:'#fa5a76',color3:'#f53d7b',
+            title:"Micon"
+        },
+        {
+          ShadowImages:require('./assets/biconback.png'),
+          colo1:'#f8bc73',color2:'#f0824d',color3:'#ec643a',
+            title:"Micon"
+        },
+        {
+          colo1:'#faaf15',color2:'#fbcc0a',color3:'#fddf01',
+          ShadowImages:require('./assets/ziconback.png'),
+            title:"Bicon"
+        },
+        {
+          colo1:'#8be6f8',color2:'#59a7f2',color3:'#3652bd',
+          ShadowImages:require('./assets/shareicon.png'),
+            title:"Share"
+        },
+       
+    ]}
   
   }
   
@@ -210,6 +238,7 @@ App6Touch=()=>{
     app4icon:require('./assets/app4.png'),
     app6icon:require('./assets/app6-blue.png'),
     app5icon:require('./assets/app5.png'),
+    
    
   })
   this.props.navigation.navigate('CreditCard')
@@ -279,29 +308,13 @@ App6Touch=()=>{
     </View>
     </View> 
    <View style={{marginTop:20}}>
-   <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',marginLeft:50}}>
-    <View style={{flex:1}}>
-    <Text style={{marginLeft:10,marginTop:15,fontSize:12,fontWeight:'bold',color:'#4d6bc1'}}>Monerp</Text> 
-    <Image style={{height:80,width:60,opacity:0.1,marginTop:10}}   source={require("./assets/micon.png")} ></Image>     
-    </View>          
-   
-    <View style={{flex:1}}>
-    <Text style={{marginTop:8,fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:10}}>Etherium</Text> 
-    <View style={{marginTop:8,marginLeft:-20}}>
-<LinearGradient style={{  width: 110,
-height: 110,
-borderRadius: 110/2,
-justifyContent:'center',alignItems:"center"}} colors= {['#5582ff','#5e5cff','#6730ff']}>
-   <Image style={{width: 60, height: 60}}   source={require("./assets/etheremicon.png")} ></Image> 
-</LinearGradient>
-
-    </View>
-    </View>      
-     
-    <View style={{flex:1}} >
-    <Text style={{marginLeft:10,marginTop:15,fontSize:12,fontWeight:'bold',color:'#4d6bc1'}}>Bitcoin</Text> 
-    <Image style={{height:80,width:60,opacity:0.1,marginTop:10}}   source={require("./assets/bgbicon.png")} ></Image>
-    </View>    
+   <View style={{justifyContent:'center',alignItems:'center'}}>
+   <Carousel
+                    data={this.state.carouselItems}
+                    sliderWidth={250}
+                    itemWidth={250}
+                    renderItem={this._renderItem}
+                />
     </View>
    </View>
     </View> 
@@ -518,7 +531,19 @@ justifyContent:'center',alignItems:"center"}} >
       {
           Alert.alert(item.Status)
       }
-    
+      _renderItem({item,index}){
+        return (
+            <View style={{justifyContent:'center',alignItems:'center'}}> 
+            <LinearGradient style={{  width: 110,
+height: 110,
+borderRadius: 110/2,
+justifyContent:'center',alignItems:"center"}} colors= {[item.colo1,item.color2,item.color3]}>
+   <Image style={{width: 60, height: 60}}   source={item.ShadowImages} ></Image> 
+</LinearGradient>
+                
+            </View>
+        )
+        }
 }
 
 
