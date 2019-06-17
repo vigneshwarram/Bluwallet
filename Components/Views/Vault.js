@@ -150,7 +150,9 @@ ProfileTouch=()=>{
   
 }
 DashBoardTouch=()=>{
-  this.props.navigation.navigate('DashBoard')
+  this.props.navigation.navigate('DashBoard',{
+    DashBoardPopup: false,
+  })
 }
 App3Touch=()=>{
  

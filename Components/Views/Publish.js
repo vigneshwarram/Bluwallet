@@ -149,7 +149,9 @@ SlideMenu=()=>{
   }
   DashBoardTouch=()=>
   {  
-    this.props.navigation.navigate('DashBoard');
+    this.props.navigation.navigate('DashBoard',{
+      DashBoardPopup: false,
+    })
   }
   App3Touch=()=>{
    Alert.alert('Development Processing...')

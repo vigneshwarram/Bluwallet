@@ -232,7 +232,9 @@ SlideMenu=()=>{
           Alert.alert(item.Status)
       }
       LoginAction=()=>{
-        this.props.navigation.navigate('Profile');
+        this.props.navigation.navigate('DashBoard',{
+          DashBoardPopup: true,
+        });
       }
 }
 

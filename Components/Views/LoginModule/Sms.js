@@ -218,7 +218,9 @@ SlideMenu=()=>{
           Alert.alert(item.Status)
       }
       BeginAction=()=>{
-        this.props.navigation.navigate('DashBoard');
+        this.props.navigation.navigate('DashBoard',{
+          DashBoardPopup: false,
+        });
       }
 }
 

@@ -127,7 +127,9 @@ ExchangeTouch=()=>{
   this.props.navigation.navigate('ExchangeMenu')
 }
 DashBoardTounch=()=>{
-  this.props.navigation.navigate('DashBoard')
+  this.props.navigation.navigate('DashBoard',{
+    DashBoardPopup: false,
+  })
 }
 ProfileTouch=()=>{
   this.props.navigation.navigate('Profile')

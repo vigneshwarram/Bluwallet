@@ -30,6 +30,7 @@ export default class DashBoard extends React.Component {
       currentIndex:0,
       data1:[require('./assets/biconback.png'),require('./assets/etherem.png'),require('./assets/biconback.png'),require('./assets/etherem.png')],
       Time: 'Today',
+      NoPopup:this.props.navigation.state.params.DashBoardPopup?this.props.navigation.state.params.DashBoardPopup:false,
       animate:false,
       ProfileComplete:false,
       app1icon:require('./assets/app1.png'),
@@ -261,7 +262,8 @@ CreditCardTouch=()=>{
           </TouchableOpacity>
             </LinearGradient>
       </View>
-      {((!this.state.ProfileComplete)?
+      {((this.state.NoPopup?null:
+      ((!this.state.ProfileComplete)?
         <View >
       <LinearGradient colors= {['#395ea4','#446ea8','#4c78a9']} style={{width:'95%',marginLeft:10,marginRight:10,padding:10,height:160,marginTop:15,borderRadius:10}}>
       <Text style={{marginLeft:20,fontSize:18,fontWeight:'bold',color:'#fff'}}>Complete Your Profile</Text>  
@@ -300,7 +302,11 @@ CreditCardTouch=()=>{
 </View>
       </LinearGradient>
       </View>           
+      ))
+      
+      
       )}
+ 
       
       <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
       <Carousel

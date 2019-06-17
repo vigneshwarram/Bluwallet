@@ -333,7 +333,9 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
    })
   }
   ContactAction=()=>{
-    this.props.navigation.navigate('DashBoard')
+    this.props.navigation.navigate('DashBoard',{
+        DashBoardPopup: false,
+      })
   }
   ContactSupportCancel=()=>{
     this.setState({
