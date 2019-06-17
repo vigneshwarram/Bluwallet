@@ -341,57 +341,7 @@ SlideMenu=()=>{
     bottom: 0,}}>
 <LinearGradient colors= {['#1a5fe1','#00a5ff','#00a5ff']} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
     <View style={{flexDirection: 'row',marginRight:20,marginLeft:20,alignItems:"center",justifyContent:'center'}}> 
-       <TouchableOpacity onPress={this.ProfileTouch}>
-    
-       <View style={{ width: 40,marginLeft:10,
-    height: 40,
-    borderRadius: 40/2,
-  justifyContent:'center',alignItems:"center"}} >
-  
-    <Image style={{width:20,height:20}}   source={this.state.app5icon} ></Image> 
-          </View>  
-       
-          </TouchableOpacity>  
-          <TouchableOpacity onPress={this.DashBoardTounch}>
-       
-       <View style={{ width: 40,marginLeft:10,
- height: 40,
- borderRadius: 40/2,
-justifyContent:'center',alignItems:"center"}} >
-
- <Image style={{width:20,height:20}}   source={this.state.app1icon} ></Image> 
-       </View>    
-              
-       </TouchableOpacity>   
-          <TouchableOpacity onPress={this.CreditCardTouch}>
-      
-          <View style={{  width: 40,marginLeft:10,
-    height: 40,
-    borderRadius: 40/2,
-   justifyContent:'center',alignItems:"center"}} >
-   
-    <Image  style={{width: 20, height: 20}}  source={this.state.app6icon} ></Image>
-    
-            
-          </View> 
-       
-       
-          </TouchableOpacity>  
-          <TouchableOpacity onPress={this.VaultTouch}>
-    
-          <View style={{  width: 40,marginLeft:10,
-    height: 40,
-    borderRadius: 40/2,
-  justifyContent:'center',alignItems:"center"}} >
-  
-    <Image style={{width:20,height:20}}   source={this.state.app2icon} ></Image> 
-   
-        
-          </View> 
-      
-          
-          </TouchableOpacity>  
-          <TouchableOpacity >
+    <TouchableOpacity >
    
           <View style={{  width: 40,marginLeft:10,backgroundColor:this.state.app1color,
     height: 40,
@@ -418,6 +368,60 @@ justifyContent:'center',alignItems:"center"}} >
           </View>  
          
           </TouchableOpacity> 
+          <TouchableOpacity onPress={this.DashBoardTounch}>
+       
+       <View style={{ width: 40,marginLeft:10,
+ height: 40,
+ borderRadius: 40/2,
+justifyContent:'center',alignItems:"center"}} >
+
+ <Image style={{width:20,height:20}}   source={this.state.app1icon} ></Image> 
+       </View>    
+              
+       </TouchableOpacity>   
+    <TouchableOpacity onPress={this.VaultTouch}>
+    
+          <View style={{  width: 40,marginLeft:10,
+    height: 40,
+    borderRadius: 40/2,
+  justifyContent:'center',alignItems:"center"}} >
+  
+    <Image style={{width:20,height:20}}   source={this.state.app2icon} ></Image> 
+   
+        
+          </View> 
+      
+          
+          </TouchableOpacity>  
+          
+          
+       
+         
+          <TouchableOpacity onPress={this.CreditCardTouch}>
+      
+          <View style={{  width: 40,marginLeft:10,
+    height: 40,
+    borderRadius: 40/2,
+   justifyContent:'center',alignItems:"center"}} >
+   
+    <Image  style={{width: 20, height: 20}}  source={this.state.app6icon} ></Image>
+    
+            
+          </View> 
+       
+       
+          </TouchableOpacity>  
+          <TouchableOpacity onPress={this.ProfileTouch}>
+    
+       <View style={{ width: 40,marginLeft:10,
+    height: 40,
+    borderRadius: 40/2,
+  justifyContent:'center',alignItems:"center"}} >
+  
+    <Image style={{width:20,height:20}}   source={this.state.app5icon} ></Image> 
+          </View>  
+       
+          </TouchableOpacity>  
           
           </View>
           </LinearGradient>  
