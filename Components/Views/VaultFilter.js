@@ -534,6 +534,7 @@ justifyContent:'center',alignItems:"center"}} >
       _renderItem({item,index}){
         return (
             <View style={{justifyContent:'center',alignItems:'center'}}> 
+             <Text style={{color:'#fff',marginBottom:10}}>{item.title}</Text>
             <LinearGradient style={{  width: 110,
 height: 110,
 borderRadius: 110/2,
