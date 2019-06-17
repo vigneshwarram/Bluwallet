@@ -237,17 +237,35 @@ ProfileTouch=()=>{
     bottom: 0,}}>
 <LinearGradient colors= {['#1a5fe1','#00a5ff','#00a5ff']} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
     <View style={{flexDirection: 'row',marginRight:20,marginLeft:20,alignItems:"center",justifyContent:'center'}}> 
-       <TouchableOpacity nPress={this.ProfileTouch}>
+    <TouchableOpacity onPress={this.App3Touch}>
+   
+   <View style={{  width: 40,marginLeft:10,
+height: 40,
+borderRadius: 40/2,
+justifyContent:'center',alignItems:"center"}} >
+
+<Image style={{width:20,height:20}}   source={this.state.app3icon} ></Image>
+
     
-       <View style={{ width: 40,marginLeft:10,
-    height: 40,
-    borderRadius: 40/2,
-  justifyContent:'center',alignItems:"center"}} >
+   </View>   
+
   
-    <Image style={{width:20,height:20}}   source={this.state.app5icon} ></Image> 
-          </View>  
+   </TouchableOpacity>
+   <TouchableOpacity onPress={this.ExchangeTouch}>
+
+   <View style={{  width: 40,marginLeft:10,
+height: 40,
+borderRadius: 40/2,
+justifyContent:'center',alignItems:"center"}} >
+
+<Image style={{width:20,height:20}}   source={this.state.app4icon} ></Image> 
+
+     
+   </View>  
+  
+   </TouchableOpacity> 
+   
        
-          </TouchableOpacity>  
           <TouchableOpacity onPress={this.DashBoardTounch}>
        
        <View style={{ width: 40,marginLeft:10,
@@ -259,20 +277,7 @@ justifyContent:'center',alignItems:"center"}} >
        </View>    
               
        </TouchableOpacity>   
-          <TouchableOpacity onPress={this.CreditCardTouch}>
-      
-          <View style={{  width: 40,marginLeft:10,backgroundColor:this.state.app5color,
-    height: 40,
-    borderRadius: 40/2,
-   justifyContent:'center',alignItems:"center"}} >
-   
-    <Image  style={{width: 20, height: 20}}  source={this.state.app6icon} ></Image>
-    
-            
-          </View> 
-       
-       
-          </TouchableOpacity>  
+         
           <TouchableOpacity onPress={this.VaultTouch}>
     
           <View style={{  width: 40,marginLeft:10,
@@ -287,33 +292,31 @@ justifyContent:'center',alignItems:"center"}} >
       
           
           </TouchableOpacity>  
-          <TouchableOpacity onPress={this.App3Touch}>
+          <TouchableOpacity onPress={this.CreditCardTouch}>
+      
+      <View style={{  width: 40,marginLeft:10,backgroundColor:this.state.app5color,
+height: 40,
+borderRadius: 40/2,
+justifyContent:'center',alignItems:"center"}} >
+
+<Image  style={{width: 20, height: 20}}  source={this.state.app6icon} ></Image>
+
+        
+      </View> 
    
-          <View style={{  width: 40,marginLeft:10,
-    height: 40,
-    borderRadius: 40/2,
-   justifyContent:'center',alignItems:"center"}} >
+   
+      </TouchableOpacity>  
+          <TouchableOpacity onPress={this.ProfileTouch}>
     
-     <Image style={{width:20,height:20}}   source={this.state.app3icon} ></Image>
+    <View style={{ width: 40,marginLeft:10,
+ height: 40,
+ borderRadius: 40/2,
+justifyContent:'center',alignItems:"center"}} >
+
+ <Image style={{width:20,height:20}}   source={this.state.app5icon} ></Image> 
+       </View>  
     
-           
-          </View>   
-       
-         
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.ExchangeTouch}>
-     
-          <View style={{  width: 40,marginLeft:10,
-    height: 40,
-    borderRadius: 40/2,
-   justifyContent:'center',alignItems:"center"}} >
-    
-     <Image style={{width:20,height:20}}   source={this.state.app4icon} ></Image> 
-    
-            
-          </View>  
-         
-          </TouchableOpacity> 
+       </TouchableOpacity>  
           
           </View>
           </LinearGradient>  

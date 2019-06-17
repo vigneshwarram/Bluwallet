@@ -29,30 +29,30 @@ import ChooseCountry from  './Components/Views/LoginModule/ChooseCountry'
 import VerificationCards from  './Components/Views/LoginModule/VerificationCards'
 import Launch from  './Components/Views/LoginModule/Launch'
 import Login from  './Components/Views/LoginModule/Login'
+import Confirm from  './Components/Views/LoginModule/Confirm'
 import {
   createStackNavigator
 } from 'react-navigation'
  class App extends Component {
     render() {
       const MainNavigator = createStackNavigator({
-        DashBoard:{screen:DashBoard},  
         Launch:{screen:Launch},
+        DashBoard:{screen:DashBoard},        
+        Confirm:{screen:Confirm},
         Welcome:{screen:Welcome},
         Login:{screen:Login},
         Price:{screen:Price},    
         CreditCard:{screen:CreditCard},
         CreditTransaction:{screen:CreditTransaction},
         CardDetails:{screen:CardDetails},       
-        Profile:{screen:Profile},
-       
+        Profile:{screen:Profile},     
         PinCode:{screen:PinCode},
         NewWallet:{screen:NewWallet},    
         Verify:{screen:Verify},
         CountrySearch:{screen:CountrySearch},
         Address:{screen:Address},
         ProfileRegister:{screen:ProfileRegister},  
-        Vault:{screen:Vault},
-      
+        Vault:{screen:Vault},  
         ExchangeMenu:{screen:ExchangeMenu},
         Exchange:{screen:Exchange},
         Payment:{screen:Payment},

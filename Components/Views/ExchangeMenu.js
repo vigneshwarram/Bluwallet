@@ -451,20 +451,7 @@ justifyContent:'center',alignItems:"center"}} >
        </View>    
               
        </TouchableOpacity>   
-          <TouchableOpacity onPress={this.CreditCardTouch}>
-      
-          <View style={{  width: 40,marginLeft:20,
-    height: 40,
-    borderRadius: 40/2,
-   justifyContent:'center',alignItems:"center"}} >
-   
-    <Image  style={{width: 20, height: 20}}  source={this.state.app6icon} ></Image>
-    
-            
-          </View> 
-       
-       
-          </TouchableOpacity>  
+         
           <TouchableOpacity onPress={this.VaultTouch}>
     
           <View style={{  width: 40,marginLeft:10,
@@ -479,6 +466,20 @@ justifyContent:'center',alignItems:"center"}} >
       
           
           </TouchableOpacity>  
+          <TouchableOpacity onPress={this.CreditCardTouch}>
+      
+      <View style={{  width: 40,marginLeft:20,
+height: 40,
+borderRadius: 40/2,
+justifyContent:'center',alignItems:"center"}} >
+
+<Image  style={{width: 20, height: 20}}  source={this.state.app6icon} ></Image>
+
+        
+      </View> 
+   
+   
+      </TouchableOpacity>  
           <TouchableOpacity onPress={this.ProfileTouch}>
     
     <View style={{ width: 40,marginLeft:10,

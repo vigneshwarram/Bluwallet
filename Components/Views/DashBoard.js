@@ -31,6 +31,7 @@ export default class DashBoard extends React.Component {
       data1:[require('./assets/biconback.png'),require('./assets/etherem.png'),require('./assets/biconback.png'),require('./assets/etherem.png')],
       Time: 'Today',
       animate:false,
+      ProfileComplete:false,
       app1icon:require('./assets/app1.png'),
       app6icon:require('./assets/app6.png'),
       app2icon:require('./assets/app2.png'),
@@ -260,6 +261,47 @@ CreditCardTouch=()=>{
           </TouchableOpacity>
             </LinearGradient>
       </View>
+      {((!this.state.ProfileComplete)?
+        <View >
+      <LinearGradient colors= {['#395ea4','#446ea8','#4c78a9']} style={{width:'95%',marginLeft:10,marginRight:10,padding:10,height:160,marginTop:15,borderRadius:10}}>
+      <Text style={{marginLeft:20,fontSize:18,fontWeight:'bold',color:'#fff'}}>Complete Your Profile</Text>  
+      <View style={{flexDirection:'row'}}>
+      <Text style={{marginLeft:20,fontSize:10,color:'#fff',width:'65%'}}>Complete you profile today to start using your wallet successfully </Text>  
+      <Image style={{marginLeft:10, height: 60,
+    width: 100,
+    resizeMode: 'contain'}}   source={require("./assets/threelogo.png")} ></Image>     
+      </View>
+      <TouchableOpacity onPress={this.ContinueClick}>
+      <View style={{width:'50%'}}>
+<LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:10}}>
+<TouchableOpacity>
+<Text style={{color:'#fff'}}>Continue</Text>
+</TouchableOpacity>
+</LinearGradient>
+</View>
+      </TouchableOpacity>
+      
+      </LinearGradient>
+      </View>:<View >
+      <LinearGradient colors= {['#395ea4','#446ea8','#4c78a9']} style={{width:'95%',marginLeft:10,marginRight:10,padding:10,height:160,marginTop:15,borderRadius:10}}>
+      <Text style={{marginLeft:20,fontSize:18,fontWeight:'bold',color:'#fff'}}>Document Needed</Text>  
+      <View style={{flexDirection:'row'}}>
+      <Text style={{marginLeft:20,fontSize:10,color:'#fff',width:'65%'}}>we have some issue with the documents you've supplied.please try uploading them again to continue </Text>  
+      <Image style={{marginLeft:10, height: 50,
+    width: 100,
+    resizeMode: 'contain'}}   source={require("./assets/profileicon.png")} ></Image>     
+      </View>
+      <View style={{width:'50%',marginTop:20}}>
+<LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:10}}>
+<TouchableOpacity>
+<Text style={{color:'#fff'}}>Upload again</Text>
+</TouchableOpacity>
+</LinearGradient>
+</View>
+      </LinearGradient>
+      </View>           
+      )}
+      
       <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
       <Carousel
                     data={this.state.carouselItems}
@@ -566,6 +608,12 @@ justifyContent:'center',alignItems:"center"}} >
         this.setState({
         Time:item
         })
+      }
+      ContinueClick=()=>{
+        this.setState({
+          ProfileComplete:true
+        })
+        this.props.navigation.navigate('Welcome')
       }
       _renderItem({item,index}){
         return (

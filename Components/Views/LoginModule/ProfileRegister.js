@@ -242,7 +242,7 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
     );
   }
   BeginAction=()=>{
-    this.props.navigation.navigate('NewWallet');
+    this.props.navigation.navigate('ChooseCountry');
   }
 }
 
