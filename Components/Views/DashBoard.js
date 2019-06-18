@@ -311,7 +311,7 @@ CreditCardTouch=()=>{
       <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
       <Carousel
                     data={this.state.carouselItems}
-                    sliderWidth={300}
+                    sliderWidth={width}
                     itemWidth={300}
                     renderItem={this._renderItem}
                 />
@@ -321,30 +321,18 @@ CreditCardTouch=()=>{
     
       <View style={styles.containers}>
     
-      <AreaChart
-                style={{ height: 100,marginLeft:-20, marginRight:30,marginBottom:10,backgroundColor:'transparent',position:'absolute',top:0,bottom:0,left:0,right:0 }}
-                data={data}
-                showGrid={ false }
-                curve={shape.curveNatural}
-                svg={{ fill: '#28489d',stroke:'#fff' }}
-            >
-                <Grid/>
-                <Line/>
-            </AreaChart>
-            <View style={{justifyContent:'center',alignItems:'center',marginTop:60}}>
+    <Image style={{width:350,height:200,opacity:0.5,marginTop:-20,
+    resizeMode: 'contain'}}   source={require("./assets/etherium_original.png")} ></Image>   
+    
+      
+            <View style={{justifyContent:'center',alignItems:'center',marginTop:-80}}>
                  <Text style={{marginLeft:10,marginTop:15,fontSize:15,fontWeight:'bold',color:'#4d6bc1'}}>Balance</Text> 
                  </View>
                
                <View style={{ marginTop:30,justifyContent:'center',alignItems:'center'}}>
                  <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-                 <View>
-                <LinearGradient colors= {['#8be6f8','#5dabf5','#4984e0']} style={{ width: 40,marginLeft:10,
- height: 40,
- borderRadius: 40/2,
-justifyContent:'center',alignItems:"center"}} >
-
- <Image style={{width:20,height:20}}    source={require("./assets/refresh-arrow.png")} ></Image> 
-       </LinearGradient>   
+                 <View style={{marginTop:-10}}>
+                 <Image  style={{resizeMode:'contain',width:60,height:60}}  source={require("./assets/refresh.png")} ></Image>
                 </View>
                 <View>
                 <View style={{flexDirection:'row'}}>
@@ -460,14 +448,14 @@ justifyContent:'center',alignItems:"center"}} >
   borderRadius:25}}>
   <LinearGradient
    colors={['#374c8d', '#32437b','#2c3868']} style={{ borderRadius:25}}>
-        <View style={{alignItems:'center',flexDirection:'row',padding:15}}>
+        <View style={{alignItems:'center',flexDirection:'row'}}>
         {(
           (item.Status!='Completed')?<View style={{
      justifyContent:'center',alignItems:"center"}} >
-          <Image  style={{width: 30, height: 30}}  source={require("./assets/redicon.png")} ></Image>  
+          <Image  style={{width: 50, height: 50,resizeMode:'contain'}}  source={require("./assets/redicon.png")} ></Image>  
           </View>:  <View style={{
      justifyContent:'center',alignItems:"center"}} >
-          <Image  style={{width: 30, height: 30}}  source={require("./assets/exchange.png")} ></Image>  
+          <Image  style={{width: 50, height: 50,resizeMode:'contain'}}  source={require("./assets/exchange.png")} ></Image>  
           </View>
 
         )}
@@ -481,7 +469,7 @@ justifyContent:'center',alignItems:"center"}} >
      </View>
         
      </View>  
-     <View style={{flex:1, flexDirection:'row',justifyContent:'space-between'}}>
+     <View style={{flex:1, flexDirection:'row',justifyContent:'space-between' ,paddingBottom:15}}>
  
             
          <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#4d6bc1':'#4d6bc1',fontWeight:'bold'}}>Feb 23 2019  . 11.05</Text>       
@@ -625,7 +613,7 @@ justifyContent:'center',alignItems:"center"}} >
         return (
             <View style={{flex:1,justifyContent:'center',alignItems:'center'}}> 
             <Text style={{color:'#fff',marginTop:10}} >{item.title}</Text>
-                <Image style={{aspectRatio:1,resizeMode:'contain'}}
+                <Image style={{width:150,height:150, resizeMode:'contain'}}
                     source={item.ShadowImages}
                     />
                 
@@ -645,7 +633,6 @@ const styles = StyleSheet.create({
   },
   containers: {
     backgroundColor: 'transparent',
-    marginTop:20,
   },
   activityIndicator: {
     flex: 1,

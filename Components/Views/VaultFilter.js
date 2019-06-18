@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,Picker,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
+import { View, StyleSheet, Image,Picker,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,Dimensions} from 'react-native';
 import { Alert } from 'react-native';
 const { UIManager } = NativeModules;
 import Carousel from 'react-native-snap-carousel';
@@ -9,6 +9,7 @@ import { AreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
 import LinearGradient from 'react-native-linear-gradient';
 import ImageCarousel from 'react-native-image-carousel';
+const { width } = Dimensions.get('window');
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 export default class VaultFilter extends React.Component {
 
@@ -313,7 +314,7 @@ App6Touch=()=>{
    <View style={{justifyContent:'center',alignItems:'center'}}>
    <Carousel
                     data={this.state.carouselItems}
-                    sliderWidth={250}
+                    sliderWidth={width}
                     itemWidth={250}
                     renderItem={this._renderItem}
                 />
