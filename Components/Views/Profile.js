@@ -431,13 +431,13 @@ right: 0,borderRadius:25,marginTop:-50,
 <View style={{marginTop:30,marginBottom:100,justifyContent:'center',alignItems:"center"}}>
 
 <View style={{width:'70%'}}>
-<LinearGradient colors={['#f4347f','#f85276','#fe7a6e']}  style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:10}}>
+<LinearGradient colors={['#f4347f','#f85276','#fe7a6e']}  style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:10 }}>
 <TouchableOpacity>
 <Text style={{color:'#fff'}}>Your email is'nt verified</Text>
 </TouchableOpacity>
 </LinearGradient>
 </View>
-<View style={{width:'50%',marginTop:20}}>
+<View style={{width:'50%',marginTop:20 }}>
 <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:10}}>
 <TouchableOpacity>
 <Text style={{color:'#fff'}}>Resend e-mail</Text>

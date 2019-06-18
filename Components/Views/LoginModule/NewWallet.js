@@ -178,24 +178,27 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
 </View>
    </View>
    <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
-<View style={{flexDirection:'row',justifyContent:'flex-start',alignItems:'center'}}>
+<View style={{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',marginLeft:15}}>
 
 <RNPasswordStrengthMeter
    onChangeText={this.onChange}
    inputProps={{placeholder:'Password'}}
-   meterType="box"
+   barColor='transparent'
+   meterType="bar"
+
  />
 </View>
    </View>
    <View style={{width:'100%',backgroundColor:'#fff',borderColor:'#d7dee8', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
-<View style={{flexDirection:'row',justifyContent:'flex-start',alignItems:'center'}}>
+<View style={{flexDirection:'row',justifyContent:'flex-start',alignItems:'center',marginLeft:15}}>
 
 <RNPasswordStrengthMeter
 
    onChangeText={this.onChange}
    inputProps={{placeholder:'Validate Password'}}
    barColor='transparent'
-   meterType="box"
+   meterType="bar"
+
  />
 </View>
    </View>
