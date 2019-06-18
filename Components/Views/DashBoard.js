@@ -311,8 +311,8 @@ CreditCardTouch=()=>{
       <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
       <Carousel
                     data={this.state.carouselItems}
-                    sliderWidth={250}
-                    itemWidth={250}
+                    sliderWidth={300}
+                    itemWidth={300}
                     renderItem={this._renderItem}
                 />
       
