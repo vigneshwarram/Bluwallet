@@ -4,7 +4,7 @@ import { View, StyleSheet, Image,Picker,NativeModules,Text,ActivityIndicator,Tou
   Easing,Dimensions} from 'react-native';
 import { Alert } from 'react-native';
 const { UIManager } = NativeModules;
-import Carousel from 'react-native-snap-carousel';
+import Carousel ,{ Pagination } from 'react-native-snap-carousel';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
 import LinearGradient from 'react-native-linear-gradient';
@@ -57,6 +57,7 @@ export default class DashBoard extends React.Component {
       app3color:'#5099f0',
       app4color:'#5099f0',
       app5color:'#5099f0',
+      activeSlide:0,
       carouselItems: [
         {
          
@@ -79,7 +80,7 @@ export default class DashBoard extends React.Component {
         },
        
     ]}
-    
+  
   
   }
   
@@ -210,6 +211,28 @@ App5Touch=()=>{
 CreditCardTouch=()=>{
   this.props.navigation.navigate('CreditCard')
 }
+get pagination () {
+  const { carouselItems, activeSlide } = this.state;
+  return (
+      <Pagination
+        dotsLength={carouselItems.length}
+        activeDotIndex={activeSlide}
+        containerStyle={{ backgroundColor: 'transparent' }}
+        dotStyle={{
+            width: 10,
+            height: 10,
+            borderRadius: 5,
+            marginHorizontal: 8,
+            backgroundColor: '#5099f0'
+        }}
+        inactiveDotStyle={{
+            // Define styles for inactive dots here
+        }}
+        inactiveDotOpacity={0.4}
+        inactiveDotScale={0.6}
+      />
+  );
+}
   render() {
     const { width } = Dimensions.get('window');
     const contentOffset = (width - 50) / 2;
@@ -314,8 +337,9 @@ CreditCardTouch=()=>{
                     sliderWidth={width}
                     itemWidth={300}
                     renderItem={this._renderItem}
+                    onSnapToItem={(index) => this.setState({ activeSlide: index }) }
                 />
-      
+       { this.pagination }
       </View>
       
     
