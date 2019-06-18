@@ -29,6 +29,7 @@ import ChooseCountry from  './Components/Views/LoginModule/ChooseCountry'
 import VerificationCards from  './Components/Views/LoginModule/VerificationCards'
 import Launch from  './Components/Views/LoginModule/Launch'
 import Login from  './Components/Views/LoginModule/Login'
+import ForgotPassword from  './Components/Views/LoginModule/ForgotPassword'
 import Confirm from  './Components/Views/LoginModule/Confirm'
 import {
   createStackNavigator
@@ -38,6 +39,7 @@ import {
       const MainNavigator = createStackNavigator({
         Launch:{screen:Launch},
         DashBoard:{screen:DashBoard},        
+        ForgotPassword:{screen:ForgotPassword},
         Confirm:{screen:Confirm},
         Welcome:{screen:Welcome},
         Login:{screen:Login},

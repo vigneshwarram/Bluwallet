@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,ScrollView,TextInput,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
+import { View, StyleSheet, Image,Animated,TextInput,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,KeyboardAvoidingView,Dimensions,UIManager } from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 
 import LinearGradient from 'react-native-linear-gradient';
-
 export default class Login  extends React.Component {
 
   static navigationOptions = {
@@ -21,7 +20,6 @@ export default class Login  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
-  
       w: 50,
       h: 45,
       wr:50,
@@ -39,7 +37,7 @@ export default class Login  extends React.Component {
     };
   
   }
-  
+
   componentDidMount()
   {
     //this.GetListData()
@@ -125,6 +123,7 @@ SlideMenu=()=>{
   }
   }
   render() {
+    const { shift } = this.state;
     const { navigate } = this.props.navigation;
     const data = [ 50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100 ]
     const Line = ({ line }) => (
@@ -147,7 +146,7 @@ SlideMenu=()=>{
   }
     return (  
         
-      <View style={styles.Maincontainers}>  
+      <View style={styles.Maincontainers} >  
        
       <View> 
 
@@ -169,22 +168,28 @@ SlideMenu=()=>{
         </View>                   
              
 </View>  
-<View  style={{marginTop:100,marginLeft:20
+  
+ <View style={{position:'absolute',bottom:20}}>
+        <Image
+                style={{aspectRatio:1,resizeMode: 'contain',opacity:0.1}}
+                source={require('../assets/bgLogo.png')}
+            />            
+        </View>  
+        <KeyboardAvoidingView 
+  
+   behavior='padding'
+ >
+<View  style={{marginTop:150,marginLeft:20
         }}>
       <View style={{flexDirection:'row'}}>
       <Image  style={{width:20,height:20,marginTop:10}}  source={require("../assets/userIcon.png")} ></Image> 
-      <TextInput
-        
-          // Adding hint in TextInput using Placeholder option.
-          placeholder="User"
+      <TextInput  placeholder="User"
           placeholderTextColor="#3d5498" 
-          style={styles.inputBox}
-        />
+          style={styles.inputBox} />
       </View>
       <View style={{flexDirection:'row'}}>
       <Image  style={{width:20,height:20,marginTop:10}}  source={require("../assets/passwordIcon.png")} ></Image> 
       <TextInput
-         
           // Adding hint in TextInput using Placeholder option.
           placeholder="Password"
           placeholderTextColor="#3d5498" 
@@ -194,15 +199,8 @@ SlideMenu=()=>{
       </View>
              
         </View>
- <View style={{position:'absolute',bottom:20}}>
-        <Image
-                style={{aspectRatio:1,resizeMode: 'contain',opacity:0.1}}
-                source={require('../assets/bgLogo.png')}
-            />            
-        </View>  
-        <View style={{flex: 1,
-  justifyContent: 'flex-end',
-  marginBottom: 150}}>
+        <View style={{marginTop:100
+ }}>
         
         
         <TouchableOpacity onPress={this.LoginAction}>     
@@ -214,17 +212,21 @@ SlideMenu=()=>{
 </LinearGradient>
 </View>
 </TouchableOpacity> 
+<TouchableOpacity onPress={this.ForgotAction}>
 <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
 <Text style={{color:'#3d5498',fontSize:18}}>Forgot the Password</Text>
 </View>
-        </View>      
+</TouchableOpacity>
+        </View> 
+        </KeyboardAvoidingView>
+           
        
  </LinearGradient> 
  </View>
  
      </View>
       
-    
+     
     );
       }
       clickedItemText=(item)=>
@@ -235,6 +237,9 @@ SlideMenu=()=>{
         this.props.navigation.navigate('DashBoard',{
           DashBoardPopup: true,
         });
+      }
+      ForgotAction=()=>{
+        this.props.navigation.navigate('ForgotPassword')
       }
 }
 
@@ -311,7 +316,7 @@ const styles = StyleSheet.create({
       fontWeight: '700'
   },
   inputBox: {
-    
+    paddingVertical: 0,
     borderBottomWidth: 1,
     borderBottomColor: '#3d5498',
     height: 45,width: "90%"
