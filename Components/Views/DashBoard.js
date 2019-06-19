@@ -394,46 +394,55 @@ justifyContent:'center',alignItems:"center"}} >
   
      
                  </View>       
-                 <View style={{flexDirection:'row',marginLeft:60,marginRight:20,marginTop:20}}> 
-                 <View style={{flex:1,flexDirection:'row'}}>
-                 <Text style={{fontSize:15,fontWeight:'bold',color:'#4d6bc1'}}>ETH</Text> 
-                 <Image style={{marginLeft:10,width: 10, height: 10,}}   source={require("./assets/red.png")} ></Image>          
+                 <View style={{flexDirection:'row',marginTop:10}}> 
+                 <View style={{flexDirection:'row'}}>
+                 <View style={{justifyContent:'center',alignItems:'center'}}>
+                 <View style={{width:45,height:25,borderWidth:1,borderColor:'#405ba8',justifyContent:'center',alignItems:'center',borderRadius:6}}>
+                 <Text style={{fontSize:12,fontWeight:'bold',color:'#858ead'}}>All</Text>
                  </View>
-               
-                 <View style={{flex:1,flexDirection:'row'}}>
-                 <Text style={{marginLeft:20,fontSize:15,fontWeight:'bold',color:'#4d6bc1'}}>BTC</Text> 
-                 <Image style={{marginLeft:10,width: 10, height: 10,}}   source={require("./assets/green.png")} ></Image> 
-                 </View>
-                 
-                 <View style={{flex:1,flexDirection:'row'}}>
-                 <Text style={{marginLeft:20,fontSize:15,fontWeight:'bold',color:'#4d6bc1'}}>XRP</Text> 
-                 <Image style={{marginLeft:10,width: 10, height: 10,}}   source={require("./assets/green.png")} ></Image> 
-                 </View>
-
-                 </View>
-                 <View style={{flexDirection:'row',marginLeft:60,marginRight:20}}>
-                 <View style={{flex:1}}>
-                 <Text style={{marginTop:1,fontSize:15,fontWeight:'bold',color:'#fff'}}>435$</Text> 
                  </View>
                 
-                 <View style={{flex:1}}>
-                 <Text style={{marginLeft:20,marginTop:1,fontSize:15,fontWeight:'bold',color:'#fff'}}>20.000$</Text>
+                 <View style={{marginLeft:30}}>
+                 <View style={{flexDirection:'row'}}>
+                 <Text style={{fontSize:15,fontWeight:'bold',color:'#4d6bc1'}}>ETH</Text>
+                 <View style={{marginTop:5}}>
+                 <Image style={{resizeMode:'contain',width:10,height:10}}   source={require("./assets/red.png")} ></Image>          
                  </View>
-          
-                 <View style={{flex:1}}>
-                 <Text style={{marginLeft:20,marginTop:1,fontSize:15,fontWeight:'bold',color:'#fff'}}>50$</Text> 
-                 </View> 
+                 </View>
+                  
+                 <Text style={{marginTop:1,fontSize:15,fontWeight:'bold',color:'#858ead'}}>435$</Text> 
+                 </View>
+                 <View style={{marginLeft:40}}>
+                 <View style={{flexDirection:'row'}}>
+                 <Text style={{fontSize:15,fontWeight:'bold',color:'#4d6bc1'}}>BTC</Text> 
+                 <View style={{marginTop:5}}>
+                <Image style={{resizeMode:'contain',width:10,height:10}}   source={require("./assets/green.png")} ></Image> 
+                </View>
+                 </View>
+             
+                 <Text style={{marginTop:1,fontSize:15,fontWeight:'bold',color:'#858ead'}}>20.000$</Text>
+                 </View>
+                 <View  style={{marginLeft:40}}>
+                 <View style={{flexDirection:'row'}}>
+                 <Text style={{fontSize:15,fontWeight:'bold',color:'#4d6bc1'}}>XRP</Text> 
+                 <View style={{marginTop:5}}>
+                 <Image style={{resizeMode:'contain',width:10,height:10}}   source={require("./assets/green.png")} ></Image> 
+                 </View>
+                 </View>
                 
-                 </View>             
-                 
+                 <Text style={{marginTop:1,fontSize:15,fontWeight:'bold',color:'#858ead'}}>50$</Text> 
+                 </View>
+                
+                 </View>
+                 </View>                    
                </View>
 <View style={{height:'100%'}}>
                  <View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:30,marginRight:30,marginTop:10}}>
-                 <Text style={{marginLeft:20,fontSize:15,fontWeight:'bold',color:'#4d6bc1'}}>Activity</Text>
+                 <Text style={{marginLeft:20,fontSize:15,fontWeight:'bold',color:'#858ead'}}>Activity</Text>
                                 
-        <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',padding:5,backgroundColor:'#2b4599',borderRadius:20}}>
-        <Image  style={{width: 10, height: 10}}  source={require("./assets/down_arrow.png")} ></Image> 
-        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginLeft:5}}>{this.state.Time}</Text> 
+        <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',padding:10,backgroundColor:'#2c4b9d',borderRadius:15}}>
+        <Image  style={{width: 10, height: 10,tintColor:'#5997fa'}}  source={require("./assets/down_arrow.png")} ></Image> 
+        <Text style={{color:'#5997fa',fontWeight:'bold',opacity:1,fontSize:12,marginLeft:5}}>{this.state.Time}</Text> 
         <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000 }}
    selectedValue={this.state.Time}
   onValueChange={(itemValue, itemIndex) => this.selectedTime(itemValue,itemIndex)}>
@@ -460,34 +469,23 @@ justifyContent:'center',alignItems:"center"}} >
           renderItem={({item,separators})  =>
         <TouchableOpacity onShowUnderlay={separators.highlight}
       onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
-      <View style={{marginLeft:30,marginRight:30, shadowOffset: { width: 10, height: 10 },
+      <View elevation={5} style={{marginLeft:30,marginRight:30, shadowOffset: { width: 10, height: 10 },
    borderWidth: 1,
   borderColor: '#394d88',
   borderBottomWidth: 0,
-  shadowColor: '#394d88',
-  shadowOffset: { width: 0, height: 12 },
-  shadowOpacity: 0.8,
-  shadowRadius: 2,
-  elevation: 24,
   borderRadius:25}}>
+   
   <LinearGradient
    colors={['#374c8d', '#32437b','#2c3868']} style={{ borderRadius:25}}>
-        <View style={{alignItems:'center',flexDirection:'row'}}>
-        {(
-          (item.Status!='Completed')?<View style={{
-     justifyContent:'center',alignItems:"center"}} >
+   
+        <View style={{flexDirection:'row',justifyContent:'center'}}>
+        <View style={{alignItems:'center'}} >
           <Image  style={{width: 50, height: 50,resizeMode:'contain'}}  source={require("./assets/redicon.png")} ></Image>  
-          </View>:  <View style={{
-     justifyContent:'center',alignItems:"center"}} >
-          <Image  style={{width: 50, height: 50,resizeMode:'contain'}}  source={require("./assets/exchange.png")} ></Image>  
           </View>
-
-        )}
-      
-          <View style={{flexDirection:'column',marginLeft:30}}>
+          <View style={{flexDirection:'column'}}>
           <View style={{flex:1, flexDirection: 'row',justifyContent:'space-between'}}>            
          <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff'}}>{(item.Status!='Completed')?'Sent to Dan23':"Confirmed"}</Text>       
-     <View style={{flexDirection:'row'}}>
+     <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
      <Image style={{width: 25,marginTop:10, height: 25}}   source={require("./assets/plusblue.png")} ></Image>    
      <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff'}}>$ 9060</Text> 
      </View>
