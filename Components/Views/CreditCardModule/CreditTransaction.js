@@ -192,38 +192,35 @@ ProfileTouch=()=>{
       <View> 
 
        <LinearGradient
-   colors= {['#2b3f74','#2c548f','#223458']} style={{height:'100%'}}>   
+   colors= {['#354e91','#21284a','#21284a']} style={{height:'100%'}}>   
    
-    <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-    <View style={{backgroundColor:'transparent',height:this.state.h,width:this.state.w,justifyContent:'center',borderRightWidth:1,borderTopWidth:1,borderBottomWidth:1, alignItems:'flex-end',position:'absolute',
-  borderColor: '#436ab7',
-  marginTop:10,
-  borderTopEndRadius:25,borderBottomEndRadius:25,
-  }}>
-
+   <View style={{justifyContent:'space-between',flexDirection:'row'}}>  
+<LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']} style={{justifyContent:'center',height:this.state.h,width:this.state.w, alignItems:'flex-end', marginTop:10,borderTopRightRadius:25,borderBottomRightRadius:25}}>
 <TouchableOpacity onPress={this._onPress}>
- <View style={{flexDirection: 'row'}}> 
-    <Image style={{marginRight:10,width: 30, height: 30}}   source={require("../assets/icon13.png")} ></Image>     
-
-    </View>
-    </TouchableOpacity>
-
-      </View>
-      <View style={{backgroundColor:'transparent', borderColor: '#436ab7',height:this.state.hr,width:this.state.wr,justifyContent:'center', borderTopStartRadius:25,borderBottomStartRadius:25, marginTop:10,borderLeftWidth:1,borderTopWidth:1,borderBottomWidth:1,position:'absolute',right:0}}>
-            <TouchableOpacity onPress={this.pressRight}>
        <View style={{flexDirection: 'row'}}> 
-          <Image style={{marginLeft:10,width: 20, height: 20}}   source={require("../assets/icon14.png")} ></Image>     
+          <Image style={{marginRight:10,width: 30, height: 30}}   source={require("../assets/creditscanner.png")} ></Image>     
      
           </View>
           </TouchableOpacity>
-            </View>
-    </View>
-    <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',marginTop:20}}>
-    <View>
-    <Image style={{marginLeft:10,width: 30, height: 30}}   source={require("../assets/app6.png")} ></Image>     
-    </View>
-        <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:15,marginLeft:20}}>Credit Card</Text>
-    </View>
+</LinearGradient>    
+         
+            
+            <View style={{flexDirection: 'row',justifyContent:'flex-start',alignItems:"center",marginTop:15}}> 
+          <Image  style={{width: 30, height: 30,resizeMode:'contain'}}  source={require("../assets/app6.png")} ></Image>   
+          <View style={{flexDirection:'column'}}>
+          <Text style={{marginLeft:10,fontSize:18,fontWeight:'bold',color:'#fff'}}>Credit Card</Text>       
+          </View>       
+          </View>
+    
+            <LinearGradient colors={['#91eef6','#7bd0f7','#69b9f4']} style={{height:this.state.hr,width:this.state.wr,justifyContent:'center',alignItems:'flex-start',borderTopLeftRadius:25,borderBottomLeftRadius:25, marginTop:10}}>
+            <TouchableOpacity onPress={this.pressRight}>
+       <View style={{flexDirection: 'row'}}> 
+          <Image style={{marginLeft:10,width: 30, height: 30,resizeMode:'contain'}}   source={require("../assets/newcredit.png")} ></Image>     
+     
+          </View>
+          </TouchableOpacity>
+            </LinearGradient>
+      </View>
     <View style={{marginTop:20}}> 
    
              <View>
@@ -232,10 +229,10 @@ ProfileTouch=()=>{
 
         <View style={{marginTop:10}}>
       
-        <View  style={{ marginTop:10,marginLeft:20
+        <View  style={{ marginTop:10,justifyContent:'center',alignItems:'center'
         }}>
-<Image  style={{  aspectRatio: 1.5,
-    resizeMode: 'contain',}} source={require("../assets/creditcardlogo.png")} ></Image> 
+<Image  style={{  width:400,height:200,
+    resizeMode: 'contain'}} source={require("../assets/creditcardlogo.png")} ></Image> 
 </View>
 <View style={{justifyContent:'space-around',alignItems:'center',flexDirection:'row',marginTop:10}}> 
 <TouchableOpacity onPress={this.ActivityTouch}>
@@ -265,8 +262,8 @@ ProfileTouch=()=>{
 </TouchableOpacity>
 </View>
  <View style={{flexDirection:'row',alignItems:'center',padding:10,backgroundColor:'#2b4599',borderRadius:20,width:80,marginTop:10,marginLeft:20}}>
-        <Image  style={{width: 10, height: 10}}  source={require("../assets/down_arrow.png")} ></Image> 
-        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginLeft:5}}>{this.state.Time}</Text> 
+        <Image  style={{width: 10, height: 10,tintColor:'#5994f8'}}  source={require("../assets/down_arrow.png")} ></Image> 
+        <Text style={{color:'#5994f8',fontWeight:'bold',opacity:1,fontSize:12,marginLeft:5}}>{this.state.Time}</Text> 
         <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000 }}
    selectedValue={this.state.Time}
   onValueChange={(itemValue, itemIndex) => this.selectedTime(itemValue,itemIndex)}>
@@ -285,42 +282,31 @@ ProfileTouch=()=>{
       ItemSeparatorComponent={this.space}
       data={this.state.dataSource}
           renderItem={({item,separators})  =>
-        <TouchableOpacity onShowUnderlay={separators.highlight}
+          <TouchableOpacity onShowUnderlay={separators.highlight}
       onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
-      <View style={{marginLeft:30,marginRight:30, shadowOffset: { width: 10, height: 10 },
+      <View elevation={5} style={{marginLeft:30,marginRight:30, shadowOffset: { width: 10, height: 10 },
    borderWidth: 1,
   borderColor: '#394d88',
   borderBottomWidth: 0,
-  shadowColor: '#394d88',
-  shadowOffset: { width: 0, height: 12 },
-  shadowOpacity: 0.8,
-  shadowRadius: 2,
-  elevation: 24,
   borderRadius:25}}>
+   
   <LinearGradient
    colors={['#374c8d', '#32437b','#2c3868']} style={{ borderRadius:25}}>
-        <View style={{alignItems:'center',flexDirection:'row',padding:15}}>
-        {(
-          (item.Status!='Completed')?<View style={{
-     justifyContent:'center',alignItems:"center"}} >
-          <Image  style={{width: 30, height: 30}}  source={require("../assets/redicon.png")} ></Image>  
-          </View>:  <View style={{
-     justifyContent:'center',alignItems:"center"}} >
-          <Image  style={{width: 30, height: 30}}  source={require("../assets/exchange.png")} ></Image>  
+   
+        <View style={{flexDirection:'row',justifyContent:'center'}}>
+        <View style={{alignItems:'center'}} >
+          <Image  style={{width: 50, height: 50,resizeMode:'contain'}}  source={require("../assets/redicon.png")} ></Image>  
           </View>
-
-        )}
-      
-          <View style={{flexDirection:'column',marginLeft:30}}>
+          <View style={{flexDirection:'column'}}>
           <View style={{flex:1, flexDirection: 'row',justifyContent:'space-between'}}>            
          <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff'}}>{(item.Status!='Completed')?'Sent to Dan23':"Confirmed"}</Text>       
-     <View style={{flexDirection:'row'}}>
+     <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
      <Image style={{width: 25,marginTop:10, height: 25}}   source={require("../assets/plusblue.png")} ></Image>    
      <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff'}}>$ 9060</Text> 
      </View>
         
      </View>  
-     <View style={{flex:1, flexDirection:'row',justifyContent:'space-between'}}>
+     <View style={{flex:1, flexDirection:'row',justifyContent:'space-between' ,paddingBottom:15}}>
  
             
          <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#4d6bc1':'#4d6bc1',fontWeight:'bold'}}>Feb 23 2019  . 11.05</Text>       
