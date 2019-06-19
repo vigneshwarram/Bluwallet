@@ -179,16 +179,22 @@ SlideMenu=()=>{
   
    behavior='padding'
  >
-<View  style={{marginTop:150,marginLeft:20
+<View  style={{marginTop:150,marginLeft:20,marginRight:20
         }}>
-      <View style={{flexDirection:'row'}}>
-      <Image  style={{width:20,height:20,marginTop:10}}  source={require("../assets/userIcon.png")} ></Image> 
+      <View style={{flexDirection:'row',justifyContent:'space-around'}}>
+     <View style={{justifyContent:'center',alignItems:'center'}}>
+     <Image  style={{resizeMode:'contain',width:20,height:20}}  source={require("../assets/userIcon.png")} ></Image> 
+     </View>
+      
       <TextInput  placeholder="User"
           placeholderTextColor="#3d5498" 
           style={styles.inputBox} />
       </View>
-      <View style={{flexDirection:'row'}}>
-      <Image  style={{width:20,height:20,marginTop:10}}  source={require("../assets/passwordIcon.png")} ></Image> 
+      <View style={{flexDirection:'row',justifyContent:'space-around'}}>
+      <View style={{justifyContent:'center',alignItems:'center'}}>
+      <Image  style={{resizeMode:'contain',width:20,height:20}}  source={require("../assets/passwordIcon.png")} ></Image> 
+      </View>
+      
       <TextInput
           // Adding hint in TextInput using Placeholder option.
           placeholder="Password"
@@ -205,25 +211,25 @@ SlideMenu=()=>{
         
         <TouchableOpacity onPress={this.LoginAction}>     
 <View>
-<LinearGradient colors={['#4476d7','#4f92e9','#61bff2']}  style={{padding:15,justifyContent:'center',alignItems:'center'}}>
+<LinearGradient colors={['#4476d7','#4f92e9','#61bff2']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:15,justifyContent:'center',alignItems:'center'}}>
 
 <Text style={{color:'#d2e4ff',fontWeight:'bold'}}>LOGIN</Text>
 
 </LinearGradient>
 </View>
 </TouchableOpacity> 
-<TouchableOpacity onPress={this.ForgotAction}>
-<View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
-<Text style={{color:'#3d5498',fontSize:18}}>Forgot the Password</Text>
-</View>
-</TouchableOpacity>
+
         </View> 
         </KeyboardAvoidingView>
-           
+        <TouchableOpacity onPress={this.ForgotAction}>
+<View style={{justifyContent:'center',alignItems:'center',marginTop:80}}>
+<Text style={{color:'#3d5498',fontSize:18}}>FORGOT THE PASSWORD</Text>
+</View>
+</TouchableOpacity>    
        
  </LinearGradient> 
  </View>
- 
+
      </View>
       
      
