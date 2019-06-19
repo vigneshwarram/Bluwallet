@@ -195,7 +195,7 @@ SlideMenu=()=>{
       <View style={styles.Maincontainers}>           
       
       <LinearGradient
-   colors={['#1569e6','#00deff','#00deff']} style={{height:'100%',position:'absolute',left: 0,
+   colors={['#1569e6','#00a3ff','#00deff']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{height:'100%',position:'absolute',left: 0,
 right: 0}}>
     <View style={{flexDirection:'row',justifyContent:'space-between'}}>
     <View style={{backgroundColor:'#fff',height:this.state.h,width:this.state.w,justifyContent:'center',borderWidth:1, alignItems:'flex-end',
@@ -236,7 +236,7 @@ right: 0}}>
           
 
     
-          <View style={{backgroundColor:'#2b3f74',borderTopRightRadius:180,borderTopLeftRadius:180, justifyContent:'flex-start',alignItems:'center',flex:1,marginTop:'30%',height:'100%',position:'absolute',left: 0,marginBottom:0,
+          <View style={{backgroundColor:'#354e91',borderTopRightRadius:180,borderTopLeftRadius:180, justifyContent:'flex-start',alignItems:'center',flex:1,marginTop:'30%',height:'100%',position:'absolute',left: 0,marginBottom:0,
 right: 0}}>
    <View style={{width: 100,position:'absolute',left: 150,
 right: 0,borderRadius:25,marginTop:-50,
@@ -260,7 +260,7 @@ right: 0,borderRadius:25,marginTop:-50,
 <View  style={{flex:1,width:'100%'}}>
 <ScrollView>
 <View style={{marginTop:20,backgroundColor:'#fff'}}>   
-<LinearGradient colors= {['#2b3f74','#2c548f','#223458']}>
+<LinearGradient colors= {['#354e91','#21284a','#21284a']}>
 <View
   style={{
     marginTop:10,
@@ -317,7 +317,7 @@ right: 0,borderRadius:25,marginTop:-50,
     borderBottomWidth: 1,
   }}
 />
-<View style={{height:30,width:'100%',backgroundColor:'#2b3f74'}}></View>
+<View style={{height:30,width:'100%',backgroundColor:'transparent'}}></View>
 <View style={{flexDirection:'row',marginLeft:30}}>  
 <View style={{flex:1}}>
 <Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Country</Text>
@@ -385,44 +385,48 @@ right: 0,borderRadius:25,marginTop:-50,
   }}
 />  
 <View>
-  <LinearGradient  colors= {['#2b3f74','#2c548f','#223458']}>
- <View style={{justifyContent:'center',alignItems:'center'}}>
- <View style={{flexDirection:'row',marginTop:20,justifyContent:'space-between',alignItems:'center'}}>
-  <Image style={{width: 30, height: 30}}   source={require('./assets/keys.png')} ></Image>    
-  <Text style={{color:'#4286f4',fontSize:15,marginRight:20,marginTop:10,marginLeft:20}}>Segundo Factor</Text>
+ <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
+ <View style={{flexDirection:'row',justifyContent:'space-around'}}>
+ <View style={{alignItems:'center'}}>
+ <Image style={{width: 30, height: 30,resizeMode:'contain'}}   source={require('./assets/keys.png')} ></Image>
+ <Image style={{width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/monitor1.png")} ></Image>   
+ </View>  
+ <View style={{alignItems:'center',marginLeft:30}}>
+ <Text style={{color:'#4286f4',fontSize:15,textAlign:'center',marginTop:5}}>Segundo Factor</Text>
+ <Text style={{color:'#4286f4',fontSize:15,textAlign:'center',marginTop:10}}>E-wallet web</Text>
+ </View>
+  
   </View>
-  <View style={{flexDirection:'row',marginTop:20,justifyContent:'space-between',alignItems:'center'}}>
-  <Image style={{width: 30, height: 30}}   source={require("./assets/monitor.PNG.png")} ></Image> 
-  <Text style={{color:'#4286f4',fontSize:15,marginRight:20,marginTop:10,marginLeft:20}}>E-wallet web</Text>
-</View>
  </View>
  
 
 <View style={{flexDirection:'row', marginTop:20,marginLeft:20,marginRight:20,justifyContent:'space-between'}}>
 
-<View>
-<Image style={{width: 30, height: 30}}   source={require("./assets/notify.png")} ></Image> 
-<Text style={{color:'#4286f4',fontSize:10}}>Notification</Text>
+<View style={{justifyContent:'center',alignItems:'center'}}>
+<Image style={{width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/notify.png")} ></Image> 
+<Text style={{color:'#4286f4',fontSize:10,textAlign:'center'}}>Notification</Text>
 
 </View>
 
 
 
-<View>
-<Image style={{width: 30, height: 30}}   source={require("./assets/secure-user.png")} ></Image> 
-<Text style={{color:'#4286f4',fontSize:10}}>Security</Text>
+<View style={{justifyContent:'center',alignItems:'center'}}>
+<Image style={{width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/secure-user.png")} ></Image> 
+<Text style={{color:'#4286f4',fontSize:10,textAlign:'center'}}>Security</Text>
 </View>
-<View >
-<Image style={{width: 30, height: 30}}   source={require("./assets/terms.png")} ></Image> 
+<View style={{justifyContent:'center',alignItems:'center'}}>
+<Image style={{width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/terms.png")} ></Image> 
+<View style={{justifyContent:'center',alignItems:'center'}}>
+<Text style={{color:'#4286f4',fontSize:10,textAlign:'center'}}>Terms of use</Text>
+</View>
 
-<Text style={{color:'#4286f4',fontSize:10}}>Terms of use</Text>
 
 
 </View>
-<View >
-<Image style={{width: 30, height: 30}}   source={require("./assets/Share.png")} ></Image> 
+<View style={{justifyContent:'center',alignItems:'center'}} >
+<Image style={{width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/Share.png")} ></Image> 
 
-<Text style={{color:'#4286f4',fontSize:10}}>Invite Friends</Text>
+<Text style={{color:'#4286f4',fontSize:10,textAlign:'center'}}>Invite Friends</Text>
 
 
 </View>
@@ -431,14 +435,14 @@ right: 0,borderRadius:25,marginTop:-50,
 <View style={{marginTop:30,marginBottom:100,justifyContent:'center',alignItems:"center"}}>
 
 <View style={{width:'70%'}}>
-<LinearGradient colors={['#f4347f','#f85276','#fe7a6e']}  style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:10 }}>
+<LinearGradient colors={['#f4347f','#f85276','#fe7a6e']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:10 }}>
 <TouchableOpacity>
 <Text style={{color:'#fff'}}>Your email is'nt verified</Text>
 </TouchableOpacity>
 </LinearGradient>
 </View>
 <View style={{width:'50%',marginTop:20 }}>
-<LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:10}}>
+<LinearGradient colors={['#3ddba1','#30e0ba','#17e8e3']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:10}}>
 <TouchableOpacity>
 <Text style={{color:'#fff'}}>Resend e-mail</Text>
 </TouchableOpacity>
@@ -447,7 +451,7 @@ right: 0,borderRadius:25,marginTop:-50,
 
 
 </View>
-</LinearGradient>
+
   </View>
   </LinearGradient>
 </View>
@@ -463,7 +467,7 @@ right: 0,borderRadius:25,marginTop:-50,
     alignItems: 'center',
     position: 'absolute', 
     bottom: 0,}}>
-<LinearGradient colors= {['#1a5fe1','#00a5ff','#00a5ff']} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
+<LinearGradient colors= {['#1a5fe1','#00a5ff','#00a5ff']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
     <View style={{flexDirection: 'row',marginRight:20,marginLeft:20,alignItems:"center",justifyContent:'center'}}> 
     <TouchableOpacity onPress={this.App3Touch}>
    

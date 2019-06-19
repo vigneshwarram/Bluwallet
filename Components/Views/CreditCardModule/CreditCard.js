@@ -162,7 +162,7 @@ ProfileTouch=()=>{
       <View> 
 
        <LinearGradient
-   colors= {['#2b3f74','#2c548f','#223458']} style={{height:'100%'}}>   
+   colors= {['#354e91','#21284a']} style={{height:'100%'}}>   
    
     <View style={{flexDirection:'row',justifyContent:'space-between'}}>
     <View style={{backgroundColor:'transparent',height:this.state.h,width:this.state.w,justifyContent:'center',borderRightWidth:1,borderTopWidth:1,borderBottomWidth:1, alignItems:'flex-end',position:'absolute',
@@ -213,14 +213,14 @@ ProfileTouch=()=>{
  <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:20,marginLeft:10}}>Request a Card</Text>
  <TouchableOpacity onPress={this.AddCardAction}>
  <View>
-<Image  style={{width: 40, height: 40,marginLeft:10}}  source={require("../assets/plusflash.png")} ></Image> 
+<Image  style={{width: 40, height: 40,marginLeft:10,resizeMode:'contain' }}  source={require("../assets/plusflash.png")} ></Image> 
 </View>
  </TouchableOpacity>
 
         </View>
-        <View  style={{ marginTop:10,marginLeft:20
+        <View  style={{ justifyContent:'center',alignItems:'center',marginTop:20
         }}>
-<Image  style={{  aspectRatio: 1.4,
+<Image  style={{  width:400,height:150,
     resizeMode: 'contain',}} source={require("../assets/creditCard.png")} ></Image> 
 </View>
 
@@ -237,7 +237,7 @@ ProfileTouch=()=>{
     alignItems: 'center',
     position: 'absolute', 
     bottom: 0,}}>
-<LinearGradient colors= {['#1a5fe1','#00a5ff','#00a5ff']} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
+<LinearGradient colors= {['#1a5fe1','#00a5ff','#00a5ff']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
     <View style={{flexDirection: 'row',marginRight:20,marginLeft:20,alignItems:"center",justifyContent:'center'}}> 
     <TouchableOpacity onPress={this.App3Touch}>
    

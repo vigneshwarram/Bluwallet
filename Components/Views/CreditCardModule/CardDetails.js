@@ -21,7 +21,7 @@ export default class CardDetails  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
-  
+      switchValue:false,
       app1icon:require('../assets/app1white.png'),
       app6icon:require('../assets/app6-blue.png'),
       app2icon:require('../assets/app2.png'),
@@ -162,7 +162,7 @@ ProfileTouch=()=>{
        <View> 
 
 <LinearGradient
-colors= {['#2b3f74','#2c548f','#223458']} style={{height:'100%'}}>   
+colors= {['#354e91','#21284a']} style={{height:'100%'}}>   
 
 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
 <View style={{backgroundColor:'transparent',height:this.state.h,width:this.state.w,justifyContent:'center',borderRightWidth:1,borderTopWidth:1,borderBottomWidth:1, alignItems:'flex-end',position:'absolute',
@@ -209,16 +209,16 @@ borderTopEndRadius:25,borderBottomEndRadius:25,
 </TouchableOpacity>
 
  </View>
- <View  style={{ marginTop:10,marginLeft:20
- }}>
-<Image  style={{  aspectRatio: 1.4,
-resizeMode: 'contain',}} source={require("../assets/creditCard.png")} ></Image> 
+ <View  style={{ justifyContent:'center',alignItems:'center',marginTop:30,marginBottom:30
+        }}>
+<Image  style={{  width:400,height:150,
+    resizeMode: 'contain',}} source={require("../assets/creditCard.png")} ></Image> 
 </View>
 
 <View
 style={{
 marginTop:10,
-borderBottomColor: '#43549c',marginBottom:10,
+borderBottomColor: '#43549c',
 borderBottomWidth: 1,
 }}
 />
@@ -319,7 +319,7 @@ borderBottomWidth: 1,
 <View style={{width:'50%'}}>
 <TouchableOpacity>
 <View>
-<LinearGradient colors={['#FC686F','#FD6A72','#F74B71']} style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center'}} >
+<LinearGradient colors={['#F74B71','#FD6A72','#FC686F']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:6}} >
 <Text style={{color:'#fff'}}>Cancel</Text>
 </LinearGradient>
 </View>
@@ -329,7 +329,7 @@ borderBottomWidth: 1,
 <View style={{width:'50%'}}>
 <TouchableOpacity onPress={this.AcceptAction}>
 <View  >
-<LinearGradient  colors={['#41da9c','#36deaf','#26e3ca']} style={{padding:10,justifyContent:'center',alignItems:'center',marginLeft:10}} >
+<LinearGradient  colors={['#41da9c','#36deaf','#26e3ca']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:10,borderRadius:6,justifyContent:'center',alignItems:'center',marginLeft:10}} >
 <Text style={{color:'#fff'}}>Accept</Text>
 </LinearGradient>
 </View>
@@ -355,7 +355,7 @@ borderBottomWidth: 1,
     alignItems: 'center',
     position: 'absolute', 
     bottom: 0,}}>
-<LinearGradient colors= {['#1a5fe1','#00a5ff','#00a5ff']} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
+<LinearGradient colors= {['#1a5fe1','#00a5ff','#00a5ff']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
     <View style={{flexDirection: 'row',marginRight:20,marginLeft:20,alignItems:"center",justifyContent:'center'}}> 
     <TouchableOpacity onPress={this.App3Touch}>
    
@@ -455,6 +455,11 @@ justifyContent:'center',alignItems:"center"}} >
       }
       AcceptAction=()=>{
         this.props.navigation.navigate('CreditTransaction')
+      }
+      toggleSwitch=(value)=>{
+this.setState({
+  switchValue:value
+})
       }
 }
 
