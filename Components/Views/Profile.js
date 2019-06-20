@@ -324,11 +324,18 @@ right: 0,borderRadius:25,marginTop:-50,
 <View
   style={{
     marginTop:10,
-    borderBottomColor: '#43549c',
+    borderBottomColor: '#43549c',marginBottom:10,
     borderBottomWidth: 1,
   }}
 />
 <View style={{height:30,width:'100%',backgroundColor:'transparent'}}></View>
+<View
+  style={{
+    marginTop:10,
+    borderBottomColor: '#43549c',marginBottom:10,
+    borderBottomWidth: 1,
+  }}
+/>
 <View style={{flexDirection:'row',marginLeft:30}}>  
 <View style={{flex:1}}>
 <Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Country</Text>
@@ -341,7 +348,7 @@ right: 0,borderRadius:25,marginTop:-50,
 <View
   style={{
     marginTop:10,
-    borderBottomColor: '#43549c',
+    borderBottomColor: '#43549c',marginBottom:10,
     borderBottomWidth: 1,
   }}
 />
@@ -357,7 +364,7 @@ right: 0,borderRadius:25,marginTop:-50,
 <View
   style={{
     marginTop:10,
-    borderBottomColor: '#43549c',
+    borderBottomColor: '#43549c',marginBottom:10,
     borderBottomWidth: 1,
   }}
 />
@@ -374,7 +381,7 @@ right: 0,borderRadius:25,marginTop:-50,
 <View
   style={{
     marginTop:10,
-    borderBottomColor: '#43549c',
+    borderBottomColor: '#43549c',marginBottom:10,
     borderBottomWidth: 1,
   }}
 />
@@ -391,10 +398,10 @@ right: 0,borderRadius:25,marginTop:-50,
 <View
   style={{
     marginTop:10,
-    borderBottomColor: '#43549c',
+    borderBottomColor: '#43549c',marginBottom:10,
     borderBottomWidth: 1,
   }}
-/>  
+/>
 <View>
  <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
  <View style={{flexDirection:'row',justifyContent:'space-around'}}>

@@ -230,7 +230,8 @@ borderBottomWidth: 1,
 <View style={{flexDirection:'row',flex:1}}>
 <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,textAlign:'center',opacity:0.7}}>Jhon Doe</Text> 
 </View>  
-
+<View style={{flexDirection:'row',flex:1}}>
+</View> 
 </View>
 <View
 style={{
@@ -247,7 +248,8 @@ borderBottomWidth: 1,
 <View style={{flexDirection:'row',flex:1}}>
 <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,textAlign:'center',opacity:0.7}}>Coloumbia</Text> 
 </View>  
-
+<View style={{flexDirection:'row',flex:1}}>
+</View> 
 </View>
 <View
 style={{
@@ -261,10 +263,11 @@ borderBottomWidth: 1,
 <Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>E-mail</Text>
 </View>  
 
-<View style={{flexDirection:'row',flex:1}}>
+<View style={{flexDirection:'row'}}>
 <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,textAlign:'center',opacity:0.7}}>vickyrams20@gmail.com</Text> 
 </View>  
-
+<View style={{flexDirection:'row',flex:1}}>
+</View> 
 </View>
 <View
 style={{
@@ -281,6 +284,10 @@ borderBottomWidth: 1,
 <View style={{flexDirection:'row',flex:1}}>
 <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,textAlign:'center',opacity:0.7}}>25571421</Text> 
 </View>  
+<View style={{flexDirection:'row',flex:1}}>
+<Image  style={{  width:30,height:30,
+    resizeMode: 'contain',}} source={require("../assets/cameraa.png")} ></Image> 
+</View>  
 
 </View>
 <View
@@ -296,9 +303,12 @@ borderBottomWidth: 1,
 </View>  
 
 <View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,textAlign:'center',opacity:0.7}}>25571421</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,textAlign:'center',opacity:0.7}}></Text> 
 </View>  
-
+<View style={{flexDirection:'row',flex:1}}>
+<Image  style={{  width:30,height:30,
+    resizeMode: 'contain',}} source={require("../assets/cameraa.png")} ></Image> 
+</View> 
 </View>
 <View
 style={{

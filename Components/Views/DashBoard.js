@@ -68,11 +68,11 @@ export default class DashBoard extends React.Component {
         {
           ShadowImages:require('./assets/mshadow.png'),
        
-            title:"Micon"
+            title:"Monero"
         },
         {
           ShadowImages:require('./assets/bshadow.png'),
-            title:"Bicon"
+            title:"Bitcoin"
         },
       
        

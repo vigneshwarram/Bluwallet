@@ -66,17 +66,17 @@ export default class VaultFilter extends React.Component {
         {
           ShadowImages:require('./assets/miconback.png'),
           colo1:'#fd7170',color2:'#fa5a76',color3:'#f53d7b',
-            title:"Micon"
+            title:"Monero"
         },
         {
           ShadowImages:require('./assets/biconback.png'),
           colo1:'#f8bc73',color2:'#f0824d',color3:'#ec643a',
-            title:"Micon"
+            title:"Bitcoin"
         },
         {
           colo1:'#faaf15',color2:'#fbcc0a',color3:'#fddf01',
           ShadowImages:require('./assets/ziconback.png'),
-            title:"Bicon"
+            title:"ZiCoin"
         },
         {
           colo1:'#8be6f8',color2:'#59a7f2',color3:'#3652bd',
@@ -384,28 +384,28 @@ App6Touch=()=>{
       
           <View style={{flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection: 'row',justifyContent:'space-between'}}>    
-          <View style={{justifyContent:"center",alignItems:'center'}}>
-          <Text  style={{color:(item.Status!='Completed')?'#4286f4':'#4286f4'}}>ETH</Text> 
-          <Text  style={{color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>$435</Text> 
+          <View style={{justifyContent:'space-around',alignItems:'center'}}>
+          <Text  style={{ fontSize:12,fontWeight:'bold', color:(item.Status!='Completed')?'#4286f4':'#4286f4'}}>ETH</Text> 
+          <Text  style={{fontSize:12,color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>$435</Text> 
           </View>  
           <View>
           <View style={{flexDirection:'row',marginLeft:20}}>
           <View>
-          <Text  style={{color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>{(item.Status!='Completed')?'Produced':"Produced"}</Text> 
-          <Text  style={{color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>Coins</Text>    
+          <Text  style={{fontSize:12,color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>{(item.Status!='Completed')?'Produced':"Produced"}</Text> 
+          <Text  style={{fontSize:12,color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>Coins</Text>    
           </View>
           
           <View style={{flexDirection:'row',justifyContent:'center'}}>
      <Image style={{width: 25, height: 25,resizeMode:'contain'}}   source={require("./assets/plusblue.png")} ></Image>   
-     <View style={{}}>
-     <Text  style={{fontSize:10,textAlign:'center', color:(item.Status!='Completed')?'#232d51':'#232d51'}}>$ 9060</Text> 
+     <View style={{marginTop:5}}>
+     <Text  style={{fontSize:12,textAlign:'center',fontWeight:'bold', color:(item.Status!='Completed')?'#232d51':'#232d51'}}>$ 9060</Text> 
      </View> 
      
      </View>  
           </View>    
          
           </View>
-          <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
+          <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',marginLeft:20}}>
           <Text  style={{color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>+8.5%</Text> 
           <Image style={{width: 10, height: 10,resizeMode:'contain'}}   source={require("./assets/green.png")} ></Image> 
           </View>                
