@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Path } from 'react-native-svg'
 import { View, StyleSheet, Image,ScrollView,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
 import { Alert } from 'react-native';
-
+import {BoxShadow} from 'react-native-shadow'
 import LinearGradient from 'react-native-linear-gradient';
 
 export default class Profile  extends React.Component {
@@ -170,6 +170,17 @@ SlideMenu=()=>{
     this.props.navigation.navigate('CreditCard')
   }
   render() {
+    const shadowOpt = {
+			width:160,
+			height:170,
+			color:"#000",
+			border:2,
+			radius:3,
+			opacity:0.2,
+			x:0,
+			y:3,
+			style:{marginVertical:5}
+		}
     const { navigate } = this.props.navigation;
     const data = [ 50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100 ]
     const Line = ({ line }) => (
@@ -434,7 +445,7 @@ right: 0,borderRadius:25,marginTop:-50,
 
 <View style={{marginTop:30,marginBottom:100,justifyContent:'center',alignItems:"center"}}>
 
-<View style={{width:'70%'}}>
+<View style={{width:'70%',}}>
 <LinearGradient colors={['#f4347f','#f85276','#fe7a6e']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:10 }}>
 <TouchableOpacity>
 <Text style={{color:'#fff'}}>Your email is'nt verified</Text>

@@ -42,6 +42,7 @@ export default class  ExchangeMenu  extends React.Component {
        PublicIcon:require('./assets/publication.png'),
        BuyIcon:require('./assets/buy.png'),
        SellIcon:require('./assets/sell.png'),
+       platform:'platform',
       Coin: 'Us Doller',
       animate:false,
       app1icon:require('./assets/app1white.png'),
@@ -220,13 +221,13 @@ SlideMenu=()=>{
       <LinearGradient colors= {['#2b3f74','#232d51','#232d51']} style={styles.Maincontainers}>
 
       <LinearGradient
-   colors={['#1a5fe1','#00a5ff','#81DCF9']} style={{height:'30%',}}>    
+   colors={['#1a5fe1','#00a5ff','#81DCF9',]} style={{height:'30%',opacity:0.9}}>    
       <LinearGradient
-   colors={['#1a5fe1','#5DBCD2','#81DCF9']} style={{height:'100%',marginRight:30,marginTop:30}}>
+   colors={['#1a5fe1','#5DBCD2','#81DCF9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{height:'100%',marginRight:30,marginTop:30,opacity:1}}>
  <View style={{justifyContent:'center',alignItems:'center'}}>
-          <View style={{flexDirection:'row',marginTop:30}}>
+          <View style={{flexDirection:'row',marginTop:20}}>
           <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/app4.png")} ></Image>     
-          <Text style={{fontSize:20,fontWeight:'bold',color:'#fff'}}>Exchange</Text>
+          <Text style={{fontSize:20,fontWeight:'bold',color:'#fff',}}>Exchange</Text>
           </View>
           <View style={{flexDirection:'row',marginTop:10}}>
           <View>
@@ -260,7 +261,7 @@ SlideMenu=()=>{
 <TextInput
           style={{height: 40,}}
        placeholderTextColor='#ffffff'
-          placeholder="Exchange"
+          placeholder="Amount"
           
         />
 </View>
@@ -282,6 +283,33 @@ SlideMenu=()=>{
   </Picker>
         </View>
         
+  
+          </View>
+          <View style={{width:'45%',borderRadius:20,borderWidth:1,borderColor:'#fff',marginTop:2, justifyContent:'space-between',flexDirection:'row'}}>
+<View style={{flexDirection:'row',marginLeft:20}}>
+<View style={{justifyContent:'center',alignItems:'center'}}>
+<Image  style={{width: 20, height: 20,resizeMode:'contain'}}  source={require("./assets/tv.png")} ></Image> 
+</View>
+<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center',marginLeft:20}}>
+        <Text style={{color:'#fff',opacity:1,fontSize:10}}>{this.state.platform}</Text>
+        <Image  style={{width: 10, height: 10,marginLeft:10,marginRight:10}}  source={require("./assets/White-Caret.png")} ></Image> 
+        <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}
+   selectedValue={this.state.Amount}
+  onValueChange={(itemValue, itemIndex) => this.selectedPlatform(itemValue,itemIndex)}>
+  
+  <Picker.Item label="COP" value="COP" />
+  <Picker.Item label="Inr" value="Inr" />
+  <Picker.Item label="USA" value="USA" />
+  <Picker.Item label="German" value="German" />
+  <Picker.Item label="Italy" value="Italy" />
+  <Picker.Item label="Aus" value="Aus" />
+  <Picker.Item label="India" value="India" />
+  <Picker.Item label="Aus" value="Aus" />
+  </Picker>
+        </View>
+        
+</View>
+
   
           </View>
           </View>   
@@ -619,6 +647,11 @@ Exchangecolor3:'#1a5fe1'
      
                   })
 
+      }
+      selectedPlatform=(item,index)=>{
+this.setState({
+  platform:item
+})
       }
 }
 

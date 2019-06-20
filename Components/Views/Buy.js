@@ -222,7 +222,7 @@ SlideMenu=()=>{
    
       <View style={styles.Maincontainers}>     
       <LinearGradient
-   colors={['#1a5fe1','#00a5ff','#81DCF9']} style={{height:200,}}>    
+   colors={['#1a5fe1','#00a5ff','#81DCF9']} style={{height:200,opacity:0.9}}>    
       <LinearGradient
    colors={['#1a5fe1','#81DCF9','#81DCF9']} style={{height:250,marginRight:30,marginTop:30}}>
    <LinearGradient colors={['#fff','#fff','#CCCFE2']} style={{justifyContent:'center',height:this.state.h,width:this.state.w, alignItems:'flex-end',marginTop:-10, borderTopRightRadius:25,borderBottomRightRadius:25,position:'absolute'}}>
@@ -388,9 +388,9 @@ SlideMenu=()=>{
   }}
 />
 <View style={{backgroundColor:'transparent'}}>
-<View style={{marginLeft:30,marginRight:30,marginTop:30,marginBottom:100,width:"100%"}}>
-<View style={{width:"80%",borderRadius:10}}>
-<LinearGradient colors={['#41da9c','#36deaf','#26e3ca']} style={{padding:12,backgroundColor:'green',justifyContent:'center',alignItems:'center',marginLeft:10}}>
+<View style={{justifyContent:'center',marginTop:30,marginBottom:100,width:"100%",alignItems:'center'}}>
+<View style={{width:"50%",borderRadius:10}}>
+<LinearGradient colors={['#41da9c','#36deaf','#26e3ca']} style={{padding:12,backgroundColor:'green',justifyContent:'center',alignItems:'center',marginLeft:10,borderRadius:6}}>
 <TouchableOpacity onPress={()=>this.props.navigation.navigate('Payment')}>
 <Text style={{color:'#fff'}}>Send Exchange request</Text></TouchableOpacity>
 </LinearGradient>
@@ -411,7 +411,7 @@ SlideMenu=()=>{
     borderRadius: 100/2,
     backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
    
-    <Image  style={{width: 60, height: 60}}  source={require('./assets/buywhite.png')} ></Image>
+    <Image  style={{width: 60, height: 60,resizeMode:'contain'}}  source={require('./assets/buy.png')} ></Image>
     
             
           </LinearGradient> 
