@@ -267,7 +267,7 @@ SlideMenu=()=>{
 </View>
 <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center'}}>
         <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12}}>{this.state.Amount}</Text>
-        <Image  style={{width: 10, height: 10,marginLeft:10,marginRight:10}}  source={require("./assets/White-Caret.png")} ></Image> 
+        <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("./assets/darrow.png")} ></Image> 
         <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}
    selectedValue={this.state.Amount}
   onValueChange={(itemValue, itemIndex) => this.selectedCop(itemValue,itemIndex)}>
@@ -292,7 +292,7 @@ SlideMenu=()=>{
 </View>
 <View style={{justifyContent:'center',flexDirection:'row',alignItems:'center',marginLeft:20}}>
         <Text style={{color:'#fff',opacity:1,fontSize:10}}>{this.state.platform}</Text>
-        <Image  style={{width: 10, height: 10,marginLeft:10,marginRight:10}}  source={require("./assets/White-Caret.png")} ></Image> 
+        <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("./assets/darrow.png")} ></Image> 
         <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}
    selectedValue={this.state.Amount}
   onValueChange={(itemValue, itemIndex) => this.selectedPlatform(itemValue,itemIndex)}>

@@ -23,7 +23,7 @@ export default class  Sell  extends React.Component {
       dataSource:[],
       switchValue:false,
       cityItems:["US Doller,Indian,Eutherium"],
-      Coin: 'Us Doller',
+      Amount: 'USDoller',
       animate:false,
       app1icon:require('./assets/app1white.png'),
       app6icon:require('./assets/app6.png'),
@@ -45,6 +45,10 @@ export default class  Sell  extends React.Component {
       hidden: false,
       app1color:'#fff',
       app6color:'#5099f0',
+      yesbackgroundcolor:'#4286f4',
+      nobackgroundcolor:'#fff',
+      yesfontcolor:'#fff',
+      nofontcolor:'#4286f4',
       app2color:'#5099f0',
       app3color:'#5099f0',
       app4color:'#fff',
@@ -226,7 +230,7 @@ SlideMenu=()=>{
    
       <View style={styles.Maincontainers}>     
       <LinearGradient
-   colors={['#1a5fe1','#00a5ff','#81DCF9']} style={{height:200,}}>    
+   colors={['#1a5fe1','#00a5ff','#81DCF9']} style={{height:200,opacity:0.9}}>    
       <LinearGradient
    colors={['#1a5fe1','#81DCF9','#81DCF9']} style={{height:250,marginRight:30,marginTop:30}}>
  <View style={{justifyContent:'center',alignItems:'center'}}>
@@ -234,19 +238,40 @@ SlideMenu=()=>{
           <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/app4.png")} ></Image>     
           <Text style={{fontSize:18,fontWeight:'bold',color:'#fff'}}>Exchange</Text>
           </View>      
-          <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10}}>Sell</Text>  
-          <Text style={{fontSize:20,fontWeight:'bold',color:'#fff',marginTop:10}}>-2.258978</Text>   
-          <View style={{flexDirection: 'row',marginLeft:20}}>
-          <Text style={{marginLeft:10,color:' #4286f4',marginTop:15}}>880.660</Text>
-     <Picker
-         style={{ width: 130,color:'#4286f4',marginLeft:10 }}
-          selectedValue={this.state.Coin}
-          itemStyle={{ backgroundColor: "#4286f4", color: "#4286f4", fontFamily:"Ebrima", fontSize:17 }}
-          onValueChange={(lang) => this.setState({Coin: lang})}>
-          <Picker.Item label="Us doller" value="Us doller" />
-          <Picker.Item label="Indian" value="js" />
-        </Picker>
-     </View>            
+          <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10}}>Sell</Text> 
+          <View style={{flexDirection:'row',justifyContent:'space-around'}}>
+          <View style={{justifyContent:'center',alignItems:'center'}}>
+          <Image style={{width: 20, height: 20,resizeMode:'contain'}}   source={require("./assets/minus.png")} ></Image> 
+          </View>
+          <View style={{marginLeft:10}}>
+          <Text style={{fontSize:20,fontWeight:'bold',color:'#fff'}}>2.258978</Text> 
+          </View>
+        
+          </View> 
+          
+          <View style={{flexDirection:'row',justifyContent:'center',width:'100%',marginTop:20,alignItems:'center'}}>       		
+				 <Text style={{fontSize:15,fontWeight:'bold',color:'#4d6bc1'}}>880.889</Text>                                          
+        <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:20}}>
+        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12}}>{this.state.Amount}</Text>
+        <Image  style={{width: 10, height: 10,marginLeft:10,tintColor:'#4e649f'}}  source={require("./assets/down_arrow.png")} ></Image>
+        <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000 }}
+   selectedValue={this.state.Amount}
+  onValueChange={(itemValue, itemIndex) => this.selectedAmount(itemValue,itemIndex)}>
+  
+  <Picker.Item label="USDoller" value="USDoller" />
+  <Picker.Item label="Inr" value="Inr" />
+  <Picker.Item label="USA" value="USA" />
+  <Picker.Item label="German" value="German" />
+  <Picker.Item label="Italy" value="Italy" />
+  <Picker.Item label="Aus" value="Aus" />
+  <Picker.Item label="India" value="India" />
+  <Picker.Item label="Aus" value="Aus" />
+  </Picker>
+        </View>
+        
+  
+     
+                 </View>            
           </View>
          <View>  
           </View>
@@ -294,13 +319,17 @@ SlideMenu=()=>{
 />
 <View style={{justifyContent:'space-between',flexDirection:'row',marginLeft:20,marginRight:20}}>  
 <Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Market Rate</Text>  
-<View style={{flexDirection:'row',width:90,height:30,marginRight:50,marginTop:10}}>
-<View style={{justifyContent:'center',width:40,alignItems:'center',borderWidth:1,borderColor:'#000000', backgroundColor:'#4286f4'}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>Yes</Text> 
+<View style={{flexDirection:'row'}}>
+<TouchableOpacity onPress={this.yesTap}>
+<View style={{width:70,height:25,borderRadius:6,backgroundColor:this.state.yesbackgroundcolor,justifyContent:'center'}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:this.state.yesfontcolor,marginLeft:20}}>Yes</Text> 
 </View>
-<View style={{justifyContent:'center',width:40,alignItems:'center',borderWidth:1,borderColor:'#fff',backgroundColor:'#fff'}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4'}}>No</Text> 
+</TouchableOpacity>
+<TouchableOpacity onPress={this.NoTap}>
+<View style={{width:50,height:25,borderRadius:6,backgroundColor:this.state.nobackgroundcolor,marginLeft:-10,justifyContent:'center',alignItems:'center'}}>
+<Text style={{fontSize:12,fontWeight:'bold',color:this.state.nofontcolor}}>No</Text> 
 </View>
+</TouchableOpacity>
 </View>
 
 </View>
@@ -387,7 +416,7 @@ SlideMenu=()=>{
     borderRadius: 100/2,
     backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
    
-    <Image  style={{width: 60, height: 60}}  source={require('./assets/walletpurse.png')} ></Image>
+    <Image  style={{width: 60, height: 60,resizeMode:'contain'}}  source={require('./assets/sell.png')} ></Image>
     
             
           </LinearGradient> 
@@ -490,6 +519,22 @@ justifyContent:'center',alignItems:"center"}} >
       clickedItemText=(item)=>
       {
           Alert.alert(item.Status)
+      }
+      yesTap=()=>{
+this.setState({
+  yesbackgroundcolor:'#4286f4',
+  nobackgroundcolor:'#fff',
+  yesfontcolor:'#fff',
+  nofontcolor:'#4286f4'
+})
+      }
+      NoTap=()=>{
+        this.setState({
+          yesbackgroundcolor:'#fff',
+          nobackgroundcolor:'#4286f4',
+          yesfontcolor:'#4286f4',
+          nofontcolor:'#fff'
+        })
       }
 }
 
