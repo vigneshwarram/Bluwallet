@@ -22,6 +22,7 @@ export default class  Publish  extends React.Component {
       dataSource:[],
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
+      Amount:'COP',
       animate:false,
       app1icon:require('./assets/app1white.png'),
       app6icon:require('./assets/app6.png'),
@@ -237,8 +238,9 @@ SlideMenu=()=>{
     return (  
    
       <View style={styles.Maincontainers}>     
+        <LinearGradient colors= {['#354e91','#21284a','#21284a']} style={styles.Maincontainers}>
       <LinearGradient
-   colors={['#1a5fe1','#00a5ff','#81DCF9']} style={{height:'30%',}}>    
+   colors={['#1a5fe1','#00a5ff','#81DCF9']} style={{height:'30%',opacity:0.9}}>    
       <LinearGradient
    colors={['#1a5fe1','#5DBCD2','#81DCF9']} style={{height:'100%',marginRight:30,marginTop:30}}>
  <View style={{justifyContent:'center',alignItems:'center'}}>
@@ -281,7 +283,7 @@ SlideMenu=()=>{
        
           
           </View>
-          <View style={{width:'80%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:20, justifyContent:"center"}}>
+          <View style={{width:'80%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:20, justifyContent:'space-between',flexDirection:'row'}}>
 <View style={{flexDirection:'row',marginLeft:20}}>
 <Image  style={{width: 20, height: 20,marginTop:10}}  source={require("./assets/Searchicon.png")} ></Image> 
 <TextInput
@@ -291,6 +293,25 @@ SlideMenu=()=>{
           
         />
 </View>
+<View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center'}}>
+        <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12}}>{this.state.Amount}</Text>
+        <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("./assets/darrow.png")} ></Image> 
+        <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}
+   selectedValue={this.state.Amount}
+  onValueChange={(itemValue, itemIndex) => this.selectedCop(itemValue,itemIndex)}>
+  
+  <Picker.Item label="COP" value="COP" />
+  <Picker.Item label="Inr" value="Inr" />
+  <Picker.Item label="USA" value="USA" />
+  <Picker.Item label="German" value="German" />
+  <Picker.Item label="Italy" value="Italy" />
+  <Picker.Item label="Aus" value="Aus" />
+  <Picker.Item label="India" value="India" />
+  <Picker.Item label="Aus" value="Aus" />
+  </Picker>
+        </View>
+        
+  
           </View>
           </View>   
           <LinearGradient colors={['#81DCF9','#5099f0','#1a5fe1']} style={{  width: 100,marginLeft:20,position:'absolute',top:'70%',left:120,right:100,
@@ -298,7 +319,7 @@ SlideMenu=()=>{
     borderRadius: 100/2,
     backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
    
-    <Image  style={{width: 60, height: 60}}  source={require('./assets/publicationwhite.png')} ></Image>
+    <Image  style={{width: 60, height: 60,resizeMode:'contain'}}  source={require('./assets/publication.png')} ></Image>
     
             
           </LinearGradient> 
@@ -307,7 +328,7 @@ SlideMenu=()=>{
 
 
           </LinearGradient>    
-    <LinearGradient  colors= {['#2b3f74','#232d51','#232d51']} style={{marginTop:'20%',position:'absolute',height:'100%',
+    <LinearGradient  colors= {['transparent','transparent','transparent']} style={{marginTop:'20%',position:'absolute',height:'100%',
         top:'30%',left: 0,
         right: 0}}>
          <View style={{flex:1,marginBottom:90}}>
@@ -343,7 +364,7 @@ SlideMenu=()=>{
      <Text  style={{marginTop:10,marginLeft:10, color:(item.Status!='Completed')?'#5280d5':'#5280d5'}}>{(item.Status=='Completed')?'ETH':'BTC'}</Text>  
      </View>  
      <View style={{width:'35%',marginTop:30}}>
-          <LinearGradient colors={['#8595e0','#9a89f9','#c37bf8']} style={{padding:7,borderRadius:10,backgroundColor:'green',justifyContent:'center',alignItems:'center'}}>
+          <LinearGradient colors={['#8595e0','#9a89f9','#c37bf8']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:7,borderRadius:10,backgroundColor:'green',justifyContent:'center',alignItems:'center'}}>
 <TouchableOpacity onPress={()=>this.props.navigation.navigate('Payment')}>
 <Text style={{color:'#fff'}}>Exchange</Text></TouchableOpacity>
 </LinearGradient>
@@ -386,19 +407,36 @@ SlideMenu=()=>{
     alignItems: 'center',
     position: 'absolute', 
     bottom: 0,}}>
-<LinearGradient colors= {['#1a5fe1','#00a5ff','#00a5ff']} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
+<LinearGradient colors= {['#1a5fe1','#00a5ff','#00a5ff']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
     <View style={{flexDirection: 'row',marginRight:20,marginLeft:20,alignItems:"center",justifyContent:'center'}}> 
-       <TouchableOpacity onPress={this.ProfileTouch}>
+    <TouchableOpacity onPress={this.App3Touch}>
+   
+   <View style={{  width: 40,marginLeft:10,
+height: 40,
+borderRadius: 40/2,
+justifyContent:'center',alignItems:"center"}} >
+
+<Image style={{width:20,height:20}}   source={this.state.app3icon} ></Image>
+
     
-       <View style={{ width: 40,marginLeft:10,
-    height: 40,
-    borderRadius: 40/2,
-  justifyContent:'center',alignItems:"center"}} >
+   </View>   
+
   
-    <Image style={{width:20,height:20}}   source={this.state.app5icon} ></Image> 
-          </View>  
-       
-          </TouchableOpacity>  
+   </TouchableOpacity>
+   <TouchableOpacity onPress={this.App4Touch}>
+
+   <View style={{  width: 40,marginLeft:10,backgroundColor:this.state.app4color,
+height: 40,
+borderRadius: 40/2,
+justifyContent:'center',alignItems:"center"}} >
+
+<Image style={{width:20,height:20}}   source={this.state.app4icon} ></Image> 
+
+     
+   </View>  
+  
+   </TouchableOpacity> 
+
           <TouchableOpacity   onPress={this.DashBoardTouch}>
        
        <View style={{ width: 40,marginLeft:10,
@@ -410,20 +448,7 @@ justifyContent:'center',alignItems:"center"}} >
        </View>    
               
        </TouchableOpacity>   
-          <TouchableOpacity onPress={this.CreditCardTouch}>
-      
-          <View style={{  width: 40,marginLeft:20,
-    height: 40,
-    borderRadius: 40/2,
-   justifyContent:'center',alignItems:"center"}} >
-   
-    <Image  style={{width: 20, height: 20}}  source={this.state.app6icon} ></Image>
-    
-            
-          </View> 
-       
-       
-          </TouchableOpacity>  
+         
           <TouchableOpacity onPress={this.VaultTouch}>
     
           <View style={{  width: 40,marginLeft:10,
@@ -438,37 +463,37 @@ justifyContent:'center',alignItems:"center"}} >
       
           
           </TouchableOpacity>  
-          <TouchableOpacity onPress={this.App3Touch}>
+          <TouchableOpacity onPress={this.CreditCardTouch}>
+      
+      <View style={{  width: 40,marginLeft:20,
+height: 40,
+borderRadius: 40/2,
+justifyContent:'center',alignItems:"center"}} >
+
+<Image  style={{width: 20, height: 20}}  source={this.state.app6icon} ></Image>
+
+        
+      </View> 
    
-          <View style={{  width: 40,marginLeft:10,
-    height: 40,
-    borderRadius: 40/2,
-   justifyContent:'center',alignItems:"center"}} >
+   
+      </TouchableOpacity>  
+          <TouchableOpacity onPress={this.ProfileTouch}>
     
-     <Image style={{width:20,height:20}}   source={this.state.app3icon} ></Image>
+    <View style={{ width: 40,marginLeft:10,
+ height: 40,
+ borderRadius: 40/2,
+justifyContent:'center',alignItems:"center"}} >
+
+ <Image style={{width:20,height:20}}   source={this.state.app5icon} ></Image> 
+       </View>  
     
-           
-          </View>   
-       
+       </TouchableOpacity>  
          
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.App4Touch}>
-     
-          <View style={{  width: 40,marginLeft:10,backgroundColor:this.state.app4color,
-    height: 40,
-    borderRadius: 40/2,
-   justifyContent:'center',alignItems:"center"}} >
-    
-     <Image style={{width:20,height:20}}   source={this.state.app4icon} ></Image> 
-    
-            
-          </View>  
-         
-          </TouchableOpacity> 
           
           </View>
           </LinearGradient>  
 </View>
+</LinearGradient>
      </View>
   
     
@@ -478,6 +503,11 @@ justifyContent:'center',alignItems:"center"}} >
       {
           Alert.alert(item.Status)
       }
+      selectedCop=(item,itemIndex)=>{
+        this.setState({
+          Amount:item
+        })
+      }
 }
 
 
@@ -486,7 +516,7 @@ const styles = StyleSheet.create({
  
   Maincontainers: {
     flex: 1,   
-    backgroundColor: '#2b3f74',
+    backgroundColor: '#fff',
   },
   containers: {
    backgroundColor: '#fff',

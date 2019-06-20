@@ -203,10 +203,10 @@ CompleteTouch=()=>{
   }
     return (  
       <View style={styles.Maincontainers}>    
-      <LinearGradient colors= {['#2b3f74','#232d51','#232d51']}>
+      <LinearGradient colors= {['#354e91','#21284a','#21284a']}>
       <ScrollView>
       <View style={{justifyContent:'space-between',flexDirection:'row'}}>  
-<LinearGradient colors={['transparent','transparent','transparent']} style={{justifyContent:'center',height:this.state.h,width:this.state.w, alignItems:'flex-end', marginTop:10,borderTopRightRadius:25,borderBottomRightRadius:25,borderColor:'#c978f8',borderWidth:1,position:'absolute'}}>
+<LinearGradient colors={['transparent','transparent','transparent']} style={{justifyContent:'center',height:this.state.h,width:this.state.w, alignItems:'flex-end', marginTop:10,borderTopRightRadius:25,borderBottomRightRadius:25,borderColor:'#c978f8',borderRightWidth:1,borderLeftWidth:0,borderTopWidth:1,borderBottomWidth:1,position:'absolute'}}>
 <TouchableOpacity onPress={this._onPress}>
        <View style={{flexDirection: 'row'}}> 
           <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/iicon.png")} ></Image>     

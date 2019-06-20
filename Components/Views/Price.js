@@ -182,27 +182,27 @@ SlideMenu=()=>{
     return (  
         
       <View style={styles.Maincontainers}>           
-     
+       <LinearGradient colors= {['#354e91','#21284a','#21284a']} style={styles.Maincontainers}>  
      <LinearGradient
-   colors={['#1a5fe1','#00a5ff','#81DCF9']} style={{height:200,}}>     
+   colors={['#1a5fe1','#00a5ff','#25e2cd']} style={{height:200,opacity:0.9}}>     
       <LinearGradient
-   colors={['#1a5fe1','#00a5ff','#25e2cd']} style={{height:210,marginRight:30,marginTop:30}}>
+   colors={['#1a5fe1','#00a5ff','#81DCF9']} style={{height:210,marginRight:30,marginTop:20}}>
  <View>
  <View style={{justifyContent:'center',alignItems:'center'}}>
-          <View style={{flexDirection:'row',marginTop:20}}>
+          <View style={{flexDirection:'row',marginTop:10}}>
           <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/app3.png")} ></Image>     
           <Text style={{fontSize:18,fontWeight:'bold',color:'#fff'}}>Price</Text>
           </View>      
           <View style={{flexDirection: 'row',marginTop:20,justifyContent:'space-around'}}>
-         <View>
-         <Text style={{fontSize:18,fontWeight:'bold',color:'#213ea6',marginTop:10}}>ETH</Text> 
+         <View style={{justifyContent:'center',alignItems:'center'}}>
+         <Text style={{fontSize:18,fontWeight:'bold',color:'#2939a8'}}>ETH</Text> 
          </View>
 <Text style={{fontSize:25,fontWeight:'bold',color:'#fff',marginLeft:10}}>132.58</Text>      
         
 <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:20}}>
-        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12}}>{this.state.Amount}</Text>
-        <Image  style={{width: 10, height: 10,marginLeft:10}}  source={require("./assets/down_arrow.png")} ></Image>
-        <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000 }}
+        <Text style={{color:'#3440b0',fontWeight:'bold',opacity:1,fontSize:18}}>{this.state.Amount}</Text>
+        <Image  style={{width: 10, height: 10,marginLeft:10,resizeMode:'contain',tintColor:"#3440b0"}}  source={require("./assets/down_arrow.png")} ></Image>
+        <Picker style={{ position:'absolute', top: 0, width: 500, height: 3000 }}
    selectedValue={this.state.Amount}
   onValueChange={(itemValue, itemIndex) => this.selectedAmount(itemValue,itemIndex)}>
   
@@ -222,7 +222,7 @@ SlideMenu=()=>{
      </View>            
           </View>
          
-          <AreaChart style={{ height: 75,backgroundColor:'transparent',marginTop:20 }}
+          <AreaChart style={{ height: 75,backgroundColor:'transparent',marginTop:10}}
                 data={data}
                 showGrid={ false }
                 curve={shape.curveNatural}
@@ -242,7 +242,7 @@ SlideMenu=()=>{
     
 <View style={{flex:1,marginTop:60}}>
 <LinearGradient
-  colors= {['#2b3f74','#2c548f','#223458']} >
+  colors= {['transparent','transparent','transparent']} >
 <View style={{}}>
 
  <View
@@ -259,10 +259,11 @@ SlideMenu=()=>{
           renderItem={({item,separators})  =>
         <TouchableOpacity onShowUnderlay={separators.highlight}
       onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
-      <View style={{backgroundColor:'transparent'}}>
-        <View style={{flexDirection:'row'}}>
-       <View style={{backgroundColor:'transparent',width:'40%',height:250,marginLeft:30,borderWidth:1,borderColor:'#e6e8f1',shadowOffset: { width: 10, height: 10 },
+      <View style={{backgroundColor:'transparent', borderRadius:6,}}>
+        <View style={{flexDirection:'row', borderRadius:6,}}>
+       <View style={{backgroundColor:'transparent',width:'40%',height:250,marginLeft:30,borderWidth:1,borderColor:'#5a73b6',shadowOffset: { width: 10, height: 10 },
    borderWidth: 1,
+   borderRadius:6,
   borderBottomWidth: 0,
   shadowColor: '#7929ff',
   shadowOffset: { width: 0, height: 12 },
@@ -270,13 +271,13 @@ SlideMenu=()=>{
   shadowRadius: 2,
   elevation: 24,
   }} >
-       <LinearGradient style={{height:'100%'}}   colors={[(item.Status=='Completed')?'transparent':'#5489ff', (item.Status=='Completed')?'transparent':'#7929ff', (item.Status=='Completed')?'transparent':'#7929ff']}>
+       <LinearGradient style={{height:'100%'}}   colors={['#5489ff','#7929ff','#7929ff']}>
        <View style={{justifyContent:'center',alignItems:'center', position: 'absolute',
     top: 0,
     bottom: 0,
     left: 20,
     right: 0,}}>
-    <Image  style={{aspectRatio: 0.25,
+    <Image  style={{width:200,height:200,
     resizeMode: 'contain',marginLeft:10,opacity:0.5}}   source={require("./assets/transparent-etherem.png")} ></Image>
     </View>
      {(item.Status!='Cancelled')? <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
@@ -306,7 +307,7 @@ SlideMenu=()=>{
        </LinearGradient>
    
        </View>
-       <View style={{backgroundColor:'transparent',width:'40%',height:250,marginLeft:20,borderWidth:1,borderColor:'#e6e8f1'}} >
+       <View style={{backgroundColor:'transparent',width:'40%',height:250,marginLeft:20,borderWidth:1,borderColor:'#5a73b6',borderRadius:6}} >
        <LinearGradient style={{height:'100%'}}   colors={[(item.Status=='Completed')?'transparent':'transparent', (item.Status=='Completed')?'transparent':'transparent', (item.Status=='Completed')?'transparent':'transparent']}>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
         <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/m.png")} ></Image>
@@ -428,7 +429,7 @@ justifyContent:'center',alignItems:"center"}} >
           </View>
           </LinearGradient>  
 </View>
-   
+   </LinearGradient>
       </View>
       
     
@@ -437,6 +438,11 @@ justifyContent:'center',alignItems:"center"}} >
       clickedItemText=(item)=>
       {
           Alert.alert(item.Status)
+      }
+      selectedAmount=(item,itemIndex)=>{
+this.setState({
+  Amount:item
+})
       }
 }
 

@@ -253,7 +253,7 @@ get pagination () {
   }
     return (  
       <View style={styles.Maincontainers}>    
-      <LinearGradient colors= {['#2b3f74','#232d51','#232d51']}>
+      <LinearGradient colors= {['#354e91','#21284a','#21284a']}>
       <ScrollView>
       <View style={{justifyContent:'space-between',flexDirection:'row'}}>  
 <LinearGradient colors={['#f4347f','#f85276','#fe7a6e']} style={{justifyContent:'center',height:this.state.h,width:this.state.w, alignItems:'flex-end', marginTop:10,borderTopRightRadius:25,borderBottomRightRadius:25}}>
@@ -342,7 +342,7 @@ get pagination () {
     
       <View style={styles.containers}>
     
-    <Image style={{width:350,height:200,opacity:0.5,marginTop:-20,
+    <Image style={{width:350,height:180,opacity:0.4,marginTop:-50,
     resizeMode: 'contain'}}   source={require("./assets/etherium_original.png")} ></Image>   
     
       

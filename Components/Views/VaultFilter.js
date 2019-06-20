@@ -269,10 +269,10 @@ App6Touch=()=>{
   }
     return (  
       <View style={styles.Maincontainers}>    
-      <LinearGradient colors= {['#2b3f74','#232d51','#232d51']}>
+      <LinearGradient colors= {['#354e91','#21284a','#21284a']}>
       <ScrollView>
       <View style={{justifyContent:'space-between',flexDirection:'row'}}>  
-<LinearGradient colors={['transparent','transparent','transparent']} style={{justifyContent:'center',height:this.state.h,width:this.state.w, alignItems:'flex-end', marginTop:10,borderTopRightRadius:25,borderBottomRightRadius:25,borderColor:'#c978f8',borderWidth:1}}>
+<LinearGradient colors={['transparent','transparent','transparent']} style={{justifyContent:'center',height:this.state.h,width:this.state.w, alignItems:'flex-end', marginTop:10,borderTopRightRadius:25,borderBottomRightRadius:25,borderColor:'#c978f8',borderRightWidth:1,borderLeftWidth:0,borderTopWidth:1,borderBottomWidth:1}}>
 <TouchableOpacity onPress={this._onPress}>
        <View style={{flexDirection: 'row'}}> 
           <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/iicon.png")} ></Image>     
@@ -358,7 +358,7 @@ App6Touch=()=>{
                  </View>                                    
                </View>
 <View style={{height:'100%'}}>
-<FlatList  style={{marginTop:10}}
+<FlatList  style={{marginTop:20}}
       ItemSeparatorComponent={this.space}
       data={this.state.dataSource}
           renderItem={({item,separators})  =>
@@ -377,49 +377,37 @@ App6Touch=()=>{
   <LinearGradient
    colors={['#374c8d', '#32437b','#2c3868']} style={{ borderRadius:25}}>
         <View style={{alignItems:'center',flexDirection:'row',padding:15}}>
-        {(
-          (item.Status!='Completed')?<View>
-<LinearGradient style={{  width: 50,shadowOpacity:1,shadowColor:"#FFF",shadowRadius:50,
-height: 50,
-borderRadius: 50/2,
-justifyContent:'center',alignItems:"center"}} colors= {['#f8bc73','#f0824d','#ec643a']}>
-   <Image style={{width: 30, height: 30}}   source={require("./assets/biconback.png")} ></Image> 
-</LinearGradient>
-
-    </View> :  <View>
-<LinearGradient style={{  width: 50,
-height: 50,
-borderRadius: 50/2,
-justifyContent:'center',alignItems:"center"}} colors= {['#5582ff','#5e5cff','#6730ff']}>
-   <Image style={{width: 30, height: 30}}   source={require("./assets/etheremicon.png")} ></Image> 
-</LinearGradient>
-
-    </View> 
-
-        )}
+        <View style={{justifyContent:'center'}}>
+        <Image style={{width: 50, height: 50,resizeMode:'contain'}}   source={require("./assets/etheriumblue.png")} ></Image>
+        </View>
       
-          <View style={{flexDirection:'column',marginLeft:10}}>
-          <View style={{flex:1, flexDirection: 'row',justifyContent:'space-between'}}>    
-          <View>
-          <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#4286f4':'#4286f4'}}>ETH</Text> 
-          <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>$435</Text> 
+      
+          <View style={{flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
+          <View style={{flexDirection: 'row',justifyContent:'space-between'}}>    
+          <View style={{justifyContent:"center",alignItems:'center'}}>
+          <Text  style={{color:(item.Status!='Completed')?'#4286f4':'#4286f4'}}>ETH</Text> 
+          <Text  style={{color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>$435</Text> 
           </View>  
           <View>
-          <View style={{flexDirection:'row'}}>
-          <Text  style={{marginTop:10,color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>{(item.Status!='Completed')?'Produced':"Produced"}</Text>    
-          <View style={{flexDirection:'row',marginTop:10}}>
-     <Image style={{width: 25, height: 25}}   source={require("./assets/plusblue.png")} ></Image>    
-     <Text  style={{fontSize:10,color:(item.Status!='Completed')?'#232d51':'#232d51'}}>$ 9060</Text> 
+          <View style={{flexDirection:'row',marginLeft:20}}>
+          <View>
+          <Text  style={{color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>{(item.Status!='Completed')?'Produced':"Produced"}</Text> 
+          <Text  style={{color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>Coins</Text>    
+          </View>
+          
+          <View style={{flexDirection:'row',justifyContent:'center'}}>
+     <Image style={{width: 25, height: 25,resizeMode:'contain'}}   source={require("./assets/plusblue.png")} ></Image>   
+     <View style={{}}>
+     <Text  style={{fontSize:10,textAlign:'center', color:(item.Status!='Completed')?'#232d51':'#232d51'}}>$ 9060</Text> 
+     </View> 
+     
      </View>  
           </View>    
-          <View style={{flexDirection:'row'}}>
-          <Text  style={{color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>Coins</Text> 
-          <Text  style={{marginLeft:10 ,color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>0.123</Text> 
+         
           </View>
-          </View>
-          <View style={{flexDirection:'row',marginTop:15,marginRight:15}}>
-          <Text  style={{marginTop:5,color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>+8.5%</Text> 
-          <Image style={{width: 10,marginTop:10, height: 10}}   source={require("./assets/green.png")} ></Image> 
+          <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
+          <Text  style={{color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>+8.5%</Text> 
+          <Image style={{width: 10, height: 10,resizeMode:'contain'}}   source={require("./assets/green.png")} ></Image> 
           </View>                
      </View>  
           </View>

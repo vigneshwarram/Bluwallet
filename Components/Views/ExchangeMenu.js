@@ -218,7 +218,7 @@ SlideMenu=()=>{
     return (  
    
       <View style={styles.Maincontainers}> 
-      <LinearGradient colors= {['#2b3f74','#232d51','#232d51']} style={styles.Maincontainers}>
+      <LinearGradient colors= {['#354e91','#21284a','#21284a']} style={styles.Maincontainers}>
 
       <LinearGradient
    colors={['#1a5fe1','#00a5ff','#81DCF9',]} style={{height:'30%',opacity:0.9}}>    
@@ -319,7 +319,7 @@ SlideMenu=()=>{
 
 
           </LinearGradient>    
-    <LinearGradient  colors= {['#2b3f74','#232d51','#232d51']} style={{marginTop:'10%',position:'absolute',height:'100%',
+    <LinearGradient  colors= {['transparent','transparent','transparent']} style={{marginTop:'10%',position:'absolute',height:'100%',
         top:'30%',left: 0,
         right: 0}}>
     <ScrollView style={{paddingBottom:10}}>

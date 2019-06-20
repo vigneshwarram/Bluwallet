@@ -228,11 +228,12 @@ SlideMenu=()=>{
   }
     return (  
    
-      <View style={styles.Maincontainers}>     
+      <View style={styles.Maincontainers}>   
+       <LinearGradient colors= {['#354e91','#21284a','#21284a']} style={styles.Maincontainers}>  
       <LinearGradient
    colors={['#1a5fe1','#00a5ff','#81DCF9']} style={{height:200,opacity:0.9}}>    
       <LinearGradient
-   colors={['#1a5fe1','#81DCF9','#81DCF9']} style={{height:250,marginRight:30,marginTop:30}}>
+   colors={['#1a5fe1','#81DCF9','#81DCF9']} style={{height:230,marginRight:30,marginTop:20}}>
  <View style={{justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection:'row',marginTop:20}}>
           <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/app4.png")} ></Image>     
@@ -254,11 +255,9 @@ SlideMenu=()=>{
         <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:20}}>
         <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12}}>{this.state.Amount}</Text>
         <Image  style={{width: 10, height: 10,marginLeft:10,tintColor:'#4e649f'}}  source={require("./assets/down_arrow.png")} ></Image>
-        <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000 }}
+        <Picker style={{ position:'absolute', top: 0, width: 500, height: 3000 }}
    selectedValue={this.state.Amount}
   onValueChange={(itemValue, itemIndex) => this.selectedAmount(itemValue,itemIndex)}>
-  
-  <Picker.Item label="USDoller" value="USDoller" />
   <Picker.Item label="Inr" value="Inr" />
   <Picker.Item label="USA" value="USA" />
   <Picker.Item label="German" value="German" />
@@ -283,7 +282,7 @@ SlideMenu=()=>{
           
 <View style={{flex:1}}>
 
-          <LinearGradient   colors= {['#2b3f74','#232d51','#232d51']} style={{marginTop:60}} >
+          <LinearGradient   colors= {['transparent','transparent','transparent']} style={{marginTop:60}} >
    <ScrollView>
 <View style={{marginTop:20}}>   
 
@@ -381,7 +380,7 @@ SlideMenu=()=>{
 
 </View>
 <View style={{position:'absolute',left:0,right:15,top:0,bottom:0,alignItems:'flex-end'}}>
-<Image style={{width: 120,opacity:0.2, height: "100%",tintColor:'#fff'}}   source={require("./assets/three.png")} ></Image>  
+<Image style={{width: 120,opacity:0.9, height: "100%",tintColor:'#fff',resizeMode:'contain'}}   source={require("./assets/three.png")} ></Image>  
 </View>
 </LinearGradient>
 <View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:20,marginRight:70,marginTop:20}}>
@@ -393,12 +392,12 @@ SlideMenu=()=>{
           value = {this.state.switchValue}/>
 </View>
 <View style={{flexDirection:'row',marginLeft:20,marginRight:20,marginBottom:300,marginTop:20}}>
-<LinearGradient colors={['#FC686F','#FD6A72','#F74B71']}  style={{width:'50%',padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center'}}>
+<LinearGradient colors={['#F74B71','#FD6A72','#FC686F']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{width:'50%',borderRadius:6, padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center'}}>
 <TouchableOpacity>
 <Text style={{color:'#fff'}}>Cancel</Text>
 </TouchableOpacity>
 </LinearGradient>
-<LinearGradient  colors={['#41da9c','#36deaf','#26e3ca']} style={{width:'50%',padding:10,backgroundColor:'green',justifyContent:'center',alignItems:'center',marginLeft:10}}>
+<LinearGradient  colors={['#26e3ca','#36deaf','#41da9c']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{width:'50%',borderRadius:6,padding:10,backgroundColor:'green',justifyContent:'center',alignItems:'center',marginLeft:10}}>
 <TouchableOpacity onPress={()=>this.props.navigation.navigate('Payment')}>
 <Text style={{color:'#fff'}}>Accept</Text></TouchableOpacity>
 </LinearGradient>
@@ -429,17 +428,34 @@ SlideMenu=()=>{
     bottom: 0,}}>
 <LinearGradient colors= {['#1a5fe1','#00a5ff','#00a5ff']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
     <View style={{flexDirection: 'row',marginRight:20,marginLeft:20,alignItems:"center",justifyContent:'center'}}> 
-       <TouchableOpacity onPress={this.ProfileTouch}>
+    <TouchableOpacity onPress={this.App3Touch}>
+   
+   <View style={{  width: 40,marginLeft:10,
+height: 40,
+borderRadius: 40/2,
+justifyContent:'center',alignItems:"center"}} >
+
+<Image style={{width:20,height:20}}   source={this.state.app3icon} ></Image>
+
     
-       <View style={{ width: 40,marginLeft:10,
-    height: 40,
-    borderRadius: 40/2,
-  justifyContent:'center',alignItems:"center"}} >
+   </View>   
+
   
-    <Image style={{width:20,height:20}}   source={this.state.app5icon} ></Image> 
-          </View>  
-       
-          </TouchableOpacity>  
+   </TouchableOpacity>
+   <TouchableOpacity onPress={this.App4Touch}>
+
+   <View style={{  width: 40,marginLeft:10,backgroundColor:this.state.app4color,
+height: 40,
+borderRadius: 40/2,
+justifyContent:'center',alignItems:"center"}} >
+
+<Image style={{width:20,height:20}}   source={this.state.app4icon} ></Image> 
+
+     
+   </View>  
+  
+   </TouchableOpacity> 
+
           <TouchableOpacity   onPress={this.DashBoardTouch}>
        
        <View style={{ width: 40,marginLeft:10,
@@ -451,20 +467,7 @@ justifyContent:'center',alignItems:"center"}} >
        </View>    
               
        </TouchableOpacity>   
-          <TouchableOpacity onPress={this.CreditCardTouch}>
-      
-          <View style={{  width: 40,marginLeft:20,
-    height: 40,
-    borderRadius: 40/2,
-   justifyContent:'center',alignItems:"center"}} >
-   
-    <Image  style={{width: 20, height: 20}}  source={this.state.app6icon} ></Image>
-    
-            
-          </View> 
-       
-       
-          </TouchableOpacity>  
+         
           <TouchableOpacity onPress={this.VaultTouch}>
     
           <View style={{  width: 40,marginLeft:10,
@@ -479,38 +482,38 @@ justifyContent:'center',alignItems:"center"}} >
       
           
           </TouchableOpacity>  
-          <TouchableOpacity onPress={this.App3Touch}>
+          <TouchableOpacity onPress={this.CreditCardTouch}>
+      
+      <View style={{  width: 40,marginLeft:20,
+height: 40,
+borderRadius: 40/2,
+justifyContent:'center',alignItems:"center"}} >
+
+<Image  style={{width: 20, height: 20}}  source={this.state.app6icon} ></Image>
+
+        
+      </View> 
    
-          <View style={{  width: 40,marginLeft:10,
-    height: 40,
-    borderRadius: 40/2,
-   justifyContent:'center',alignItems:"center"}} >
+   
+      </TouchableOpacity>  
+          <TouchableOpacity onPress={this.ProfileTouch}>
     
-     <Image style={{width:20,height:20}}   source={this.state.app3icon} ></Image>
+    <View style={{ width: 40,marginLeft:10,
+ height: 40,
+ borderRadius: 40/2,
+justifyContent:'center',alignItems:"center"}} >
+
+ <Image style={{width:20,height:20}}   source={this.state.app5icon} ></Image> 
+       </View>  
     
-           
-          </View>   
-       
+       </TouchableOpacity>  
          
-          </TouchableOpacity>
-          <TouchableOpacity onPress={this.App4Touch}>
-     
-          <View style={{  width: 40,marginLeft:10,backgroundColor:this.state.app4color,
-    height: 40,
-    borderRadius: 40/2,
-   justifyContent:'center',alignItems:"center"}} >
-    
-     <Image style={{width:20,height:20}}   source={this.state.app4icon} ></Image> 
-    
-            
-          </View>  
-         
-          </TouchableOpacity> 
           
           </View>
           </LinearGradient>  
 </View>
       </View>
+      </LinearGradient>
      </View>
   
     
@@ -519,6 +522,11 @@ justifyContent:'center',alignItems:"center"}} >
       clickedItemText=(item)=>
       {
           Alert.alert(item.Status)
+      }
+      selectedAmount=(item,index)=>{
+        this.setState({
+          Amount:item
+        })
       }
       yesTap=()=>{
 this.setState({
@@ -544,7 +552,7 @@ const styles = StyleSheet.create({
  
   Maincontainers: {
     flex: 1,   
-    backgroundColor: '#2b3f74',
+    backgroundColor: '#fff',
   },
   containers: {
    backgroundColor: '#fff',
