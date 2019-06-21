@@ -259,11 +259,10 @@ SlideMenu=()=>{
           renderItem={({item,separators})  =>
         <TouchableOpacity onShowUnderlay={separators.highlight}
       onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
-      <View style={{backgroundColor:'transparent', borderRadius:6,}}>
-        <View style={{flexDirection:'row', borderRadius:6,}}>
-       <View style={{backgroundColor:'transparent',width:'40%',height:250,marginLeft:30,borderWidth:1,borderColor:'#5a73b6',shadowOffset: { width: 10, height: 10 },
-   borderWidth: 1,
-   borderRadius:6,
+      <View style={{backgroundColor:'transparent'}}>
+        <View style={{flexDirection:'row'}}>
+       <View style={{backgroundColor:'transparent',width:'40%',height:250,marginLeft:30,shadowOffset: { width: 10, height: 10 },
+  
   borderBottomWidth: 0,
   shadowColor: '#7929ff',
   shadowOffset: { width: 0, height: 12 },
@@ -271,7 +270,8 @@ SlideMenu=()=>{
   shadowRadius: 2,
   elevation: 24,
   }} >
-       <LinearGradient style={{height:'100%'}}   colors={['#5489ff','#7929ff','#7929ff']}>
+       <LinearGradient style={{height:'100%',borderRadius:6,borderColor:'#5a73b6',
+   borderRadius:6,}}   colors={['#5489ff','#7929ff','#7929ff']}>
        <View style={{justifyContent:'center',alignItems:'center', position: 'absolute',
     top: 0,
     bottom: 0,

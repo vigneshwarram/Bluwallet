@@ -243,8 +243,9 @@ SlideMenu=()=>{
           <View style={{width:'40%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:10, justifyContent:"center"}}>
 <View style={{flexDirection:'row',marginLeft:20}}> 
 <TextInput
-          style={{height: 40,}}
+          style={{height: 40,color:'#fff'}}
        placeholderTextColor='#ffffff'
+       keyboardType = 'numeric'
           placeholder="COP 0.000"
           
         />
@@ -254,8 +255,9 @@ SlideMenu=()=>{
 <View style={{flexDirection:'row',marginLeft:20}}>
 
 <TextInput
-          style={{height: 40,}}
+          style={{height: 40,color:'#fff'}}
        placeholderTextColor='#ffffff'
+       keyboardType = 'numeric'
           placeholder="BTC 00.0"
           
         />

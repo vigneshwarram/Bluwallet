@@ -223,7 +223,7 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
  
  <View style={{justifyContent:'center',alignItems:'center',position:'absolute',bottom:-20,right:100,left:100}}>
  <Image
-         style={{width:220,height:200,resizeMode: 'cover',}}
+         style={{width:220,height:200,resizeMode: 'contain',}}
          source={require('../assets/dlogo.png')}
      />            
  </View> 

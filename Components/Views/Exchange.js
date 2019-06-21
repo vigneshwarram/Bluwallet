@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet,TextInput, Image,Picker,ScrollView,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
+import { View, StyleSheet,TextInput, Image,Picker,ScrollView,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,KeyboardAvoidingView} from 'react-native';
 import { Alert } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import { Switch} from 'react-native'
@@ -245,8 +245,9 @@ SlideMenu=()=>{
           <View style={{width:'40%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:10, justifyContent:"center"}}>
 <View style={{flexDirection:'row',marginLeft:20}}> 
 <TextInput
-          style={{height: 40,}}
+          style={{height: 40, color:'#fff'}}
        placeholderTextColor='#ffffff'
+       keyboardType = 'numeric'
           placeholder="COP 0.000"
           
         />
@@ -256,10 +257,10 @@ SlideMenu=()=>{
 <View style={{flexDirection:'row',marginLeft:20}}>
 
 <TextInput
-          style={{height: 40,}}
+          style={{height: 40,color:'#fff'}}
        placeholderTextColor='#ffffff'
           placeholder="BTC 00.0"
-          
+          keyboardType = 'numeric'
         />
 </View>
           </View>
@@ -273,7 +274,7 @@ SlideMenu=()=>{
 
 
           </LinearGradient> 
-          
+        
 <View style={{flex:1}}>
 
           <LinearGradient  colors= {['transparent','transparent','transparent']} style={{marginTop:60}} >
@@ -423,6 +424,7 @@ SlideMenu=()=>{
  
   
       </View>
+    
       <View style={{ width: '100%',
     height: 70,
     justifyContent: 'center',
