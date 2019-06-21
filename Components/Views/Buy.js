@@ -418,7 +418,7 @@ SlideMenu=()=>{
             
           </LinearGradient> 
  
-          <View style={{ width: '100%',
+          <View style={{ width: '100%',opacity:0.9,
     height: 70,
     justifyContent: 'center',
     alignItems: 'center',
@@ -461,7 +461,7 @@ justifyContent:'center',alignItems:"center"}} >
  borderRadius: 40/2,
 justifyContent:'center',alignItems:"center"}} >
 
- <Image style={{width:20,height:20}}   source={this.state.app1icon} ></Image> 
+ <Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app1icon} ></Image> 
        </View>    
               
        </TouchableOpacity>   

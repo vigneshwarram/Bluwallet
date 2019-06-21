@@ -190,7 +190,7 @@ SlideMenu=()=>{
  <View>
  <View style={{justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection:'row',marginTop:10}}>
-          <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/app3.png")} ></Image>     
+          <Image style={{marginRight:10,width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/app3.png")} ></Image>     
           <Text style={{fontSize:18,fontWeight:'bold',color:'#fff'}}>Price</Text>
           </View>      
           <View style={{flexDirection: 'row',marginTop:20,justifyContent:'space-around'}}>
@@ -336,7 +336,7 @@ SlideMenu=()=>{
  </LinearGradient>
 </View>
 
-<View style={{ width: '100%',
+<View style={{ width: '100%',opacity:0.9,
     height: 70,
     justifyContent: 'center',
     alignItems: 'center',
@@ -351,7 +351,7 @@ SlideMenu=()=>{
     borderRadius: 40/2,
    justifyContent:'center',alignItems:"center"}} >
     
-     <Image style={{width:20,height:20}}   source={this.state.app3icon} ></Image>
+     <Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app3icon} ></Image>
     
            
           </View>   
@@ -365,7 +365,7 @@ SlideMenu=()=>{
     borderRadius: 40/2,
    justifyContent:'center',alignItems:"center"}} >
     
-     <Image style={{width:20,height:20}}   source={this.state.app4icon} ></Image> 
+     <Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app4icon} ></Image> 
     
             
           </View>  
@@ -378,7 +378,7 @@ SlideMenu=()=>{
  borderRadius: 40/2,
 justifyContent:'center',alignItems:"center"}} >
 
- <Image style={{width:20,height:20}}   source={this.state.app1icon} ></Image> 
+ <Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app1icon} ></Image> 
        </View>    
               
        </TouchableOpacity>   
@@ -389,7 +389,7 @@ justifyContent:'center',alignItems:"center"}} >
     borderRadius: 40/2,
   justifyContent:'center',alignItems:"center"}} >
   
-    <Image style={{width:20,height:20}}   source={this.state.app2icon} ></Image> 
+    <Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app2icon} ></Image> 
    
         
           </View> 
@@ -407,7 +407,7 @@ justifyContent:'center',alignItems:"center"}} >
     borderRadius: 40/2,
    justifyContent:'center',alignItems:"center"}} >
    
-    <Image  style={{width: 20, height: 20}}  source={this.state.app6icon} ></Image>
+    <Image  style={{width: 20, height: 20,resizeMode:'contain'}}  source={this.state.app6icon} ></Image>
     
             
           </View> 
@@ -421,7 +421,7 @@ justifyContent:'center',alignItems:"center"}} >
     borderRadius: 40/2,
   justifyContent:'center',alignItems:"center"}} >
   
-    <Image style={{width:20,height:20}}   source={this.state.app5icon} ></Image> 
+    <Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app5icon} ></Image> 
           </View>  
        
           </TouchableOpacity>  

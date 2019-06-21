@@ -267,7 +267,7 @@ get pagination () {
          
             
             <View style={{flexDirection: 'row',justifyContent:'flex-start',alignItems:"center",marginTop:15}}> 
-          <Image  style={{width: 30, height: 30}}  source={require("./assets/app1white.png")} ></Image>   
+          <Image  style={{width: 30, height: 30,resizeMode:'contain'}}  source={require("./assets/app1white.png")} ></Image>   
           <View style={{flexDirection:'column'}}>
           <Text style={{marginLeft:10,fontSize:18,fontWeight:'bold',color:'#fff'}}>Wallet</Text>       
           </View>       
@@ -276,7 +276,7 @@ get pagination () {
             <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']} style={{height:this.state.hr,width:this.state.wr,justifyContent:'center',alignItems:'flex-start',borderTopLeftRadius:25,borderBottomLeftRadius:25, marginTop:10}}>
             <TouchableOpacity onPress={this.pressRight}>
        <View style={{flexDirection: 'row'}}> 
-          <Image style={{marginLeft:10,width: 30, height: 30}}   source={require("./assets/app1white.png")} ></Image>     
+          <Image style={{marginLeft:10,width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/app1white.png")} ></Image>     
      
           </View>
           </TouchableOpacity>
@@ -512,7 +512,7 @@ justifyContent:'center',alignItems:"center"}} >
     </View>
     </ScrollView>
 </LinearGradient>
-<View style={{ width: '100%',
+<View style={{ width: '100%',opacity:0.9,
     height: 70,
     justifyContent: 'center',
     alignItems: 'center',
@@ -527,7 +527,7 @@ height: 40,
 borderRadius: 40/2,
 justifyContent:'center',alignItems:"center"}} >
 
-<Image style={{width:20,height:20}}   source={this.state.app3icon} ></Image>
+<Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app3icon} ></Image>
 
     
    </View>   
@@ -541,7 +541,7 @@ justifyContent:'center',alignItems:"center"}} >
     borderRadius: 40/2,
    justifyContent:'center',alignItems:"center"}} >
     
-     <Image style={{width:20,height:20}}   source={this.state.app4icon} ></Image> 
+     <Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app4icon} ></Image> 
     
             
           </View>  
@@ -554,7 +554,7 @@ justifyContent:'center',alignItems:"center"}} >
  borderRadius: 40/2,
 justifyContent:'center',alignItems:"center"}} >
 
- <Image style={{width:20,height:20}}   source={this.state.app1icon} ></Image> 
+ <Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app1icon} ></Image> 
        </View>    
               
        </TouchableOpacity>    
@@ -565,7 +565,7 @@ justifyContent:'center',alignItems:"center"}} >
     borderRadius: 40/2,
   justifyContent:'center',alignItems:"center"}} >
   
-    <Image style={{width:20,height:20}}   source={this.state.app2icon} ></Image> 
+    <Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app2icon} ></Image> 
    
         
           </View> 
@@ -581,7 +581,7 @@ justifyContent:'center',alignItems:"center"}} >
     borderRadius: 40/2,
    justifyContent:'center',alignItems:"center"}} >
    
-    <Image  style={{width: 20, height: 20}}  source={this.state.app6icon} ></Image>
+    <Image  style={{width: 20, height: 20,resizeMode:'contain'}}  source={this.state.app6icon} ></Image>
     
             
           </View> 
@@ -595,7 +595,7 @@ justifyContent:'center',alignItems:"center"}} >
  borderRadius: 40/2,
 justifyContent:'center',alignItems:"center"}} >
 
- <Image style={{width:20,height:20}}   source={this.state.app5icon} ></Image> 
+ <Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app5icon} ></Image> 
        </View>  
     
        </TouchableOpacity>  

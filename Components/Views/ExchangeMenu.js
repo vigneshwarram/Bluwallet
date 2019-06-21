@@ -226,7 +226,7 @@ SlideMenu=()=>{
    colors={['#1a5fe1','#5DBCD2','#81DCF9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{height:'100%',marginRight:30,marginTop:30,opacity:1}}>
  <View style={{justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection:'row',marginTop:20}}>
-          <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/app4.png")} ></Image>     
+          <Image style={{marginRight:10,width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/app4.png")} ></Image>     
           <Text style={{fontSize:20,fontWeight:'bold',color:'#fff',}}>Exchange</Text>
           </View>
           <View style={{flexDirection:'row',marginTop:10}}>
@@ -369,7 +369,7 @@ SlideMenu=()=>{
     </View>  
     <View  style={{justifyContent:'center',alignItems:'center', top:100,marginBottom:10,backgroundColor:'transparent',position:'absolute',left:150
         }}>
-              <Image  style={{width: 100, height: 150}}  source={require("./assets/threelogo.png")} ></Image> 
+              <Image  style={{width: 100, height: 150,resizeMode:'contain'}}  source={require("./assets/tree.png")} ></Image> 
         </View>
         <View style={{flex:1,marginBottom:90}}>
         <FlatList  style={{marginTop:10}}
@@ -444,7 +444,7 @@ SlideMenu=()=>{
 </LinearGradient>
 
 
-        <View style={{ width: '100%',
+        <View style={{ width: '100%',opacity:0.9,
     height: 70,
     justifyContent: 'center',
     alignItems: 'center',
@@ -459,7 +459,7 @@ height: 40,
 borderRadius: 40/2,
 justifyContent:'center',alignItems:"center"}} >
 
-<Image style={{width:20,height:20}}   source={this.state.app3icon} ></Image>
+<Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app3icon} ></Image>
 
     
    </View>   
@@ -473,7 +473,7 @@ height: 40,
 borderRadius: 40/2,
 justifyContent:'center',alignItems:"center"}} >
 
-<Image style={{width:20,height:20}}   source={this.state.app4icon} ></Image> 
+<Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app4icon} ></Image> 
 
      
    </View>  
@@ -487,7 +487,7 @@ justifyContent:'center',alignItems:"center"}} >
  borderRadius: 40/2,
 justifyContent:'center',alignItems:"center"}} >
 
- <Image style={{width:20,height:20}}   source={this.state.app1icon} ></Image> 
+ <Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app1icon} ></Image> 
        </View>    
               
        </TouchableOpacity>   
@@ -499,7 +499,7 @@ justifyContent:'center',alignItems:"center"}} >
     borderRadius: 40/2,
   justifyContent:'center',alignItems:"center"}} >
   
-    <Image style={{width:20,height:20}}   source={this.state.app2icon} ></Image> 
+    <Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app2icon} ></Image> 
    
         
           </View> 
@@ -513,7 +513,7 @@ height: 40,
 borderRadius: 40/2,
 justifyContent:'center',alignItems:"center"}} >
 
-<Image  style={{width: 20, height: 20}}  source={this.state.app6icon} ></Image>
+<Image  style={{width: 20, height: 20,resizeMode:'contain'}}  source={this.state.app6icon} ></Image>
 
         
       </View> 
@@ -527,7 +527,7 @@ justifyContent:'center',alignItems:"center"}} >
  borderRadius: 40/2,
 justifyContent:'center',alignItems:"center"}} >
 
- <Image style={{width:20,height:20}}   source={this.state.app5icon} ></Image> 
+ <Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app5icon} ></Image> 
        </View>  
     
        </TouchableOpacity>  

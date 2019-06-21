@@ -167,7 +167,7 @@ SlideMenu=()=>{
          
              <View  style={{justifyContent:'center',alignItems:'center'
         }}>
-              <Image  style={{aspectRatio:1.5,resizeMode:'contain'}}  source={require("../assets/app-logo.png")} ></Image> 
+              <Image  style={{width:200,height:200,resizeMode:'contain'}}  source={require("../assets/app-logo.png")} ></Image> 
                  
             
         </View>

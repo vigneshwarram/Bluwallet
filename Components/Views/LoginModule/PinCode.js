@@ -2,8 +2,6 @@ import * as React from 'react';
 import { Path } from 'react-native-svg'
 import { View, StyleSheet, Image,ScrollView,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
 import { Alert } from 'react-native';
-import BackgroundIcon from '../../Background'
-import { PinScreen } from 'react-native-awesome-pin';
 import LinearGradient from 'react-native-linear-gradient';
 import OTPInput from 'react-native-otp';
 export default class PinCode  extends React.Component {
@@ -168,8 +166,8 @@ SlideMenu=()=>{
              <OTPInput
   value={this.state.otp}
   onChange={this.handleOTPChange}
-  tintColor="#FB6C6A"
-  offTintColor="#BBBCBE"
+  tintColor="#354e91"
+  offTintColor="#ebebf3"
   otpLength={4}
 />
       

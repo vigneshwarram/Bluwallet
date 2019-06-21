@@ -163,7 +163,7 @@ SlideMenu=()=>{
          
              <View  style={{justifyContent:'center',alignItems:'center'
         }}>
-              <Image  style={{aspectRatio:1.5,resizeMode:'contain'}}  source={require("../assets/app-logo.png")} ></Image> 
+              <Image  style={{width:200,height:200,resizeMode:'contain'}}  source={require("../assets/app-logo.png")} ></Image> 
                            
         </View>                   
              
@@ -179,7 +179,7 @@ SlideMenu=()=>{
   
    behavior='padding'
  >
-<View  style={{marginTop:150,marginLeft:20,marginRight:20
+<View  style={{marginTop:80,marginLeft:30,marginRight:30
         }}>
       <View style={{flexDirection:'row',justifyContent:'space-around'}}>
      <View style={{justifyContent:'center',alignItems:'center'}}>

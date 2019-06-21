@@ -190,23 +190,23 @@ ProfileTouch=()=>{
     </View>
     <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',marginTop:20}}>
     <View>
-    <Image style={{marginLeft:10,width: 30, height: 30}}   source={require("../assets/app6.png")} ></Image>     
+    <Image style={{marginLeft:10,width: 30, height: 30,resizeMode:'contain'}}   source={require("../assets/app6.png")} ></Image>     
     </View>
         <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:15,marginLeft:20}}>Credit Card</Text>
     </View>
-    <View style={{marginTop:80}}> 
+    <View style={{marginTop:30}}> 
    
              <View>
          
              <View  style={{justifyContent:'center',alignItems:'center'
         }}>
-              <Image  style={{width: 100, height: 150}}  source={require("../assets/threelogo.png")} ></Image> 
+              <Image  style={{width: 300, height: 300,resizeMode:'contain'}}  source={require("../assets/threelogo.png")} ></Image> 
                  
             
         </View>
       
 
-        <View style={{marginTop:60}}>
+        <View style={{marginTop:50}}>
         
         <View  style={{justifyContent:'center',alignItems:'center',flexDirection:'row'
         }}>
@@ -231,7 +231,7 @@ ProfileTouch=()=>{
              </View>          
  </LinearGradient> 
  </View>
- <View style={{ width: '100%',
+ <View style={{ width: '100%',opacity:0.9,
     height: 70,
     justifyContent: 'center',
     alignItems: 'center',
@@ -246,7 +246,7 @@ height: 40,
 borderRadius: 40/2,
 justifyContent:'center',alignItems:"center"}} >
 
-<Image style={{width:20,height:20}}   source={this.state.app3icon} ></Image>
+<Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app3icon} ></Image>
 
     
    </View>   
@@ -260,7 +260,7 @@ height: 40,
 borderRadius: 40/2,
 justifyContent:'center',alignItems:"center"}} >
 
-<Image style={{width:20,height:20}}   source={this.state.app4icon} ></Image> 
+<Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app4icon} ></Image> 
 
      
    </View>  
@@ -275,7 +275,7 @@ justifyContent:'center',alignItems:"center"}} >
  borderRadius: 40/2,
 justifyContent:'center',alignItems:"center"}} >
 
- <Image style={{width:20,height:20}}   source={this.state.app1icon} ></Image> 
+ <Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app1icon} ></Image> 
        </View>    
               
        </TouchableOpacity>   
@@ -287,7 +287,7 @@ justifyContent:'center',alignItems:"center"}} >
     borderRadius: 40/2,
   justifyContent:'center',alignItems:"center"}} >
   
-    <Image style={{width:20,height:20}}   source={this.state.app2icon} ></Image> 
+    <Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app2icon} ></Image> 
    
         
           </View> 
@@ -301,7 +301,7 @@ height: 40,
 borderRadius: 40/2,
 justifyContent:'center',alignItems:"center"}} >
 
-<Image  style={{width: 20, height: 20}}  source={this.state.app6icon} ></Image>
+<Image  style={{width: 20, height: 20,resizeMode:'contain'}}  source={this.state.app6icon} ></Image>
 
         
       </View> 
@@ -315,7 +315,7 @@ justifyContent:'center',alignItems:"center"}} >
  borderRadius: 40/2,
 justifyContent:'center',alignItems:"center"}} >
 
- <Image style={{width:20,height:20}}   source={this.state.app5icon} ></Image> 
+ <Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app5icon} ></Image> 
        </View>  
     
        </TouchableOpacity>  

@@ -237,7 +237,7 @@ SlideMenu=()=>{
 </LinearGradient> 
  <View style={{justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection:'row',marginTop:20}}>
-          <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/app4.png")} ></Image>     
+          <Image style={{marginRight:10,width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/app4.png")} ></Image>     
           <Text style={{fontSize:18,fontWeight:'bold',color:'#fff'}}>Exchange</Text>
           </View>      
           <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10}}>How Much do you want to buy?</Text>           
@@ -425,7 +425,7 @@ SlideMenu=()=>{
   
       </View>
     
-      <View style={{ width: '100%',
+      <View style={{ width: '100%',opacity:0.9,
     height: 70,
     justifyContent: 'center',
     alignItems: 'center',
@@ -440,7 +440,7 @@ height: 40,
 borderRadius: 40/2,
 justifyContent:'center',alignItems:"center"}} >
 
-<Image style={{width:20,height:20}}   source={this.state.app3icon} ></Image>
+<Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app3icon} ></Image>
 
     
    </View>   
@@ -454,7 +454,7 @@ height: 40,
 borderRadius: 40/2,
 justifyContent:'center',alignItems:"center"}} >
 
-<Image style={{width:20,height:20}}   source={this.state.app4icon} ></Image> 
+<Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app4icon} ></Image> 
 
      
    </View>  
@@ -468,7 +468,7 @@ justifyContent:'center',alignItems:"center"}} >
  borderRadius: 40/2,
 justifyContent:'center',alignItems:"center"}} >
 
- <Image style={{width:20,height:20}}   source={this.state.app1icon} ></Image> 
+ <Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app1icon} ></Image> 
        </View>    
               
        </TouchableOpacity>   
@@ -480,7 +480,7 @@ justifyContent:'center',alignItems:"center"}} >
     borderRadius: 40/2,
   justifyContent:'center',alignItems:"center"}} >
   
-    <Image style={{width:20,height:20}}   source={this.state.app2icon} ></Image> 
+    <Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app2icon} ></Image> 
    
         
           </View> 
@@ -494,7 +494,7 @@ height: 40,
 borderRadius: 40/2,
 justifyContent:'center',alignItems:"center"}} >
 
-<Image  style={{width: 20, height: 20}}  source={this.state.app6icon} ></Image>
+<Image  style={{width: 20, height: 20,resizeMode:'contain'}}  source={this.state.app6icon} ></Image>
 
         
       </View> 
