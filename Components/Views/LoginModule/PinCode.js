@@ -167,13 +167,17 @@ SlideMenu=()=>{
   value={this.state.otp}
   onChange={this.handleOTPChange}
   tintColor="#354e91"
-  offTintColor="#ebebf3"
   otpLength={4}
 />
       
                        
         </View>
-      
+        <View style={{justifyContent:'center',alignItems:'center',position:'absolute',bottom:100,left:70}}>
+        <Image
+                style={{width:250,height:250,resizeMode: 'contain',opacity:0.02}}
+                source={require('../assets/dlogo.png')}
+            />            
+        </View>  
   
  </LinearGradient> 
  </View>

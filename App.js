@@ -37,6 +37,7 @@ import {
  class App extends Component {
     render() {
       const MainNavigator = createStackNavigator({
+        VerificationCards:{screen:VerificationCards},
         Launch:{screen:Launch},
         DashBoard:{screen:DashBoard},        
         ForgotPassword:{screen:ForgotPassword},
@@ -66,7 +67,7 @@ import {
         Sms:{screen:Sms},
         MoreInfo:{screen:MoreInfo},
         ChooseCountry:{screen:ChooseCountry},
-        VerificationCards:{screen:VerificationCards},
+        
         VaultFilter:{screen:VaultFilter},
      
       

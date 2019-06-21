@@ -286,22 +286,39 @@ get pagination () {
       ((!this.state.ProfileComplete)?
         <View >
       <LinearGradient colors= {['#395ea4','#446ea8','#4c78a9']} style={{width:'95%',marginLeft:10,marginRight:10,padding:10,height:160,marginTop:15,borderRadius:10}}>
-      <Text style={{marginLeft:20,fontSize:18,fontWeight:'bold',color:'#fff'}}>Complete Your Profile</Text>  
       <View style={{flexDirection:'row'}}>
+      <View>
+      <Text style={{marginLeft:20,fontSize:18,fontWeight:'bold',color:'#fff'}}>Complete Your Profile</Text>  
+      <View style={{flexDirection:'row',marginTop:10}}>
       <Text style={{marginLeft:20,fontSize:10,color:'#fff',width:'65%'}}>Complete you profile today to start using your wallet successfully </Text>  
-      <Image style={{marginLeft:10, height: 60,
-    width: 100,
-    resizeMode: 'contain'}}   source={require("./assets/threelogo.png")} ></Image>     
       </View>
       <TouchableOpacity onPress={this.ContinueClick}>
-      <View style={{width:'50%'}}>
-<LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:10}}>
+      <View style={{width:'60%',marginLeft:20,marginTop:30}}>
+<LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:10}}>
 <TouchableOpacity>
 <Text style={{color:'#fff'}}>Continue</Text>
 </TouchableOpacity>
 </LinearGradient>
 </View>
-      </TouchableOpacity>
+ </TouchableOpacity>
+      </View>
+      
+      <View >
+     
+      
+     
+      
+      </View>
+      <View style={{}}>
+      <Image style={{ height: 200,marginLeft:-100,marginTop:-40,
+    width: 250,
+    resizeMode: 'contain'}}   source={require("./assets/threelogo.png")} ></Image>  
+      </View>
+      </View>
+      
+    
+      
+      
       
       </LinearGradient>
       </View>:<View >

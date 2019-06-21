@@ -166,9 +166,9 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
     <View></View>
     </View>
     <View style={{justifyContent:'center',alignItems:'center',backgroundColor:'#fff'}}>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:25,backgroundColor:'#facbcc'}}>We need this to verify your identify,In order for</Text>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc'}}> you to use this improved feature.It should only</Text>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc'}}> Take a couple of minutes</Text>
+    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:25,}}>We need this to verify your identify,In order for</Text>
+    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,}}> you to use this improved feature.It should only</Text>
+    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,}}> Take a couple of minutes</Text>
           <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff',marginTop:30, justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
 <View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
 
@@ -206,7 +206,7 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
           </View>
           <View style={{justifyContent:'center',alignItems:'center',marginTop:30}}>
         <Image
-                style={{width:220,height:200,resizeMode: 'cover',}}
+                style={{width:250,height:250,resizeMode: 'contain',opacity:0.1}}
                 source={require('../assets/dlogo.png')}
             />            
         </View>  
@@ -218,7 +218,7 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
     <View style={{position:'absolute',bottom:0,width:'100%'}}>  
     <TouchableOpacity onPress={this.BeginAction}>   
     <View>
-    <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
+    <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
 
 <Text style={{color:'#fff'}}>Next</Text>
 

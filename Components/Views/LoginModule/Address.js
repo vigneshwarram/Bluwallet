@@ -167,15 +167,15 @@ SlideMenu=()=>{
     <View></View>
     </View>
     <View style={{justifyContent:'center',alignItems:'center'}}>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:25,backgroundColor:'#facbcc'}}>This information is only used to help us verify</Text>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc'}}> your Identity</Text>
+    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:25,}}>This information is only used to help us verify</Text>
+    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2}}> your Identity</Text>
 
     <View style={{width:'80%',borderRadius:25,borderWidth:1,borderColor:'#d7dee8',marginTop:10,marginBottom:20, justifyContent:"center",backgroundColor:'#fff'}}>
 <View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
 <Image  style={{width: 20, height: 20}}  source={require("../assets/magnifying-glass.png")} ></Image> 
 <TextInput
           style={{height: 40,padding:10}}
-        placeholderTextColor='#facbcc'
+        placeholderTextColor='#9ab8db'
           placeholder="Home Address"
           
         />
@@ -239,19 +239,19 @@ SlideMenu=()=>{
          
     </View>
     
-    <View style={{marginTop:-80,alignContent:'center',alignSelf:'auto'}}> 
+    <View style={{alignContent:'center',alignSelf:'auto'}}> 
         
-        <View style={{justifyContent:'center',alignItems:'center',position:'absolute',bottom:-20,right:100,left:100}}>
+    <View style={{justifyContent:'center',alignItems:'center',position:'absolute',right:100,left:100,top:0}}>
         <Image
-                style={{width:220,height:200,resizeMode: 'cover',}}
+                style={{width:250,height:250,resizeMode: 'contain',opacity:0.1}}
                 source={require('../assets/dlogo.png')}
             />            
         </View>  
         <TouchableOpacity onPress={this.BeginAction}>
         <View>
-        <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:15,justifyContent:'center',alignItems:'center',marginTop:150}}>
+        <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center',marginTop:150}}>
 
-<Text style={{color:'#fff'}}>Send</Text>
+<Text style={{color:'#fff',fontSize:18,fontWeight:'bold',fontFamily:'Courier New'}}>Send</Text>
 
 </LinearGradient>
         </View>
@@ -259,7 +259,7 @@ SlideMenu=()=>{
 <View>
 <LinearGradient colors={['#354e91','#354e91','#354e91']}  style={{padding:15,alignItems:'center'}}>
 <TouchableOpacity>
-<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc',marginLeft:-30}}>when you "sent",you accept</Text>
+<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,marginLeft:-30}}>when you "sent",you accept</Text>
 <View style={{flexDirection:'row',marginTop:2,marginLeft:-30}}>
 <Text style={{color:'#5496ff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,}}>Terms of Service</Text>
 <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,marginLeft:8}}>&</Text>

@@ -165,28 +165,28 @@ SlideMenu=()=>{
         }}>
         <View  style={{justifyContent:'center',alignItems:'center'
         }}>
-        <Image  style={{width: 40, height: 40}}  source={require("../assets/close-envelope.png")} ></Image>
+        <Image  style={{width: 40, height: 40,resizeMode:'contain'}}  source={require("../assets/close-envelope.png")} ></Image>
         </View>
         <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10}}>Check your Inbox...</Text>
         <Text style={{color:'#80b0fe',fontWeight:'bold',opacity:1,fontSize:20,marginTop:20}}>Jhondoe@gmail.com</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:20,backgroundColor:'#facbcc'}}>Search on email on Blockchain</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc'}}>And click the link of verification </Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc'}}>To complete the configuration</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc'}}>of your wallet</Text>
+             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:20}}>Search on email on Blockchain</Text>
+             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2}}>And click the link of verification </Text>
+             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2}}>To complete the configuration</Text>
+             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2}}>of your wallet</Text>
              
         </View>  
         <View>
         <View style={{justifyContent:'center',alignItems:'center',position:'absolute',right:100,left:100,top:200}}>
         <Image
-                style={{width:220,height:200,resizeMode: 'cover',}}
+                style={{width:250,height:250,resizeMode: 'contain',opacity:0.1}}
                 source={require('../assets/dlogo.png')}
             />            
         </View>  
         <TouchableOpacity onPress={this.BeginAction}>
         <View>
-        <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:15,justifyContent:'center',alignItems:'center',marginTop:150}}>
+        <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center',marginTop:150}}>
 
-<Text style={{color:'#fff'}}>Go to email</Text>
+<Text style={{color:'#fff',fontSize:18,fontWeight:'bold',fontFamily:'Courier New'}}>Go to email</Text>
 
 </LinearGradient>
  

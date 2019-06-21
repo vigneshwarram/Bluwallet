@@ -152,7 +152,7 @@ SlideMenu=()=>{
       <View> 
 
        <LinearGradient
-   colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>   
+   colors={['#ffffff','#e1e5ef','#e1e5ef']}>   
    
     <View style={{flexDirection:'row',justifyContent:'space-between'}}>
     <View></View>
@@ -167,41 +167,41 @@ SlideMenu=()=>{
           </TouchableOpacity>
             </View>
     </View>
-    <View style={{marginTop:20}}> 
+    <View> 
    
              <View>
          
              <View  style={{justifyContent:'center',alignItems:'center'
         }}>
-              <Image  style={{width: 100, height: 150}}  source={require("../assets/threelogo.png")} ></Image> 
+              <Image  style={{width: 250, height: 250,resizeMode:'contain'}}  source={require("../assets/threelogo.png")} ></Image> 
                  
             
         </View>
       
-        <View  style={{justifyContent:'center',alignItems:'center',marginTop:30
+        <View  style={{justifyContent:'center',alignItems:'center',marginTop:10
         }}>
         <View  style={{justifyContent:'center',alignItems:'center'
         }}>
-        <Image  style={{width: 40, height: 40}}  source={require("../assets/mobile-phone.png")} ></Image>
+        <Image  style={{width: 40, height: 40,resizeMode:'contain'}}  source={require("../assets/mobile-phone.png")} ></Image>
         </View>
         <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10}}>Verify with 2 Steps</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10,backgroundColor:'#facbcc'}}>Avoid  unauthorized  access to your</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc'}}>Wallet ,Enable the verification of 2 steps to  </Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc'}}>upgrade the security on your wallet</Text>
+             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10}}>Avoid  unauthorized  access to your</Text>
+             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2}}>Wallet ,Enable the verification of 2 steps to  </Text>
+             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2}}>upgrade the security on your wallet</Text>
              
         </View>  
         <View>
-        <View style={{justifyContent:'center',alignItems:'center',position:'absolute',bottom:-20,right:100,left:100}}>
+        <View style={{justifyContent:'center',alignItems:'center',position:'absolute',right:100,left:100,marginTop:-20,bottom:-20}}>
         <Image
-                style={{width:220,height:200,resizeMode: 'cover',}}
+                style={{width:250,height:250,resizeMode: 'contain',opacity:0.1}}
                 source={require('../assets/dlogo.png')}
             />            
         </View>  
         <TouchableOpacity onPress={this.BeginAction}>
         <View>
       
-        <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:15,justifyContent:'center',alignItems:'center',marginTop:150}}>
-<Text style={{color:'#fff'}}>Enable</Text>
+        <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center',marginTop:150}}>
+<Text style={{color:'#fff',fontSize:18,fontWeight:'bold',fontFamily:'Courier New'}}>Enable</Text>
 </LinearGradient>
         </View>
         </TouchableOpacity>

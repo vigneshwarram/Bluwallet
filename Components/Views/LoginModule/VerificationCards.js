@@ -36,7 +36,22 @@ export default class VerificationCards  extends React.Component {
       visible: false,
       hidden: false,
       app1color:'#fff',
-      app5color:'#fff'
+      app5color:'#fff',
+      PassportTintcolor:'#000000',
+       idTintcolor:'#354E91',
+       residenceTintcolor:'#41DA9C',
+       driverTintcolor:'#5496FF',
+
+       Residencecolor:'#5496FF',
+       idtextcolor:'#5496FF',
+       passporttextcolor:'#5496FF',
+       drivertextcolor:'#5496FF',
+
+   
+       passportcolor1:'#fff',passportcolor2:'#fff',passportcolor3:'#fff',
+       idcolor1:'#fff',idcolor2:'#fff',idcolor3:'#fff',
+       residencegradientcolor1:'#fff',residencegradientcolor2:'#fff',residencegradientcolor3:'#fff',
+       drivercolor1:'#fff',drivercolor2:'#fff',drivercolor3:'#fff',
     };
   
   }
@@ -174,7 +189,7 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
   
       <View  style={{justifyContent:'center',alignItems:'center'
  }}>
-       <Image  style={{width: 100, height: 150}}  source={require("../assets/threelogo.png")} ></Image> 
+       <Image  style={{width: 200, height: 200,resizeMode:'contain'}}  source={require("../assets/threelogo.png")} ></Image> 
           
      
  </View>
@@ -182,64 +197,67 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
  <View  style={{justifyContent:'center',alignItems:'center',marginTop:20
  }}>
       <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10}}>Lets Verified!</Text>
-      <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10,backgroundColor:'#facbcc'}}>Please choose the country where your document was</Text>
-      <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc'}}>Issued</Text>
+      <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10,}}>Please choose the country where your document was</Text>
+      <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,}}>Issued</Text>
   
       
  </View>  
- <View style={{justifyContent:'center',alignItems:'center'}}> 
- <View style={{justifyContent:'space-around',alignItems:'center',flexDirection:'row'}}>
+ <View > 
+ <TouchableOpacity onPress={this.PassPortSelect} style={{justifyContent:'center',alignItems:'center'}}>
+ <View></View>
  <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff',marginTop:30, justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
-<View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
+ <LinearGradient
+colors={[this.state.passportcolor1,this.state.passportcolor2,this.state.passportcolor3]}  start={{x: 0, y: 0}} end={{x: 1, y: 0}}>
+<View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center', height: 50,padding:10,paddingLeft:50,paddingRight:50}}>
 
-<TextInput
-   style={{height: 50,padding:10}}
- placeholderTextColor='#5496ff'
-   placeholder="Passport"
-   
- />
+<Text style={{color:this.state.passporttextcolor}}>Passport</Text>
+<Image  style={{width: 30, height: 30,resizeMode:'contain',tintColor:this.state.PassportTintcolor}}  source={require("../assets/passport.png")} ></Image>
 </View>
+</LinearGradient>
    </View>
- </View> 
- <View style={{justifyContent:'space-around',alignItems:'center',flexDirection:'row'}}>
- <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
-<View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
+   
+   </TouchableOpacity>
+   <TouchableOpacity onPress={this.IdSelect}>
 
-<TextInput
-   style={{height: 50,padding:10}}
- placeholderTextColor='#5496ff'
-   placeholder="Id-Card"
-   
- />
-</View>
-   </View>
- </View> 
- <View style={{justifyContent:'space-around',alignItems:'center',flexDirection:'row'}}>
- <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
-<View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
+ <View >
+ <LinearGradient
+colors={[this.state.idcolor1,this.state.idcolor2,this.state.idcolor3]}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
+<View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',height: 50,padding:10,paddingLeft:50,paddingRight:50}}>
+<Text style={{color:this.state.idtextcolor}}>ID-Card</Text>
+<Image  style={{width: 30, height: 30,resizeMode:'contain',tintColor:this.state.idTintcolor}}  source={require("../assets/id_card.png")} ></Image>
 
-<TextInput
-   style={{height: 50,padding:10}}
- placeholderTextColor='#5496ff'
-   placeholder="Residence Permit"
-   
- />
-</View>
-   </View>
- </View> 
- <View style={{justifyContent:'space-around',alignItems:'center',flexDirection:'row'}}>
- <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
-<View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
 
-<TextInput
-   style={{height: 50,padding:10}}
- placeholderTextColor='#5496ff'
-   placeholder="Drivers's License"
-   
- />
-</View>
    </View>
+   </LinearGradient>
  </View> 
+ </TouchableOpacity>
+ <TouchableOpacity onPress={this.ResidenceSelect}>
+ <View >
+ <LinearGradient
+colors={[this.state.residencegradientcolor1,this.state.residencegradientcolor2,this.state.residencegradientcolor3]}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>  
+<View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',height: 50,padding:10,paddingLeft:50,paddingRight:50}}>
+<Text style={{color:this.state.Residencecolor}}>Residence Permit</Text>
+<Image  style={{width: 30, height: 30,resizeMode:'contain',tintColor:this.state.residenceTintcolor}}  source={require("../assets/residency.png")} ></Image>
+</View>
+ </LinearGradient>
+   </View>
+   </TouchableOpacity>
+   <TouchableOpacity onPress={this.DriverSelect}>
+
+ <View>
+ <LinearGradient
+colors={[this.state.drivercolor1,this.state.drivercolor2,this.state.drivercolor3]}  start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
+
+<View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',height: 50,padding:10,paddingLeft:50,paddingRight:50}}>
+
+<Text style={{color:this.state.drivertextcolor}}>Drivers's License</Text>
+<Image  style={{width: 30, height: 30,resizeMode:'contain',tintColor:this.state.driverTintcolor}}  source={require("../assets/driver.png")} ></Image>
+
+   </View>
+   </LinearGradient>
+ </View> 
+ 
+ </TouchableOpacity>
  </View>   
 
       </View>    
@@ -253,15 +271,15 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
  <View style={{position:'absolute',bottom:0,width:'100%'}}>
  <TouchableOpacity onPress={this.BeginAction}>  
  <View>
- <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
+ <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
 
-<Text style={{color:'#fff'}}>Start</Text>
+<Text style={{color:'#fff',fontSize:18,fontWeight:'bold',fontFamily:'Courier New'}}>Start</Text>
 </LinearGradient>
  </View>     
  </TouchableOpacity> 
 <LinearGradient colors={['#354e91','#354e91','#354e91']}  style={{padding:15,alignItems:'center'}}>
 <TouchableOpacity>
-<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc',marginLeft:-30}}>when you "sent",you accept</Text>
+<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,marginLeft:-30}}>when you "sent",you accept</Text>
 <View style={{flexDirection:'row',marginTop:2,marginLeft:-30}}>
 <Text style={{color:'#5496ff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,}}>Terms of Service</Text>
 <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,marginLeft:8}}>&</Text>
@@ -283,6 +301,78 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
       BeginAction=()=>{
         this.props.navigation.navigate('MoreInfo');
       }
+      PassPortSelect=()=>{
+      this.setState({
+     passporttextcolor:'#fff',
+     passportcolor1:'#4476d7',passportcolor2:'#4f92e9',passportcolor3:'#61bff2',
+     PassportTintcolor:'#fff',
+      })
+      this.Idreset()
+        this.Residencereset()
+        this.Driverreset()
+      }
+      PassPortreset=()=>{
+        this.setState({
+       passporttextcolor:'#5496ff',
+       passportcolor1:'#fff',passportcolor2:'#fff',passportcolor3:'#fff',
+       PassportTintcolor:'#5496ff',
+        })
+      
+        }
+
+        IdSelect=()=>{
+          this.setState({
+            idtextcolor:'#fff',
+        idcolor1:'#4476d7',idcolor2:'#4f92e9',idcolor3:'#61bff2',
+         idTintcolor:'#fff',
+          })
+          this.PassPortreset()
+          this.Residencereset()
+          this.Driverreset()
+          }
+          Idreset=()=>{
+            this.setState({
+              idtextcolor:'#5496ff',
+              idcolor1:'#fff',idcolor2:'#fff',idcolor3:'#fff',
+               idTintcolor:'#354E91',
+            })
+            }
+
+
+            ResidenceSelect=()=>{
+              this.setState({
+           Residencecolor:'#fff',
+            residencegradientcolor1:'#4476d7',residencegradientcolor2:'#4f92e9',residencegradientcolor3:'#61bff2',
+             residenceTintcolor:'#fff',
+              })
+              this.Idreset()
+              this.PassPortreset()
+              this.Driverreset()
+              }
+              Residencereset=()=>{
+                this.setState({
+                  Residencecolor:'#5496ff',
+                  residencegradientcolor1:'#fff',residencegradientcolor2:'#fff',residencegradientcolor3:'#fff',
+                   residenceTintcolor:'#41DA9C',
+                })
+                }
+                DriverSelect=()=>{
+                  this.setState({
+                 drivertextcolor:'#fff',
+                drivercolor1:'#4476d7',drivercolor2:'#4f92e9',drivercolor3:'#61bff2',
+                 driverTintcolor:'#fff',
+                  })
+                  this.Idreset()
+                  this.Residencereset()
+                  this.PassPortreset()
+                  }
+                  Driverreset=()=>{
+                    this.setState({
+                      drivertextcolor:'#5496ff',
+                      drivercolor1:'#fff',drivercolor2:'#fff',drivercolor3:'#fff',
+                       driverTintcolor:'#5496FF',
+                    })
+                    }
 }
 
 

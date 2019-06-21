@@ -148,9 +148,7 @@ SlideMenu=()=>{
     return (  
         
       <View style={styles.Maincontainers}>  
-       <ScrollView>
        <View> 
-
 <LinearGradient
 colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>   
 
@@ -221,17 +219,17 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
 </View> 
 <View style={{alignContent:'center'}}> 
  
- <View style={{justifyContent:'center',alignItems:'center',position:'absolute',bottom:-20,right:100,left:100}}>
+ <View style={{justifyContent:'center',alignItems:'center',position:'absolute',bottom:-130,right:100,left:100}}>
  <Image
-         style={{width:220,height:200,resizeMode: 'contain',}}
+         style={{width:250,height:250,resizeMode: 'contain',opacity:0.1}}
          source={require('../assets/dlogo.png')}
      />            
  </View> 
  <TouchableOpacity onPress={this.BeginAction}>
  <View>
- <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:15,justifyContent:'center',alignItems:'center',marginTop:200}}>
+ <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center',marginTop:100}}>
 
-<Text style={{color:'#fff'}}>Create Wallet</Text>
+<Text style={{color:'#fff',fontSize:18,fontWeight:'bold',fontFamily:'Courier New'}}>Create Wallet</Text>
 
 </LinearGradient>
  </View> 
@@ -244,7 +242,7 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
  
 </LinearGradient> 
 </View>
-       </ScrollView>
+       
     
    
      </View>

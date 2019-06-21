@@ -168,37 +168,39 @@ SlideMenu=()=>{
           </TouchableOpacity>
             </View>
     </View>
-    <View style={{marginTop:80}}> 
+    <View style={{marginTop:3}}> 
    
              <View>
          
              <View  style={{justifyContent:'center',alignItems:'center'
         }}>
-              <Image  style={{width: 100, height: 150}}  source={require("../assets/threelogo.png")} ></Image> 
+              <Image  style={{width: 300, height: 300,resizeMode:'contain'}}  source={require("../assets/threelogo.png")} ></Image> 
                  
             
         </View>
       
-        <View  style={{justifyContent:'center',alignItems:'center',marginTop:30
+        <View  style={{justifyContent:'center',alignItems:'center',marginTop:10
         }}>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10,backgroundColor:'#facbcc'}}>Verify your Identity to request your XLM.Will</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc'}}>Take a few minutes.Once Verification,you</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc'}}>Could use our product of last generation</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc'}}>Exchange</Text>
-             <View style={{justifyContent:'center',alignItems:'center',position:'absolute',top:100,left:100}}>
+             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10}}>Verify your Identity to request your XLM.Will</Text>
+             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2}}>Take a few minutes.Once Verification,you</Text>
+             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2}}>Could use our product of last generation</Text>
+             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2}}>Exchange</Text>
+             <View style={{justifyContent:'center',alignItems:'center',position:'absolute',top:50,left:70}}>
         <Image
-                style={{width:220,height:200,resizeMode: 'cover',}}
+                style={{width:250,height:250,resizeMode: 'contain',opacity:0.1}}
                 source={require('../assets/dlogo.png')}
             />            
         </View>
         </View>
 
-        <View style={{marginTop:150}}>
+        <View>
         
         <TouchableOpacity onPress={this.BeginAction}>
     <View>
-    <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:15,justifyContent:'center',alignItems:'center'}}>
-<Text style={{color:'#fff'}}>Begin Now</Text>
+    <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center',marginTop:100}}>
+
+<Text style={{color:'#fff',fontSize:18,fontWeight:'bold',fontFamily:'Courier New'}}>Begin Now</Text>
+
 </LinearGradient>
     </View>   
 </TouchableOpacity>
@@ -207,7 +209,7 @@ SlideMenu=()=>{
 <View>
 <LinearGradient colors={['#354e91','#354e91','#354e91']}  style={{padding:15,alignItems:'center'}}>
 <TouchableOpacity>
-<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc',marginLeft:-30}}>when you create a wallet,you accept</Text>
+<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,marginLeft:-30}}>when you create a wallet,you accept</Text>
 <View style={{flexDirection:'row',marginTop:2,marginLeft:-30}}>
 <Text style={{color:'#5496ff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,}}>Terms of Service</Text>
 <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,marginLeft:8}}>&</Text>

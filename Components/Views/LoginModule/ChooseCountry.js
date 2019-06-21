@@ -173,7 +173,7 @@ SlideMenu=()=>{
          
              <View  style={{justifyContent:'center',alignItems:'center'
         }}>
-              <Image  style={{width: 100, height: 150}}  source={require("../assets/threelogo.png")} ></Image> 
+              <Image  style={{width: 200, height: 200,resizeMode:'contain'}}  source={require("../assets/threelogo.png")} ></Image> 
                  
             
         </View>
@@ -181,21 +181,21 @@ SlideMenu=()=>{
         <View  style={{justifyContent:'center',alignItems:'center',marginTop:20
         }}>
              <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10}}>Lets Verified!</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10,backgroundColor:'#facbcc'}}>Please choose the country where your document was</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc'}}>Issued</Text>
+             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10,}}>Please choose the country where your document was</Text>
+             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,}}>Issued</Text>
          
              
         </View>  
         <View>  
 
         <View>    
-        <View style={{ borderWidth: 1,backgroundColor:'#fff',padding:10,marginLeft:30,marginRight:30,borderColor:'#919fc3',marginTop:100 }}>
+        <View style={{ borderWidth: 1,backgroundColor:'#fff',padding:10,marginLeft:30,marginRight:30,borderColor:'#919fc3',marginTop:100,borderRadius:6 }}>
         <View style={{justifyContent:'space-between',flexDirection:'row'}}>
         <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12}}>{this.state.Country}</Text>
         <Image  style={{width: 10, height: 10}}  source={require("../assets/down_arrow.png")} ></Image> 
         </View>
         
-  <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000 }}
+  <Picker style={{ position:'absolute', top: 0, width: 1000, height: 3000 }}
    selectedValue={this.state.Country}
   onValueChange={(itemValue, itemIndex) => this.selectedCountry(itemValue,itemIndex)}>
   
