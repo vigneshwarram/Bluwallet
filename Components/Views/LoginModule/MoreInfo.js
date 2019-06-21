@@ -160,29 +160,27 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
         <View style={{flexDirection:'row',justifyContent:'space-between'}}>
         <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
     <View style={{justifyContent:'center',alignItems:'center'}}>
-    <Image  style={{width: 20, height: 20,marginLeft:20,marginTop:30}}  source={require("../assets/left-arrow.png")} ></Image> 
+    <Image  style={{width: 20, height: 20,marginLeft:20,marginTop:20}}  source={require("../assets/left-arrow.png")} ></Image> 
     </View>
     </TouchableOpacity>
     <View style={{justifyContent:'center',alignItems:'center'}}>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:30}}>More Info Needed</Text>
+    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:20}}>More Info Needed</Text>
     </View>
     <View></View>
     </View>
     <View style={{justifyContent:'center',alignItems:'center',flexDirection:"row" ,marginTop:30}}>
       <View>
-      <Image  style={{width: 120, height: 100,}}  source={require("../assets/card.png")} ></Image> 
+      <Image  style={{width: 300, height: 300,resizeMode:'contain'}}  source={require("../assets/card.png")} ></Image> 
       </View>
-      <View>
-      <Image  style={{width: 100, height: 100,}}  source={require("../assets/man.png")} ></Image> 
-      </View>
+
     </View>
-    <View style={{justifyContent:'center',alignItems:'center',marginTop:50}}>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:25,backgroundColor:'#facbcc'}}>We need more information to complete your </Text>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc'}}> Profile</Text>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10,backgroundColor:'#facbcc'}}> You need to verificate your mobile number,a</Text>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc'}}> national identity and selfie</Text>
+    <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
+    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:25,}}>We need more information to complete your </Text>
+    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,}}> Profile</Text>
+    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10,}}> You need to verificate your mobile number,a</Text>
+    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,}}> national identity and selfie</Text>
           </View>
-          <View style={{position:'absolute',width:'100%',bottom:0}}>
+          <View style={{position:'absolute',width:'100%',bottom:50}}>
     <LinearGradient colors={['#fff','#fff','#fff']}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
 <TouchableOpacity onPress={this.BeginAction}>
 <Text style={{color:'#d2e4ff'}}>Ahora no</Text>
@@ -190,9 +188,9 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
 </LinearGradient>     
 <TouchableOpacity onPress={this.BeginAction}> 
 <View>
-<LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
+<LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
 
-<Text style={{color:'#fff'}}>Continue</Text>
+<Text style={{color:'#fff',fontSize:18,fontWeight:'bold'}}>Next</Text>
 
 </LinearGradient>
 </View>
@@ -202,44 +200,6 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
     </LinearGradient>
     
     </View>
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center",position:'absolute',top:0,bottom:0,left:0,right:0}}>
-        <Modal
-          offset={this.state.offset}
-          open={this.state.open}
-          animationTension={40}
-          closeOnTouchOutside={false}
-        >
-        <View>
-         <View style={{flexDirection:'row',justifyContent:'flex-end'}}>
-      <View style={{backgroundColor:'#fd6d71',height:this.state.hr,width:this.state.wr,justifyContent:'center', borderTopStartRadius:25,borderBottomStartRadius:25, marginTop:10,marginRight:-10}}>
-            <TouchableOpacity onPress={this.pressRight}>
-       <View style={{flexDirection: 'row'}}> 
-          <Image style={{marginLeft:10,width: 20, height: 20}}   source={require("../assets/cancel.png")} ></Image>     
-     
-          </View>
-          </TouchableOpacity>
-            </View>
-    </View>
-    <View style={{ alignItems: "center" }}>
-            <Text style={{ fontSize: 12, fontWeight:'bold',color:'#354e91' }}>Need some Help!</Text>
-            <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10,backgroundColor:'#facbcc'}}>If you need any help remember</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc'}}>That we got the best team of</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc'}}>so try and contact us.</Text>
-             <View style={{marginTop:30,width:'80%'}}>
-             <TouchableOpacity onPress={this.ContactAction}>
-             <View >
-             <LinearGradient colors={['#3757c1','#4986e2','#74e5fb']}  style={{padding:10,justifyContent:'center',alignItems:'center',borderRadius:15}}>
-
-<Text style={{color:'#fff'}}>Contact Support</Text>
-
-</LinearGradient>
-             </View>
-             </TouchableOpacity>
-             </View>
-            </View>
-            </View>
-        </Modal>
-      </View>
       </View>
     );
   }

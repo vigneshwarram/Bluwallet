@@ -31,14 +31,21 @@ import Launch from  './Components/Views/LoginModule/Launch'
 import Login from  './Components/Views/LoginModule/Login'
 import ForgotPassword from  './Components/Views/LoginModule/ForgotPassword'
 import Confirm from  './Components/Views/LoginModule/Confirm'
+import TakePhoto from  './Components/Views/LoginModule/TakePhoto'
+import TakePassportPhoto from  './Components/Views/LoginModule/TakePassportPhoto'
+import DocumentPhoto from  './Components/Views/LoginModule/DocumentPhoto'
 import {
   createStackNavigator
 } from 'react-navigation'
  class App extends Component {
     render() {
       const MainNavigator = createStackNavigator({
-        VerificationCards:{screen:VerificationCards},
         Launch:{screen:Launch},
+        DocumentPhoto:{screen:DocumentPhoto},
+        TakePhoto:{screen:TakePhoto},
+        TakePassportPhoto:{screen:TakePassportPhoto},
+        VerificationCards:{screen:VerificationCards},
+      
         DashBoard:{screen:DashBoard},        
         ForgotPassword:{screen:ForgotPassword},
         Confirm:{screen:Confirm},

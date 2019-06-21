@@ -5,6 +5,7 @@ const WIDTH = Dimensions.get('window').width;
 const ITEM_HEIGHT = 50;
 import LinearGradient from 'react-native-linear-gradient';
 import Modal from "react-native-simple-modal";
+import { ScrollView } from 'react-native-gesture-handler';
 export default class Confirm extends React.Component {
   static navigationOptions = {
     header: null
@@ -154,34 +155,32 @@ export default class Confirm extends React.Component {
  
     return (
       <View style={styles.container}>
-      <View> 
-
+      <ScrollView>
+<View style={{flex:1}}>
 <LinearGradient
 colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>   
         <View style={{flexDirection:'row',justifyContent:'space-between'}}>
         <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
     <View style={{justifyContent:'center',alignItems:'center'}}>
-    <Image  style={{width: 20, height: 20,marginLeft:20,marginTop:30}}  source={require("../assets/left-arrow.png")} ></Image> 
+    <Image  style={{width: 20, height: 20,marginLeft:20,marginTop:20,resizeMode:'contain'}}  source={require("../assets/left-arrow.png")} ></Image> 
     </View>
     </TouchableOpacity>
     <View style={{justifyContent:'center',alignItems:'center'}}>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:30}}>More Info Needed</Text>
+    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:20}}>More Info Needed</Text>
     </View>
     <View></View>
     </View>
-    <View style={{justifyContent:'center',alignItems:'center',flexDirection:"row" ,marginTop:30}}>
+    <View style={{justifyContent:'center',alignItems:'center',marginTop:10}}>
       <View>
-      <Image  style={{width: 120, height: 100,}}  source={require("../assets/card.png")} ></Image> 
+      <Image  style={{width: 250, height: 250,resizeMode:'contain'}}  source={require("../assets/card.png")} ></Image> 
       </View>
-      <View>
-      <Image  style={{width: 100, height: 100,}}  source={require("../assets/man.png")} ></Image> 
-      </View>
-    </View>
-    
-    <View style={{justifyContent:'center',alignItems:'center',marginTop:30}}>
-    <Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:18,marginTop:15}}>Let's Confirm It's You</Text>  
+      <View style={{justifyContent:'center',alignItems:'center'}}>
+    <Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:18,}}>Let's Confirm It's You</Text>  
           </View>
-          <View style={{justifyContent:'center',alignItems:'center',marginTop:15}}>
+    </View>
+    <View>
+    
+          <View style={{justifyContent:'center',alignItems:'center',marginTop:5}}>
           <Text style={{color:'#3f518f',opacity:1,fontSize:12,marginTop:15,textAlign:'center'}}>You will need 1 of the ID types below to continue</Text>
           </View>
           <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff',marginTop:30, justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
@@ -208,6 +207,9 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
 <Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:15}}>Driver's License</Text>
 </View>
    </View>
+    </View>
+    
+    
    <View style={{justifyContent:'center',alignItems:'center'}}>
 
    <Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:18,marginTop:10}}>Remember Enable your Camera!</Text> 
@@ -215,7 +217,8 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
    <Text style={{color:'#3f518f',opacity:1,fontSize:12}}>Your camera to Upload camera pictures </Text>
    <Text style={{color:'#3f518f',opacity:1,fontSize:12}}>To the documents</Text>
    </View>
-          <View style={{position:'absolute',width:'100%',bottom:0}}>
+          <View style={{width:'100%',marginTop:30,marginBottom:30}}>
+          
     <LinearGradient colors={['#fff','#fff','#fff']}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
 <TouchableOpacity onPress={this.BeginAction}>
 <Text style={{color:'#d2e4ff'}}>Ahora no</Text>
@@ -223,9 +226,9 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
 </LinearGradient>     
 <TouchableOpacity onPress={this.BeginAction}> 
 <View>
-<LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
+<LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
 
-<Text style={{color:'#fff'}}>Continue</Text>
+<Text style={{color:'#FFF',fontSize:18,fontWeight:'bold'}}>Next</Text>
 
 </LinearGradient>
 </View>
@@ -234,15 +237,16 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
         </View>
     </LinearGradient>
     
+      <View> 
     </View>
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center",position:'absolute',top:0,bottom:0,left:0,right:0}}>
+    <View style={{ flex: 1,borderRadius:6, justifyContent: "center", alignItems: "center",position:'absolute',top:0,bottom:0,left:0,right:0}}>
         <Modal
           offset={this.state.offset}
           open={this.state.open}
           animationTension={40}
           closeOnTouchOutside={false}
         >
-        <View>
+        <View >
          <View style={{flexDirection:'row',justifyContent:'flex-end'}}>
       <View style={{backgroundColor:'#fd6d71',height:this.state.hr,width:this.state.wr,justifyContent:'center', borderTopStartRadius:25,borderBottomStartRadius:25, marginTop:10,marginRight:-10}}>
             <TouchableOpacity onPress={this.ContactSupportCancel}>
@@ -255,13 +259,13 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
     </View>
     <View style={{ alignItems: "center" }}>
             <Text style={{ fontSize: 12, fontWeight:'bold',color:'#354e91' }}>Need some Help!</Text>
-            <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10,backgroundColor:'#facbcc'}}>If you need any help remember</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc'}}>That we got the best team of</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc'}}>so try and contact us.</Text>
+            <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10}}>If you need any help remember</Text>
+             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2}}>That we got the best team of</Text>
+             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2}}>so try and contact us.</Text>
              <View style={{marginTop:30,width:'80%'}}>
              <TouchableOpacity onPress={this.ContactSupportCancel}>
              <View >
-             <LinearGradient colors={['#3757c1','#4986e2','#74e5fb']}  style={{padding:10,justifyContent:'center',alignItems:'center',borderRadius:15}}>
+             <LinearGradient colors={['#3757c1','#4986e2','#74e5fb']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}   style={{padding:10,justifyContent:'center',alignItems:'center',borderRadius:15}}>
 
 <Text style={{color:'#fff'}}>Contact Support</Text>
 
@@ -274,7 +278,7 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
         </Modal>
       </View>
 
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center",position:'absolute',top:0,bottom:0,left:0,right:0}}>
+      <View style={{ flex: 1,borderRadius:6, justifyContent: "center", alignItems: "center",position:'absolute',top:0,bottom:0,left:0,right:0}}>
         <Modal
           offset={this.state.offset}
           open={this.state.CameraPopup}
@@ -301,7 +305,7 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
              <View style={{marginTop:30,width:'80%'}}>
              <TouchableOpacity onPress={this.ContactAction}>
              <View >
-             <LinearGradient colors={['#17e8e5','#2ce1c2','#3fdaa0']}  style={{padding:10,justifyContent:'center',alignItems:'center',borderRadius:15}}>
+             <LinearGradient colors={['#17e8e5','#2ce1c2','#3fdaa0']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}   style={{padding:10,justifyContent:'center',alignItems:'center',borderRadius:15}}>
 
 <Text style={{color:'#fff'}}>Accept</Text>
 
@@ -312,7 +316,7 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
              <View style={{marginTop:10,width:'80%'}}>
              <TouchableOpacity>
              <View >
-             <LinearGradient colors={['#f4347d','#f95975','#ff7670']}  style={{padding:10,justifyContent:'center',alignItems:'center',borderRadius:15}}>
+             <LinearGradient colors={['#f4347d','#f95975','#ff7670']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:10,justifyContent:'center',alignItems:'center',borderRadius:15}}>
 
 <Text style={{color:'#fff'}}>Deny</Text>
 
@@ -324,6 +328,8 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
             </View>
         </Modal>
       </View>
+      </View>
+      </ScrollView>
       </View>
     );
   }
@@ -347,7 +353,9 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
     this.setState({       
         CameraPopup:false
       })
-      this.props.navigation.navigate('DashBoard')
+      this.props.navigation.navigate('DashBoard',{
+        DashBoardPopup: false,
+      })
 }
 }
 

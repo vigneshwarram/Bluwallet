@@ -299,7 +299,7 @@ colors={[this.state.drivercolor1,this.state.drivercolor2,this.state.drivercolor3
           Alert.alert(item.Status)
       }
       BeginAction=()=>{
-        this.props.navigation.navigate('MoreInfo');
+        this.props.navigation.navigate('TakePhoto');
       }
       PassPortSelect=()=>{
       this.setState({
