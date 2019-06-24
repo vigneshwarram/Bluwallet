@@ -5,6 +5,7 @@ import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 
 import LinearGradient from 'react-native-linear-gradient';
+import { ScrollView } from 'react-native-gesture-handler';
 export default class Login  extends React.Component {
 
   static navigationOptions = {
@@ -151,8 +152,9 @@ SlideMenu=()=>{
       <View> 
 
        <LinearGradient
+       
   colors= {['#f6f5fa','#e1e3ef','#ced1e4']} style={{height:'100%'}}>   
-   
+   <ScrollView>
     <View style={{flexDirection:'row',justifyContent:'space-between'}}>
     <View></View>
     <View style={{justifyContent:'center',alignItems:'center',marginLeft:40}}>
@@ -226,7 +228,7 @@ SlideMenu=()=>{
 <Text style={{color:'#3d5498',fontSize:18}}>FORGOT THE PASSWORD</Text>
 </View>
 </TouchableOpacity>    
-       
+       </ScrollView>
  </LinearGradient> 
  </View>
 

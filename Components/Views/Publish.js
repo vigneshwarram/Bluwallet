@@ -256,9 +256,8 @@ SlideMenu=()=>{
           <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',opacity:this.state.PurchaseOpacity}}>Buy</Text>  
           <View
   style={{
-    marginLeft:10,marginRight:10,
     marginTop:5,
-    width:'50%',
+    width:'100%',
     borderBottomColor: this.state.PurchaseColor,marginBottom:10,
     borderBottomWidth: 1,
   }}

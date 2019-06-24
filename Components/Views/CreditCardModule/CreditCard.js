@@ -158,12 +158,12 @@ ProfileTouch=()=>{
     return (  
         
       <View style={styles.Maincontainers}>  
-       
-      <View> 
+          <ScrollView>
+      <View style={{}}> 
 
        <LinearGradient
-   colors= {['#354e91','#21284a']} style={{height:'100%'}}>   
-   
+   colors= {['#354e91','#21284a']} style={{height:'100%',paddingBottom:100}}>   
+
     <View style={{flexDirection:'row',justifyContent:'space-between'}}>
     <View style={{backgroundColor:'transparent',height:this.state.h,width:this.state.w,justifyContent:'center',borderRightWidth:1,borderTopWidth:1,borderBottomWidth:1, alignItems:'flex-end',position:'absolute',
   borderColor: '#436ab7',
@@ -228,9 +228,11 @@ ProfileTouch=()=>{
 
 
 </View>
-             </View>          
+             </View>    
+               
  </LinearGradient> 
  </View>
+ </ScrollView>
  <View style={{ width: '100%',opacity:0.9,
     height: 70,
     justifyContent: 'center',

@@ -153,15 +153,9 @@ SlideMenu=()=>{
       <View> 
 
        <LinearGradient
-  colors= {['#3f5eae','#384d90','#2c3765']} style={{height:'100%'}}>   
+  colors= {['#3f5eae','#384d90','#2c3765']} style={{height:'100%',opacity:0.9}}>   
    
-    <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-    <View></View>
-    <View style={{justifyContent:'center',alignItems:'center',marginLeft:40}}>
-    </View>
-     
-    </View>
-    <View style={{marginTop:40}}> 
+    <View style={{flex:1}}> 
    
              <View>
          
@@ -176,7 +170,7 @@ SlideMenu=()=>{
              </View> 
              
 </View>  
- <View style={{bottom:40,position:'absolute'}}>
+ <View style={{bottom:20,position:'absolute'}}>
         <Image
                 style={{width:550,height:500, resizeMode: 'contain',opacity:0.1}}
                 source={require('../assets/bgLogo.png')}
@@ -184,14 +178,14 @@ SlideMenu=()=>{
         </View>  
         <View style={{flex: 1,
   justifyContent: 'flex-end',
-  marginBottom: 100}}>
+  paddingBottom: 100}}>
         
        
         <View>
         <TouchableOpacity  onPress={this.CreateWallet}>
 <View>
-<LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:15,justifyContent:'center',alignItems:'center',marginTop:150}}>
-<Text style={{color:'#fff',fontSize:18,fontWeight:'bold'}}>Create a Wallet</Text>
+<LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:15,justifyContent:'center',alignItems:'center'}}>
+<Text style={{color:'#fff',fontSize:18,fontWeight:'bold',fontFamily:'Exo2-BlackItalic'}}>Create a Wallet</Text>
 </LinearGradient>
 </View>
 
@@ -214,11 +208,11 @@ SlideMenu=()=>{
 </View>
   </TouchableOpacity >
 </View> 
-
-        </View>      
-        <View style={{justifyContent:'center',alignItems:'center',marginBottom:100}}>
+<View style={{justifyContent:'center',alignItems:'center',paddingTop:50}}>
 <Text style={{color:'#fff',fontSize:20,}}>RECOVER FUNDS</Text>
 </View>
+        </View>      
+        
  </LinearGradient> 
  </View>
 

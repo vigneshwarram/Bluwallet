@@ -414,7 +414,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
           <Text  style={{fontSize:12,color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>Coins</Text>    
           </View>
           
-          <View style={{flexDirection:'row',justifyContent:'center'}}>
+          <View style={{flexDirection:'row',justifyContent:'center',marginTop:-5}}>
      <Image style={{width: 25, height: 25,resizeMode:'contain'}}   source={require("./assets/plusblue.png")} ></Image>   
      <View style={{marginTop:5}}>
      <Text  style={{fontSize:12,textAlign:'center',fontWeight:'bold', color:(item.Status!='Completed')?'#232d51':'#232d51'}}>$ 9060</Text> 
