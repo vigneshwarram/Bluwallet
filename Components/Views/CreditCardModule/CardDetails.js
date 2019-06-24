@@ -318,7 +318,7 @@ borderBottomWidth: 1,
 }}
 />
 <View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:20,marginRight:70,marginTop:20}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,marginBottom:10}}>I accept terms and conditions</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,marginBottom:10}}>I accept terms and conditions</Text> 
 <Switch
    trackColor={{true: '#25e2cd'}}
    style={{marginRight:30}}

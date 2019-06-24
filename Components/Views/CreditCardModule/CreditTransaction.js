@@ -458,14 +458,16 @@ justifyContent:'center',alignItems:"center"}} >
         })
       }
       GraphTouch=()=>{
+        /*
         this.setState({
           ActivityOpacity:0.5,
           GraphOpacity:1,
           ActivityWidth:0,
           GraphWidth:1,
-          ActivityView:false
-
+          ActivityView:false,       
         })
+        */
+        Alert.alert('Graph Design Progressing...');
       }
 }
 

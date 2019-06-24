@@ -235,12 +235,12 @@ right: 0}}>
      
    
     <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',marginTop:-30}}>
-    <Image style={{marginLeft:10,width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/app5.png")} ></Image>     
+    <Image style={{marginLeft:10,width: 25, height: 25,resizeMode:'contain'}}   source={require("./assets/app5.png")} ></Image>     
     <Text style={{color:'#fff',fontSize:15,fontWeight:
-    'bold'}}>User Name</Text>    
+    'bold',marginLeft:10}}>User</Text>    
      </View>
      <View style={{alignItems:'flex-end'}}>
-    <Image style={{marginLeft:10,width: 30, height: 30,marginTop:10,marginRight:10}}   source={require("./assets/setting1.png")} ></Image> 
+    <Image style={{marginLeft:10,width: 30, height: 30,marginTop:20,marginRight:10,resizeMode:'contain'}}   source={require("./assets/setting1.png")} ></Image> 
     </View>
        
           </LinearGradient>
@@ -249,15 +249,16 @@ right: 0}}>
     
           <View style={{backgroundColor:'#354e91',borderTopRightRadius:180,borderTopLeftRadius:180, justifyContent:'flex-start',alignItems:'center',flex:1,marginTop:'30%',height:'100%',position:'absolute',left: 0,marginBottom:0,
 right: 0}}>
-   <View style={{width: 100,position:'absolute',left: 150,
-right: 0,borderRadius:25,marginTop:-50,
-    height: 125}}>
+   <View style={{width: 30,position:'absolute',left: 150,
+right: 0,borderRadius:25,marginTop:-40,
+    height: 30}}>
 
-<Image style={{width:100,height:125,borderRadius:25}}   source={require("./assets/build.png")} ></Image> 
-
+<Image style={{width:100,height:105,borderRadius:25}}   source={require("./assets/build.png")} ></Image> 
+<Image style={{width:25,height:25,marginHorizontal:80,marginTop:-25}}   source={require("./assets/profileround.png")} ></Image>
     </View>
+   
     <View style={{justifyContent:'center',alignItems:'center',marginTop:80}}>
-        <Text style={{color:'#fff',fontWeight:'bold',opacity:0.7}}>Example Name</Text>
+        <Text style={{color:'#fff',fontWeight:'bold',opacity:0.9}}>Jhon Doe</Text>
     </View>
    
                        <View

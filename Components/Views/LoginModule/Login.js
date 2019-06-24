@@ -213,7 +213,7 @@ SlideMenu=()=>{
 <View>
 <LinearGradient colors={['#4476d7','#4f92e9','#61bff2']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:15,justifyContent:'center',alignItems:'center'}}>
 
-<Text style={{color:'#FFF',fontSize:18,fontWeight:'bold'}}>LOGIN</Text>
+<Text style={{color:'#FFF',fontSize:18,fontWeight:'bold',fontFamily: "Sarpanch-Regular"}}>LOGIN</Text>
 
 </LinearGradient>
 </View>

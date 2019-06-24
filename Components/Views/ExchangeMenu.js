@@ -231,7 +231,7 @@ SlideMenu=()=>{
           </View>
           <View style={{flexDirection:'row',marginTop:10}}>
           <View>
-          <Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>Purchases</Text>  
+          <Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>Buy</Text>  
           <View
   style={{
     marginLeft:10,marginRight:10,
@@ -243,7 +243,7 @@ SlideMenu=()=>{
 />  
           </View>
          <View>
-         <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:30}}>Sales</Text>
+         <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:30}}>Sell</Text>
          <View
   style={{
     marginLeft:30,marginRight:30,

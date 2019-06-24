@@ -253,7 +253,7 @@ SlideMenu=()=>{
           <View style={{flexDirection:'row',marginTop:10}}>
           <TouchableOpacity onPress={this.PurchaseTab}>
           <View>
-          <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',opacity:this.state.PurchaseOpacity}}>Purchases</Text>  
+          <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',opacity:this.state.PurchaseOpacity}}>Buy</Text>  
           <View
   style={{
     marginLeft:10,marginRight:10,
@@ -268,7 +268,7 @@ SlideMenu=()=>{
 
         <TouchableOpacity onPress={this.SalesTab}>
         <View>
-         <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:30,opacity:this.state.SalesOpacity}}>Sales</Text>
+         <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:30,opacity:this.state.SalesOpacity}}>Sell</Text>
          <View
   style={{
     marginLeft:30,marginRight:30,
