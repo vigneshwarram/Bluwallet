@@ -162,11 +162,11 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
         <View style={{flexDirection:'row',justifyContent:'space-between'}}>
         <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
     <View style={{justifyContent:'center',alignItems:'center'}}>
-    <Image  style={{width: 20, height: 20,marginLeft:20,marginTop:20,resizeMode:'contain'}}  source={require("../assets/left-arrow.png")} ></Image> 
+    <Image  style={{width: 15, height: 15,marginLeft:20,marginTop:20,resizeMode:'contain'}}  source={require("../assets/left-arrow.png")} ></Image> 
     </View>
     </TouchableOpacity>
     <View style={{justifyContent:'center',alignItems:'center'}}>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:20}}>More Info Needed</Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:20,marginTop:15}}>More Info Needed</Text>
     </View>
     <View></View>
     </View>
@@ -186,25 +186,25 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
           <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff',marginTop:30, justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
 <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',height: 50,padding:10}}>
 
-<Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:15}}>Valid Passport</Text>
+<Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:12}}>Valid Passport</Text>
 </View>
    </View>
    <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
 <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',height: 50,padding:10}}>
 
-<Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:15,}}>National Id Card</Text>
+<Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:12,}}>National Id Card</Text>
 </View>
    </View>
    <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
 <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',height: 50,padding:10}}>
 
-<Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:15}}>Residence Card</Text>
+<Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:12}}>Residence Card</Text>
 </View>
    </View>
    <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
 <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',height: 50,padding:10}}>
 
-<Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:15}}>Driver's License</Text>
+<Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:12}}>Driver's License</Text>
 </View>
    </View>
     </View>
@@ -212,7 +212,7 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
     
    <View style={{justifyContent:'center',alignItems:'center'}}>
 
-   <Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:18,marginTop:10}}>Remember Enable your Camera!</Text> 
+   <Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:15,marginTop:10}}>Remember Enable your Camera!</Text> 
    <Text style={{color:'#3f518f',opacity:1,fontSize:12}}>please allow your blue wallet App Access</Text>
    <Text style={{color:'#3f518f',opacity:1,fontSize:12}}>Your camera to Upload camera pictures </Text>
    <Text style={{color:'#3f518f',opacity:1,fontSize:12}}>To the documents</Text>

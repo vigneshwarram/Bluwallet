@@ -155,11 +155,11 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
 <View style={{flexDirection:'row',justifyContent:'space-between',backgroundColor:'#fff'}}>
 <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
 <View style={{justifyContent:'center',alignItems:'center'}}>
-<Image  style={{width: 20, height: 20,marginLeft:20,marginTop:30}}  source={require("../assets/left-arrow.png")} ></Image> 
+<Image  style={{width: 15, height: 15,marginLeft:20,marginTop:30,resizeMode:'contain'}}  source={require("../assets/left-arrow.png")} ></Image> 
 </View>
 </TouchableOpacity>
 <View style={{justifyContent:'center',alignItems:'center'}}>
-<Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:30}}>Create a New Wallet</Text>
+<Text style={{color:'#4e649f',opacity:1,fontSize:18,marginTop:25}}>Create a New Wallet</Text>
 </View>
 <View></View>
 </View>
@@ -207,7 +207,7 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
 <View style={{marginTop:30}}>
 <LinearGradient colors={['#354e91','#354e91','#354e91']}  style={{padding:15,alignItems:'center'}}>
 <TouchableOpacity>
-<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc',marginLeft:-30}}>when you "sent",you accept</Text>
+<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,marginLeft:-30}}>when youcreate a wallet,you accept</Text>
 <View style={{flexDirection:'row',marginTop:2,marginLeft:-30}}>
 <Text style={{color:'#5496ff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,}}>Terms of Service</Text>
 <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,marginLeft:8}}>&</Text>
@@ -229,7 +229,7 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
  <View>
  <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center',marginTop:100}}>
 
-<Text style={{color:'#fff',fontSize:18,fontWeight:'bold',fontFamily:'Courier New'}}>Create Wallet</Text>
+<Text style={{color:'#fff',fontSize:18,fontFamily:'lucida grande'}}>Create Wallet</Text>
 
 </LinearGradient>
  </View> 

@@ -378,7 +378,7 @@ get pagination () {
                 <View style={{marginTop:-10,marginLeft:5}}>
                 <LinearGradient colors= {['#8392f7','#aa83f6','#c17df8']} style={{ width: 60,borderRadius:5, padding:5,
 justifyContent:'center',alignItems:"center"}} >
-   <Text style={{fontSize:8,fontWeight:'bold',color:'#fff',textAlign:'center'}}>^15%</Text> 
+   <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',textAlign:'center'}}>^15%</Text> 
 </LinearGradient>
                 </View>
                 </View>
@@ -418,33 +418,33 @@ justifyContent:'center',alignItems:"center"}} >
                 
                  <View style={{marginLeft:30}}>
                  <View style={{flexDirection:'row'}}>
-                 <Text style={{fontSize:15,fontWeight:'bold',color:'#4d6bc1'}}>ETH</Text>
+                 <Text style={{fontSize:12,fontWeight:'bold',color:'#4d6bc1'}}>ETH</Text>
                  <View style={{marginTop:5}}>
                  <Image style={{resizeMode:'contain',width:10,height:10}}   source={require("./assets/red.png")} ></Image>          
                  </View>
                  </View>
                   
-                 <Text style={{marginTop:1,fontSize:15,fontWeight:'bold',color:'#858ead'}}>435$</Text> 
+                 <Text style={{marginTop:1,fontSize:12,fontWeight:'bold',color:'#858ead'}}>435$</Text> 
                  </View>
                  <View style={{marginLeft:40}}>
                  <View style={{flexDirection:'row'}}>
-                 <Text style={{fontSize:15,fontWeight:'bold',color:'#4d6bc1'}}>BTC</Text> 
-                 <View style={{marginTop:5}}>
+                 <Text style={{fontSize:12,fontWeight:'bold',color:'#4d6bc1'}}>BTC</Text> 
+                 <View style={{marginTop:3}}>
                 <Image style={{resizeMode:'contain',width:10,height:10}}   source={require("./assets/green.png")} ></Image> 
                 </View>
                  </View>
              
-                 <Text style={{marginTop:1,fontSize:15,fontWeight:'bold',color:'#858ead'}}>20.000$</Text>
+                 <Text style={{marginTop:1,fontSize:12,fontWeight:'bold',color:'#858ead'}}>20.000$</Text>
                  </View>
                  <View  style={{marginLeft:40}}>
                  <View style={{flexDirection:'row'}}>
-                 <Text style={{fontSize:15,fontWeight:'bold',color:'#4d6bc1'}}>XRP</Text> 
-                 <View style={{marginTop:5}}>
+                 <Text style={{fontSize:12,fontWeight:'bold',color:'#4d6bc1'}}>XRP</Text> 
+                 <View style={{marginTop:3}}>
                  <Image style={{resizeMode:'contain',width:10,height:10}}   source={require("./assets/green.png")} ></Image> 
                  </View>
                  </View>
                 
-                 <Text style={{marginTop:1,fontSize:15,fontWeight:'bold',color:'#858ead'}}>50$</Text> 
+                 <Text style={{marginTop:1,fontSize:12,fontWeight:'bold',color:'#858ead'}}>50$</Text> 
                  </View>
                 
                  </View>

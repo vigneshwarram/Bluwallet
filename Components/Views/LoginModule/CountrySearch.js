@@ -150,20 +150,20 @@ export default class CountrySearch extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+        <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:-10}}>
         <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
     <View style={{justifyContent:'center',alignItems:'center'}}>
-    <Image  style={{width: 20, height: 20,marginLeft:20,marginTop:30}}  source={require("../assets/left-arrow.png")} ></Image> 
+    <Image  style={{width: 15, height: 15,marginLeft:20,marginTop:30,resizeMode:'contain'}}  source={require("../assets/left-arrow.png")} ></Image> 
     </View>
     </TouchableOpacity>
     <View style={{justifyContent:'center',alignItems:'center'}}>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:30}}>Country of Residence</Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:18,marginTop:25}}>Country of Residence</Text>
     </View>
     <View></View>
     </View>
     <View style={{justifyContent:'center',alignItems:'center'}}>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:25,}}>This information is only used to help us verify</Text>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,}}> your Identity</Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:25,}}>Digital Currency are only available in </Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,}}> select country</Text>
 
     <View style={{width:'80%',borderRadius:25,borderWidth:1,borderColor:'#d7dee8',marginTop:10,marginBottom:20, justifyContent:"center",backgroundColor:'#fff'}}>
 <View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
@@ -230,8 +230,8 @@ const styles = StyleSheet.create({
     height: ITEM_HEIGHT
   },
   itemTitle: {
-    fontWeight: 'bold',
-    color: '#888',
+    
+    color: '#4e649f',
     padding: 5,marginLeft:20
   },
   itemSubtitle: {

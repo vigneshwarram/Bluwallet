@@ -160,11 +160,11 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
         <View style={{flexDirection:'row',justifyContent:'space-between'}}>
         <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
     <View style={{justifyContent:'center',alignItems:'center'}}>
-    <Image  style={{width: 20, height: 20,marginLeft:20,marginTop:20}}  source={require("../assets/left-arrow.png")} ></Image> 
+    <Image  style={{width: 15, height: 15,marginLeft:20,marginTop:20,resizeMode:"contain"}}  source={require("../assets/left-arrow.png")} ></Image> 
     </View>
     </TouchableOpacity>
     <View style={{justifyContent:'center',alignItems:'center'}}>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:20}}>More Info Needed</Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:20,marginTop:15}}>More Info Needed</Text>
     </View>
     <View></View>
     </View>
@@ -177,8 +177,8 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
     <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:25,}}>We need more information to complete your </Text>
     <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,}}> Profile</Text>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10,}}> You need to verificate your mobile number,a</Text>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,}}> national identity and selfie</Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:10,}}> You need to verificate your mobile number,a</Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,}}> national identity and selfie</Text>
           </View>
           <View style={{position:'absolute',width:'100%',bottom:50}}>
     <LinearGradient colors={['#fff','#fff','#fff']}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>

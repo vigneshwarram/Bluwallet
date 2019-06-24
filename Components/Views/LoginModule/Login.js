@@ -170,10 +170,10 @@ SlideMenu=()=>{
 </View>  
   
  <View style={{position:'absolute',bottom:20}}>
-        <Image
-                style={{aspectRatio:1,resizeMode: 'contain',opacity:0.1}}
+ <Image
+                style={{width:550,height:500, resizeMode: 'contain',opacity:0.1}}
                 source={require('../assets/bgLogo.png')}
-            />            
+            />                       
         </View>  
         <KeyboardAvoidingView 
   

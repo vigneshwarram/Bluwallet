@@ -157,7 +157,7 @@ SlideMenu=()=>{
          
              <View  style={{justifyContent:'center',alignItems:'center'
         }}>
-              <Image  style={{aspectRatio:1.5,resizeMode:'contain'}}  source={require("../assets/app-logo.png")} ></Image> 
+               <Image  style={{width:200,height:200,resizeMode:'contain'}}  source={require("../assets/app-logo.png")} ></Image> 
                            
         </View>                   
        
@@ -174,10 +174,10 @@ SlideMenu=()=>{
   
  
   <View style={{position:'absolute',bottom:20}}>
-        <Image
-                style={{aspectRatio:1,resizeMode: 'contain',opacity:0.1}}
+  <Image
+                style={{width:550,height:500, resizeMode: 'contain',opacity:0.1}}
                 source={require('../assets/bgLogo.png')}
-            />            
+            />                  
         </View>   
            
        

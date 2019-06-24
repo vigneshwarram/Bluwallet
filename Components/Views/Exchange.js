@@ -508,7 +508,7 @@ justifyContent:'center',alignItems:"center"}} >
  borderRadius: 40/2,
 justifyContent:'center',alignItems:"center"}} >
 
- <Image style={{width:20,height:20}}   source={this.state.app5icon} ></Image> 
+ <Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app5icon} ></Image> 
        </View>  
     
        </TouchableOpacity>  

@@ -155,8 +155,8 @@ SlideMenu=()=>{
    colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>   
    
     <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-    <View></View>
-    <View style={{justifyContent:'center',alignItems:'center',marginLeft:40}}>
+    <View style={{justifyContent:'center',alignItems:'center'}}>
+    <Image  style={{width: 15, height: 15,marginLeft:20,marginTop:25,resizeMode:'contain'}}  source={require("../assets/left-arrow.png")} ></Image> 
     </View>
       <View style={{backgroundColor:'#fd6d71',height:this.state.hr,width:this.state.wr,justifyContent:'center', borderTopStartRadius:25,borderBottomStartRadius:25, marginTop:10}}>
             <TouchableOpacity onPress={this.pressRight}>
@@ -181,8 +181,8 @@ SlideMenu=()=>{
         <View  style={{justifyContent:'center',alignItems:'center',marginTop:20
         }}>
              <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10}}>Lets Verified!</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10,}}>Please choose the country where your document was</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,}}>Issued</Text>
+             <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:10,}}>Please choose the country where your document was</Text>
+             <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,}}>Issued</Text>
          
              
         </View>  
@@ -191,7 +191,7 @@ SlideMenu=()=>{
         <View>    
         <View style={{ borderWidth: 1,backgroundColor:'#fff',padding:10,marginLeft:30,marginRight:30,borderColor:'#919fc3',marginTop:100,borderRadius:6 }}>
         <View style={{justifyContent:'space-between',flexDirection:'row'}}>
-        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12}}>{this.state.Country}</Text>
+        <Text style={{color:'#4e649f',opacity:1,fontSize:12}}>{this.state.Country}</Text>
         <Image  style={{width: 10, height: 10}}  source={require("../assets/down_arrow.png")} ></Image> 
         </View>
         

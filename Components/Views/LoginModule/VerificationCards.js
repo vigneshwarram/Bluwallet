@@ -171,9 +171,9 @@ SlideMenu=()=>{
 colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>   
 
 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-<View></View>
-<View style={{justifyContent:'center',alignItems:'center',marginLeft:40}}>
-</View>
+<View style={{justifyContent:'center',alignItems:'center'}}>
+    <Image  style={{width: 15, height: 15,marginLeft:20,marginTop:25,resizeMode:'contain'}}  source={require("../assets/left-arrow.png")} ></Image> 
+    </View>
 <View style={{backgroundColor:'#fd6d71',height:this.state.hr,width:this.state.wr,justifyContent:'center', borderTopStartRadius:25,borderBottomStartRadius:25, marginTop:10}}>
      <TouchableOpacity onPress={this.pressRight}>
 <View style={{flexDirection: 'row'}}> 

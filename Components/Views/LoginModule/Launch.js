@@ -171,34 +171,27 @@ SlideMenu=()=>{
                  
             
         </View>
-      
-        <View  style={{justifyContent:'center',alignItems:'center',marginTop:30
-        }}>
-      
-
-             
-        </View>  
-        
+                
 
              </View> 
              
 </View>  
- <View style={{bottom:20,position:'absolute'}}>
+ <View style={{bottom:40,position:'absolute'}}>
         <Image
-                style={{aspectRatio:1,resizeMode: 'contain',opacity:0.1}}
+                style={{width:550,height:500, resizeMode: 'contain',opacity:0.1}}
                 source={require('../assets/bgLogo.png')}
             />            
         </View>  
         <View style={{flex: 1,
   justifyContent: 'flex-end',
-  marginBottom: 150}}>
+  marginBottom: 100}}>
         
        
         <View>
         <TouchableOpacity  onPress={this.CreateWallet}>
 <View>
 <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:15,justifyContent:'center',alignItems:'center',marginTop:150}}>
-<Text style={{color:'#fff',fontSize:18,fontWeight:'bold',fontFamily:'Exo2'}}>Create a Wallet</Text>
+<Text style={{color:'#fff',fontSize:18,fontWeight:'bold'}}>Create a Wallet</Text>
 </LinearGradient>
 </View>
 

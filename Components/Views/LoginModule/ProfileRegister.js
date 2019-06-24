@@ -154,21 +154,21 @@ export default class ProfileRegister extends React.Component {
 
 <LinearGradient
 colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>   
-        <View style={{flexDirection:'row',justifyContent:'space-between',backgroundColor:'#fff'}}>
+        <View style={{flexDirection:'row',justifyContent:'space-between',backgroundColor:'#fff',marginTop:-10}}>
         <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
     <View style={{justifyContent:'center',alignItems:'center'}}>
-    <Image  style={{width: 20, height: 20,marginLeft:20,marginTop:30}}  source={require("../assets/left-arrow.png")} ></Image> 
+    <Image  style={{width: 15, height: 15,marginLeft:20,marginTop:30,resizeMode:'contain'}}  source={require("../assets/left-arrow.png")} ></Image> 
     </View>
     </TouchableOpacity>
     <View style={{justifyContent:'center',alignItems:'center'}}>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:30}}>Profile</Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:20,marginTop:25}}>Profile</Text>
     </View>
     <View></View>
     </View>
     <View style={{justifyContent:'center',alignItems:'center',backgroundColor:'#fff'}}>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:25,}}>We need this to verify your identify,In order for</Text>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,}}> you to use this improved feature.It should only</Text>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,}}> Take a couple of minutes</Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:25,}}>We need this to verify your identify,In order for</Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,}}> you to use this improved feature.It should only</Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,}}> Take a couple of minutes</Text>
           <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff',marginTop:30, justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
 <View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
 
