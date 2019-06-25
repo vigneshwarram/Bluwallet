@@ -182,7 +182,7 @@ SlideMenu=()=>{
     return (  
         
       <View style={styles.Maincontainers}>           
-       <LinearGradient colors= {['#354e91','#21284a','#21284a']} style={styles.Maincontainers}>  
+       <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={styles.Maincontainers}>  
      <LinearGradient
    colors={['#1a5fe1','#00a5ff','#25e2cd']} style={{height:200,opacity:0.9}}>     
       <LinearGradient
@@ -342,7 +342,7 @@ SlideMenu=()=>{
     alignItems: 'center',
     position: 'absolute', 
     bottom: 0,}}>
-<LinearGradient colors= {['#1a5fe1','#00a5ff','#00a5ff']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
+<LinearGradient colors= {['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
     <View style={{flexDirection: 'row',marginRight:20,marginLeft:20,alignItems:"center",justifyContent:'center'}}> 
     <TouchableOpacity >
    

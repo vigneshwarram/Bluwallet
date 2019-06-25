@@ -302,7 +302,7 @@ _animate=()=>{
       {((this.state.NoPopup?null:
       ((!this.state.ProfileComplete)?
         <View >
-      <LinearGradient colors= {['#395ea4','#446ea8','#4c78a9']} style={{width:'95%',marginLeft:10,marginRight:10,padding:10,height:160,marginTop:15,borderRadius:10}}>
+      <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={{width:'95%',marginLeft:10,marginRight:10,padding:10,height:160,marginTop:15,borderRadius:10}}>
       <View style={{flexDirection:'row'}}>
       <View>
       <Text style={{marginLeft:20,fontSize:18,fontWeight:'bold',color:'#fff',fontFamily:''}}>Complete Your Profile</Text>  
@@ -501,13 +501,11 @@ justifyContent:'center',alignItems:"center"}} >
         <TouchableOpacity onShowUnderlay={separators.highlight}
       onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
       <View elevation={5} style={{marginLeft:30,marginRight:30, shadowOffset: { width: 10, height: 10 },
-   borderWidth: 1,
-  borderColor: '#394d88',
   borderBottomWidth: 0,
   borderRadius:25}}>
    
   <LinearGradient
-   colors={['#374c8d', '#32437b','#2c3868']} style={{ borderRadius:25}}>
+   colors={['#4262B5', '#3A549B','#314279','#2C3765','#2A335E']} style={{ borderRadius:25}}>
    
         <View style={{flexDirection:'row',justifyContent:'center'}}>
         <View style={{alignItems:'center'}} >
@@ -552,7 +550,7 @@ justifyContent:'center',alignItems:"center"}} >
     alignItems: 'center',
     position: 'absolute', 
     bottom: 0,}}>
-<LinearGradient colors= {['#1a5fe1','#00a5ff','#00a5ff']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
+<LinearGradient colors= {['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
     <View style={{flexDirection: 'row',marginRight:20,marginLeft:20,alignItems:"center",justifyContent:'center'}}> 
     <TouchableOpacity onPress={this.App3Touch}>
    

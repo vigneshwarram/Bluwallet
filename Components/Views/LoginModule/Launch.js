@@ -153,7 +153,7 @@ SlideMenu=()=>{
       <View> 
 
        <LinearGradient
-  colors= {['#3f5eae','#384d90','#2c3765']} style={{height:'100%',opacity:0.9}}>   
+  colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={{height:'100%',opacity:0.9}}>   
    
     <View style={{flex:0.5}}> 
    

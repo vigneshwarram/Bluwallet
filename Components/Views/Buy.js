@@ -276,7 +276,7 @@ SlideMenu=()=>{
           
 <View style={{flex:1}}>
 
-          <LinearGradient  colors= {['#2b3f74','#232d51','#232d51']} style={{marginTop:60}} >
+          <LinearGradient  colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={{marginTop:60}} >
    <ScrollView>
 <View style={{marginTop:20,backgroundColor:'transparent'}}>   
 
@@ -408,7 +408,7 @@ SlideMenu=()=>{
    
       
     
-         <LinearGradient colors={['#81DCF9','#5099f0','#1a5fe1']} style={{  width: 100,marginLeft:20,position:'absolute',top:-20,left:120,right:100,bottom:50,
+         <LinearGradient colors= {['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} style={{  width: 100,marginLeft:20,position:'absolute',top:-20,left:120,right:100,bottom:50,
     height: 100,
     borderRadius: 100/2,
     backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
@@ -527,7 +527,7 @@ const styles = StyleSheet.create({
  
   Maincontainers: {
     flex: 1,   
-    backgroundColor: '#2b3f74',
+    backgroundColor: '#354E91',
   },
   containers: {
    backgroundColor: '#fff',

@@ -269,7 +269,7 @@ App6Touch=()=>{
   }
     return (  
       <View style={styles.Maincontainers}>    
-      <LinearGradient colors= {['#354e91','#21284a','#21284a']}>
+      <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']}>
       <ScrollView>
       <View style={{justifyContent:'space-between',flexDirection:'row'}}>  
 <LinearGradient colors={['transparent','transparent','transparent']} style={{justifyContent:'center',height:this.state.h,width:this.state.w, alignItems:'flex-end', marginTop:10,borderTopRightRadius:25,borderBottomRightRadius:25,borderColor:'#c978f8',borderRightWidth:1,borderLeftWidth:0,borderTopWidth:1,borderBottomWidth:1}}>
@@ -365,8 +365,6 @@ App6Touch=()=>{
         <TouchableOpacity onShowUnderlay={separators.highlight}
       onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
       <View style={{marginLeft:30,marginRight:30, shadowOffset: { width: 10, height: 10 },
-   borderWidth: 1,
-  borderColor: '#394d88',
   borderBottomWidth: 0,
   shadowColor: '#394d88',
   shadowOffset: { width: 0, height: 12 },
@@ -375,7 +373,7 @@ App6Touch=()=>{
   elevation: 24,
   borderRadius:25}}>
   <LinearGradient
-   colors={['#374c8d', '#32437b','#2c3868']} style={{ borderRadius:25}}>
+    colors={['#4262B5', '#3A549B','#314279','#2C3765','#2A335E']} style={{ borderRadius:25}}>
         <View style={{alignItems:'center',flexDirection:'row',padding:15}}>
         <View style={{justifyContent:'center'}}>
         <Image style={{width: 50, height: 50,resizeMode:'contain'}}   source={require("./assets/etheriumblue.png")} ></Image>
@@ -431,7 +429,7 @@ App6Touch=()=>{
     alignItems: 'center',
     position: 'absolute', 
     bottom: 0,}}>
-<LinearGradient colors= {['#1a5fe1','#00a5ff','#00a5ff']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
+<LinearGradient colors= {['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
     <View style={{flexDirection: 'row',marginRight:20,marginLeft:20,alignItems:"center",justifyContent:'center'}}> 
     <TouchableOpacity onPress={this.App3Touch}>
    

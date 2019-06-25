@@ -156,7 +156,7 @@ export default class ProfileRegister extends React.Component {
       <View> 
 
 <LinearGradient
-colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>   
+ colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>   
         <View style={{flexDirection:'row',justifyContent:'space-between'}}>
         <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
     <View style={{justifyContent:'center',alignItems:'center'}}>
