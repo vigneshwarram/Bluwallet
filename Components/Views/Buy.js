@@ -247,7 +247,7 @@ SlideMenu=()=>{
        placeholderTextColor='#ffffff'
        keyboardType = 'numeric'
           placeholder="COP 0.000"
-          
+          maxLength={10}
         />
 </View>
           </View>
@@ -259,7 +259,7 @@ SlideMenu=()=>{
        placeholderTextColor='#ffffff'
        keyboardType = 'numeric'
           placeholder="BTC 00.0"
-          
+          maxLength={10}
         />
 </View>
           </View>

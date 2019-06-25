@@ -53,6 +53,7 @@
     "react-native-vector-icons": "^6.5.0",
     "react-native-video": "^4.4.0",
     "react-navigation": "^2.18.3",
+    "react-navigation-fluid-transitions": "^0.3.2",
     "rn-animated-tabs": "^1.0.4",
     "toggle-switch-react-native": "^2.0.2"
   },
@@ -67,6 +68,8 @@
     "preset": "react-native"
   },
   "rnpm": {
-    "assets": ["./assets/fonts"]
+    "assets": [
+      "./assets/fonts"
+    ]
   }
 }

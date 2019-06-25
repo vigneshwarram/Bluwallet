@@ -290,6 +290,7 @@ SlideMenu=()=>{
        placeholderTextColor='#ffffff'
           placeholder="Quantity"
           keyboardType = 'numeric'
+          maxLength={10}
         />
 </View>
 <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center'}}>

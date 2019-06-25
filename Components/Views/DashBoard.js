@@ -137,15 +137,16 @@ _onPress=()=>{
    
 }
 pressRight=()=>{
-  if(this.LinerComponent.props.width==50){
-   // LayoutAnimation.spring();
-   this.LinerComponent.setNativeProps({width:100})
-   // this.setState({wr: this.state.wr + 50})
-  // this.setState({clickr:true})
+  if(!this.state.clickr){
+    LayoutAnimation.spring();
+   //this.LinerComponent.setNativeProps({width:100})
+    this.setState({wr: this.state.wr + 50})
+   this.setState({clickr:true})
   }else{
-   // LayoutAnimation.spring();
-    this.LinerComponent.setNativeProps({width:50})
-    //this.setState({clickr:false})
+    LayoutAnimation.spring();
+    this.setState({wr:50})
+   // this.LinerComponent.setNativeProps({width:50})
+    this.setState({clickr:false})
 }
 }
 SlideMenu=()=>{
@@ -273,7 +274,7 @@ _animate=()=>{
       <LinearGradient colors= {['#354e91','#21284a','#21284a']}>
       <ScrollView>
       <Animated.View style={{justifyContent:'space-between',flexDirection:'row',}}>  
-<LinearGradient colors={['#f4347f','#f85276','#fe7a6e']} style={{justifyContent:'center',height:this.state.h,width:this.state.w, alignItems:'flex-end', marginTop:10,borderTopRightRadius:25,borderBottomRightRadius:25}}>
+<LinearGradient colors={['#f4347f','#f85276','#fe7a6e']} style={{justifyContent:'center',height:this.state.h,width:this.state.w, position:'absolute',left:0,alignItems:'flex-end', marginTop:10,borderTopRightRadius:25,borderBottomRightRadius:25}}>
 <TouchableOpacity onPress={this._onPress}>
        <View style={{flexDirection: 'row'}}> 
           <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/whitebox.png")} ></Image>     
@@ -283,14 +284,9 @@ _animate=()=>{
 </LinearGradient>    
          
             
-            <View style={{flexDirection: 'row',justifyContent:'flex-start',alignItems:"center",marginTop:15}}> 
-          <Image  style={{width: 30, height: 30,resizeMode:'contain'}}  source={require("./assets/app1white.png")} ></Image>   
-          <View style={{flexDirection:'column'}}>
-          <Text style={{marginLeft:10,fontSize:18,fontWeight:'bold',color:'#fff',fontFamily:''}}>Wallet</Text>       
-          </View>       
-          </View>
+            
     
-            <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  ref={component => this.LinerComponent = component} style={{height:this.state.hr,width:this.state.wr,justifyContent:'center',alignItems:'flex-start',borderTopLeftRadius:25,borderBottomLeftRadius:25, marginTop:10}}>
+            <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  ref={component => this.LinerComponent = component} style={{height:this.state.hr,width:this.state.wr,justifyContent:'center',position:'absolute',right:0,alignItems:'flex-start',borderTopLeftRadius:25,borderBottomLeftRadius:25, marginTop:10}}>
             <TouchableOpacity onPress={this.pressRight}>
        <View style={{flexDirection: 'row'}}> 
           <Image style={{marginLeft:10,width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/app1white.png")} ></Image>     
@@ -299,6 +295,12 @@ _animate=()=>{
           </TouchableOpacity>
             </LinearGradient>
       </Animated.View>
+      <View style={{flexDirection: 'row',justifyContent:'center',alignItems:"center",marginTop:15}}> 
+          <Image  style={{width: 30, height: 30,resizeMode:'contain'}}  source={require("./assets/app1white.png")} ></Image>   
+          <View style={{flexDirection:'column'}}>
+          <Text style={{marginLeft:10,fontSize:18,fontWeight:'bold',color:'#fff',fontFamily:''}}>Wallet</Text>       
+          </View>       
+          </View>
       {((this.state.NoPopup?null:
       ((!this.state.ProfileComplete)?
         <View >
