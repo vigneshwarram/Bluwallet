@@ -191,16 +191,16 @@ SlideMenu=()=>{
  <View style={{justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection:'row',marginTop:10}}>
           <Image style={{marginRight:10,width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/app3.png")} ></Image>     
-          <Text style={{fontSize:18,fontWeight:'bold',color:'#fff'}}>Price</Text>
+          <Text style={{fontSize:18,fontWeight:'bold',color:'#fff',fontFamily:''}}>Price</Text>
           </View>      
           <View style={{flexDirection: 'row',marginTop:20,justifyContent:'space-around'}}>
          <View style={{justifyContent:'center',alignItems:'center'}}>
-         <Text style={{fontSize:18,fontWeight:'bold',color:'#2939a8'}}>ETH</Text> 
+         <Text style={{fontSize:18,fontWeight:'bold',color:'#2939a8',fontFamily:''}}>ETH</Text> 
          </View>
-<Text style={{fontSize:25,fontWeight:'bold',color:'#fff',marginLeft:10}}>132.58</Text>      
+<Text style={{fontSize:25,fontWeight:'bold',color:'#fff',marginLeft:10,fontFamily:''}}>132.58</Text>      
         
 <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:20}}>
-        <Text style={{color:'#3440b0',fontWeight:'bold',opacity:1,fontSize:18}}>{this.state.Amount}</Text>
+        <Text style={{color:'#3440b0',fontWeight:'bold',opacity:1,fontSize:18,fontFamily:''}}>{this.state.Amount}</Text>
         <Image  style={{width: 10, height: 10,marginLeft:10,resizeMode:'contain',tintColor:"#3440b0"}}  source={require("./assets/down_arrow.png")} ></Image>
         <Picker style={{ position:'absolute', top: 0, width: 500, height: 3000 }}
    selectedValue={this.state.Amount}
@@ -289,19 +289,19 @@ SlideMenu=()=>{
         </View>}
         {(item.Status!='Cancelled')? <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
         
-        <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold'}}>Monero</Text>
-        <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold'}}>XMR</Text>
+        <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:''}}>Monero</Text>
+        <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>XMR</Text>
 
-        <Text style={{color:'#5597ff',fontSize:15,marginTop:30,fontWeight:'bold'}}>Price</Text>
-        <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold'}}>132.6</Text>
+        <Text style={{color:'#5597ff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:''}}>Price</Text>
+        <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>132.6</Text>
     </View>:
     <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
         
-        <Text style={{color:'#fff',fontSize:15,fontWeight:'bold'}}>Etherium</Text>
-        <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold'}}>ETH</Text>
+        <Text style={{color:'#fff',fontSize:15,fontWeight:'bold',fontFamily:''}}>Etherium</Text>
+        <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>ETH</Text>
 
-        <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold'}}>Price</Text>
-        <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold'}}>132.6</Text>
+        <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:''}}>Price</Text>
+        <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>132.6</Text>
     </View>}
        
        </LinearGradient>
@@ -315,11 +315,11 @@ SlideMenu=()=>{
         </View>
         <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
         
-            <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold'}}>Ripple</Text>
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold'}}>Xrp</Text>
+            <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:''}}>Ripple</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>Xrp</Text>
 
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:30,fontWeight:'bold'}}>Price</Text>
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold'}}>121.6</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:''}}>Price</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>121.6</Text>
         </View>
        </LinearGradient>
    

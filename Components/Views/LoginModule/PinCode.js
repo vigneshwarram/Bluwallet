@@ -158,7 +158,7 @@ SlideMenu=()=>{
       
         <View  style={{justifyContent:'center',alignItems:'center'
         }}>
-               <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:18,marginTop:20}}>Please Introduce your new pin</Text>
+               <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:18,marginTop:20,fontFamily:''}}>Please Introduce your new pin</Text>
                        
         </View>
         <View  style={{justifyContent:'center',alignItems:'center', marginTop:20

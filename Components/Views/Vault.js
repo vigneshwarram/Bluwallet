@@ -231,26 +231,26 @@ CompleteTouch=()=>{
     <View style={{flexDirection: 'row',justifyContent:'center',alignItems:"center" }}> 
           <Image  style={{width: 30, height: 30,resizeMode:'contain'}}  source={require("./assets/app2.png")} ></Image>   
           <View style={{flexDirection:'column'}}>
-          <Text style={{marginLeft:10,fontSize:18,fontWeight:'bold',color:'#fff'}}>Vault</Text>       
+          <Text style={{marginLeft:10,fontSize:18,fontWeight:'bold',color:'#fff',fontFamily:''}}>Vault</Text>       
           </View>       
           </View>
     <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',marginLeft:70,marginTop:10}}>
     <TouchableOpacity onPress={this.ActiveTouch}>
     <View style={{width:80,height:50,borderRightWidth:1,borderRightColor:'#4d6bc1'}}>
-    <Text style={{marginLeft:10,marginTop:15,fontSize:15,fontWeight:'bold',color:'#fff',opacity:this.state.ActiveOpacity}}>Active</Text> 
+    <Text style={{marginLeft:10,marginTop:15,fontSize:15,fontWeight:'bold',color:'#fff',fontFamily:'',opacity:this.state.ActiveOpacity}}>Active</Text> 
     </View>
     </TouchableOpacity>
    <TouchableOpacity onPress={this.CompleteTouch}>
    <View style={{width:150,height:50}}>
-    <Text style={{marginLeft:20,marginTop:15,fontSize:15,fontWeight:'bold',color:'#fff',opacity:this.state.CompleteOpacity}}>Completed</Text> 
+    <Text style={{marginLeft:20,marginTop:15,fontSize:15,fontWeight:'bold',color:'#fff',fontFamily:'',opacity:this.state.CompleteOpacity}}>Completed</Text> 
     </View>
    </TouchableOpacity>
     
     </View> 
     <View style={{justifyContent:'space-between',alignItems:'center',flexDirection:'row',paddingLeft:50,paddingRight:50}}>
- <Text style={{marginTop:15,fontSize:15,fontWeight:'bold',color:'#fff',opacity:0.5}}>Monero</Text> 
- <Text style={{marginTop:15,fontSize:15,fontWeight:'bold',color:'#fff',opacity:1}}>Ethereum</Text> 
- <Text style={{marginTop:15,fontSize:15,fontWeight:'bold',color:'#fff',opacity:0.5}}>Bitcoin</Text> 
+ <Text style={{marginTop:15,fontSize:15,fontWeight:'bold',color:'#fff',opacity:0.5,fontFamily:''}}>Monero</Text> 
+ <Text style={{marginTop:15,fontSize:15,fontWeight:'bold',color:'#fff',opacity:1,fontFamily:''}}>Ethereum</Text> 
+ <Text style={{marginTop:15,fontSize:15,fontWeight:'bold',color:'#fff',opacity:0.5,fontFamily:''}}>Bitcoin</Text> 
     </View>
    <View style={{justifyContent:'center',alignItems:'center',marginTop:10}}>
    <FlatList  style={{marginTop:10}}
@@ -328,7 +328,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
     </View> 
       <View style={styles.containers}>
             <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
-                 <Text style={{marginLeft:10,marginTop:15,fontSize:20,fontWeight:'bold',color:'#4d6bc1'}}>Balance</Text> 
+                 <Text style={{marginLeft:10,marginTop:15,fontSize:20,fontWeight:'bold',color:'#4d6bc1',fontFamily:''}}>Balance</Text> 
                  </View>
                
                <View style={{ marginTop:10,justifyContent:'center',alignItems:'center'}}>
@@ -337,7 +337,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
                 </View>
                 <View>
                 <View style={{flexDirection:'row'}}>
-                <Text style={{marginLeft:30,fontSize:30,fontWeight:'bold',color:'#fff'}}>4.80258789</Text>
+                <Text style={{marginLeft:30,fontSize:30,fontWeight:'bold',color:'#fff',fontFamily:''}}>4.80258789</Text>
                 <View style={{marginTop:-10,marginLeft:5}}>
                 
                 </View>
@@ -347,16 +347,16 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
                  </View>
                  <View style={{flexDirection:'row',justifyContent:'space-around',width:'100%',marginTop:20}}>
                  <View style={{width:40,height:15,backgroundColor:'#314985',justifyContent:'center',alignItems:'center',marginTop:-10,marginRight:30}}>
-                <Text style={{fontSize:12,fontWeight:'bold',color:'#4d6bc1'}}>All</Text>
+                <Text style={{fontSize:12,fontWeight:'bold',color:'#4d6bc1',fontFamily:''}}>All</Text>
                 </View>
 				
 				
-				 <Text style={{fontSize:12,fontWeight:'bold',color:'#4d6bc1',marginLeft:-40}}>880.889</Text>
+				 <Text style={{fontSize:12,fontWeight:'bold',color:'#4d6bc1',marginLeft:-40,fontFamily:''}}>880.889</Text>
                   
                
                 
         <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:-60}}>
-        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12}}>{this.state.Amount}</Text>
+        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,fontFamily:''}}>{this.state.Amount}</Text>
         <Image  style={{width: 10, height: 10,marginLeft:10}}  source={require("./assets/down_arrow.png")} ></Image> 
         </View>
         
@@ -404,20 +404,20 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
           <View style={{flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection: 'row',justifyContent:'space-between'}}>    
           <View style={{justifyContent:'space-around',alignItems:'center'}}>
-          <Text  style={{ fontSize:12,fontWeight:'bold', color:(item.Status!='Completed')?'#4286f4':'#4286f4'}}>ETH</Text> 
+          <Text  style={{ fontSize:12,fontWeight:'bold',fontFamily:'', color:(item.Status!='Completed')?'#4286f4':'#4286f4'}}>ETH</Text> 
           <Text  style={{fontSize:12,color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>$435</Text> 
           </View>  
           <View>
           <View style={{flexDirection:'row',marginLeft:20}}>
           <View>
           <Text  style={{fontSize:12,color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>{(item.Status!='Completed')?'Produced':"Produced"}</Text> 
-          <Text  style={{fontSize:12,color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>Coins</Text>    
+          <Text  style={{fontSize:12,fontFamily:'',color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>Coins</Text>    
           </View>
           
           <View style={{flexDirection:'row',justifyContent:'center',marginTop:-5}}>
      <Image style={{width: 25, height: 25,resizeMode:'contain'}}   source={require("./assets/plusblue.png")} ></Image>   
      <View style={{marginTop:5}}>
-     <Text  style={{fontSize:12,textAlign:'center',fontWeight:'bold', color:(item.Status!='Completed')?'#232d51':'#232d51'}}>$ 9060</Text> 
+     <Text  style={{fontSize:12,textAlign:'center',fontWeight:'bold',fontFamily:'',color:(item.Status!='Completed')?'#232d51':'#232d51'}}>$ 9060</Text> 
      </View> 
      
      </View>  
@@ -425,7 +425,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
          
           </View>
           <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',marginLeft:20}}>
-          <Text  style={{color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>+8.5%</Text> 
+          <Text  style={{fontFamily:'',color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>+8.5%</Text> 
           <Image style={{width: 10, height: 10,resizeMode:'contain'}}   source={require("./assets/green.png")} ></Image> 
           </View>                
      </View>  

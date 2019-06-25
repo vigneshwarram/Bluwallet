@@ -154,6 +154,12 @@ SlideMenu=()=>{
        <LinearGradient
        
   colors= {['#f6f5fa','#e1e3ef','#ced1e4']} style={{height:'100%'}}>   
+   <View style={{position:'absolute',left:0,bottom:20}}>
+ <Image
+                style={{width:550,height:500, resizeMode: 'contain',opacity:0.1}}
+                source={require('../assets/bgLogo.png')}
+            />                       
+        </View>
    <ScrollView>
     <View style={{flexDirection:'row',justifyContent:'space-between'}}>
     <View></View>
@@ -161,73 +167,69 @@ SlideMenu=()=>{
     </View>
      
     </View>
-    <View style={{marginTop:40}}>          
+    <View style={{flex:1}}>          
          
              <View  style={{justifyContent:'center',alignItems:'center'
         }}>
               <Image  style={{width:200,height:200,resizeMode:'contain'}}  source={require("../assets/app-logo.png")} ></Image> 
                            
         </View>                   
-             
-</View>  
-  
- <View style={{position:'absolute',bottom:20}}>
- <Image
-                style={{width:550,height:500, resizeMode: 'contain',opacity:0.1}}
-                source={require('../assets/bgLogo.png')}
-            />                       
-        </View>  
         <KeyboardAvoidingView 
   
-   behavior='padding'
- >
-<View  style={{marginTop:80,marginLeft:30,marginRight:30
-        }}>
-      <View style={{flexDirection:'row',justifyContent:'space-around'}}>
-     <View style={{justifyContent:'center',alignItems:'center'}}>
-     <Image  style={{resizeMode:'contain',width:20,height:20}}  source={require("../assets/userIcon.png")} ></Image> 
+  behavior='padding'
+>
+<View  style={{paddingVertical:80,marginLeft:30,marginRight:30
+       }}>
+     <View style={{flexDirection:'row',justifyContent:'space-around'}}>
+    <View style={{justifyContent:'center',alignItems:'center'}}>
+    <Image  style={{resizeMode:'contain',width:20,height:20}}  source={require("../assets/userIcon.png")} ></Image> 
+    </View>
+     
+     <TextInput  placeholder="User"
+         placeholderTextColor="#3d5498" 
+         style={styles.inputBox} />
      </View>
-      
-      <TextInput  placeholder="User"
-          placeholderTextColor="#3d5498" 
-          style={styles.inputBox} />
-      </View>
-      <View style={{flexDirection:'row',justifyContent:'space-around'}}>
-      <View style={{justifyContent:'center',alignItems:'center'}}>
-      <Image  style={{resizeMode:'contain',width:20,height:20}}  source={require("../assets/passwordIcon.png")} ></Image> 
-      </View>
-      
-      <TextInput
-          // Adding hint in TextInput using Placeholder option.
-          placeholder="Password"
-          placeholderTextColor="#3d5498" 
-          style={styles.inputBox}
-          
-        />
-      </View>
-             
-        </View>
-        <View style={{marginTop:100
- }}>
-        
-        
-        <TouchableOpacity onPress={this.LoginAction}>     
+     <View style={{flexDirection:'row',justifyContent:'space-around'}}>
+     <View style={{justifyContent:'center',alignItems:'center'}}>
+     <Image  style={{resizeMode:'contain',width:20,height:20}}  source={require("../assets/passwordIcon.png")} ></Image> 
+     </View>
+     
+     <TextInput
+         // Adding hint in TextInput using Placeholder option.
+         placeholder="Password"
+         placeholderTextColor="#3d5498" 
+         style={styles.inputBox}
+         
+       />
+     </View>
+            
+       </View>
+       
+       <View style={{paddingVertical:50
+}}>
+       
+       
+       <TouchableOpacity onPress={this.LoginAction}>     
 <View>
 <LinearGradient colors={['#4476d7','#4f92e9','#61bff2']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:15,justifyContent:'center',alignItems:'center'}}>
 
-<Text style={{color:'#FFF',fontSize:18,fontWeight:'bold',fontFamily: "Sarpanch-Regular"}}>LOGIN</Text>
+<Text style={{color:'#FFF',fontSize:18,fontWeight:'bold',fontFamily: ""}}>LOGIN</Text>
 
 </LinearGradient>
 </View>
 </TouchableOpacity> 
-
-        </View> 
-        </KeyboardAvoidingView>
-        <TouchableOpacity onPress={this.ForgotAction}>
-<View style={{justifyContent:'center',alignItems:'center',marginTop:80}}>
+  <TouchableOpacity onPress={this.ForgotAction}>
+<View style={{justifyContent:'center',alignItems:'center',marginVertical:50}}>
 <Text style={{color:'#3d5498',fontSize:18}}>FORGOT THE PASSWORD</Text>
 </View>
-</TouchableOpacity>    
+</TouchableOpacity>  
+       </View> 
+       </KeyboardAvoidingView> 
+</View>  
+ 
+  
+      
+        
        </ScrollView>
  </LinearGradient> 
  </View>

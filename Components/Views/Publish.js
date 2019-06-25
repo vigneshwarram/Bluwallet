@@ -247,13 +247,13 @@ SlideMenu=()=>{
 
           <View style={{flexDirection:'row',marginTop:10}}>
           <Image style={{marginRight:10,width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/app4.png")} ></Image>     
-          <Text style={{fontSize:20,fontWeight:'bold',color:'#fff'}}>Exchange</Text>
+          <Text style={{fontSize:20,fontWeight:'bold',color:'#fff',fontFamily:''}}>Exchange</Text>
           </View>
          
           <View style={{flexDirection:'row',marginTop:10}}>
           <TouchableOpacity onPress={this.PurchaseTab}>
           <View>
-          <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',opacity:this.state.PurchaseOpacity}}>Buy</Text>  
+          <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',opacity:this.state.PurchaseOpacity,fontFamily:''}}>Buy</Text>  
           <View
   style={{
     marginTop:5,
@@ -267,7 +267,7 @@ SlideMenu=()=>{
 
         <TouchableOpacity onPress={this.SalesTab}>
         <View>
-         <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:30,opacity:this.state.SalesOpacity}}>Sell</Text>
+         <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:30,opacity:this.state.SalesOpacity,fontFamily:''}}>Sell</Text>
          <View
   style={{
     marginLeft:30,marginRight:30,
@@ -286,14 +286,14 @@ SlideMenu=()=>{
 <View style={{flexDirection:'row',marginLeft:20}}>
 <Image  style={{width: 20, height: 20,marginTop:10}}  source={require("./assets/Searchicon.png")} ></Image> 
 <TextInput
-          style={{height: 40,}}
+          style={{height: 40,width:100,color:'#ffffff'}}
        placeholderTextColor='#ffffff'
           placeholder="Quantity"
-          
+          keyboardType = 'numeric'
         />
 </View>
 <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center'}}>
-        <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12}}>{this.state.Amount}</Text>
+        <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,fontFamily:''}}>{this.state.Amount}</Text>
         <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("./assets/darrow.png")} ></Image> 
         <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}
    selectedValue={this.state.Amount}
@@ -355,12 +355,12 @@ SlideMenu=()=>{
      
      <View style={{flex:1, flexDirection:'row',justifyContent:'space-between'}}>
      <View style={{flexDirection:'row'}}>
-     <Text  style={{marginRight:10,marginTop:10,color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>{(item.Status=='Completed')?'etemplario':'santiagolp92'}</Text>  
-     <Text  style={{marginRight:10,marginTop:10,fontSize:10,color:(item.Status!='Completed')?'#5280d5':'#5280d5'}}>100</Text>         
+     <Text  style={{marginRight:10,marginTop:10,color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4',fontFamily:''}}>{(item.Status=='Completed')?'etemplario':'santiagolp92'}</Text>  
+     <Text  style={{marginRight:10,marginTop:10,fontSize:10,color:(item.Status!='Completed')?'#5280d5':'#5280d5',fontFamily:''}}>100</Text>         
      </View>   
      <View>
-     <Text  style={{marginRight:10,marginTop:10,marginLeft:10, color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>{(item.Status=='Completed')?'90.000':'90.000'}</Text> 
-     <Text  style={{marginTop:10,marginLeft:10, color:(item.Status!='Completed')?'#5280d5':'#5280d5'}}>{(item.Status=='Completed')?'ETH':'BTC'}</Text>  
+     <Text  style={{marginRight:10,marginTop:10,marginLeft:10, color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4',fontFamily:''}}>{(item.Status=='Completed')?'90.000':'90.000'}</Text> 
+     <Text  style={{marginTop:10,marginLeft:10, color:(item.Status!='Completed')?'#5280d5':'#5280d5',fontFamily:''}}>{(item.Status=='Completed')?'ETH':'BTC'}</Text>  
      </View>  
      <View style={{width:'35%',marginTop:30}}>
           <LinearGradient colors={['#8595e0','#9a89f9','#c37bf8']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:7,borderRadius:10,backgroundColor:'green',justifyContent:'center',alignItems:'center'}}>

@@ -166,7 +166,7 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
     </View>
     </TouchableOpacity>
     <View style={{justifyContent:'center',alignItems:'center'}}>
-    <Text style={{color:'#4e649f',opacity:1,fontSize:20,marginTop:15}}>More Info Needed</Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:20,marginTop:15,fontFamily:''}}>More Info Needed</Text>
     </View>
     <View></View>
     </View>
@@ -175,36 +175,36 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
       <Image  style={{width: 250, height: 250,resizeMode:'contain'}}  source={require("../assets/card.png")} ></Image> 
       </View>
       <View style={{justifyContent:'center',alignItems:'center'}}>
-    <Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:18,}}>Let's Confirm It's You</Text>  
+    <Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:18,fontFamily:''}}>Let's Confirm It's You</Text>  
           </View>
     </View>
     <View>
     
           <View style={{justifyContent:'center',alignItems:'center',marginTop:5}}>
-          <Text style={{color:'#3f518f',opacity:1,fontSize:12,marginTop:15,textAlign:'center'}}>You will need 1 of the ID types below to continue</Text>
+          <Text style={{color:'#3f518f',opacity:1,fontSize:12,marginTop:15,textAlign:'center',fontFamily:''}}>You will need 1 of the ID types below to continue</Text>
           </View>
           <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff',marginTop:30, justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
 <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',height: 50,padding:10}}>
 
-<Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:12}}>Valid Passport</Text>
+<Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:12,fontFamily:''}}>Valid Passport</Text>
 </View>
    </View>
    <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
 <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',height: 50,padding:10}}>
 
-<Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:12,}}>National Id Card</Text>
+<Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:12,fontFamily:''}}>National Id Card</Text>
 </View>
    </View>
    <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
 <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',height: 50,padding:10}}>
 
-<Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:12}}>Residence Card</Text>
+<Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:12,fontFamily:''}}>Residence Card</Text>
 </View>
    </View>
    <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
 <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',height: 50,padding:10}}>
 
-<Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:12}}>Driver's License</Text>
+<Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:12,fontFamily:''}}>Driver's License</Text>
 </View>
    </View>
     </View>
@@ -212,10 +212,10 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
     
    <View style={{justifyContent:'center',alignItems:'center'}}>
 
-   <Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:15,marginTop:10}}>Remember Enable your Camera!</Text> 
-   <Text style={{color:'#3f518f',opacity:1,fontSize:12}}>please allow your blue wallet App Access</Text>
-   <Text style={{color:'#3f518f',opacity:1,fontSize:12}}>Your camera to Upload camera pictures </Text>
-   <Text style={{color:'#3f518f',opacity:1,fontSize:12}}>To the documents</Text>
+   <Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:15,marginTop:10,fontFamily:''}}>Remember Enable your Camera!</Text> 
+   <Text style={{color:'#3f518f',opacity:1,fontSize:12,fontFamily:''}}>please allow your blue wallet App Access</Text>
+   <Text style={{color:'#3f518f',opacity:1,fontSize:12,fontFamily:''}}>Your camera to Upload camera pictures </Text>
+   <Text style={{color:'#3f518f',opacity:1,fontSize:12,fontFamily:''}}>To the documents</Text>
    </View>
           <View style={{width:'100%',marginTop:30,marginBottom:30}}>
           
@@ -228,7 +228,7 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
 <View>
 <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
 
-<Text style={{color:'#FFF',fontSize:18,fontWeight:'bold'}}>Next</Text>
+<Text style={{color:'#FFF',fontSize:18,fontWeight:'bold',fontFamily:''}}>Next</Text>
 
 </LinearGradient>
 </View>
@@ -258,10 +258,10 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
             </View>
     </View>
     <View style={{ alignItems: "center" }}>
-            <Text style={{ fontSize: 12, fontWeight:'bold',color:'#354e91' }}>Need some Help!</Text>
-            <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10}}>If you need any help remember</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2}}>That we got the best team of</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2}}>so try and contact us.</Text>
+            <Text style={{ fontSize: 12, fontWeight:'bold',color:'#354e91' ,fontFamily:''}}>Need some Help!</Text>
+            <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10,fontFamily:''}}>If you need any help remember</Text>
+             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>That we got the best team of</Text>
+             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>so try and contact us.</Text>
              <View style={{marginTop:30,width:'80%'}}>
              <TouchableOpacity onPress={this.ContactSupportCancel}>
              <View >
@@ -297,11 +297,11 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
             </View>
     </View>
     <View style={{ alignItems: "center" }}>
-            <Text style={{ fontSize: 12, fontWeight:'bold',color:'#354e91' }}>Allow Camera Access!</Text>
-            <Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:18,marginTop:10}}>Remember Enable your Camera!</Text> 
-   <Text style={{color:'#3f518f',opacity:1,fontSize:12}}>please allow your blue wallet App Access</Text>
-   <Text style={{color:'#3f518f',opacity:1,fontSize:12}}>Your camera to Upload camera pictures </Text>
-   <Text style={{color:'#3f518f',opacity:1,fontSize:12}}>To the documents</Text>
+            <Text style={{ fontSize: 12, fontWeight:'bold',color:'#354e91',fontFamily:'' }}>Allow Camera Access!</Text>
+            <Text style={{color:'#3f518f',fontWeight:'bold',opacity:1,fontSize:18,marginTop:10,fontFamily:''}}>Remember Enable your Camera!</Text> 
+   <Text style={{color:'#3f518f',opacity:1,fontSize:12,fontFamily:''}}>please allow your blue wallet App Access</Text>
+   <Text style={{color:'#3f518f',opacity:1,fontSize:12,fontFamily:''}}>Your camera to Upload camera pictures </Text>
+   <Text style={{color:'#3f518f',opacity:1,fontSize:12,fontFamily:''}}>To the documents</Text>
              <View style={{marginTop:30,width:'80%'}}>
              <TouchableOpacity onPress={this.ContactAction}>
              <View >

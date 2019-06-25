@@ -237,23 +237,23 @@ SlideMenu=()=>{
  <View style={{justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection:'row',marginTop:20}}>
           <Image style={{marginRight:10,width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/app4.png")} ></Image>     
-          <Text style={{fontSize:18,fontWeight:'bold',color:'#fff'}}>Exchange</Text>
+          <Text style={{fontSize:18,fontWeight:'bold',color:'#fff',fontFamily:''}}>Exchange</Text>
           </View>      
-          <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10}}>Sell</Text> 
+          <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,fontFamily:''}}>Sell</Text> 
           <View style={{flexDirection:'row',justifyContent:'space-around'}}>
           <View style={{justifyContent:'center',alignItems:'center'}}>
           <Image style={{width: 20, height: 20,resizeMode:'contain'}}   source={require("./assets/minus.png")} ></Image> 
           </View>
           <View style={{marginLeft:10}}>
-          <Text style={{fontSize:20,fontWeight:'bold',color:'#fff'}}>2.258978</Text> 
+          <Text style={{fontSize:20,fontWeight:'bold',color:'#fff',fontFamily:''}}>2.258978</Text> 
           </View>
         
           </View> 
           
           <View style={{flexDirection:'row',justifyContent:'center',width:'100%',marginTop:20,alignItems:'center'}}>       		
-				 <Text style={{fontSize:15,fontWeight:'bold',color:'#4d6bc1'}}>880.889</Text>                                          
+				 <Text style={{fontSize:15,fontWeight:'bold',color:'#4d6bc1',fontFamily:''}}>880.889</Text>                                          
         <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:20}}>
-        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12}}>{this.state.Amount}</Text>
+        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,fontFamily:''}}>{this.state.Amount}</Text>
         <Image  style={{width: 10, height: 10,marginLeft:10,tintColor:'#4e649f'}}  source={require("./assets/down_arrow.png")} ></Image>
         <Picker style={{ position:'absolute', top: 0, width: 500, height: 3000 }}
    selectedValue={this.state.Amount}
@@ -295,8 +295,8 @@ SlideMenu=()=>{
 />
  
 <View style={{justifyContent:'space-between',flexDirection:'row',marginLeft:20,marginRight:20}}>  
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Fraction</Text>  
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,marginRight:90}}>1</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Fraction</Text>  
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,marginRight:90,fontFamily:''}}>1</Text> 
 </View>
 <View
   style={{
@@ -306,8 +306,8 @@ SlideMenu=()=>{
   }}
 />
 <View style={{justifyContent:'space-between',flexDirection:'row',marginLeft:20,marginRight:20}}>  
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Fraction Value</Text>  
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,marginRight:90}}>1</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Fraction Value</Text>  
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,marginRight:90,fontFamily:''}}>1</Text> 
 </View>
 <View
   style={{
@@ -317,16 +317,16 @@ SlideMenu=()=>{
   }}
 />
 <View style={{justifyContent:'space-between',flexDirection:'row',marginLeft:20,marginRight:20}}>  
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Market Rate</Text>  
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Market Rate</Text>  
 <View style={{flexDirection:'row'}}>
 <TouchableOpacity onPress={this.yesTap}>
 <View style={{width:70,height:25,borderRadius:6,backgroundColor:this.state.yesbackgroundcolor,justifyContent:'center'}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:this.state.yesfontcolor,marginLeft:20}}>Yes</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:this.state.yesfontcolor,marginLeft:20,fontFamily:''}}>Yes</Text> 
 </View>
 </TouchableOpacity>
 <TouchableOpacity onPress={this.NoTap}>
 <View style={{width:50,height:25,borderRadius:6,backgroundColor:this.state.nobackgroundcolor,marginLeft:-10,justifyContent:'center',alignItems:'center'}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:this.state.nofontcolor}}>No</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:this.state.nofontcolor,fontFamily:''}}>No</Text> 
 </View>
 </TouchableOpacity>
 </View>
@@ -340,8 +340,8 @@ SlideMenu=()=>{
   }}
 />
 <View style={{justifyContent:'space-between',flexDirection:'row',marginLeft:20,marginRight:20}}>  
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Minimum Value</Text>  
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,marginRight:90}}>0.000</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Minimum Value</Text>  
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,marginRight:90,fontFamily:''}}>0.000</Text> 
 </View>
 <View
   style={{
@@ -353,29 +353,29 @@ SlideMenu=()=>{
 <View style={{backgroundColor:'transparent'}}>
 <View style={{justifyContent:'center',alignItems:'center'}}>
 <View style={{flexDirection:'row'}}>  
-<Text style={{fontSize:15,fontWeight:'bold',color:'#fff',marginTop:10,marginBottom:10}}>Payment Methods</Text>  
+<Text style={{fontSize:15,fontWeight:'bold',color:'#fff',marginTop:10,marginBottom:10,fontFamily:''}}>Payment Methods</Text>  
 <Image style={{marginLeft:10,width: 20, height: 20,marginTop:10}}   source={require("./assets/plus.png")} ></Image>
 </View>
 </View>
 <LinearGradient  colors={['#81DCF9','#00a5ff','#1a5fe1']}  style={{width:'90%',height:200, backgroundColor:'#4286f4',borderTopRightRadius:20,borderTopLeftRadius:20,borderBottomRightRadius:20, borderBottomLeftRadius:20, marginLeft:20,marginRight:30,borderBottomWidth:15,borderBottomColor:'#42f4f4'}}>
 <View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:30,marginRight:30,marginTop:30}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>currency</Text> 
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>Tittle</Text> 
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>Plat.Elect</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',fontFamily:''}}>currency</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',fontFamily:''}}>Tittle</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',fontFamily:''}}>Plat.Elect</Text> 
 </View>
 <View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:30,marginRight:30,marginTop:10}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>BTC</Text> 
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>Minimum value</Text> 
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>paypal</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',fontFamily:''}}>BTC</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',fontFamily:''}}>Minimum value</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',fontFamily:''}}>paypal</Text> 
 </View>
 <View style={{flexDirection:'row',marginLeft:30,marginRight:30,marginTop:30}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff'}}>Description</Text> 
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:70}}>Country</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',fontFamily:''}}>Description</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:70,fontFamily:''}}>Country</Text> 
  
 </View>
 <View style={{flexDirection:'row',marginTop:10,marginLeft:30,marginRight:30}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',}}>Transferdata...</Text> 
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:50}}>Cloumbia</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',fontFamily:''}}>Transferdata...</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:50,fontFamily:''}}>Cloumbia</Text> 
 
 
 </View>
@@ -384,7 +384,7 @@ SlideMenu=()=>{
 </View>
 </LinearGradient>
 <View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:20,marginRight:70,marginTop:20}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,marginBottom:10}}>I accept terms and conditions</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#ffffff',marginTop:10,marginBottom:10,fontFamily:''}}>I accept terms and conditions</Text> 
 <Switch
           trackColor={{true: '#25e2cd'}}
           style={{marginRight:30}}

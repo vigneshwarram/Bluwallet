@@ -21,7 +21,7 @@ export default class DashBoard extends React.Component {
 
   constructor(props) {
     super(props);
-   
+    this.animatedValue = new Animated.Value(0)
     this.state = {
       dataSource:[],
       dataImage:[{'image1':require("./assets/etherem.png"),'image1':require("./assets/etherem.png")}],
@@ -84,6 +84,7 @@ export default class DashBoard extends React.Component {
   componentDidMount()
   {
      this.GetListData()
+     this._animate()
   }
   GetListData=()=>{
     this.Load()
@@ -136,14 +137,15 @@ _onPress=()=>{
    
 }
 pressRight=()=>{
-  if(!this.state.clickr){
-    LayoutAnimation.spring();
-    this.setState({wr: this.state.wr + 50})
-    this.setState({clickr:true})
+  if(this.LinerComponent.props.width==50){
+   // LayoutAnimation.spring();
+   this.LinerComponent.setNativeProps({width:100})
+   // this.setState({wr: this.state.wr + 50})
+  // this.setState({clickr:true})
   }else{
-    LayoutAnimation.spring();
-    this.setState({wr:50})
-    this.setState({clickr:false})
+   // LayoutAnimation.spring();
+    this.LinerComponent.setNativeProps({width:50})
+    //this.setState({clickr:false})
 }
 }
 SlideMenu=()=>{
@@ -230,7 +232,22 @@ get pagination () {
       />
   );
 }
+_animate=()=>{
+  this.animatedValue.setValue(0)
+  Animated.timing(
+    this.animatedValue,
+    {
+      toValue: 1,
+      duration: 2000,
+      easing: Easing.linear
+    }
+  ).start(() => this._animate())
+}
   render() {
+    const Marginwidth=this.animatedValue.interpolate({
+      inputRange: [0, 50],
+      outputRange: [0, 100]
+    })
     const { width } = Dimensions.get('window');
     const contentOffset = (width - 50) / 2;
     const { navigate } = this.props.navigation;
@@ -255,7 +272,7 @@ get pagination () {
       <View style={styles.Maincontainers}>    
       <LinearGradient colors= {['#354e91','#21284a','#21284a']}>
       <ScrollView>
-      <View style={{justifyContent:'space-between',flexDirection:'row'}}>  
+      <Animated.View style={{justifyContent:'space-between',flexDirection:'row',}}>  
 <LinearGradient colors={['#f4347f','#f85276','#fe7a6e']} style={{justifyContent:'center',height:this.state.h,width:this.state.w, alignItems:'flex-end', marginTop:10,borderTopRightRadius:25,borderBottomRightRadius:25}}>
 <TouchableOpacity onPress={this._onPress}>
        <View style={{flexDirection: 'row'}}> 
@@ -269,11 +286,11 @@ get pagination () {
             <View style={{flexDirection: 'row',justifyContent:'flex-start',alignItems:"center",marginTop:15}}> 
           <Image  style={{width: 30, height: 30,resizeMode:'contain'}}  source={require("./assets/app1white.png")} ></Image>   
           <View style={{flexDirection:'column'}}>
-          <Text style={{marginLeft:10,fontSize:18,fontWeight:'bold',color:'#fff'}}>Wallet</Text>       
+          <Text style={{marginLeft:10,fontSize:18,fontWeight:'bold',color:'#fff',fontFamily:''}}>Wallet</Text>       
           </View>       
           </View>
     
-            <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']} style={{height:this.state.hr,width:this.state.wr,justifyContent:'center',alignItems:'flex-start',borderTopLeftRadius:25,borderBottomLeftRadius:25, marginTop:10}}>
+            <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  ref={component => this.LinerComponent = component} style={{height:this.state.hr,width:this.state.wr,justifyContent:'center',alignItems:'flex-start',borderTopLeftRadius:25,borderBottomLeftRadius:25, marginTop:10}}>
             <TouchableOpacity onPress={this.pressRight}>
        <View style={{flexDirection: 'row'}}> 
           <Image style={{marginLeft:10,width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/app1white.png")} ></Image>     
@@ -281,16 +298,16 @@ get pagination () {
           </View>
           </TouchableOpacity>
             </LinearGradient>
-      </View>
+      </Animated.View>
       {((this.state.NoPopup?null:
       ((!this.state.ProfileComplete)?
         <View >
       <LinearGradient colors= {['#395ea4','#446ea8','#4c78a9']} style={{width:'95%',marginLeft:10,marginRight:10,padding:10,height:160,marginTop:15,borderRadius:10}}>
       <View style={{flexDirection:'row'}}>
       <View>
-      <Text style={{marginLeft:20,fontSize:18,fontWeight:'bold',color:'#fff'}}>Complete Your Profile</Text>  
+      <Text style={{marginLeft:20,fontSize:18,fontWeight:'bold',color:'#fff',fontFamily:''}}>Complete Your Profile</Text>  
       <View style={{flexDirection:'row',marginTop:10}}>
-      <Text style={{marginLeft:20,fontSize:10,color:'#fff',width:'65%'}}>Complete you profile today to start using your wallet successfully </Text>  
+      <Text style={{marginLeft:20,fontSize:10,color:'#fff',width:'65%',fontFamily:''}}>Complete you profile today to start using your wallet successfully </Text>  
       </View>
       <TouchableOpacity onPress={this.ContinueClick}>
       <View style={{width:'60%',marginLeft:20,marginTop:30}}>
@@ -364,7 +381,7 @@ get pagination () {
     
       
             <View style={{justifyContent:'center',alignItems:'center',marginTop:-80}}>
-                 <Text style={{marginLeft:10,marginTop:15,fontSize:15,fontWeight:'bold',color:'#4d6bc1'}}>Balance</Text> 
+                 <Text style={{marginLeft:10,marginTop:15,fontSize:15,fontWeight:'bold',color:'#4d6bc1',fontFamily:''}}>Balance</Text> 
                  </View>
                
                <View style={{ marginTop:30,justifyContent:'center',alignItems:'center'}}>
@@ -386,9 +403,9 @@ justifyContent:'center',alignItems:"center"}} >
                 </View>
                  </View>
                  <View style={{flexDirection:'row',justifyContent:'center',width:'100%',marginTop:20,alignItems:'center'}}>       		
-				 <Text style={{fontSize:15,fontWeight:'bold',color:'#4d6bc1'}}>880.889</Text>                                          
+				 <Text style={{fontSize:15,fontWeight:'bold',color:'#4d6bc1',fontFamily:''}}>880.889</Text>                                          
         <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:20}}>
-        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12}}>{this.state.Amount}</Text>
+        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,fontFamily:''}}>{this.state.Amount}</Text>
         <Image  style={{width: 10, height: 10,marginLeft:10}}  source={require("./assets/down_arrow.png")} ></Image>
         <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000 }}
    selectedValue={this.state.Amount}
@@ -412,23 +429,23 @@ justifyContent:'center',alignItems:"center"}} >
                  <View style={{flexDirection:'row'}}>
                  <View style={{justifyContent:'center',alignItems:'center'}}>
                  <View style={{width:45,height:25,borderWidth:1,borderColor:'#405ba8',justifyContent:'center',alignItems:'center',borderRadius:6}}>
-                 <Text style={{fontSize:12,fontWeight:'bold',color:'#858ead'}}>All</Text>
+                 <Text style={{fontSize:12,fontWeight:'bold',color:'#858ead',fontFamily:''}}>All</Text>
                  </View>
                  </View>
                 
                  <View style={{marginLeft:30}}>
                  <View style={{flexDirection:'row'}}>
-                 <Text style={{fontSize:12,fontWeight:'bold',color:'#4d6bc1'}}>ETH</Text>
+                 <Text style={{fontSize:12,fontWeight:'bold',color:'#4d6bc1',fontFamily:''}}>ETH</Text>
                  <View style={{marginTop:5}}>
                  <Image style={{resizeMode:'contain',width:10,height:10}}   source={require("./assets/red.png")} ></Image>          
                  </View>
                  </View>
                   
-                 <Text style={{marginTop:1,fontSize:12,fontWeight:'bold',color:'#858ead'}}>435$</Text> 
+                 <Text style={{marginTop:1,fontSize:12,fontWeight:'bold',color:'#858ead',fontFamily:''}}>435$</Text> 
                  </View>
                  <View style={{marginLeft:40}}>
                  <View style={{flexDirection:'row'}}>
-                 <Text style={{fontSize:12,fontWeight:'bold',color:'#4d6bc1'}}>BTC</Text> 
+                 <Text style={{fontSize:12,fontWeight:'bold',color:'#4d6bc1',fontFamily:''}}>BTC</Text> 
                  <View style={{marginTop:3}}>
                 <Image style={{resizeMode:'contain',width:10,height:10}}   source={require("./assets/green.png")} ></Image> 
                 </View>
@@ -438,13 +455,13 @@ justifyContent:'center',alignItems:"center"}} >
                  </View>
                  <View  style={{marginLeft:40}}>
                  <View style={{flexDirection:'row'}}>
-                 <Text style={{fontSize:12,fontWeight:'bold',color:'#4d6bc1'}}>XRP</Text> 
+                 <Text style={{fontSize:12,fontWeight:'bold',color:'#4d6bc1',fontFamily:''}}>XRP</Text> 
                  <View style={{marginTop:3}}>
                  <Image style={{resizeMode:'contain',width:10,height:10}}   source={require("./assets/green.png")} ></Image> 
                  </View>
                  </View>
                 
-                 <Text style={{marginTop:1,fontSize:12,fontWeight:'bold',color:'#858ead'}}>50$</Text> 
+                 <Text style={{marginTop:1,fontSize:12,fontWeight:'bold',color:'#858ead',fontFamily:''}}>50$</Text> 
                  </View>
                 
                  </View>
@@ -452,11 +469,11 @@ justifyContent:'center',alignItems:"center"}} >
                </View>
 <View style={{height:'100%'}}>
                  <View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:30,marginRight:30,marginTop:10}}>
-                 <Text style={{marginLeft:20,fontSize:15,fontWeight:'bold',color:'#858ead'}}>Activity</Text>
+                 <Text style={{marginLeft:20,fontSize:15,fontWeight:'bold',color:'#858ead',fontFamily:''}}>Activity</Text>
                                 
         <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',padding:10,backgroundColor:'#2c4b9d',borderRadius:15}}>
         <Image  style={{width: 10, height: 10,tintColor:'#5997fa'}}  source={require("./assets/down_arrow.png")} ></Image> 
-        <Text style={{color:'#5997fa',fontWeight:'bold',opacity:1,fontSize:12,marginLeft:5}}>{this.state.Time}</Text> 
+        <Text style={{color:'#5997fa',fontWeight:'bold',opacity:1,fontSize:12,marginLeft:5,fontFamily:''}}>{this.state.Time}</Text> 
         <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000 }}
    selectedValue={this.state.Time}
   onValueChange={(itemValue, itemIndex) => this.selectedTime(itemValue,itemIndex)}>

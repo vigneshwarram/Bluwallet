@@ -161,14 +161,14 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
     </View>
     </TouchableOpacity>
     <View style={{justifyContent:'center',alignItems:'center'}}>
-    <Text style={{color:'#4e649f',opacity:1,fontSize:20,marginTop:25}}>Profile</Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:20,marginTop:25,fontFamily:''}}>Profile</Text>
     </View>
     <View></View>
     </View>
     <View style={{justifyContent:'center',alignItems:'center',backgroundColor:'#fff'}}>
-    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:25,}}>We need this to verify your identify,In order for</Text>
-    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,}}> you to use this improved feature.It should only</Text>
-    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,}}> Take a couple of minutes</Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:25,fontFamily:''}}>We need this to verify your identify,In order for</Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}> you to use this improved feature.It should only</Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}> Take a couple of minutes</Text>
           <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff',marginTop:30, justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
 <View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
 
@@ -228,11 +228,11 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
         
 <LinearGradient colors={['#354e91','#354e91','#354e91']}  style={{padding:15,alignItems:'center'}}>
 <TouchableOpacity>
-<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc',marginLeft:-30}}>when you "sent",you accept</Text>
+<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,backgroundColor:'#facbcc',marginLeft:-30,fontFamily:''}}>when you "sent",you accept</Text>
 <View style={{flexDirection:'row',marginTop:2,marginLeft:-30}}>
-<Text style={{color:'#5496ff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,}}>Terms of Service</Text>
-<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,marginLeft:8}}>&</Text>
-<Text style={{color:'#5496ff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,marginLeft:8}}>Politic and privacy</Text>
+<Text style={{color:'#5496ff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,fontFamily:''}}>Terms of Service</Text>
+<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,marginLeft:8,fontFamily:''}}>&</Text>
+<Text style={{color:'#5496ff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,marginLeft:8,fontFamily:''}}>Politic and privacy</Text>
 </View>
 
 </TouchableOpacity>

@@ -192,7 +192,7 @@ borderTopEndRadius:25,borderBottomEndRadius:25,
 <View>
 <Image style={{marginLeft:10,width: 30, height: 30,resizeMode:'contain'}}   source={require("../assets/app6.png")} ></Image>     
 </View>
- <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:15,marginLeft:20}}>Credit Card</Text>
+ <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:15,marginLeft:20,fontFamily:''}}>Credit Card</Text>
 </View>
 <View style={{marginTop:20}}> 
 
@@ -201,7 +201,7 @@ borderTopEndRadius:25,borderBottomEndRadius:25,
  
  <View  style={{justifyContent:'center',alignItems:'center',flexDirection:'row'
  }}>
-<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:20,marginLeft:10}}>Request a Card</Text>
+<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:20,marginLeft:10,fontFamily:''}}>Request a Card</Text>
 <TouchableOpacity onPress={this.AddCardAction}>
 <View>
 <Image  style={{width: 40, height: 40,marginLeft:10}}  source={require("../assets/plusflash.png")} ></Image> 
@@ -224,11 +224,11 @@ borderBottomWidth: 1,
 />
 <View style={{flexDirection:'row',marginLeft:30}}>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Name</Text>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Name</Text>
 </View>  
 
 <View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,textAlign:'center',opacity:0.7}}>Jhon Doe</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,textAlign:'center',opacity:0.7,fontFamily:''}}>Jhon Doe</Text> 
 </View>  
 <View style={{flexDirection:'row',flex:1}}>
 </View> 
@@ -242,11 +242,11 @@ borderBottomWidth: 1,
 />
 <View style={{flexDirection:'row',marginLeft:30}}>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Country</Text>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Country</Text>
 </View>  
 
 <View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,textAlign:'center',opacity:0.7}}>Coloumbia</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,textAlign:'center',opacity:0.7,fontFamily:''}}>Coloumbia</Text> 
 </View>  
 <View style={{flexDirection:'row',flex:1}}>
 </View> 
@@ -260,11 +260,11 @@ borderBottomWidth: 1,
 />
 <View style={{flexDirection:'row',marginLeft:30}}>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>E-mail</Text>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>E-mail</Text>
 </View>  
 
 <View style={{flexDirection:'row'}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,textAlign:'center',opacity:0.7}}>vickyrams20@gmail.com</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,textAlign:'center',opacity:0.7,fontFamily:''}}>vickyrams20@gmail.com</Text> 
 </View>  
 <View style={{flexDirection:'row',flex:1}}>
 </View> 
@@ -278,11 +278,11 @@ borderBottomWidth: 1,
 />
 <View style={{flexDirection:'row',marginLeft:30}}>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Id</Text>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Id</Text>
 </View>  
 
 <View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,textAlign:'center',opacity:0.7}}>25571421</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,textAlign:'center',opacity:0.7,fontFamily:''}}>25571421</Text> 
 </View>  
 <View style={{flexDirection:'row',flex:1}}>
 <Image  style={{  width:30,height:30,
@@ -299,11 +299,11 @@ borderBottomWidth: 1,
 />
 <View style={{flexDirection:'row',marginLeft:30}}>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Residency</Text>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Residency</Text>
 </View>  
 
 <View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,textAlign:'center',opacity:0.7}}></Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,textAlign:'center',opacity:0.7,fontFamily:''}}></Text> 
 </View>  
 <View style={{flexDirection:'row',flex:1}}>
 <Image  style={{  width:30,height:30,
@@ -318,7 +318,7 @@ borderBottomWidth: 1,
 }}
 />
 <View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:20,marginRight:70,marginTop:20}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,marginBottom:10}}>I accept terms and conditions</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,marginBottom:10,fontFamily:''}}>I accept terms and conditions</Text> 
 <Switch
    trackColor={{true: '#25e2cd'}}
    style={{marginRight:30}}

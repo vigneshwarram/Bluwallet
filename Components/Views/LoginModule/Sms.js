@@ -167,12 +167,12 @@ SlideMenu=()=>{
         }}>
         <Image  style={{width: 40, height: 40,resizeMode:'contain'}}  source={require("../assets/close-envelope.png")} ></Image>
         </View>
-        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10}}>Check your Inbox...</Text>
-        <Text style={{color:'#80b0fe',fontWeight:'bold',opacity:1,fontSize:20,marginTop:20}}>Jhondoe@gmail.com</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:20}}>Search on email on Blockchain</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2}}>And click the link of verification </Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2}}>To complete the configuration</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2}}>of your wallet</Text>
+        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10,fontFamily:''}}>Check your Inbox...</Text>
+        <Text style={{color:'#80b0fe',fontWeight:'bold',opacity:1,fontSize:20,marginTop:20,fontFamily:''}}>Jhondoe@gmail.com</Text>
+             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:20,fontFamily:''}}>Search on email on Blockchain</Text>
+             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>And click the link of verification </Text>
+             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>To complete the configuration</Text>
+             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>of your wallet</Text>
              
         </View>  
         <View>

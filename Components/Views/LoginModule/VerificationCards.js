@@ -164,12 +164,12 @@ SlideMenu=()=>{
     return (  
         
       <View style={styles.Maincontainers}>  
-       <ScrollView>
+  
        <View> 
 
 <LinearGradient
 colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>   
-
+     <ScrollView>
 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
 <View style={{justifyContent:'center',alignItems:'center'}}>
     <Image  style={{width: 15, height: 15,marginLeft:20,marginTop:25,resizeMode:'contain'}}  source={require("../assets/left-arrow.png")} ></Image> 
@@ -196,9 +196,9 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
 
  <View  style={{justifyContent:'center',alignItems:'center',marginTop:20
  }}>
-      <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10}}>Lets Verified!</Text>
-      <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10,}}>Please choose the country where your document was</Text>
-      <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,}}>Issued</Text>
+      <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10,fontFamily:''}}>Lets Verified!</Text>
+      <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10,fontFamily:''}}>Please choose the country where your document was</Text>
+      <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>Issued</Text>
   
       
  </View>  
@@ -210,7 +210,7 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
 colors={[this.state.passportcolor1,this.state.passportcolor2,this.state.passportcolor3]}  start={{x: 0, y: 0}} end={{x: 1, y: 0}}>
 <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center', height: 50,padding:10,paddingLeft:50,paddingRight:50}}>
 
-<Text style={{color:this.state.passporttextcolor}}>Passport</Text>
+<Text style={{color:this.state.passporttextcolor,fontFamily:''}}>Passport</Text>
 <Image  style={{width: 30, height: 30,resizeMode:'contain',tintColor:this.state.PassportTintcolor}}  source={require("../assets/passport.png")} ></Image>
 </View>
 </LinearGradient>
@@ -223,7 +223,7 @@ colors={[this.state.passportcolor1,this.state.passportcolor2,this.state.passport
  <LinearGradient
 colors={[this.state.idcolor1,this.state.idcolor2,this.state.idcolor3]}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
 <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',height: 50,padding:10,paddingLeft:50,paddingRight:50}}>
-<Text style={{color:this.state.idtextcolor}}>ID-Card</Text>
+<Text style={{color:this.state.idtextcolor,fontFamily:''}}>ID-Card</Text>
 <Image  style={{width: 30, height: 30,resizeMode:'contain',tintColor:this.state.idTintcolor}}  source={require("../assets/id_card.png")} ></Image>
 
 
@@ -236,7 +236,7 @@ colors={[this.state.idcolor1,this.state.idcolor2,this.state.idcolor3]}  start={{
  <LinearGradient
 colors={[this.state.residencegradientcolor1,this.state.residencegradientcolor2,this.state.residencegradientcolor3]}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>  
 <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',height: 50,padding:10,paddingLeft:50,paddingRight:50}}>
-<Text style={{color:this.state.Residencecolor}}>Residence Permit</Text>
+<Text style={{color:this.state.Residencecolor,fontFamily:''}}>Residence Permit</Text>
 <Image  style={{width: 30, height: 30,resizeMode:'contain',tintColor:this.state.residenceTintcolor}}  source={require("../assets/residency.png")} ></Image>
 </View>
  </LinearGradient>
@@ -250,7 +250,7 @@ colors={[this.state.drivercolor1,this.state.drivercolor2,this.state.drivercolor3
 
 <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',height: 50,padding:10,paddingLeft:50,paddingRight:50}}>
 
-<Text style={{color:this.state.drivertextcolor}}>Drivers's License</Text>
+<Text style={{color:this.state.drivertextcolor,fontFamily:''}}>Drivers's License</Text>
 <Image  style={{width: 30, height: 30,resizeMode:'contain',tintColor:this.state.driverTintcolor}}  source={require("../assets/driver.png")} ></Image>
 
    </View>
@@ -263,10 +263,10 @@ colors={[this.state.drivercolor1,this.state.drivercolor2,this.state.drivercolor3
       </View>    
 </View>  
  
- 
+ </ScrollView>
 </LinearGradient> 
 </View>
-       </ScrollView>
+
     
  <View style={{position:'absolute',bottom:0,width:'100%'}}>
  <TouchableOpacity onPress={this.BeginAction}>  
@@ -279,11 +279,11 @@ colors={[this.state.drivercolor1,this.state.drivercolor2,this.state.drivercolor3
  </TouchableOpacity> 
 <LinearGradient colors={['#354e91','#354e91','#354e91']}  style={{padding:15,alignItems:'center'}}>
 <TouchableOpacity>
-<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,marginLeft:-30}}>when you "sent",you accept</Text>
-<View style={{flexDirection:'row',marginTop:2,marginLeft:-30}}>
-<Text style={{color:'#5496ff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,}}>Terms of Service</Text>
-<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,marginLeft:8}}>&</Text>
-<Text style={{color:'#5496ff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,marginLeft:8}}>Politic and privacy</Text>
+<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,marginLeft:-30,fontFamily:''}}>when you "sent",you accept</Text>
+<View style={{flexDirection:'row',marginTop:2,marginLeft:-30,fontFamily:''}}>
+<Text style={{color:'#5496ff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,fontFamily:''}}>Terms of Service</Text>
+<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,marginLeft:8,fontFamily:''}}>&</Text>
+<Text style={{color:'#5496ff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,marginLeft:8,fontFamily:''}}>Politic and privacy</Text>
 </View>
 
 </TouchableOpacity>

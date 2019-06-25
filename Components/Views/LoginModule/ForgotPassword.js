@@ -168,7 +168,7 @@ SlideMenu=()=>{
             />    
         </View>
         <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
-        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:15,textAlign:'center'}}>We'll send you a email ,to show you how to take back your password</Text>
+        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:15,textAlign:'center',fontFamily:''}}>We'll send you a email ,to show you how to take back your password</Text>
         </View>
 </View>  
   

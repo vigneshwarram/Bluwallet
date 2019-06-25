@@ -1,5 +1,8 @@
 
 import React, {Component} from 'react';
+import {
+  Easing,Animated
+} from 'react-native';
 import DashBoard from './Components/Views/DashBoard'
 import Vault from './Components/Views/Vault'
 import VaultFilter from './Components/Views/VaultFilter'
@@ -40,12 +43,11 @@ import {
  class App extends Component {
     render() {
       const MainNavigator = createStackNavigator({
-        Launch:{screen:Launch},
+       Launch: { screen: Launch },
         DocumentPhoto:{screen:DocumentPhoto},
         TakePhoto:{screen:TakePhoto},
         TakePassportPhoto:{screen:TakePassportPhoto},
-        VerificationCards:{screen:VerificationCards},
-      
+        VerificationCards:{screen:VerificationCards},    
         DashBoard:{screen:DashBoard},        
         ForgotPassword:{screen:ForgotPassword},
         Confirm:{screen:Confirm},
@@ -73,8 +75,7 @@ import {
         Publish:{screen:Publish},
         Sms:{screen:Sms},
         MoreInfo:{screen:MoreInfo},
-        ChooseCountry:{screen:ChooseCountry},
-        
+        ChooseCountry:{screen:ChooseCountry},       
         VaultFilter:{screen:VaultFilter},
      
       

@@ -237,7 +237,7 @@ right: 0}}>
     <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',marginTop:-30}}>
     <Image style={{marginLeft:10,width: 25, height: 25,resizeMode:'contain'}}   source={require("./assets/app5.png")} ></Image>     
     <Text style={{color:'#fff',fontSize:15,fontWeight:
-    'bold',marginLeft:10}}>User</Text>    
+    'bold',marginLeft:10,fontFamily:''}}>User</Text>    
      </View>
      <View style={{alignItems:'flex-end'}}>
     <Image style={{marginLeft:10,width: 30, height: 30,marginTop:20,marginRight:10,resizeMode:'contain'}}   source={require("./assets/setting1.png")} ></Image> 
@@ -258,7 +258,7 @@ right: 0,borderRadius:25,marginTop:-40,
     </View>
    
     <View style={{justifyContent:'center',alignItems:'center',marginTop:80}}>
-        <Text style={{color:'#fff',fontWeight:'bold',opacity:0.9}}>Jhon Doe</Text>
+        <Text style={{color:'#fff',fontWeight:'bold',opacity:0.9,fontFamily:''}}>Jhon Doe</Text>
     </View>
    
                        <View
@@ -282,11 +282,11 @@ right: 0,borderRadius:25,marginTop:-40,
 />
 <View style={{flexDirection:'row',marginLeft:30}}>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>ID</Text>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>ID</Text>
 </View>  
 
 <View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,textAlign:'center',opacity:0.7}}>1901</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,textAlign:'center',opacity:0.7,fontFamily:''}}>1901</Text> 
 </View>  
 
 </View>
@@ -299,11 +299,11 @@ right: 0,borderRadius:25,marginTop:-40,
 />
 <View style={{flexDirection:'row',marginLeft:30}}>  
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Celular</Text>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Celular</Text>
 </View>
 
 <View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7}}>+53 31265 845</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:''}}>+53 31265 845</Text> 
 </View>  
 
 </View>
@@ -316,10 +316,10 @@ right: 0,borderRadius:25,marginTop:-40,
 />
 <View style={{flexDirection:'row',marginLeft:30}}>  
 <View  style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Register</Text>  
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Register</Text>  
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7}}>2019 03 17</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:''}}>2019 03 17</Text> 
 </View>
 </View>
 <View
@@ -339,10 +339,10 @@ right: 0,borderRadius:25,marginTop:-40,
 />
 <View style={{flexDirection:'row',marginLeft:30}}>  
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Country</Text>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Country</Text>
 </View>
   <View style={{flex:1}}>
-  <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7}}>Colombia</Text> 
+  <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:''}}>Colombia</Text> 
   </View>
 
 </View>
@@ -355,10 +355,10 @@ right: 0,borderRadius:25,marginTop:-40,
 />
 <View style={{flexDirection:'row',marginLeft:30}}>  
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>E-mail</Text>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>E-mail</Text>
 </View>
   <View style={{flex:1}}>
-  <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7}}>vickyrams20@gmail.com</Text> 
+  <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:''}}>vickyrams20@gmail.com</Text> 
   </View>
 
 </View>
@@ -372,10 +372,10 @@ right: 0,borderRadius:25,marginTop:-40,
 
 <View style={{flexDirection:'row',marginLeft:30}}>  
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Coin purse</Text>  
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Coin purse</Text>  
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7}}>Bit coin</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:''}}>Bit coin</Text> 
 </View>
 
 </View>
@@ -388,10 +388,10 @@ right: 0,borderRadius:25,marginTop:-40,
 />
 <View style={{flexDirection:'row',marginLeft:30}}>  
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Version</Text>  
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Version</Text>  
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7}}>2.0.4</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:''}}>2.0.4</Text> 
 </View>
 
 
@@ -411,8 +411,8 @@ right: 0,borderRadius:25,marginTop:-40,
  <Image style={{width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/monitor1.png")} ></Image>   
  </View>  
  <View style={{alignItems:'center',marginLeft:30}}>
- <Text style={{color:'#4286f4',fontSize:15,textAlign:'center',marginTop:5}}>Segundo Factor</Text>
- <Text style={{color:'#4286f4',fontSize:15,textAlign:'center',marginTop:10}}>E-wallet web</Text>
+ <Text style={{color:'#4286f4',fontSize:15,textAlign:'center',marginTop:5,fontFamily:''}}>Segundo Factor</Text>
+ <Text style={{color:'#4286f4',fontSize:15,textAlign:'center',marginTop:10,fontFamily:''}}>E-wallet web</Text>
  </View>
   
   </View>
@@ -423,7 +423,7 @@ right: 0,borderRadius:25,marginTop:-40,
 
 <View style={{justifyContent:'center',alignItems:'center'}}>
 <Image style={{width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/notify.png")} ></Image> 
-<Text style={{color:'#4286f4',fontSize:10,textAlign:'center'}}>Notification</Text>
+<Text style={{color:'#4286f4',fontSize:10,textAlign:'center',fontFamily:''}}>Notification</Text>
 
 </View>
 
@@ -431,12 +431,12 @@ right: 0,borderRadius:25,marginTop:-40,
 
 <View style={{justifyContent:'center',alignItems:'center'}}>
 <Image style={{width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/secure-user.png")} ></Image> 
-<Text style={{color:'#4286f4',fontSize:10,textAlign:'center'}}>Security</Text>
+<Text style={{color:'#4286f4',fontSize:10,textAlign:'center',fontFamily:''}}>Security</Text>
 </View>
 <View style={{justifyContent:'center',alignItems:'center'}}>
 <Image style={{width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/terms.png")} ></Image> 
 <View style={{justifyContent:'center',alignItems:'center'}}>
-<Text style={{color:'#4286f4',fontSize:10,textAlign:'center'}}>Terms of use</Text>
+<Text style={{color:'#4286f4',fontSize:10,textAlign:'center',fontFamily:''}}>Terms of use</Text>
 </View>
 
 
@@ -445,7 +445,7 @@ right: 0,borderRadius:25,marginTop:-40,
 <View style={{justifyContent:'center',alignItems:'center'}} >
 <Image style={{width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/Share.png")} ></Image> 
 
-<Text style={{color:'#4286f4',fontSize:10,textAlign:'center'}}>Invite Friends</Text>
+<Text style={{color:'#4286f4',fontSize:10,textAlign:'center',fontFamily:''}}>Invite Friends</Text>
 
 
 </View>

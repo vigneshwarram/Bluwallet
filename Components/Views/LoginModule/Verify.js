@@ -184,10 +184,10 @@ SlideMenu=()=>{
         }}>
         <Image  style={{width: 40, height: 40,resizeMode:'contain'}}  source={require("../assets/mobile-phone.png")} ></Image>
         </View>
-        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10}}>Verify with 2 Steps</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10}}>Avoid  unauthorized  access to your</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2}}>Wallet ,Enable the verification of 2 steps to  </Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2}}>upgrade the security on your wallet</Text>
+        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10,fontFamily:''}}>Verify with 2 Steps</Text>
+             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10,fontFamily:''}}>Avoid  unauthorized  access to your</Text>
+             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>Wallet ,Enable the verification of 2 steps to  </Text>
+             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>upgrade the security on your wallet</Text>
              
         </View>  
         <View>

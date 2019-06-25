@@ -208,7 +208,7 @@ ProfileTouch=()=>{
             <View style={{flexDirection: 'row',justifyContent:'flex-start',alignItems:"center",marginTop:15}}> 
           <Image  style={{width: 30, height: 30,resizeMode:'contain'}}  source={require("../assets/app6.png")} ></Image>   
           <View style={{flexDirection:'column'}}>
-          <Text style={{marginLeft:10,fontSize:18,fontWeight:'bold',color:'#fff'}}>Credit Card</Text>       
+          <Text style={{marginLeft:10,fontSize:18,fontWeight:'bold',color:'#fff',fontFamily:''}}>Credit Card</Text>       
           </View>       
           </View>
     
@@ -237,7 +237,7 @@ ProfileTouch=()=>{
 <View style={{justifyContent:'space-around',alignItems:'center',flexDirection:'row',marginTop:10}}> 
 <TouchableOpacity onPress={this.ActivityTouch}>
 <View>
-<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:15,marginLeft:40,opacity:this.state.ActivityOpacity}}>Activity</Text>
+<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:15,marginLeft:40,opacity:this.state.ActivityOpacity,fontFamily:''}}>Activity</Text>
 <View
   style={{
     borderBottomColor: '#fff',width:60,marginLeft:40,marginTop:3,
@@ -251,7 +251,7 @@ ProfileTouch=()=>{
 
 <TouchableOpacity onPress={this.GraphTouch}>
 <View>
-<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:15,marginLeft:40,opacity:this.state.GraphOpacity}}>Graph</Text>
+<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:15,marginLeft:40,opacity:this.state.GraphOpacity,fontFamily:''}}>Graph</Text>
 <View
   style={{
     borderBottomColor: '#fff',width:60,marginLeft:40,marginTop:3,
@@ -263,7 +263,7 @@ ProfileTouch=()=>{
 </View>
  <View style={{flexDirection:'row',alignItems:'center',padding:10,backgroundColor:'#2b4599',borderRadius:20,width:80,marginTop:10,marginLeft:20}}>
         <Image  style={{width: 10, height: 10,tintColor:'#5994f8'}}  source={require("../assets/down_arrow.png")} ></Image> 
-        <Text style={{color:'#5994f8',fontWeight:'bold',opacity:1,fontSize:12,marginLeft:5}}>{this.state.Time}</Text> 
+        <Text style={{color:'#5994f8',fontWeight:'bold',opacity:1,fontSize:12,marginLeft:5,fontFamily:''}}>{this.state.Time}</Text> 
         <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000 }}
    selectedValue={this.state.Time}
   onValueChange={(itemValue, itemIndex) => this.selectedTime(itemValue,itemIndex)}>
@@ -299,7 +299,7 @@ ProfileTouch=()=>{
           </View>
           <View style={{flexDirection:'column'}}>
           <View style={{flex:1, flexDirection: 'row',justifyContent:'space-between'}}>            
-         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff'}}>{(item.Status!='Completed')?'Sent to Dan23':"Confirmed"}</Text>       
+         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff',fontFamily:''}}>{(item.Status!='Completed')?'Sent to Dan23':"Confirmed"}</Text>       
      <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
      <Image style={{width: 25,marginTop:10, height: 25}}   source={require("../assets/plusblue.png")} ></Image>    
      <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff'}}>$ 9060</Text> 

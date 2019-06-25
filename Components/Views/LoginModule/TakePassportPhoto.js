@@ -173,10 +173,10 @@ SlideMenu=()=>{
         <View  style={{justifyContent:'center',alignItems:'center',marginTop:10
         }}>
         
-        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10,textAlign:'center'}}>Take a  Photo of passport's photo page</Text>
+        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10,textAlign:'center',fontFamily:''}}>Take a  Photo of passport's photo page</Text>
 
              
-             <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:10,}}>Make sure that your document is readable</Text>
+             <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:10,fontFamily:''}}>Make sure that your document is readable</Text>
            
          
              
@@ -196,7 +196,7 @@ SlideMenu=()=>{
 <View>
 <LinearGradient colors={['#61bff2','#4f92e9','#4476d7']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:15,justifyContent:'center',alignItems:'center'}}>
 
-<Text style={{color:'#FFF',fontSize:18,fontWeight:'bold'}}>Continue</Text>
+<Text style={{color:'#FFF',fontSize:18,fontWeight:'bold',fontFamily:''}}>Continue</Text>
 
 </LinearGradient>
 </View>

@@ -236,9 +236,9 @@ SlideMenu=()=>{
  <View style={{justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection:'row',marginTop:20}}>
           <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/app4.png")} ></Image>     
-          <Text style={{fontSize:18,fontWeight:'bold',color:'#fff'}}>Exchange</Text>
+          <Text style={{fontSize:18,fontWeight:'bold',color:'#fff',fontFamily:''}}>Exchange</Text>
           </View>      
-          <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10}}>How Much do you want to buy?</Text>           
+          <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,fontFamily:''}}>How Much do you want to buy?</Text>           
           <View style={{flexDirection: 'row',marginLeft:20}}>
           <View style={{width:'40%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:10, justifyContent:"center"}}>
 <View style={{flexDirection:'row',marginLeft:20}}> 
@@ -293,8 +293,8 @@ SlideMenu=()=>{
 </View>  
 
 <View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10,textAlign:'center'}}>Yotemplario</Text> 
-<Text style={{fontSize:12,fontWeight:'bold',color:'#42f477',marginTop:-5}}>500+</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10,textAlign:'center',fontFamily:''}}>Yotemplario</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#42f477',marginTop:-5,fontFamily:''}}>500+</Text> 
 </View>  
 
 </View>
@@ -307,11 +307,11 @@ SlideMenu=()=>{
 />
 <View style={{flexDirection:'row',marginLeft:20}}>  
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Price</Text>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Price</Text>
 </View>
 
 <View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10}}>15,650,000.0 COP</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10,fontFamily:''}}>15,650,000.0 COP</Text> 
 </View>  
 
 </View>
@@ -324,10 +324,10 @@ SlideMenu=()=>{
 />
 <View style={{flexDirection:'row',marginLeft:20}}>  
 <View  style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Country</Text>  
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Country</Text>  
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10}}>Columbia</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10,fontFamily:''}}>Columbia</Text> 
 </View>
 </View>
 <View
@@ -339,10 +339,10 @@ SlideMenu=()=>{
 />
 <View style={{flexDirection:'row',marginLeft:20}}>  
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Commercial Limits</Text>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Commercial Limits</Text>
 </View>
   <View style={{flex:1}}>
-  <Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10}}>1000-100,00,00 COP</Text> 
+  <Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10,fontFamily:''}}>1000-100,00,00 COP</Text> 
   </View>
 
 </View>
@@ -356,10 +356,10 @@ SlideMenu=()=>{
 <View style={{height:40,width:'100%',backgroundColor:'transparent'}}></View>
 <View style={{flexDirection:'row',marginLeft:20}}>  
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Title</Text>  
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Title</Text>  
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10}}>Bank Transfer</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10,fontFamily:''}}>Bank Transfer</Text> 
 </View>
 
 </View>
@@ -372,13 +372,13 @@ SlideMenu=()=>{
 />
 <View style={{flexDirection:'row',marginLeft:20}}>  
 <View style={{flex:2.2}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>Description</Text>  
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Description</Text>  
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10,marginLeft:-10}}>Transfer data</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10,marginLeft:-10,fontFamily:''}}>Transfer data</Text> 
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:20,fontWeight:'bold',color:'#a9b4d4',marginTop:-5}}>...</Text> 
+<Text style={{fontSize:20,fontWeight:'bold',color:'#a9b4d4',marginTop:-5,fontFamily:''}}>...</Text> 
 </View>
 
 </View>

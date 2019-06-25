@@ -238,9 +238,9 @@ SlideMenu=()=>{
  <View style={{justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection:'row',marginTop:20}}>
           <Image style={{marginRight:10,width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/app4.png")} ></Image>     
-          <Text style={{fontSize:18,fontWeight:'bold',color:'#fff'}}>Exchange</Text>
+          <Text style={{fontSize:18,fontWeight:'bold',color:'#fff',fontFamily:''}}>Exchange</Text>
           </View>      
-          <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10}}>How Much do you want to buy?</Text>           
+          <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,fontFamily:''}}>How Much do you want to buy?</Text>           
           <View style={{flexDirection: 'row',marginLeft:20}}>
           <View style={{width:'40%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:10, justifyContent:"center"}}>
 <View style={{flexDirection:'row',marginLeft:20}}> 
@@ -281,7 +281,7 @@ SlideMenu=()=>{
    <ScrollView>
 <View style={{marginTop:20,backgroundColor:'transparent'}}>  
 <View style={{justifyContent:'center',alignItems:'center'}}>
-<Text style={{fontSize:30,fontWeight:'bold',color:'#fff',marginTop:10}}>$ 0.00</Text>
+<Text style={{fontSize:30,fontWeight:'bold',color:'#fff',marginTop:10,fontFamily:''}}>$ 0.00</Text>
 </View> 
 
 <View
@@ -293,11 +293,11 @@ SlideMenu=()=>{
 />
 <View style={{flexDirection:'row',marginLeft:20}}>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#5280d5',marginTop:10}}>BTC Price</Text>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#5280d5',marginTop:10,fontFamily:''}}>BTC Price</Text>
 </View>  
 
 <View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10,textAlign:'center'}}>121ETH</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10,textAlign:'center',fontFamily:''}}>121ETH</Text> 
 
 </View>  
 
@@ -311,11 +311,11 @@ SlideMenu=()=>{
 />
 <View style={{flexDirection:'row',marginLeft:20}}>  
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#5280d5',marginTop:10}}>BTC price Dolar</Text>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#5280d5',marginTop:10,fontFamily:''}}>BTC price Dolar</Text>
 </View>
 
 <View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10}}>455$</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10,fontFamily:''}}>455$</Text> 
 </View>  
 
 </View>
@@ -328,10 +328,10 @@ SlideMenu=()=>{
 />
 <View style={{flexDirection:'row',marginLeft:20}}>  
 <View  style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#5280d5',marginTop:10}}>Network fees</Text>  
+<Text style={{fontSize:12,fontWeight:'bold',color:'#5280d5',marginTop:10,fontFamily:''}}>Network fees</Text>  
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10}}>12ETH-199BTC</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10,fontFamily:''}}>12ETH-199BTC</Text> 
 </View>
 </View>
 <View
@@ -343,10 +343,10 @@ SlideMenu=()=>{
 />
 <View style={{flexDirection:'row',marginLeft:20}}>  
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#5280d5',marginTop:10}}>Commercial Limits</Text>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#5280d5',marginTop:10,fontFamily:''}}>Commercial Limits</Text>
 </View>
   <View style={{flex:1}}>
-  <Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10}}>1000-100,00,00 COP</Text> 
+  <Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10,fontFamily:''}}>1000-100,00,00 COP</Text> 
   </View>
 
 </View>
@@ -360,10 +360,10 @@ SlideMenu=()=>{
 <View style={{height:40,width:'100%',backgroundColor:'transparent'}}></View>
 <View style={{flexDirection:'row',marginLeft:20}}>  
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#5280d5',marginTop:10}}>Send</Text>  
+<Text style={{fontSize:12,fontWeight:'bold',color:'#5280d5',marginTop:10,fontFamily:''}}>Send</Text>  
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10}}>20ETH</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10,fontFamily:''}}>20ETH</Text> 
 </View>
 
 </View>
@@ -376,13 +376,13 @@ SlideMenu=()=>{
 />
 <View style={{flexDirection:'row',marginLeft:20}}>  
 <View style={{flex:2.2}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#5280d5',marginTop:10}}>Description</Text>  
+<Text style={{fontSize:12,fontWeight:'bold',color:'#5280d5',marginTop:10,fontFamily:''}}>Description</Text>  
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10,marginLeft:-10}}>Transfer data</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10,marginLeft:-10,fontFamily:''}}>Transfer data</Text> 
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:20,fontWeight:'bold',color:'#a9b4d4',marginTop:-5}}>...</Text> 
+<Text style={{fontSize:20,fontWeight:'bold',color:'#a9b4d4',marginTop:-5,fontFamily:''}}>...</Text> 
 </View>
 
 </View>

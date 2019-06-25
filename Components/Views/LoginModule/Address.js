@@ -5,6 +5,7 @@ import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 
 import LinearGradient from 'react-native-linear-gradient';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export default class Address  extends React.Component {
 
@@ -153,7 +154,7 @@ SlideMenu=()=>{
 
        <LinearGradient
    colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>   
-   
+   <ScrollView>
     <View style={{flexDirection:'row',justifyContent:'space-between'}}>
     <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
     <View style={{justifyContent:'center',alignItems:'center'}}>
@@ -259,11 +260,11 @@ SlideMenu=()=>{
 <View>
 <LinearGradient colors={['#354e91','#354e91','#354e91']}  style={{padding:15,alignItems:'center'}}>
 <TouchableOpacity>
-<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,marginLeft:-30}}>when you "sent",you accept</Text>
-<View style={{flexDirection:'row',marginTop:2,marginLeft:-30}}>
-<Text style={{color:'#5496ff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,}}>Terms of Service</Text>
-<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,marginLeft:8}}>&</Text>
-<Text style={{color:'#5496ff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,marginLeft:8}}>Politic and privacy</Text>
+<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,marginLeft:-30,fontFamily:''}}>when you "sent",you accept</Text>
+<View style={{flexDirection:'row',marginTop:2,marginLeft:-30,fontFamily:''}}>
+<Text style={{color:'#5496ff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,fontFamily:''}}>Terms of Service</Text>
+<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,marginLeft:8,fontFamily:''}}>&</Text>
+<Text style={{color:'#5496ff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,marginLeft:8,fontFamily:''}}>Politic and privacy</Text>
 </View>
 
 </TouchableOpacity>
@@ -272,7 +273,7 @@ SlideMenu=()=>{
     
             
 </View>    
-        
+        </ScrollView>
  </LinearGradient> 
  </View>
  

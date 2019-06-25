@@ -192,7 +192,7 @@ ProfileTouch=()=>{
     <View>
     <Image style={{marginLeft:10,width: 30, height: 30,resizeMode:'contain'}}   source={require("../assets/app6.png")} ></Image>     
     </View>
-        <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:15,marginLeft:20}}>Credit Card</Text>
+        <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:15,marginLeft:20,fontFamily:''}}>Credit Card</Text>
     </View>
     <View style={{marginTop:30}}> 
    
@@ -210,7 +210,7 @@ ProfileTouch=()=>{
         
         <View  style={{justifyContent:'center',alignItems:'center',flexDirection:'row'
         }}>
- <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:20,marginLeft:10}}>Request a Card</Text>
+ <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:20,marginLeft:10,fontFamily:''}}>Request a Card</Text>
  <TouchableOpacity onPress={this.AddCardAction}>
  <View>
 <Image  style={{width: 40, height: 40,marginLeft:10,resizeMode:'contain' }}  source={require("../assets/plusflash.png")} ></Image> 

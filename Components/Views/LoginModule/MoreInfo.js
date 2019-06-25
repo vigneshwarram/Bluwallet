@@ -164,7 +164,7 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
     </View>
     </TouchableOpacity>
     <View style={{justifyContent:'center',alignItems:'center'}}>
-    <Text style={{color:'#4e649f',opacity:1,fontSize:20,marginTop:15}}>More Info Needed</Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:20,marginTop:15,fontFamily:''}}>More Info Needed</Text>
     </View>
     <View></View>
     </View>
@@ -175,10 +175,10 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
 
     </View>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:25,}}>We need more information to complete your </Text>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,}}> Profile</Text>
-    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:10,}}> You need to verificate your mobile number,a</Text>
-    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,}}> national identity and selfie</Text>
+    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:25,fontFamily:''}}>We need more information to complete your </Text>
+    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}> Profile</Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:10,fontFamily:''}}> You need to verificate your mobile number,a</Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}> national identity and selfie</Text>
           </View>
           <View style={{position:'absolute',width:'100%',bottom:50}}>
     <LinearGradient colors={['#fff','#fff','#fff']}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
@@ -190,7 +190,7 @@ colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>
 <View>
 <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
 
-<Text style={{color:'#fff',fontSize:18,fontWeight:'bold'}}>Next</Text>
+<Text style={{color:'#fff',fontSize:18,fontWeight:'bold',fontFamily:''}}>Next</Text>
 
 </LinearGradient>
 </View>
