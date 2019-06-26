@@ -150,12 +150,16 @@ SlideMenu=()=>{
         
       <View style={styles.Maincontainers}>  
        
-      <View> 
-
+     
        <LinearGradient
   colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={{height:'100%',opacity:0.9}}>   
-   
-    <View style={{flex:0.5}}> 
+    <View style={{bottom:20,position:'absolute'}}>
+        <Image
+                style={{width:550,height:500, resizeMode: 'contain',opacity:0.1}}
+                source={require('../assets/bgLogo.png')}
+            />            
+        </View> 
+    <View style={{flex:0.6}}> 
    
              <View>
          
@@ -170,15 +174,8 @@ SlideMenu=()=>{
              </View> 
              
 </View>  
- <View style={{bottom:20,position:'absolute'}}>
-        <Image
-                style={{width:550,height:500, resizeMode: 'contain',opacity:0.1}}
-                source={require('../assets/bgLogo.png')}
-            />            
-        </View>  
-        <View style={{flex: 1,
-  justifyContent: 'flex-end',
-  paddingBottom: 100}}>
+ 
+        <View style={{flex: 0.4}}>
         
        
         <View>
@@ -214,7 +211,7 @@ SlideMenu=()=>{
         </View>      
         
  </LinearGradient> 
- </View>
+ 
 
      </View>
       
@@ -239,7 +236,7 @@ const styles = StyleSheet.create({
  
   Maincontainers: {
     flex: 1, 
-    height:'100%'
+  
   },
   containers: {
     backgroundColor: 'transparent',

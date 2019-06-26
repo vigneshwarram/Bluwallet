@@ -149,12 +149,17 @@ SlideMenu=()=>{
         
       <View style={styles.Maincontainers}>  
        
-      <View> 
+     
 
        <LinearGradient
    colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>   
-   
-    <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+       <View style={{justifyContent:'center',alignItems:'center',position:'absolute',bottom:50,left:70}}>
+        <Image
+                style={{width:250,height:250,resizeMode: 'contain',opacity:0.1}}
+                source={require('../assets/dlogo.png')}
+            />            
+        </View>
+    <View style={{flexDirection:'row',justifyContent:'space-between',flex:0.1}}>
     <View></View>
     <View style={{justifyContent:'center',alignItems:'center',marginLeft:40}}>
         <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10,fontFamily:''}}>Welcome!</Text>
@@ -168,7 +173,7 @@ SlideMenu=()=>{
           </TouchableOpacity>
             </View>
     </View>
-    <View style={{marginTop:3}}> 
+    <View style={{flex:0.7}}> 
    
              <View>
          
@@ -179,32 +184,36 @@ SlideMenu=()=>{
             
         </View>
       
-        <View  style={{justifyContent:'center',alignItems:'center',marginTop:10
+        <View  style={{justifyContent:'center',alignItems:'center',
         }}>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10,fontFamily:''}}>Verify your Identity to request your XLM.Will</Text>
+             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,fontFamily:''}}>Verify your Identity to request your XLM.Will</Text>
              <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>Take a few minutes.Once Verification,you</Text>
              <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>Could use our product of last generation</Text>
              <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>Exchange</Text>
-             <View style={{justifyContent:'center',alignItems:'center',position:'absolute',top:50,left:70}}>
-        <Image
-                style={{width:250,height:250,resizeMode: 'contain',opacity:0.1}}
-                source={require('../assets/dlogo.png')}
-            />            
-        </View>
+         
         </View>
 
         <View>
         
+       
+</View>
+
+             </View>    
+</View>  
+        <View style={{flex:0.1}}>
+
         <TouchableOpacity onPress={this.BeginAction}>
     <View>
-    <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center',marginTop:100}}>
+    <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center'}}>
 
 <Text style={{color:'#fff',fontSize:18,fontWeight:'bold',fontFamily:'Courier New'}}>Begin Now</Text>
 
 </LinearGradient>
     </View>   
 </TouchableOpacity>
-</View>
+
+
+
 
 <View>
 <LinearGradient colors={['#354e91','#354e91','#354e91']}  style={{padding:15,alignItems:'center'}}>
@@ -219,12 +228,10 @@ SlideMenu=()=>{
 </TouchableOpacity>
 </LinearGradient>
 </View>
-             </View>    
-</View>  
-        
+        </View>
         
  </LinearGradient> 
- </View>  
+
      </View>
       
     

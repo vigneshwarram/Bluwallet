@@ -148,10 +148,20 @@ SlideMenu=()=>{
     return (  
         
       <View style={styles.Maincontainers}>  
-       <View> 
+     
+      
 <LinearGradient
- colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>   
-
+ colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>  
+  
+  <View style={{justifyContent:'center',alignItems:'center',position:'absolute',bottom:20,left:70,flex:1}}>
+ <Image
+         style={{width:250,height:250,resizeMode: 'contain',opacity:0.1}}
+         source={require('../assets/dlogo.png')}
+     />            
+ </View>  
+ <ScrollView>
+<View style={{flex:1}}>
+  <View style={{flex:0.9}}> 
 <View style={{flexDirection:'row',justifyContent:'space-between',backgroundColor:'#fff'}}>
 <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
 <View style={{justifyContent:'center',alignItems:'center'}}>
@@ -204,7 +214,7 @@ SlideMenu=()=>{
    
   
 </View>
-<View style={{marginTop:30}}>
+<View style={{marginTop:20}}>
 <LinearGradient colors={['#354e91','#354e91','#354e91']}  style={{padding:15,alignItems:'center'}}>
 <TouchableOpacity>
 <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,marginLeft:-30,fontFamily:''}}>when you create a wallet, you accept</Text>
@@ -217,32 +227,30 @@ SlideMenu=()=>{
 </TouchableOpacity>
 </LinearGradient>
 </View> 
-<View style={{alignContent:'center'}}> 
- 
- <View style={{justifyContent:'center',alignItems:'center',position:'absolute',bottom:-130,right:100,left:100}}>
- <Image
-         style={{width:250,height:250,resizeMode: 'contain',opacity:0.1}}
-         source={require('../assets/dlogo.png')}
-     />            
- </View> 
- <TouchableOpacity onPress={this.BeginAction}>
- <View>
- <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center',marginTop:100}}>
+
+</View>
+<View style={{flex:0.1}}> 
+
+<TouchableOpacity onPress={this.BeginAction}>
+<View style={{paddingTop:50}}>
+<LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
 
 <Text style={{color:'#fff',fontSize:18,fontFamily:'lucida grande'}}>Create Wallet</Text>
 
 </LinearGradient>
- </View> 
- </TouchableOpacity>
- 
-
-
-     
 </View> 
- 
-</LinearGradient> 
+</TouchableOpacity>
+
+
+
+    
+</View> 
+
 </View>
-       
+</ScrollView>
+</LinearGradient> 
+
+
     
    
      </View>
@@ -267,8 +275,7 @@ SlideMenu=()=>{
 const styles = StyleSheet.create({
  
   Maincontainers: {
-    flex: 1, 
-    height:'100%'
+    flex: 1
   },
   containers: {
     backgroundColor: 'transparent',

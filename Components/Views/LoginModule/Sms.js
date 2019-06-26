@@ -148,66 +148,66 @@ SlideMenu=()=>{
     return (  
         
       <View style={styles.Maincontainers}>  
-       
-      <View> 
+      
 
        <LinearGradient
    colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>   
-   
-    <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-    <View></View>
-    <View style={{justifyContent:'center',alignItems:'center',marginLeft:40}}>
-    </View>
-    </View>
-    <View style={{marginTop:20}}>    
-             <View>     
-        <View  style={{justifyContent:'center',alignItems:'center',marginTop:10
-        }}>
+   <View style={{justifyContent:'center',alignItems:'center',position:'absolute',bottom:70,left:70,}}>
+        <Image
+                style={{width:250,height:250,resizeMode: 'contain',opacity:0.1}}
+                source={require('../assets/dlogo.png')}
+            />            
+        </View> 
+    <View style={{flex:0.5}}>
+          
+    <View >    
+             <View style={{paddingVertical:30}}>     
         <View  style={{justifyContent:'center',alignItems:'center'
+        }}>
+        <View  style={{justifyContent:'center',alignItems:'center',paddingBottom:30
         }}>
         <Image  style={{width: 40, height: 40,resizeMode:'contain'}}  source={require("../assets/close-envelope.png")} ></Image>
         </View>
+        
         <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10,fontFamily:''}}>Check your Inbox...</Text>
         <Text style={{color:'#80b0fe',fontWeight:'bold',opacity:1,fontSize:20,marginTop:20,fontFamily:''}}>Jhondoe@gmail.com</Text>
              <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:20,fontFamily:''}}>Search on email on Blockchain</Text>
              <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>And click the link of verification </Text>
              <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>To complete the configuration</Text>
              <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>of your wallet</Text>
+       
              
         </View>  
-        <View>
-        <View style={{justifyContent:'center',alignItems:'center',position:'absolute',right:100,left:100,top:200}}>
-        <Image
-                style={{width:250,height:250,resizeMode: 'contain',opacity:0.1}}
-                source={require('../assets/dlogo.png')}
-            />            
-        </View>  
+        
+
+             </View>    
+</View>  
+        
+        </View>
+        <View style={{flex:0.5}}>
+  
         <TouchableOpacity onPress={this.BeginAction}>
-        <View>
-        <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center',marginTop:150}}>
+        <View >
+        <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center'}}>
 
 <Text style={{color:'#fff',fontSize:18,fontWeight:'bold',fontFamily:'Courier New'}}>Go to email</Text>
 
 </LinearGradient>
- 
-        </View>
-        </TouchableOpacity>
-<View>
+ <View>
 <LinearGradient colors={['#fff','#fff','#fff']}  style={{padding:15,justifyContent:'center',alignItems:'center'}}>
 <TouchableOpacity onPress={this.BeginAction}>
 <Text style={{color:'#d2e4ff'}}>Check it later</Text>
 </TouchableOpacity>
 </LinearGradient>
 </View> 
-        </View>   
+        </View>
+        </TouchableOpacity>
 
-             </View>    
-</View>  
-        
-        
+        </View>   
  </LinearGradient> 
- </View>
- 
+       
+    
+
      </View>
       
     
@@ -230,7 +230,6 @@ const styles = StyleSheet.create({
  
   Maincontainers: {
     flex: 1, 
-    height:'100%'
   },
   containers: {
     backgroundColor: 'transparent',

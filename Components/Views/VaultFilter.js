@@ -90,7 +90,7 @@ export default class VaultFilter extends React.Component {
   
   componentDidMount()
   {
-     this.GetListData()
+     //this.GetListData()
   }
   GetListData=()=>{
     this.Load()
@@ -272,7 +272,7 @@ App6Touch=()=>{
       <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']}>
       <ScrollView>
       <View style={{justifyContent:'space-between',flexDirection:'row'}}>  
-<LinearGradient colors={['transparent','transparent','transparent']} style={{justifyContent:'center',height:this.state.h,width:this.state.w, alignItems:'flex-end', marginTop:10,borderTopRightRadius:25,borderBottomRightRadius:25,borderColor:'#c978f8',borderRightWidth:1,borderLeftWidth:0,borderTopWidth:1,borderBottomWidth:1}}>
+<LinearGradient colors={['transparent','transparent','transparent']} style={{justifyContent:'center',height:this.state.h,width:this.state.w, alignItems:'flex-end', marginTop:10,borderTopRightRadius:25,borderBottomRightRadius:25,borderColor:'#c978f8',borderRightWidth:1,borderLeftWidth:0,borderTopWidth:1,borderBottomWidth:1,position:'absolute'}}>
 <TouchableOpacity onPress={this._onPress}>
        <View style={{flexDirection: 'row'}}> 
           <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/iicon.png")} ></Image>     
@@ -282,14 +282,9 @@ App6Touch=()=>{
 </LinearGradient>    
          
             
-            <View style={{flexDirection: 'row',justifyContent:'flex-start',alignItems:"center",marginTop:15}}> 
-          <Image  style={{width: 30, height: 30,resizeMode:'contain'}}  source={require("./assets/app2.png")} ></Image>   
-          <View style={{flexDirection:'column'}}>
-          <Text style={{marginLeft:10,fontSize:18,fontWeight:'bold',color:'#fff',fontFamily:''}}>Vault</Text>       
-          </View>       
-          </View>
+            
     
-            <LinearGradient colors={['#fff','#fff','#fff']} style={{height:this.state.hr,width:this.state.wr,justifyContent:'center',alignItems:'flex-start',borderTopLeftRadius:25,borderBottomLeftRadius:25, marginTop:10}}>
+            <LinearGradient colors={['#fff','#fff','#fff']} style={{height:this.state.hr,width:this.state.wr,justifyContent:'center',alignItems:'flex-start',borderTopLeftRadius:25,borderBottomLeftRadius:25, marginTop:10,position:'absolute',right:0}}>
             <TouchableOpacity onPress={this.pressRight}>
        <View style={{flexDirection: 'row'}}> 
           <Image style={{marginLeft:10,width: 30, height: 30}}   source={require("./assets/app4-blue.png")} ></Image>     
@@ -297,8 +292,14 @@ App6Touch=()=>{
           </View>
           </TouchableOpacity>
             </LinearGradient>
+            
       </View>
-   
+      <View style={{flexDirection: 'row',justifyContent:'center',alignItems:"center",marginTop:15}}> 
+          <Image  style={{width: 30, height: 30,resizeMode:'contain'}}  source={require("./assets/app2.png")} ></Image>   
+          <View style={{flexDirection:'column'}}>
+          <Text style={{marginLeft:10,fontSize:18,fontWeight:'bold',color:'#fff',fontFamily:''}}>Vault</Text>       
+          </View>       
+          </View>
       
     <View style={{marginTop:10}}> 
     
@@ -360,7 +361,7 @@ App6Touch=()=>{
 <View style={{height:'100%'}}>
 <FlatList  style={{marginTop:20}}
       ItemSeparatorComponent={this.space}
-      data={this.state.dataSource}
+      data={this.state.carouselItems}
           renderItem={({item,separators})  =>
         <TouchableOpacity onShowUnderlay={separators.highlight}
       onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
@@ -383,14 +384,14 @@ App6Touch=()=>{
           <View style={{flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection: 'row',justifyContent:'space-between'}}>    
           <View style={{justifyContent:'space-around',alignItems:'center'}}>
-          <Text  style={{ fontSize:12,fontWeight:'bold',fontFamily:'' ,color:(item.Status!='Completed')?'#4286f4':'#4286f4'}}>ETH</Text> 
-          <Text  style={{fontSize:12,color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>$435</Text> 
+          <Text  style={{ fontSize:12,fontWeight:'bold',fontFamily:'' ,color:'#4286f4'}}>ETH</Text> 
+          <Text  style={{fontSize:12,color:'#a9b4d4'}}>$435</Text> 
           </View>  
           <View>
           <View style={{flexDirection:'row',marginLeft:20}}>
           <View>
-          <Text  style={{fontSize:12,fontFamily:'',color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>{(item.Status!='Completed')?'Produced':"Produced"}</Text> 
-          <Text  style={{fontSize:12,fontFamily:'',color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>Coins</Text>    
+          <Text  style={{fontSize:12,fontFamily:'',color:'#a9b4d4'}}>{(item.Status!='Completed')?'Produced':"Produced"}</Text> 
+          <Text  style={{fontSize:12,fontFamily:'',color:'#a9b4d4'}}>Coins</Text>    
           </View>
           
           <View style={{flexDirection:'row',justifyContent:'center'}}>
@@ -404,7 +405,7 @@ App6Touch=()=>{
          
           </View>
           <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',marginLeft:20}}>
-          <Text  style={{color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4',fontFamily:''}}>+8.5%</Text> 
+          <Text  style={{color:'#a9b4d4',fontFamily:''}}>+8.5%</Text> 
           <Image style={{width: 10, height: 10,resizeMode:'contain'}}   source={require("./assets/green.png")} ></Image> 
           </View>                
      </View>  

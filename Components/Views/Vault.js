@@ -21,6 +21,7 @@ export default class Vault extends React.Component {
     this.state = {
       dataSource:[],
       ImagArray:['image1'],
+      data1:[require('./assets/biconback.png'),require('./assets/etherem.png'),require('./assets/biconback.png'),require('./assets/etherem.png')],
       Amount:'USDoller',
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
@@ -57,7 +58,7 @@ export default class Vault extends React.Component {
   
   componentDidMount()
   {
-     this.GetListData()
+     //this.GetListData()
   }
   GetListData=()=>{
     this.Load()
@@ -379,7 +380,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
 <View style={{height:'100%'}}>
 <FlatList  style={{marginTop:20}}
       ItemSeparatorComponent={this.space}
-      data={this.state.dataSource}
+      data={this.state.data1}
           renderItem={({item,separators})  =>
         <TouchableOpacity onShowUnderlay={separators.highlight}
       onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
@@ -403,20 +404,20 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
           <View style={{flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection: 'row',justifyContent:'space-between'}}>    
           <View style={{justifyContent:'space-around',alignItems:'center'}}>
-          <Text  style={{ fontSize:12,fontWeight:'bold',fontFamily:'', color:(item.Status!='Completed')?'#4286f4':'#4286f4',marginTop:-10}}>ETH</Text> 
-          <Text  style={{fontSize:12,color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4',marginTop:10}}>$435</Text> 
+          <Text  style={{ fontSize:12,fontWeight:'bold',fontFamily:'', color:'#4286f4',marginTop:-10}}>ETH</Text> 
+          <Text  style={{fontSize:12,color:'#a9b4d4',marginTop:10}}>$435</Text> 
           </View>  
           <View>
           <View style={{flexDirection:'row',marginLeft:20}}>
           <View>
-          <Text  style={{fontSize:12,color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4',marginTop:-10}}>{(item.Status!='Completed')?'Produced':"Produced"}</Text> 
-          <Text  style={{fontSize:12,fontFamily:'',marginTop:10,color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>Coins</Text>    
+          <Text  style={{fontSize:12,color:'#a9b4d4',marginTop:-10}}>{(item.Status!='Completed')?'Produced':"Produced"}</Text> 
+          <Text  style={{fontSize:12,fontFamily:'',marginTop:10,color:'#a9b4d4'}}>Coins</Text>    
           </View>
           
           <View style={{flexDirection:'row',justifyContent:'center',marginTop:-15}}>
      <Image style={{width: 25, height: 25,resizeMode:'contain'}}   source={require("./assets/plusblue.png")} ></Image>   
      <View style={{marginTop:5}}>
-     <Text  style={{fontSize:12,textAlign:'center',fontWeight:'bold',fontFamily:'',color:(item.Status!='Completed')?'#232d51':'#232d51'}}>$ 9060</Text> 
+     <Text  style={{fontSize:12,textAlign:'center',fontWeight:'bold',fontFamily:'',color:'#232d51'}}>$ 9060</Text> 
      </View> 
      
      </View>  
@@ -424,7 +425,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
          
           </View>
           <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',marginLeft:20}}>
-          <Text  style={{fontFamily:'',color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>+8.5%</Text> 
+          <Text  style={{fontFamily:'',color:'#a9b4d4'}}>+8.5%</Text> 
           <Image style={{width: 10, height: 10,resizeMode:'contain'}}   source={require("./assets/green.png")} ></Image> 
           </View>                
      </View>  

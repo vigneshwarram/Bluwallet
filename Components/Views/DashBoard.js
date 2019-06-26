@@ -83,8 +83,8 @@ export default class DashBoard extends React.Component {
   
   componentDidMount()
   {
-     this.GetListData()
-     this._animate()
+    // this.GetListData()
+    // this._animate()
   }
   GetListData=()=>{
     this.Load()
@@ -498,7 +498,7 @@ justifyContent:'center',alignItems:"center"}} >
                  <View style={{flex:1,marginBottom:90}}>
                  <FlatList  style={{marginTop:10}}
       ItemSeparatorComponent={this.space}
-      data={this.state.dataSource}
+      data={this.state.data1}
           renderItem={({item,separators})  =>
         <TouchableOpacity onShowUnderlay={separators.highlight}
       onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
@@ -515,7 +515,7 @@ justifyContent:'center',alignItems:"center"}} >
           </View>
           <View style={{flexDirection:'column'}}>
           <View style={{flex:1, flexDirection: 'row',justifyContent:'space-between'}}>            
-         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff'}}>{(item.Status!='Completed')?'Sent to Dan23':"Sent to Dan23"}</Text>       
+         <Text  style={{marginRight:20,marginTop:10,color:'#fff'}}>Sent to Dan23</Text>       
      <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
      <Image style={{width: 25,marginTop:10, height: 25}}   source={require("./assets/plusblue.png")} ></Image>    
      <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff'}}>$ 9060</Text> 
@@ -525,9 +525,9 @@ justifyContent:'center',alignItems:"center"}} >
      <View style={{flex:1, flexDirection:'row',justifyContent:'space-between' ,paddingBottom:15}}>
  
             
-         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#4d6bc1':'#4d6bc1',fontWeight:'bold'}}>Feb 23 2019  . 11.05</Text>       
+         <Text  style={{marginRight:20,marginTop:10,color:'#4d6bc1',fontWeight:'bold'}}>Feb 23 2019  . 11.05</Text>       
      
-      <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#4d6bc1':'#4d6bc1'}}>5.4587ETH</Text>    
+      <Text  style={{marginRight:20,marginTop:10,color:'#4d6bc1'}}>5.4587ETH</Text>    
      </View>  
           </View>
          

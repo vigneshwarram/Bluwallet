@@ -59,7 +59,7 @@ export default class  Sell  extends React.Component {
   
   componentDidMount()
   {
-    this.GetListData()
+  //  this.GetListData()
   }
   GetListData=()=>{
     this.Load()
