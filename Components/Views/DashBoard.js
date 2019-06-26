@@ -30,7 +30,7 @@ export default class DashBoard extends React.Component {
       currentIndex:0,
       data1:[require('./assets/biconback.png'),require('./assets/etherem.png'),require('./assets/biconback.png'),require('./assets/etherem.png')],
       Time: 'Today',
-     // NoPopup:this.props.navigation.state.params.DashBoardPopup?this.props.navigation.state.params.DashBoardPopup:false,
+      NoPopup:this.props.navigation.state.params.DashBoardPopup?this.props.navigation.state.params.DashBoardPopup:false,
       animate:false,
       ProfileComplete:false,
       app1icon:require('./assets/app1.png'),
@@ -271,7 +271,7 @@ _animate=()=>{
   }
     return (  
       <View style={styles.Maincontainers}>    
-      <LinearGradient colors= {['#354e91','#21284a','#21284a']}>
+      <LinearGradient  colors= {['#354E91','#314682','#283563','#222B50','#21284A']}>
       <ScrollView>
       <Animated.View style={{justifyContent:'space-between',flexDirection:'row',}}>  
 <LinearGradient colors={['#f4347f','#f85276','#fe7a6e']} style={{justifyContent:'center',height:this.state.h,width:this.state.w, position:'absolute',left:0,alignItems:'flex-end', marginTop:10,borderTopRightRadius:25,borderBottomRightRadius:25}}>
@@ -304,7 +304,7 @@ _animate=()=>{
       {((this.state.NoPopup?null:
       ((!this.state.ProfileComplete)?
         <View >
-      <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={{width:'95%',marginLeft:10,marginRight:10,padding:10,height:160,marginTop:15,borderRadius:10}}>
+      <LinearGradient colors= {['#395ea4','#446ea8','#4c78a9']} style={{width:'95%',marginLeft:10,marginRight:10,padding:10,height:160,marginTop:15,borderRadius:10}}>
       <View style={{flexDirection:'row'}}>
       <View>
       <Text style={{marginLeft:20,fontSize:18,fontWeight:'bold',color:'#fff',fontFamily:''}}>Complete Your Profile</Text>  
@@ -507,7 +507,7 @@ justifyContent:'center',alignItems:"center"}} >
   borderRadius:25}}>
    
   <LinearGradient
-   colors={['#4262B5', '#3A549B','#314279','#2C3765','#2A335E']} style={{ borderRadius:25}}>
+   colors={['#4262B5', '#3A549B','#314279','#2C3765','#2A335E']} style={{ borderRadius:25,paddingTop:10,paddingBottom:10}}>
    
         <View style={{flexDirection:'row',justifyContent:'center'}}>
         <View style={{alignItems:'center'}} >

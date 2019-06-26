@@ -290,7 +290,7 @@ SlideMenu=()=>{
 <View style={{justifyContent:'center',alignItems:'center'}}>
 <Image  style={{width: 20, height: 20,resizeMode:'contain'}}  source={require("./assets/tv.png")} ></Image> 
 </View>
-<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center',marginLeft:20}}>
+<View style={{justifyContent:'center',flexDirection:'row',alignItems:'center',marginLeft:20,paddingTop:5,paddingBottom:5}}>
         <Text style={{color:'#fff',opacity:1,fontSize:10,fontFamily:''}}>{this.state.platform}</Text>
         <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("./assets/darrow.png")} ></Image> 
         <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}

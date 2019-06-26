@@ -393,7 +393,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
   elevation: 24,
   borderRadius:25}}>
   <LinearGradient
-     colors={['#4262B5', '#3A549B','#314279','#2C3765','#2A335E']} style={{ borderRadius:25}}>
+     colors={['#4262B5', '#3A549B','#314279','#2C3765','#2A335E']} style={{ borderRadius:25,paddingTop:10,paddingBottom:10}}>
         <View style={{alignItems:'center',flexDirection:'row',padding:15}}>
         <View style={{justifyContent:'center'}}>
         <Image style={{width: 50, height: 50,resizeMode:'contain'}}   source={require("./assets/etheriumblue.png")} ></Image>
@@ -403,17 +403,17 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
           <View style={{flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection: 'row',justifyContent:'space-between'}}>    
           <View style={{justifyContent:'space-around',alignItems:'center'}}>
-          <Text  style={{ fontSize:12,fontWeight:'bold',fontFamily:'', color:(item.Status!='Completed')?'#4286f4':'#4286f4'}}>ETH</Text> 
-          <Text  style={{fontSize:12,color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>$435</Text> 
+          <Text  style={{ fontSize:12,fontWeight:'bold',fontFamily:'', color:(item.Status!='Completed')?'#4286f4':'#4286f4',marginTop:-10}}>ETH</Text> 
+          <Text  style={{fontSize:12,color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4',marginTop:10}}>$435</Text> 
           </View>  
           <View>
           <View style={{flexDirection:'row',marginLeft:20}}>
           <View>
-          <Text  style={{fontSize:12,color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>{(item.Status!='Completed')?'Produced':"Produced"}</Text> 
-          <Text  style={{fontSize:12,fontFamily:'',color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>Coins</Text>    
+          <Text  style={{fontSize:12,color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4',marginTop:-10}}>{(item.Status!='Completed')?'Produced':"Produced"}</Text> 
+          <Text  style={{fontSize:12,fontFamily:'',marginTop:10,color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4'}}>Coins</Text>    
           </View>
           
-          <View style={{flexDirection:'row',justifyContent:'center',marginTop:-5}}>
+          <View style={{flexDirection:'row',justifyContent:'center',marginTop:-15}}>
      <Image style={{width: 25, height: 25,resizeMode:'contain'}}   source={require("./assets/plusblue.png")} ></Image>   
      <View style={{marginTop:5}}>
      <Text  style={{fontSize:12,textAlign:'center',fontWeight:'bold',fontFamily:'',color:(item.Status!='Completed')?'#232d51':'#232d51'}}>$ 9060</Text> 
