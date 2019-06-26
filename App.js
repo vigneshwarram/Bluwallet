@@ -1,12 +1,13 @@
 
 import React, {Component} from 'react';
 import {
-  Easing,Animated
+  Easing,Animated,Image,View
 } from 'react-native';
 import DashBoard from './Components/Views/DashBoard'
 import Vault from './Components/Views/Vault'
 import VaultFilter from './Components/Views/VaultFilter'
 import Profile from './Components/Views/Profile'
+import TabBar from './Components/Views/TabBar'
 import Price from './Components/Views/Price'
 import CreditCard from './Components/Views/CreditCardModule/CreditCard'
 import CardDetails from './Components/Views/CreditCardModule/CardDetails'
@@ -38,7 +39,7 @@ import TakePhoto from  './Components/Views/LoginModule/TakePhoto'
 import TakePassportPhoto from  './Components/Views/LoginModule/TakePassportPhoto'
 import DocumentPhoto from  './Components/Views/LoginModule/DocumentPhoto'
 import {
-  createStackNavigator
+  StackNavigator,createBottomTabNavigator 
 } from 'react-navigation'
 const TransitionConfiguration = () => {
   return {
@@ -91,51 +92,127 @@ let CollapseExpand = (index, position) => {
   };
 };
  class App extends Component {
-   
+
     render() {
       
-      const MainNavigator = createStackNavigator({
+      const VaultStack=StackNavigator({
+        Vault:{screen:Vault},  
+        VaultFilter:{screen:VaultFilter}
+      })
+      const CreditCardStack=StackNavigator({
+        CreditCard:{screen:CreditCard},
+        CreditTransaction:{screen:CreditTransaction},
+        CardDetails:{screen:CardDetails},
+      })
+      const ExchangeStack=StackNavigator({
+        ExchangeMenu:{screen:ExchangeMenu,},
+        Exchange:{screen:Exchange},
+        Buy:{screen:Buy},
+        Sell:{screen:Sell},
+        Publish:{screen:Publish},
+      },
+      )
+      const TabNavigator = createBottomTabNavigator(
+        {
+  
+       // Home:{screen:MainNavigator},
+        Price:{
+          screen: Price,
+          navigationOptions: {
+            tabBarIcon: ({ tintColor }) => 
+          
+                <Image style={{width: 20, height: 20,alignItems:'center',resizeMode:'contain',tintColor}}   source={require('./Components/Views/assets/app3.png')} ></Image>    
+    
+           
+          }},
+  
+          ExchangeMenu:{
+            screen: ExchangeStack,
+            navigationOptions: {
+
+              tabBarIcon: ({ tintColor }) => 
+            
+                  <Image style={{width: 20, height: 20,alignItems:'center',resizeMode:'contain',tintColor}}   source={require('./Components/Views/assets/app4.png')} ></Image>    
+      
+             
+            }},
+  
+            DashBoard:{
+              screen: DashBoard,
+              navigationOptions: {
+                tabBarIcon: ({ tintColor }) => 
+              
+                    <Image style={{width: 20, height: 20,alignItems:'center',resizeMode:'contain',tintColor}}   source={require('./Components/Views/assets/app1white.png')} ></Image>    
+        
+               
+              }},
+              Vault:{
+                screen: VaultStack,
+                navigationOptions: {
+                  tabBarIcon: ({ tintColor }) => 
+                
+                      <Image style={{width: 20, height: 20,alignItems:'center',resizeMode:'contain',tintColor}}   source={require('./Components/Views/assets/app2.png')} ></Image>    
+          
+                 
+                }},
+        CreditCard:{
+          screen: CreditCardStack,
+          navigationOptions: {
+            tabBarIcon: ({ tintColor }) =>  <Image style={{width: 20, height: 20,alignItems:'center',resizeMode:'contain',tintColor}}   source={require('./Components/Views/assets/app6.png')} ></Image>    
+          }},
+        Profile:{
+          screen: Profile,
+          navigationOptions: {
+            tabBarIcon: ({ tintColor }) => <Image style={{width: 20, height: 20,alignItems:'center',resizeMode:'contain',tintColor}}   source={require('./Components/Views/assets/app5.png')} ></Image>     
+          }}
+          
+      },
+      {
+        tabBarComponent: TabBar,
+        tabBarOptions: {
+          activeTintColor: "#3b61c7",
+          inactiveTintColor: "#fff",
+         
+        }});
+      const MainNavigator =StackNavigator({
         Launch: { screen: Launch },
+       Home:{screen:TabNavigator},
         DocumentPhoto:{screen:DocumentPhoto},
         TakePhoto:{screen:TakePhoto},
         TakePassportPhoto:{screen:TakePassportPhoto},
         VerificationCards:{screen:VerificationCards},    
-        DashBoard:{screen:DashBoard},        
+     //   DashBoard:{screen:DashBoard},        
         ForgotPassword:{screen:ForgotPassword},
         Confirm:{screen:Confirm},
         Welcome:{screen:Welcome},
         Login:{screen:Login},
-        Price:{screen:Price},    
-        CreditCard:{screen:CreditCard},
-        CreditTransaction:{screen:CreditTransaction},
-        CardDetails:{screen:CardDetails},       
-        Profile:{screen:Profile},     
+       // Price:{screen:Price},                
+       // Profile:{screen:Profile},     
         PinCode:{screen:PinCode},
         NewWallet:{screen:NewWallet},    
         Verify:{screen:Verify},
         CountrySearch:{screen:CountrySearch},
         Address:{screen:Address},
-        ProfileRegister:{screen:ProfileRegister},  
-        Vault:{screen:Vault},  
-        ExchangeMenu:{screen:ExchangeMenu},
-        Exchange:{screen:Exchange},
-        Payment:{screen:Payment},
-        Buy:{screen:Buy},
-        Sell:{screen:Sell},
+        ProfileRegister:{screen:ProfileRegister},       
+        Payment:{screen:Payment},     
         Country:{screen:Country},
-        BankScreen:{screen:BankScreen},
-        Publish:{screen:Publish},
+        BankScreen:{screen:BankScreen},  
         Sms:{screen:Sms},
         MoreInfo:{screen:MoreInfo},
+
         ChooseCountry:{screen:ChooseCountry},       
-        VaultFilter:{screen:VaultFilter}},{
+        },{
 
           transitionConfig: TransitionConfiguration,
-     
-      
+          headerMode: 'none'
       });
+     
+
+    
       return (
+        
        <MainNavigator/>
+    
       );
     }
   }

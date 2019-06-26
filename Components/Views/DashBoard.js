@@ -30,7 +30,7 @@ export default class DashBoard extends React.Component {
       currentIndex:0,
       data1:[require('./assets/biconback.png'),require('./assets/etherem.png'),require('./assets/biconback.png'),require('./assets/etherem.png')],
       Time: 'Today',
-      NoPopup:this.props.navigation.state.params.DashBoardPopup?this.props.navigation.state.params.DashBoardPopup:false,
+     // NoPopup:this.props.navigation.state.params.DashBoardPopup?this.props.navigation.state.params.DashBoardPopup:false,
       animate:false,
       ProfileComplete:false,
       app1icon:require('./assets/app1.png'),
@@ -546,98 +546,6 @@ justifyContent:'center',alignItems:"center"}} >
     </View>
     </ScrollView>
 </LinearGradient>
-<View style={{ width: '100%',opacity:0.9,
-    height: 70,
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'absolute', 
-    bottom: 0,}}>
-<LinearGradient colors= {['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{borderTopRightRadius:20,borderTopLeftRadius:20,height:80,width:'100%',justifyContent:'center',alignItems:'center'}} >
-    <View style={{flexDirection: 'row',marginRight:20,marginLeft:20,alignItems:"center",justifyContent:'center'}}> 
-    <TouchableOpacity onPress={this.App3Touch}>
-   
-   <View style={{  width: 40,marginLeft:10,
-height: 40,
-borderRadius: 40/2,
-justifyContent:'center',alignItems:"center"}} >
-
-<Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app3icon} ></Image>
-
-    
-   </View>   
-
-  
-   </TouchableOpacity>
-   <TouchableOpacity onPress={this.App4Touch}>
-     
-          <View style={{  width: 40,marginLeft:10,
-    height: 40,
-    borderRadius: 40/2,
-   justifyContent:'center',alignItems:"center"}} >
-    
-     <Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app4icon} ></Image> 
-    
-            
-          </View>  
-         
-          </TouchableOpacity>
-          <TouchableOpacity >
-       
-       <View style={{ width: 40,marginLeft:10,backgroundColor:this.state.app1color,
- height: 40,
- borderRadius: 40/2,
-justifyContent:'center',alignItems:"center"}} >
-
- <Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app1icon} ></Image> 
-       </View>    
-              
-       </TouchableOpacity>    
-       <TouchableOpacity onPress={this.VaultTouch}>
-    
-          <View style={{  width: 40,marginLeft:10,
-    height: 40,
-    borderRadius: 40/2,
-  justifyContent:'center',alignItems:"center"}} >
-  
-    <Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app2icon} ></Image> 
-   
-        
-          </View> 
-      
-          
-          </TouchableOpacity>  
-      
-         
-          <TouchableOpacity onPress={this.CreditCardTouch}>
-      
-          <View style={{  width: 40,marginLeft:10,
-    height: 40,
-    borderRadius: 40/2,
-   justifyContent:'center',alignItems:"center"}} >
-   
-    <Image  style={{width: 20, height: 20,resizeMode:'contain'}}  source={this.state.app6icon} ></Image>
-    
-            
-          </View> 
-       
-       
-          </TouchableOpacity>  
-          <TouchableOpacity onPress={this.AppTouch}>
-    
-    <View style={{ width: 40,marginLeft:10,
- height: 40,
- borderRadius: 40/2,
-justifyContent:'center',alignItems:"center"}} >
-
- <Image style={{width:20,height:20,resizeMode:'contain'}}   source={this.state.app5icon} ></Image> 
-       </View>  
-    
-       </TouchableOpacity>  
-          
-          
-          </View>
-          </LinearGradient>  
-</View>
       </View>
   
     );
