@@ -160,11 +160,11 @@ SlideMenu=()=>{
 <View style={{flexDirection:'row',justifyContent:'space-between',backgroundColor:'#fff'}}>
 <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
 <View style={{justifyContent:'center',alignItems:'center'}}>
-<Image  style={{width: 15, height: 15,marginLeft:20,marginTop:30,resizeMode:'contain'}}  source={require("../assets/left-arrow.png")} ></Image> 
+<Image  style={{width: 6, height: 11,marginLeft:20,marginTop:30,resizeMode:'contain'}}  source={require("../assets/left-arrow.png")} ></Image> 
 </View>
 </TouchableOpacity>
 <View style={{justifyContent:'center',alignItems:'center'}}>
-<Text style={{color:'#4e649f',opacity:1,fontSize:18,marginTop:25}}>Create a New Wallet</Text>
+<Text style={{color:'#4e649f',opacity:1,fontSize:15.96,marginTop:25,fontFamily:'Exo2-Bold'}}>Create a New Wallet</Text>
 </View>
 <View></View>
 </View>
@@ -173,7 +173,7 @@ SlideMenu=()=>{
 <View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
 
 <TextInput
-   style={{height: 80,padding:10}}
+   style={{height: 80,padding:10,fontFamily:'Exo2-Bold'}}
  placeholderTextColor='#9ab8db'
    placeholder="Email"
    

@@ -220,7 +220,7 @@ SlideMenu=()=>{
 </TouchableOpacity> 
   <TouchableOpacity onPress={this.ForgotAction}>
 <View style={{justifyContent:'center',alignItems:'center',marginVertical:50}}>
-<Text style={{color:'#3d5498',fontSize:18}}>FORGOT THE PASSWORD</Text>
+<Text style={{color:'#3d5498',fontSize:18,fontFamily:'Exo2-Regular'}}>FORGOT THE PASSWORD</Text>
 </View>
 </TouchableOpacity>  
        </View> 
@@ -329,7 +329,7 @@ const styles = StyleSheet.create({
     paddingVertical: 0,
     borderBottomWidth: 1,
     borderBottomColor: '#3d5498',
-    height: 45,width: "90%"
-   
+    height: 45,width: "90%",
+    fontFamily:'Exo2-Regular'
 }
 });

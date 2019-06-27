@@ -148,12 +148,12 @@ SlideMenu=()=>{
         
       <View style={styles.Maincontainers} >  
        
-      <View> 
+   
 
        <LinearGradient
   colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>   
    
-    <View style={{marginTop:40}}>          
+    <View style={{marginTop:40,flex:0.6}}>          
          
              <View  style={{justifyContent:'center',alignItems:'center'
         }}>
@@ -168,7 +168,9 @@ SlideMenu=()=>{
             />    
         </View>
         <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
-        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:15,textAlign:'center',fontFamily:''}}>We'll send you a email ,to show you how to take back your password</Text>
+        <Text style={{color:'#4e649f',opacity:1,fontSize:15,textAlign:'center',fontFamily:'Exo2-Bold'}}>We'll send you a email ,to show </Text>
+        <Text style={{color:'#4e649f',opacity:1,fontSize:15,fontFamily:'Exo2-Bold'}}>you how to take back your</Text>
+        <Text style={{color:'#4e649f',opacity:1,fontSize:15,fontFamily:'Exo2-Bold'}}>password.</Text>
         </View>
 </View>  
   
@@ -183,7 +185,7 @@ SlideMenu=()=>{
        
  </LinearGradient> 
  
- </View>
+
  
      </View>
       

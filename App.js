@@ -175,9 +175,10 @@ let CollapseExpand = (index, position) => {
          
         }});
       const MainNavigator =StackNavigator({
+        Launch: { screen: Launch },
         ProfileRegister:{screen:ProfileRegister},      
         NewWallet:{screen:NewWallet},    
-        Launch: { screen: Launch },
+       
         Welcome:{screen:Welcome},
         Home:{screen:TabNavigator},
       
