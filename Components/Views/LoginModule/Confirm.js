@@ -362,8 +362,6 @@ colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    paddingVertical: 20
   },
   itemContainer: {
     width: WIDTH,

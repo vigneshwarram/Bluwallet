@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,ScrollView,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
+import { View, StyleSheet, Image,ScrollView,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 
@@ -153,18 +153,17 @@ SlideMenu=()=>{
 
        <LinearGradient
    colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>   
-       <View style={{justifyContent:'center',alignItems:'center',position:'absolute',bottom:50,left:70}}>
+       <View style={{justifyContent:'center',alignItems:'center',position:'absolute',bottom:100,}}>
         <Image
-                style={{width:250,height:250,resizeMode: 'contain',opacity:0.1}}
+                style={{width: Dimensions.get('window').width,
+    resizeMode: "contain",
+    height: 250,opacity:0.1}}
                 source={require('../assets/dlogo.png')}
             />            
         </View>
-    <View style={{flexDirection:'row',justifyContent:'space-between',flex:0.1}}>
-    <View></View>
-    <View style={{justifyContent:'center',alignItems:'center',marginLeft:40}}>
-        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10,fontFamily:''}}>Welcome!</Text>
-    </View>
-      <View style={{backgroundColor:'#fd6d71',height:this.state.hr,width:this.state.wr,justifyContent:'center', borderTopStartRadius:25,borderBottomStartRadius:25, marginTop:10}}>
+    <View style={{justifyContent:'space-between',flex:0.1}}>
+   
+      <View style={{backgroundColor:'#fd6d71',height:this.state.hr,width:this.state.wr,justifyContent:'center', borderTopStartRadius:25,borderBottomStartRadius:25, marginTop:10,position:'absolute',right:0}}>
             <TouchableOpacity onPress={this.pressRight}>
        <View style={{flexDirection: 'row'}}> 
           <Image style={{marginLeft:10,width: 20, height: 20}}   source={require("../assets/cancel.png")} ></Image>     
@@ -172,19 +171,29 @@ SlideMenu=()=>{
           </View>
           </TouchableOpacity>
             </View>
+            <View style={{justifyContent:'center',alignItems:'center',marginTop:25}}>
+        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,fontFamily:''}}>Welcome!</Text>
     </View>
-    <View style={{flex:0.7}}> 
+    </View>
+    
+    <View style={{flex:0.3}}> 
    
-             <View>
+             
          
              <View  style={{justifyContent:'center',alignItems:'center'
         }}>
-              <Image  style={{width: 300, height: 300,resizeMode:'contain'}}  source={require("../assets/threelogo.png")} ></Image> 
+              <Image  style={{  width: Dimensions.get('window').width,
+    resizeMode: "contain",
+    height: 250,}}  source={require("../assets/threelogo.png")} ></Image> 
                  
             
         </View>
       
-        <View  style={{justifyContent:'center',alignItems:'center',
+      
+            
+</View>  
+<View style={{flex:0.4}}>
+<View  style={{justifyContent:'center',alignItems:'center',paddingVertical:60
         }}>
              <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,fontFamily:''}}>Verify your Identity to request your XLM.Will</Text>
              <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>Take a few minutes.Once Verification,you</Text>
@@ -192,15 +201,9 @@ SlideMenu=()=>{
              <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>Exchange</Text>
          
         </View>
-
-        <View>
-        
-       
 </View>
 
-             </View>    
-</View>  
-        <View style={{flex:0.1}}>
+        <View style={{flex:0.2}}>
 
         <TouchableOpacity onPress={this.BeginAction}>
     <View>

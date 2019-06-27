@@ -149,12 +149,12 @@ SlideMenu=()=>{
         
       <View style={styles.Maincontainers}>  
        
-      <View> 
+      
 
        <LinearGradient
   colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>   
-   
-    <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+   <View style={{flex:0.7}}>
+   <View style={{flexDirection:'row',justifyContent:'space-between'}}>
     <View style={{justifyContent:'center',alignItems:'center'}}>
     <Image  style={{width: 15, height: 15,marginLeft:20,marginTop:25,resizeMode:'contain'}}  source={require("../assets/left-arrow.png")} ></Image> 
     </View>
@@ -167,18 +167,13 @@ SlideMenu=()=>{
           </TouchableOpacity>
             </View>
     </View>
-    <View style={{marginTop:20}}> 
-   
-             <View>
-         
-             <View  style={{justifyContent:'center',alignItems:'center'
+    <View  style={{justifyContent:'center',alignItems:'center'
         }}>
               <Image  style={{width: 200, height: 200,resizeMode:'contain'}}  source={require("../assets/threelogo.png")} ></Image> 
                  
             
         </View>
-      
-        <View  style={{justifyContent:'center',alignItems:'center',marginTop:20
+        <View  style={{justifyContent:'center',alignItems:'center'
         }}>
              <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10,fontFamily:''}}>Lets Verified!</Text>
              <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:10,fontFamily:''}}>Please choose the country where your document was</Text>
@@ -188,40 +183,36 @@ SlideMenu=()=>{
         </View>  
         <View>  
 
-        <View>    
-        <View style={{ borderWidth: 1,backgroundColor:'#fff',padding:10,marginLeft:30,marginRight:30,borderColor:'#919fc3',marginTop:100,borderRadius:6 }}>
-        <View style={{justifyContent:'space-between',flexDirection:'row'}}>
-        <Text style={{color:'#4e649f',opacity:1,fontSize:12,fontFamily:''}}>{this.state.Country}</Text>
-        <Image  style={{width: 10, height: 10}}  source={require("../assets/down_arrow.png")} ></Image> 
-        </View>
-        
-  <Picker style={{ position:'absolute', top: 0, width: 1000, height: 3000 }}
-   selectedValue={this.state.Country}
-  onValueChange={(itemValue, itemIndex) => this.selectedCountry(itemValue,itemIndex)}>
-  
-  <Picker.Item label="India" value="India" />
-  <Picker.Item label="Aus" value="Aus" />
-  <Picker.Item label="USA" value="USA" />
-  <Picker.Item label="German" value="German" />
-  <Picker.Item label="Italy" value="Italy" />
-  <Picker.Item label="Aus" value="Aus" />
-  <Picker.Item label="India" value="India" />
-  <Picker.Item label="Aus" value="Aus" />
-  </Picker>
+<View style={{paddingVertical:50}}>    
+<View style={{ borderWidth: 1,backgroundColor:'#fff',padding:10,marginLeft:30,marginRight:30,borderColor:'#919fc3',borderRadius:6, }}>
+<View style={{justifyContent:'space-between',flexDirection:'row'}}>
+<Text style={{color:'#4e649f',opacity:1,fontSize:12,fontFamily:''}}>{this.state.Country}</Text>
+<Image  style={{width: 10, height: 10}}  source={require("../assets/down_arrow.png")} ></Image> 
 </View>
-        </View>
-        </View>   
 
-             </View>    
+<Picker style={{ position:'absolute', top: 0, width: 1000, height: 3000 }}
+selectedValue={this.state.Country}
+onValueChange={(itemValue, itemIndex) => this.selectedCountry(itemValue,itemIndex)}>
+
+<Picker.Item label="India" value="India" />
+<Picker.Item label="Aus" value="Aus" />
+<Picker.Item label="USA" value="USA" />
+<Picker.Item label="German" value="German" />
+<Picker.Item label="Italy" value="Italy" />
+<Picker.Item label="Aus" value="Aus" />
+<Picker.Item label="India" value="India" />
+<Picker.Item label="Aus" value="Aus" />
+</Picker>
+</View>
+</View>
 </View>  
+   </View>
+    
+    
         
         
  </LinearGradient> 
- </View>
- 
-     </View>
-      
-    
+ </View>    
     );
       }
       clickedItemText=(item)=>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,TextInput,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
+import { View, StyleSheet, Image,TextInput,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 
@@ -150,12 +150,22 @@ SlideMenu=()=>{
         
       <View style={styles.Maincontainers}>  
        
-      <View> 
+    
 
        <LinearGradient
-   colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>   
+   colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>  
+   <View style={{justifyContent:'center',alignItems:'center',position:'absolute',bottom:100,}}>
+        <Image
+                style={{width: Dimensions.get('window').width,
+    resizeMode: "contain",
+    height: 211,opacity:0.1}}
+                source={require('../assets/dlogo.png')}
+            />            
+        </View>
    <ScrollView>
-    <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+   <View style={{flex:1}}>
+<View style={{flex:0.8}}>
+<View style={{flexDirection:'row',justifyContent:'space-between'}}>
     <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
     <View style={{justifyContent:'center',alignItems:'center'}}>
     <Image  style={{width: 15, height: 15,marginLeft:20,marginTop:30,resizeMode:'contain'}}  source={require("../assets/left-arrow.png")} ></Image> 
@@ -239,18 +249,15 @@ SlideMenu=()=>{
           </View>
          
     </View>
-    
-    <View style={{alignContent:'center',alignSelf:'auto'}}> 
+</View>
+
+ <View style={{flex:0.1,paddingTop:50}}>
+ <View style={{alignContent:'center',alignSelf:'auto'}}> 
         
-    <View style={{justifyContent:'center',alignItems:'center',position:'absolute',right:100,left:100,top:0}}>
-        <Image
-                style={{width:250,height:250,resizeMode: 'contain',opacity:0.1}}
-                source={require('../assets/dlogo.png')}
-            />            
-        </View>  
+    
         <TouchableOpacity onPress={this.BeginAction}>
         <View>
-        <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center',marginTop:150}}>
+        <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center'}}>
 
 <Text style={{color:'#fff',fontSize:18,fontWeight:'bold',fontFamily:'Courier New'}}>Send</Text>
 
@@ -272,11 +279,15 @@ SlideMenu=()=>{
 </View> 
     
             
-</View>    
+</View>   
+ </View>
+    
+   
+
+   </View>
+   
         </ScrollView>
  </LinearGradient> 
- </View>
- 
      </View>
       
     

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,ScrollView,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
+import { View, StyleSheet, Image,ScrollView,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 
@@ -149,16 +149,21 @@ SlideMenu=()=>{
         
       <View style={styles.Maincontainers}>  
        
-      <View> 
+     
 
        <LinearGradient
-   colors= {['#FFFFFF','#DFE1ED','#CCCFE2']}>   
+   colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>   
+       <View style={{justifyContent:'center',alignItems:'center',position:'absolute',bottom:100,}}>
+        <Image
+                style={{width: Dimensions.get('window').width,
+    resizeMode: "contain",
+    height: 211,opacity:0.1}}
+                source={require('../assets/dlogo.png')}
+            />            
+        </View>
+    <View style={{justifyContent:'space-between',flex:0.4}}>
    
-    <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-    <View></View>
-    <View style={{justifyContent:'center',alignItems:'center',marginLeft:40}}>
-    </View>
-      <View style={{backgroundColor:'#fd6d71',height:this.state.hr,width:this.state.wr,justifyContent:'center', borderTopStartRadius:25,borderBottomStartRadius:25, marginTop:10}}>
+      <View style={{backgroundColor:'#fd6d71',height:this.state.hr,width:this.state.wr,justifyContent:'center', borderTopStartRadius:25,borderBottomStartRadius:25, marginTop:10,position:'absolute',right:0}}>
             <TouchableOpacity onPress={this.pressRight}>
        <View style={{flexDirection: 'row'}}> 
           <Image style={{marginLeft:10,width: 20, height: 20}}   source={require("../assets/cancel.png")} ></Image>     
@@ -166,62 +171,50 @@ SlideMenu=()=>{
           </View>
           </TouchableOpacity>
             </View>
-    </View>
-    <View> 
-   
-             <View>
-         
-             <View  style={{justifyContent:'center',alignItems:'center'
+            <View  style={{justifyContent:'center',alignItems:'center',paddingTop:30
         }}>
-              <Image  style={{width: 250, height: 250,resizeMode:'contain'}}  source={require("../assets/threelogo.png")} ></Image> 
+              <Image  style={{  width: Dimensions.get('window').width,
+    resizeMode: "contain",
+    height: 250,}}  source={require("../assets/threelogo.png")} ></Image> 
                  
             
         </View>
-      
-        <View  style={{justifyContent:'center',alignItems:'center',marginTop:10
-        }}>
-        <View  style={{justifyContent:'center',alignItems:'center'
+    </View>
+<View style={{flex:0.4}}>
+<View  style={{justifyContent:'center',alignItems:'center'
         }}>
         <Image  style={{width: 40, height: 40,resizeMode:'contain'}}  source={require("../assets/mobile-phone.png")} ></Image>
         </View>
+        <View style={{alignItems:'center',justifyContent:"center"}}>
         <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10,fontFamily:''}}>Verify with 2 Steps</Text>
              <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10,fontFamily:''}}>Avoid  unauthorized  access to your</Text>
              <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>Wallet ,Enable the verification of 2 steps to  </Text>
              <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>upgrade the security on your wallet</Text>
-             
-        </View>  
-        <View>
-        <View style={{justifyContent:'center',alignItems:'center',position:'absolute',right:100,left:100,marginTop:-20,bottom:-20}}>
-        <Image
-                style={{width:250,height:250,resizeMode: 'contain',opacity:0.1}}
-                source={require('../assets/dlogo.png')}
-            />            
-        </View>  
+        </View>
+          
+</View>
+
+        <View style={{flex:0.2}}>
+
         <TouchableOpacity onPress={this.BeginAction}>
         <View>
       
-        <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center',marginTop:150}}>
+        <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center'}}>
 <Text style={{color:'#fff',fontSize:18,fontWeight:'bold',fontFamily:'Courier New'}}>Enable</Text>
 </LinearGradient>
         </View>
         </TouchableOpacity>
-        
-<View>
+        <View>
 <LinearGradient colors={['#fff','#fff','#fff']}  style={{padding:15,justifyContent:'center',alignItems:'center'}}>
 <TouchableOpacity onPress={this.BeginAction}>
 <Text style={{color:'#d2e4ff'}}>Check it later</Text>
 </TouchableOpacity>
 </LinearGradient>
-</View> 
-        </View>   
-
-             </View>    
-</View>  
-        
+</View>
+        </View>
         
  </LinearGradient> 
- </View>
- 
+
      </View>
       
     

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,Picker,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
+import { View, StyleSheet, Image,Picker,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 
 import LinearGradient from 'react-native-linear-gradient';
 
-export default class DocumentPhoto  extends React.Component {
+export default class TakePassportPhoto  extends React.Component {
 
   static navigationOptions = {
     header: null
@@ -149,46 +149,45 @@ SlideMenu=()=>{
         
       <View style={styles.Maincontainers}>  
        
-      <View> 
+   
 
        <LinearGradient
-   colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>   
-   
-    <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-    <View></View>
-    <View style={{justifyContent:'center',alignItems:'center',marginLeft:40}}>
-    </View>
-    </View>
-    <View> 
-   
-             <View>
-         
-             <View  style={{justifyContent:'center',alignItems:'center'
+  colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>   
+   <View style={{flex:0.4}}>
+   <View  style={{justifyContent:'center',alignItems:'center'
         }}>
               <Image  style={{width: 200, height: 200,resizeMode:'contain'}}  source={require("../assets/threelogo.png")} ></Image> 
                  
             
         </View>
-      
         <View  style={{justifyContent:'center',alignItems:'center',marginTop:10
         }}>
-        
-        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10,textAlign:'center',fontFamily:''}}>Portrait + Document</Text>
+                <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10,textAlign:'center',fontFamily:''}}>Portrait + Document</Text>
 
              
-             <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:10,fontFamily:''}}>Make sure that your face and document it's clearly visible</Text>
+<Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:10,fontFamily:''}}>Make sure that your face and document it's clearly visible</Text>
            
          
              
-        </View>  
-        <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>  
+        </View> 
+   </View> 
+   
+             <View style={{flex:0.6}}>
+         
+             
+      
+        
+        <View style={{justifyContent:'center',alignItems:'center',marginTop:20,marginBottom:10}}>  
 
-        <Image  style={{width: 300, height: 300,resizeMode:'contain'}}  source={require("../assets/documentface.png")} ></Image> 
+        <Image
+                style={{width: Dimensions.get('window').width,
+    resizeMode: "contain",
+    height: 300}}
+    source={require("../assets/documentface.png")}
+            />  
         </View>   
-
-             </View>    
-</View>  
-             <View style={{position:'absolute',bottom:30,width:'100%'
+        
+        <View style={{bottom:0,width:'100%',marginTop:10
  }}>
         
         
@@ -203,9 +202,10 @@ SlideMenu=()=>{
 </TouchableOpacity> 
 
         </View>
+             </View>     
+            
         
  </LinearGradient> 
- </View>
  
      </View>
       

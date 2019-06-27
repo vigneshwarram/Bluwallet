@@ -176,6 +176,8 @@ let CollapseExpand = (index, position) => {
         }});
       const MainNavigator =StackNavigator({
         Launch: { screen: Launch },
+        Welcome:{screen:Welcome},
+       
        Home:{screen:TabNavigator},
         DocumentPhoto:{screen:DocumentPhoto},
         TakePhoto:{screen:TakePhoto},
@@ -184,7 +186,7 @@ let CollapseExpand = (index, position) => {
      //   DashBoard:{screen:DashBoard},        
         ForgotPassword:{screen:ForgotPassword},
         Confirm:{screen:Confirm},
-        Welcome:{screen:Welcome},
+      
         Login:{screen:Login},
        // Price:{screen:Price},                
        // Profile:{screen:Profile},     

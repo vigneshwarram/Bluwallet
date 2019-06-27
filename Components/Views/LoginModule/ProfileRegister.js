@@ -154,6 +154,14 @@ export default class ProfileRegister extends React.Component {
 
 <LinearGradient
 colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>   
+ <View style={{justifyContent:'center',alignItems:'center',position:'absolute',bottom:100,}}>
+        <Image
+                style={{width: Dimensions.get('window').width,
+    resizeMode: "contain",
+    height: 211,opacity:0.1}}
+                source={require('../assets/dlogo.png')}
+            />            
+        </View>
         <View style={{flexDirection:'row',justifyContent:'space-between',backgroundColor:'#fff',marginTop:-10}}>
         <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
     <View style={{justifyContent:'center',alignItems:'center'}}>
@@ -204,15 +212,6 @@ colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>
 </View>
 
           </View>
-          <View style={{justifyContent:'center',alignItems:'center',marginTop:30}}>
-        <Image
-                style={{width:250,height:250,resizeMode: 'contain',opacity:0.1}}
-                source={require('../assets/dlogo.png')}
-            />            
-        </View>  
-       
-       
-
     </LinearGradient>
     </View>
     <View style={{position:'absolute',bottom:0,width:'100%'}}>  

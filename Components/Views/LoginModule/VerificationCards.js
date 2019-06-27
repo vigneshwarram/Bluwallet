@@ -165,11 +165,13 @@ SlideMenu=()=>{
         
       <View style={styles.Maincontainers}>  
   
-       <View> 
+       
 
 <LinearGradient
 colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>   
      <ScrollView>
+     <View style={{flex:1}}>
+<View style={{flex:0.2}}>
 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
 <View style={{justifyContent:'center',alignItems:'center'}}>
     <Image  style={{width: 15, height: 15,marginLeft:20,marginTop:25,resizeMode:'contain'}}  source={require("../assets/left-arrow.png")} ></Image> 
@@ -183,30 +185,34 @@ colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>
    </TouchableOpacity>
      </View>
 </View>
-<View style={{marginTop:20}}> 
+<View  style={{justifyContent:'center',alignItems:'center'
+}}>
+ <Image  style={{width: 200, height: 200,resizeMode:'contain'}}  source={require("../assets/threelogo.png")} ></Image> 
+    
 
-      <View>
-  
-      <View  style={{justifyContent:'center',alignItems:'center'
- }}>
-       <Image  style={{width: 200, height: 200,resizeMode:'contain'}}  source={require("../assets/threelogo.png")} ></Image> 
-          
-     
- </View>
+</View>
 
- <View  style={{justifyContent:'center',alignItems:'center',marginTop:20
- }}>
-      <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10,fontFamily:''}}>Lets Verified!</Text>
-      <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10,fontFamily:''}}>Please choose the country where your document was</Text>
-      <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>Issued</Text>
-  
-      
- </View>  
- <View > 
- <TouchableOpacity onPress={this.PassPortSelect} style={{justifyContent:'center',alignItems:'center'}}>
- <View></View>
- <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff',marginTop:30, justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
- <LinearGradient
+<View  style={{justifyContent:'center',alignItems:'center',marginTop:20
+}}>
+<Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10,fontFamily:''}}>Lets Verified!</Text>
+<Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10,fontFamily:''}}>Please choose the country where your document was</Text>
+<Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>Issued</Text>
+
+
+</View> 
+</View>
+
+<View style={{flex:0.6}}> 
+
+<View>
+
+
+ 
+<View > 
+<TouchableOpacity onPress={this.PassPortSelect} style={{justifyContent:'center',alignItems:'center'}}>
+<View></View>
+<View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff',marginTop:30, justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
+<LinearGradient
 colors={[this.state.passportcolor1,this.state.passportcolor2,this.state.passportcolor3]}  start={{x: 0, y: 0}} end={{x: 1, y: 0}}>
 <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center', height: 50,padding:10,paddingLeft:50,paddingRight:50}}>
 
@@ -214,38 +220,38 @@ colors={[this.state.passportcolor1,this.state.passportcolor2,this.state.passport
 <Image  style={{width: 30, height: 30,resizeMode:'contain',tintColor:this.state.PassportTintcolor}}  source={require("../assets/passport.png")} ></Image>
 </View>
 </LinearGradient>
-   </View>
-   
-   </TouchableOpacity>
-   <TouchableOpacity onPress={this.IdSelect}>
+</View>
 
- <View >
- <LinearGradient
+</TouchableOpacity>
+<TouchableOpacity onPress={this.IdSelect}>
+
+<View >
+<LinearGradient
 colors={[this.state.idcolor1,this.state.idcolor2,this.state.idcolor3]}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
 <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',height: 50,padding:10,paddingLeft:50,paddingRight:50}}>
 <Text style={{color:this.state.idtextcolor,fontFamily:''}}>ID-Card</Text>
 <Image  style={{width: 30, height: 30,resizeMode:'contain',tintColor:this.state.idTintcolor}}  source={require("../assets/id_card.png")} ></Image>
 
 
-   </View>
-   </LinearGradient>
- </View> 
- </TouchableOpacity>
- <TouchableOpacity onPress={this.ResidenceSelect}>
- <View >
- <LinearGradient
+</View>
+</LinearGradient>
+</View> 
+</TouchableOpacity>
+<TouchableOpacity onPress={this.ResidenceSelect}>
+<View >
+<LinearGradient
 colors={[this.state.residencegradientcolor1,this.state.residencegradientcolor2,this.state.residencegradientcolor3]}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>  
 <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',height: 50,padding:10,paddingLeft:50,paddingRight:50}}>
 <Text style={{color:this.state.Residencecolor,fontFamily:''}}>Residence Permit</Text>
 <Image  style={{width: 30, height: 30,resizeMode:'contain',tintColor:this.state.residenceTintcolor}}  source={require("../assets/residency.png")} ></Image>
 </View>
- </LinearGradient>
-   </View>
-   </TouchableOpacity>
-   <TouchableOpacity onPress={this.DriverSelect}>
+</LinearGradient>
+</View>
+</TouchableOpacity>
+<TouchableOpacity onPress={this.DriverSelect}>
 
- <View>
- <LinearGradient
+<View>
+<LinearGradient
 colors={[this.state.drivercolor1,this.state.drivercolor2,this.state.drivercolor3]}  start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
 
 <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',height: 50,padding:10,paddingLeft:50,paddingRight:50}}>
@@ -253,22 +259,23 @@ colors={[this.state.drivercolor1,this.state.drivercolor2,this.state.drivercolor3
 <Text style={{color:this.state.drivertextcolor,fontFamily:''}}>Drivers's License</Text>
 <Image  style={{width: 30, height: 30,resizeMode:'contain',tintColor:this.state.driverTintcolor}}  source={require("../assets/driver.png")} ></Image>
 
-   </View>
-   </LinearGradient>
- </View> 
- 
- </TouchableOpacity>
- </View>   
+</View>
+</LinearGradient>
+</View> 
 
-      </View>    
+</TouchableOpacity>
+</View>   
+
+</View>    
 </View>  
- 
+
+
+     </View>
+
+  
  </ScrollView>
 </LinearGradient> 
-</View>
-
-    
- <View style={{position:'absolute',bottom:0,width:'100%'}}>
+    <View style={{bottom:0,position:'absolute',width:'100%'}}>
  <TouchableOpacity onPress={this.BeginAction}>  
  <View>
  <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
@@ -288,7 +295,10 @@ colors={[this.state.drivercolor1,this.state.drivercolor2,this.state.drivercolor3
 
 </TouchableOpacity>
 </LinearGradient>
-        </View>
+        </View>  
+
+    
+
      </View>
       
     

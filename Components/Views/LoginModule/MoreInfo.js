@@ -153,11 +153,11 @@ export default class ProfileRegister extends React.Component {
  
     return (
       <View style={styles.container}>
-      <View> 
-
+ 
 <LinearGradient
  colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>   
-        <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+ <View style={{flex:0.7}}>
+ <View style={{flexDirection:'row',justifyContent:'space-between'}}>
         <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
     <View style={{justifyContent:'center',alignItems:'center'}}>
     <Image  style={{width: 15, height: 15,marginLeft:20,marginTop:20,resizeMode:"contain"}}  source={require("../assets/left-arrow.png")} ></Image> 
@@ -168,19 +168,22 @@ export default class ProfileRegister extends React.Component {
     </View>
     <View></View>
     </View>
-    <View style={{justifyContent:'center',alignItems:'center',flexDirection:"row" ,marginTop:30}}>
+    <View style={{justifyContent:'center',alignItems:'center',flexDirection:"row"}}>
       <View>
       <Image  style={{width: 300, height: 300,resizeMode:'contain'}}  source={require("../assets/card.png")} ></Image> 
       </View>
 
     </View>
-    <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:25,fontFamily:''}}>We need more information to complete your </Text>
+    <View style={{justifyContent:'center',alignItems:'center'}}>
+    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:15,fontFamily:''}}>We need more information to complete your </Text>
     <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}> Profile</Text>
     <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:10,fontFamily:''}}> You need to verificate your mobile number,a</Text>
     <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}> national identity and selfie</Text>
           </View>
-          <View style={{position:'absolute',width:'100%',bottom:50}}>
+ </View>
+      
+   <View style={{flex:0.3}}>
+   <View style={{width:'100%',paddingTop:50}}>
     <LinearGradient colors={['#fff','#fff','#fff']}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
 <TouchableOpacity onPress={this.BeginAction}>
 <Text style={{color:'#d2e4ff'}}>Ahora no</Text>
@@ -197,9 +200,12 @@ export default class ProfileRegister extends React.Component {
         </TouchableOpacity> 
 
         </View>
+   </View>
+   
+      
     </LinearGradient>
     
-    </View>
+   
       </View>
     );
   }
@@ -219,8 +225,6 @@ export default class ProfileRegister extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    paddingVertical: 20
   },
   itemContainer: {
     width: WIDTH,
