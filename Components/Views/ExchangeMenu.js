@@ -218,16 +218,17 @@ SlideMenu=()=>{
     return (  
    
       <View style={styles.Maincontainers}> 
-      <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={styles.Maincontainers}>
+      <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={{height:'100%'}}>
+<View style={{flex:0.3}}>
 
+<LinearGradient
+   colors={['#1a5fe1','#00a5ff','#81DCF9',]} style={{opacity:0.9}}>    
       <LinearGradient
-   colors={['#1a5fe1','#00a5ff','#81DCF9',]} style={{height:'30%',opacity:0.9}}>    
-      <LinearGradient
-   colors={['#1a5fe1','#5DBCD2','#81DCF9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{height:'100%',marginRight:30,marginTop:30,opacity:1}}>
+   colors={['#1a5fe1','#00a5ff','#81DCF9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{height:'100%', marginRight:30,marginTop:30,opacity:1}}>
  <View style={{justifyContent:'center',alignItems:'center'}}>
-          <View style={{flexDirection:'row',marginTop:20}}>
+          <View style={{flexDirection:'row',marginTop:10}}>
           <Image style={{marginRight:10,width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/app4.png")} ></Image>     
-          <Text style={{fontSize:20,fontWeight:'bold',color:'#fff',fontFamily:''}}>Exchange</Text>
+          <Text style={{fontSize:18,color:'#fff',fontFamily:''}}>Exchange</Text>
           </View>
           <View style={{flexDirection:'row',marginTop:10}}>
           <View>
@@ -254,7 +255,7 @@ SlideMenu=()=>{
          </View>
           
           </View>
-          <View style={{width:'80%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:20, justifyContent:'space-between',flexDirection:'row'}}>
+          <View style={{width:'80%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:5,marginBottom:20, justifyContent:'space-between',flexDirection:'row'}}>
 <View style={{flexDirection:'row',marginLeft:20}}>
 <Image  style={{width: 20, height: 20,marginTop:10}}  source={require("./assets/Searchicon.png")} ></Image> 
 <TextInput
@@ -318,11 +319,10 @@ SlideMenu=()=>{
          
 
 
-          </LinearGradient>    
-    <LinearGradient  colors= {['transparent','transparent','transparent']} style={{marginTop:'10%',position:'absolute',height:'100%',
-        top:'30%',left: 0,
-        right: 0}}>
-    <ScrollView style={{paddingBottom:10}}>
+          </LinearGradient>  
+</View>
+     <View style={{flex:0.7,marginTop:70}}>
+     <ScrollView>
     <View style={{flexDirection:'row',padding:10,justifyContent:'space-between',marginLeft:20,marginRight:20}}>
     <Animated.View>
     <TouchableOpacity onPress={this.buyClick}>
@@ -367,11 +367,11 @@ SlideMenu=()=>{
     </View>
     </TouchableOpacity>
     </View>  
-    <View  style={{justifyContent:'center',alignItems:'center', top:100,marginBottom:10,backgroundColor:'transparent',position:'absolute',left:150
+    <View  style={{justifyContent:'center',alignItems:'center', top:70,backgroundColor:'transparent',position:'absolute',left:135
         }}>
               <Image  style={{width: 100, height: 150,resizeMode:'contain'}}  source={require("./assets/tree.png")} ></Image> 
         </View>
-        <View style={{flex:1,marginBottom:90}}>
+        <View style={{flex:1}}>
         <FlatList  style={{marginTop:10}}
       ItemSeparatorComponent={this.space}
       data={this.state.dataSource}
@@ -440,7 +440,9 @@ SlideMenu=()=>{
   
     </ScrollView>
 
-</LinearGradient>
+
+     </View>
+   
 
 
 

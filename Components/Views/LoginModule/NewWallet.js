@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,TextInput,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
+import { View, StyleSheet, Image,TextInput,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 import RNPasswordStrengthMeter from 'react-native-password-strength-meter';
@@ -153,12 +153,7 @@ SlideMenu=()=>{
 <LinearGradient
  colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>  
   
-  <View style={{justifyContent:'center',alignItems:'center',position:'absolute',bottom:20,left:70,flex:1}}>
- <Image
-         style={{width:250,height:250,resizeMode: 'contain',opacity:0.1}}
-         source={require('../assets/dlogo.png')}
-     />            
- </View>  
+ 
  <ScrollView>
 <View style={{flex:1}}>
   <View style={{flex:0.9}}> 
@@ -231,15 +226,7 @@ SlideMenu=()=>{
 </View>
 <View style={{flex:0.1}}> 
 
-<TouchableOpacity onPress={this.BeginAction}>
-<View style={{paddingTop:50}}>
-<LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
 
-<Text style={{color:'#fff',fontSize:18,fontFamily:'lucida grande'}}>Create Wallet</Text>
-
-</LinearGradient>
-</View> 
-</TouchableOpacity>
 
 
 
@@ -248,6 +235,27 @@ SlideMenu=()=>{
 
 </View>
 </ScrollView>
+  <View style={{justifyContent:'center',alignItems:'center',position:'absolute',bottom:10,}}>
+        <Image
+                style={{width: Dimensions.get('window').width,
+    resizeMode: "contain",
+    height: 211,opacity:0.1}}
+                source={require('../assets/dlogo.png')}
+            />            
+        </View>
+        <View style={{bottom:100}}>
+        <TouchableOpacity onPress={this.BeginAction}>
+<View >
+<LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
+
+<Text style={{color:'#fff',fontSize:18,fontFamily:'lucida grande'}}>Create Wallet</Text>
+
+</LinearGradient>
+</View> 
+</TouchableOpacity>
+        </View>
+
+ 
 </LinearGradient> 
 
 

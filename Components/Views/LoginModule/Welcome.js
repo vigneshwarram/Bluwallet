@@ -153,7 +153,7 @@ SlideMenu=()=>{
 
        <LinearGradient
    colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>   
-       <View style={{justifyContent:'center',alignItems:'center',position:'absolute',bottom:100,}}>
+      <View style={{justifyContent:'center',alignItems:'center',position:'absolute',bottom:100,}}>
         <Image
                 style={{width: Dimensions.get('window').width,
     resizeMode: "contain",

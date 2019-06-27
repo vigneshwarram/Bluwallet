@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet, Image,TextInput,NativeModules,Text,ActivityIndicator,TouchableOpacity,Dimensions,} from 'react-native';
 import AlphaScrollFlatList from 'alpha-scroll-flat-list';
 const WIDTH = Dimensions.get('window').width;
+import DateTimePicker from "react-native-modal-datetime-picker";
 const ITEM_HEIGHT = 50;
 import LinearGradient from 'react-native-linear-gradient';
 export default class ProfileRegister extends React.Component {
@@ -15,7 +16,10 @@ export default class ProfileRegister extends React.Component {
       dataSource:[],
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
+      Dates:'Date of Birth',
       animate:false,
+      FirstName:null,
+      isDateTimePickerVisible: false,
       data: [
         {
           "id": "5b588d4acb1fe7c48301af77",
@@ -132,7 +136,10 @@ export default class ProfileRegister extends React.Component {
       visible: false,
       hidden: false,
       app1color:'#fff',
-      app5color:'#fff'
+      app5color:'#fff',
+
+      FirstNameBodercolor:'#d7dee8',
+      FirstNameBoderWidth:0
     };
   }
   renderItem ({item}) {
@@ -177,14 +184,15 @@ colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>
     <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:25,fontFamily:''}}>We need this to verify your identify,In order for</Text>
     <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}> you to use this improved feature.It should only</Text>
     <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}> Take a couple of minutes</Text>
-          <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff',marginTop:30, justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
+          <View style={{width:'100%',borderColor:this.state.FirstNameBodercolor,backgroundColor:'#fff',marginTop:30, justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1,borderBottomWidth:this.state.FirstNameBoderWidth}}>
 <View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
 
 <TextInput
           style={{height: 50,padding:10}}
         placeholderTextColor='#9ab8db'
           placeholder="First Name"
-          
+          onChangeText={(text) => this.FirstNameTextChange(text)}
+        value={this.state.FirstName}
         />
 </View>
           </View>
@@ -195,20 +203,26 @@ colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>
           style={{height: 50,padding:10}}
         placeholderTextColor='#9ab8db'
           placeholder="Last Name"
-          
+         // onChangeText={(text) => this.LastNameTextChange(text)}
+        value={this.state.LastName}
         />
 </View>
           </View>
+         
           <View style={{width:'100%',backgroundColor:'#fff',borderColor:'#d7dee8', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
+          <TouchableOpacity onPress={this.DateTouch}>
 <View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
-
-<TextInput
-          style={{height: 50,padding:10}}
-        placeholderTextColor='#9ab8db'
-          placeholder="Birthday"
-          
+<DateTimePicker
+          isVisible={this.state.isDateTimePickerVisible}
+          onConfirm={this.handleDatePicked}
+          onCancel={this.hideDateTimePicker}
         />
+
+<View
+          style={{height: 50,padding:10}}><Text style={{color:'#9ab8db'}}>{this.state.Dates}</Text></View>
+          
 </View>
+</TouchableOpacity>
 </View>
 
           </View>
@@ -240,8 +254,58 @@ colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>
       </View>
     );
   }
+  DateTouch=()=>{
+    this.setState({
+      isDateTimePickerVisible:true
+    })
+  }
+  hideDateTimePicker = (date) => {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+if(year>2015){
+  alert('You cant enter')
+}
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+    this.setState({ isDateTimePickerVisible: false,Dates:month+'/'+day+'/'+year});
+  };
+ 
+  handleDatePicked = date => {
+    console.log("A date has been picked: ", date);
+    this.hideDateTimePicker(date);
+  };
+  FirstNameTextChange=(text)=>{
+    this.setState({
+      FirstName:text,
+    })
+    if(text.length>0){
+      this.setState({
+        FirstNameBoderWidth:1,FirstNameBodercolor:'green'
+      })
+    }
+    else{
+      this.setState({
+        FirstNameBoderWidth:0,FirstNameBodercolor:'#d7dee8',
+        FirstName:null
+      })
+    }
+  }
   BeginAction=()=>{
-    this.props.navigation.navigate('ChooseCountry');
+    if(this.state.FirstName!=null){
+      this.setState({
+        FirstNameBodercolor:'green',
+        FirstNameBoderWidth:1
+      })
+    }
+    else {
+      this.setState({
+        FirstNameBodercolor:'red',
+        FirstNameBoderWidth:1
+      })
+    }
+  //  this.props.navigation.navigate('ChooseCountry');
   }
 }
 
