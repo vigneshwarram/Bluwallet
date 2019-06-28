@@ -169,26 +169,26 @@ colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>
                 source={require('../assets/dlogo.png')}
             />            
         </View>
-        <View style={{flexDirection:'row',justifyContent:'space-between',backgroundColor:'#fff',marginTop:-10}}>
+        <View style={{flexDirection:'row',justifyContent:'space-between',backgroundColor:'#fff'}}>
         <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
     <View style={{justifyContent:'center',alignItems:'center'}}>
-    <Image  style={{width: 15, height: 15,marginLeft:20,marginTop:30,resizeMode:'contain'}}  source={require("../assets/left-arrow.png")} ></Image> 
+    <Image  style={{width: 6, height: 11,marginLeft:20,marginTop:20,resizeMode:'contain'}}  source={require("../assets/left-arrow.png")} ></Image> 
     </View>
     </TouchableOpacity>
     <View style={{justifyContent:'center',alignItems:'center'}}>
-    <Text style={{color:'#4e649f',opacity:1,fontSize:20,marginTop:25,fontFamily:''}}>Profile</Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:20,marginTop:10,fontFamily:'Exo2-Bold'}}>Profile</Text>
     </View>
     <View></View>
     </View>
     <View style={{justifyContent:'center',alignItems:'center',backgroundColor:'#fff'}}>
-    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:25,fontFamily:''}}>We need this to verify your identify,In order for</Text>
-    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}> you to use this improved feature.It should only</Text>
-    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}> Take a couple of minutes</Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:25,fontFamily:'Exo2-SemiBold'}}>We need this to verify your identify,In order for</Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:'Exo2-SemiBold'}}> you to use this improved feature.It should only</Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:'Exo2-SemiBold'}}> Take a couple of minutes</Text>
           <View style={{width:'100%',borderColor:this.state.FirstNameBodercolor,backgroundColor:'#fff',marginTop:30, justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1,borderBottomWidth:this.state.FirstNameBoderWidth}}>
 <View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
 
 <TextInput
-          style={{height: 50,padding:10}}
+          style={{height: 50,padding:10,fontFamily:'Exo2-Regular'}}
         placeholderTextColor='#9ab8db'
           placeholder="First Name"
           onChangeText={(text) => this.FirstNameTextChange(text)}
@@ -200,7 +200,7 @@ colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>
 <View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
 
 <TextInput
-          style={{height: 50,padding:10}}
+          style={{height: 50,padding:10,fontFamily:'Exo2-Regular'}}
         placeholderTextColor='#9ab8db'
           placeholder="Last Name"
          // onChangeText={(text) => this.LastNameTextChange(text)}
@@ -231,21 +231,19 @@ colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>
     <View style={{position:'absolute',bottom:0,width:'100%'}}>  
     <TouchableOpacity onPress={this.BeginAction}>   
     <View>
-    <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
-
-<Text style={{color:'#fff'}}>Next</Text>
-
+    <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:15,justifyContent:'center',alignItems:'center',}}>
+<Text style={{color:'#fff',fontSize:20,fontFamily:'Poppins-Medium'}}>Next</Text>
 </LinearGradient>
     </View> 
     </TouchableOpacity> 
         
-<LinearGradient colors={['#354e91','#354e91','#354e91']}  style={{padding:15,alignItems:'center'}}>
+    <LinearGradient colors={['#354e91','#354e91','#354e91']}  style={{padding:15,alignItems:'center'}}>
 <TouchableOpacity>
-<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,marginLeft:-30,fontFamily:''}}>when you "sent",you accept</Text>
-<View style={{flexDirection:'row',marginTop:2,marginLeft:-30}}>
-<Text style={{color:'#5496ff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,fontFamily:''}}>Terms of Service</Text>
-<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,marginLeft:8,fontFamily:''}}>&</Text>
-<Text style={{color:'#5496ff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,marginLeft:8,fontFamily:''}}>Politic and privacy</Text>
+<Text style={{color:'#fff',opacity:1,fontSize:11,marginTop:2,fontFamily:'Exo2-Regular'}}>when you create a wallet,you accept</Text>
+<View style={{flexDirection:'row',marginTop:2,}}>
+<Text style={{color:'#5496ff',opacity:1,fontSize:11,marginTop:5,fontFamily:'Exo2-SemiBold'}}>Terms of Service</Text>
+<Text style={{color:'#fff',opacity:1,fontSize:11,marginTop:5,marginLeft:8,fontFamily:'Exo2-Regular'}}>&</Text>
+<Text style={{color:'#5496ff',opacity:1,fontSize:11,marginTop:5,marginLeft:8,fontFamily:'Exo2-SemiBold'}}>Politic and privacy</Text>
 </View>
 
 </TouchableOpacity>
@@ -298,6 +296,7 @@ if(year>2015){
         FirstNameBodercolor:'green',
         FirstNameBoderWidth:1
       })
+      this.props.navigation.navigate('ChooseCountry');
     }
     else {
       this.setState({
@@ -305,7 +304,7 @@ if(year>2015){
         FirstNameBoderWidth:1
       })
     }
-  //  this.props.navigation.navigate('ChooseCountry');
+  //  
   }
 }
 

@@ -295,10 +295,10 @@ _animate=()=>{
           </TouchableOpacity>
             </LinearGradient>
       </Animated.View>
-      <View style={{flexDirection: 'row',justifyContent:'center',alignItems:"center",marginTop:15}}> 
-          <Image  style={{width: 30, height: 30,resizeMode:'contain'}}  source={require("./assets/app1white.png")} ></Image>   
+      <View style={{flexDirection: 'row',justifyContent:'center',alignItems:"center",marginTop:25}}> 
+          <Image  style={{width: 18, height: 22,resizeMode:'contain'}}  source={require("./assets/app1white.png")} ></Image>   
           <View style={{flexDirection:'column'}}>
-          <Text style={{marginLeft:10,fontSize:18,fontWeight:'bold',color:'#fff',fontFamily:''}}>Wallet</Text>       
+          <Text style={{marginLeft:10,fontSize:16,color:'#FFFFFF',fontFamily:'Exo2-Regular'}}>Wallet</Text>       
           </View>       
           </View>
       {((this.state.NoPopup?null:
@@ -307,7 +307,7 @@ _animate=()=>{
       <LinearGradient colors= {['#395ea4','#446ea8','#4c78a9']} style={{width:'95%',marginLeft:10,marginRight:10,padding:10,height:160,marginTop:15,borderRadius:10}}>
       <View style={{flexDirection:'row'}}>
       <View>
-      <Text style={{marginLeft:20,fontSize:18,fontWeight:'bold',color:'#fff',fontFamily:''}}>Complete Your Profile</Text>  
+      <Text style={{marginLeft:20,fontSize:18,color:'#fff',fontFamily:'Exo2-Medium'}}>Complete Your Profile</Text>  
       <View style={{flexDirection:'row',marginTop:10}}>
       <Text style={{marginLeft:20,fontSize:10,color:'#fff',width:'65%',fontFamily:''}}>Complete you profile today to start using your wallet successfully </Text>  
       </View>
@@ -315,7 +315,7 @@ _animate=()=>{
       <View style={{width:'60%',marginLeft:20,marginTop:30}}>
 <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:10}}>
 <TouchableOpacity>
-<Text style={{color:'#fff'}}>Continue</Text>
+<Text style={{color:'#fff',fontFamily:'Poppins-Medium'}}>Continue</Text>
 </TouchableOpacity>
 </LinearGradient>
 </View>
@@ -383,7 +383,7 @@ _animate=()=>{
     
       
             <View style={{justifyContent:'center',alignItems:'center',marginTop:-80}}>
-                 <Text style={{marginLeft:10,marginTop:15,fontSize:15,fontWeight:'bold',color:'#4d6bc1',fontFamily:''}}>Balance</Text> 
+                 <Text style={{marginLeft:10,marginTop:15,fontSize:16,color:'#ABB3D0',fontFamily:'Exo2-Regular'}}>Balance</Text> 
                  </View>
                
                <View style={{ marginTop:30,justifyContent:'center',alignItems:'center'}}>
@@ -393,11 +393,11 @@ _animate=()=>{
                 </View>
                 <View>
                 <View style={{flexDirection:'row'}}>
-                <Text style={{marginLeft:30,fontSize:30,fontWeight:'bold',color:'#fff'}}>2.80258789</Text>
+                <Text style={{marginLeft:30,fontSize:36,color:'#F5F6F9',fontFamily:'Exo2-SemiBold'}}>2.80258789</Text>
                 <View style={{marginTop:-10,marginLeft:5}}>
-                <LinearGradient colors= {['#8392f7','#aa83f6','#c17df8']} style={{ width: 60,borderRadius:5, padding:5,
+                <LinearGradient colors= {['#7498F9','#9B89F8','#D476F7']} style={{ width: 60,borderRadius:5, padding:5,
 justifyContent:'center',alignItems:"center"}} >
-   <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',textAlign:'center'}}>^15%</Text> 
+   <Text style={{fontSize:10,color:'#fff',textAlign:'center',fontFamily:'Exo2-Regular'}}>^15%</Text> 
 </LinearGradient>
                 </View>
                 </View>
@@ -405,9 +405,9 @@ justifyContent:'center',alignItems:"center"}} >
                 </View>
                  </View>
                  <View style={{flexDirection:'row',justifyContent:'center',width:'100%',marginTop:20,alignItems:'center'}}>       		
-				 <Text style={{fontSize:15,fontWeight:'bold',color:'#4d6bc1',fontFamily:''}}>880.889</Text>                                          
+				 <Text style={{fontSize:12,color:'#F5F6F9',fontFamily:'Exo2-Regular'}}>880.889</Text>                                          
         <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:20}}>
-        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,fontFamily:''}}>{this.state.Amount}</Text>
+        <Text style={{color:'#ABB3D0',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.Amount}</Text>
         <Image  style={{width: 10, height: 10,marginLeft:10}}  source={require("./assets/down_arrow.png")} ></Image>
         <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000 }}
    selectedValue={this.state.Amount}
@@ -430,40 +430,40 @@ justifyContent:'center',alignItems:"center"}} >
                  <View style={{flexDirection:'row',marginTop:10}}> 
                  <View style={{flexDirection:'row'}}>
                  <View style={{justifyContent:'center',alignItems:'center'}}>
-                 <View style={{width:45,height:25,borderWidth:1,borderColor:'#405ba8',justifyContent:'center',alignItems:'center',borderRadius:6}}>
-                 <Text style={{fontSize:12,fontWeight:'bold',color:'#858ead',fontFamily:''}}>All</Text>
+                 <View style={{width:45,height:25,borderWidth:1,borderColor:'#4A6BCD',justifyContent:'center',alignItems:'center',borderRadius:6}}>
+                 <Text style={{fontSize:12,color:'#ABB3D0',fontFamily:'Exo2-Regular'}}>All</Text>
                  </View>
                  </View>
                 
                  <View style={{marginLeft:30}}>
                  <View style={{flexDirection:'row'}}>
-                 <Text style={{fontSize:12,fontWeight:'bold',color:'#4d6bc1',fontFamily:''}}>ETH</Text>
+                 <Text style={{fontSize:12,color:'#5496FF',fontFamily:'Exo2-Medium'}}>ETH</Text>
                  <View style={{marginTop:5}}>
                  <Image style={{resizeMode:'contain',width:10,height:10}}   source={require("./assets/red.png")} ></Image>          
                  </View>
                  </View>
                   
-                 <Text style={{marginTop:1,fontSize:12,fontWeight:'bold',color:'#858ead',fontFamily:''}}>435$</Text> 
+                 <Text style={{marginTop:1,fontSize:12,fontWeight:'bold',color:'#ABB3D0',fontFamily:'Exo2-Medium'}}>435$</Text> 
                  </View>
                  <View style={{marginLeft:40}}>
                  <View style={{flexDirection:'row'}}>
-                 <Text style={{fontSize:12,fontWeight:'bold',color:'#4d6bc1',fontFamily:''}}>BTC</Text> 
+                 <Text style={{fontSize:12,color:'#5496FF',fontFamily:'Exo2-Medium'}}>BTC</Text> 
                  <View style={{marginTop:3}}>
                 <Image style={{resizeMode:'contain',width:10,height:10}}   source={require("./assets/green.png")} ></Image> 
                 </View>
                  </View>
              
-                 <Text style={{marginTop:1,fontSize:12,fontWeight:'bold',color:'#858ead'}}>20.000$</Text>
+                 <Text style={{marginTop:1,fontSize:12,color:'#ABB3D0',fontFamily:'Exo2-Regular'}}>20.000$</Text>
                  </View>
                  <View  style={{marginLeft:40}}>
                  <View style={{flexDirection:'row'}}>
-                 <Text style={{fontSize:12,fontWeight:'bold',color:'#4d6bc1',fontFamily:''}}>XRP</Text> 
+                 <Text style={{fontSize:12,color:'#5496FF',fontFamily:'Exo2-Medium'}}>XRP</Text> 
                  <View style={{marginTop:3}}>
                  <Image style={{resizeMode:'contain',width:10,height:10}}   source={require("./assets/green.png")} ></Image> 
                  </View>
                  </View>
                 
-                 <Text style={{marginTop:1,fontSize:12,fontWeight:'bold',color:'#858ead',fontFamily:''}}>50$</Text> 
+                 <Text style={{marginTop:1,fontSize:12,fontWeight:'bold',color:'#ABB3D0',fontFamily:'Exo2-Regular'}}>50$</Text> 
                  </View>
                 
                  </View>
@@ -471,11 +471,11 @@ justifyContent:'center',alignItems:"center"}} >
                </View>
 <View style={{height:'100%'}}>
                  <View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:30,marginRight:30,marginTop:10}}>
-                 <Text style={{marginLeft:20,fontSize:15,fontWeight:'bold',color:'#858ead',fontFamily:''}}>Activity</Text>
+                 <Text style={{marginLeft:20,fontSize:12,color:'#ABB3D0',fontFamily:'Exo2-Medium'}}>Activity</Text>
                                 
         <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',padding:10,backgroundColor:'#2c4b9d',borderRadius:15}}>
-        <Image  style={{width: 10, height: 10,tintColor:'#5997fa'}}  source={require("./assets/down_arrow.png")} ></Image> 
-        <Text style={{color:'#5997fa',fontWeight:'bold',opacity:1,fontSize:12,marginLeft:5,fontFamily:''}}>{this.state.Time}</Text> 
+        <Image  style={{width: 10, height: 10,tintColor:'#5496FF'}}  source={require("./assets/down_arrow.png")} ></Image> 
+        <Text style={{color:'#5496FF',opacity:1,fontSize:12,marginLeft:5,fontFamily:'Exo2-Bold'}}>{this.state.Time}</Text> 
         <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000 }}
    selectedValue={this.state.Time}
   onValueChange={(itemValue, itemIndex) => this.selectedTime(itemValue,itemIndex)}>
@@ -515,19 +515,19 @@ justifyContent:'center',alignItems:"center"}} >
           </View>
           <View style={{flexDirection:'column'}}>
           <View style={{flex:1, flexDirection: 'row',justifyContent:'space-between'}}>            
-         <Text  style={{marginRight:20,marginTop:10,color:'#fff'}}>Sent to Dan23</Text>       
+         <Text  style={{marginRight:20,marginTop:10,color:'#fff',fontFamily:"Exo2-Bold"}}>Sent to Dan23</Text>       
      <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
      <Image style={{width: 25,marginTop:10, height: 25}}   source={require("./assets/plusblue.png")} ></Image>    
-     <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff'}}>$ 9060</Text> 
+     <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff',fontFamily:'Exo2-Regular'}}>$ 9060</Text> 
      </View>
         
      </View>  
      <View style={{flex:1, flexDirection:'row',justifyContent:'space-between' ,paddingBottom:15}}>
  
             
-         <Text  style={{marginRight:20,marginTop:10,color:'#4d6bc1',fontWeight:'bold'}}>Feb 23 2019  . 11.05</Text>       
+         <Text  style={{marginRight:20,marginTop:10,color:'#5496FF',fontFamily:'Exo2-Regular'}}>Feb 23 2019  . 11.05</Text>       
      
-      <Text  style={{marginRight:20,marginTop:10,color:'#4d6bc1'}}>5.4587ETH</Text>    
+      <Text  style={{marginRight:20,marginTop:10,color:'#5496FF',fontFamily:'Exo2-Regular'}}>5.4587ETH</Text>    
      </View>  
           </View>
          

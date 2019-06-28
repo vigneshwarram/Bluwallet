@@ -172,7 +172,7 @@ SlideMenu=()=>{
           </TouchableOpacity>
             </View>
             <View style={{justifyContent:'center',alignItems:'center',marginTop:25}}>
-        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,fontFamily:''}}>Welcome!</Text>
+        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,fontFamily:'Exo2-Bold'}}>Welcome!</Text>
     </View>
     </View>
     
@@ -195,10 +195,10 @@ SlideMenu=()=>{
 <View style={{flex:0.4}}>
 <View  style={{justifyContent:'center',alignItems:'center',paddingVertical:60
         }}>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,fontFamily:''}}>Verify your Identity to request your XLM.Will</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>Take a few minutes.Once Verification,you</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>Could use our product of last generation</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>Exchange</Text>
+             <Text style={{color:'#4e649f',opacity:1,fontSize:12,fontFamily:'Exo2-SemiBold'}}>Verify your Identity to request your XLM.Will</Text>
+             <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:'Exo2-SemiBold'}}>Take a few minutes.Once Verification,you</Text>
+             <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:'Exo2-SemiBold'}}>Could use our product of last generation</Text>
+             <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:'Exo2-SemiBold'}}>Exchange</Text>
          
         </View>
 </View>
@@ -209,7 +209,7 @@ SlideMenu=()=>{
     <View>
     <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center'}}>
 
-<Text style={{color:'#fff',fontSize:18,fontWeight:'bold',fontFamily:'Courier New'}}>Begin Now</Text>
+<Text style={{color:'#fff',fontSize:20,fontFamily:'Poppins-Medium'}}>Begin Now</Text>
 
 </LinearGradient>
     </View>   
@@ -221,11 +221,11 @@ SlideMenu=()=>{
 <View>
 <LinearGradient colors={['#354e91','#354e91','#354e91']}  style={{padding:15,alignItems:'center'}}>
 <TouchableOpacity>
-<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,marginLeft:-30,fontFamily:''}}>when you create a wallet,you accept</Text>
-<View style={{flexDirection:'row',marginTop:2,marginLeft:-30}}>
-<Text style={{color:'#5496ff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,fontFamily:''}}>Terms of Service</Text>
-<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,marginLeft:8,fontFamily:''}}>&</Text>
-<Text style={{color:'#5496ff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,marginLeft:8,fontFamily:''}}>Politic and privacy</Text>
+<Text style={{color:'#fff',opacity:1,fontSize:11,marginTop:2,fontFamily:'Exo2-Regular'}}>when you create a wallet,you accept</Text>
+<View style={{flexDirection:'row',marginTop:2,}}>
+<Text style={{color:'#5496ff',opacity:1,fontSize:11,marginTop:5,fontFamily:'Exo2-SemiBold'}}>Terms of Service</Text>
+<Text style={{color:'#fff',opacity:1,fontSize:11,marginTop:5,marginLeft:8,fontFamily:'Exo2-Regular'}}>&</Text>
+<Text style={{color:'#5496ff',opacity:1,fontSize:11,marginTop:5,marginLeft:8,fontFamily:'Exo2-SemiBold'}}>Politic and privacy</Text>
 </View>
 
 </TouchableOpacity>

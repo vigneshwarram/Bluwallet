@@ -230,9 +230,9 @@ CompleteTouch=()=>{
       
     <View style={{marginTop:20}}> 
     <View style={{flexDirection: 'row',justifyContent:'center',alignItems:"center" }}> 
-          <Image  style={{width: 30, height: 30,resizeMode:'contain'}}  source={require("./assets/app2.png")} ></Image>   
+          <Image  style={{width: 20, height: 20,resizeMode:'contain'}}  source={require("./assets/app2.png")} ></Image>   
           <View style={{flexDirection:'column'}}>
-          <Text style={{marginLeft:10,fontSize:18,fontWeight:'bold',color:'#fff',fontFamily:''}}>Vault</Text>       
+          <Text style={{marginLeft:10,fontSize:16,color:'#fff',fontFamily:'Exo2-Regular'}}>Vault</Text>       
           </View>       
           </View>
     <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',marginLeft:70,marginTop:10}}>

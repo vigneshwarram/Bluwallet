@@ -212,11 +212,11 @@ SlideMenu=()=>{
 <View style={{marginTop:20}}>
 <LinearGradient colors={['#354e91','#354e91','#354e91']}  style={{padding:15,alignItems:'center'}}>
 <TouchableOpacity>
-<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,marginLeft:-30,fontFamily:''}}>when you create a wallet, you accept</Text>
+<Text style={{color:'#fff',opacity:1,fontSize:12,marginTop:2,marginLeft:-30,fontFamily:'Exo2-Regular'}}>when you create a wallet, you accept</Text>
 <View style={{flexDirection:'row',marginTop:2,marginLeft:-30}}>
-<Text style={{color:'#5496ff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,fontFamily:''}}>Terms of Service</Text>
-<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,marginLeft:8,fontFamily:''}}>&</Text>
-<Text style={{color:'#5496ff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,marginLeft:8,fontFamily:''}}>Politic and privacy</Text>
+<Text style={{color:'#5496ff',opacity:1,fontSize:12,marginTop:5,fontFamily:'Exo2-SemiBold'}}>Terms of Service</Text>
+<Text style={{color:'#fff',opacity:1,fontSize:12,marginTop:5,marginLeft:8,fontFamily:'Exo2-Regular'}}>&</Text>
+<Text style={{color:'#5496ff',opacity:1,fontSize:12,marginTop:5,marginLeft:8,fontFamily:'Exo2-SemiBold'}}>Politic and privacy</Text>
 </View>
 
 </TouchableOpacity>
@@ -248,7 +248,7 @@ SlideMenu=()=>{
 <View >
 <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
 
-<Text style={{color:'#fff',fontSize:18,fontFamily:'lucida grande'}}>Create Wallet</Text>
+<Text style={{color:'#fff',fontSize:20,fontFamily:'Poppins-Medium'}}>Create Wallet</Text>
 
 </LinearGradient>
 </View> 

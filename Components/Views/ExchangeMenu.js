@@ -30,13 +30,17 @@ export default class  ExchangeMenu  extends React.Component {
        sellcolor2:'transparent',
        sellcolor3:'transparent',
 
-       publishcolor1:'transparent',
-       publishcolor2:'transparent',
-       publishcolor3:'transparent',
+       publishcolor1:'#4262B5',
+       publishcolor2:'#3A549B',
+       publishcolor3:'#314279',
+       publishcolor4:'#2C3765',
+       publishcolor5:'#2A335E',
 
-       Exchangecolor1:'transparent',
-       Exchangecolor2:'transparent',
-       Exchangecolor3:'transparent',
+       Exchangecolor1:'#4262B5',
+       Exchangecolor2:'#3A549B',
+       Exchangecolor3:'#314279',
+       Exchangecolor4:'#2C3765',
+       Exchangecolor5:'#2A335E',
 
        ExchangeIcon:require("./assets/exchangenew.png"), 
        PublicIcon:require('./assets/publication.png'),
@@ -75,8 +79,8 @@ export default class  ExchangeMenu  extends React.Component {
       exchangeOpacity:0.5,
       Buytintcolor:'#4072af',
       selltintcolor:'#4072af',
-      pupblictintcolor:'#4072af',
-      exchangetintcolor:'#4072af',
+      pupblictintcolor:'#ABB3D0',
+      exchangetintcolor:'#ABB3D0',
     };
   
   }
@@ -227,12 +231,12 @@ SlideMenu=()=>{
    colors={['#1a5fe1','#00a5ff','#81DCF9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{height:'100%', marginRight:30,marginTop:30,opacity:1}}>
  <View style={{justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection:'row',marginTop:10}}>
-          <Image style={{marginRight:10,width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/app4.png")} ></Image>     
-          <Text style={{fontSize:18,color:'#fff',fontFamily:''}}>Exchange</Text>
+          <Image style={{marginRight:10,width: 18, height: 22,resizeMode:'contain'}}   source={require("./assets/app4.png")} ></Image>     
+          <Text style={{fontSize:16,color:'#fff',fontFamily:'Exo2-Regular'}}>Exchange</Text>
           </View>
           <View style={{flexDirection:'row',marginTop:10}}>
           <View>
-          <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',fontFamily:''}}>Buy</Text>  
+          <Text style={{fontSize:12,color:'#fff',fontFamily:'Exo2-Regular'}}>Buy</Text>  
           <View
   style={{
     marginTop:5,
@@ -243,7 +247,7 @@ SlideMenu=()=>{
 />  
           </View>
          <View>
-         <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:30,fontFamily:''}}>Sell</Text>
+         <Text style={{fontSize:12,color:'#fff',marginLeft:30,fontFamily:'Exo2-Regular'}}>Sell</Text>
          <View
   style={{
     marginLeft:30,marginRight:30,
@@ -259,7 +263,7 @@ SlideMenu=()=>{
 <View style={{flexDirection:'row',marginLeft:20}}>
 <Image  style={{width: 20, height: 20,marginTop:10}}  source={require("./assets/Searchicon.png")} ></Image> 
 <TextInput
-          style={{height: 40,width:100,color:'#ffffff'}}
+          style={{height: 40,width:100,color:'#ffffff',fontFamily:'Exo2-Regular'}}
        placeholderTextColor='#ffffff'
        keyboardType='numeric'
           placeholder="Amount"
@@ -267,7 +271,7 @@ SlideMenu=()=>{
         />
 </View>
 <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center'}}>
-        <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,fontFamily:''}}>{this.state.Amount}</Text>
+        <Text style={{color:'#fff',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.Amount}</Text>
         <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("./assets/darrow.png")} ></Image> 
         <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}
    selectedValue={this.state.Amount}
@@ -292,8 +296,8 @@ SlideMenu=()=>{
 <Image  style={{width: 20, height: 20,resizeMode:'contain'}}  source={require("./assets/tv.png")} ></Image> 
 </View>
 <View style={{justifyContent:'center',flexDirection:'row',alignItems:'center',marginLeft:20,paddingTop:5,paddingBottom:5}}>
-        <Text style={{color:'#fff',opacity:1,fontSize:10,fontFamily:''}}>{this.state.platform}</Text>
-        <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("./assets/darrow.png")} ></Image> 
+        <Text style={{color:'#FFFFFF',opacity:1,fontSize:11,fontFamily:'Exo2-Regular'}}>{this.state.platform}</Text>
+        <Image  style={{width: 9, height: 7,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("./assets/darrow.png")} ></Image> 
         <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}
    selectedValue={this.state.Amount}
   onValueChange={(itemValue, itemIndex) => this.selectedPlatform(itemValue,itemIndex)}>
@@ -330,7 +334,7 @@ SlideMenu=()=>{
     <LinearGradient style={{backgroundColor:'transparent',width:130, height:130,borderWidth:1,borderColor:'#415b94',borderRadius:20,justifyContent:'center',alignItems:'center'}}
    colors={[this.state.Buycolor1,this.state.Buycolor2,this.state.Buycolor3]}>
      <Image style={{width:80, height: 80,resizeMode:'contain',opacity:this.state.buyOpacity,tintColor:this.state.Buytintcolor}}   source={this.state.BuyIcon} ></Image>  
-    <Text style={{fontSize:12,fontWeight:'bold',color:this.state.Buytintcolor,fontFamily:''}}>To Buy</Text>
+    <Text style={{fontSize:12,color:this.state.Buytintcolor,fontFamily:'Exo2-Regular'}}>To Buy</Text>
    </LinearGradient>
     </View>
     </TouchableOpacity>
@@ -340,7 +344,7 @@ SlideMenu=()=>{
     <LinearGradient style={{backgroundColor:'transparent',width:130,height:130,marginLeft:20, borderWidth:1,borderColor:'#415b94',borderRadius:20,justifyContent:'center',alignItems:'center'}}
    colors={[this.state.sellcolor1,this.state.sellcolor2,this.state.sellcolor3]}>
     <Image style={{width: 80, height: 80,resizeMode:'contain',opacity:this.state.sellOpacity,tintColor:this.state.selltintcolor}}   source={this.state.SellIcon} ></Image> 
-    <Text style={{fontSize:12,fontWeight:'bold',color:this.state.selltintcolor,fontFamily:''}}>To Sell</Text>
+    <Text style={{fontSize:12,color:this.state.selltintcolor,fontFamily:'Exo2-Regular'}}>To Sell</Text>
     </LinearGradient>
     </View>
     </TouchableOpacity>
@@ -349,9 +353,9 @@ SlideMenu=()=>{
     <TouchableOpacity onPress={this.publicClick}>
     <View >
     <LinearGradient style={{backgroundColor:'transparent',width:130, height:130,borderWidth:1,borderColor:'#415b94',borderRadius:20,justifyContent:'center',alignItems:'center'}}
-   colors={[this.state.publishcolor1,this.state.publishcolor2,this.state.publishcolor3]}>
+   colors={[this.state.publishcolor1,this.state.publishcolor2,this.state.publishcolor3,this.state.publishcolor4,this.state.publishcolor5]}>
      <Image style={{width:80, height: 80,resizeMode:'contain',opacity:this.state.pupblicOpacity,tintColor:this.state.pupblictintcolor}}   source={this.state.PublicIcon} ></Image>  
-    <Text style={{fontSize:12,fontWeight:'bold',color:this.state.pupblictintcolor,fontFamily:''}}>Publications</Text>
+    <Text style={{fontSize:12,color:this.state.pupblictintcolor,fontFamily:'Exo2-Regular'}}>Publications</Text>
    </LinearGradient>
     
     </View>
@@ -359,9 +363,9 @@ SlideMenu=()=>{
     <TouchableOpacity onPress={this.ExchangeClick}>
     <View >
     <LinearGradient style={{backgroundColor:'transparent',width:130,height:130,marginLeft:20, borderWidth:1,borderColor:'#415b94',borderRadius:20,justifyContent:'center',alignItems:'center'}}
-   colors={[this.state.Exchangecolor1,this.state.Exchangecolor2,this.state.Exchangecolor3]}>
+   colors={[this.state.Exchangecolor1,this.state.Exchangecolor2,this.state.Exchangecolor3,this.state.Exchangecolor4,this.state.Exchangecolor5]}>
      <Image style={{width: 80, height: 80,resizeMode:'contain',opacity:this.state.exchangeOpacity,tintColor:this.state.exchangetintcolor}}   source={this.state.ExchangeIcon} ></Image> 
-    <Text style={{fontSize:12,fontWeight:'bold',color:this.state.exchangetintcolor,fontFamily:''}}>Exchange</Text>
+    <Text style={{fontSize:12,color:this.state.exchangetintcolor,fontFamily:"Exo2-Regular"}}>Exchange</Text>
    </LinearGradient>
     
     </View>
@@ -403,19 +407,19 @@ SlideMenu=()=>{
       
           <View style={{flexDirection:'column',marginLeft:30}}>
           <View style={{flex:1, flexDirection: 'row',justifyContent:'space-between'}}>            
-         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff',fontFamily:''}}>{(item.Status!='Completed')?'Exchanged':"Exchanged"}</Text>       
+         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff',fontFamily:"Exo2-Bold"}}>{(item.Status!='Completed')?'Exchanged':"Exchanged"}</Text>       
      <View style={{flexDirection:'row'}}>
      <Image style={{width: 25,marginTop:10, height: 25}}   source={require("./assets/plusblue.png")} ></Image>    
-     <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff',fontFamily:''}}>$ 9060</Text> 
+     <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff',fontFamily:'Exo2-Regular'}}>$ 9060</Text> 
      </View>
         
      </View>  
      <View style={{flex:1, flexDirection:'row',justifyContent:'space-between'}}>
  
             
-         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#4d6bc1':'#4d6bc1',fontWeight:'bold',fontFamily:''}}>Feb 23 2019  . 11.05</Text>       
+         <Text  style={{marginRight:20,marginTop:10,color:'#5496FF',fontFamily:'Exo2-Regular'}}>Feb 23 2019  . 11.05</Text>       
      
-      <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#4d6bc1':'#4d6bc1',fontFamily:''}}>5.4587ETH</Text>    
+      <Text  style={{marginRight:20,marginTop:10,color:'#5496FF',fontFamily:'Exo2-Regular'}}>5.4587ETH</Text>    
      </View>  
           </View>
          
@@ -491,9 +495,11 @@ publicClick=()=>{
   this.setState({
     pupblicOpacity:1,
     pupblictintcolor:'#fff',
-    publishcolor1:'#81DCF9',
-    publishcolor2:'#00a5ff',
-    publishcolor3:'#1a5fe1'
+    publishcolor1:'#97F5F9',
+    publishcolor2:'#7ED5F6',
+    publishcolor3:'#7ED5F6',
+    publishcolor4:'#529DF3',
+    publishcolor5:'#4781DF'
             })
             this.ExchangeReset()
             this.BuyReset()
@@ -506,9 +512,11 @@ publicClick=()=>{
         this.setState({
           exchangeOpacity:1,
           exchangetintcolor:'#fff',
-Exchangecolor1:'#81DCF9',
-Exchangecolor2:'#00a5ff',
-Exchangecolor3:'#1a5fe1'
+Exchangecolor1:'#97F5F9',
+Exchangecolor2:'#7ED5F6',
+Exchangecolor3:'#7ED5F6',
+Exchangecolor4:'#529DF3',
+Exchangecolor5:'#4781DF'
         })
         this.BuyReset()
         this.Publicreset()
@@ -521,10 +529,13 @@ Exchangecolor3:'#1a5fe1'
       ExchangeReset=()=>{
         this.setState({
           exchangeOpacity:0.5,
-          exchangetintcolor:'#4072af',
-          Exchangecolor1:'transparent',
-          Exchangecolor2:'transparent',
-          Exchangecolor3:'transparent'
+          exchangetintcolor:'#ABB3D0',
+          Exchangecolor1:'#4262B5',
+          Exchangecolor2:'#3A549B',
+          Exchangecolor3:'#314279',
+          Exchangecolor4:'#2C3765',
+          Exchangecolor5:'#2A335E'
+          
                   })
 
       }
@@ -552,10 +563,12 @@ Exchangecolor3:'#1a5fe1'
       Publicreset=()=>{
         this.setState({
           pupblicOpacity:0.5,
-          pupblictintcolor:'#4072af',
-        publishcolor1:'transparent',
-        publishcolor2:'transparent',
-        publishcolor3:'transparent',
+          pupblictintcolor:'#ABB3D0',
+        publishcolor1:'#4262B5',
+        publishcolor2:'#3A549B',
+        publishcolor3:'#314279',
+        publishcolor4:'#2C3765',
+        publishcolor5:'#2A335E',
      
                   })
 

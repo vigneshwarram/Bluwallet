@@ -174,7 +174,7 @@ colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>
 <View style={{flex:0.2}}>
 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
 <View style={{justifyContent:'center',alignItems:'center'}}>
-    <Image  style={{width: 15, height: 15,marginLeft:20,marginTop:25,resizeMode:'contain'}}  source={require("../assets/left-arrow.png")} ></Image> 
+    <Image  style={{width: 6, height: 11,marginLeft:20,marginTop:15,resizeMode:'contain'}}  source={require("../assets/left-arrow.png")} ></Image> 
     </View>
 <View style={{backgroundColor:'#fd6d71',height:this.state.hr,width:this.state.wr,justifyContent:'center', borderTopStartRadius:25,borderBottomStartRadius:25, marginTop:10}}>
      <TouchableOpacity onPress={this.pressRight}>
@@ -194,9 +194,9 @@ colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>
 
 <View  style={{justifyContent:'center',alignItems:'center',marginTop:20
 }}>
-<Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10,fontFamily:''}}>Lets Verified!</Text>
-<Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10,fontFamily:''}}>Please choose the country where your document was</Text>
-<Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>Issued</Text>
+<Text style={{color:'#4e649f',opacity:1,fontSize:20,fontFamily:'Exo2-Bold'}}>Lets Verified!</Text>
+<Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:10,fontFamily:'Exo2-SemiBold'}}>Please choose the country where your document was</Text>
+<Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:'Exo2-SemiBold'}}>Issued</Text>
 
 
 </View> 
@@ -216,7 +216,7 @@ colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>
 colors={[this.state.passportcolor1,this.state.passportcolor2,this.state.passportcolor3]}  start={{x: 0, y: 0}} end={{x: 1, y: 0}}>
 <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center', height: 50,padding:10,paddingLeft:50,paddingRight:50}}>
 
-<Text style={{color:this.state.passporttextcolor,fontFamily:''}}>Passport</Text>
+<Text style={{color:this.state.passporttextcolor,fontFamily:'Exo2-Regular'}}>Passport</Text>
 <Image  style={{width: 30, height: 30,resizeMode:'contain',tintColor:this.state.PassportTintcolor}}  source={require("../assets/passport.png")} ></Image>
 </View>
 </LinearGradient>
@@ -229,7 +229,7 @@ colors={[this.state.passportcolor1,this.state.passportcolor2,this.state.passport
 <LinearGradient
 colors={[this.state.idcolor1,this.state.idcolor2,this.state.idcolor3]}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
 <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',height: 50,padding:10,paddingLeft:50,paddingRight:50}}>
-<Text style={{color:this.state.idtextcolor,fontFamily:''}}>ID-Card</Text>
+<Text style={{color:this.state.idtextcolor,fontFamily:'Exo2-Regular'}}>ID-Card</Text>
 <Image  style={{width: 30, height: 30,resizeMode:'contain',tintColor:this.state.idTintcolor}}  source={require("../assets/id_card.png")} ></Image>
 
 
@@ -242,7 +242,7 @@ colors={[this.state.idcolor1,this.state.idcolor2,this.state.idcolor3]}  start={{
 <LinearGradient
 colors={[this.state.residencegradientcolor1,this.state.residencegradientcolor2,this.state.residencegradientcolor3]}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>  
 <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',height: 50,padding:10,paddingLeft:50,paddingRight:50}}>
-<Text style={{color:this.state.Residencecolor,fontFamily:''}}>Residence Permit</Text>
+<Text style={{color:this.state.Residencecolor,fontFamily:'Exo2-Regular'}}>Residence Permit</Text>
 <Image  style={{width: 30, height: 30,resizeMode:'contain',tintColor:this.state.residenceTintcolor}}  source={require("../assets/residency.png")} ></Image>
 </View>
 </LinearGradient>
@@ -256,7 +256,7 @@ colors={[this.state.drivercolor1,this.state.drivercolor2,this.state.drivercolor3
 
 <View style={{flexDirection:'row',justifyContent:'space-between',alignItems:'center',height: 50,padding:10,paddingLeft:50,paddingRight:50}}>
 
-<Text style={{color:this.state.drivertextcolor,fontFamily:''}}>Drivers's License</Text>
+<Text style={{color:this.state.drivertextcolor,fontFamily:'Exo2-Regular'}}>Drivers's License</Text>
 <Image  style={{width: 30, height: 30,resizeMode:'contain',tintColor:this.state.driverTintcolor}}  source={require("../assets/driver.png")} ></Image>
 
 </View>
@@ -280,17 +280,17 @@ colors={[this.state.drivercolor1,this.state.drivercolor2,this.state.drivercolor3
  <View>
  <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
 
-<Text style={{color:'#fff',fontSize:18,fontWeight:'bold',fontFamily:'Courier New'}}>Start</Text>
+<Text style={{color:'#fff',fontSize:20,fontFamily:'Poppins-Medium'}}>Start</Text>
 </LinearGradient>
  </View>     
  </TouchableOpacity> 
-<LinearGradient colors={['#354e91','#354e91','#354e91']}  style={{padding:15,alignItems:'center'}}>
+ <LinearGradient colors={['#354e91','#354e91','#354e91']}  style={{padding:15,alignItems:'center'}}>
 <TouchableOpacity>
-<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,marginLeft:-30,fontFamily:''}}>when you "sent",you accept</Text>
-<View style={{flexDirection:'row',marginTop:2,marginLeft:-30,fontFamily:''}}>
-<Text style={{color:'#5496ff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,fontFamily:''}}>Terms of Service</Text>
-<Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,marginLeft:8,fontFamily:''}}>&</Text>
-<Text style={{color:'#5496ff',fontWeight:'bold',opacity:1,fontSize:12,marginTop:5,marginLeft:8,fontFamily:''}}>Politic and privacy</Text>
+<Text style={{color:'#fff',opacity:1,fontSize:11,marginTop:2,fontFamily:'Exo2-Regular'}}>when you create a wallet,you accept</Text>
+<View style={{flexDirection:'row',marginTop:2,}}>
+<Text style={{color:'#5496ff',opacity:1,fontSize:11,marginTop:5,fontFamily:'Exo2-SemiBold'}}>Terms of Service</Text>
+<Text style={{color:'#fff',opacity:1,fontSize:11,marginTop:5,marginLeft:8,fontFamily:'Exo2-Regular'}}>&</Text>
+<Text style={{color:'#5496ff',opacity:1,fontSize:11,marginTop:5,marginLeft:8,fontFamily:'Exo2-SemiBold'}}>Politic and privacy</Text>
 </View>
 
 </TouchableOpacity>

@@ -169,12 +169,12 @@ SlideMenu=()=>{
         <Image  style={{width: 40, height: 40,resizeMode:'contain'}}  source={require("../assets/close-envelope.png")} ></Image>
         </View>
         
-        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10,fontFamily:''}}>Check your Inbox...</Text>
-        <Text style={{color:'#80b0fe',fontWeight:'bold',opacity:1,fontSize:20,marginTop:20,fontFamily:''}}>Jhondoe@gmail.com</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:20,fontFamily:''}}>Search on email on Blockchain</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>And click the link of verification </Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>To complete the configuration</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>of your wallet</Text>
+        <Text style={{color:'#4e649f',opacity:1,fontSize:20,marginTop:10,fontFamily:'Exo2-Bold'}}>Check your Inbox...</Text>
+        <Text style={{color:'#80b0fe',opacity:1,fontSize:20,marginTop:20,fontFamily:'Exo2-Bold'}}>Jhondoe@gmail.com</Text>
+             <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:20,fontFamily:'Exo2-SemiBold'}}>Search on email on Blockchain</Text>
+             <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:'Exo2-SemiBold'}}>And click the link of verification </Text>
+             <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:'Exo2-SemiBold'}}>To complete the configuration</Text>
+             <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:'Exo2-SemiBold'}}>of your wallet</Text>
        
              
         </View>  
@@ -190,18 +190,20 @@ SlideMenu=()=>{
         <View >
         <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center'}}>
 
-<Text style={{color:'#fff',fontSize:18,fontWeight:'bold',fontFamily:'Courier New'}}>Go to email</Text>
+<Text style={{color:'#fff',fontSize:20,fontFamily:'Poppins-Medium'}}>Go to email</Text>
 
 </LinearGradient>
+</View>
+ </TouchableOpacity>
  <View>
 <LinearGradient colors={['#fff','#fff','#fff']}  style={{padding:15,justifyContent:'center',alignItems:'center'}}>
 <TouchableOpacity onPress={this.BeginAction}>
-<Text style={{color:'#d2e4ff'}}>Check it later</Text>
+<Text style={{color:'#d2e4ff',fontFamily:'Poppins-Medium'}}>Check it later</Text>
 </TouchableOpacity>
 </LinearGradient>
 </View> 
-        </View>
-        </TouchableOpacity>
+        
+       
 
         </View>   
  </LinearGradient> 

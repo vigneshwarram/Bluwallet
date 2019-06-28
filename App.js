@@ -175,22 +175,25 @@ let CollapseExpand = (index, position) => {
          
         }});
       const MainNavigator =StackNavigator({
+        
+        Login:{screen:Login},
+        VerificationCards:{screen:VerificationCards},    
+        Welcome:{screen:Welcome}, 
         Launch: { screen: Launch },
         ProfileRegister:{screen:ProfileRegister},      
         NewWallet:{screen:NewWallet},    
        
-        Welcome:{screen:Welcome},
+       
         Home:{screen:TabNavigator},
       
         DocumentPhoto:{screen:DocumentPhoto},
         TakePhoto:{screen:TakePhoto},
         TakePassportPhoto:{screen:TakePassportPhoto},
-        VerificationCards:{screen:VerificationCards},    
+       
      //   DashBoard:{screen:DashBoard},        
         ForgotPassword:{screen:ForgotPassword},
         Confirm:{screen:Confirm},
       
-        Login:{screen:Login},
        // Price:{screen:Price},                
        // Profile:{screen:Profile},     
         PinCode:{screen:PinCode},

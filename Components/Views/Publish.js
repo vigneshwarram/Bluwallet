@@ -144,77 +144,6 @@ SlideMenu=()=>{
     LayoutAnimation.spring();
     this.setState({Awr:80})
   }
-  ProfileTouch=()=>
-  {
-    this.props.navigation.navigate('Profile')  
-  }
-  DashBoardTouch=()=>
-  {  
-    this.props.navigation.navigate('DashBoard',{
-      DashBoardPopup: false,
-    })
-  }
-  App3Touch=()=>{
-   Alert.alert('Development Processing...')
-  }
-  VaultTouch=()=>{
-    this.props.navigation.navigate('Vault');
-  }
-  App4Touch=()=>{
-    this.setState({
-      app3color:'#5099f0',
-      app1color:'#5099f0',
-      app2color:'#5099f0',
-      app5color:'#5099f0',
-      app4color:'#fff',
-      app6color:'#5099f0',
-      app6icon:require('./assets/app6.png'),
-      app1icon:require('./assets/app1white.png'),
-      app2icon:require('./assets/app2.png'),
-      app3icon:require('./assets/app3.png'),
-      app5icon:require('./assets/app5.png'),
-      app4icon:require('./assets/app5-blue.png')
-    })
-  }
-  App5Touch=()=>{
-    this.setState({
-      app3color:'#5099f0',
-      app1color:'#5099f0',
-      app2color:'#5099f0',
-      app4color:'#5099f0',
-      app6color:'#5099f0',
-      app6icon:require('./assets/app6.png'),
-      app5color:'#fff',
-      app1icon:require('./assets/app1white.png'),
-      app2icon:require('./assets/app2.png'),
-      app3icon:require('./assets/app3.png'),
-      app4icon:require('./assets/app4.png'),
-      app6icon:require('./assets/app6.png'),
-      app5icon:require('./assets/app2-blue.png'),
-     
-    })
-    this.props.navigation.navigate('Profile')
-  }
-  CreditCardTouch=()=>{
-    this.props.navigation.navigate('CreditCard')
-  }
-  PurchaseTab=()=>{
-    this.setState({
-      PurchaseOpacity:1,
-      SalesOpacity:0.5,
-      SalesColor:'transparent',
-      PurchaseColor:'#fff'
-    })
-  }
-  SalesTab=()=>{
-    this.setState({
-  PurchaseOpacity:0.5,
-  SalesOpacity:1,
-  SalesColor:'#fff',
-  PurchaseColor:'transparent'
-
-    })
-  }
   render() {
     const data = [ 50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100 ]
     const Line = ({ line }) => (
@@ -240,14 +169,14 @@ SlideMenu=()=>{
       <View style={styles.Maincontainers}>     
         <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={styles.Maincontainers}>
       <LinearGradient
-   colors={['#1a5fe1','#00a5ff','#81DCF9']} style={{height:'30%',opacity:0.9}}>    
+  colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} style={{height:'30%',opacity:0.9}}>    
       <LinearGradient
-   colors={['#1a5fe1','#5DBCD2','#81DCF9']} style={{height:'100%',marginRight:30,marginTop:30}}>
+  colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} style={{height:'100%',marginRight:30,marginTop:30}}>
  <View style={{justifyContent:'center',alignItems:'center'}}>
 
           <View style={{flexDirection:'row',marginTop:10}}>
-          <Image style={{marginRight:10,width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/app4.png")} ></Image>     
-          <Text style={{fontSize:20,fontWeight:'bold',color:'#fff',fontFamily:''}}>Exchange</Text>
+          <Image style={{marginRight:10,width: 18, height: 22,resizeMode:'contain'}}   source={require("./assets/app4.png")} ></Image>     
+          <Text style={{fontSize:20,color:'#fff',fontFamily:'Exo2-Regular '}}>Exchange</Text>
           </View>
          
           <View style={{flexDirection:'row',marginTop:10}}>
@@ -286,7 +215,7 @@ SlideMenu=()=>{
 <View style={{flexDirection:'row',marginLeft:20}}>
 <Image  style={{width: 20, height: 20,marginTop:10}}  source={require("./assets/Searchicon.png")} ></Image> 
 <TextInput
-          style={{height: 40,width:100,color:'#ffffff'}}
+          style={{height: 40,width:100,color:'#ffffff',fontFamily:'Exo2-Regular'}}
        placeholderTextColor='#ffffff'
           placeholder="Quantity"
           keyboardType = 'numeric'
@@ -294,7 +223,7 @@ SlideMenu=()=>{
         />
 </View>
 <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center'}}>
-        <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,fontFamily:''}}>{this.state.Amount}</Text>
+        <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.Amount}</Text>
         <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("./assets/darrow.png")} ></Image> 
         <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}
    selectedValue={this.state.Amount}
@@ -314,7 +243,7 @@ SlideMenu=()=>{
   
           </View>
           </View>   
-          <LinearGradient colors={['#81DCF9','#5099f0','#1a5fe1']} style={{  width: 100,marginLeft:20,position:'absolute',top:'70%',left:120,right:100,
+          <LinearGradient colors= {['#97F5F9','#7ED5F6','#529DF3','#4781DF','#2D3CAD']} style={{  width: 100,marginLeft:20,position:'absolute',top:'70%',left:120,right:100,
     height: 100,
     borderRadius: 100/2,
     backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
@@ -354,17 +283,17 @@ SlideMenu=()=>{
      
      <View style={{flex:1, flexDirection:'row',justifyContent:'space-between'}}>
      <View style={{flexDirection:'row'}}>
-     <Text  style={{marginRight:10,marginTop:10,color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4',fontFamily:''}}>{(item.Status=='Completed')?'etemplario':'santiagolp92'}</Text>  
-     <Text  style={{marginRight:10,marginTop:10,fontSize:10,color:(item.Status!='Completed')?'#5280d5':'#5280d5',fontFamily:''}}>100</Text>         
+     <Text  style={{marginRight:10,marginTop:10,color:"#ABB3D0",fontFamily:'Exo2-Bold',fontSize:11,marginLeft:10}}>{(item.Status=='Completed')?'Dan23':'Dan23'}</Text>  
+     <Text  style={{marginRight:10,marginTop:10,fontSize:10,color:'#5496FF',fontFamily:'Exo2-Regular'}}>100</Text>         
      </View>   
      <View>
-     <Text  style={{marginRight:10,marginTop:10,marginLeft:10, color:(item.Status!='Completed')?'#a9b4d4':'#a9b4d4',fontFamily:''}}>{(item.Status=='Completed')?'90.000':'90.000'}</Text> 
-     <Text  style={{marginTop:10,marginLeft:10, color:(item.Status!='Completed')?'#5280d5':'#5280d5',fontFamily:''}}>{(item.Status=='Completed')?'ETH':'BTC'}</Text>  
+     <Text  style={{marginRight:10,marginTop:10,marginLeft:10, color:"#ABB3D0",fontFamily:'Exo2-Regular'}}>{(item.Status=='Completed')?'90.000':'90.000'}</Text> 
+     <Text  style={{marginTop:10,marginLeft:10, color:'#5496FF',fontFamily:'Exo2-Regular'}}>{(item.Status=='Completed')?'ETH':'BTC'}</Text>  
      </View>  
-     <View style={{width:'35%',marginTop:30}}>
-          <LinearGradient colors={['#8595e0','#9a89f9','#c37bf8']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:7,borderRadius:10,backgroundColor:'green',justifyContent:'center',alignItems:'center'}}>
+     <View style={{width:'35%',justifyContent:'center',alignItems:'center'}}>
+          <LinearGradient colors={['#7498F9','#9B89F8','#D476F7']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:7,borderRadius:10,backgroundColor:'green',justifyContent:'center',alignItems:'center'}}>
 <TouchableOpacity onPress={()=>this.props.navigation.navigate('Payment')}>
-<Text style={{color:'#fff'}}>Exchange</Text></TouchableOpacity>
+<Text style={{color:'#fff',fontFamily:'Exo2-Regular'}}>Exchange</Text></TouchableOpacity>
 </LinearGradient>
           </View>
      </View>

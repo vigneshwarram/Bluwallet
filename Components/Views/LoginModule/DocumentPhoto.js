@@ -162,10 +162,10 @@ SlideMenu=()=>{
         </View>
         <View  style={{justifyContent:'center',alignItems:'center',marginTop:10
         }}>
-                <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10,textAlign:'center',fontFamily:''}}>Portrait + Document</Text>
+                <Text style={{color:'#4e649f',opacity:1,fontSize:20,marginTop:10,textAlign:'center',fontFamily:'Exo2-Bold'}}>Portrait + Document</Text>
 
              
-<Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:10,fontFamily:''}}>Make sure that your face and document it's clearly visible</Text>
+<Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:10,fontFamily:'Exo2-SemiBold'}}>Make sure that your face and document it's clearly visible</Text>
            
          
              
@@ -195,7 +195,7 @@ SlideMenu=()=>{
 <View>
 <LinearGradient colors={['#61bff2','#4f92e9','#4476d7']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:15,justifyContent:'center',alignItems:'center'}}>
 
-<Text style={{color:'#FFF',fontSize:18,fontWeight:'bold',fontFamily:''}}>Continue</Text>
+<Text style={{color:'#FFF',fontSize:20,fontFamily:'Poppins-Medium'}}>Continue</Text>
 
 </LinearGradient>
 </View>

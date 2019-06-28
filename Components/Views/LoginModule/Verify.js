@@ -186,10 +186,10 @@ SlideMenu=()=>{
         <Image  style={{width: 40, height: 40,resizeMode:'contain'}}  source={require("../assets/mobile-phone.png")} ></Image>
         </View>
         <View style={{alignItems:'center',justifyContent:"center"}}>
-        <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,marginTop:10,fontFamily:''}}>Verify with 2 Steps</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:10,fontFamily:''}}>Avoid  unauthorized  access to your</Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>Wallet ,Enable the verification of 2 steps to  </Text>
-             <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}>upgrade the security on your wallet</Text>
+        <Text style={{color:'#4e649f',opacity:1,fontSize:20,marginTop:10,fontFamily:'Exo2-Bold'}}>Verify with 2 Steps</Text>
+             <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:10,fontFamily:'Exo2-SemiBold'}}>Avoid  unauthorized  access to your</Text>
+             <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:'Exo2-SemiBold'}}>Wallet ,Enable the verification of 2 steps to  </Text>
+             <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:'Exo2-SemiBold'}}>upgrade the security on your wallet</Text>
         </View>
           
 </View>
@@ -200,14 +200,14 @@ SlideMenu=()=>{
         <View>
       
         <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center'}}>
-<Text style={{color:'#fff',fontSize:18,fontWeight:'bold',fontFamily:'Courier New'}}>Enable</Text>
+<Text style={{color:'#fff',fontSize:20,fontFamily:'Poppins-Medium'}}>Enable</Text>
 </LinearGradient>
         </View>
         </TouchableOpacity>
         <View>
 <LinearGradient colors={['#fff','#fff','#fff']}  style={{padding:15,justifyContent:'center',alignItems:'center'}}>
 <TouchableOpacity onPress={this.BeginAction}>
-<Text style={{color:'#d2e4ff'}}>Check it later</Text>
+<Text style={{color:'#d2e4ff',fontFamily:'Poppins-Medium'}}>Check it later</Text>
 </TouchableOpacity>
 </LinearGradient>
 </View>

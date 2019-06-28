@@ -222,9 +222,9 @@ SlideMenu=()=>{
    
       <View style={styles.Maincontainers}>     
       <LinearGradient
-   colors={['#1a5fe1','#00a5ff','#81DCF9']} style={{height:200,opacity:0.9}}>    
+   colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} style={{height:200,opacity:0.9}}>    
       <LinearGradient
-   colors={['#1a5fe1','#81DCF9','#81DCF9']} style={{height:250,marginRight:30,marginTop:30}}>
+  colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} style={{height:250,marginRight:30,marginTop:30}}>
    <LinearGradient colors={['#fff','#fff','#CCCFE2']} style={{justifyContent:'center',height:this.state.h,width:this.state.w, alignItems:'flex-end',marginTop:-10, borderTopRightRadius:25,borderBottomRightRadius:25,position:'absolute'}}>
 <TouchableOpacity onPress={this._onPress}>
        <View style={{flexDirection: 'row'}}> 
@@ -235,15 +235,15 @@ SlideMenu=()=>{
 </LinearGradient> 
  <View style={{justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection:'row',marginTop:20}}>
-          <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/app4.png")} ></Image>     
-          <Text style={{fontSize:18,fontWeight:'bold',color:'#fff',fontFamily:''}}>Exchange</Text>
+          <Image style={{marginRight:10,width: 18, height: 22}}   source={require("./assets/app4.png")} ></Image>     
+          <Text style={{fontSize:18,color:'#fff',fontFamily:'Exo2-Regular'}}>Exchange</Text>
           </View>      
-          <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,fontFamily:''}}>How Much do you want to buy?</Text>           
+          <Text style={{fontSize:12,color:'#fff',marginTop:10,fontFamily:'Exo2-Regular'}}>How Much do you want to buy?</Text>           
           <View style={{flexDirection: 'row',marginLeft:20}}>
           <View style={{width:'40%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:10, justifyContent:"center"}}>
 <View style={{flexDirection:'row',marginLeft:20}}> 
 <TextInput
-          style={{height: 40,color:'#fff'}}
+          style={{height: 40,color:'#fff',fontFamily:'Exo2-Regular'}}
        placeholderTextColor='#ffffff'
        keyboardType = 'numeric'
           placeholder="COP 0.000"
@@ -255,7 +255,7 @@ SlideMenu=()=>{
 <View style={{flexDirection:'row',marginLeft:20}}>
 
 <TextInput
-          style={{height: 40,color:'#fff'}}
+          style={{height: 40,color:'#fff',fontFamily:'Exo2-Regular'}}
        placeholderTextColor='#ffffff'
        keyboardType = 'numeric'
           placeholder="BTC 00.0"
@@ -289,12 +289,12 @@ SlideMenu=()=>{
 />
 <View style={{flexDirection:'row',marginLeft:20}}>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10}}>User</Text>
+<Text style={{fontSize:12,fontFamily:'Exo2-Medium',color:'#5496FF',marginTop:10}}>User</Text>
 </View>  
 
 <View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10,textAlign:'center',fontFamily:''}}>Yotemplario</Text> 
-<Text style={{fontSize:12,fontWeight:'bold',color:'#42f477',marginTop:-5,fontFamily:''}}>500+</Text> 
+<Text style={{fontSize:12,fontFamily:'Exo2-Regular',color:'#a9b4d4',marginTop:10,textAlign:'center',}}>Yotemplario</Text> 
+<Text style={{fontSize:12,fontFamily:'Exo2-Regular',color:'#42f477',marginTop:-5,}}>500+</Text> 
 </View>  
 
 </View>
@@ -307,11 +307,11 @@ SlideMenu=()=>{
 />
 <View style={{flexDirection:'row',marginLeft:20}}>  
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Price</Text>
+<Text style={{fontSize:12,fontFamily:'Exo2-Medium',color:'#5496FF',marginTop:10,}}>Price</Text>
 </View>
 
 <View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10,fontFamily:''}}>15,650,000.0 COP</Text> 
+<Text style={{fontSize:12,fontFamily:'Exo2-Regular',color:'#a9b4d4',marginTop:10,}}>15,650,000.0 COP</Text> 
 </View>  
 
 </View>
@@ -324,10 +324,10 @@ SlideMenu=()=>{
 />
 <View style={{flexDirection:'row',marginLeft:20}}>  
 <View  style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Country</Text>  
+<Text style={{fontSize:12,fontFamily:'Exo2-Medium',color:'#5496FF',marginTop:10,}}>Country</Text>  
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10,fontFamily:''}}>Columbia</Text> 
+<Text style={{fontSize:12,fontFamily:'Exo2-Regular',color:'#a9b4d4',marginTop:10,}}>Columbia</Text> 
 </View>
 </View>
 <View
@@ -339,10 +339,10 @@ SlideMenu=()=>{
 />
 <View style={{flexDirection:'row',marginLeft:20}}>  
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Commercial Limits</Text>
+<Text style={{fontSize:12,fontFamily:'Exo2-Mediumr',color:'#5496FF',marginTop:10,}}>Commercial Limits</Text>
 </View>
   <View style={{flex:1}}>
-  <Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10,fontFamily:''}}>1000-100,00,00 COP</Text> 
+  <Text style={{fontSize:12,fontFamily:'Exo2-Regular',color:'#a9b4d4',marginTop:10,}}>1000-100,00,00 COP</Text> 
   </View>
 
 </View>
@@ -356,10 +356,10 @@ SlideMenu=()=>{
 <View style={{height:40,width:'100%',backgroundColor:'transparent'}}></View>
 <View style={{flexDirection:'row',marginLeft:20}}>  
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Title</Text>  
+<Text style={{fontSize:12,fontFamily:'Exo2-Medium',color:'#5496FF',marginTop:10,}}>Title</Text>  
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10,fontFamily:''}}>Bank Transfer</Text> 
+<Text style={{fontSize:12,fontFamily:'Exo2-Regular',color:'#a9b4d4',marginTop:10,}}>Bank Transfer</Text> 
 </View>
 
 </View>
@@ -372,13 +372,13 @@ SlideMenu=()=>{
 />
 <View style={{flexDirection:'row',marginLeft:20}}>  
 <View style={{flex:2.2}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Description</Text>  
+<Text style={{fontSize:12,fontFamily:'Exo2-Medium',color:'#5496FF',marginTop:10,}}>Description</Text>  
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#a9b4d4',marginTop:10,marginLeft:-10,fontFamily:''}}>Transfer data</Text> 
+<Text style={{fontSize:12,fontFamily:'Exo2-Regular',color:'#a9b4d4',marginTop:10,marginLeft:-10,}}>Transfer data</Text> 
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:20,fontWeight:'bold',color:'#a9b4d4',marginTop:-5,fontFamily:''}}>...</Text> 
+<Text style={{fontSize:20,fontFamily:'Exo2-Regular',color:'#a9b4d4',marginTop:-5,}}>...</Text> 
 </View>
 
 </View>
@@ -392,9 +392,9 @@ SlideMenu=()=>{
 <View style={{backgroundColor:'transparent'}}>
 <View style={{justifyContent:'center',marginTop:30,marginBottom:100,width:"100%",alignItems:'center'}}>
 <View style={{width:"50%",borderRadius:10}}>
-<LinearGradient colors={['#41da9c','#36deaf','#26e3ca']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:12,backgroundColor:'green',justifyContent:'center',alignItems:'center',marginLeft:10,borderRadius:6}}>
+<LinearGradient colors={['#41da9c','#36deaf','#26e3ca']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{width:'100%',padding:12,backgroundColor:'green',justifyContent:'center',alignItems:'center',marginLeft:10,borderRadius:6}}>
 <TouchableOpacity onPress={()=>this.props.navigation.navigate('Payment')}>
-<Text style={{color:'#fff'}}>Send Exchange request</Text></TouchableOpacity>
+<Text style={{color:'#fff',fontFamily:'Poppins-Medium'}}>Send Exchange request</Text></TouchableOpacity>
 </LinearGradient>
 
 </View>
@@ -408,7 +408,7 @@ SlideMenu=()=>{
    
       
     
-         <LinearGradient colors= {['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} style={{  width: 100,marginLeft:20,position:'absolute',top:-20,left:120,right:100,bottom:50,
+         <LinearGradient colors= {['#97F5F9','#7ED5F6','#529DF3','#4781DF','#2D3CAD']} style={{  width: 100,marginLeft:20,position:'absolute',top:-20,left:120,right:100,bottom:50,
     height: 100,
     borderRadius: 100/2,
     backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >

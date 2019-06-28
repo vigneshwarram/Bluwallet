@@ -160,11 +160,11 @@ export default class ProfileRegister extends React.Component {
  <View style={{flexDirection:'row',justifyContent:'space-between'}}>
         <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
     <View style={{justifyContent:'center',alignItems:'center'}}>
-    <Image  style={{width: 15, height: 15,marginLeft:20,marginTop:20,resizeMode:"contain"}}  source={require("../assets/left-arrow.png")} ></Image> 
+    <Image  style={{width: 6, height: 11,marginLeft:20,marginTop:30,resizeMode:"contain"}}  source={require("../assets/left-arrow.png")} ></Image> 
     </View>
     </TouchableOpacity>
     <View style={{justifyContent:'center',alignItems:'center'}}>
-    <Text style={{color:'#4e649f',opacity:1,fontSize:20,marginTop:15,fontFamily:''}}>More Info Needed</Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:20,marginTop:20,fontFamily:'Exo2-Bold'}}>More Info Needed</Text>
     </View>
     <View></View>
     </View>
@@ -175,10 +175,10 @@ export default class ProfileRegister extends React.Component {
 
     </View>
     <View style={{justifyContent:'center',alignItems:'center'}}>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:15,fontFamily:''}}>We need more information to complete your </Text>
-    <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}> Profile</Text>
-    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:10,fontFamily:''}}> You need to verificate your mobile number,a</Text>
-    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:''}}> national identity and selfie</Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:15,fontFamily:'Exo2-Bold'}}>We need more information to complete your </Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:'Exo2-SemiBold'}}> Profile</Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:10,fontFamily:'Exo2-SemiBold'}}> You need to verificate your mobile number,a</Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:'Exo2-SemiBold'}}> national identity and selfie</Text>
           </View>
  </View>
       
@@ -193,7 +193,7 @@ export default class ProfileRegister extends React.Component {
 <View>
 <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
 
-<Text style={{color:'#fff',fontSize:18,fontWeight:'bold',fontFamily:''}}>Next</Text>
+<Text style={{color:'#fff',fontSize:20,fontFamily:'Poppins-Medium'}}>Next</Text>
 
 </LinearGradient>
 </View>
