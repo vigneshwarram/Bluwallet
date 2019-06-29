@@ -173,7 +173,7 @@ SlideMenu=()=>{
 <View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
 
 <TextInput
-   style={{height: 80,padding:10,fontFamily:'Exo2-Bold'}}
+   style={{height: 80,padding:10,fontFamily:'Exo2-Regular'}}
  placeholderTextColor='#9ab8db'
    placeholder="Email"
    
@@ -187,7 +187,11 @@ SlideMenu=()=>{
    onChangeText={this.onChange}
    inputProps={{placeholder:'Password'}}
    barColor='transparent'
+   inputStyle={{fontFamily:'Exo2-Regular'}}
    meterType="bar"
+   inputWrapperStyle={{borderBottomWidth:0}}
+   placecolor='#9ab8db'
+   Secure={true}
 
  />
 </View>
@@ -201,6 +205,10 @@ SlideMenu=()=>{
    inputProps={{placeholder:'Validate Password'}}
    barColor='transparent'
    meterType="bar"
+   inputStyle={{fontFamily:'Exo2-Regular'}}
+   meterType="bar"
+   inputWrapperStyle={{borderBottomWidth:0}}
+   placecolor='#9ab8db'
 
  />
 </View>

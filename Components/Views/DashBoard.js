@@ -389,7 +389,7 @@ _animate=()=>{
                <View style={{ marginTop:30,justifyContent:'center',alignItems:'center'}}>
                  <View style={{flexDirection:'row',justifyContent:'space-between'}}>
                  <View style={{marginTop:-10}}>
-                 <Image  style={{resizeMode:'contain',width:60,height:60}}  source={require("./assets/refresh.png")} ></Image>
+                 <Image  style={{resizeMode:'contain',width:60,height:60}}  source={require("./assets/Refresh.png")} ></Image>
                 </View>
                 <View>
                 <View style={{flexDirection:'row'}}>

@@ -228,8 +228,8 @@ SlideMenu=()=>{
                 curve={shape.curveNatural}
                 svg={{ fill: '#60d8e6',stroke:'#25e2cd' }}
             >
-                <Grid/>
-                <Line/>
+              
+              
             </AreaChart>
 
 

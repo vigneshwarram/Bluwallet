@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Path } from 'react-native-svg'
 import { View, StyleSheet, Image,ScrollView,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
 import { Alert } from 'react-native';
-import {BoxShadow} from 'react-native-shadow'
 import LinearGradient from 'react-native-linear-gradient';
 
 export default class Profile  extends React.Component {

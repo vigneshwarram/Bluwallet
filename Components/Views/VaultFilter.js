@@ -23,12 +23,14 @@ export default class VaultFilter extends React.Component {
     
     this.state = {
       dataSource:[],
+      data1:[require('./assets/biconback.png'),require('./assets/etherem.png'),require('./assets/biconback.png'),require('./assets/etherem.png')],
       ImageData:[{'image':require('./assets/biconback.png')},
       {'image':require('./assets/biconback.png')},
       {'image':require('./assets/biconback.png')},
       {'image':require('./assets/biconback.png')},
       {'image':require('./assets/biconback.png')}],
       ImagArray:['image1'],
+      Amount:'USDoller',
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
@@ -295,10 +297,10 @@ App6Touch=()=>{
             
       </View>
       <View style={{flexDirection: 'row',justifyContent:'center',alignItems:"center",marginTop:15}}> 
-          <Image  style={{width: 30, height: 30,resizeMode:'contain'}}  source={require("./assets/app2.png")} ></Image>   
+      <Image  style={{width: 20, height: 20,resizeMode:'contain'}}  source={require("./assets/app2.png")} ></Image>   
           <View style={{flexDirection:'column'}}>
-          <Text style={{marginLeft:10,fontSize:18,fontWeight:'bold',color:'#fff',fontFamily:''}}>Vault</Text>       
-          </View>       
+          <Text style={{marginLeft:10,fontSize:16,color:'#fff',fontFamily:'Exo2-Regular'}}>Vault</Text>       
+          </View>     
           </View>
       
     <View style={{marginTop:10}}> 
@@ -322,9 +324,9 @@ App6Touch=()=>{
     </View>
    </View>
     </View> 
-      <View style={styles.containers}>
+    <View style={styles.containers}>
             <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
-                 <Text style={{marginLeft:10,marginTop:15,fontSize:20,fontWeight:'bold',color:'#4d6bc1',fontFamily:''}}>Balance</Text> 
+                 <Text style={{marginLeft:10,marginTop:15,fontSize:20,fontWeight:'bold',color:'#ABB3D0',fontFamily:'Exo2-SemiBold'}}>Balance</Text> 
                  </View>
                
                <View style={{ marginTop:10,justifyContent:'center',alignItems:'center'}}>
@@ -333,7 +335,7 @@ App6Touch=()=>{
                 </View>
                 <View>
                 <View style={{flexDirection:'row'}}>
-                <Text style={{marginLeft:30,fontSize:30,fontWeight:'bold',color:'#fff',fontFamily:''}}>4.80258789</Text>
+                <Text style={{marginLeft:30,fontSize:36,color:'#F5F6F9',fontFamily:'Exo2-SemiBold'}}>4.80258789</Text>
                 <View style={{marginTop:-10,marginLeft:5}}>
                 
                 </View>
@@ -341,31 +343,47 @@ App6Touch=()=>{
                                         
                 </View>
                  </View>
-                 <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:20}}>
-                 <View style={{flexDirection: 'row',marginLeft:20}}>
+                 <View style={{flexDirection:'row',justifyContent:'space-around',width:'100%',marginTop:20}}>
                  <View style={{width:40,height:15,backgroundColor:'#314985',justifyContent:'center',alignItems:'center',marginTop:-10,marginRight:30}}>
-                <Text style={{fontSize:12,fontWeight:'bold',color:'#4d6bc1',fontFamily:''}}>All</Text>
-                </View>  
-                 <Text style={{fontSize:15,fontWeight:'bold',color:'#4d6bc1',textAlign:'center',fontFamily:''}}>880.660</Text> 
-     <Picker
-         style={{ width: 150,color:'#4d6bc1',marginTop:-17,marginLeft:20 }}
-          selectedValue={this.state.Coin}
-          itemStyle={{ backgroundColor: "#4d6bc1", color: "#4d6bc1", fontSize:15,fontWeight:'bold' }}
-          onValueChange={(lang) => this.setState({Coin: lang})}>
-          <Picker.Item label="USDollar" value="Us doller" />
-          <Picker.Item label="Indian" value="js" />
-        </Picker>
-     </View> 
+                <Text style={{fontSize:12,color:'#5496FF',fontFamily:'Exo2-Regular'}}>All</Text>
+                
+                </View>
+				
+				
+                <Text style={{fontSize:15,color:'#5496FF',fontFamily:'Exo2-Regular'}}>880.889</Text>
+                  
+               
+                
+        <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:-60}}>
+        <Text style={{color:'#ABB3D0',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.Amount}</Text>
+        <Image  style={{width: 10, height: 10,marginLeft:10,tintColor:'#ABB3D0'}}  source={require("./assets/down_arrow.png")} ></Image> 
+        </View>
+        
+  <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000 }}
+   selectedValue={this.state.Amount}
+  onValueChange={(itemValue, itemIndex) => this.selectedPrice(itemValue,itemIndex)}>
+  
+  <Picker.Item label="USDoller" value="USDoller" />
+  <Picker.Item label="Inr" value="Inr" />
+  <Picker.Item label="USA" value="USA" />
+  <Picker.Item label="German" value="German" />
+  <Picker.Item label="Italy" value="Italy" />
+  <Picker.Item label="Aus" value="Aus" />
+  <Picker.Item label="India" value="India" />
+  <Picker.Item label="Aus" value="Aus" />
+  </Picker>
+     
                  </View>                                    
                </View>
 <View style={{height:'100%'}}>
 <FlatList  style={{marginTop:20}}
       ItemSeparatorComponent={this.space}
-      data={this.state.carouselItems}
+      data={this.state.data1}
           renderItem={({item,separators})  =>
         <TouchableOpacity onShowUnderlay={separators.highlight}
       onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
       <View style={{marginLeft:30,marginRight:30, shadowOffset: { width: 10, height: 10 },
+
   borderBottomWidth: 0,
   shadowColor: '#394d88',
   shadowOffset: { width: 0, height: 12 },
@@ -374,7 +392,7 @@ App6Touch=()=>{
   elevation: 24,
   borderRadius:25}}>
   <LinearGradient
-    colors={['#4262B5', '#3A549B','#314279','#2C3765','#2A335E']} style={{ borderRadius:25}}>
+     colors={['#4262B5', '#3A549B','#314279','#2C3765','#2A335E']} style={{ borderRadius:25,paddingTop:10,paddingBottom:10}}>
         <View style={{alignItems:'center',flexDirection:'row',padding:15}}>
         <View style={{justifyContent:'center'}}>
         <Image style={{width: 50, height: 50,resizeMode:'contain'}}   source={require("./assets/etheriumblue.png")} ></Image>
@@ -384,20 +402,20 @@ App6Touch=()=>{
           <View style={{flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection: 'row',justifyContent:'space-between'}}>    
           <View style={{justifyContent:'space-around',alignItems:'center'}}>
-          <Text  style={{ fontSize:12,fontWeight:'bold',fontFamily:'' ,color:'#4286f4'}}>ETH</Text> 
-          <Text  style={{fontSize:12,color:'#a9b4d4'}}>$435</Text> 
+          <Text  style={{ fontSize:12,fontFamily:'Exo2-Bold', color:'#ffffff',marginTop:-10}}>ETH</Text> 
+          <Text  style={{fontSize:12,color:'#a9b4d4',marginTop:10}}>$435</Text> 
           </View>  
           <View>
           <View style={{flexDirection:'row',marginLeft:20}}>
           <View>
-          <Text  style={{fontSize:12,fontFamily:'',color:'#a9b4d4'}}>{(item.Status!='Completed')?'Produced':"Produced"}</Text> 
-          <Text  style={{fontSize:12,fontFamily:'',color:'#a9b4d4'}}>Coins</Text>    
+          <Text  style={{fontSize:12,color:'#ABB3D0',marginTop:-10,fontFamily:'Exo2-Regular'}}>{(item.Status!='Completed')?'Produced':"Produced"}</Text> 
+          <Text  style={{fontSize:12,fontFamily:'Exo2-Regular',marginTop:10,color:'#ABB3D0'}}>Coins</Text>    
           </View>
           
-          <View style={{flexDirection:'row',justifyContent:'center'}}>
-     <Image style={{width: 25, height: 25,resizeMode:'contain'}}   source={require("./assets/plusblue.png")} ></Image>   
+          <View style={{flexDirection:'row',justifyContent:'center',marginTop:-15}}>
+     <Image style={{width: 25, height: 25,resizeMode:'contain',tintColor:'#15E9E9'}}   source={require("./assets/plusblue.png")} ></Image>   
      <View style={{marginTop:5}}>
-     <Text  style={{fontSize:12,textAlign:'center',fontWeight:'bold',fontFamily:'', color:(item.Status!='Completed')?'#232d51':'#232d51'}}>$ 9060</Text> 
+     <Text  style={{fontSize:12,textAlign:'center',fontFamily:'Exo2-Bold',color:'#2A335E'}}>$ 9060</Text> 
      </View> 
      
      </View>  
@@ -405,7 +423,7 @@ App6Touch=()=>{
          
           </View>
           <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',marginLeft:20}}>
-          <Text  style={{color:'#a9b4d4',fontFamily:''}}>+8.5%</Text> 
+          <Text  style={{fontFamily:'Exo2-Regular',color:'#5496FF'}}>+8.5%</Text> 
           <Image style={{width: 10, height: 10,resizeMode:'contain'}}   source={require("./assets/green.png")} ></Image> 
           </View>                
      </View>  
@@ -435,7 +453,7 @@ App6Touch=()=>{
       _renderItem({item,index}){
         return (
             <View style={{justifyContent:'center',alignItems:'center'}}> 
-             <Text style={{color:'#fff',marginBottom:10}}>{item.title}</Text>
+             <Text style={{color:'#fff',marginBottom:10,fontFamily:'Exo2-Regular'}}>{item.title}</Text>
             <LinearGradient style={{  width: 110,
 height: 110,
 borderRadius: 110/2,
