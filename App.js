@@ -4,8 +4,10 @@ import {
   Easing,Animated,Image,View
 } from 'react-native';
 import DashBoard from './Components/Views/DashBoard'
-import Vault from './Components/Views/Vault'
-import VaultFilter from './Components/Views/VaultFilter'
+import Vault from './Components/Views/VaultModule/Vault'
+import VaultFilter from './Components/Views/VaultModule/VaultFilter'
+import AddVault from './Components/Views/VaultModule/AddVault'
+import ConfirmVault from './Components/Views/VaultModule/ConfirmVault'
 import Profile from './Components/Views/Profile'
 import TabBar from './Components/Views/TabBar'
 import Price from './Components/Views/Price'
@@ -175,6 +177,9 @@ let CollapseExpand = (index, position) => {
          
         }});
       const MainNavigator =StackNavigator({
+        AddVault:{screen:AddVault},
+        ConfirmVault:{screen:ConfirmVault},
+        
         Launch: { screen: Launch },
         Login:{screen:Login},
         VerificationCards:{screen:VerificationCards},    
