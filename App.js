@@ -105,7 +105,11 @@ let CollapseExpand = (index, position) => {
         CreditCard:{screen:CreditCard},
         CreditTransaction:{screen:CreditTransaction},
         CardDetails:{screen:CardDetails},
-      })
+      },{
+
+        transitionConfig: TransitionConfiguration,
+        headerMode: 'none'
+    })
       const ExchangeStack=StackNavigator({
         ExchangeMenu:{screen:ExchangeMenu,},
         Exchange:{screen:Exchange},
@@ -177,10 +181,12 @@ let CollapseExpand = (index, position) => {
          
         }});
       const MainNavigator =StackNavigator({
+        Launch: { screen: Launch },
+        Home:{screen:TabNavigator},
         AddVault:{screen:AddVault},
         ConfirmVault:{screen:ConfirmVault},
         
-        Launch: { screen: Launch },
+      
         Login:{screen:Login},
         VerificationCards:{screen:VerificationCards},    
         Welcome:{screen:Welcome}, 
@@ -189,16 +195,15 @@ let CollapseExpand = (index, position) => {
         NewWallet:{screen:NewWallet},    
        
        
-        Home:{screen:TabNavigator},
+        
       
         DocumentPhoto:{screen:DocumentPhoto},
         TakePhoto:{screen:TakePhoto},
         TakePassportPhoto:{screen:TakePassportPhoto},
        
-     //   DashBoard:{screen:DashBoard},        
+       //DashBoard:{screen:DashBoard},        
         ForgotPassword:{screen:ForgotPassword},
         Confirm:{screen:Confirm},
-      
        // Price:{screen:Price},                
        // Profile:{screen:Profile},     
         PinCode:{screen:PinCode},
