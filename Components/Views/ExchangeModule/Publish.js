@@ -4,7 +4,6 @@ import { View, StyleSheet,TextInput, Image,Picker,FlatList,Text,ActivityIndicato
 import { Alert } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
-import Logo from '../logo'
 import LinearGradient from 'react-native-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -24,12 +23,6 @@ export default class  Publish  extends React.Component {
       Coin: 'Us Doller',
       Amount:'COP',
       animate:false,
-      app1icon:require('./assets/app1white.png'),
-      app6icon:require('./assets/app6.png'),
-      app2icon:require('./assets/app2.png'),
-      app3icon:require('./assets/app3.png'),
-      app4icon:require('./assets/app5-blue.png'),
-      app5icon:require('./assets/app5.png'),
       w: 50,
       h: 45,
       wr:50,
@@ -98,52 +91,6 @@ hide(){
 space(){
   return(<View style={{height: 10, width: 1, backgroundColor:'black'}}/>)
 }
-_onPress=()=>{
-  if(!this.state.click){
-    LayoutAnimation.spring();
-    this.setState({w: this.state.w + 50})
-    this.setState({click:true})
-  }else{
-    LayoutAnimation.spring();
-    this.setState({w:50})
-    this.setState({click:false})
-  }
-   
-}
-pressRight=()=>{
-  if(!this.state.clickr){
-    LayoutAnimation.spring();
-    this.setState({wr: this.state.wr + 50})
-    this.setState({clickr:true})
-  }else{
-    LayoutAnimation.spring();
-    this.setState({wr:50})
-    this.setState({clickr:false})
-}
-}
-SlideMenu=()=>{
-  if(!this.state.slide){
-    LayoutAnimation.spring();
-    if(this.state.Awr>80){
-      this.setState({Awr:80})
-      this.setState({slide:false})
-    }
-    else{
-      this.setState({Awr:this.state.Awr+250})
-      this.setState({slide:true})
-    }
-    
-  }
-  else{
-    LayoutAnimation.spring();
-    this.setState({Awr:80})
-    this.setState({slide:false})
-  }
-  }
-  HideMenu=()=>{
-    LayoutAnimation.spring();
-    this.setState({Awr:80})
-  }
   render() {
     const data = [ 50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100 ]
     const Line = ({ line }) => (
@@ -175,7 +122,7 @@ SlideMenu=()=>{
  <View style={{justifyContent:'center',alignItems:'center'}}>
 
           <View style={{flexDirection:'row',marginTop:10}}>
-          <Image style={{marginRight:10,width: 18, height: 22,resizeMode:'contain'}}   source={require("./assets/app4.png")} ></Image>     
+          <Image style={{marginRight:10,width: 18, height: 22,resizeMode:'contain'}}   source={require("../assets/app4.png")} ></Image>     
           <Text style={{fontSize:20,color:'#fff',fontFamily:'Exo2-Regular '}}>Exchange</Text>
           </View>
          
@@ -213,7 +160,7 @@ SlideMenu=()=>{
           </View>
           <View style={{width:'80%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:20, justifyContent:'space-between',flexDirection:'row'}}>
 <View style={{flexDirection:'row',marginLeft:20}}>
-<Image  style={{width: 20, height: 20,marginTop:10}}  source={require("./assets/Searchicon.png")} ></Image> 
+<Image  style={{width: 20, height: 20,marginTop:10}}  source={require("../assets/Searchicon.png")} ></Image> 
 <TextInput
           style={{height: 40,width:100,color:'#ffffff',fontFamily:'Exo2-Regular'}}
        placeholderTextColor='#ffffff'
@@ -224,7 +171,7 @@ SlideMenu=()=>{
 </View>
 <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center'}}>
         <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.Amount}</Text>
-        <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("./assets/darrow.png")} ></Image> 
+        <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
         <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}
    selectedValue={this.state.Amount}
   onValueChange={(itemValue, itemIndex) => this.selectedCop(itemValue,itemIndex)}>
@@ -248,7 +195,7 @@ SlideMenu=()=>{
     borderRadius: 100/2,
     backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
    
-    <Image  style={{width: 60, height: 60,resizeMode:'contain'}}  source={require('./assets/publication.png')} ></Image>
+    <Image  style={{width: 60, height: 60,resizeMode:'contain'}}  source={require('../assets/publication.png')} ></Image>
     
             
           </LinearGradient> 

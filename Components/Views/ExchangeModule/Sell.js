@@ -5,7 +5,7 @@ import { Alert } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import { Switch} from 'react-native'
 import * as shape from 'd3-shape'
-import Logo from '../logo'
+import Logo from '../../logo'
 import LinearGradient from 'react-native-linear-gradient';
 
 
@@ -25,12 +25,6 @@ export default class  Sell  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Amount: 'USDoller',
       animate:false,
-      app1icon:require('./assets/app1white.png'),
-      app6icon:require('./assets/app6.png'),
-      app2icon:require('./assets/app2.png'),
-      app3icon:require('./assets/app3.png'),
-      app4icon:require('./assets/app5-blue.png'),
-      app5icon:require('./assets/app5.png'),
       w: 50,
       h: 45,
       wr:50,
@@ -98,63 +92,7 @@ hide(){
 }
 space(){
   return(<View style={{height: 10, width: 1, backgroundColor:'black'}}/>)
-}
-_onPress=()=>{
-  if(!this.state.click){
-    LayoutAnimation.spring();
-    this.setState({w: this.state.w + 50})
-    this.setState({click:true})
-  }else{
-    LayoutAnimation.spring();
-    this.setState({w:50})
-    this.setState({click:false})
-  }
-   
-}
-toggleSwitch=(value)=>{
-  this.setState({switchValue: value})
-}
-pressRight=()=>{
-  if(!this.state.clickr){
-    LayoutAnimation.spring();
-    this.setState({wr: this.state.wr + 50})
-    this.setState({clickr:true})
-  }else{
-    LayoutAnimation.spring();
-    this.setState({wr:50})
-    this.setState({clickr:false})
-}
-}
-SlideMenu=()=>{
-  if(!this.state.slide){
-    LayoutAnimation.spring();
-    if(this.state.Awr>80){
-      this.setState({Awr:80})
-      this.setState({slide:false})
-    }
-    else{
-      this.setState({Awr:this.state.Awr+250})
-      this.setState({slide:true})
-    }
-    
-  }
-  else{
-    LayoutAnimation.spring();
-    this.setState({Awr:80})
-    this.setState({slide:false})
-  }
-  }
-  HideMenu=()=>{
-    LayoutAnimation.spring();
-    this.setState({Awr:80})
-  }
-  HideMenu=()=>{
-    LayoutAnimation.spring();
-    this.setState({Awr:80})
-  }
- 
-  
-  
+} 
   render() {
     const data = [ 50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100 ]
     const Line = ({ line }) => (
@@ -185,13 +123,13 @@ SlideMenu=()=>{
    colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} style={{height:230,marginRight:30,marginTop:20}}>
  <View style={{justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection:'row',marginTop:20}}>
-          <Image style={{marginRight:10,width: 18, height: 22,resizeMode:'contain'}}   source={require("./assets/app4.png")} ></Image>     
+          <Image style={{marginRight:10,width: 18, height: 22,resizeMode:'contain'}}   source={require("../assets/app4.png")} ></Image>     
           <Text style={{fontSize:18,color:'#fff',fontFamily:'Exo2-Regular'}}>Exchange</Text>
           </View>      
           <Text style={{fontSize:12,color:'#fff',marginTop:10,fontFamily:'Exo2-Regular'}}>Sell</Text> 
           <View style={{flexDirection:'row',justifyContent:'space-around'}}>
           <View style={{justifyContent:'center',alignItems:'center'}}>
-          <Image style={{width: 20, height: 20,resizeMode:'contain'}}   source={require("./assets/minus.png")} ></Image> 
+          <Image style={{width: 20, height: 20,resizeMode:'contain'}}   source={require("../assets/minus.png")} ></Image> 
           </View>
           <View style={{marginLeft:10}}>
           <Text style={{fontSize:20,fontSize:36,color:'#F5F6F9',fontFamily:'Exo2-SemiBold'}}>2.258978</Text> 
@@ -203,7 +141,7 @@ SlideMenu=()=>{
 				 <Text style={{fontSize:15,fontFamily:'Exo2-Medium',color:'#4e649f'}}>880.889</Text>                                          
         <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:20}}>
         <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:12,fontFamily:''}}>{this.state.Amount}</Text>
-        <Image  style={{width: 10, height: 10,marginLeft:10,tintColor:'#4e649f'}}  source={require("./assets/down_arrow.png")} ></Image>
+        <Image  style={{width: 10, height: 10,marginLeft:10,tintColor:'#4e649f'}}  source={require("../assets/down_arrow.png")} ></Image>
         <Picker style={{ position:'absolute', top: 0, width: 500, height: 3000 }}
    selectedValue={this.state.Amount}
   onValueChange={(itemValue, itemIndex) => this.selectedAmount(itemValue,itemIndex)}>
@@ -303,7 +241,7 @@ SlideMenu=()=>{
 <View style={{justifyContent:'center',alignItems:'center'}}>
 <View style={{flexDirection:'row'}}>  
 <Text style={{fontSize:15,color:'#fff',marginTop:10,marginBottom:10,fontFamily:'Exo2-Regular'}}>Payment Methods</Text>  
-<Image style={{marginLeft:10,width: 20, height: 20,marginTop:10}}   source={require("./assets/plus.png")} ></Image>
+<Image style={{marginLeft:10,width: 20, height: 20,marginTop:10}}   source={require("../assets/plus.png")} ></Image>
 </View>
 </View>
 <LinearGradient  colors={['#81DCF9','#00a5ff','#1a5fe1']}  style={{width:'90%',height:200, backgroundColor:'#4286f4',borderTopRightRadius:20,borderTopLeftRadius:20,borderBottomRightRadius:20, borderBottomLeftRadius:20, marginLeft:20,marginRight:30,borderBottomWidth:15,borderBottomColor:'#42f4f4'}}>
@@ -329,7 +267,7 @@ SlideMenu=()=>{
 
 </View>
 <View style={{position:'absolute',left:0,right:15,top:0,bottom:0,alignItems:'flex-end'}}>
-<Image style={{width: 120,opacity:0.9, height: "100%",tintColor:'#fff',resizeMode:'contain'}}   source={require("./assets/three.png")} ></Image>  
+<Image style={{width: 120,opacity:0.9, height: "100%",tintColor:'#fff',resizeMode:'contain'}}   source={require("../assets/three.png")} ></Image>  
 </View>
 </LinearGradient>
 <View style={{flexDirection:'row',justifyContent:'space-between',marginLeft:20,marginRight:70,marginTop:20}}>
@@ -364,7 +302,7 @@ SlideMenu=()=>{
     borderRadius: 100/2,
     backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
    
-    <Image  style={{width: 60, height: 60,resizeMode:'contain'}}  source={require('./assets/sell.png')} ></Image>
+    <Image  style={{width: 60, height: 60,resizeMode:'contain'}}  source={require('../assets/sell.png')} ></Image>
     
             
           </LinearGradient> 

@@ -2,9 +2,6 @@ import * as React from 'react';
 import { Path } from 'react-native-svg'
 import { View, StyleSheet,TextInput, Image,Picker,FlatList,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,Animated} from 'react-native';
 import { Alert } from 'react-native';
-import { AreaChart, Grid } from 'react-native-svg-charts'
-import * as shape from 'd3-shape'
-import Logo from '../logo'
 import LinearGradient from 'react-native-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -42,19 +39,14 @@ export default class  ExchangeMenu  extends React.Component {
        Exchangecolor4:'#2C3765',
        Exchangecolor5:'#2A335E',
 
-       ExchangeIcon:require("./assets/exchangenew.png"), 
-       PublicIcon:require('./assets/publication.png'),
-       BuyIcon:require('./assets/buy.png'),
-       SellIcon:require('./assets/sell.png'),
+       ExchangeIcon:require("../assets/exchangecolor.png"), 
+       PublicIcon:require('../assets/puplishcolor.png'),
+       BuyIcon:require('../assets/buy.png'),
+       SellIcon:require('../assets/sell.png'),
        platform:'platform',
       Coin: 'Us Doller',
       animate:false,
-      app1icon:require('./assets/app1white.png'),
-      app6icon:require('./assets/app6.png'),
-      app2icon:require('./assets/app2.png'),
-      app3icon:require('./assets/app3.png'),
-      app4icon:require('./assets/app5-blue.png'),
-      app5icon:require('./assets/app5.png'),
+
       w: 50,
       h: 45,
       wr:50,
@@ -127,78 +119,6 @@ hide(){
 space(){
   return(<View style={{height: 10, width: 1, backgroundColor:'black'}}/>)
 }
-_onPress=()=>{
-  if(!this.state.click){
-    LayoutAnimation.spring();
-    this.setState({w: this.state.w + 50})
-    this.setState({click:true})
-  }else{
-    LayoutAnimation.spring();
-    this.setState({w:50})
-    this.setState({click:false})
-  }
-   
-}
-pressRight=()=>{
-  if(!this.state.clickr){
-    LayoutAnimation.spring();
-    this.setState({wr: this.state.wr + 50})
-    this.setState({clickr:true})
-  }else{
-    LayoutAnimation.spring();
-    this.setState({wr:50})
-    this.setState({clickr:false})
-}
-}
-SlideMenu=()=>{
-  if(!this.state.slide){
-    LayoutAnimation.spring();
-    if(this.state.Awr>80){
-      this.setState({Awr:80})
-      this.setState({slide:false})
-    }
-    else{
-      this.setState({Awr:this.state.Awr+250})
-      this.setState({slide:true})
-    }
-    
-  }
-  else{
-    LayoutAnimation.spring();
-    this.setState({Awr:80})
-    this.setState({slide:false})
-  }
-  }
-  HideMenu=()=>{
-    LayoutAnimation.spring();
-    this.setState({Awr:80})
-  }
-  ProfileTouch=()=>
-  {
-    this.props.navigation.navigate('Profile')  
-  }
-  DashBoardTouch=()=>
-  {  
-    this.props.navigation.navigate('DashBoard',{
-      DashBoardPopup: false,
-    })
-  }
-  App3Touch=()=>{
-    this.props.navigation.navigate('Price')
-  }
-  VaultTouch=()=>{
-    this.props.navigation.navigate('Vault');
-  }
-  App4Touch=()=>{
-   
-  }
-  App5Touch=()=>{
-   
-    this.props.navigation.navigate('Profile')
-  }
-  CreditCardTouch=()=>{
-    this.props.navigation.navigate('CreditCard')
-  }
   render() {
     const data = [ 50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100 ]
     const Line = ({ line }) => (
@@ -231,7 +151,7 @@ SlideMenu=()=>{
    colors={['#1a5fe1','#00a5ff','#81DCF9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{height:'100%', marginRight:30,marginTop:30,opacity:1}}>
  <View style={{justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection:'row',marginTop:10}}>
-          <Image style={{marginRight:10,width: 18, height: 22,resizeMode:'contain'}}   source={require("./assets/app4.png")} ></Image>     
+          <Image style={{marginRight:10,width: 18, height: 22,resizeMode:'contain'}}   source={require("../assets/app4.png")} ></Image>     
           <Text style={{fontSize:16,color:'#fff',fontFamily:'Exo2-Regular'}}>Exchange</Text>
           </View>
           <View style={{flexDirection:'row',marginTop:10}}>
@@ -261,7 +181,7 @@ SlideMenu=()=>{
           </View>
           <View style={{width:'80%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:5,marginBottom:20, justifyContent:'space-between',flexDirection:'row'}}>
 <View style={{flexDirection:'row',marginLeft:20}}>
-<Image  style={{width: 20, height: 20,marginTop:10}}  source={require("./assets/Searchicon.png")} ></Image> 
+<Image  style={{width: 20, height: 20,marginTop:10}}  source={require("../assets/Searchicon.png")} ></Image> 
 <TextInput
           style={{height: 40,width:100,color:'#ffffff',fontFamily:'Exo2-Regular'}}
        placeholderTextColor='#ffffff'
@@ -272,7 +192,7 @@ SlideMenu=()=>{
 </View>
 <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center'}}>
         <Text style={{color:'#fff',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.Amount}</Text>
-        <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("./assets/darrow.png")} ></Image> 
+        <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
         <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}
    selectedValue={this.state.Amount}
   onValueChange={(itemValue, itemIndex) => this.selectedCop(itemValue,itemIndex)}>
@@ -293,11 +213,11 @@ SlideMenu=()=>{
           <View style={{width:'45%',borderRadius:20,borderWidth:1,borderColor:'#fff',marginTop:2, justifyContent:'space-between',flexDirection:'row'}}>
 <View style={{flexDirection:'row',marginLeft:20}}>
 <View style={{justifyContent:'center',alignItems:'center'}}>
-<Image  style={{width: 20, height: 20,resizeMode:'contain'}}  source={require("./assets/tv.png")} ></Image> 
+<Image  style={{width: 20, height: 20,resizeMode:'contain'}}  source={require("../assets/tv.png")} ></Image> 
 </View>
 <View style={{justifyContent:'center',flexDirection:'row',alignItems:'center',marginLeft:20,paddingTop:5,paddingBottom:5}}>
         <Text style={{color:'#FFFFFF',opacity:1,fontSize:11,fontFamily:'Exo2-Regular'}}>{this.state.platform}</Text>
-        <Image  style={{width: 9, height: 7,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("./assets/darrow.png")} ></Image> 
+        <Image  style={{width: 9, height: 7,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
         <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}
    selectedValue={this.state.Amount}
   onValueChange={(itemValue, itemIndex) => this.selectedPlatform(itemValue,itemIndex)}>
@@ -373,7 +293,7 @@ SlideMenu=()=>{
     </View>  
     <View  style={{justifyContent:'center',alignItems:'center', top:70,backgroundColor:'transparent',position:'absolute',left:135
         }}>
-              <Image  style={{width: 100, height: 150,resizeMode:'contain'}}  source={require("./assets/tree.png")} ></Image> 
+              <Image  style={{width: 100, height: 150,resizeMode:'contain'}}  source={require("../assets/tree.png")} ></Image> 
         </View>
         <View style={{flex:1}}>
         <FlatList  style={{marginTop:10}}
@@ -397,10 +317,10 @@ SlideMenu=()=>{
         {(
           (item.Status!='Completed')?<View style={{
      justifyContent:'center',alignItems:"center"}} >
-          <Image  style={{width: 30, height: 30}}  source={require("./assets/exchange.png")} ></Image>  
+          <Image  style={{width: 30, height: 30}}  source={require("../assets/exchange.png")} ></Image>  
           </View>:  <View style={{
      justifyContent:'center',alignItems:"center"}} >
-          <Image  style={{width: 30, height: 30}}  source={require("./assets/exchange.png")} ></Image>  
+          <Image  style={{width: 30, height: 30}}  source={require("../assets/exchange.png")} ></Image>  
           </View>
 
         )}
@@ -409,7 +329,7 @@ SlideMenu=()=>{
           <View style={{flex:1, flexDirection: 'row',justifyContent:'space-between'}}>            
          <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff',fontFamily:"Exo2-Bold"}}>{(item.Status!='Completed')?'Exchanged':"Exchanged"}</Text>       
      <View style={{flexDirection:'row'}}>
-     <Image style={{width: 25,marginTop:10, height: 25}}   source={require("./assets/plusblue.png")} ></Image>    
+     <Image style={{width: 25,marginTop:10, height: 25}}   source={require("../assets/plusblue.png")} ></Image>    
      <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff',fontFamily:'Exo2-Regular'}}>$ 9060</Text> 
      </View>
         
@@ -422,7 +342,7 @@ SlideMenu=()=>{
       <Text  style={{marginRight:20,marginTop:10,color:'#5496FF',fontFamily:'Exo2-Regular'}}>5.4587ETH</Text>    
      </View>  
           </View>
-         
+  
         </View>
 </LinearGradient>
   </View>
