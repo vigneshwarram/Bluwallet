@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,ScrollView,Switch,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
+import { View, StyleSheet, Image,ScrollView,Switch,Text,ActivityIndicator,TouchableOpacity,Animated,Easing} from 'react-native';
 import { Alert } from 'react-native';
 
 
@@ -23,6 +23,11 @@ export default class CardDetails  extends React.Component {
       animate:false,
       switchValue:false,
       app1icon:require('../assets/app1white.png'),
+      AnimatedWidth:new Animated.Value(50),
+      AnimatedHieght:new Animated.Value(45),
+
+      RightSideWidth:new Animated.Value(50),
+      RightsideHeight:new Animated.Value(45),
       app6icon:require('../assets/app6-blue.png'),
       app2icon:require('../assets/app2.png'),
       app3icon:require('../assets/app3.png'),
@@ -90,26 +95,45 @@ space(){
 }
 _onPress=()=>{
   if(!this.state.click){
-    LayoutAnimation.spring();
-    this.setState({w: this.state.w + 50})
+    Animated.timing(this.state.AnimatedWidth, {
+      toValue: 100,
+      duration: 250,
+      easing: Easing.inOut(Easing.ease),
+      delay: 50,
+    }).start();
     this.setState({click:true})
-  }else{
-    LayoutAnimation.spring();
-    this.setState({w:50})
+
+  }
+  else{
+    Animated.timing(this.state.AnimatedWidth, {
+      toValue: 50,
+      duration: 250,
+      easing: Easing.inOut(Easing.ease),
+      delay: 50,
+    }).start(() => console.log('animation complete'));
     this.setState({click:false})
   }
-   
-}
+ 
+    }
 pressRight=()=>{
-  if(!this.state.clickr){
-    LayoutAnimation.spring();
-    this.setState({wr: this.state.wr + 50})
-    this.setState({clickr:true})
-  }else{
-    LayoutAnimation.spring();
-    this.setState({wr:50})
-    this.setState({clickr:false})
-}
+  if(!this.state.clickopen){
+    Animated.timing(this.state.RightSideWidth, {
+      toValue: 100,
+      duration: 250,
+      easing: Easing.inOut(Easing.ease),
+      delay: 10,
+    }).start();
+    this.setState({clickopen:true})
+  }
+  else{
+    Animated.timing(this.state.RightSideWidth, {
+      toValue: 50,
+      duration: 250,
+      easing: Easing.inOut(Easing.ease),
+      delay: 10,
+    }).start(() => console.log('animation complete'));
+    this.setState({clickopen:false})
+  }
 }
 AppTouch=()=>{
 }
@@ -165,29 +189,31 @@ ProfileTouch=()=>{
 colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={{height:'100%'}}>   
 
 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-<View style={{backgroundColor:'transparent',height:this.state.h,width:this.state.w,justifyContent:'center',borderRightWidth:1,borderTopWidth:1,borderBottomWidth:1, alignItems:'flex-end',position:'absolute',
-borderColor: '#436ab7',
-marginTop:10,
-borderTopEndRadius:25,borderBottomEndRadius:25,
-}}>
-
-<TouchableOpacity onPress={this._onPress}>
-<View style={{flexDirection: 'row'}}> 
-<Image style={{marginRight:10,width: 30, height: 30}}   source={require("../assets/icon13.png")} ></Image>     
-
+    <Animated.View style={{backgroundColor:'transparent',height:this.state.AnimatedHieght,width:this.state.AnimatedWidth,justifyContent:'center',borderRightWidth:1,borderTopWidth:1,borderBottomWidth:1, alignItems:'flex-end',position:'absolute',
+  borderColor: '#436ab7',
+  marginTop:10,
+  borderTopEndRadius:25,borderBottomEndRadius:25,
+  }}>
+  <TouchableOpacity onPress={this._onPress}>
+<View>
+ <View style={{flexDirection: 'row'}}> 
+    <Image style={{marginRight:10,width: 30, height: 30}}   source={require("../assets/icon13.png")} ></Image>     
+    </View>
 </View>
 </TouchableOpacity>
-
-</View>
-<View style={{backgroundColor:'transparent', borderColor: '#436ab7',height:this.state.hr,width:this.state.wr,justifyContent:'center', borderTopStartRadius:25,borderBottomStartRadius:25, marginTop:10,borderLeftWidth:1,borderTopWidth:1,borderBottomWidth:1,position:'absolute',right:0}}>
-     <TouchableOpacity onPress={this.pressRight}>
-<View style={{flexDirection: 'row'}}> 
-   <Image style={{marginLeft:10,width: 20, height: 20}}   source={require("../assets/icon14.png")} ></Image>     
-
-   </View>
-   </TouchableOpacity>
-     </View>
-</View>
+      </Animated.View>
+      <Animated.View style={{backgroundColor:'transparent', borderColor: '#436ab7',height:this.state.RightsideHeight,width:this.state.RightSideWidth,justifyContent:'center', borderTopStartRadius:25,borderBottomStartRadius:25, marginTop:10,borderLeftWidth:1,borderTopWidth:1,borderBottomWidth:1,position:'absolute',right:0}}>
+            <TouchableOpacity onPress={this.pressRight}>
+            <View>
+            <View style={{flexDirection: 'row'}}> 
+          <Image style={{marginLeft:10,width: 20, height: 20}}   source={require("../assets/icon14.png")} ></Image>     
+     
+          </View>
+            </View>
+       
+          </TouchableOpacity>
+            </Animated.View>
+    </View>
 <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',marginTop:20}}>
 <View>
 <Image style={{marginLeft:10,width: 30, height: 30,resizeMode:'contain'}}   source={require("../assets/app6.png")} ></Image>     

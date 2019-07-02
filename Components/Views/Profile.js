@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,ScrollView,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
+import { View, StyleSheet, Image,ScrollView,NativeModules,Text,ActivityIndicator,TouchableOpacity,Animated,Easing} from 'react-native';
 import { Alert } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -19,6 +19,11 @@ export default class Profile  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
+      AnimatedWidth:new Animated.Value(50),
+      AnimatedHieght:new Animated.Value(45),
+
+      RightSideWidth:new Animated.Value(50),
+      RightsideHeight:new Animated.Value(45),
       app1icon:require('./assets/app1white.png'),
       app6icon:require('./assets/app6.png'),
       app2icon:require('./assets/app2.png'),
@@ -85,89 +90,48 @@ hide(){
 space(){
   return(<View style={{height: 10, width: 1, backgroundColor:'black'}}/>)
 }
-_onPress=()=>{
-  if(!this.state.click){
-    LayoutAnimation.spring();
-    this.setState({w: this.state.w + 50})
-    this.setState({click:true})
-  }else{
-    LayoutAnimation.spring();
-    this.setState({w:50})
-    this.setState({click:false})
-  }
-   
-}
-pressRight=()=>{
-  if(!this.state.clickr){
-    LayoutAnimation.spring();
-    this.setState({wr: this.state.wr + 50})
-    this.setState({clickr:true})
-  }else{
-    LayoutAnimation.spring();
-    this.setState({wr:50})
-    this.setState({clickr:false})
-}
-}
-SlideMenu=()=>{
-  if(!this.state.slide){
-    LayoutAnimation.spring();
-    if(this.state.Awr>80){
-      this.setState({Awr:80})
-      this.setState({slide:false})
+  _onPress=()=>{
+    if(!this.state.click){
+      Animated.timing(this.state.AnimatedWidth, {
+        toValue: 100,
+        duration: 250,
+        easing: Easing.inOut(Easing.ease),
+        delay: 50,
+      }).start();
+      this.setState({click:true})
+  
     }
     else{
-      this.setState({Awr:this.state.Awr+250})
-      this.setState({slide:true})
+      Animated.timing(this.state.AnimatedWidth, {
+        toValue: 50,
+        duration: 250,
+        easing: Easing.inOut(Easing.ease),
+        delay: 50,
+      }).start(() => console.log('animation complete'));
+      this.setState({click:false})
     }
-    
-  }
-  else{
-    LayoutAnimation.spring();
-    this.setState({Awr:80})
-    this.setState({slide:false})
-  }
-  }
-  HideMenu=()=>{
-    LayoutAnimation.spring();
-    this.setState({Awr:80})
-  }
-  AppTouch=()=>{
-    this.setState({
-      app2color:'#5099f0',
-      app1color:'#5099f0',
-      app3color:'#5099f0',
-    //  app5color:'#fff',
-      app4color:'#5099f0',
-      app1icon:require('./assets/app1white.png'),
-      app2icon:require('./assets/app2-blue.png'),
-      app3icon:require('./assets/app3.png'),
-      app4icon:require('./assets/app4.png'),
-      app5icon:require('./assets/app5.png'),
-  
-    })
-
-    
-  }
-  VaultTouch=()=>{
    
-    this.props.navigation.navigate('Vault');
-  }
-  App3Touch=()=>{
-    
-    this.props.navigation.navigate('Price')
-  }
-  ExchangeTouch=()=>{
-    this.props.navigation.navigate('ExchangeMenu')
-  }
-  DashBoardTounch=()=>{
-    this.props.navigation.navigate('DashBoard',{
-      DashBoardPopup: false,
-    })
-  }
-  CreditCardTouch=()=>{
-   
-    this.props.navigation.navigate('CreditCard')
-  }
+      }
+      pressRight=()=>{
+        if(!this.state.clickopen){
+          Animated.timing(this.state.RightSideWidth, {
+            toValue: 100,
+            duration: 250,
+            easing: Easing.inOut(Easing.ease),
+            delay: 10,
+          }).start();
+          this.setState({clickopen:true})
+        }
+        else{
+          Animated.timing(this.state.RightSideWidth, {
+            toValue: 50,
+            duration: 250,
+            easing: Easing.inOut(Easing.ease),
+            delay: 10,
+          }).start(() => console.log('animation complete'));
+          this.setState({clickopen:false})
+        }
+      }
   render() {
     const shadowOpt = {
 			width:160,
@@ -208,28 +172,34 @@ SlideMenu=()=>{
    colors={['#1569e6','#00a3ff','#00deff']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{height:'100%',position:'absolute',left: 0,
 right: 0}}>
     <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-    <View style={{backgroundColor:'#fff',height:this.state.h,width:this.state.w,justifyContent:'center',borderWidth:1, alignItems:'flex-end',
+    <Animated.View style={{backgroundColor:'#fff',height:this.state.AnimatedHieght,width:this.state.AnimatedWidth,justifyContent:'center',borderWidth:1, alignItems:'flex-end',
   borderColor: '#fff',
   marginTop:10,
   borderTopEndRadius:25,borderBottomEndRadius:25,
   }}>
+  <TouchableOpacity onPress={this._onPress}>
+    <View>
 
-<TouchableOpacity onPress={this._onPress}>
  <View style={{flexDirection: 'row'}}> 
     <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/star.png")} ></Image>     
 
     </View>
-    </TouchableOpacity>
+
 
       </View>
-      <View style={{backgroundColor:'#fff',height:this.state.hr,width:this.state.wr,justifyContent:'center', borderTopStartRadius:25,borderBottomStartRadius:25, marginTop:10}}>
-            <TouchableOpacity onPress={this.pressRight}>
+      </TouchableOpacity>
+    </Animated.View>
+    <Animated.View style={{backgroundColor:'#fff',height:this.state.RightsideHeight,width:this.state.RightSideWidth,justifyContent:'center', borderTopStartRadius:25,borderBottomStartRadius:25, marginTop:10}}>
+    <TouchableOpacity onPress={this.pressRight}>
+    <View >
+          
        <View style={{flexDirection: 'row'}}> 
-          <Image style={{marginLeft:10,width: 30, height: 30}}   source={require("./assets/logout.png")} ></Image>     
-     
-          </View>
-          </TouchableOpacity>
+          <Image style={{marginLeft:10,width: 30, height: 30}}   source={require("./assets/logout.png")} ></Image>        
+          </View>    
             </View>
+            </TouchableOpacity>
+    </Animated.View>
+     
     </View>
      
    

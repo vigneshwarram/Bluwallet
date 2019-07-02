@@ -18,7 +18,7 @@ export default class DashBoard extends React.Component {
     header: null
   }
 
-
+  
   constructor(props) {
     super(props);
     this.animatedValue = new Animated.Value(0)
@@ -27,6 +27,11 @@ export default class DashBoard extends React.Component {
       dataImage:[{'image1':require("./assets/etherem.png"),'image1':require("./assets/etherem.png")}],
       cityItems:["US Doller,Indian,Eutherium"],
       Amount: 'USDoller',
+      AnimatedWidth:new Animated.Value(50),
+      AnimatedHieght:new Animated.Value(45),
+
+      RightSideWidth:new Animated.Value(50),
+      RightsideHeight:new Animated.Value(45),
       currentIndex:0,
       data1:[require('./assets/biconback.png'),require('./assets/etherem.png'),require('./assets/biconback.png'),require('./assets/etherem.png')],
       Time: 'Today',
@@ -126,91 +131,48 @@ space(){
 }
 _onPress=()=>{
   if(!this.state.click){
-    LayoutAnimation.spring();
-    this.setState({w: this.state.w + 50})
+    Animated.timing(this.state.AnimatedWidth, {
+      toValue: 150,
+      duration: 250,
+      easing: Easing.inOut(Easing.ease),
+      delay: 50,
+    }).start();
     this.setState({click:true})
-  }else{
-    LayoutAnimation.spring();
-    this.setState({w:50})
-    this.setState({click:false})
-  }
-   
-}
-pressRight=()=>{
-  if(!this.state.clickr){
-    LayoutAnimation.spring();
-   //this.LinerComponent.setNativeProps({width:100})
-    this.setState({wr: this.state.wr + 50})
-   this.setState({clickr:true})
-  }else{
-    LayoutAnimation.spring();
-    this.setState({wr:50})
-   // this.LinerComponent.setNativeProps({width:50})
-    this.setState({clickr:false})
-}
-}
-SlideMenu=()=>{
-if(!this.state.slide){
-  LayoutAnimation.spring();
-  if(this.state.Awr>80){
-    this.setState({Awr:80})
-    this.setState({slide:false})
+
   }
   else{
-    this.setState({Awr:this.state.Awr+250})
-    this.setState({slide:true})
+    Animated.timing(this.state.AnimatedWidth, {
+      toValue: 50,
+      duration: 250,
+      easing: Easing.inOut(Easing.ease),
+      delay: 50,
+    }).start(() => console.log('animation complete'));
+    this.setState({click:false})
   }
-  
-}
-else{
-  LayoutAnimation.spring();
-  this.setState({Awr:80})
-  this.setState({slide:false})
-}
-}
-HideMenu=()=>{
-  LayoutAnimation.spring();
-  this.setState({Awr:80})
-}
-AppTouch=()=>{
-  this.setState({
-  })
-  this.props.navigation.navigate('Profile');
-  
-}
-VaultTouch=()=>{
  
-  this.props.navigation.navigate('Vault');
+    }
+pressRight=()=>{
+  if(!this.state.clickopen){
+    Animated.timing(this.state.RightSideWidth, {
+      toValue: 150,
+      duration: 250,
+      easing: Easing.inOut(Easing.ease),
+      delay: 10,
+    }).start();
+    this.setState({clickopen:true})
+
+  }
+  else{
+    Animated.timing(this.state.RightSideWidth, {
+      toValue: 50,
+      duration: 250,
+      easing: Easing.inOut(Easing.ease),
+      delay: 10,
+    }).start(() => console.log('animation complete'));
+    this.setState({clickopen:false})
+  }
 }
-App3Touch=()=>{
-  this.props.navigation.navigate('Price')
-}
-App4Touch=()=>{
-  this.props.navigation.navigate('ExchangeMenu')
-}
-App5Touch=()=>{
-  this.setState({
-    app3color:'#5099f0',
-    app1color:'#5099f0',
-    app2color:'#5099f0',
-    currentIndex: 0,
-    app4color:'#5099f0',
-    app6color:'#5099f0',
-    app6icon:require('./assets/app6.png'),
-    app5color:'#fff',
-    app1icon:require('./assets/app1white.png'),
-    app2icon:require('./assets/app2.png'),
-    app3icon:require('./assets/app3.png'),
-    app4icon:require('./assets/app4.png'),
-    app6icon:require('./assets/app6.png'),
-    app5icon:require('./assets/app2-blue.png'),
-   
-  })
-  this.props.navigation.navigate('Profile')
-}
-CreditCardTouch=()=>{
-  this.props.navigation.navigate('CreditCard')
-}
+
 get pagination () {
   const { carouselItems, activeSlide } = this.state;
   return (
@@ -273,28 +235,46 @@ _animate=()=>{
       <View style={styles.Maincontainers}>    
       <LinearGradient  colors= {['#354E91','#314682','#283563','#222B50','#21284A']}>
       <ScrollView>
-      <Animated.View style={{justifyContent:'space-between',flexDirection:'row',}}>  
-<LinearGradient colors={['#f4347f','#f85276','#fe7a6e']} style={{justifyContent:'center',height:this.state.h,width:this.state.w, position:'absolute',left:0,alignItems:'flex-end', marginTop:10,borderTopRightRadius:25,borderBottomRightRadius:25}}>
-<TouchableOpacity onPress={this._onPress}>
+      <View style={{justifyContent:'space-between',flexDirection:'row',}}>  
+     
+      
+      <Animated.View style={{height:this.state.AnimatedHieght,width:this.state.AnimatedWidth, position:'absolute',left:0, marginTop:10,}}>
+      <TouchableOpacity onPress={this._onPress}>
+      <View>
+      <LinearGradient colors={['#f4347f','#f85276','#fe7a6e']} style={{justifyContent:'center',borderTopRightRadius:25,borderBottomRightRadius:25,alignItems:'flex-end',paddingTop:10,paddingBottom:10}}>
+    
        <View style={{flexDirection: 'row'}}> 
           <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/whitebox.png")} ></Image>     
      
           </View>
-          </TouchableOpacity>
-</LinearGradient>    
+         
+</LinearGradient>
+</View>
+ </TouchableOpacity>
+      </Animated.View>
+    
+      
+     
+    
          
             
-            
-    
-            <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  ref={component => this.LinerComponent = component} style={{height:this.state.hr,width:this.state.wr,justifyContent:'center',position:'absolute',right:0,alignItems:'flex-start',borderTopLeftRadius:25,borderBottomLeftRadius:25, marginTop:10}}>
-            <TouchableOpacity onPress={this.pressRight}>
+      <Animated.View style={{height:this.state.RightsideHeight,width:this.state.RightSideWidth,position:'absolute',right:0, marginTop:10,}}>
+      <TouchableOpacity onPress={this.pressRight}>
+      <View>
+      <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{justifyContent:'center',alignItems:'flex-start',borderTopLeftRadius:25,borderBottomLeftRadius:25,paddingTop:10,paddingBottom:10}}>
+         
        <View style={{flexDirection: 'row'}}> 
           <Image style={{marginLeft:10,width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/app1white.png")} ></Image>     
      
           </View>
-          </TouchableOpacity>
+       
             </LinearGradient>
+      </View>
+      </TouchableOpacity>
       </Animated.View>
+    
+           
+      </View>
       <View style={{flexDirection: 'row',justifyContent:'center',alignItems:"center",marginTop:25}}> 
           <Image  style={{width: 18, height: 22,resizeMode:'contain'}}  source={require("./assets/app1white.png")} ></Image>   
           <View style={{flexDirection:'column'}}>

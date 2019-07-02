@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,ScrollView,Picker,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,FlatList} from 'react-native';
+import { View, StyleSheet, Image,ScrollView,Picker,Text,ActivityIndicator,TouchableOpacity,Animated,FlatList,Easing} from 'react-native';
 import { Alert } from 'react-native';
 import PureChart from 'react-native-pure-chart';
 
@@ -26,6 +26,11 @@ export default class CreditTransaction  extends React.Component {
       GraphWidth:0,
       ActivityWidth:1,
       ActivityOpacity:1,
+      AnimatedWidth:new Animated.Value(50),
+      AnimatedHieght:new Animated.Value(45),
+
+      RightSideWidth:new Animated.Value(50),
+      RightsideHeight:new Animated.Value(45),
       GraphOpacity:0.5,
       ActivityView:true,
       app1icon:require('../assets/app1white.png'),
@@ -96,27 +101,46 @@ space(){
 }
 _onPress=()=>{
   if(!this.state.click){
-    LayoutAnimation.spring();
-    this.setState({w: this.state.w + 50})
+    Animated.timing(this.state.AnimatedWidth, {
+      toValue: 100,
+      duration: 250,
+      easing: Easing.inOut(Easing.ease),
+      delay: 50,
+    }).start();
     this.setState({click:true})
-  }else{
-    LayoutAnimation.spring();
-    this.setState({w:50})
+
+  }
+  else{
+    Animated.timing(this.state.AnimatedWidth, {
+      toValue: 50,
+      duration: 250,
+      easing: Easing.inOut(Easing.ease),
+      delay: 50,
+    }).start(() => console.log('animation complete'));
     this.setState({click:false})
   }
-   
-}
-pressRight=()=>{
-  if(!this.state.clickr){
-    LayoutAnimation.spring();
-    this.setState({wr: this.state.wr + 50})
-    this.setState({clickr:true})
-  }else{
-    LayoutAnimation.spring();
-    this.setState({wr:50})
-    this.setState({clickr:false})
-}
-}
+ 
+    }
+    pressRight=()=>{
+      if(!this.state.clickopen){
+        Animated.timing(this.state.RightSideWidth, {
+          toValue: 100,
+          duration: 250,
+          easing: Easing.inOut(Easing.ease),
+          delay: 10,
+        }).start();
+        this.setState({clickopen:true})
+      }
+      else{
+        Animated.timing(this.state.RightSideWidth, {
+          toValue: 50,
+          duration: 250,
+          easing: Easing.inOut(Easing.ease),
+          delay: 10,
+        }).start(() => console.log('animation complete'));
+        this.setState({clickopen:false})
+      }
+    }
 AppTouch=()=>{
 }
 VaultTouch=()=>{
@@ -193,34 +217,43 @@ ProfileTouch=()=>{
 
        <LinearGradient
   colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={{height:'100%'}}>   
-   
-   <View style={{justifyContent:'space-between',flexDirection:'row'}}>  
-<LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']} style={{justifyContent:'center',height:this.state.h,width:this.state.w, alignItems:'flex-end', marginTop:10,borderTopRightRadius:25,borderBottomRightRadius:25}}>
-<TouchableOpacity onPress={this._onPress}>
-       <View style={{flexDirection: 'row'}}> 
-          <Image style={{marginRight:10,width: 30, height: 30}}   source={require("../assets/creditscanner.png")} ></Image>     
      
-          </View>
-          </TouchableOpacity>
-</LinearGradient>    
+   <View style={{justifyContent:'space-between',flexDirection:'row'}}> 
+  
+   <Animated.View style={{height:this.state.AnimatedHieght,width:this.state.AnimatedWidth,marginTop:10,borderTopRightRadius:25,borderBottomRightRadius:25,position:'absolute',left:0}}>
+   <TouchableOpacity onPress={this._onPress}>
+   <View>
+   <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']} style={{alignItems:'flex-end',justifyContent:'center',borderTopRightRadius:25,borderBottomRightRadius:25,paddingBottom:10,paddingTop:10}}>
+       <View style={{flexDirection: 'row'}}> 
+          <Image style={{marginRight:10,width: 30, height: 30}}   source={require("../assets/creditscanner.png")} ></Image>         
+          </View> 
+</LinearGradient>
+   </View> 
+   </TouchableOpacity>
+   </Animated.View>
+   
          
             
-            <View style={{flexDirection: 'row',justifyContent:'flex-start',alignItems:"center",marginTop:15}}> 
+          
+    <Animated.View style={{height:this.state.RightsideHeight,width:this.state.RightSideWidth,borderTopLeftRadius:25,borderBottomLeftRadius:25, marginTop:10,position:'absolute',right:0}}>
+    <TouchableOpacity onPress={this.pressRight}> 
+    <View>
+    <LinearGradient colors={['#91eef6','#7bd0f7','#69b9f4']} style={{justifyContent:'center',alignItems:'flex-start',borderTopLeftRadius:25,borderBottomLeftRadius:25,paddingBottom:10,paddingTop:10}}>      
+       <View style={{flexDirection: 'row'}}> 
+          <Image style={{marginLeft:10,width: 30, height: 30,resizeMode:'contain'}}   source={require("../assets/newcredit.png")}></Image>     
+          </View>       
+            </LinearGradient>
+    </View>
+    </TouchableOpacity>
+    </Animated.View>
+        
+      </View>
+      <View style={{flexDirection: 'row',justifyContent:'center',alignItems:"center",marginTop:15}}> 
           <Image  style={{width: 30, height: 30,resizeMode:'contain'}}  source={require("../assets/app6.png")} ></Image>   
           <View style={{flexDirection:'column'}}>
           <Text style={{marginLeft:10,fontSize:18,fontWeight:'bold',color:'#fff',fontFamily:''}}>Credit Card</Text>       
           </View>       
           </View>
-    
-            <LinearGradient colors={['#91eef6','#7bd0f7','#69b9f4']} style={{height:this.state.hr,width:this.state.wr,justifyContent:'center',alignItems:'flex-start',borderTopLeftRadius:25,borderBottomLeftRadius:25, marginTop:10}}>
-            <TouchableOpacity onPress={this.pressRight}>
-       <View style={{flexDirection: 'row'}}> 
-          <Image style={{marginLeft:10,width: 30, height: 30,resizeMode:'contain'}}   source={require("../assets/newcredit.png")} ></Image>     
-     
-          </View>
-          </TouchableOpacity>
-            </LinearGradient>
-      </View>
     <View style={{marginTop:20}}> 
    
              <View>

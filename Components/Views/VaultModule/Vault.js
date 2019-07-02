@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,Picker,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
+import { View, StyleSheet, Image,Picker,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,Animated,Easing} from 'react-native';
 import { Alert } from 'react-native';
 const { UIManager } = NativeModules;
 import Logo from '../../logo'
@@ -26,6 +26,11 @@ export default class Vault extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
+      AnimatedWidth:new Animated.Value(50),
+      AnimatedHieght:new Animated.Value(45),
+
+      RightSideWidth:new Animated.Value(50),
+      RightsideHeight:new Animated.Value(45),
       w: 50,
       h: 45,
       wr:50,
@@ -89,27 +94,46 @@ space(){
 }
 _onPress=()=>{
   if(!this.state.click){
-    LayoutAnimation.spring();
-    this.setState({w: this.state.w + 50})
+    Animated.timing(this.state.AnimatedWidth, {
+      toValue: 150,
+      duration: 250,
+      easing: Easing.inOut(Easing.ease),
+      delay: 50,
+    }).start();
     this.setState({click:true})
-  }else{
-    LayoutAnimation.spring();
-    this.setState({w:50})
+
+  }
+  else{
+    Animated.timing(this.state.AnimatedWidth, {
+      toValue: 50,
+      duration: 250,
+      easing: Easing.inOut(Easing.ease),
+      delay: 50,
+    }).start(() => console.log('animation complete'));
     this.setState({click:false})
   }
-   
-}
+ 
+    }
 pressRight=()=>{
-  if(!this.state.clickr){
-    LayoutAnimation.spring();
-    this.setState({wr: this.state.wr + 50})
-    this.setState({clickr:true})
-   this.props.navigation.navigate('AddVault')
-  }else{
-    LayoutAnimation.spring();
-    this.setState({wr:50})
-    this.setState({clickr:false})
-}
+  if(!this.state.clickopen){
+    Animated.timing(this.state.RightSideWidth, {
+      toValue: 150,
+      duration: 250,
+      easing: Easing.inOut(Easing.ease),
+      delay: 10,
+    }).start();
+    this.setState({clickopen:true})
+
+  }
+  else{
+    Animated.timing(this.state.RightSideWidth, {
+      toValue: 50,
+      duration: 250,
+      easing: Easing.inOut(Easing.ease),
+      delay: 10,
+    }).start(() => console.log('animation complete'));
+    this.setState({clickopen:false})
+  }
 }
 SlideMenu=()=>{
 if(!this.state.slide){
@@ -176,25 +200,34 @@ CompleteTouch=()=>{
       <View style={styles.Maincontainers}>    
       <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']}>
       <ScrollView>
-      <View style={{justifyContent:'space-between',flexDirection:'row'}}>  
-<LinearGradient colors={['transparent','transparent','transparent']} style={{justifyContent:'center',height:this.state.h,width:this.state.w, alignItems:'flex-end', marginTop:10,borderTopRightRadius:25,borderBottomRightRadius:25,borderColor:'#c978f8',borderRightWidth:1,borderLeftWidth:0,borderTopWidth:1,borderBottomWidth:1,position:'absolute'}}>
-<TouchableOpacity onPress={this._onPress}>
-       <View style={{flexDirection: 'row'}}> 
-          <Image style={{marginRight:10,width: 30, height: 30}}   source={require("../assets/iicon.png")} ></Image>     
+      <View style={{justifyContent:'space-between',flexDirection:'row'}}> 
      
-          </View>
-          </TouchableOpacity>
-</LinearGradient>    
+      <Animated.View style={{borderColor:'#c978f8',borderRightWidth:1,borderLeftWidth:0,borderTopWidth:1,borderBottomWidth:1,position:'absolute',height:this.state.AnimatedHieght,width:this.state.AnimatedWidth,borderTopRightRadius:25,borderBottomRightRadius:25,marginTop:10}}>
+      <TouchableOpacity onPress={this._onPress}>
+      <View>
+      <LinearGradient colors={['transparent','transparent','transparent']} style={{justifyContent:'center', alignItems:'flex-end',paddingTop:10,paddingBottom:10}}>
+       <View style={{flexDirection: 'row'}}> 
+          <Image style={{marginRight:10,width: 30, height: 30,resizeMode:'contain'}}   source={require("../assets/iicon.png")} ></Image>     
+          </View>        
+</LinearGradient>
+ </View> 
+ </TouchableOpacity>
+      </Animated.View> 
+   
          
-              
-            <LinearGradient colors={['#fff','#fff','#fff']} style={{height:this.state.hr,width:this.state.wr,justifyContent:'center',alignItems:'flex-start',borderTopLeftRadius:25,borderBottomLeftRadius:25, marginTop:10,position:'absolute',right:0}}>
-            <TouchableOpacity onPress={this.pressRight}>
+              <Animated.View style={{height:this.state.RightsideHeight,width:this.state.RightSideWidth,borderTopLeftRadius:25,borderBottomLeftRadius:25, marginTop:10,position:'absolute',right:0}}>
+              <TouchableOpacity onPress={this.pressRight}>
+              <View>
+              <LinearGradient colors={['#fff','#fff','#fff']} style={{justifyContent:'center',alignItems:'flex-start',paddingTop:10,paddingBottom:10,borderTopLeftRadius:25,borderBottomLeftRadius:25}}>
+           
        <View style={{flexDirection: 'row'}}> 
-          <Image style={{marginLeft:10,width: 30, height: 30}}   source={require("../assets/app4-blue.png")} ></Image>     
-     
+          <Image style={{marginLeft:10,width: 30, height: 30,resizeMode:'contain'}}   source={require("../assets/app4-blue.png")} ></Image>         
           </View>
-          </TouchableOpacity>
             </LinearGradient>
+              </View>
+              </TouchableOpacity>           
+              </Animated.View>
+           
       </View>
    
       
