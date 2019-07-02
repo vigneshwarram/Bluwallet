@@ -3,6 +3,8 @@ import { Path } from 'react-native-svg'
 import { View, StyleSheet, Image,TextInput,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
+import RegisterApi from '../Api/RegisterApi'
+import OuthApi from '../Api/OuthApi'
 import RNPasswordStrengthMeter from 'react-native-password-strength-meter';
 import LinearGradient from 'react-native-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -279,8 +281,32 @@ SlideMenu=()=>{
           Alert.alert(item.Status)
       }
       BeginAction=()=>{
-        this.props.navigation.navigate('PinCode');
+        let params = {
+          email: 'admin@gmail.com',
+          password: 'password',
+          conformPassword: 'password',
+        };
+       OuthApi(params,this.resultFromAPI);
       }
+
+      resultFromAPI = (data) =>{
+        console.log("data from API", data)
+        let accesstoke=data.access_token
+        console.log("accesstoke", accesstoke)
+        let params = {
+          email: 'admin@gmail.com',
+          password: 'password',
+          conformPassword: 'password',
+          accesstoke:accesstoke
+        };
+        RegisterApi('mobileregister',params,this.RegisterResponse)
+
+      }
+      RegisterResponse=(Registerdata)=>{
+        console.log("Register", Registerdata)
+      }
+        //this.props.navigation.navigate('PinCode');
+      
       onChange = (password, score, { label, labelColor, activeBarColor }) => {
         console.log(password, score, { label, labelColor, activeBarColor });
       }

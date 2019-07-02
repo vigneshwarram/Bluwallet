@@ -181,6 +181,7 @@ let CollapseExpand = (index, position) => {
          
         }});
       const MainNavigator =StackNavigator({
+      
         Launch: { screen: Launch },
         Home:{screen:TabNavigator},
         AddVault:{screen:AddVault},
