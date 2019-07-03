@@ -4,7 +4,6 @@ import { View, StyleSheet, Image,TextInput,Dimensions,Text,ActivityIndicator,Tou
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 import RegisterApi from '../Api/RegisterApi'
-import OuthApi from '../Api/OuthApi'
 import RNPasswordStrengthMeter from 'react-native-password-strength-meter';
 import LinearGradient from 'react-native-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -23,13 +22,9 @@ export default class NewWallet  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
-  
-      w: 50,
-      h: 45,
-      wr:50,
-      hr:45,
-      Ahr:80,
-      Awr:80,
+      Username:null,
+      Password:null,
+      ConfirmPassword:null,
       clickr:false,
       clickopen:false,
       click:false,
@@ -178,7 +173,7 @@ SlideMenu=()=>{
    style={{height: 80,padding:10,fontFamily:'Exo2-Regular'}}
  placeholderTextColor='#9ab8db'
    placeholder="Email"
-   
+   onChangeText={(text) => this.setState({Username:text})}
  />
 </View>
    </View>
@@ -203,7 +198,7 @@ SlideMenu=()=>{
 
 <RNPasswordStrengthMeter
 
-   onChangeText={this.onChange}
+   onChangeText={this.onChangeConfirmPassword}
    inputProps={{placeholder:'Validate Password'}}
    barColor='transparent'
    meterType="bar"
@@ -280,36 +275,85 @@ SlideMenu=()=>{
       {
           Alert.alert(item.Status)
       }
-      BeginAction=()=>{
-        let params = {
-          email: 'admin@gmail.com',
-          password: 'password',
-          conformPassword: 'password',
-        };
-       OuthApi(params,this.resultFromAPI);
+      onChangeConfirmPassword=(Confimpassword)=>{
+        this.setState({ConfirmPassword:Confimpassword})
+      }
+      BeginAction=()=>
+      {
+        if(this.state.Username==null)
+        {
+          Alert.alert('Please Provide Email id')
+        }
+        else if(this.state.Password==null)
+        {
+          Alert.alert('Please Provide Password')
+        }
+        else if(this.state.ConfirmPassword==null)
+        {
+          Alert.alert('Please Provide ConfirmPassword')
+        }    
+        else if(this.state.ConfirmPassword!=this.state.Password)
+        {
+          Alert.alert('Password and Confirm Password does not match');
+        } 
+        else
+        {
+          if(this.validateEmail(this.state.Username))
+          {
+            let params = {
+              email:this.state.Username,
+              password: this.state.Password,
+              conformPassword: this.state.ConfirmPassword,
+            };
+            RegisterApi('mobileregister',params,this.RegisterResponse)
+           
+          }
+          else
+          {
+            Alert.alert('Email Enter is wrong')
+          }
+         
+        }
       }
 
-      resultFromAPI = (data) =>{
+      resultFromAPI = (data) =>
+      {
         console.log("data from API", data)
-        let accesstoke=data.access_token
-        console.log("accesstoke", accesstoke)
+        let accesstoken=data.access_token
+        this._storeData(accesstoken)
+        console.log("accesstoke", accesstoken)
         let params = {
-          email: 'admin@gmail.com',
-          password: 'password',
-          conformPassword: 'password',
-          accesstoke:accesstoke
+          email: this.state.Username,
+          password: this.state.Password,
+          conformPassword:this.state.ConfirmPassword,
+          accesstoke:accesstoken
         };
         RegisterApi('mobileregister',params,this.RegisterResponse)
 
       }
-      RegisterResponse=(Registerdata)=>{
+      RegisterResponse=(Registerdata)=>
+      {
         console.log("Register", Registerdata)
       }
-        //this.props.navigation.navigate('PinCode');
+        //
       
       onChange = (password, score, { label, labelColor, activeBarColor }) => {
-        console.log(password, score, { label, labelColor, activeBarColor });
+        this.setState({Password:password})
       }
+      validateEmail = (text) =>
+       {
+        console.log(text);
+        let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ ;
+        if(reg.test(text) === false)
+          {
+        return false;
+          }
+        else 
+        {
+          return true;
+        }
+        }
+       
 }
 
 

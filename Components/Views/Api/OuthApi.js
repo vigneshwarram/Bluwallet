@@ -6,7 +6,7 @@ import Url from './CommonApi'
     let formdata = new FormData();  
 formdata.append("username",params.email)
 formdata.append("password",params.password)
-formdata.append("grant_type",params.conformPassword)
+formdata.append("grant_type",'password')
     fetch('http://192.168.2.37:9090/oauth/token', {  
         method: 'POST',
         headers: {

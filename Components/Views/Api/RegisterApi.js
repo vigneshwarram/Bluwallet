@@ -7,7 +7,7 @@ const registerApi=(Request,params,RegisterResponse)=>
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'authorization':'bearer '+params.accesstoke
+         // 'authorization':'bearer '+params.accesstoke
         },
         body: JSON.stringify({
           email: params.email,

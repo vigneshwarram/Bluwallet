@@ -3,7 +3,7 @@ import { Path } from 'react-native-svg'
 import { View, StyleSheet, Image,ScrollView,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
-
+import { openInbox } from 'react-native-email-link'
 import LinearGradient from 'react-native-linear-gradient';
 
 export default class Sms  extends React.Component {
@@ -220,9 +220,12 @@ SlideMenu=()=>{
           Alert.alert(item.Status)
       }
       BeginAction=()=>{
+        /*
         this.props.navigation.navigate('DashBoard',{
           DashBoardPopup: false,
         });
+        */
+       openInbox()
       }
 }
 

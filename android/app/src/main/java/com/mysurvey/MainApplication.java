@@ -3,6 +3,7 @@ package com.mysurvey;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.facebook.react.modules.email.EmailPackage;
 import com.horcrux.svg.SvgPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.rnfingerprint.FingerprintAuthPackage;
@@ -32,6 +33,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new EmailPackage(),
             new SvgPackage(),
             new LinearGradientPackage(),
             new FingerprintAuthPackage(),

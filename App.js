@@ -186,7 +186,7 @@ let CollapseExpand = (index, position) => {
         Home:{screen:TabNavigator},
         AddVault:{screen:AddVault},
         ConfirmVault:{screen:ConfirmVault},
-        
+        Sms:{screen:Sms},
       
         Login:{screen:Login},
         VerificationCards:{screen:VerificationCards},    
@@ -216,7 +216,7 @@ let CollapseExpand = (index, position) => {
         Payment:{screen:Payment},     
         Country:{screen:Country},
         BankScreen:{screen:BankScreen},  
-        Sms:{screen:Sms},
+        
         MoreInfo:{screen:MoreInfo},
 
         ChooseCountry:{screen:ChooseCountry},       

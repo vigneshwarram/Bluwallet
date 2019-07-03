@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,Animated,TextInput,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,KeyboardAvoidingView,Dimensions,UIManager } from 'react-native';
+import { View, StyleSheet, Image,Animated,TextInput,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,KeyboardAvoidingView,Dimensions,AsyncStorage } from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
-
+import LoginApi from '../Api/LoginApi'
+import OuthApi from '../Api/OuthApi'
 import LinearGradient from 'react-native-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
 export default class Login  extends React.Component {
@@ -21,12 +22,8 @@ export default class Login  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
-      w: 50,
-      h: 45,
-      wr:50,
-      hr:45,
-      Ahr:80,
-      Awr:80,
+      Username:null,
+      Password:null,
       clickr:false,
       clickopen:false,
       click:false,
@@ -187,6 +184,7 @@ SlideMenu=()=>{
      
      <TextInput  placeholder="User"
          placeholderTextColor="#3d5498" 
+         onChangeText={(text) => this.setState({Username:text})}
          style={styles.inputBox} />
      </View>
      <View style={{flexDirection:'row',justifyContent:'space-around'}}>
@@ -199,7 +197,8 @@ SlideMenu=()=>{
          placeholder="Password"
          placeholderTextColor="#3d5498" 
          style={styles.inputBox}
-         
+         secureTextEntry={true}
+         onChangeText={(text) => this.setState({Password:text})}
        />
      </View>
             
@@ -243,13 +242,72 @@ SlideMenu=()=>{
       {
           Alert.alert(item.Status)
       }
-      LoginAction=()=>{
-        this.props.navigation.navigate('DashBoard',{
-          DashBoardPopup: true,
-        });
+      LoginAction=()=>
+      {
+       if(this.state.Username==null)
+       {
+         Alert.alert('Please enter username')
+       }
+       else if(this.state.Password==null)
+       {
+        Alert.alert('Please enter Password')
+       }
+       else
+       {
+        let params = {
+          email:this.state.Username,
+          password: this.state.Password,
+        };
+        OuthApi(params,this.resultFromAPI);
+       }
+      
+      }
+      resultFromAPI=async(data)=>
+      {
+    
+      try 
+      {
+        let AccessToken=data.access_token
+        await AsyncStorage.setItem('AccessToken',AccessToken); 
+        let params = {
+          email:this.state.Username,
+          password: this.state.Password,
+          'AccessToken':await AsyncStorage.getItem('AccessToken')
+        }
+        LoginApi(params,this.LoginResult)  
+      } 
+      catch (error) 
+      {
+        Alert.alert(error)
+        // Error saving data
+      }
+
+     
       }
       ForgotAction=()=>{
         this.props.navigation.navigate('ForgotPassword')
+      }
+      _storeData = async (AccessToken) => 
+      {
+        try 
+        {
+         
+        } 
+        catch (error) 
+        {
+          // Error saving data
+        }
+      };
+      LoginResult=async (data)=>
+      {
+        if(data.status=='success')
+        {
+          await AsyncStorage.setItem('UserId',data.loginInfo.userId); 
+        }
+        else
+        {
+          Alert.alert('Invalid Credentials')
+        }
       }
 }
 
