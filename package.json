@@ -17,6 +17,7 @@
     "react-native-card-carousel": "^1.1.0",
     "react-native-card-view": "0.0.3",
     "react-native-custom-picker": "^0.4.0",
+    "react-native-customized-image-picker": "^0.1.5",
     "react-native-d3multiline-chart": "^1.0.18",
     "react-native-device-detection": "^0.2.0",
     "react-native-device-info": "^1.1.0",

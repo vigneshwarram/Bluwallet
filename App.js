@@ -181,7 +181,7 @@ let CollapseExpand = (index, position) => {
          
         }});
       const MainNavigator =StackNavigator({
-      
+        TakePhoto:{screen:TakePhoto},
         Launch: { screen: Launch },
         Home:{screen:TabNavigator},
         AddVault:{screen:AddVault},
@@ -199,7 +199,7 @@ let CollapseExpand = (index, position) => {
         
       
         DocumentPhoto:{screen:DocumentPhoto},
-        TakePhoto:{screen:TakePhoto},
+     
         TakePassportPhoto:{screen:TakePassportPhoto},
        
        //DashBoard:{screen:DashBoard},        

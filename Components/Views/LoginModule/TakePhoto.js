@@ -3,7 +3,7 @@ import { Path } from 'react-native-svg'
 import { View, StyleSheet, Image,Picker,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
-
+import ImagePicker from 'react-native-customized-image-picker';
 import LinearGradient from 'react-native-linear-gradient';
 
 export default class TakePhoto  extends React.Component {
@@ -215,7 +215,13 @@ SlideMenu=()=>{
           Alert.alert(item.Status)
       }
       BeginAction=()=>{
-        this.props.navigation.navigate('TakePassportPhoto');
+        ImagePicker.openCamera({
+          width: 300,
+          height: 400,
+          cropping: true
+        }).then(image => {
+          console.log(image);
+        });
       }
       selectedCountry=(item,index)=>{
           this.setState({

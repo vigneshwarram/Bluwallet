@@ -94,6 +94,10 @@ def enableSeparateBuildPerCPUArchitecture = true
 def enableProguardInReleaseBuilds = false
 
 android {
+     compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
 
@@ -143,6 +147,7 @@ keyPassword MYAPP_RELEASE_KEY_PASSWORD}}}
 }
 
 dependencies {
+    implementation project(':react-native-customized-image-picker')
     implementation project(':react-native-email-link')
     implementation project(':react-native-svg')
     implementation project(':react-native-linear-gradient')
