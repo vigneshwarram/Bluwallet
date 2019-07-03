@@ -329,6 +329,7 @@ _animate=()=>{
     width: 100,
     resizeMode: 'contain'}}   source={require("./assets/profileicon.png")} ></Image>     
       </View>
+      <TouchableOpacity onPress={()=>this.props.navigation.navigate('TakePhoto')}>
       <View style={{width:'50%',marginTop:20}}>
 <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:10}}>
 <TouchableOpacity>
@@ -336,6 +337,7 @@ _animate=()=>{
 </TouchableOpacity>
 </LinearGradient>
 </View>
+</TouchableOpacity>
       </LinearGradient>
       </View>           
       ))

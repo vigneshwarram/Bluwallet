@@ -195,14 +195,15 @@ SlideMenu=()=>{
 </LinearGradient>
 </View>
  </TouchableOpacity>
+ <TouchableOpacity onPress={this.checkItLater}>
  <View>
 <LinearGradient colors={['#fff','#fff','#fff']}  style={{padding:15,justifyContent:'center',alignItems:'center'}}>
-<TouchableOpacity onPress={this.BeginAction}>
+
 <Text style={{color:'#d2e4ff',fontFamily:'Poppins-Medium'}}>Check it later</Text>
-</TouchableOpacity>
+
 </LinearGradient>
 </View> 
-        
+       </TouchableOpacity> 
        
 
         </View>   
@@ -218,6 +219,12 @@ SlideMenu=()=>{
       clickedItemText=(item)=>
       {
           Alert.alert(item.Status)
+      }
+      checkItLater=()=>
+      {
+        this.props.navigation.navigate('DashBoard',{
+          DashBoardPopup: false,
+        });
       }
       BeginAction=()=>{
         /*

@@ -315,24 +315,24 @@ SlideMenu=()=>{
          
         }
       }
-
-      resultFromAPI = (data) =>
-      {
-        console.log("data from API", data)
-        let accesstoken=data.access_token
-        this._storeData(accesstoken)
-        console.log("accesstoke", accesstoken)
-        let params = {
-          email: this.state.Username,
-          password: this.state.Password,
-          conformPassword:this.state.ConfirmPassword,
-          accesstoke:accesstoken
-        };
-        RegisterApi('mobileregister',params,this.RegisterResponse)
-
-      }
       RegisterResponse=(Registerdata)=>
       {
+        if(Registerdata.status=='success')
+        {
+          Alert.alert(
+            Registerdata.status,
+            Registerdata.message,
+            [
+              {text: 'OK', onPress: () =>  this.props.navigation.navigate('Sms')},
+            ],
+            {cancelable: false},
+          );
+         
+        }
+        else
+        {
+          Alert.alert(Registerdata.message)
+        }
         console.log("Register", Registerdata)
       }
         //

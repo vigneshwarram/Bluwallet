@@ -47,6 +47,8 @@
     <string>googlegmail</string>
     <string>inbox-gmail</string>
 </array>
+<key>NSCameraUsageDescription</key>
+<string>Your own description of the purpose</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>NSLocationWhenInUseUsageDescription</key>

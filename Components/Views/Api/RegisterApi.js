@@ -2,7 +2,7 @@ import Url from './CommonApi'
 
 const registerApi=(Request,params,RegisterResponse)=>
 {
-    fetch(Url+Request, {  
+    fetch('http://192.168.2.37:9090/API/mobile/mobileregister', {  
         method: 'POST',
         headers: {
           'Accept': 'application/json',
