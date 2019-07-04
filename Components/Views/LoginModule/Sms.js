@@ -223,7 +223,7 @@ SlideMenu=()=>{
       checkItLater=()=>
       {
         this.props.navigation.navigate('DashBoard',{
-          DashBoardPopup: false,
+          DashBoardPopup: false,Kyc:false
         });
       }
       BeginAction=()=>{

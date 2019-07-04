@@ -93,9 +93,7 @@ let CollapseExpand = (index, position) => {
     ]
   };
 };
- class App extends Component {
 
-    render() {
       
       const VaultStack=StackNavigator({
         Vault:{screen:Vault},  
@@ -181,12 +179,14 @@ let CollapseExpand = (index, position) => {
          
         }});
       const MainNavigator =StackNavigator({
-        TakePhoto:{screen:TakePhoto},
         Launch: { screen: Launch },
+        Sms:{screen:Sms},
+        TakePhoto:{screen:TakePhoto},
+      
         Home:{screen:TabNavigator},
         AddVault:{screen:AddVault},
         ConfirmVault:{screen:ConfirmVault},
-        Sms:{screen:Sms},
+
       
         Login:{screen:Login},
         VerificationCards:{screen:VerificationCards},    
@@ -225,15 +225,6 @@ let CollapseExpand = (index, position) => {
           transitionConfig: TransitionConfiguration,
           headerMode: 'none'
       });
-     
-
     
-      return (
-        
-       <MainNavigator/>
-    
-      );
-    }
-  }
 
-export default App;
+  export default MainNavigator;

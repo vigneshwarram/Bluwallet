@@ -22,13 +22,11 @@ export default class Address  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
-  
-      w: 50,
-      h: 45,
-      wr:50,
-      hr:45,
-      Ahr:80,
-      Awr:80,
+      AddressLine1:null,
+      AddressLine2:null,
+      city:null,
+      Country:null,
+      PostalCode:null,
       clickr:false,
       clickopen:false,
       click:false,
@@ -188,7 +186,7 @@ SlideMenu=()=>{
           style={{height: 40,padding:10,fontFamily:'Exo2-Regular'}}
         placeholderTextColor='#9ab8db'
           placeholder="Home Address"
-          
+        
         />
 </View>
           </View>
@@ -197,9 +195,9 @@ SlideMenu=()=>{
 
 <TextInput
           style={{height: 50,padding:10,fontFamily:'Exo2-Regular'}}
-        placeholderTextColor='#9ab8db'
+          placeholderTextColor='#9ab8db'
           placeholder="Address Line 1"
-          
+          onChangeText={(text) => this.setState({AddressLine1:text})}
         />
 </View>
           </View>
@@ -208,9 +206,9 @@ SlideMenu=()=>{
 
 <TextInput
           style={{height: 50,padding:10,fontFamily:'Exo2-Regular'}}
-        placeholderTextColor='#9ab8db'
+          placeholderTextColor='#9ab8db'
           placeholder="Address Line 2"
-          
+          onChangeText={(text) => this.setState({AddressLine2:text})}
         />
 </View>
           </View>
@@ -219,9 +217,9 @@ SlideMenu=()=>{
 
 <TextInput
           style={{height: 50,padding:10,fontFamily:'Exo2-Regular'}}
-        placeholderTextColor='#9ab8db'
+          placeholderTextColor='#9ab8db'
           placeholder="city/town/village"
-          
+          onChangeText={(text) => this.setState({city:text})}
         />
 </View>
           </View>
@@ -230,9 +228,9 @@ SlideMenu=()=>{
 
 <TextInput
           style={{height: 50,padding:10,fontFamily:'Exo2-Regular'}}
-        placeholderTextColor='#9ab8db'
+          placeholderTextColor='#9ab8db'
           placeholder="State/Region/Province/Country"
-          
+          onChangeText={(text) => this.setState({Country:text})}
         />
 </View>
           </View>
@@ -241,9 +239,9 @@ SlideMenu=()=>{
 
 <TextInput
           style={{height: 50,padding:10,fontFamily:'Exo2-Regular'}}
-        placeholderTextColor='#9ab8db'
+          placeholderTextColor='#9ab8db'
           placeholder="Postal Code"
-          
+          onChangeText={(text) => this.setState({PostalCode:text})}
         />
 </View>
           </View>
@@ -297,8 +295,45 @@ SlideMenu=()=>{
       {
           Alert.alert(item.Status)
       }
-      BeginAction=()=>{
-        this.props.navigation.navigate('CountrySearch');
+      BeginAction=()=>
+      { 
+        if(this.state.AddressLine1==null)
+        {
+          Alert.alert('Please Enter AddressLine1')
+        }
+        else if(this.state.AddressLine2==null)
+        {
+          Alert.alert('Please Enter AddressLine2')
+        }
+        else if(this.state.city==null)
+        {
+          Alert.alert('Please Enter city')
+        }
+        else if(this.state.Country==null)
+        {
+          Alert.alert('Please Enter Country')
+        }
+        else if(this.state.PostalCode==null)
+        {
+          Alert.alert('Please Enter PostalCode')
+        }
+        else
+        {
+            let RegisterDetails=
+        {
+          AddressLine1:this.state.AddressLine1,
+          AddressLine2:this.state.AddressLine2,
+          city:this.state.city,
+          CountryId:'',
+          PostalCode:this.state.PostalCode,
+        } 
+      
+        this.props.navigation.navigate('CountrySearch',{'RegisterDetails':RegisterDetails});
+
+        }
+
+
+      
       }
 }
 

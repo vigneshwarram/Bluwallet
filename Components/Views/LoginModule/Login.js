@@ -267,14 +267,14 @@ SlideMenu=()=>{
     
       try 
       {
-        let AccessToken=data.access_token
-        await AsyncStorage.setItem('AccessToken',AccessToken); 
+      //  let AccessToken=data.access_token
+      //  await AsyncStorage.setItem('AccessToken',AccessToken); 
         let params = {
           email:this.state.Username,
           password: this.state.Password,
           'AccessToken':await AsyncStorage.getItem('AccessToken')
         }
-        LoginApi(params,this.LoginResult)  
+      //  LoginApi(params,this.LoginResult)  
       } 
       catch (error) 
       {

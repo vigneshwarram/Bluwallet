@@ -5,6 +5,7 @@ const WIDTH = Dimensions.get('window').width;
 import DateTimePicker from "react-native-modal-datetime-picker";
 const ITEM_HEIGHT = 50;
 import LinearGradient from 'react-native-linear-gradient';
+import ProfileRegisters from '../Api/ProfileRegisterApi'
 export default class ProfileRegister extends React.Component {
   static navigationOptions = {
     header: null
@@ -19,6 +20,7 @@ export default class ProfileRegister extends React.Component {
       Dates:'Date of Birth',
       animate:false,
       FirstName:null,
+      LastName:null,
       isDateTimePickerVisible: false,
       data: [
         {
@@ -203,7 +205,7 @@ colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>
           style={{height: 50,padding:10,fontFamily:'Exo2-Regular'}}
         placeholderTextColor='#9ab8db'
           placeholder="Last Name"
-         // onChangeText={(text) => this.LastNameTextChange(text)}
+          onChangeText={(text) =>this.setState({LastName:text})}
         value={this.state.LastName}
         />
 </View>
@@ -291,20 +293,52 @@ if(year>2015){
     }
   }
   BeginAction=()=>{
-    if(this.state.FirstName!=null){
-      this.setState({
-        FirstNameBodercolor:'green',
-        FirstNameBoderWidth:1
-      })
-      this.props.navigation.navigate('ChooseCountry');
-    }
-    else {
+    if(this.state.FirstName==null){
       this.setState({
         FirstNameBodercolor:'red',
         FirstNameBoderWidth:1
       })
     }
+    else if(this.state.LastName==null) 
+    {
+      this.setState({
+        LastNameNameBodercolor:'red',
+        LastNameBoderWidth:1
+      })
+    }
+    else if(this.state.Dates==null)
+    {
+     Alert.alert('Please select Date')
+    }
+    else
+    {
+    
+      let profileParams=
+      {
+         firstname:this.state.FirstName,
+         lastname:this.state.LastName,
+         dates:this.state.Dates
+      }
+      //ProfileRegisters(profileParams,this.ProfileRegisterResult)
+      this.props.navigation.push('DashBoard',{DashBoardPopup:false,Kyc:true})
+      //need to call register API here
+  
+    }
   //  
+  }
+  ProfileRegisterResult=(data)=>
+  {
+  if(data.status=='success')
+  {
+          Alert.alert(
+            Registerdata.status,
+            Registerdata.message,
+            [
+              {text: 'OK', onPress: () =>  this.props.navigation.navigate('DashBoard',{DashBoardPopup:false,Kyc:true})},
+            ],
+            {cancelable: false},
+          );
+  }
   }
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Image,TextInput,NativeModules,Text,ActivityIndicator,TouchableOpacity,Dimensions,} from 'react-native';
+import { View, StyleSheet, Image,TextInput,NativeModules,Text,Alert,TouchableOpacity,Dimensions,} from 'react-native';
 import AlphaScrollFlatList from 'alpha-scroll-flat-list';
 const WIDTH = Dimensions.get('window').width;
 const ITEM_HEIGHT = 50;
@@ -119,6 +119,7 @@ export default class CountrySearch extends React.Component {
         },
        
       ],
+      CountryId:'',
       w: 50,
       h: 45,
       wr:50,
@@ -136,10 +137,14 @@ export default class CountrySearch extends React.Component {
     };
   }
   renderItem ({item}) {
+
     return (
-      <View style={styles.itemContainer}>
+      <TouchableOpacity onPress={(item)=>this.setState({CountryId:item.name})}>
+         <View style={styles.itemContainer}>
         <Text style={styles.itemTitle}>{item.name}</Text>
       </View>
+      </TouchableOpacity>
+     
     );
   }
 
@@ -215,7 +220,29 @@ export default class CountrySearch extends React.Component {
     );
   }
   BeginAction=()=>{
+    if(this.state.CountryId!=null)
+    {
+      let params=this.props.navigation.state.params.RegisterDetails
+     // params.CountryId=this.state.CountryId
+    // registerUpdateApi(params,this.RegisterUpdateResult)
     this.props.navigation.navigate('ProfileRegister');
+    }
+    else
+    {
+    Alert.alert('Please select Country')
+    }
+    
+  }
+  RegisterUpdateResult=(data)=>
+  {
+if(data.status=='success')
+{
+  this.props.navigation.navigate('ProfileRegister');
+}
+else
+{
+  Alert.alert('Invalid Details')
+}
   }
 }
 

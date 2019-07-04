@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,TextInput,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
+import { View, StyleSheet, Image,TextInput,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,AsyncStorage} from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 import RegisterApi from '../Api/RegisterApi'
+import OuthApi from '../Api/OuthApi'
 import RNPasswordStrengthMeter from 'react-native-password-strength-meter';
 import LinearGradient from 'react-native-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -292,20 +293,23 @@ SlideMenu=()=>{
         {
           Alert.alert('Please Provide ConfirmPassword')
         }    
-        else if(this.state.ConfirmPassword!=this.state.Password)
+       /* else if(this.state.ConfirmPassword!=this.state.Password)
         {
           Alert.alert('Password and Confirm Password does not match');
         } 
+        */
         else
         {
-          if(this.validateEmail(this.state.Username))
+          if(!this.validateEmail(this.state.Username))
           {
+          
             let params = {
               email:this.state.Username,
               password: this.state.Password,
               conformPassword: this.state.ConfirmPassword,
             };
-            RegisterApi('mobileregister',params,this.RegisterResponse)
+           // OuthApi(params,this.GetAccesToken)
+              this.props.navigation.navigate('Sms')
            
           }
           else
@@ -315,10 +319,18 @@ SlideMenu=()=>{
          
         }
       }
-      RegisterResponse=(Registerdata)=>
+      GetAccesToken=async(data)=>
+      {
+        
+        let AccessToken=data.access_token
+        await AsyncStorage.setItem('AccessToken',AccessToken); 
+        RegisterApi(params,this.RegisterResponse)
+      }
+      RegisterResponse=async(Registerdata)=>
       {
         if(Registerdata.status=='success')
         {
+          await AsyncStorage.setItem('userId',Registerdata.retrieveData.userId); 
           Alert.alert(
             Registerdata.status,
             Registerdata.message,

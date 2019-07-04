@@ -35,9 +35,9 @@ export default class DashBoard extends React.Component {
       currentIndex:0,
       data1:[require('./assets/biconback.png'),require('./assets/etherem.png'),require('./assets/biconback.png'),require('./assets/etherem.png')],
       Time: 'Today',
-      NoPopup:this.props.navigation.state.params.DashBoardPopup?this.props.navigation.state.params.DashBoardPopup:false,
+      NoPopup:this.props.navigation.state.params.DashBoardPopup,
       animate:false,
-      ProfileComplete:false,
+      KyC:this.props.navigation.state.params.Kyc,
       app1icon:require('./assets/app1.png'),
       app6icon:require('./assets/app6.png'),
       app2icon:require('./assets/app2.png'),
@@ -281,8 +281,7 @@ _animate=()=>{
           <Text style={{marginLeft:10,fontSize:16,color:'#FFFFFF',fontFamily:'Exo2-Regular'}}>Wallet</Text>       
           </View>       
           </View>
-      {((this.state.NoPopup?null:
-      ((!this.state.ProfileComplete)?
+      {((this.state.NoPopup?null:((!this.state.KyC)?
         <View >
       <LinearGradient colors= {['#395ea4','#446ea8','#4c78a9']} style={{width:'95%',marginLeft:10,marginRight:10,padding:10,height:160,marginTop:15,borderRadius:10}}>
       <View style={{flexDirection:'row'}}>
@@ -547,9 +546,6 @@ justifyContent:'center',alignItems:"center"}} >
         })
       }
       ContinueClick=()=>{
-        this.setState({
-          ProfileComplete:true
-        })
         this.props.navigation.navigate('Welcome')
       }
       _renderItem({item,index}){

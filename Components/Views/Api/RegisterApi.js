@@ -1,13 +1,12 @@
 import Url from './CommonApi'
-
-const registerApi=(Request,params,RegisterResponse)=>
+import{AsyncStorage} from 'react-native'
+const registerApi= async(params,RegisterResponse)=>
 {
-    fetch('http://192.168.2.37:9090/API/mobile/mobileregister', {  
+    fetch('http://192.168.2.78:9090/API/bluewallet/mobileregister', {  
         method: 'POST',
         headers: {
-          'Accept': 'application/json',
           'Content-Type': 'application/json',
-         // 'authorization':'bearer '+params.accesstoke
+          'authorization':'bearer '+await AsyncStorage.getItem('AccessToken')
         },
         body: JSON.stringify({
           email: params.email,
