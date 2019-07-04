@@ -41,7 +41,7 @@ import TakePhoto from  './Components/Views/LoginModule/TakePhoto'
 import TakePassportPhoto from  './Components/Views/LoginModule/TakePassportPhoto'
 import DocumentPhoto from  './Components/Views/LoginModule/DocumentPhoto'
 import {
-  StackNavigator,createBottomTabNavigator 
+  createStackNavigator,createBottomTabNavigator,createAppContainer
 } from 'react-navigation'
 const TransitionConfiguration = () => {
   return {
@@ -95,11 +95,11 @@ let CollapseExpand = (index, position) => {
 };
 
       
-      const VaultStack=StackNavigator({
+      const VaultStack=createStackNavigator({
         Vault:{screen:Vault},  
         VaultFilter:{screen:VaultFilter}
       })
-      const CreditCardStack=StackNavigator({
+      const CreditCardStack=createStackNavigator({
         CreditCard:{screen:CreditCard},
         CreditTransaction:{screen:CreditTransaction},
         CardDetails:{screen:CardDetails},
@@ -108,7 +108,7 @@ let CollapseExpand = (index, position) => {
         transitionConfig: TransitionConfiguration,
         headerMode: 'none'
     })
-      const ExchangeStack=StackNavigator({
+      const ExchangeStack=createStackNavigator({
         ExchangeMenu:{screen:ExchangeMenu,},
         Exchange:{screen:Exchange},
         Buy:{screen:Buy},
@@ -168,17 +168,21 @@ let CollapseExpand = (index, position) => {
           screen: Profile,
           navigationOptions: {
             tabBarIcon: ({ tintColor }) => <Image style={{width: 20, height: 20,alignItems:'center',resizeMode:'contain',tintColor}}   source={require('./Components/Views/assets/app5.png')} ></Image>     
-          }}
+          }},
+          
+           
           
       },
       {
+        initialRouteName: "DashBoard",
         tabBarComponent: TabBar,
         tabBarOptions: {
           activeTintColor: "#3b61c7",
           inactiveTintColor: "#fff",
          
-        }});
-      const MainNavigator =StackNavigator({
+        }},
+       );
+      const MainNavigator =createStackNavigator({
         Launch: { screen: Launch },
         Sms:{screen:Sms},
         TakePhoto:{screen:TakePhoto},
@@ -202,7 +206,7 @@ let CollapseExpand = (index, position) => {
      
         TakePassportPhoto:{screen:TakePassportPhoto},
        
-       //DashBoard:{screen:DashBoard},        
+        DashBoard:{screen:DashBoard},        
         ForgotPassword:{screen:ForgotPassword},
         Confirm:{screen:Confirm},
        // Price:{screen:Price},                
@@ -227,4 +231,4 @@ let CollapseExpand = (index, position) => {
       });
     
 
-  export default MainNavigator;
+  export default  MainNavigator;

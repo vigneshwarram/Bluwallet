@@ -320,7 +320,7 @@ if(year>2015){
          dates:this.state.Dates
       }
       //ProfileRegisters(profileParams,this.ProfileRegisterResult)
-      this.props.navigation.push('DashBoard',{DashBoardPopup:false,Kyc:true})
+      this.props.navigation.push('Home',{DashBoardPopup:false,Kyc:true})
       //need to call register API here
   
     }
@@ -334,7 +334,7 @@ if(year>2015){
             Registerdata.status,
             Registerdata.message,
             [
-              {text: 'OK', onPress: () =>  this.props.navigation.navigate('DashBoard',{DashBoardPopup:false,Kyc:true})},
+              {text: 'OK', onPress: () =>  this.props.navigation.push('DashBoard',{DashBoardPopup:false,Kyc:true})},
             ],
             {cancelable: false},
           );
