@@ -219,7 +219,8 @@ export default class CountrySearch extends React.Component {
       </View>
     );
   }
-  BeginAction=()=>{
+  BeginAction=()=>
+  {
     if(this.state.CountryId!=null)
     {
       let params=this.props.navigation.state.params.RegisterDetails

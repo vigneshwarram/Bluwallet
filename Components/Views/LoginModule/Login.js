@@ -267,8 +267,8 @@ SlideMenu=()=>{
     
       try 
       {
-      //  let AccessToken=data.access_token
-      //  await AsyncStorage.setItem('AccessToken',AccessToken); 
+      // let AccessToken=data.access_token
+      // await AsyncStorage.setItem('AccessToken',AccessToken); 
         let params = {
           email:this.state.Username,
           password: this.state.Password,
@@ -284,8 +284,9 @@ SlideMenu=()=>{
 
      
       }
-      ForgotAction=()=>{
-        this.props.navigation.navigate('ForgotPassword')
+      ForgotAction=()=>
+      {
+         this.props.navigation.navigate('ForgotPassword')
       }
       _storeData = async (AccessToken) => 
       {

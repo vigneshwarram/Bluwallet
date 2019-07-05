@@ -333,12 +333,14 @@ colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>
       </View>
     );
   }
-  BeginAction=()=>{
+  BeginAction=()=>
+  {
    this.setState({
      open:true
    })
   }
-  ContactAction=()=>{
+  ContactAction=()=>
+  {
     this.props.navigation.navigate('DashBoard',{
         DashBoardPopup: false,
       })

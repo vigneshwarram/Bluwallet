@@ -184,7 +184,7 @@ SlideMenu=()=>{
 <Image  style={{width: 20, height: 20}}  source={require("../assets/magnifying-glass.png")} ></Image> 
 <TextInput
           style={{height: 40,padding:10,fontFamily:'Exo2-Regular'}}
-        placeholderTextColor='#9ab8db'
+          placeholderTextColor='#9ab8db'
           placeholder="Home Address"
         
         />

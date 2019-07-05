@@ -22,13 +22,6 @@ export default class Launch  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
-  
-      w: 50,
-      h: 45,
-      wr:50,
-      hr:45,
-      Ahr:80,
-      Awr:80,
       clickr:false,
       clickopen:false,
       click:false,
@@ -222,10 +215,12 @@ SlideMenu=()=>{
       {
           Alert.alert(item.Status)
       }
-      CreateWallet=()=>{
+      CreateWallet=()=>
+      {
         this.props.navigation.navigate('NewWallet');
       }
-      LoginAction=()=>{
+      LoginAction=()=>
+      {
         this.props.navigation.navigate('Login');
       }
 }

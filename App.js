@@ -183,9 +183,10 @@ let CollapseExpand = (index, position) => {
         }},
        );
       const MainNavigator =createStackNavigator({
+        TakePhoto:{screen:TakePhoto},
         Launch: { screen: Launch },
         Sms:{screen:Sms},
-        TakePhoto:{screen:TakePhoto},
+      
       
         Home:{screen:TabNavigator},
         AddVault:{screen:AddVault},

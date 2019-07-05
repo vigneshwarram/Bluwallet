@@ -216,10 +216,12 @@ SlideMenu=()=>{
       {
           Alert.alert(item.Status)
       }
-      BeginAction=()=>{
-        this.props.navigation.navigate('MoreInfo');
+      BeginAction=()=>
+      {
+       this.props.navigation.navigate('MoreInfo');
       }
-      selectedCountry=(item,index)=>{
+      selectedCountry=(item,index)=>
+      {
           this.setState({
               Country:item
           })

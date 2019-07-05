@@ -219,10 +219,12 @@ onValueChange={(itemValue, itemIndex) => this.selectedCountry(itemValue,itemInde
       {
           Alert.alert(item.Status)
       }
-      BeginAction=()=>{
+      BeginAction=()=>
+      {
         this.props.navigation.navigate('Address');
       }
-      selectedCountry=(item,index)=>{
+      selectedCountry=(item,index)=>
+      {
           this.setState({
               Country:item
           })
