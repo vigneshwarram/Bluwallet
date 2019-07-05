@@ -6,6 +6,7 @@ const ITEM_HEIGHT = 50;
 import LinearGradient from 'react-native-linear-gradient';
 import Modal from "react-native-simple-modal";
 import { ScrollView } from 'react-native-gesture-handler';
+import KYCApi from '../Api/KYCApi'
 export default class Confirm extends React.Component {
   static navigationOptions = {
     header: null
@@ -335,9 +336,26 @@ colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>
   }
   BeginAction=()=>
   {
-   this.setState({
-     open:true
-   })
+   
+   this.ImageUploadProcess()
+  }
+  ImageUploadProcess=()=>
+  {
+    let params=
+    {
+      Image1:this.props.navigation.state.params.DocumentPhoto1,
+      Image2:this.props.navigation.state.params.DocumentPhoto2
+    }
+    KYCApi(params,this.UploadResult)
+  }
+  UploadResult=(data)=>
+  {
+     if(data.status=='success')
+     {
+      this.props.navigation.navigate('DashBoard',{
+        DashBoardPopup: true,
+      })
+     }
   }
   ContactAction=()=>
   {

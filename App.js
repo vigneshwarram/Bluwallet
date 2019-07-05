@@ -31,6 +31,7 @@ import ProfileRegister from  './Components/Views/LoginModule/ProfileRegister'
 import NewWallet from  './Components/Views/LoginModule/NewWallet'
 import Sms from  './Components/Views/LoginModule/Sms'
 import MoreInfo from  './Components/Views/LoginModule/MoreInfo'
+import UploadProgress from  './Components/Views/LoginModule/UploadProgress'
 import ChooseCountry from  './Components/Views/LoginModule/ChooseCountry'
 import VerificationCards from  './Components/Views/LoginModule/VerificationCards'
 import Launch from  './Components/Views/LoginModule/Launch'
@@ -183,8 +184,10 @@ let CollapseExpand = (index, position) => {
         }},
        );
       const MainNavigator =createStackNavigator({
-        TakePhoto:{screen:TakePhoto},
         Launch: { screen: Launch },
+       // UploadProgress:{screen:UploadProgress},
+        TakePhoto:{screen:TakePhoto},
+      
         Sms:{screen:Sms},
       
       

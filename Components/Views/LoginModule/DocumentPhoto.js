@@ -3,9 +3,16 @@ import { Path } from 'react-native-svg'
 import { View, StyleSheet, Image,Picker,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
-
+import ImagePicker from 'react-native-image-picker';
 import LinearGradient from 'react-native-linear-gradient';
-
+const options = {
+  title: 'Select Avatar',
+  customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
+  storageOptions: {
+    skipBackup: true,
+    path: 'images',
+  },
+};
 export default class TakePassportPhoto  extends React.Component {
 
   static navigationOptions = {
@@ -218,14 +225,22 @@ SlideMenu=()=>{
       }
       BeginAction=()=>
       {
-       this.props.navigation.navigate('MoreInfo');
+        ImagePicker.launchCamera(options, (response) =>
+         {         // Same code as in above section!
+          this.GetImageFile(response)         
+        console.log(response)
+        });
       }
       selectedCountry=(item,index)=>
       {
           this.setState({
               Country:item
           })
-          this.props.navigation.navigate('VerificationCards')
+          
+      }
+      GetImageFile=(data)=>
+      {
+        this.props.navigation.navigate('MoreInfo',{DocumentPhoto1:data,DocumentPhoto2:this.props.navigation.state.params.SelfieImageFile})
       }
 }
 

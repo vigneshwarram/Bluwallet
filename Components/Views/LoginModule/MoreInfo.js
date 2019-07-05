@@ -193,7 +193,7 @@ export default class ProfileRegister extends React.Component {
 <View>
 <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
 
-<Text style={{color:'#fff',fontSize:20,fontFamily:'Poppins-Medium'}}>Next</Text>
+<Text style={{color:'#fff',fontSize:20,fontFamily:'Poppins-Medium'}}>Continue</Text>
 
 </LinearGradient>
 </View>
@@ -209,8 +209,9 @@ export default class ProfileRegister extends React.Component {
       </View>
     );
   }
-  BeginAction=()=>{
-  this.props.navigation.navigate('Confirm')
+  BeginAction=()=>
+  {
+    this.props.navigation.navigate('Confirm',{DocumentPhoto1:this.props.navigation.state.params.DocumentPhoto1,DocumentPhoto2:this.props.navigation.state.params.DocumentPhoto2})
   }
   pressRight=()=>{
     this.setState({

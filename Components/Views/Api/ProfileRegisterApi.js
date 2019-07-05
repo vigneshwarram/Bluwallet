@@ -12,9 +12,8 @@ const ProfileRegister=async(params,RegisterUpdateResponse)=>
         body: JSON.stringify({
             userId: await AsyncStorage.getItem('userId'),
             firstName:params.password,
-            lastName:params.conformPassword,
-       
-          dateOfBirth:1
+            lastName:params.conformPassword,      
+           dateOfBirth:1
         
 
 

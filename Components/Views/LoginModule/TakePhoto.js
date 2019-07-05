@@ -28,6 +28,7 @@ export default class TakePhoto  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
+      KycDocument1:[],
       Country:'Documents Country',
       w: 50,
       h: 45,
@@ -221,9 +222,12 @@ SlideMenu=()=>{
       {
           Alert.alert(item.Status)
       }
-      BeginAction=()=>{
-        ImagePicker.launchCamera(options, (response) => {
-          // Same code as in above section!
+      BeginAction=()=>
+      {
+        ImagePicker.launchCamera(options, (response) =>
+         {         // Same code as in above section!
+          this.GetImageFile(response)         
+        console.log(response)
         });
       }
       selectedCountry=(item,index)=>{
@@ -231,6 +235,10 @@ SlideMenu=()=>{
               Country:item
           })
           this.props.navigation.navigate('VerificationCards')
+      }
+      GetImageFile=(response)=>
+      {
+        this.props.navigation.navigate('DocumentPhoto',{SelfieImageFile:response})
       }
 }
 
