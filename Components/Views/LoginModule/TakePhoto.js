@@ -3,9 +3,16 @@ import { Path } from 'react-native-svg'
 import { View, StyleSheet, Image,Picker,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
-import ImagePicker from 'react-native-customized-image-picker';
 import LinearGradient from 'react-native-linear-gradient';
-
+import ImagePicker from 'react-native-image-picker';
+const options = {
+  title: 'Select Avatar',
+  customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
+  storageOptions: {
+    skipBackup: true,
+    path: 'images',
+  },
+};
 export default class TakePhoto  extends React.Component {
 
   static navigationOptions = {
@@ -215,12 +222,8 @@ SlideMenu=()=>{
           Alert.alert(item.Status)
       }
       BeginAction=()=>{
-        ImagePicker.openCamera({
-          width: 300,
-          height: 400,
-          cropping: true
-        }).then(image => {
-          console.log(image);
+        ImagePicker.launchCamera(options, (response) => {
+          // Same code as in above section!
         });
       }
       selectedCountry=(item,index)=>{
