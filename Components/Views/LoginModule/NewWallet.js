@@ -281,6 +281,10 @@ SlideMenu=()=>{
       }
       BeginAction=()=>
       {
+      this.CreateWallet()
+      }
+      CreateWallet=()=>
+      {
         if(this.state.Username==null)
         {
           Alert.alert('Please Provide Email id')
@@ -293,14 +297,14 @@ SlideMenu=()=>{
         {
           Alert.alert('Please Provide ConfirmPassword')
         }    
-       /* else if(this.state.ConfirmPassword!=this.state.Password)
+        else if(this.state.ConfirmPassword!=this.state.Password)
         {
           Alert.alert('Password and Confirm Password does not match');
         } 
-        */
+        
         else
         {
-          if(!this.validateEmail(this.state.Username))
+          if(this.validateEmail(this.state.Username))
           {
           
             let params = {
@@ -308,7 +312,7 @@ SlideMenu=()=>{
               password: this.state.Password,
               conformPassword: this.state.ConfirmPassword,
             };
-           // OuthApi(params,this.GetAccesToken)
+            OuthApi(params,this.GetAccesToken)
               this.props.navigation.navigate('Sms')
            
           }

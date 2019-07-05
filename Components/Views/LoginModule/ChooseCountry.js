@@ -215,14 +215,7 @@ onValueChange={(itemValue, itemIndex) => this.selectedCountry(itemValue,itemInde
  </View>    
     );
       }
-      clickedItemText=(item)=>
-      {
-          Alert.alert(item.Status)
-      }
-      BeginAction=()=>
-      {
-        this.props.navigation.navigate('Address');
-      }
+  
       selectedCountry=(item,index)=>
       {
           this.setState({

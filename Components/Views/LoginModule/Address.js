@@ -297,6 +297,11 @@ SlideMenu=()=>{
       }
       BeginAction=()=>
       { 
+         this.Register()
+      
+      }
+      Register=()=>
+      {
         if(this.state.AddressLine1==null)
         {
           Alert.alert('Please Enter AddressLine1')
@@ -333,7 +338,6 @@ SlideMenu=()=>{
         }
 
 
-      
       }
 }
 

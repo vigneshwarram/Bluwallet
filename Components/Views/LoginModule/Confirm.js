@@ -356,6 +356,10 @@ colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>
         DashBoardPopup: true,
       })
      }
+     else
+     {
+       alert.alert(data.messsage)
+     }
   }
   ContactAction=()=>
   {
