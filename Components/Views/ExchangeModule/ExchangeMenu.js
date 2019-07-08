@@ -142,7 +142,9 @@ space(){
     return (  
    
       <View style={styles.Maincontainers}> 
+      
       <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={{height:'100%'}}>
+      
 <View style={{flex:0.3}}>
 
 <LinearGradient
@@ -246,8 +248,13 @@ space(){
           </LinearGradient>  
 </View>
      <View style={{flex:0.7,marginTop:70}}>
+     
      <ScrollView>
-    <View style={{flexDirection:'row',padding:10,justifyContent:'space-between',marginLeft:20,marginRight:20}}>
+     <View>
+    
+     
+    <View style={{flexDirection:'row',padding:10,justifyContent:'space-between',marginLeft:25,marginRight:25}}>
+   
     <Animated.View>
     <TouchableOpacity onPress={this.buyClick}>
     <View >
@@ -269,7 +276,7 @@ space(){
     </View>
     </TouchableOpacity>
     </View>  
-    <View style={{flexDirection:'row',padding:10,justifyContent:'space-between',marginLeft:20,marginRight:20}}>
+    <View style={{flexDirection:'row',padding:10,justifyContent:'space-between',marginLeft:25,marginRight:25}}>
     <TouchableOpacity onPress={this.publicClick}>
     <View >
     <LinearGradient style={{backgroundColor:'transparent',width:130, height:130,borderWidth:1,borderColor:'#415b94',borderRadius:20,justifyContent:'center',alignItems:'center'}}
@@ -291,10 +298,12 @@ space(){
     </View>
     </TouchableOpacity>
     </View>  
-    <View  style={{justifyContent:'center',alignItems:'center', top:70,backgroundColor:'transparent',position:'absolute',left:135
+    <View  style={{position: 'absolute', left: 0, right: 0, bottom: 80, justifyContent: 'center', alignItems: 'center'
         }}>
               <Image  style={{width: 100, height: 150,resizeMode:'contain'}}  source={require("../assets/tree.png")} ></Image> 
         </View>
+    </View>
+  
         <View style={{flex:1}}>
         <FlatList  style={{marginTop:10}}
       ItemSeparatorComponent={this.space}
