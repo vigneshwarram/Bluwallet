@@ -244,37 +244,51 @@ SlideMenu=()=>{
       }
       LoginAction=()=>
       {
-       if(this.state.Username==null)
-       {
-         Alert.alert('Please enter username')
-       }
-       else if(this.state.Password==null)
-       {
-        Alert.alert('Please enter Password')
-       }
-       else
-       {
-        let params = {
-          email:this.state.Username,
-          password: this.state.Password,
-        };
-        OuthApi(params,this.resultFromAPI);
-       }
+        this.Login()
       
+      }
+      Login=()=>
+      {
+        if(this.state.Username==null)
+        {
+          Alert.alert('Please enter username')
+        }
+        else if(this.state.Password==null)
+        {
+         Alert.alert('Please enter Password')
+        }
+        else
+        {
+         let params = {
+           email:this.state.Username,
+           password: this.state.Password,
+         };
+         this.Load()
+         OuthApi(params,this.resultFromAPI);
+        }
+       
       }
       resultFromAPI=async(data)=>
       {
-    
+        this.hide()
       try 
       {
-      // let AccessToken=data.access_token
-      // await AsyncStorage.setItem('AccessToken',AccessToken); 
-        let params = {
-          email:this.state.Username,
-          password: this.state.Password,
-          'AccessToken':await AsyncStorage.getItem('AccessToken')
+        if(data.access_token!='undefined')
+        {
+          let AccessToken=data.access_token
+          await AsyncStorage.setItem('AccessToken',AccessToken); 
+           let params = {
+             email:this.state.Username,
+             password: this.state.Password,
+           }
+           this.Load()
+             LoginApi(params,this.LoginResult)  
         }
-      //  LoginApi(params,this.LoginResult)  
+        else
+        {
+          Alert.alert(data.erro)
+        }
+      
       } 
       catch (error) 
       {
@@ -288,26 +302,20 @@ SlideMenu=()=>{
       {
          this.props.navigation.navigate('ForgotPassword')
       }
-      _storeData = async (AccessToken) => 
-      {
-        try 
-        {
-         
-        } 
-        catch (error) 
-        {
-          // Error saving data
-        }
-      };
+
       LoginResult=async (data)=>
       {
+       this.hide()
         if(data.status=='success')
         {
           await AsyncStorage.setItem('UserId',data.loginInfo.userId); 
+          this.props.navigation.navigate('Home',{
+            DashBoardPopup: true,Kyc:true
+          });
         }
         else
         {
-          Alert.alert('Invalid Credentials')
+          Alert.alert(data.message)
         }
       }
 }

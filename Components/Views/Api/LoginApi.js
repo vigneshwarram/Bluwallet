@@ -1,12 +1,13 @@
 import Url from './CommonApi'
-
- const loginApi=(params,LoginResult)=>
+import {AsyncStorage} from 'react-native'
+ const loginApi=async(params,LoginResult)=>
 {
-
+   let token=await AsyncStorage.getItem('AccessToken')
+   console.log('Token',token)
     fetch(Url+'login', {  
         method: 'POST',
         headers: {
-          'authorization':'bearer '+params.AccessToken.trim()  , 
+          'authorization':'bearer '+token.trim(), 
           'Content-Type':'application/json'
         },
             body: JSON.stringify({

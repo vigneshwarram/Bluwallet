@@ -1,8 +1,8 @@
 import Url from './CommonApi'
 import{AsyncStorage} from 'react-native'
-const registerApi= async(params,RegisterResponse)=>
+const registerApi= async(params,RegisterResponse,ErrorResponse)=>
 {
-    fetch('http://192.168.2.78:9090/API/bluewallet/mobileregister', {  
+    fetch('http://192.168.2.78:9090/API/mobile/mobileregister', {  
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -22,6 +22,7 @@ const registerApi= async(params,RegisterResponse)=>
         return resJson;
        })
        .catch((error) => {
+        ErrorResponse(error)
         console.error(error);
     });
 }

@@ -23,7 +23,8 @@ formdata.append("grant_type",'password')
         return resJson;
        })
        .catch((error) => {
-        console.error(error);
+         //errorResponse(error)
+        console.error(error,);
     });
 }
 export default OuthApi;

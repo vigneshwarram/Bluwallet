@@ -134,7 +134,7 @@ SlideMenu=()=>{
       />
   )
 
-   
+    
   if(this.state.animate){  
     return <View style={{justifyContent:'center',alignItems:'center',flex:1}}>
     <ActivityIndicator
@@ -143,11 +143,10 @@ SlideMenu=()=>{
   style = {styles.activityIndicator}/>
   </View>
   }
+ 
     return (  
         
       <View style={styles.Maincontainers}>  
-     
-      
 <LinearGradient
  colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>  
   
@@ -313,8 +312,10 @@ SlideMenu=()=>{
               conformPassword: this.state.ConfirmPassword,
             };
            // OuthApi(params,this.GetAccesToken)
-           RegisterApi(params,this.RegisterResponse)
-              this.props.navigation.navigate('Sms')
+           this.Load()
+           RegisterApi(params,this.RegisterResponse,this.errorResponse)
+        
+             
            
           }
           else
@@ -333,10 +334,11 @@ SlideMenu=()=>{
       }
       RegisterResponse=async(Registerdata)=>
       {
+        this.hide()
         if(Registerdata.status=='success')
         {
          // await AsyncStorage.setItem('AccessToken',Registerdata.retrieveData.AccessToken); 
-          await AsyncStorage.setItem('userId',Registerdata.retrieveData.userId); 
+         // await AsyncStorage.setItem('userId',Registerdata.retrieveData.userId); 
           Alert.alert(
             Registerdata.status,
             Registerdata.message,
@@ -352,6 +354,10 @@ SlideMenu=()=>{
           Alert.alert(Registerdata.message)
         }
         console.log("Register", Registerdata)
+      }
+      errorResponse=(data)=>
+      {
+        Alert.alert(data.message)
       }
         //
       
@@ -390,6 +396,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    position:'absolute'
  },
  img: {
   width: '30%',
