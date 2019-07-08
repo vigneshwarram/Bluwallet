@@ -312,7 +312,8 @@ SlideMenu=()=>{
               password: this.state.Password,
               conformPassword: this.state.ConfirmPassword,
             };
-            OuthApi(params,this.GetAccesToken)
+           // OuthApi(params,this.GetAccesToken)
+           RegisterApi(params,this.RegisterResponse)
               this.props.navigation.navigate('Sms')
            
           }
@@ -328,12 +329,13 @@ SlideMenu=()=>{
         
         let AccessToken=data.access_token
         await AsyncStorage.setItem('AccessToken',AccessToken); 
-        RegisterApi(params,this.RegisterResponse)
+       
       }
       RegisterResponse=async(Registerdata)=>
       {
         if(Registerdata.status=='success')
         {
+         // await AsyncStorage.setItem('AccessToken',Registerdata.retrieveData.AccessToken); 
           await AsyncStorage.setItem('userId',Registerdata.retrieveData.userId); 
           Alert.alert(
             Registerdata.status,

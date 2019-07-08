@@ -6,7 +6,7 @@ const registerApi= async(params,RegisterResponse)=>
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'authorization':'bearer '+await AsyncStorage.getItem('AccessToken')
+        //  'authorization':'bearer '+await AsyncStorage.getItem('AccessToken')
         },
         body: JSON.stringify({
           email: params.email,
