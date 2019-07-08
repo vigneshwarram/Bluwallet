@@ -7,7 +7,7 @@ const ProfileRegister=async(params,RegisterUpdateResponse)=>
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'authorization':'bearer '+await AsyncStorage.getItem('AccessToken')
+         // 'authorization':'bearer '+await AsyncStorage.getItem('AccessToken')
         },
         body: JSON.stringify({
             userId: await AsyncStorage.getItem('userId'),

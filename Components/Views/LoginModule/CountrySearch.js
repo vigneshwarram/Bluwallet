@@ -1,4 +1,5 @@
 import React from 'react';
+import registerUpdateApi from '../Api/RegisterUpdateApi'
 import { View, StyleSheet, Image,TextInput,NativeModules,Text,Alert,TouchableOpacity,Dimensions,} from 'react-native';
 import AlphaScrollFlatList from 'alpha-scroll-flat-list';
 const WIDTH = Dimensions.get('window').width;
@@ -221,21 +222,28 @@ export default class CountrySearch extends React.Component {
   }
   BeginAction=()=>
   {
-    if(this.state.CountryId!=null)
+    this.CountryPicker()
+   
+    
+  }
+  CountryPicker=()=>
+  {
+    if(this.state.CountryId=='undefined')
     {
       let params=this.props.navigation.state.params.RegisterDetails
      // params.CountryId=this.state.CountryId
-    // registerUpdateApi(params,this.RegisterUpdateResult)
-    this.props.navigation.navigate('ProfileRegister');
+     this.load()
+      registerUpdateApi(params,this.RegisterUpdateResult)
+   
     }
     else
     {
     Alert.alert('Please select Country')
     }
-    
   }
   RegisterUpdateResult=(data)=>
   {
+    this.hide()
 if(data.status=='success')
 {
   this.props.navigation.navigate('ProfileRegister');

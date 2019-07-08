@@ -88,6 +88,7 @@ export default class DashBoard extends React.Component {
   
   componentDidMount()
   {
+    
     // this.GetListData()
     // this._animate()
   }
@@ -293,9 +294,7 @@ _animate=()=>{
       <TouchableOpacity onPress={this.ContinueClick}>
       <View style={{width:'60%',marginLeft:20,marginTop:30}}>
 <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:10}}>
-<TouchableOpacity>
 <Text style={{color:'#fff',fontFamily:'Poppins-Medium'}}>Continue</Text>
-</TouchableOpacity>
 </LinearGradient>
 </View>
  </TouchableOpacity>

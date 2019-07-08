@@ -222,9 +222,7 @@ SlideMenu=()=>{
       }
       checkItLater=()=>
       {
-        this.props.navigation.navigate('Home',{
-          DashBoardPopup: false,Kyc:false
-        });
+        this.props.navigation.navigate('Login')
       }
       BeginAction=()=>{
         /*

@@ -280,7 +280,8 @@ SlideMenu=()=>{
       }
       BeginAction=()=>
       {
-      this.CreateWallet()
+        this.props.navigation.navigate('Sms')
+     // this.CreateWallet()
       }
       CreateWallet=()=>
       {
@@ -304,8 +305,7 @@ SlideMenu=()=>{
         else
         {
           if(this.validateEmail(this.state.Username))
-          {
-          
+          {       
             let params = {
               email:this.state.Username,
               password: this.state.Password,
@@ -314,9 +314,7 @@ SlideMenu=()=>{
            // OuthApi(params,this.GetAccesToken)
            this.Load()
            RegisterApi(params,this.RegisterResponse,this.errorResponse)
-        
-             
-           
+                  
           }
           else
           {
@@ -326,11 +324,9 @@ SlideMenu=()=>{
         }
       }
       GetAccesToken=async(data)=>
-      {
-        
+      {       
         let AccessToken=data.access_token
-        await AsyncStorage.setItem('AccessToken',AccessToken); 
-       
+        await AsyncStorage.setItem('AccessToken',AccessToken);        
       }
       RegisterResponse=async(Registerdata)=>
       {
@@ -339,14 +335,7 @@ SlideMenu=()=>{
         {
          // await AsyncStorage.setItem('AccessToken',Registerdata.retrieveData.AccessToken); 
          // await AsyncStorage.setItem('userId',Registerdata.retrieveData.userId); 
-          Alert.alert(
-            Registerdata.status,
-            Registerdata.message,
-            [
-              {text: 'OK', onPress: () =>  this.props.navigation.navigate('Sms')},
-            ],
-            {cancelable: false},
-          );
+         this.props.navigation.navigate('Sms')
          
         }
         else

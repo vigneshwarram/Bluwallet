@@ -308,15 +308,27 @@ SlideMenu=()=>{
        this.hide()
         if(data.status=='success')
         {
-          await AsyncStorage.setItem('UserId',data.loginInfo.userId); 
-          this.props.navigation.navigate('Home',{
-            DashBoardPopup: true,Kyc:true
-          });
+          if(data.loginInfo.length>0)
+          {
+            await AsyncStorage.setItem('UserId',data.loginInfo.userId); 
+            this.Navigation(data.loginInfo)
+          }
+               
         }
         else
         {
           Alert.alert(data.message)
         }
+      }
+      Navigation=(data)=>
+      {
+        if(data.firstname!=null)
+        {
+          
+        }
+        this.props.navigation.navigate('Home',{
+          DashBoardPopup: true,Kyc:true
+        });
       }
 }
 
