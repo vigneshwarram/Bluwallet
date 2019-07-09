@@ -230,7 +230,7 @@ let CollapseExpand = (index, position) => {
         ChooseCountry:{screen:ChooseCountry},       
         },{
 
-          transitionConfig: TransitionConfiguration,
+        //  transitionConfig: TransitionConfiguration,
           headerMode: 'none'
       });
     

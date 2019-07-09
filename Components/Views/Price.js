@@ -6,6 +6,7 @@ import { AreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
 import Logo from '../logo'
 import LinearGradient from 'react-native-linear-gradient';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export default class Price  extends React.Component {
 
@@ -190,17 +191,19 @@ SlideMenu=()=>{
  <View>
  <View style={{justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection:'row',marginTop:10}}>
-          <Image style={{marginRight:10,width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/app3.png")} ></Image>     
-          <Text style={{fontSize:18,fontWeight:'bold',color:'#fff',fontFamily:''}}>Price</Text>
+      
+          <Image style={{marginRight:10,width: 18, height: 16,resizeMode:'contain',marginTop:3}}   source={require("./assets/app3.png")} ></Image>            
+          
+          <Text style={{fontSize:15,color:'#fff',fontFamily:'Roboto-Regular'}}>Price</Text>
           </View>      
           <View style={{flexDirection: 'row',marginTop:20,justifyContent:'space-around'}}>
          <View style={{justifyContent:'center',alignItems:'center'}}>
-         <Text style={{fontSize:18,fontWeight:'bold',color:'#2939a8',fontFamily:''}}>ETH</Text> 
+         <Text style={{fontSize:18,color:'#2939a8',fontFamily:'Exo2-Regular'}}>ETH</Text> 
          </View>
-<Text style={{fontSize:25,fontWeight:'bold',color:'#fff',marginLeft:10,fontFamily:''}}>132.58</Text>      
+<Text style={{fontSize:25,color:'#fff',marginLeft:10,fontFamily:'Exo2-Medium'}}>132.58</Text>      
         
 <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:20}}>
-        <Text style={{color:'#3440b0',fontWeight:'bold',opacity:1,fontSize:18,fontFamily:''}}>{this.state.Amount}</Text>
+        <Text style={{color:'#3440b0',opacity:1,fontSize:18,fontFamily:'Exo2-Regular'}}>{this.state.Amount}</Text>
         <Image  style={{width: 10, height: 10,marginLeft:10,resizeMode:'contain',tintColor:"#3440b0"}}  source={require("./assets/down_arrow.png")} ></Image>
         <Picker style={{ position:'absolute', top: 0, width: 500, height: 3000 }}
    selectedValue={this.state.Amount}
@@ -239,13 +242,9 @@ SlideMenu=()=>{
 
           
           </LinearGradient>          
-    
-<View style={{flex:1,marginTop:60}}>
-<LinearGradient
-  colors= {['transparent','transparent','transparent']} >
-<View style={{}}>
-
- <View
+   
+    <View style={{flex:1,marginTop:40,}}>
+    <View
   style={{
     marginLeft:30,marginRight:30,
     marginTop:20,
@@ -253,64 +252,47 @@ SlideMenu=()=>{
     borderBottomWidth: 1,
   }}
 />
- <FlatList 
-      ItemSeparatorComponent={this.space}
-      data={this.state.dataSource}
-          renderItem={({item,separators})  =>
-        <TouchableOpacity onShowUnderlay={separators.highlight}
-      onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
-      <View style={{backgroundColor:'transparent'}}>
-        <View style={{flexDirection:'row'}}>
-       <View style={{backgroundColor:'transparent',width:'40%',height:250,marginLeft:30,shadowOffset: { width: 10, height: 10 },
-  
-  borderBottomWidth: 0,
-  shadowColor: '#7929ff',
-  shadowOffset: { width: 0, height: 12 },
-  shadowOpacity: 0.8,
-  shadowRadius: 2,
-  elevation: 24,
+<ScrollView>
+<View style={{marginBottom:150}}>
+<View style={{flexDirection:'row'}}>
+       <View style={{backgroundColor:'transparent',width:'40%',height:250,marginLeft:30,elevation:5,
+shadowOffset: { width: 100, height: 100 },
+shadowColor: "red",
+shadowOpacity: 1,
+shadowRadius: 20,
   }} >
-       <LinearGradient style={{height:'100%',borderRadius:6,borderColor:'#5a73b6',
-   borderRadius:6,}}   colors={['#5489ff','#7929ff','#7929ff']}>
+       <LinearGradient style={{height:'100%',
+   borderRadius:6,}}
+            colors={['#14A9FF','#2B84FF','#6b00ff','#8000FF']}>
        <View style={{justifyContent:'center',alignItems:'center', position: 'absolute',
     top: 0,
-    bottom: 0,
+    bottom: 30,
     left: 20,
     right: 0,}}>
     <Image  style={{width:200,height:200,
     resizeMode: 'contain',marginLeft:10,opacity:0.5}}   source={require("./assets/transparent-etherem.png")} ></Image>
     </View>
-     {(item.Status!='Cancelled')? <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
-        <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/micon.png")} ></Image>
-
-        </View>:<View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
+    <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
         <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/diablue.png")} ></Image>
 
-        </View>}
-        {(item.Status!='Cancelled')? <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
+        </View>
+         <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
         
-        <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:''}}>Monero</Text>
-        <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>XMR</Text>
+        <Text style={{color:'#fff',fontSize:15,fontFamily:'Exo2-SemiBold'}}>Etherium</Text>
+        <Text style={{color:'#fff',fontSize:15,marginTop:10,fontFamily:'Exo2-SemiBold'}}>ETH</Text>
 
-        <Text style={{color:'#5597ff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:''}}>Price</Text>
-        <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>132.6</Text>
-    </View>:
-    <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
-        
-        <Text style={{color:'#fff',fontSize:15,fontWeight:'bold',fontFamily:''}}>Etherium</Text>
-        <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>ETH</Text>
-
-        <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:''}}>Price</Text>
-        <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>132.6</Text>
-    </View>}
+        <Text style={{color:'#fff',fontSize:15,marginTop:30,fontFamily:'Exo2-SemiBold'}}>Price</Text>
+        <Text style={{color:'#fff',fontSize:15,marginTop:10,fontFamily:'Exo2-SemiBold'}}>132.6</Text>
+    </View>
+  
        
        </LinearGradient>
    
        </View>
-       <View style={{backgroundColor:'transparent',width:'40%',height:250,marginLeft:20,borderWidth:1,borderColor:'#5a73b6',borderRadius:6}} >
-       <LinearGradient style={{height:'100%'}}   colors={[(item.Status=='Completed')?'transparent':'transparent', (item.Status=='Completed')?'transparent':'transparent', (item.Status=='Completed')?'transparent':'transparent']}>
+       <View style={{backgroundColor:'transparent',width:'40%',height:250,marginLeft:20,borderWidth:0.25,borderColor:'#5496FF',borderRadius:6}} >
+       <LinearGradient style={{height:'100%'}}   colors={['transparent','transparent','transparent']}>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
-        <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/m.png")} ></Image>
+        <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/diaIcon.png")} ></Image>
 
         </View>
         <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
@@ -326,25 +308,56 @@ SlideMenu=()=>{
        </View>
          
         </View>
-  </View>
-       
-  </TouchableOpacity>  
-       }
-    />
+        <View style={{flexDirection:'row',marginTop:20}}>
+        <View style={{backgroundColor:'transparent',width:'40%',height:250,marginLeft:30,borderWidth:0.25,borderColor:'#5496FF',borderRadius:6}} >
+       <LinearGradient style={{height:'100%'}}   colors={['transparent','transparent','transparent']}>
+    <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
+        <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/m.png")} ></Image>
 
+        </View>
+        <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
+        
+            <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:''}}>Monero</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>XMR</Text>
+
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:''}}>Price</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>121.6</Text>
+        </View>
+       </LinearGradient>
+   
+       </View>
+         
+       <View style={{backgroundColor:'transparent',width:'40%',height:250,marginLeft:20,borderWidth:0.25,borderColor:'#5496FF',borderRadius:6}} >
+       <LinearGradient style={{height:'100%'}}   colors={['transparent','transparent','transparent']}>
+    <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
+        <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/zcoinyellow.png")} ></Image>
+
+        </View>
+        <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
+        
+            <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:''}}>ZCash</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>ZEC</Text>
+
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:''}}>Price</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>121.6</Text>
+        </View>
+       </LinearGradient>
+   
+       </View>
+         
+        </View>
  </View>
- </LinearGradient>
+ </ScrollView>
 </View>
+
+
    </LinearGradient>
       </View>
       
     
     );
       }
-      clickedItemText=(item)=>
-      {
-          Alert.alert(item.Status)
-      }
+     
       selectedAmount=(item,itemIndex)=>{
 this.setState({
   Amount:item
