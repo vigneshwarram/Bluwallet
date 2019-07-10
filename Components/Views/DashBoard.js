@@ -4,6 +4,7 @@ import { View, StyleSheet, Image,Picker,NativeModules,Text,ActivityIndicator,Tou
   Easing,Dimensions} from 'react-native';
 import { Alert } from 'react-native';
 const { UIManager } = NativeModules;
+import QRCode from 'react-native-qrcode-svg';
 import BlurOverlay,{closeOverlay,openOverlay} from 'react-native-blur-overlay';
 import Modal from "react-native-modal";
 import Dialog, { DialogContent } from 'react-native-popup-dialog';
@@ -21,11 +22,12 @@ const instructions = Platform.select({
   'Double tap R on your keyboard to reload,\n' +
   'Shake or press menu button for dev menu',
 });
+let base64Logo = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAA..';
 export default class DashBoard extends React.Component {
 
 
 
-  
+   
   constructor(props) {
    
     super(props);
@@ -37,7 +39,9 @@ export default class DashBoard extends React.Component {
       Amount: 'USDoller',
       OpenPop:false,
       BottomBar:false,
-
+      ScanOpen:true,
+      QrClick:false,
+      QrLink:'http://facebook.github.io/react-native/',
       AnimatedWidth:new Animated.Value(50),
       AnimatedHieght:new Animated.Value(45),
       ModelVisible:false,
@@ -149,6 +153,7 @@ space(){
   return(<View style={{height: 10, width: 1, backgroundColor:'black'}}/>)
 }
 _onPress=()=>{
+  this.setState({QrClick:true})
   if(!this.state.click){
     Animated.timing(this.state.AnimatedWidth, {
       toValue: 150,
@@ -184,17 +189,23 @@ _onPress=()=>{
       }).start()
     }
 pressRight=()=>{
+  
+   this.setState({ScanOpen:true,QrcodeOpen:false})
   if(!this.state.clickopen){
+    
     Animated.timing(this.state.RightSideWidth, {
       toValue: 150,
       duration: 250,
       easing: Easing.inOut(Easing.ease),
       delay: 10,
-    }).start();
+    }).start(openOverlay(),
+    this.setState({QrcodeOpen:true}));
     this.setState({clickopen:true})
+    this.props.navigation.setParams({bottombar:false})
 
   }
   else{
+   
     Animated.timing(this.state.RightSideWidth, {
       toValue: 50,
       duration: 250,
@@ -206,10 +217,21 @@ pressRight=()=>{
 }
 CloseAction=()=>
 {
+  this.CloseRight()
   closeOverlay()
   this.AnimationSection()
-  this.setState({OpenPop:false})
+  this.setState({OpenPop:false,QrClick:false})
   this.props.navigation.setParams({bottombar:true})
+}
+CloseRight=()=>
+{
+  Animated.timing(this.state.RightSideWidth, {
+    toValue: 50,
+    duration: 250,
+    easing: Easing.inOut(Easing.ease),
+    delay: 10,
+  }).start(() => console.log('animation complete'));
+  this.setState({clickopen:false})
 }
 get pagination () {
   const { carouselItems, activeSlide } = this.state;
@@ -233,8 +255,7 @@ get pagination () {
       />
   );
 }
-
-renderBlurChilds() {
+renderScane() {
   return (
     <View style={{flex:1,width:'100%'}}>
     <Animated.View style={{height:45,width:50, position:'absolute',left:0, marginTop:20,}}>
@@ -299,9 +320,12 @@ source={require("./assets/portraitphoto.png")}
     <View style={{justifyContent:'center',alignItems:'center'}}>
     <Text style={{color:'#ABB3D0',fontFamily:'Exo2-Regular',fontSize:18,marginTop:10,marginLeft:10,marginRight:10}}>Speed Bar</Text>
     <Slider
-    style={{width:'100%',color:'#F4317F'}}
+    style={{width:'100%',color:'#F4317F',marginTop:10}}
           step={1}
           maximumValue={100}
+          thumbTintColor='#F4317F'
+          maximumTrackTintColor='#F4317F'
+          minimumTrackTintColor='#F4317F'
         />
         <View style={{flexDirection:'row',justifyContent:'space-around',marginTop:10}}>
         <Text style={{color:'#ABB3D0',fontFamily:'Exo2-Regular',fontSize:18,marginTop:10,marginLeft:10,marginRight:10}}>Speed Fee</Text>
@@ -314,6 +338,102 @@ source={require("./assets/portraitphoto.png")}
     
     <View style={{position:'absolute',bottom:0,width:'100%',left:0}}>
     <LinearGradient colors={['#FF7C6E','#F4317F']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{borderTopLeftRadius:100,height:100,width:'100%',borderTopLeftRadius:25}}>
+      <View style={{flexDirection:'row',justifyContent:'space-around',alignItems:'center'}}>
+      <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:25,height:40,width:'40%'}}>
+    <View style={{justifyContent:'center',alignItems:'center'}}>
+    <TextInput
+        style={{height: 40,fontFamily:'Exo2-Regular',}}
+        placeholder="USD"
+         placeholderTextColor="#ABB3D0" 
+      />
+    </View>
+   
+    </View>
+    <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:25,height:40,width:'40%'}}>
+    <View style={{justifyContent:'center',alignItems:'center'}}>
+    <TextInput
+        style={{height: 40,fontFamily:'Exo2-Regular'}}
+        placeholder="COP"
+         placeholderTextColor="#ABB3D0" 
+      />
+    </View>
+   
+    </View>
+      </View>
+    </LinearGradient>
+   </View>
+    </View>
+    
+  );
+}
+renderQrCode() {
+  return (
+    <View style={{flex:1,width:'100%'}}>
+    <Animated.View style={{height:45,width:50, position:'absolute',left:0, marginTop:20,}}>
+      <TouchableOpacity onPress={this.CloseAction}>
+      <View>
+      <LinearGradient colors={['#f4347f','#f85276','#fe7a6e']} style={{justifyContent:'center',borderTopRightRadius:25,borderBottomRightRadius:25,alignItems:'flex-end',paddingTop:10,paddingBottom:10}}>
+    
+       <View style={{flexDirection: 'row'}}> 
+          <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/clo.png")} ></Image>     
+     
+          </View>
+         
+</LinearGradient>
+</View>
+ </TouchableOpacity>
+      </Animated.View>
+    <View style={{alignItems:'center'}}>
+    <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:30}}>
+    <View style={{justifyContent:'center',alignItems:'center',marginTop:10}}>
+    <Text style={styles.instructions2}>Amount</Text>
+    <View style={{flexDirection:'row',justifyContent:'space-around',paddingLeft:10,paddingRight:10}}>
+    <Text style={styles.instructions3}>0.00000</Text>
+    <Image style={{width: 25, height: 25}}   source={require("./assets/diamond.png")} ></Image>    
+    </View>
+    </View>
+    
+
+    </View>
+    <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:50,height:150,width:250}}>   
+    <View style={{justifyContent:'center',alignItems:'center',paddingTop:10}}>
+    <QRCode
+       size={120}
+       color='#529DF3'
+       logoMargin={10 }
+      value="Just some string value"
+      logo={{uri: base64Logo}}
+      logoSize={100}
+      logoBackgroundColor='transparent'
+    />
+    </View>
+    
+    </View>
+    <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:20,height:150,width:250,justifyContent:'center',alignItems:'center'}}>
+  
+    <View style={{alignItems:'center',justifyContent:'center'}}>
+<LinearGradient colors={['#7498F9','#9B89F8','#D476F7']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{paddingTop:10,paddingBottom:10,paddingLeft:40,paddingRight:40, backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:50 }}>
+<TouchableOpacity>
+<Text style={{color:'#fff',fontFamily:'Poppins-Regular'}}>Copy All</Text>
+</TouchableOpacity>
+</LinearGradient>
+</View>
+ <View style={{width:'80%',height:40,borderWidth:1,borderColor:'#4D90E9',borderRadius:5,justifyContent:'center',alignItems:'center',marginTop:10,padding:10}}>
+ <Text style={{color:'#464651',fontFamily:'Poppins-Regular'}}>3DKsjshGSKJsgkgSs54SFu5sdS76F...</Text>
+ </View>
+   
+    </View>
+    <View style={{alignItems:'center',justifyContent:'center',marginTop:40}}>
+<LinearGradient colors={['#7498F9','#9B89F8','#D476F7']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{paddingTop:10,paddingBottom:10,paddingLeft:50,paddingRight:50, backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:50 }}>
+<TouchableOpacity>
+<Text style={{color:'#fff',fontFamily:'Poppins-Regular'}}>Request Payment</Text>
+</TouchableOpacity>
+</LinearGradient>
+</View>
+    </View>
+    
+    <View style={{position:'absolute',bottom:0,width:'100%',left:0}}>
+    <LinearGradient colors={['#41DA9C','#15E9E9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{borderTopLeftRadius:100,height:100,width:'100%',borderTopLeftRadius:25}}>
       <View style={{flexDirection:'row',justifyContent:'space-around',alignItems:'center'}}>
       <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:25,height:40,width:'40%'}}>
     <View style={{justifyContent:'center',alignItems:'center'}}>
@@ -380,11 +500,10 @@ _animate=()=>{
   }
     return (  
       <View style={styles.Maincontainers}> 
-    
-         <BlurOverlay
+              <BlurOverlay
                     radius={14}
                     downsampling={2}
-                    brightness={-50}
+                    brightness={-125}
                     onPress={() => 
                     {
                       //  closeOverlay();
@@ -393,9 +512,10 @@ _animate=()=>{
                     customStyles={{borderRadius:15,
                     alignItems:'center'}}
                     blurStyle='#222B50'
-                    children={this.renderBlurChilds()}
+                    children={(this.state.QrClick)?this.renderScane():this.renderQrCode()}
                 />
         
+    
       <LinearGradient   colors= {['#354E91','#314682','#283563','#222B50','#21284A']}>
      
       <ScrollView>
