@@ -294,7 +294,8 @@ if(year>2015){
   }
   BeginAction=()=>
   {
-   this.Profile()
+    this.props.navigation.push('Home',{DashBoardPopup:false,Kyc:true})
+   //this.Profile()
   }
   Profile=()=>
   {

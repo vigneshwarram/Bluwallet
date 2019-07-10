@@ -336,8 +336,10 @@ colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>
   }
   BeginAction=()=>
   {
-   
-   this.ImageUploadProcess()
+    this.props.navigation.navigate('Home',{
+      DashBoardPopup: false,
+    })
+   //this.ImageUploadProcess()
   }
   ImageUploadProcess=()=>
   {

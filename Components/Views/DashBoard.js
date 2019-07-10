@@ -273,7 +273,7 @@ renderScane() {
  </TouchableOpacity>
       </Animated.View>
     <View style={{alignItems:'center'}}>
-    <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:30}}>
+    <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:30,width:200}}>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:10}}>
     <Text style={styles.instructions2}>Amount</Text>
     <View style={{flexDirection:'row',justifyContent:'space-around',paddingLeft:10,paddingRight:10}}>
@@ -316,7 +316,7 @@ source={require("./assets/portraitphoto.png")}
     </View>
    
     </View>
-    <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:10,height:150}}>
+    <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:25,height:150}}>
     <View style={{justifyContent:'center',alignItems:'center'}}>
     <Text style={{color:'#ABB3D0',fontFamily:'Exo2-Regular',fontSize:18,marginTop:10,marginLeft:10,marginRight:10}}>Speed Bar</Text>
     <Slider

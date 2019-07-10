@@ -222,7 +222,8 @@ export default class CountrySearch extends React.Component {
   }
   BeginAction=()=>
   {
-    this.CountryPicker()
+    this.props.navigation.navigate('ProfileRegister');
+    //this.CountryPicker()
    
     
   }
