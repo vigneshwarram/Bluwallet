@@ -147,6 +147,7 @@ keyPassword MYAPP_RELEASE_KEY_PASSWORD}}}
 }
 
 dependencies {
+    implementation project(':react-native-blur-overlay')
     implementation project(':react-native-image-picker')
     implementation project(':react-native-customized-image-picker')
     implementation project(':react-native-email-link')

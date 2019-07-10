@@ -1,25 +1,33 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,Picker,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation, Animated,
+import { View, StyleSheet, Image,Picker,NativeModules,Text,ActivityIndicator,TouchableOpacity, Animated,Platform,TextInput,Slider,
   Easing,Dimensions} from 'react-native';
 import { Alert } from 'react-native';
 const { UIManager } = NativeModules;
+import BlurOverlay,{closeOverlay,openOverlay} from 'react-native-blur-overlay';
+import Modal from "react-native-modal";
+import Dialog, { DialogContent } from 'react-native-popup-dialog';
 import Carousel ,{ Pagination } from 'react-native-snap-carousel';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
 import LinearGradient from 'react-native-linear-gradient';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
+import ColumnChart from 'react-native-pure-chart/examples/pure-chart/components/column-chart';
 const { width } = Dimensions.get('window');
 const height = width * 0.8;
-
+const instructions = Platform.select({
+  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
+  android:
+  'Double tap R on your keyboard to reload,\n' +
+  'Shake or press menu button for dev menu',
+});
 export default class DashBoard extends React.Component {
 
-  static navigationOptions = {
-    header: null
-  }
+
 
   
   constructor(props) {
+   
     super(props);
     this.animatedValue = new Animated.Value(0)
     this.state = {
@@ -27,9 +35,12 @@ export default class DashBoard extends React.Component {
       dataImage:[{'image1':require("./assets/etherem.png"),'image1':require("./assets/etherem.png")}],
       cityItems:["US Doller,Indian,Eutherium"],
       Amount: 'USDoller',
+      OpenPop:false,
+      BottomBar:false,
+
       AnimatedWidth:new Animated.Value(50),
       AnimatedHieght:new Animated.Value(45),
-
+      ModelVisible:false,
       RightSideWidth:new Animated.Value(50),
       RightsideHeight:new Animated.Value(45),
       currentIndex:0,
@@ -82,13 +93,20 @@ export default class DashBoard extends React.Component {
       
        
     ]}
-  
-  
+ 
   }
+  static navigationOptions =({ navigation }) =>{
+    return   { 
+      header: null,
+     tabBarVisible: navigation.getParam('bottombar'),
+   }
   
+
+}
   componentDidMount()
   {
-    
+  
+    this.props.navigation.setParams({bottombar:true})
     // this.GetListData()
     // this._animate()
   }
@@ -137,9 +155,10 @@ _onPress=()=>{
       duration: 250,
       easing: Easing.inOut(Easing.ease),
       delay: 50,
-    }).start();
-    this.setState({click:true})
-
+    }).start(openOverlay());
+    this.props.navigation.setParams({bottombar:false})
+    this.setState({click:true,ModelVisible:true,OpenPop:true})
+    
   }
   else{
     Animated.timing(this.state.AnimatedWidth, {
@@ -148,9 +167,21 @@ _onPress=()=>{
       easing: Easing.inOut(Easing.ease),
       delay: 50,
     }).start(() => console.log('animation complete'));
-    this.setState({click:false})
+    this.setState({click:false,})
   }
  
+    }
+    AnimationSection=()=>
+    {
+    
+      this.props.navigation.setParams({bottombar:false})
+      this.setState({click:false,ModelVisible:true,OpenPop:true})
+      Animated.timing(this.state.AnimatedWidth, {
+        toValue: 50,
+        duration: 250,
+        easing: Easing.inOut(Easing.ease),
+        delay: 50,
+      }).start()
     }
 pressRight=()=>{
   if(!this.state.clickopen){
@@ -173,7 +204,13 @@ pressRight=()=>{
     this.setState({clickopen:false})
   }
 }
-
+CloseAction=()=>
+{
+  closeOverlay()
+  this.AnimationSection()
+  this.setState({OpenPop:false})
+  this.props.navigation.setParams({bottombar:true})
+}
 get pagination () {
   const { carouselItems, activeSlide } = this.state;
   return (
@@ -194,6 +231,115 @@ get pagination () {
         inactiveDotOpacity={0.4}
         inactiveDotScale={0.6}
       />
+  );
+}
+
+renderBlurChilds() {
+  return (
+    <View style={{flex:1,width:'100%'}}>
+    <Animated.View style={{height:45,width:50, position:'absolute',left:0, marginTop:20,}}>
+      <TouchableOpacity onPress={this.CloseAction}>
+      <View>
+      <LinearGradient colors={['#f4347f','#f85276','#fe7a6e']} style={{justifyContent:'center',borderTopRightRadius:25,borderBottomRightRadius:25,alignItems:'flex-end',paddingTop:10,paddingBottom:10}}>
+    
+       <View style={{flexDirection: 'row'}}> 
+          <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/clo.png")} ></Image>     
+     
+          </View>
+         
+</LinearGradient>
+</View>
+ </TouchableOpacity>
+      </Animated.View>
+    <View style={{alignItems:'center'}}>
+    <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:30}}>
+    <View style={{justifyContent:'center',alignItems:'center',marginTop:10}}>
+    <Text style={styles.instructions2}>Amount</Text>
+    <View style={{flexDirection:'row',justifyContent:'space-around',paddingLeft:10,paddingRight:10}}>
+    <Text style={styles.instructions3}>0.00000</Text>
+    <Image style={{width: 25, height: 25}}   source={require("./assets/diamond.png")} ></Image>    
+    </View>
+    </View>
+    
+
+    </View>
+    <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:50,height:150}}>
+    <View style={{justifyContent:'center',alignItems:'center'}}>
+    <Text style={{color:'#5496FF',fontFamily:'Exo2-Regular',fontSize:11,marginTop:10,marginLeft:10,marginRight:10}}>SCAN YOUR QR CODE OR WRITE DOWN</Text>
+    </View>
+
+    <View style={{justifyContent:'center',alignItems:'center',marginTop:10,}}>  
+
+<Image
+        style={{width: 100,
+resizeMode: "contain",
+height: 100}}
+source={require("./assets/portraitphoto.png")}
+    />  
+</View>   
+    </View>
+    <View style={{marginTop:15,alignItems:'center'}}>
+<LinearGradient colors={['#FF7C6E','#F4317F']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{paddingTop:15,paddingBottom:15,paddingLeft:40,paddingRight:40, backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:50 }}>
+<TouchableOpacity>
+<Text style={{color:'#fff',fontFamily:'Poppins-Regular'}}>Send</Text>
+</TouchableOpacity>
+</LinearGradient>
+</View>
+    <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:10,height:40,}}>
+    <View style={{justifyContent:'center',alignItems:'center',paddingLeft:10,paddingRight:10}}>
+    <TextInput
+        style={{height: 40,fontFamily:'Exo2-Regular'}}
+        placeholder="write here your wallet code"
+         placeholderTextColor="#ABB3D0" 
+      />
+    </View>
+   
+    </View>
+    <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:10,height:150}}>
+    <View style={{justifyContent:'center',alignItems:'center'}}>
+    <Text style={{color:'#ABB3D0',fontFamily:'Exo2-Regular',fontSize:18,marginTop:10,marginLeft:10,marginRight:10}}>Speed Bar</Text>
+    <Slider
+    style={{width:'100%',color:'#F4317F'}}
+          step={1}
+          maximumValue={100}
+        />
+        <View style={{flexDirection:'row',justifyContent:'space-around',marginTop:10}}>
+        <Text style={{color:'#ABB3D0',fontFamily:'Exo2-Regular',fontSize:18,marginTop:10,marginLeft:10,marginRight:10}}>Speed Fee</Text>
+    <Text style={{color:'#F4317F',fontSize:18,marginTop:10,marginLeft:10,marginRight:10}}>0.21ETH</Text>  
+    </View>
+    </View>
+    
+    </View>
+    </View>
+    
+    <View style={{position:'absolute',bottom:0,width:'100%',left:0}}>
+    <LinearGradient colors={['#FF7C6E','#F4317F']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{borderTopLeftRadius:100,height:100,width:'100%',borderTopLeftRadius:25}}>
+      <View style={{flexDirection:'row',justifyContent:'space-around',alignItems:'center'}}>
+      <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:25,height:40,width:'40%'}}>
+    <View style={{justifyContent:'center',alignItems:'center'}}>
+    <TextInput
+        style={{height: 40,fontFamily:'Exo2-Regular',}}
+        placeholder="USD"
+         placeholderTextColor="#ABB3D0" 
+      />
+    </View>
+   
+    </View>
+    <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:25,height:40,width:'40%'}}>
+    <View style={{justifyContent:'center',alignItems:'center'}}>
+    <TextInput
+        style={{height: 40,fontFamily:'Exo2-Regular'}}
+        placeholder="COP"
+         placeholderTextColor="#ABB3D0" 
+      />
+    </View>
+   
+    </View>
+      </View>
+    </LinearGradient>
+   </View>
+    </View>
+    
   );
 }
 _animate=()=>{
@@ -233,8 +379,25 @@ _animate=()=>{
   </View>
   }
     return (  
-      <View style={styles.Maincontainers}>    
-      <LinearGradient  colors= {['#354E91','#314682','#283563','#222B50','#21284A']}>
+      <View style={styles.Maincontainers}> 
+    
+         <BlurOverlay
+                    radius={14}
+                    downsampling={2}
+                    brightness={-50}
+                    onPress={() => 
+                    {
+                      //  closeOverlay();
+                       
+                    }}
+                    customStyles={{borderRadius:15,
+                    alignItems:'center'}}
+                    blurStyle='#222B50'
+                    children={this.renderBlurChilds()}
+                />
+        
+      <LinearGradient   colors= {['#354E91','#314682','#283563','#222B50','#21284A']}>
+     
       <ScrollView>
       <View style={{justifyContent:'space-between',flexDirection:'row',}}>  
      
@@ -525,6 +688,9 @@ justifyContent:'center',alignItems:"center"}} >
        
     </View>
     </ScrollView>
+  
+   
+   
 </LinearGradient>
       </View>
   
@@ -630,5 +796,24 @@ const styles = StyleSheet.create({
       color: '#fff',
       textAlign: 'center',
       fontWeight: '700'
-  }
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+},
+instructions2: {
+    textAlign: 'center',
+    color: '#7D7D93',
+    marginBottom: 5,
+    fontSize:12,
+    fontFamily:'Poppins-Regular'
+},
+instructions3: {
+  textAlign: 'center',
+  color: '#474C84',
+  marginBottom: 5,
+  fontSize:25,
+  fontFamily:'Poppins-Regular'
+},
 });

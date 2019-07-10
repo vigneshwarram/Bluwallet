@@ -3,6 +3,7 @@ package com.mysurvey;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.bluroverly.SajjadBlurOverlayPackage;
 import com.imagepicker.ImagePickerPackage;
 import com.mg.app.PickerPackage;
 import com.facebook.react.modules.email.EmailPackage;
@@ -35,6 +36,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new SajjadBlurOverlayPackage(),
             new ImagePickerPackage(),
             new PickerPackage(),
             new EmailPackage(),
