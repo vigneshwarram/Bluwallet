@@ -96,9 +96,9 @@ let CollapseExpand = (index, position) => {
 };
 
       
-      const VaultStack=createStackNavigator({
+      const VaultStack=createStackNavigator({    
+        VaultFilter:{screen:VaultFilter},
         Vault:{screen:Vault},  
-        VaultFilter:{screen:VaultFilter}
       })
       const CreditCardStack=createStackNavigator({
         CreditCard:{screen:CreditCard},

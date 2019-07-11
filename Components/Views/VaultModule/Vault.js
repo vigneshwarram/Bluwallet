@@ -8,6 +8,8 @@ import { AreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
 import LinearGradient from 'react-native-linear-gradient';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
+import {VaultSystemApi,CryptoInvestment} from '../Api/VaultSystemApi'
+import {ResponseSuccessStatus,InvalidResponse} from '../Utils.js/Constant'
 export default class Vault extends React.Component {
 
   static navigationOptions = {
@@ -28,15 +30,11 @@ export default class Vault extends React.Component {
       animate:false,
       AnimatedWidth:new Animated.Value(50),
       AnimatedHieght:new Animated.Value(45),
-
+      Balance:null,
+      Usd:null,
       RightSideWidth:new Animated.Value(50),
       RightsideHeight:new Animated.Value(45),
-      w: 50,
-      h: 45,
-      wr:50,
-      hr:45,
-      Ahr:80,
-      Awr:80,
+      CrptoType:'ETH',
       clickr:false,
       clickopen:false,
       click:false,
@@ -52,36 +50,47 @@ export default class Vault extends React.Component {
   
   componentDidMount()
   {
-     //this.GetListData()
+     this.GetData()
   }
-  GetListData=()=>{
+  GetData=()=>
+  {
     this.Load()
-    var obj = {  
-      method: 'GET',
-      headers: {
-        'Content-Type'    : 'application/json',
-        'Accept'          : 'application/json',
-       'Authorization':'Bearer '+'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6ImJmNDczYTU5LTQxNzAtNDQ2My05YTI2LWZlNWNhYTVlZjMwZiIsIkV4cGlyeSI6bnVsbH0.tUaime3lRYn7wAu2KCnW3oFwIZa18eIL_4AOnoGJiKU'.trim()   
-         }
-  }
-  fetch("https://apptest.supplynow.co.uk/api/v1/Bookings/MyBookings",obj)  
-  .then((res)=> {
-    return res.json();
-   })
-   .then((resJson)=>{
-     this.dataset(resJson)
-   
-    return resJson;
-   })
-   .catch((error) => {
-    console.error(error);
-});
+    let params=this.state.CrptoType
+    VaultSystemApi(params,this.BalanceResponse)
 }
-dataset=(data)=>{
-  this.setState({
-    dataSource:data
-  })
+BalanceResponse=(data)=>
+{
   this.hide()
+  if(data!='undefined')
+  {
+    if(data.status===ResponseSuccessStatus)
+    {
+     this.setState({Usd:data.CalculatingAmountDTO.usdforEther,Balance:data.CalculatingAmountDTO.ethercurrentvalue})
+     this.GetList()
+    }
+    else
+    {
+      Alert.alert(InvalidResponse)
+    }
+  }
+}
+GetList=()=>
+{
+  this.Load()
+  CryptoInvestment(this.GetListData)
+}
+GetListData=(data)=>
+{
+  this.hide()
+  if(data.status==ResponseSuccessStatus)
+  {
+    console.log('VaultList',data)
+    this.setState({dataSource:data.listofuserCryptoinvestmentdto})
+  }
+  else
+  {
+    Alert.alert(InvalidResponse)
+  }
 }
 Load(){
   this.setState({animate:true})
@@ -251,19 +260,10 @@ CompleteTouch=()=>{
    </TouchableOpacity>
     
     </View> 
-    <View style={{justifyContent:'space-between',alignItems:'center',flexDirection:'row',paddingLeft:50,paddingRight:50}}>
- <Text style={{marginTop:15,fontSize:15,color:'#fff',opacity:0.5,fontFamily:'Exo2-Medium'}}>Monero</Text> 
- <Text style={{marginTop:15,fontSize:15,color:'#fff',opacity:1,fontFamily:'Exo2-Medium'}}>Ethereum</Text> 
- <Text style={{marginTop:15,fontSize:15,color:'#fff',opacity:0.5,fontFamily:'Exo2-Medium'}}>Bitcoin</Text> 
-    </View>
+   
    <View style={{justifyContent:'center',alignItems:'center',marginTop:10}}>
-   <FlatList  style={{marginTop:10}}
-      showsHorizontalScrollIndicator={false}
-      data={this.state.ImagArray}
-      horizontal={true}
-          renderItem={({item,separators})  =>
-        <TouchableOpacity onShowUnderlay={separators.highlight}
-      onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
+   
+        <TouchableOpacity>
             <TouchableOpacity onPress={this.App2Touch}>
             <View style={{flexDirection:'row'}}>
             <TouchableOpacity>
@@ -277,7 +277,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#f8bc73','#f0824d','#ec
 
     </View> 
             </TouchableOpacity>
-    <TouchableOpacity onPress={()=>this.props.navigation.navigate('VaultFilter')}>
+    <TouchableOpacity>
     <View>
 <LinearGradient style={{  width: 90,marginLeft:-20,
 height: 90,
@@ -325,9 +325,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
     </View>
     </TouchableOpacity>  
   </TouchableOpacity>  
-       }
-    />
-
+   
    </View>
     </View> 
       <View style={styles.containers}>
@@ -341,7 +339,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
                 </View>
                 <View>
                 <View style={{flexDirection:'row'}}>
-                <Text style={{marginLeft:30,fontSize:36,color:'#F5F6F9',fontFamily:'Exo2-SemiBold'}}>4.80258789</Text>
+                <Text style={{marginLeft:30,fontSize:36,color:'#F5F6F9',fontFamily:'Exo2-SemiBold'}}>{this.state.Balance}</Text>
                 <View style={{marginTop:-10,marginLeft:5}}>
                 
                 </View>
@@ -356,7 +354,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
                 </View>
 				
 				
-                <Text style={{fontSize:15,color:'#5496FF',fontFamily:'Exo2-Regular'}}>880.889</Text>
+                <Text style={{fontSize:15,color:'#5496FF',fontFamily:'Exo2-Regular'}}>{this.state.Usd}</Text>
                   
                
                 
@@ -384,7 +382,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
 <View style={{height:'100%'}}>
 <FlatList  style={{marginTop:20}}
       ItemSeparatorComponent={this.space}
-      data={this.state.data1}
+      data={this.state.dataSource}
           renderItem={({item,separators})  =>
         <TouchableOpacity onShowUnderlay={separators.highlight}
       onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
@@ -408,20 +406,20 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
           <View style={{flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection: 'row',justifyContent:'space-between'}}>    
           <View style={{justifyContent:'space-around',alignItems:'center'}}>
-          <Text  style={{ fontSize:12,fontFamily:'Exo2-Bold', color:'#ffffff',marginTop:-10}}>ETH</Text> 
+          <Text  style={{ fontSize:12,fontFamily:'Exo2-Bold', color:'#ffffff',marginTop:-10}}>{item.typeOfInvestment}</Text> 
           <Text  style={{fontSize:12,color:'#a9b4d4',marginTop:10}}>$435</Text> 
           </View>  
           <View>
           <View style={{flexDirection:'row',marginLeft:20}}>
           <View>
-          <Text  style={{fontSize:12,color:'#ABB3D0',marginTop:-10,fontFamily:'Exo2-Regular'}}>{(item.Status!='Completed')?'Produced':"Produced"}</Text> 
+          <Text  style={{fontSize:12,color:'#ABB3D0',marginTop:-10,fontFamily:'Exo2-Regular'}}>Produced</Text> 
           <Text  style={{fontSize:12,fontFamily:'Exo2-Regular',marginTop:10,color:'#ABB3D0'}}>Coins</Text>    
           </View>
           
           <View style={{flexDirection:'row',justifyContent:'center',marginTop:-15}}>
      <Image style={{width: 25, height: 25,resizeMode:'contain',tintColor:'#15E9E9'}}   source={require("../assets/plusblue.png")} ></Image>   
      <View style={{marginTop:5}}>
-     <Text  style={{fontSize:12,textAlign:'center',fontFamily:'Exo2-Bold',color:'#2A335E'}}>$ 9060</Text> 
+     <Text  style={{fontSize:12,textAlign:'center',fontFamily:'Exo2-Bold',color:'#2A335E'}}>$ {item.cryptoAmount}</Text> 
      </View> 
      
      </View>  
@@ -429,7 +427,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
          
           </View>
           <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',marginLeft:20}}>
-          <Text  style={{fontFamily:'Exo2-Regular',color:'#5496FF'}}>+8.5%</Text> 
+          <Text  style={{fontFamily:'Exo2-Regular',color:'#5496FF'}}>+{item.percentage}%</Text> 
           <Image style={{width: 10, height: 10,resizeMode:'contain'}}   source={require("../assets/green.png")} ></Image> 
           </View>                
      </View>  

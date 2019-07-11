@@ -20,7 +20,7 @@ export default class VaultFilter extends React.Component {
 
   constructor(props) {
     super(props);
-    
+    this.animatedvalue=new Animated.Value(0);
     this.state = {
       dataSource:[],
       data1:[require('../assets/biconback.png'),require('../assets/etherem.png'),require('../assets/biconback.png'),require('../assets/etherem.png')],
@@ -84,7 +84,16 @@ export default class VaultFilter extends React.Component {
   
   componentDidMount()
   {
+    this.Animation()
      //this.GetListData()
+  }
+  Animation=()=>
+  {
+    Animated.timing(
+this.animatedvalue,{
+  toValue:1,
+  duration:1000
+}).start()
   }
   GetListData=()=>{
     this.Load()
@@ -259,16 +268,74 @@ HideMenu=()=>{
     <Text style={{marginLeft:20,marginTop:15,fontSize:15,fontWeight:'bold',color:'#fff',opacity:0.5,fontFamily:''}}>Completed</Text> 
     </View>
     </View> 
-   <View style={{marginTop:20}}>
-   <View style={{justifyContent:'center',alignItems:'center'}}>
-   <Carousel
-                    data={this.state.carouselItems}
-                    sliderWidth={width}
-                    itemWidth={250}
-                    renderItem={this._renderItem}
-                />
-    </View>
-   </View>
+    <View style={{justifyContent:'center',alignItems:'center',marginTop:10}}>
+   
+   <TouchableOpacity>
+       <TouchableOpacity onPress={this.App2Touch}>
+       <View style={{flexDirection:'row'}}>
+ 
+       <View></View>
+       <View>
+<LinearGradient style={{  width: 90,marginLeft:10,
+height: 90,
+borderRadius: 90/2,
+justifyContent:'center',alignItems:"center"}} colors= {['#f8bc73','#f0824d','#ec643a']}>
+<Image style={{width: 50, height: 50}}   source={require("../assets/biconback.png")} ></Image> 
+</LinearGradient>
+
+</View> 
+      
+
+<View>
+<LinearGradient style={{  width: 90,marginLeft:-20,
+height: 90,
+borderRadius: 90/2,
+justifyContent:'center',alignItems:"center"}} colors= {['#5582ff','#5e5cff','#6730ff']}>
+<Image style={{width: 50, height: 50}}   source={require("../assets/etheremicon.png")} ></Image> 
+</LinearGradient>
+
+</View> 
+
+
+<View>
+<LinearGradient style={{  width: 90,marginLeft:-20,
+height: 90,
+borderRadius: 90/2,
+justifyContent:'center',alignItems:"center"}} colors= {['#8be6f8','#59a7f2','#3652bd']}>
+<Image style={{width: 50, height: 50}}   source={require("../assets/shareicon.png")} ></Image> 
+</LinearGradient>
+
+</View> 
+
+<TouchableOpacity>
+<View>
+<LinearGradient style={{  width: 90,marginLeft:-20,marginRight:-20,
+height: 90,
+borderRadius: 90/2,
+justifyContent:'center',alignItems:"center"}} colors= {['#faaf15','#fbcc0a','#fddf01']}>
+ <Image style={{width: 50, height: 50}}   source={require("../assets/ziconback.png")} ></Image> 
+</LinearGradient>
+
+</View> 
+</TouchableOpacity>
+<TouchableOpacity>
+<View>
+<LinearGradient style={{  width: 90,marginRight:10,
+height: 90,
+borderRadius: 90/2,
+justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f53d7b']}>
+   <Image style={{width: 50, height: 50}}   source={require("../assets/miconback.png")} ></Image> 
+</LinearGradient>
+
+</View> 
+</TouchableOpacity>
+
+</View>
+</TouchableOpacity>  
+</TouchableOpacity>  
+
+</View>
+   
     </View> 
     <View style={styles.containers}>
             <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>

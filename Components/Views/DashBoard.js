@@ -258,7 +258,7 @@ get pagination () {
 renderScane() {
   return (
     <View style={{flex:1,width:'100%'}}>
-    <Animated.View style={{height:45,width:50, position:'absolute',left:0, marginTop:20,}}>
+    <Animated.View style={{height:45,width:50, position:'absolute',left:0, marginTop:10,}}>
       <TouchableOpacity onPress={this.CloseAction}>
       <View>
       <LinearGradient colors={['#f4347f','#f85276','#fe7a6e']} style={{justifyContent:'center',borderTopRightRadius:25,borderBottomRightRadius:25,alignItems:'flex-end',paddingTop:10,paddingBottom:10}}>
@@ -369,7 +369,7 @@ source={require("./assets/portraitphoto.png")}
 renderQrCode() {
   return (
     <View style={{flex:1,width:'100%'}}>
-    <Animated.View style={{height:45,width:50, position:'absolute',left:0, marginTop:20,}}>
+    <Animated.View style={{height:45,width:50, position:'absolute',left:0, marginTop:10,}}>
       <TouchableOpacity onPress={this.CloseAction}>
       <View>
       <LinearGradient colors={['#f4347f','#f85276','#fe7a6e']} style={{justifyContent:'center',borderTopRightRadius:25,borderBottomRightRadius:25,alignItems:'flex-end',paddingTop:10,paddingBottom:10}}>
@@ -440,7 +440,7 @@ renderQrCode() {
     <TextInput
         style={{height: 40,fontFamily:'Exo2-Regular',}}
         placeholder="USD"
-         placeholderTextColor="#ABB3D0" 
+        placeholderTextColor="#ABB3D0" 
       />
     </View>
    
@@ -450,7 +450,7 @@ renderQrCode() {
     <TextInput
         style={{height: 40,fontFamily:'Exo2-Regular'}}
         placeholder="COP"
-         placeholderTextColor="#ABB3D0" 
+        placeholderTextColor="#ABB3D0" 
       />
     </View>
    

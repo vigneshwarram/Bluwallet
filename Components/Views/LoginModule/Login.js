@@ -22,8 +22,8 @@ export default class Login  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
-      Username:null,
-      Password:null,
+      Username:'admin@gmail.com',
+      Password:'password',
       clickr:false,
       clickopen:false,
       click:false,
@@ -244,10 +244,12 @@ SlideMenu=()=>{
       }
       LoginAction=()=>
       {
+        /*
         this.props.navigation.navigate('Home',{
           DashBoardPopup: true,Kyc:true
         });
-       // this.Login()
+        */
+        this.Login()
       
       }
       Login=()=>
@@ -311,11 +313,14 @@ SlideMenu=()=>{
        this.hide()
         if(data.status=='success')
         {
-          if(data.loginInfo.length>0)
-          {
-            await AsyncStorage.setItem('UserId',data.loginInfo.userId); 
-            this.Navigation(data.loginInfo)
-          }
+           console.log('Loginresult',data)
+            await AsyncStorage.setItem('UserId',data.loginInfo.userId.toString()); 
+            await AsyncStorage.setItem('email',data.loginInfo.emailId.toString()); 
+            console.log('Loginresult',data)
+            this.props.navigation.navigate('Home',{
+              DashBoardPopup: true,Kyc:true
+            });
+          
                
         }
         else
@@ -325,10 +330,7 @@ SlideMenu=()=>{
       }
       Navigation=(data)=>
       {
-        if(data.firstname!=null)
-        {
-          
-        }
+       
         this.props.navigation.navigate('Home',{
           DashBoardPopup: true,Kyc:true
         });
