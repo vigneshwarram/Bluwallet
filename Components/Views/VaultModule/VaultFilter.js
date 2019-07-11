@@ -21,6 +21,9 @@ export default class VaultFilter extends React.Component {
   constructor(props) {
     super(props);
     this.animatedvalue=new Animated.Value(0);
+    this.AnimatedMarginLeft=new Animated.Value(500)
+    this.AnimatedMarginRight=new Animated.Value(500)
+    this.OpacityView=new Animated.Value(1)
     this.state = {
       dataSource:[],
       data1:[require('../assets/biconback.png'),require('../assets/etherem.png'),require('../assets/biconback.png'),require('../assets/etherem.png')],
@@ -31,6 +34,7 @@ export default class VaultFilter extends React.Component {
       {'image':require('../assets/biconback.png')}],
       ImagArray:['image1'],
       Amount:'USDoller',
+      ShowFilter:true,
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
@@ -38,6 +42,7 @@ export default class VaultFilter extends React.Component {
       AnimatedHieght:new Animated.Value(45),
       RightSideWidth:new Animated.Value(50),
       RightsideHeight:new Animated.Value(45),
+      AnimationFlag:false,
       w: 50,
       h: 45,
       wr:50,
@@ -84,16 +89,54 @@ export default class VaultFilter extends React.Component {
   
   componentDidMount()
   {
-    this.Animation()
+     //this.Animation()
      //this.GetListData()
   }
   Animation=()=>
   {
     Animated.timing(
-this.animatedvalue,{
-  toValue:1,
-  duration:1000
+      this.OpacityView,{
+        toValue:0,
+        duration:10,
+        easing: Easing.linear
+      }).start()
+    Animated.timing(
+this.AnimatedMarginLeft,{
+  toValue:0,
+  duration:500,
+  easing: Easing.linear
 }).start()
+
+Animated.timing(
+  this.AnimatedMarginRight,{
+    toValue:0,
+    duration:500,
+    easing: Easing.linear
+  }).start(this.setState({AnimationFlag:true}))
+  
+  }
+  DeAnimation=()=>
+  {
+    Animated.timing(
+      this.OpacityView,{
+        toValue:1,
+        duration:1,
+        easing: Easing.linear
+      }).start()
+    Animated.timing(
+this.AnimatedMarginLeft,{
+  toValue:500,
+  duration:500,
+  //easing: Easing.linear
+}).start()
+
+Animated.timing(
+  this.AnimatedMarginRight,{
+    toValue:500,
+    duration:500,
+    easing: Easing.linear
+  }).start(  this.setState({AnimationFlag:false}))
+
   }
   GetListData=()=>{
     this.Load()
@@ -220,8 +263,9 @@ HideMenu=()=>{
   }
     return (  
       <View style={styles.Maincontainers}>    
-      <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']}>
+      <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={{height:'100%'}}>
       <ScrollView>
+      <View style={{flex:1}}>
       <View style={{justifyContent:'space-between',flexDirection:'row'}}> 
      
      <Animated.View style={{borderColor:'#c978f8',borderRightWidth:1,borderLeftWidth:0,borderTopWidth:1,borderBottomWidth:1,position:'absolute',height:this.state.AnimatedHieght,width:this.state.AnimatedWidth,borderTopRightRadius:25,borderBottomRightRadius:25,marginTop:10}}>
@@ -268,14 +312,24 @@ HideMenu=()=>{
     <Text style={{marginLeft:20,marginTop:15,fontSize:15,fontWeight:'bold',color:'#fff',opacity:0.5,fontFamily:''}}>Completed</Text> 
     </View>
     </View> 
-    <View style={{justifyContent:'center',alignItems:'center',marginTop:10}}>
-   
-   <TouchableOpacity>
-       <TouchableOpacity onPress={this.App2Touch}>
-       <View style={{flexDirection:'row'}}>
- 
-       <View></View>
-       <View>
+    <View style={{justifyContent:'center',alignItems:'center',marginTop:10}}>  
+    <Animated.View style={{opacity:this.OpacityView}}>
+  <View style={{marginTop:20,}}>
+   <View style={{justifyContent:'center',alignItems:'center',height:150}}>
+   <Carousel
+                    data={this.state.carouselItems}
+                    sliderWidth={width}
+                    itemWidth={250}
+                    renderItem={this._renderItem}
+                />
+    </View>
+   </View>
+   </Animated.View>
+   <Animated.View style={{flexDirection:'row',marginTop:-115}}>
+  
+       <Animated.View style={{flexDirection:'row',marginRight:this.AnimatedMarginRight,}}>
+      
+       <View >
 <LinearGradient style={{  width: 90,marginLeft:10,
 height: 90,
 borderRadius: 90/2,
@@ -306,8 +360,8 @@ justifyContent:'center',alignItems:"center"}} colors= {['#8be6f8','#59a7f2','#36
 </LinearGradient>
 
 </View> 
-
-<TouchableOpacity>
+</Animated.View>
+<Animated.View style={{flexDirection:'row',marginLeft:this.AnimatedMarginLeft}}>
 <View>
 <LinearGradient style={{  width: 90,marginLeft:-20,marginRight:-20,
 height: 90,
@@ -317,8 +371,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#faaf15','#fbcc0a','#fd
 </LinearGradient>
 
 </View> 
-</TouchableOpacity>
-<TouchableOpacity>
+
 <View>
 <LinearGradient style={{  width: 90,marginRight:10,
 height: 90,
@@ -328,16 +381,11 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
 </LinearGradient>
 
 </View> 
-</TouchableOpacity>
+</Animated.View>
 
+</Animated.View>
 </View>
-</TouchableOpacity>  
-</TouchableOpacity>  
-
-</View>
-   
-    </View> 
-    <View style={styles.containers}>
+      <View style={styles.containers}>
             <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
                  <Text style={{marginLeft:10,marginTop:15,fontSize:20,fontWeight:'bold',color:'#ABB3D0',fontFamily:'Exo2-SemiBold'}}>Balance</Text> 
                  </View>
@@ -357,10 +405,15 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
                 </View>
                  </View>
                  <View style={{flexDirection:'row',justifyContent:'space-around',width:'100%',marginTop:20}}>
-                 <View style={{width:40,height:15,backgroundColor:'#314985',justifyContent:'center',alignItems:'center',marginTop:-10,marginRight:30}}>
+                 <TouchableOpacity onPress={this.AllClick}>
+                 <                                                                                                                   View>
+                 <View style={{width:40,height:15,backgroundColor:'#314985',justifyContent:'center',alignItems:'center',marginTop:-10,marginRight:30,padding:10,borderRadius:5}}>
                 <Text style={{fontSize:12,color:'#5496FF',fontFamily:'Exo2-Regular'}}>All</Text>
                 
                 </View>
+                </View>
+                 </TouchableOpacity>
+                
 				
 				
                 <Text style={{fontSize:15,color:'#5496FF',fontFamily:'Exo2-Regular'}}>880.889</Text>
@@ -370,9 +423,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
         <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:-60}}>
         <Text style={{color:'#ABB3D0',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.Amount}</Text>
         <Image  style={{width: 10, height: 10,marginLeft:10,tintColor:'#ABB3D0'}}  source={require("../assets/down_arrow.png")} ></Image> 
-        </View>
-        
-  <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000 }}
+        <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000 }}
    selectedValue={this.state.Amount}
   onValueChange={(itemValue, itemIndex) => this.selectedPrice(itemValue,itemIndex)}>
   
@@ -385,9 +436,14 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
   <Picker.Item label="India" value="India" />
   <Picker.Item label="Aus" value="Aus" />
   </Picker>
+        </View>
+        
+ 
      
                  </View>                                    
                </View>
+    </View> 
+ 
 <View style={{height:'100%'}}>
 <FlatList  style={{marginTop:20}}
       ItemSeparatorComponent={this.space}
@@ -453,7 +509,9 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
                 
        
     </View>
+    </View>
     </ScrollView>
+    
 </LinearGradient>
       </View>
   
@@ -462,6 +520,19 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
       clickedItemText=(item)=>
       {
           Alert.alert(item.Status)
+      }
+      AllClick=()=>
+      {
+       (!this.state.AnimationFlag)?this.Animation():this.DeAnimation()
+       
+      }
+      Animate=()=>
+      {
+        if(this.state.ShowFilter==false)
+        {
+          this.Animation()
+        }
+      
       }
       _renderItem({item,index}){
         return (
