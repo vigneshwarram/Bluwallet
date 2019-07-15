@@ -31,7 +31,10 @@ export default class DashBoard extends React.Component {
   constructor(props) {
    
     super(props);
+    this.springValue = new Animated.Value(0.3)
     this.animatedValue = new Animated.Value(0)
+    this.AnimatedLeftWidth=new Animated.Value(50)
+    this.AnimatedRightWidth=new Animated.Value(50)
     this.state = {
       dataSource:[],
       dataImage:[{'image1':require("./assets/etherem.png"),'image1':require("./assets/etherem.png")}],
@@ -40,7 +43,7 @@ export default class DashBoard extends React.Component {
       OpenPop:false,
       BottomBar:false,
       ScanOpen:true,
-      QrClick:false,
+      QrClick:true,
       QrLink:'http://facebook.github.io/react-native/',
       AnimatedWidth:new Animated.Value(50),
       AnimatedHieght:new Animated.Value(45),
@@ -67,6 +70,7 @@ export default class DashBoard extends React.Component {
       Awr:80,
       clickr:false,
       clickopen:false,
+      clickopens:false,
       click:false,
       slide:false,
       visible: false,
@@ -154,27 +158,46 @@ space(){
 }
 _onPress=()=>{
   this.setState({QrClick:true})
-  if(!this.state.click){
-    Animated.timing(this.state.AnimatedWidth, {
-      toValue: 150,
-      duration: 250,
-      easing: Easing.inOut(Easing.ease),
-      delay: 50,
-    }).start(openOverlay());
-    this.props.navigation.setParams({bottombar:false})
-    this.setState({click:true,ModelVisible:true,OpenPop:true})
-    
-  }
-  else{
-    Animated.timing(this.state.AnimatedWidth, {
-      toValue: 50,
-      duration: 250,
-      easing: Easing.inOut(Easing.ease),
-      delay: 50,
-    }).start(() => console.log('animation complete'));
-    this.setState({click:false,})
-  }
- 
+    Animated.sequence([
+      Animated.timing(this.state.AnimatedWidth, {
+        toValue: 150,
+        duration: 250,
+        easing: Easing.inOut(Easing.ease),
+        delay: 50,
+      })
+     ,
+      Animated.timing(this.state.AnimatedWidth, {
+        toValue: 50,
+        duration: 250,
+        easing: Easing.inOut(Easing.ease),
+        delay: 50,
+      }),
+        
+    ]).start( this.OpenPopupAction())
+    }
+    OpenPopupAction=()=>
+    {
+      this.props.navigation.setParams({bottombar:false})
+      openOverlay()
+      this.springValue.setValue(0.3),
+      Animated.spring(
+      this.springValue,
+      {
+        toValue: 1,
+       friction:10
+      
+      }
+    ).start()
+    }
+    close=()=>
+    {
+      
+      Animated.timing(this.state.AnimatedWidth, {
+        toValue: 50,
+        duration: 250,
+        easing: Easing.inOut(Easing.ease),
+        delay: 50,
+      }).start( ()=> this.props.navigation.setParams({bottombar:true}));
     }
     AnimationSection=()=>
     {
@@ -190,39 +213,76 @@ _onPress=()=>{
     }
 pressRight=()=>{
   
-   this.setState({ScanOpen:true,QrcodeOpen:false})
-  if(!this.state.clickopen){
-    
-    Animated.timing(this.state.RightSideWidth, {
+   this.setState({QrClick:false})
+   Animated.sequence
+   ([
+
+    Animated.timing(this.AnimatedRightWidth, {
       toValue: 150,
       duration: 250,
       easing: Easing.inOut(Easing.ease),
       delay: 10,
-    }).start(openOverlay(),
-    this.setState({QrcodeOpen:true}));
-    this.setState({clickopen:true})
-    this.props.navigation.setParams({bottombar:false})
-
-  }
-  else{
-   
-    Animated.timing(this.state.RightSideWidth, {
+    }),
+    Animated.timing(this.AnimatedRightWidth, {
       toValue: 50,
       duration: 250,
       easing: Easing.inOut(Easing.ease),
       delay: 10,
-    }).start(() => console.log('animation complete'));
-    this.setState({clickopen:false})
-  }
+    }),
+   ]).start( this.OpenPopupAction());
+  
 }
-CloseAction=()=>
+CloseRightAction=()=>
 {
-  this.CloseRight()
-  closeOverlay()
-  this.AnimationSection()
-  this.setState({OpenPop:false,QrClick:false})
-  this.props.navigation.setParams({bottombar:true})
+  if(!this.state.clickopen)
+  {
+    Animated.timing(this.AnimatedRightWidth, {
+      toValue: 150,
+      duration: 250,
+      easing: Easing.inOut(Easing.ease),
+      delay: 10,
+    }).start(this.setState({clickopen:true}));
+    
+  }
+  else
+  {
+    Animated.timing(this.AnimatedRightWidth, {
+      toValue: 50,
+      duration: 250,
+      easing: Easing.inOut(Easing.ease),
+      delay: 10,
+    }).start(closeOverlay(),this.setState({clickopen:false}));
+    this.props.navigation.setParams({bottombar:true})
+  }
+ 
+ 
 }
+CloseLeftAction=()=>
+{
+  if(!this.state.clickopen)
+  {
+    Animated.timing(this.AnimatedLeftWidth, {
+      toValue: 150,
+      duration: 250,
+      easing: Easing.inOut(Easing.ease),
+      delay: 10,
+    }).start(this.setState({clickopen:true}));
+    
+  }
+  else
+  {
+    Animated.timing(this.AnimatedLeftWidth, {
+      toValue: 50,
+      duration: 250,
+      easing: Easing.inOut(Easing.ease),
+      delay: 10,
+    }).start(closeOverlay(),this.setState({clickopen:false}));
+    this.props.navigation.setParams({bottombar:true})
+  }
+ 
+ 
+}
+
 CloseRight=()=>
 {
   Animated.timing(this.state.RightSideWidth, {
@@ -257,14 +317,19 @@ get pagination () {
 }
 renderScane() {
   return (
-    <View style={{flex:1,width:'100%'}}>
-    <Animated.View style={{height:45,width:50, position:'absolute',left:0, marginTop:10,}}>
-      <TouchableOpacity onPress={this.CloseAction}>
+    <Animated.View  style={{flex:1,width:'100%',transform: [{scale: this.springValue}]}}>
+   
+    <Animated.View style={{height:45,width:this.AnimatedLeftWidth, position:'absolute',left:0, marginTop:10,}}>
+      <TouchableOpacity onPress={this.CloseLeftAction}>
       <View>
-      <LinearGradient colors={['#f4347f','#f85276','#fe7a6e']} style={{justifyContent:'center',borderTopRightRadius:25,borderBottomRightRadius:25,alignItems:'flex-end',paddingTop:10,paddingBottom:10}}>
+      <LinearGradient colors={['#F4317F','#FF7C6E']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{justifyContent:'center',borderTopRightRadius:25,borderBottomRightRadius:25,alignItems:'flex-end',paddingTop:15,paddingBottom:15}}>
     
        <View style={{flexDirection: 'row'}}> 
-          <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/clo.png")} ></Image>     
+       <View style={{justifyContent:'center',alignItems:'flex-start',}}>
+       <Text style={{color:'#fff',fontFamily:'Exo2-Regular',fontSize:15,marginLeft:-60}}>Exit</Text>
+       </View>
+      
+          <Image style={{marginRight:10,width: 20, height: 20}}   source={require("./assets/clo.png")} ></Image>     
      
           </View>
          
@@ -272,8 +337,9 @@ renderScane() {
 </View>
  </TouchableOpacity>
       </Animated.View>
-    <View style={{alignItems:'center'}}>
-    <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:30,width:200}}>
+      <View style={{flex:0.1}}></View>
+    <View style={{alignItems:'center', flex:0.9,}}>
+    <View style={{backgroundColor:'#fff',borderRadius:15,width:200}}>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:10}}>
     <Text style={styles.instructions2}>Amount</Text>
     <View style={{flexDirection:'row',justifyContent:'space-around',paddingLeft:10,paddingRight:10}}>
@@ -362,20 +428,23 @@ source={require("./assets/portraitphoto.png")}
       </View>
     </LinearGradient>
    </View>
-    </View>
-    
+   
+    </Animated.View>
   );
 }
 renderQrCode() {
   return (
-    <View style={{flex:1,width:'100%'}}>
-    <Animated.View style={{height:45,width:50, position:'absolute',left:0, marginTop:10,}}>
-      <TouchableOpacity onPress={this.CloseAction}>
+    <Animated.View style={{flex:1,width:'100%',transform: [{scale: this.springValue}]}}>
+    <Animated.View style={{height:45,width:this.AnimatedLeftWidth, position:'absolute',left:0, marginTop:10,}}>
+      <TouchableOpacity onPress={this.CloseLeftAction}>
       <View>
-      <LinearGradient colors={['#f4347f','#f85276','#fe7a6e']} style={{justifyContent:'center',borderTopRightRadius:25,borderBottomRightRadius:25,alignItems:'flex-end',paddingTop:10,paddingBottom:10}}>
+      <LinearGradient colors={['#F4317F','#FF7C6E']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{justifyContent:'center',borderTopRightRadius:25,borderBottomRightRadius:25,alignItems:'flex-end',paddingTop:15,paddingBottom:15}}>
     
        <View style={{flexDirection: 'row'}}> 
-          <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/clo.png")} ></Image>     
+       <View style={{justifyContent:'center',alignItems:'flex-start',}}>
+       <Text style={{color:'#fff',fontFamily:'Exo2-Regular',fontSize:15,marginLeft:-60}}>Exit</Text>
+       </View>
+          <Image style={{marginRight:10,width: 20, height: 20}}   source={require("./assets/clo.png")} ></Image>     
      
           </View>
          
@@ -383,8 +452,10 @@ renderQrCode() {
 </View>
  </TouchableOpacity>
       </Animated.View>
-    <View style={{alignItems:'center'}}>
-    <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:30}}>
+      <View style={{flex:0.1}}></View>
+    <View style={{alignItems:'center',flex:0.9}}>
+   
+    <View style={{backgroundColor:'#fff',borderRadius:15,}}>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:10}}>
     <Text style={styles.instructions2}>Amount</Text>
     <View style={{flexDirection:'row',justifyContent:'space-around',paddingLeft:10,paddingRight:10}}>
@@ -458,7 +529,7 @@ renderQrCode() {
       </View>
     </LinearGradient>
    </View>
-    </View>
+    </Animated.View>
     
   );
 }
@@ -525,7 +596,7 @@ _animate=()=>{
       <Animated.View style={{height:this.state.AnimatedHieght,width:this.state.AnimatedWidth, position:'absolute',left:0, marginTop:10,}}>
       <TouchableOpacity onPress={this._onPress}>
       <View>
-      <LinearGradient colors={['#f4347f','#f85276','#fe7a6e']} style={{justifyContent:'center',borderTopRightRadius:25,borderBottomRightRadius:25,alignItems:'flex-end',paddingTop:10,paddingBottom:10}}>
+      <LinearGradient colors={['#f4347f','#F4317F','#F4317F']} style={{justifyContent:'center',borderTopRightRadius:25,borderBottomRightRadius:25,alignItems:'flex-end',paddingTop:10,paddingBottom:10}}>
     
        <View style={{flexDirection: 'row'}}> 
           <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/whitebox.png")} ></Image>     
@@ -542,7 +613,7 @@ _animate=()=>{
     
          
             
-      <Animated.View style={{height:this.state.RightsideHeight,width:this.state.RightSideWidth,position:'absolute',right:0, marginTop:10,}}>
+      <Animated.View style={{height:45,width:this.AnimatedRightWidth,position:'absolute',right:0, marginTop:10,}}>
       <TouchableOpacity onPress={this.pressRight}>
       <View>
       <LinearGradient colors={['#17e8e3','#30e0ba','#3ddba1']}  style={{justifyContent:'center',alignItems:'flex-start',borderTopLeftRadius:25,borderBottomLeftRadius:25,paddingTop:10,paddingBottom:10}}>
