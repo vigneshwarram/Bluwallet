@@ -52,3 +52,28 @@ export const CryptoInvestment=async(VaultResponse)=>
         console.error(error);
     });
 }
+export const CryptoTypeInvestment=async(Type,VaultResponse)=>
+{
+    fetch('http://192.168.2.78:9090/API/bluewallet/fetch/user/investmentinfoforcrypto', {  
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'authorization':'bearer '+await AsyncStorage.getItem('AccessToken')
+        },
+        body: JSON.stringify({
+            email:await AsyncStorage.getItem('email'),
+            typeOfInvestment:Type
+        })
+      }) .then((res)=> {
+        return res.json();
+       })
+       .then((resJson)=>{
+        VaultResponse(resJson)
+       
+        return resJson;
+       })
+       .catch((error) => {
+        console.error(error);
+    });
+}

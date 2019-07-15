@@ -8,6 +8,8 @@ import Logo from '../../logo'
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
 import LinearGradient from 'react-native-linear-gradient';
+import {VaultSystemApi,CryptoInvestment,CryptoTypeInvestment} from '../Api/VaultSystemApi'
+import {ResponseSuccessStatus,InvalidResponse} from '../Utils.js/Constant'
 import ImageCarousel from 'react-native-image-carousel';
 const { width } = Dimensions.get('window');
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
@@ -35,14 +37,18 @@ export default class VaultFilter extends React.Component {
       ImagArray:['image1'],
       Amount:'USDoller',
       ShowFilter:true,
+      CrptoType:'ETH',
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
+      Balance:null,
+      Usd:null,
       AnimatedWidth:new Animated.Value(50),
       AnimatedHieght:new Animated.Value(45),
       RightSideWidth:new Animated.Value(50),
       RightsideHeight:new Animated.Value(45),
       AnimationFlag:false,
+      AllBackgroundColor:'transparent',
       w: 50,
       h: 45,
       wr:50,
@@ -90,10 +96,12 @@ export default class VaultFilter extends React.Component {
   componentDidMount()
   {
      //this.Animation()
-     //this.GetListData()
+     this.GetData()
   }
   Animation=()=>
   {
+    this.setState({AllBackgroundColor:'#2B4699'})
+    this.GetAllData()
     Animated.timing(
       this.OpacityView,{
         toValue:0,
@@ -117,6 +125,7 @@ Animated.timing(
   }
   DeAnimation=()=>
   {
+    this.setState({AllBackgroundColor:'transparent'})
     Animated.timing(
       this.OpacityView,{
         toValue:1,
@@ -138,34 +147,70 @@ Animated.timing(
   }).start(  this.setState({AnimationFlag:false}))
 
   }
-  GetListData=()=>{
-    this.Load()
-    var obj = {  
-      method: 'GET',
-      headers: {
-        'Content-Type'    : 'application/json',
-        'Accept'          : 'application/json',
-       'Authorization':'Bearer '+'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6ImJmNDczYTU5LTQxNzAtNDQ2My05YTI2LWZlNWNhYTVlZjMwZiIsIkV4cGlyeSI6bnVsbH0.tUaime3lRYn7wAu2KCnW3oFwIZa18eIL_4AOnoGJiKU'.trim()   
-         }
+  GetData=()=>
+  {
+    //this.Load()
+    this.GetList()
+    let params=this.state.CrptoType
+    console.log(params)
+    VaultSystemApi(params,this.BalanceResponse)
   }
-  fetch("https://apptest.supplynow.co.uk/api/v1/Bookings/MyBookings",obj)  
-  .then((res)=> {
-    return res.json();
-   })
-   .then((resJson)=>{
-     this.dataset(resJson)
-   
-    return resJson;
-   })
-   .catch((error) => {
-    console.error(error);
-});
+  GetAllData=()=>
+  {
+    this.GetAllList()
+  }
+BalanceResponse=(data)=>
+{
+  //this.hide()
+  if(data!='undefined')
+  {
+    if(data.status===ResponseSuccessStatus)
+    {
+      if(data.CalculatingAmountDTO.cryptoType==='ETH')
+      {
+        this.setState({Usd:data.CalculatingAmountDTO.usdforEther,Balance:data.CalculatingAmountDTO.ethercurrentvalue})
+       
+      }
+      else
+      {
+        this.setState({Usd:data.CalculatingAmountDTO.usdforBtc,Balance:data.CalculatingAmountDTO.btcAmount})
+       
+      }
+    
+    }
+    else
+    {
+      Alert.alert(InvalidResponse)
+    }
+  }
 }
-dataset=(data)=>{
-  this.setState({
-    dataSource:data
-  })
-  this.hide()
+GetList=()=>
+{
+  //this.Load()
+  let type=this.state.CrptoType
+  CryptoTypeInvestment(type,this.GetListData)
+}
+GetAllList=()=>
+{
+  //this.Load()
+  CryptoInvestment(this.GetListData)
+}
+GetListData=(data)=>
+{
+//  this.hide()
+  if(data!=='undefined')
+  {
+    if(data.status==ResponseSuccessStatus)
+    {
+      console.log('VaultList',data)
+      this.setState({dataSource:data.listofuserCryptoinvestmentdto})
+    }
+    else
+    {
+      Alert.alert(InvalidResponse)
+    }
+  }
+  
 }
 Load(){
   this.setState({animate:true})
@@ -317,13 +362,13 @@ HideMenu=()=>{
   <View style={{marginTop:20,}}>
    <View style={{justifyContent:'center',alignItems:'center',height:150}}>
    <Carousel
-                    data={this.state.carouselItems}
-                   
+                    data={this.state.carouselItems}                 
                     loop={true}
                     inactiveSlideOpacity={0.1}
                     sliderWidth={400}
                     itemWidth={150}
                     renderItem={this._renderItem}
+                    onSnapToItem={(index) => this.action(index) }
                 />
     </View>
    </View>
@@ -399,7 +444,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
                 </View>
                 <View>
                 <View style={{flexDirection:'row'}}>
-                <Text style={{marginLeft:30,fontSize:36,color:'#F5F6F9',fontFamily:'Exo2-SemiBold'}}>4.80258789</Text>
+                <Text style={{marginLeft:30,fontSize:36,color:'#F5F6F9',fontFamily:'Exo2-SemiBold'}}>{this.state.Balance}</Text>
                 <View style={{marginTop:-10,marginLeft:5}}>
                 
                 </View>
@@ -409,8 +454,8 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
                  </View>
                  <View style={{flexDirection:'row',justifyContent:'space-around',width:'100%',marginTop:20}}>
                  <TouchableOpacity onPress={this.AllClick}>
-                 <                                                                                                                   View>
-                 <View style={{width:40,height:15,backgroundColor:'#314985',justifyContent:'center',alignItems:'center',marginTop:-10,marginRight:30,padding:10,borderRadius:5}}>
+                 <View>
+                 <View style={{width:40,height:15,backgroundColor:this.state.AllBackgroundColor,justifyContent:'center',alignItems:'center',marginTop:-10,marginRight:30,padding:10,borderRadius:5,borderColor:'#4A6BCD',borderWidth:1}}>
                 <Text style={{fontSize:12,color:'#5496FF',fontFamily:'Exo2-Regular'}}>All</Text>
                 
                 </View>
@@ -419,7 +464,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
                 
 				
 				
-                <Text style={{fontSize:15,color:'#5496FF',fontFamily:'Exo2-Regular'}}>880.889</Text>
+                 <Text style={{fontSize:15,color:'#5496FF',fontFamily:'Exo2-Regular'}}>{this.state.Usd}</Text>
                   
                
                 
@@ -450,7 +495,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
 <View style={{height:'100%'}}>
 <FlatList  style={{marginTop:20}}
       ItemSeparatorComponent={this.space}
-      data={this.state.data1}
+      data={this.state.dataSource}
           renderItem={({item,separators})  =>
         <TouchableOpacity onShowUnderlay={separators.highlight}
       onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
@@ -474,20 +519,20 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
           <View style={{flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection: 'row',justifyContent:'space-between'}}>    
           <View style={{justifyContent:'space-around',alignItems:'center'}}>
-          <Text  style={{ fontSize:12,fontFamily:'Exo2-Bold', color:'#ffffff',marginTop:-10}}>ETH</Text> 
+          <Text  style={{ fontSize:12,fontFamily:'Exo2-Bold', color:'#ffffff',marginTop:-10}}>{item.typeOfInvestment}</Text> 
           <Text  style={{fontSize:12,color:'#a9b4d4',marginTop:10}}>$435</Text> 
           </View>  
           <View>
           <View style={{flexDirection:'row',marginLeft:20}}>
           <View>
-          <Text  style={{fontSize:12,color:'#ABB3D0',marginTop:-10,fontFamily:'Exo2-Regular'}}>{(item.Status!='Completed')?'Produced':"Produced"}</Text> 
+          <Text  style={{fontSize:12,color:'#ABB3D0',marginTop:-10,fontFamily:'Exo2-Regular'}}>Produced</Text> 
           <Text  style={{fontSize:12,fontFamily:'Exo2-Regular',marginTop:10,color:'#ABB3D0'}}>Coins</Text>    
           </View>
           
           <View style={{flexDirection:'row',justifyContent:'center',marginTop:-15}}>
      <Image style={{width: 25, height: 25,resizeMode:'contain',tintColor:'#15E9E9'}}   source={require("../assets/plusblue.png")} ></Image>   
      <View style={{marginTop:5}}>
-     <Text  style={{fontSize:12,textAlign:'center',fontFamily:'Exo2-Bold',color:'#2A335E'}}>$ 9060</Text> 
+     <Text  style={{fontSize:12,textAlign:'center',fontFamily:'Exo2-Bold',color:'#2A335E'}}>$ {item.cryptoAmount}</Text> 
      </View> 
      
      </View>  
@@ -495,7 +540,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
          
           </View>
           <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',marginLeft:20}}>
-          <Text  style={{fontFamily:'Exo2-Regular',color:'#5496FF'}}>+8.5%</Text> 
+          <Text  style={{fontFamily:'Exo2-Regular',color:'#5496FF'}}>+{item.percentage}%</Text> 
           <Image style={{width: 10, height: 10,resizeMode:'contain'}}   source={require("../assets/green.png")} ></Image> 
           </View>                
      </View>  
@@ -529,6 +574,26 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
        (!this.state.AnimationFlag)?this.Animation():this.DeAnimation()
        
       }
+      action=(index)=>
+      {
+        
+          let num=index
+          if(num<=0)
+          {
+            this.setState({CrptoType:'ETH'})
+             this.GetData()
+            
+          }
+          else
+          {
+           this.setState({CrptoType:'BTC'})         
+            this.GetData()
+          }
+            
+        }
+          
+         
+      
       Animate=()=>
       {
         if(this.state.ShowFilter==false)

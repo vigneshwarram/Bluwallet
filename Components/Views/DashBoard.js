@@ -92,6 +92,10 @@ export default class DashBoard extends React.Component {
             title:"Etherium"
         },
         {
+          ShadowImages:require('./assets/shar.png'),
+            title:"Bitcoin"
+        },
+        {
           ShadowImages:require('./assets/mshadow.png'),
        
             title:"Monero"
@@ -708,8 +712,8 @@ _animate=()=>{
                     renderItem={this._renderItem}            
                     inactiveSlideOpacity={0.1}                        
                     loop={true}
-                    activeSlideAlignment={'start'}
-                    onSnapToItem={(index) => this.setState({ activeSlide: index }) }
+                
+                    onSnapToItem={(index) => this.action(index) }
                 />
       </View>
       
@@ -895,6 +899,10 @@ justifyContent:'center',alignItems:"center"}} >
       {
           Alert.alert(item.Status)
       }
+      action=(index)=>
+      {
+     console.log(index)
+      }
       selectedAmount=(item,itemIndex)=>{
         this.setState({
             Amount:item
@@ -913,7 +921,7 @@ justifyContent:'center',alignItems:"center"}} >
           return (
             <View style={{flex:1,justifyContent:'center',alignItems:'center'}}> 
             <Text style={{color:'#fff',marginTop:10}} >{item.title}</Text>
-                <Image style={{width:150,height:150, resizeMode:'contain'}}
+                <Image style={{width:100,height:100, resizeMode:'contain'}}
                     source={item.ShadowImages}
                     />
                 

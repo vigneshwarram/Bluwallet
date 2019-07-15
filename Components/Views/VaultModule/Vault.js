@@ -57,7 +57,7 @@ export default class Vault extends React.Component {
     this.Load()
     let params=this.state.CrptoType
     VaultSystemApi(params,this.BalanceResponse)
-}
+  }
 BalanceResponse=(data)=>
 {
   this.hide()

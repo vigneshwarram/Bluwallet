@@ -244,12 +244,12 @@ SlideMenu=()=>{
       }
       LoginAction=()=>
       {
-        
+      /*  
         this.props.navigation.navigate('Home',{
           DashBoardPopup: true,Kyc:true
         });
-        
-       // this.Login()
+        */
+        this.Login()
       
       }
       Login=()=>
