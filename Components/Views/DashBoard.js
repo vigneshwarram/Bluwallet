@@ -23,6 +23,8 @@ const instructions = Platform.select({
   'Shake or press menu button for dev menu',
 });
 let base64Logo = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAA..';
+const horizontalMargin = 20;
+const slideWidth = 280;
 export default class DashBoard extends React.Component {
 
 
@@ -701,12 +703,14 @@ _animate=()=>{
       <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
       <Carousel
                     data={this.state.carouselItems}
-                    sliderWidth={width}
-                    itemWidth={300}
-                    renderItem={this._renderItem}
+                    sliderWidth={300}
+                    itemWidth={100}
+                    renderItem={this._renderItem}            
+                    inactiveSlideOpacity={0.1}                        
+                    loop={true}
+                    activeSlideAlignment={'start'}
                     onSnapToItem={(index) => this.setState({ activeSlide: index }) }
                 />
-       { this.pagination }
       </View>
       
     
@@ -905,7 +909,8 @@ justifyContent:'center',alignItems:"center"}} >
         this.props.navigation.navigate('Welcome')
       }
       _renderItem({item,index}){
-        return (
+        
+          return (
             <View style={{flex:1,justifyContent:'center',alignItems:'center'}}> 
             <Text style={{color:'#fff',marginTop:10}} >{item.title}</Text>
                 <Image style={{width:150,height:150, resizeMode:'contain'}}
@@ -914,6 +919,9 @@ justifyContent:'center',alignItems:"center"}} >
                 
             </View>
         )
+
+        
+       
     
     }
 }
