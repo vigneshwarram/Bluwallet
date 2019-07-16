@@ -4,6 +4,8 @@ import { View, StyleSheet,TextInput, Image,Picker,FlatList,Text,ActivityIndicato
 import { Alert } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
+import {ExchangeList} from '../Api/ExchangeRequest'
+import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from '../Utils.js/Constant'
 
 export default class  ExchangeMenu  extends React.Component {
 
@@ -79,30 +81,37 @@ export default class  ExchangeMenu  extends React.Component {
   
   componentDidMount()
   {
-    this.GetListData()
+    this.GetData()
   }
-  GetListData=()=>{
-    this.Load()
-    var obj = {  
-      method: 'GET',
-      headers: {
-        'Content-Type'    : 'application/json',
-        'Accept'          : 'application/json',
-       'Authorization':'Bearer '+'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6ImJmNDczYTU5LTQxNzAtNDQ2My05YTI2LWZlNWNhYTVlZjMwZiIsIkV4cGlyeSI6bnVsbH0.tUaime3lRYn7wAu2KCnW3oFwIZa18eIL_4AOnoGJiKU'.trim()   
-         }
+  GetData=()=>
+  {
+    ExchangeList(this.ExchangeListResponse)
   }
-  fetch("https://apptest.supplynow.co.uk/api/v1/Bookings/MyBookings",obj)  
-  .then((res)=> {
-    return res.json();
-   })
-   .then((resJson)=>{
-     this.dataset(resJson)
-   
-    return resJson;
-   })
-   .catch((error) => {
-    console.error(error);
-});
+  ExchangeListResponse=(data)=>
+{
+  //this.hide()
+  if(data!=DataUndefined)
+  {
+    if(data.status===ResponseSuccessStatus)
+    {
+     this.setState({dataSource:data.fetchExchageRequestDTO.exchangeDTOList})
+    }
+    else if(data.error===InvalidToken)
+    {
+      Alert.alert(
+        'Error',
+        TokenExpired,
+        [
+          {text: 'OK', onPress: () => this.props.navigation.navigate(Login)},
+        ],
+  
+      );
+    }
+    else
+    {
+      Alert.alert(InvalidResponse)
+    }
+  }
 }
 dataset=(data)=>{
   this.setState({
@@ -311,48 +320,47 @@ space(){
           renderItem={({item,separators})  =>
         <TouchableOpacity onShowUnderlay={separators.highlight}
       onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
-      <View style={{marginLeft:30,marginRight:30, shadowOffset: { width: 10, height: 10 },
-  
+      <View style={{marginLeft:30,marginRight:30, shadowOffset: { width: 10, height: 10 }, 
   borderBottomWidth: 0,
-  shadowColor: '#394d88',
-  shadowOffset: { width: 0, height: 12 },
-  shadowOpacity: 0.8,
-  shadowRadius: 2,
-  elevation: 24,
   borderRadius:25}}>
   <LinearGradient
     colors={['#4262B5', '#3A549B','#314279','#2C3765','#2A335E']}  style={{ borderRadius:25}}>
-        <View style={{alignItems:'center',flexDirection:'row',padding:15}}>
-        {(
-          (item.Status!='Completed')?<View style={{
+    <View style={{flexDirection:'row',justifyContent:'space-between',padding:20,}}>
+    <View style={{flexDirection:'row'}}>
+      <View style={{
      justifyContent:'center',alignItems:"center"}} >
           <Image  style={{width: 30, height: 30}}  source={require("../assets/exchange.png")} ></Image>  
-          </View>:  <View style={{
-     justifyContent:'center',alignItems:"center"}} >
-          <Image  style={{width: 30, height: 30}}  source={require("../assets/exchange.png")} ></Image>  
-          </View>
+    
 
-        )}
-      
-          <View style={{flexDirection:'column',marginLeft:30}}>
-          <View style={{flex:1, flexDirection: 'row',justifyContent:'space-between'}}>            
-         <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff',fontFamily:"Exo2-Bold"}}>{(item.Status!='Completed')?'Exchanged':"Exchanged"}</Text>       
-     <View style={{flexDirection:'row'}}>
-     <Image style={{width: 25,marginTop:10, height: 25}}   source={require("../assets/plusblue.png")} ></Image>    
-     <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff',fontFamily:'Exo2-Regular'}}>$ 9060</Text> 
-     </View>
-        
-     </View>  
-     <View style={{flex:1, flexDirection:'row',justifyContent:'space-between'}}>
- 
-            
-         <Text  style={{marginRight:20,marginTop:10,color:'#5496FF',fontFamily:'Exo2-Regular'}}>Feb 23 2019  . 11.05</Text>       
-     
-      <Text  style={{marginRight:20,marginTop:10,color:'#5496FF',fontFamily:'Exo2-Regular'}}>5.4587ETH</Text>    
-     </View>  
           </View>
-  
+        
+          <View style={{marginLeft:30,justifyContent:
+        'space-around'}}>
+        <View style={{paddingBottom:10}}>
+        <Text  style={{marginRight:20,color:(item.status==1)?'#fff':'#fff',fontFamily:"Exo2-Bold",}}>{(item.status==1)?'Exchanged':"Exchanged"}</Text>
         </View>
+    <View>
+    <Text  style={{marginRight:20,color:'#5496FF',fontFamily:'Exo2-Regular'}}>{item.date1}</Text> 
+    </View>
+        
+     </View>
+      </View>
+      <View>
+      <View style={{justifyContent:'space-between',paddingBottom:10}}>    
+     
+     <Text  style={{marginRight:20,color:'#fff',fontFamily:'Exo2-Regular'}}>{item.totalAmount}</Text>    
+    </View>
+    <View style={{justifyContent:'space-between'}}>    
+    
+    <Text  style={{marginRight:20,color:'#5496FF',fontFamily:'Exo2-Regular'}}>{item.transactionFee}ETH</Text> 
+    </View>
+      </View>
+      
+    </View>
+  
+     
+  
+      
 </LinearGradient>
   </View>
        

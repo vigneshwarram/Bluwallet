@@ -1,6 +1,6 @@
 import Url from './CommonApi'
 import{AsyncStorage} from 'react-native'
-export const ExchangeList=async(params,FetchExchangedata)=>
+export const ExchangeList=async(FetchExchangedata)=>
 {
     fetch('http://192.168.2.78:9090/API/bluewallet/fetch/exchange/requests', {  
         method: 'POST',
@@ -18,7 +18,7 @@ export const ExchangeList=async(params,FetchExchangedata)=>
         return res.json();
        })
        .then((resJson)=>{
-        VaultResponse(resJson)
+        FetchExchangedata(resJson)
        
         return resJson;
        })

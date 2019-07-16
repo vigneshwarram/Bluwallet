@@ -1,2 +1,5 @@
 export const ResponseSuccessStatus='success'
+export const DataUndefined='undefined'
 export const InvalidResponse='InvalidResponse'
+export const InvalidToken='invalid_token'
+export const TokenExpired='Token Expired'

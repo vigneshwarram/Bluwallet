@@ -231,6 +231,17 @@ BalanceResponse=(data)=>
       }
     
     }
+    else if(data.error==='invalid_token')
+    {
+      Alert.alert(
+        'Error',
+        'Token Expired',
+        [
+          {text: 'OK', onPress: () => this.props.navigation.navigate(Login)},
+        ],
+  
+      );
+    }
     else
     {
       Alert.alert(InvalidResponse)
@@ -258,6 +269,17 @@ GetListData=(data)=>
     {
       console.log('VaultList',data)
       this.setState({dataSource:data.listofuserCryptoinvestmentdto})
+    }
+    else if(data.error==='invalid_token')
+    {
+      Alert.alert(
+        'Error',
+        'Token Expired',
+        [
+          {text: 'OK', onPress: () => this.props.navigation.navigate(Login)},
+        ],
+  
+      );
     }
     else
     {
