@@ -14,6 +14,7 @@ import ImageCarousel from 'react-native-image-carousel';
 const { width } = Dimensions.get('window');
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 let type='ETH';
+let CompletedData;
 export default class VaultFilter extends React.Component {
 
   static navigationOptions = {
@@ -22,6 +23,8 @@ export default class VaultFilter extends React.Component {
 
 
   constructor(props) {
+   
+   // console.log(Values)
     super(props);
     this.animatedvalue=new Animated.Value(0);
     this.AnimatedMarginLeft=new Animated.Value(500)
@@ -39,6 +42,8 @@ export default class VaultFilter extends React.Component {
       Amount:'USDoller',
       ShowFilter:true,
       CrptoType:'ETH',
+      CompleteOpacity:0.5,
+      ActiveOpacity:1,
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
@@ -98,6 +103,53 @@ export default class VaultFilter extends React.Component {
   {
      //this.Animation()
      this.GetData()
+     this.ActiveClick()
+  }
+  completedClick=()=>
+  {
+    if(this.state.dataSource.length!=0)
+ 
+    {
+       console.log(this.state.dataSource)
+       let FinalResult=[];
+       FinalResult=this.search(1,this.state.dataSource)
+      console.log('search Result',FinalResult)
+      this.setState({dataSource:FinalResult})
+    }
+    
+  }
+  ActiveClick=()=>
+  {
+    if(this.state.dataSource.length!=0)
+ 
+    {
+       console.log(this.state.dataSource)
+       let FinalResult=[];
+       FinalResult=this.search(1,this.state.dataSource)
+      console.log('search Result',FinalResult)
+      this.setState({dataSource:FinalResult})
+    }
+  }
+  search = (key, inputArray) => {
+    console.log('inputArray length',inputArray.length)
+    let SearchArray=[]
+    for (let i=0; i < inputArray.length; i++) {
+        if (inputArray[i].status === key) {
+          SearchArray.push(inputArray[i])
+        }
+        
+    }
+    return SearchArray;
+  }
+  CompletePress=()=>
+  {
+    this.setState({ActiveOpacity:0.5,CompleteOpacity:1})
+    this.completedClick()
+  }
+  ActiviePress=()=>
+  {
+    this.setState({ActiveOpacity:1,CompleteOpacity:0.5})
+    this.ActiveClick()
   }
   Animation=()=>
   {
@@ -127,6 +179,7 @@ Animated.timing(
   DeAnimation=()=>
   {
     this.setState({AllBackgroundColor:'transparent'})
+    this.GetData()
     Animated.timing(
       this.OpacityView,{
         toValue:1,
@@ -311,7 +364,7 @@ HideMenu=()=>{
       <View style={styles.Maincontainers}>    
       <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={{height:'100%'}}>
       <ScrollView>
-      <View style={{flex:1}}>
+      <View style={{flex:1,marginBottom:100}}>
       <View style={{justifyContent:'space-between',flexDirection:'row'}}> 
      
      <Animated.View style={{borderColor:'#c978f8',borderRightWidth:1,borderLeftWidth:0,borderTopWidth:1,borderBottomWidth:1,position:'absolute',height:this.state.AnimatedHieght,width:this.state.AnimatedWidth,borderTopRightRadius:25,borderBottomRightRadius:25,marginTop:10}}>
@@ -351,12 +404,18 @@ HideMenu=()=>{
     <View style={{marginTop:10}}> 
     
     <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',marginLeft:70}}>
+    <TouchableOpacity onPress={this.ActiviePress}>
     <View style={{width:80,height:50,borderRightWidth:1,borderRightColor:'#4d6bc1'}}>
-    <Text style={{marginLeft:10,marginTop:15,fontSize:15,fontWeight:'bold',color:'#fff',fontFamily:''}}>Active</Text> 
+    <Text style={{marginLeft:10,marginTop:15,fontSize:15,fontWeight:'bold',color:'#fff',fontFamily:'',opacity:this.state.ActiveOpacity}}>Active</Text> 
     </View>
+    </TouchableOpacity>
+   
+    <TouchableOpacity onPress={this.CompletePress}>
     <View style={{width:150,height:50}}>
-    <Text style={{marginLeft:20,marginTop:15,fontSize:15,fontWeight:'bold',color:'#fff',opacity:0.5,fontFamily:''}}>Completed</Text> 
+    <Text style={{marginLeft:20,marginTop:15,fontSize:15,fontWeight:'bold',color:'#fff',opacity:this.state.CompleteOpacity,fontFamily:''}}>Completed</Text> 
     </View>
+    </TouchableOpacity>
+   
     </View> 
     <View style={{justifyContent:'center',alignItems:'center',marginTop:10}}>  
     <Animated.View style={{opacity:this.OpacityView}}>
@@ -581,16 +640,12 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
           let num=index
           if(num<=0)
           {
-            type='ETH'
-            //this.setState({CrptoType:'BTC'})
-            console.log(num)
-            
+            type='ETH'           
           }
           else
           {
             type='BTC'
-           //this.setState({CrptoType:'ETH'})         
-           console.log(num)
+        
           }
           this.GetData()
         }
