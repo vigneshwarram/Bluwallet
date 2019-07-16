@@ -704,7 +704,7 @@ _animate=()=>{
       )}
  
       
-      <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
+      <View style={{flex:1,alignItems:'center',justifyContent:'center',marginBottom:30}}>
       <Carousel
                     data={this.state.carouselItems}
                     sliderWidth={300}
@@ -720,7 +720,7 @@ _animate=()=>{
     
       <View style={styles.containers}>
     
-    <Image style={{width:350,height:180,opacity:0.4,marginTop:-50,
+    <Image style={{width:350,height:180,opacity:0.4,marginTop:-30,
     resizeMode: 'contain'}}   source={require("./assets/etherium_original.png")} ></Image>   
     
       

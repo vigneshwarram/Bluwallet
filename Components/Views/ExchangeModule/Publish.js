@@ -120,17 +120,7 @@ space(){
   colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{height:'35%',opacity:0.9}}>    
       <LinearGradient
   colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} style={{height:'100%',marginRight:30,marginTop:30}}>
-  <View style={{justifyContent:'center',alignItems:'center'}}>
-  <LinearGradient colors= {['#97F5F9','#7ED5F6','#529DF3','#4781DF','#2D3CAD']} style={{  width: 70,position:'absolute',top:200,bottom:-20,
-    height: 70,
-    borderRadius: 70/2,
-    backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
-   
-    <Image  style={{width: 40, height: 40,resizeMode:'contain'}}  source={require('../assets/publication.png')} ></Image>
-    
-            
-          </LinearGradient>
-  </View>
+
        
  <View style={{justifyContent:'center',alignItems:'center'}}>
 
@@ -224,8 +214,19 @@ space(){
          
 
 
-          </LinearGradient>    
-         <View style={{flex:1,marginTop:100}}>
+          </LinearGradient>
+          <View style={{justifyContent:'center',alignItems:'center'}}>
+  <LinearGradient colors= {['#97F5F9','#7ED5F6','#529DF3','#4781DF','#2D3CAD']} style={{width:70,
+    height: 70,
+    borderRadius: 70/2,
+    backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
+   
+    <Image  style={{width: 40, height: 40,resizeMode:'contain'}}  source={require('../assets/publication.png')} ></Image>
+    
+            
+          </LinearGradient>
+  </View>    
+         <View style={{flex:1,marginTop:20,marginBottom:30}}>
          <FlatList 
       ItemSeparatorComponent={this.space}
       data={this.state.dataSource}
@@ -250,7 +251,7 @@ space(){
         </View>
         <View style={{marginTop:10}}>
      
-          <LinearGradient colors={['#7498F9','#9B89F8','#D476F7']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:7,borderRadius:10,backgroundColor:'green',justifyContent:'center',alignItems:'center'}}>
+          <LinearGradient colors={['#7498F9','#9B89F8','#D476F7']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:7,borderRadius:5,backgroundColor:'green',justifyContent:'center',alignItems:'center'}}>
 <TouchableOpacity onPress={()=>this.props.navigation.navigate('Payment')}>
 <Text style={{color:'#fff',fontFamily:'Exo2-Regular'}}>Exchange</Text></TouchableOpacity>
 </LinearGradient>

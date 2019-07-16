@@ -184,6 +184,7 @@ let CollapseExpand = (index, position) => {
         }},
        );
       const MainNavigator =createStackNavigator({
+        //Publish:{screen:Publish},
         Launch: { screen: Launch },
        // UploadProgress:{screen:UploadProgress},
         TakePhoto:{screen:TakePhoto},
