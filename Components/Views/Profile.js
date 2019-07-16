@@ -3,6 +3,7 @@ import { Path } from 'react-native-svg'
 import { View, StyleSheet, Image,ScrollView,NativeModules,Text,ActivityIndicator,TouchableOpacity,Animated,Easing} from 'react-native';
 import { Alert } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {ProfileRetrive} from './Api/ProfileRegisterApi'
 
 export default class Profile  extends React.Component {
 
@@ -13,7 +14,7 @@ export default class Profile  extends React.Component {
 
   constructor(props) {
     super(props);
-    
+   
     this.state = {
       dataSource:[],
       cityItems:["US Doller,Indian,Eutherium"],
@@ -50,37 +51,25 @@ export default class Profile  extends React.Component {
   
   componentDidMount()
   {
-    //this.GetListData()
+    this.GetListData()
   }
-  GetListData=()=>{
-    this.Load()
-    var obj = {  
-      method: 'GET',
-      headers: {
-        'Content-Type'    : 'application/json',
-        'Accept'          : 'application/json',
-       'Authorization':'Bearer '+'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6ImJmNDczYTU5LTQxNzAtNDQ2My05YTI2LWZlNWNhYTVlZjMwZiIsIkV4cGlyeSI6bnVsbH0.tUaime3lRYn7wAu2KCnW3oFwIZa18eIL_4AOnoGJiKU'.trim()   
-         }
+  GetListData=()=>
+  {
+   // this.Load()  
+    ProfileRetrive(this.GetProfileDetails)
   }
-  fetch("https://apptest.supplynow.co.uk/api/v1/Bookings/MyBookings",obj)  
-  .then((res)=> {
-    return res.json();
-   })
-   .then((resJson)=>{
-     this.dataset(resJson)
-   
-    return resJson;
-   })
-   .catch((error) => {
-    console.error(error);
-});
-}
-dataset=(data)=>{
-  this.setState({
-    dataSource:data
-  })
-  this.hide()
-}
+  GetProfileDetails=(data)=>
+  {
+  if(data!='undefined')
+     {
+
+     }
+else
+    {
+  Alert.alert(data);
+   }
+  }
+
 Load(){
   this.setState({animate:true})
 }

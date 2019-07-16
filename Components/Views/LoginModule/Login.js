@@ -40,35 +40,7 @@ export default class Login  extends React.Component {
   {
     //this.GetListData()
   }
-  GetListData=()=>{
-    this.Load()
-    var obj = {  
-      method: 'GET',
-      headers: {
-        'Content-Type'    : 'application/json',
-        'Accept'          : 'application/json',
-       'Authorization':'Bearer '+'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6ImJmNDczYTU5LTQxNzAtNDQ2My05YTI2LWZlNWNhYTVlZjMwZiIsIkV4cGlyeSI6bnVsbH0.tUaime3lRYn7wAu2KCnW3oFwIZa18eIL_4AOnoGJiKU'.trim()   
-         }
-  }
-  fetch("https://apptest.supplynow.co.uk/api/v1/Bookings/MyBookings",obj)  
-  .then((res)=> {
-    return res.json();
-   })
-   .then((resJson)=>{
-     this.dataset(resJson)
-   
-    return resJson;
-   })
-   .catch((error) => {
-    console.error(error);
-});
-}
-dataset=(data)=>{
-  this.setState({
-    dataSource:data
-  })
-  this.hide()
-}
+ 
 Load(){
   this.setState({animate:true})
 }
@@ -244,7 +216,7 @@ SlideMenu=()=>{
       }
       LoginAction=()=>
       {
-      /*  
+      /*
         this.props.navigation.navigate('Home',{
           DashBoardPopup: true,Kyc:true
         });

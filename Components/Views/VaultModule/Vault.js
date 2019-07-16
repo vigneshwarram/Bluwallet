@@ -30,8 +30,8 @@ export default class Vault extends React.Component {
       animate:false,
       AnimatedWidth:new Animated.Value(50),
       AnimatedHieght:new Animated.Value(45),
-      Balance:null,
-      Usd:null,
+      Balance:12584.2356,
+      Usd:0.2568,
       RightSideWidth:new Animated.Value(50),
       RightsideHeight:new Animated.Value(45),
       CrptoType:'ETH',
@@ -50,7 +50,7 @@ export default class Vault extends React.Component {
   
   componentDidMount()
   {
-     this.GetData()
+    // this.GetData()
   }
   GetData=()=>
   {
@@ -382,7 +382,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
 <View style={{height:'100%'}}>
 <FlatList  style={{marginTop:20}}
       ItemSeparatorComponent={this.space}
-      data={this.state.dataSource}
+      data={this.state.data1}
           renderItem={({item,separators})  =>
         <TouchableOpacity onShowUnderlay={separators.highlight}
       onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
@@ -406,7 +406,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
           <View style={{flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection: 'row',justifyContent:'space-between'}}>    
           <View style={{justifyContent:'space-around',alignItems:'center'}}>
-          <Text  style={{ fontSize:12,fontFamily:'Exo2-Bold', color:'#ffffff',marginTop:-10}}>{item.typeOfInvestment}</Text> 
+          <Text  style={{ fontSize:12,fontFamily:'Exo2-Bold', color:'#ffffff',marginTop:-10}}>0.2258</Text> 
           <Text  style={{fontSize:12,color:'#a9b4d4',marginTop:10}}>$435</Text> 
           </View>  
           <View>
@@ -419,7 +419,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
           <View style={{flexDirection:'row',justifyContent:'center',marginTop:-15}}>
      <Image style={{width: 25, height: 25,resizeMode:'contain',tintColor:'#15E9E9'}}   source={require("../assets/plusblue.png")} ></Image>   
      <View style={{marginTop:5}}>
-     <Text  style={{fontSize:12,textAlign:'center',fontFamily:'Exo2-Bold',color:'#2A335E'}}>$ {item.cryptoAmount}</Text> 
+     <Text  style={{fontSize:12,textAlign:'center',fontFamily:'Exo2-Bold',color:'#2A335E'}}>$ 0.369</Text> 
      </View> 
      
      </View>  
@@ -427,7 +427,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
          
           </View>
           <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',marginLeft:20}}>
-          <Text  style={{fontFamily:'Exo2-Regular',color:'#5496FF'}}>+{item.percentage}%</Text> 
+          <Text  style={{fontFamily:'Exo2-Regular',color:'#5496FF'}}>+45%</Text> 
           <Image style={{width: 10, height: 10,resizeMode:'contain'}}   source={require("../assets/green.png")} ></Image> 
           </View>                
      </View>  

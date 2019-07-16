@@ -13,6 +13,7 @@ import {ResponseSuccessStatus,InvalidResponse} from '../Utils.js/Constant'
 import ImageCarousel from 'react-native-image-carousel';
 const { width } = Dimensions.get('window');
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
+let type='ETH';
 export default class VaultFilter extends React.Component {
 
   static navigationOptions = {
@@ -151,9 +152,8 @@ Animated.timing(
   {
     //this.Load()
     this.GetList()
-    let params=this.state.CrptoType
-    console.log(params)
-    VaultSystemApi(params,this.BalanceResponse)
+    console.log(type)
+    VaultSystemApi(type,this.BalanceResponse)
   }
   GetAllData=()=>
   {
@@ -187,7 +187,8 @@ BalanceResponse=(data)=>
 GetList=()=>
 {
   //this.Load()
-  let type=this.state.CrptoType
+  
+  console.log('Changing Type',type)
   CryptoTypeInvestment(type,this.GetListData)
 }
 GetAllList=()=>
@@ -580,16 +581,18 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
           let num=index
           if(num<=0)
           {
-            this.setState({CrptoType:'ETH'})
-             this.GetData()
+            type='ETH'
+            //this.setState({CrptoType:'BTC'})
+            console.log(num)
             
           }
           else
           {
-           this.setState({CrptoType:'BTC'})         
-            this.GetData()
+            type='BTC'
+           //this.setState({CrptoType:'ETH'})         
+           console.log(num)
           }
-            
+          this.GetData()
         }
           
          
