@@ -25,32 +25,15 @@ export default class Price  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Amount: 'USDoller',
       animate:false,
-      app1icon:require('./assets/app1white.png'),
-      app6icon:require('./assets/app6.png'),
-      app2icon:require('./assets/app2.png'),
-      app3icon:require('./assets/app3-blue.png'),
-      app4icon:require('./assets/app4.png'),
-      app5icon:require('./assets/app5.png'),
-      w: 50,
-      h: 45,
-      wr:50,
-      hr:45,
-      Ahr:80,
-      Awr:80,
-      clickr:false,
-      clickopen:false,
-      click:false,
-      slide:false,
-      visible: false,
-      hidden: false,
-      app1color:'#fff',
-      app6color:'#5099f0',
-      app2color:'#5099f0',
-      app3color:'#5099f0',
-      app4color:'#5099f0',
-      app5color:'#5099f0'
+      etheriumOpacity:0.4,
+      TotalPrice:null,
+      BtcOpacity:0,
+      BtcFontColor:'#5597ff',
+      EtheriumFontColor:'#fff',
+      Etherium1:'#14A9FF', Etherium2:'#2B84FF', Etherium3:'#6b00ff', Etherium4:'#8000FF',
+      Btc1:'transparent', Btc2:'transparent', Btc3:'transparent', Btc4:'transparent',
     };
-  
+
   }
   
   componentDidMount()
@@ -67,7 +50,8 @@ export default class Price  extends React.Component {
     {
       if(data.status===ResponseSuccessStatus)
       {
-       this.setState({dataSource:data.CalculatingAmountDTO})
+       this.setState({dataSource:data.CalculatingAmountDTO,})
+       this.setState({TotalPrice:this.state.dataSource.usdforEther,})
       }
       else if(data.error===InvalidToken)
       {
@@ -208,7 +192,7 @@ SlideMenu=()=>{
          <View style={{justifyContent:'center',alignItems:'center'}}>
          <Text style={{fontSize:18,color:'#2939a8',fontFamily:'Exo2-Regular'}}>ETH</Text> 
          </View>
-<Text style={{fontSize:25,color:'#fff',marginLeft:10,fontFamily:'Exo2-Medium'}}>132.58</Text>      
+<Text style={{fontSize:25,color:'#fff',marginLeft:10,fontFamily:'Exo2-Medium'}}>{this.state.TotalPrice}</Text>      
         
 <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:20}}>
         <Text style={{color:'#3440b0',opacity:1,fontSize:18,fontFamily:'Exo2-Regular'}}>{this.state.Amount}</Text>
@@ -263,22 +247,21 @@ SlideMenu=()=>{
 <ScrollView>
 <View style={{marginBottom:150}}>
 <View style={{flexDirection:'row'}}>
-       <View style={{backgroundColor:'transparent',width:'40%',height:250,marginLeft:30,elevation:5,
-shadowOffset: { width: 100, height: 100 },
-shadowColor: "red",
-shadowOpacity: 1,
-shadowRadius: 20,
+
+<View style={{backgroundColor:'transparent',width:'40%',height:250,marginLeft:20,borderWidth:0.25,borderColor:'#5496FF',borderRadius:6
   }} >
-       <LinearGradient style={{height:'100%',
+
+   <LinearGradient style={{height:'100%',
    borderRadius:6,}}
-            colors={['#14A9FF','#2B84FF','#6b00ff','#8000FF']}>
+            colors={[this.state.Etherium1,this.state.Etherium2,this.state.Etherium3,this.state.Etherium4]}>
+              <TouchableOpacity onPress={this.EtheriumClick}><View>
        <View style={{justifyContent:'center',alignItems:'center', position: 'absolute',
-    top: 0,
-    bottom: 30,
+    top: 10,
+    bottom: 10,
     left: 20,
     right: 0,}}>
     <Image  style={{width:200,height:200,
-    resizeMode: 'contain',marginLeft:10,opacity:0.5}}   source={require("./assets/transparent-etherem.png")} ></Image>
+    resizeMode: 'contain',marginLeft:10,opacity:this.state.etheriumOpacity}}   source={require("./assets/transparent-etherem.png")} ></Image>
     </View>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
         <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/diablue.png")} ></Image>
@@ -286,34 +269,53 @@ shadowRadius: 20,
         </View>
          <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
         
-        <Text style={{color:'#fff',fontSize:15,fontFamily:'Exo2-SemiBold'}}>Etherium</Text>
-        <Text style={{color:'#fff',fontSize:15,marginTop:10,fontFamily:'Exo2-SemiBold'}}>ETH</Text>
+        <Text style={{color:this.state.EtheriumFontColor,fontSize:15,fontFamily:'Exo2-SemiBold'}}>Etherium</Text>
+        <Text style={{color:this.state.EtheriumFontColor,fontSize:15,marginTop:10,fontFamily:'Exo2-SemiBold'}}>ETH</Text>
 
-        <Text style={{color:'#fff',fontSize:15,marginTop:30,fontFamily:'Exo2-SemiBold'}}>Price</Text>
-        <Text style={{color:'#fff',fontSize:15,marginTop:10,fontFamily:'Exo2-SemiBold'}}>{this.state.dataSource.usdforEther}</Text>
+        <Text style={{color:this.state.EtheriumFontColor,fontSize:15,marginTop:30,fontFamily:'Exo2-SemiBold'}}>Price</Text>
+        <Text style={{color:this.state.EtheriumFontColor,fontSize:15,marginTop:10,fontFamily:'Exo2-SemiBold'}}>{this.state.dataSource.usdforEther}</Text>
     </View>
-  
+    </View>
+   </TouchableOpacity>
        
        </LinearGradient>
+ 
    
        </View>
+
+      
+      
        <View style={{backgroundColor:'transparent',width:'40%',height:250,marginLeft:20,borderWidth:0.25,borderColor:'#5496FF',borderRadius:6}} >
-       <LinearGradient style={{height:'100%'}}   colors={['transparent','transparent','transparent']}>
+       <LinearGradient style={{height:'100%',borderRadius:6}}   colors={[this.state.Btc1,this.state.Btc2,]}>
+       <TouchableOpacity onPress={this.BtcClick}>
+       <View>
+       <View style={{justifyContent:'center',alignItems:'center', position: 'absolute',
+    top: 10,
+    bottom: 10,
+    left: 20,
+    right: 0,}}>
+    <Image  style={{width:180,height:150,
+    resizeMode: 'contain',opacity:this.state.BtcOpacity}}   source={require("./assets/bgbicon.png")} ></Image>
+    </View>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
         <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/diaIcon.png")} ></Image>
 
         </View>
         <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
         
-            <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:''}}>Ripple</Text>
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>Xrp</Text>
+            <Text style={{color:this.state.BtcFontColor,fontSize:15,fontWeight:'bold',fontFamily:''}}>Ripple</Text>
+            <Text style={{color:this.state.BtcFontColor,fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>Xrp</Text>
 
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:''}}>Price</Text>
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>{this.state.dataSource.usdforBtc}</Text>
+            <Text style={{color:this.state.BtcFontColor,fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:''}}>Price</Text>
+            <Text style={{color:this.state.BtcFontColor,fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>{this.state.dataSource.usdforBtc}</Text>
         </View>
+        </View>
+       </TouchableOpacity>
        </LinearGradient>
    
        </View>
+     
+     
          
         </View>
         <View style={{flexDirection:'row',marginTop:20}}>
@@ -370,6 +372,26 @@ shadowRadius: 20,
 this.setState({
   Amount:item
 })
+      }
+      EtheriumClick=()=>
+      {
+        this.setState({ Etherium1:'#14A9FF', Etherium2:'#2B84FF', Etherium3:'#6b00ff', Etherium4:'#8000FF',etheriumOpacity:0.4,EtheriumFontColor:'#fff'})
+        this.setState({TotalPrice:this.state.dataSource.usdforEther,})
+        this.BtcReset()
+      }
+      BtcClick=()=>
+      {
+        this.setState({Btc1:'#FF7267',Btc2:'#FF007F',BtcOpacity:0.4,BtcFontColor:'#fff'})
+        this.setState({TotalPrice:this.state.dataSource.usdforBtc,})
+        this.EtheriumReset()
+      }
+      EtheriumReset=()=>
+      {
+        this.setState({Etherium1:'transparent',Etherium2:'transparent',Etherium3:'transparent',Etherium4:'transparent',etheriumOpacity:0,EtheriumFontColor:'#5597ff'})
+      }
+      BtcReset=()=>
+      {
+        this.setState({Btc1:'transparent',Btc2:'transparent',BtcOpacity:0,BtcFontColor:'#5597ff'})
       }
 }
 
