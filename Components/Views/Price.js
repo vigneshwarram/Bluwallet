@@ -5,9 +5,11 @@ import { Alert } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
 import Logo from '../logo'
+import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from './Utils.js/Constant'
 import LinearGradient from 'react-native-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
-
+import {PriceList} from './Api/PriceApi'
+let CrptoType='ETH'
 export default class Price  extends React.Component {
 
   static navigationOptions = {
@@ -53,31 +55,37 @@ export default class Price  extends React.Component {
   
   componentDidMount()
   {
-  //  this.GetListData()
+    this.GetPriceData()
   }
-  GetListData=()=>{
-    this.Load()
-    var obj = {  
-      method: 'GET',
-      headers: {
-        'Content-Type'    : 'application/json',
-        'Accept'          : 'application/json',
-       'Authorization':'Bearer '+'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6ImJmNDczYTU5LTQxNzAtNDQ2My05YTI2LWZlNWNhYTVlZjMwZiIsIkV4cGlyeSI6bnVsbH0.tUaime3lRYn7wAu2KCnW3oFwIZa18eIL_4AOnoGJiKU'.trim()   
-         }
+  GetPriceData=()=>
+  {
+    PriceList(this.PriceResult)
   }
-  fetch("https://apptest.supplynow.co.uk/api/v1/Bookings/MyBookings",obj)  
-  .then((res)=> {
-    return res.json();
-   })
-   .then((resJson)=>{
-     this.dataset(resJson)
-   
-    return resJson;
-   })
-   .catch((error) => {
-    console.error(error);
-});
-}
+  PriceResult=(data)=>
+  {
+    if(data!=DataUndefined)
+    {
+      if(data.status===ResponseSuccessStatus)
+      {
+       this.setState({dataSource:data.CalculatingAmountDTO})
+      }
+      else if(data.error===InvalidToken)
+      {
+        Alert.alert(
+          'Error',
+          TokenExpired,
+          [
+            {text: 'OK', onPress: () => this.props.navigation.navigate(Login)},
+          ],
+    
+        );
+      }
+      else
+      {
+        Alert.alert(InvalidResponse)
+      }
+    }
+  }
 dataset=(data)=>{
   this.setState({
     dataSource:data
@@ -282,7 +290,7 @@ shadowRadius: 20,
         <Text style={{color:'#fff',fontSize:15,marginTop:10,fontFamily:'Exo2-SemiBold'}}>ETH</Text>
 
         <Text style={{color:'#fff',fontSize:15,marginTop:30,fontFamily:'Exo2-SemiBold'}}>Price</Text>
-        <Text style={{color:'#fff',fontSize:15,marginTop:10,fontFamily:'Exo2-SemiBold'}}>132.6</Text>
+        <Text style={{color:'#fff',fontSize:15,marginTop:10,fontFamily:'Exo2-SemiBold'}}>{this.state.dataSource.usdforEther}</Text>
     </View>
   
        
@@ -301,7 +309,7 @@ shadowRadius: 20,
             <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>Xrp</Text>
 
             <Text style={{color:'#5597ff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:''}}>Price</Text>
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>121.6</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>{this.state.dataSource.usdforBtc}</Text>
         </View>
        </LinearGradient>
    

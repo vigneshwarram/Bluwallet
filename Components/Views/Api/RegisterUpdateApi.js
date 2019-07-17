@@ -2,7 +2,7 @@ import Url from './CommonApi'
 
 const registerUpdateApi=async(params,RegisterUpdateResponse)=>
 {
-    fetch('http://192.168.2.78:9090/API/bluewallet/mobileuserregupdate', {  
+    fetch(Url+'mobileuserregupdate', {  
         method: 'POST',
         headers: {
           'Accept': 'application/json',

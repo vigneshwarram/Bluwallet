@@ -3,7 +3,7 @@ import { Path } from 'react-native-svg'
 import { View, StyleSheet, Image,Animated,TextInput,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,KeyboardAvoidingView,Dimensions,AsyncStorage } from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
-import LoginApi from '../Api/LoginApi'
+import {loginApi} from '../Api/LoginApi'
 import OuthApi from '../Api/OuthApi'
 import LinearGradient from 'react-native-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -259,7 +259,7 @@ SlideMenu=()=>{
              password: this.state.Password,
            }
            this.Load()
-             LoginApi(params,this.LoginResult)  
+           loginApi(params,this.LoginResult)  
         }
         else
         {
@@ -288,10 +288,9 @@ SlideMenu=()=>{
            console.log('Loginresult',data)
             await AsyncStorage.setItem('UserId',data.loginInfo.userId.toString()); 
             await AsyncStorage.setItem('email',data.loginInfo.emailId.toString()); 
+           await AsyncStorage.setItem('securedKey',data.securedKey.toString()); 
             console.log('Loginresult',data)
-            this.props.navigation.navigate('Home',{
-              DashBoardPopup: true,Kyc:true
-            });
+            this.props.navigation.navigate('PinCode')
           
                
         }

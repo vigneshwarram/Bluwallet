@@ -2,7 +2,7 @@ import Url from './CommonApi'
  import{AsyncStorage} from 'react-native'
  export const ProfileRegister=async(params,RegisterUpdateResponse)=>
 {
-    fetch('http://192.168.2.78:9090/API/bluewallet/mobileuserprofile', {  
+    fetch(Url+'mobileuserprofile', {  
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -32,7 +32,7 @@ import Url from './CommonApi'
 }
 export const ProfileRetrive=async(registerDetails)=>
 {
-    fetch('http://192.168.2.78:9090/API/bluewallet/retrievedata', {  
+    fetch(Url+'retrievedata', {  
         method: 'POST',
         headers: {
           'Accept': 'application/json',

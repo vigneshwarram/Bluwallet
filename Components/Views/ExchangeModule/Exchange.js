@@ -119,9 +119,9 @@ toggleSwitch=(value)=>{
       <View style={styles.Maincontainers}>  
                  <LinearGradient  colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={styles.Maincontainers} >
       <LinearGradient
-   colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} style={{height:200,opacity:0.9}}>     
+   colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{height:'35%',opacity:0.9}}>     
       <LinearGradient
-   colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} style={{height:230,marginRight:30,marginTop:30}}>
+   colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} style={{height:'100%',marginRight:30,marginTop:30}}>
  <LinearGradient colors={['#fff','#fff','#CCCFE2']} style={{justifyContent:'center',marginTop:-10,height:this.state.h,width:this.state.w, alignItems:'flex-end',borderTopRightRadius:25,borderBottomRightRadius:25,position:'absolute'}}>
 <TouchableOpacity onPress={this._onPress}>
        <View style={{flexDirection: 'row'}}> 
@@ -172,10 +172,20 @@ toggleSwitch=(value)=>{
           </LinearGradient> 
         
 <View style={{flex:1}}>
-
-          <LinearGradient  colors= {['transparent','transparent','transparent']} style={{marginTop:60}} >
+<View style={{justifyContent:'center',alignItems:'center'}}>
+  <LinearGradient colors= {['#97F5F9','#7ED5F6','#529DF3','#4781DF','#2D3CAD']} style={{width:70,
+    height: 70,
+    borderRadius: 70/2,
+    backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
+   
+    <Image  style={{width: 40, height: 40,resizeMode:'contain'}}  source={require('../assets/exchangenew.png')} ></Image>
+    
+            
+          </LinearGradient>
+  </View>  
+          <LinearGradient  colors= {['transparent','transparent','transparent']} style={{marginTop:20}} >
    <ScrollView>
-<View style={{marginTop:20,backgroundColor:'transparent'}}>  
+<View style={{marginTop:20,backgroundColor:'transparent',marginBottom:100}}>  
 <View style={{justifyContent:'center',alignItems:'center'}}>
 <Text style={{marginTop:10,fontSize:36,color:'#F5F6F9',fontFamily:'Exo2-SemiBold'}}>$ 0.00</Text>
 </View> 
@@ -308,15 +318,7 @@ toggleSwitch=(value)=>{
    
       
     
-         <LinearGradient colors= {['#97F5F9','#7ED5F6','#529DF3','#4781DF','#2D3CAD']} style={{  width: 100,marginLeft:35,position:'absolute',top:-20,left:120,right:100,bottom:50,
-    height: 100,
-    borderRadius: 100/2,
-    backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
-   
-    <Image  style={{width: 60, height: 60,resizeMode:'contain'}}  source={require('../assets/exchangenew.png')} ></Image>
-    
-            
-          </LinearGradient> 
+       
  
   
       </View>

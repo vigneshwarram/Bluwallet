@@ -232,8 +232,10 @@ HideMenu=()=>{
    <View style={{justifyContent:'center',alignItems:'center'}}>
    <Carousel
                     data={this.state.carouselItems}
-                    sliderWidth={width}
-                    itemWidth={250}
+                    loop={true}
+                    inactiveSlideOpacity={0.1}
+                    sliderWidth={400}
+                    itemWidth={150}
                     renderItem={this._renderItem}
                     onSnapToItem={this.snapItem}
                 />

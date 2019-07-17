@@ -2,7 +2,7 @@ import Url from './CommonApi'
 import{AsyncStorage} from 'react-native'
 export const VaultSystemApi=async(params,VaultResponse)=>
 {
-    fetch('http://192.168.2.78:9090/API/bluewallet/currentcryptovalue', {  
+    fetch(Url+'currentcryptovalue', {  
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -30,7 +30,7 @@ export const VaultSystemApi=async(params,VaultResponse)=>
 
 export const CryptoInvestment=async(VaultResponse)=>
 {
-    fetch('http://192.168.2.78:9090/API/bluewallet/fetch/user/cryptoinvestmnet', {  
+    fetch(Url+'fetch/user/cryptoinvestmnet', {  
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -54,7 +54,7 @@ export const CryptoInvestment=async(VaultResponse)=>
 }
 export const CryptoTypeInvestment=async(Type,VaultResponse)=>
 {
-    fetch('http://192.168.2.78:9090/API/bluewallet/fetch/user/investmentinfoforcrypto', {  
+    fetch(Url+'fetch/user/investmentinfoforcrypto', {  
         method: 'POST',
         headers: {
           'Accept': 'application/json',

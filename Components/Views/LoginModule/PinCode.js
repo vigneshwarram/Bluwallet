@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,ScrollView,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
+import { View, StyleSheet, Image,ScrollView,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,AsyncStorage} from 'react-native';
 import { Alert } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {LoginApi,loginSecureApi} from '../Api/LoginApi'
+import {ResponseSuccessStatus,InvalidResponse,DataUndefined} from '../Utils.js/Constant'
 import OTPInput from 'react-native-otp';
 export default class PinCode  extends React.Component {
 
@@ -19,7 +21,7 @@ export default class PinCode  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
-  
+      number:123456,
       w: 50,
       h: 45,
       wr:50,
@@ -40,6 +42,8 @@ export default class PinCode  extends React.Component {
   
   componentDidMount()
   {
+   // this.autoFill()
+  
     //this.GetListData()
   }
   GetListData=()=>{
@@ -121,7 +125,16 @@ SlideMenu=()=>{
     this.setState({Awr:80})
     this.setState({slide:false})
   }
+}
+  autoFill = async() => 
+  {
+    this.setState({ otp: await AsyncStorage.getItem('securedKey') })
+    console.log(this.state.otp)
+  
+     
+    
   }
+
   render() {
     const { navigate } = this.props.navigation;
     const data = [ 50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100 ]
@@ -167,7 +180,7 @@ SlideMenu=()=>{
   value={this.state.otp}
   onChange={this.handleOTPChange}
   tintColor="#354e91"
-  otpLength={4}
+  otpLength={6}
 />
       
                        
@@ -195,12 +208,39 @@ SlideMenu=()=>{
         this.props.navigation.navigate('Address');
       }
       recievePin(pin){
+        console.log(pin)
         // Check if the PIN is correct here
      }
-     handleOTPChange=(otp)=>{
-       if(otp.length>=4){
-        this.props.navigation.navigate('Sms');
+     handleOTPChange=async(otp)=>{
+       if(otp.length>=6)
+       {      
+        loginSecureApi(otp,this.SecureResult)
+      
        }
+     }
+     SecureResult=async(data)=>
+     {
+       if(data!=DataUndefined)
+       {
+         if(data.status==ResponseSuccessStatus)
+         {
+          //await AsyncStorage.setItem('loginInfo',data.loginInfo); 
+        
+          this.props.navigation.navigate('Home',{
+            DashBoardPopup: true,Kyc:true
+          });
+         }
+         else
+         {
+           Alert.alert(data.status,data.message)
+         }
+      
+       }
+       else
+       {
+         Alert.alert(InvalidResponse)
+       }
+     
      }
 }
 

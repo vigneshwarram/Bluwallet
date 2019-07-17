@@ -237,7 +237,7 @@ BalanceResponse=(data)=>
         'Error',
         'Token Expired',
         [
-          {text: 'OK', onPress: () => this.props.navigation.navigate(Login)},
+          {text: 'OK', onPress: () => this.props.navigation.navigate('Login')},
         ],
   
       );
@@ -276,7 +276,7 @@ GetListData=(data)=>
         'Error',
         'Token Expired',
         [
-          {text: 'OK', onPress: () => this.props.navigation.navigate(Login)},
+          {text: 'OK', onPress: () => this.props.navigation.navigate("Login")},
         ],
   
       );
