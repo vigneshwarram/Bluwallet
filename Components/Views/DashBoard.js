@@ -37,6 +37,7 @@ export default class DashBoard extends React.Component {
     this.animatedValue = new Animated.Value(0)
     this.AnimatedLeftWidth=new Animated.Value(50)
     this.AnimatedRightWidth=new Animated.Value(50)
+    this.RotateValueHolder = new Animated.Value(0);
     this.state = {
       dataSource:[],
       dataImage:[{'image1':require("./assets/etherem.png"),'image1':require("./assets/etherem.png")}],
@@ -150,6 +151,7 @@ dataset=(data)=>{
   this.hide()
 }
 Load(){
+  this.StartImageRotateFunction();
   this.setState({animate:true})
 }
 hide(){
@@ -212,6 +214,15 @@ _onPress=()=>{
         easing: Easing.inOut(Easing.ease),
         delay: 50,
       }).start()
+    }
+    StartImageRotateFunction() {
+      this.RotateValueHolder.setValue(0);
+      Animated.timing(this.RotateValueHolder, {
+        toValue: 1,
+        duration: 1100,
+        easing: Easing.linear,
+        useNativeDriver: true
+      }).start(() => this.StartImageRotateFunction());
     }
 pressRight=()=>{
   
@@ -547,6 +558,10 @@ _animate=()=>{
   ).start(() => this._animate())
 }
   render() {
+    const RotateData = this.RotateValueHolder.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['0deg', '360deg'],
+    });
     const Marginwidth=this.animatedValue.interpolate({
       inputRange: [0, 50],
       outputRange: [0, 100]
@@ -565,10 +580,10 @@ _animate=()=>{
   )
   if(this.state.animate){  
     return <View style={{justifyContent:'center',alignItems:'center',flex:1}}>
-    <ActivityIndicator
-  color = '#bc2b78'
-  size = "large"
-  style = {styles.activityIndicator}/>
+     <Animated.Image 
+                style={{width:100,height:100, resizeMode: 'contain' , transform: [{ rotate: RotateData }],}}
+                source={require('./assets/loader.gif')}
+            />   
   </View>
   }
     return (  

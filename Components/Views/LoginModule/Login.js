@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,Animated,TextInput,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,KeyboardAvoidingView,Dimensions,AsyncStorage } from 'react-native';
+import { View, StyleSheet, Image,Animated,TextInput,Text,Easing,TouchableOpacity,LayoutAnimation,KeyboardAvoidingView,Dimensions,AsyncStorage } from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 import {loginApi} from '../Api/LoginApi'
@@ -16,7 +16,7 @@ export default class Login  extends React.Component {
 
   constructor(props) {
     super(props);
-    
+    this.RotateValueHolder = new Animated.Value(0);
     this.state = {
       dataSource:[],
       cityItems:["US Doller,Indian,Eutherium"],
@@ -42,6 +42,7 @@ export default class Login  extends React.Component {
   }
  
 Load(){
+  this.StartImageRotateFunction();
   this.setState({animate:true})
 }
 hide(){
@@ -92,7 +93,20 @@ SlideMenu=()=>{
     this.setState({slide:false})
   }
   }
+  StartImageRotateFunction() {
+    this.RotateValueHolder.setValue(0);
+    Animated.timing(this.RotateValueHolder, {
+      toValue: 1,
+      duration: 1100,
+      easing: Easing.linear,
+      useNativeDriver: true
+    }).start(() => this.StartImageRotateFunction());
+  }
   render() {
+    const RotateData = this.RotateValueHolder.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['0deg', '360deg'],
+    });
     const { shift } = this.state;
     const { navigate } = this.props.navigation;
     const data = [ 50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100 ]
@@ -108,10 +122,10 @@ SlideMenu=()=>{
    
   if(this.state.animate){  
     return <View style={{justifyContent:'center',alignItems:'center',flex:1}}>
-    <ActivityIndicator
-  color = '#1a5fe1'
-  size = "large"
-  style = {styles.activityIndicator}/>
+    <Animated.Image 
+                style={{width:100,height:100, resizeMode: 'contain' , transform: [{ rotate: RotateData }],}}
+                source={require('../assets/loader.gif')}
+            />     
   </View>
   }
     return (  
