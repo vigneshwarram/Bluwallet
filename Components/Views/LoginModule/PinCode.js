@@ -112,7 +112,7 @@ StartImageRotateFunction() {
   this.RotateValueHolder.setValue(0);
   Animated.timing(this.RotateValueHolder, {
     toValue: 1,
-    duration: 1100,
+    duration: 2500,
     easing: Easing.linear,
     useNativeDriver: true
   }).start(() => this.StartImageRotateFunction());

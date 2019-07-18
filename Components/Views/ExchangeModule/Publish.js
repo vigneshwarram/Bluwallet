@@ -6,6 +6,8 @@ import { AreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
 import LinearGradient from 'react-native-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
+import {ExchangeList} from '../Api/ExchangeRequest'
+import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from '../Utils.js/Constant'
 
 export default class  Publish  extends React.Component {
 
@@ -52,30 +54,37 @@ export default class  Publish  extends React.Component {
   
   componentDidMount()
   {
-    this.GetListData()
+    //this.GetData()
   }
-  GetListData=()=>{
-    this.Load()
-    var obj = {  
-      method: 'GET',
-      headers: {
-        'Content-Type'    : 'application/json',
-        'Accept'          : 'application/json',
-       'Authorization':'Bearer '+'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6ImJmNDczYTU5LTQxNzAtNDQ2My05YTI2LWZlNWNhYTVlZjMwZiIsIkV4cGlyeSI6bnVsbH0.tUaime3lRYn7wAu2KCnW3oFwIZa18eIL_4AOnoGJiKU'.trim()   
-         }
+  GetData=()=>
+  {
+    ExchangeList(this.ExchangeListResponse)
   }
-  fetch("https://apptest.supplynow.co.uk/api/v1/Bookings/MyBookings",obj)  
-  .then((res)=> {
-    return res.json();
-   })
-   .then((resJson)=>{
-     this.dataset(resJson)
-   
-    return resJson;
-   })
-   .catch((error) => {
-    console.error(error);
-});
+  ExchangeListResponse=(data)=>
+{
+  //this.hide()
+  if(data!=DataUndefined)
+  {
+    if(data.status===ResponseSuccessStatus)
+    {
+     this.setState({dataSource:data.fetchExchageRequestDTO.exchangeDTOList})
+    }
+    else if(data.error===InvalidToken)
+    {
+      Alert.alert(
+        'Error',
+        TokenExpired,
+        [
+          {text: 'OK', onPress: () => this.props.navigation.navigate(Login)},
+        ],
+  
+      );
+    }
+    else
+    {
+      Alert.alert(InvalidResponse)
+    }
+  }
 }
 dataset=(data)=>{
   this.setState({
