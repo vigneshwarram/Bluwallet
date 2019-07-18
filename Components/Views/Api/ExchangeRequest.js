@@ -27,30 +27,22 @@ export const ExchangeList=async(FetchExchangedata)=>
     });
 }
 
-export const ExchangeRequest=async(params,FetchExchangedata)=>
+export const ExchangeRequest=async(params,Request)=>
 {
-    fetch(Url+'exchange/request', {  
+    fetch("http://192.168.2.78:9090/API/bluewallet/exchange/request", {  
         method: 'POST',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
           'authorization':'bearer '+await AsyncStorage.getItem('AccessToken')
         },
-        body: JSON.stringify({
-             
-             userId:await AsyncStorage.getItem('UserId'),
-             "exchangeMode":"BTC_ETH",
-             "amountToTrade":"0.01",
-             "amountYouGet":"3",
-             "transactionFee":"0.0001",
-             "totalAmount":"0.0101"
-
-        })
-      }) .then((res)=> {
+        body:JSON.stringify(params)
+      }).then((res)=> {
         return res.json();
        })
        .then((resJson)=>{
-        VaultResponse(resJson)
+         console.log(resJson)
+        Request(resJson)
        
         return resJson;
        })

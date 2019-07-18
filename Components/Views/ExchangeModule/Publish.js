@@ -1,13 +1,15 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet,TextInput, Image,Picker,FlatList,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
+import { View, StyleSheet,TextInput, Image,Picker,FlatList,Text,ActivityIndicator,TouchableOpacity,Easing,Animated} from 'react-native';
 import { Alert } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
 import LinearGradient from 'react-native-linear-gradient';
+import BlurOverlay,{closeOverlay,openOverlay} from 'react-native-blur-overlay';
 import { ScrollView } from 'react-native-gesture-handler';
-import {ExchangeList} from '../Api/ExchangeRequest'
+import {ExchangeList,ExchangeRequest} from '../Api/ExchangeRequest'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from '../Utils.js/Constant'
+
 
 export default class  Publish  extends React.Component {
 
@@ -18,7 +20,7 @@ export default class  Publish  extends React.Component {
 
   constructor(props) {
     super(props);
-    
+    this.springValue = new Animated.Value(0.3)
     this.state = {
       dataSource:[],
       cityItems:["US Doller,Indian,Eutherium"],
@@ -27,10 +29,13 @@ export default class  Publish  extends React.Component {
       StatusMode:'Publications',
       animate:false,
       w: 50,
+      SuccessPopup:true,
       h: 45,
       wr:50,
       hr:45,
       Ahr:80,
+      AnimatedWidth:new Animated.Value(50),
+      AnimatedHieght:new Animated.Value(45),
       Awr:80,
       clickr:false,
       clickopen:false,
@@ -54,10 +59,12 @@ export default class  Publish  extends React.Component {
   
   componentDidMount()
   {
-    //this.GetData()
+    this.GetData()
   }
   GetData=()=>
   {
+    //ExchangeRequest(this.ExchangeRequestResponse)
+   // this.openOverlay()
     ExchangeList(this.ExchangeListResponse)
   }
   ExchangeListResponse=(data)=>
@@ -101,6 +108,42 @@ hide(){
 space(){
   return(<View style={{height: 10, width: 1, backgroundColor:'black'}}/>)
 }
+renderScane() {
+  return (
+    <Animated.View  style={{flex:1,width:'100%',transform: [{scale: this.springValue}]}}>
+   
+    <Animated.View style={{height:45,width:this.AnimatedLeftWidth, position:'absolute',left:0, marginTop:10,}}>
+      <TouchableOpacity onPress={this.CloseLeftAction}>
+      <View>
+      <LinearGradient colors={['#F4317F','#FF7C6E']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{justifyContent:'center',borderTopRightRadius:25,borderBottomRightRadius:25,alignItems:'flex-end',paddingTop:15,paddingBottom:15}}>
+    
+       <View style={{flexDirection: 'row'}}> 
+       <View style={{justifyContent:'center',alignItems:'flex-start',}}>
+       <Text style={{color:'#fff',fontFamily:'Exo2-Regular',fontSize:15,marginLeft:-60}}>Exit</Text>
+       </View>
+      
+          <Image style={{marginRight:10,width: 20, height: 20}}   source={require("../assets/clo.png")} ></Image>     
+     
+          </View>
+         
+</LinearGradient>
+</View>
+ </TouchableOpacity>
+      </Animated.View>
+      <View style={{flex:0.1}}></View>
+    <View style={{alignItems:'center', flex:0.9,}}>
+    <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:25,height:150,alignItems:'center'}}>
+    <View>
+    <Image style={{width: 50, height: 50,resizeMode:'contain'}}   source={require("../assets/successtik.png")} ></Image>    
+    </View>
+    </View>
+    </View>
+    
+  
+   
+    </Animated.View>
+  );
+        }
   render() {
     const data = [ 50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100 ]
     const Line = ({ line }) => (
@@ -123,7 +166,16 @@ space(){
   }
     return (  
    
-      <View style={styles.Maincontainers}>     
+      <View style={styles.Maincontainers}>  
+      <BlurOverlay
+                    radius={14}
+                    downsampling={2}
+                    brightness={-125}
+                    customStyles={{borderRadius:15,
+                    alignItems:'center'}}
+                    blurStyle='#222B50'
+                    children={(this.state.SuccessPopup)?this.renderScane():null}
+                />   
         <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={styles.Maincontainers}>
       <LinearGradient
   colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{height:'35%',opacity:0.9}}>    
@@ -239,9 +291,9 @@ space(){
          <FlatList 
       ItemSeparatorComponent={this.space}
       data={this.state.dataSource}
-          renderItem={({item,separators})  =>
-        <TouchableOpacity onShowUnderlay={separators.highlight}
-      onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
+      keyExtractor={(item, index) => item.id}
+          renderItem={({item,separators})=>(
+          <TouchableOpacity onPress={()=>this.clickedItemText(item)}>
       <View style={{marginLeft:30,marginRight:30, shadowOffset: { width: 10, height: 10 },
   borderBottomWidth: 0,
   borderRadius:25}}>
@@ -250,28 +302,31 @@ space(){
         <View style={{flexDirection:'row',padding:20,justifyContent:'space-between'}}>
         <View>
         <View style={{flexDirection:'row'}}>
-     <Text  style={{marginRight:10,marginTop:10,color:"#ABB3D0",fontFamily:'Exo2-Bold',fontSize:11,marginLeft:10}}>{(item.Status=='Completed')?'Dan23':'Dan23'}</Text>  
+     <Text  style={{marginRight:10,marginTop:10,color:"#ABB3D0",fontFamily:'Exo2-Bold',fontSize:11,marginLeft:10}}>{item.userName}</Text>  
      <Text  style={{marginRight:10,marginTop:10,fontSize:10,color:'#5496FF',fontFamily:'Exo2-Regular'}}>100</Text>         
      </View>   
         </View>
         <View>
-        <Text  style={{marginRight:10,marginTop:10,marginLeft:10, color:"#ABB3D0",fontFamily:'Exo2-Regular'}}>{(item.Status=='Completed')?'90.000':'90.000'}</Text> 
-     <Text  style={{marginTop:10,marginLeft:10, color:'#5496FF',fontFamily:'Exo2-Regular'}}>{(item.Status=='Completed')?'ETH':'BTC'}</Text>  
+        <Text  style={{marginRight:10,marginTop:10,marginLeft:10, color:"#ABB3D0",fontFamily:'Exo2-Regular'}}>{item.totalAmount}</Text> 
+     <Text  style={{marginTop:10,marginLeft:10, color:'#5496FF',fontFamily:'Exo2-Regular'}}>{item.exchangeType}</Text>  
         </View>
         <View style={{marginTop:10}}>
-     
-          <LinearGradient colors={['#7498F9','#9B89F8','#D476F7']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:7,borderRadius:5,backgroundColor:'green',justifyContent:'center',alignItems:'center'}}>
-<TouchableOpacity onPress={()=>this.props.navigation.navigate('Payment')}>
-<Text style={{color:'#fff',fontFamily:'Exo2-Regular'}}>Exchange</Text></TouchableOpacity>
-</LinearGradient>
        
+     <View>
+     <LinearGradient colors={['#7498F9','#9B89F8','#D476F7']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:7,borderRadius:5,backgroundColor:'green',justifyContent:'center',alignItems:'center'}}>
+
+<Text style={{color:'#fff',fontFamily:'Exo2-Regular'}}>Exchange</Text>
+</LinearGradient>
+     </View>
+          
+     
         </View>
           
         </View>
 </LinearGradient>
   </View>
-       
-  </TouchableOpacity>  
+  </TouchableOpacity>
+          )
        }
     />
          </View>
@@ -297,7 +352,38 @@ space(){
       }
       clickedItemText=(item)=>
       {
-          Alert.alert(item.Status)
+        //openOverlay()
+        
+       let params=
+       {
+        "userId":item.id.toString(),
+        "exchangeMode":item.exchangeType.toString(),
+        "amountToTrade":item.amountToTrade.toString(),
+        "amountYouGet":item.amountYouGet.toString(),
+        "transactionFee":item.transactionFee.toString(),
+        "totalAmount":item.totalAmount.toString()
+      }
+        this.Load()
+        ExchangeRequest(params,this.ExchangeRequestResponse)
+         // Alert.alert(item.id.toString())
+         
+      }
+      ExchangeRequestResponse=(data)=>
+      {
+        console.log('Request data===>',data)
+        this.hide()
+        if(data!=DataUndefined)
+  {
+    if(data.status===ResponseSuccessStatus)
+    {
+   // openOverlay()
+   Alert.alert(data.status,data.message)
+    }
+    else
+    {
+      Alert.alert(data.message)
+    }
+  }
       }
       selectedCop=(item,itemIndex)=>{
         this.setState({

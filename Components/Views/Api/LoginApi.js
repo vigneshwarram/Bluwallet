@@ -17,7 +17,7 @@ import CheckConnectivity from './CheckInternet'
              email: params.email,
              password:params.password,
            })
-       }) .then((res)=> {
+       }).then((res)=> {
            console.log(res)
          return res.json();
         })
