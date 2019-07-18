@@ -26,6 +26,7 @@ export default class Price  extends React.Component {
       Amount: 'USDoller',
       animate:false,
       etheriumOpacity:0.4,
+       data : [ 50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100 ],
       TotalPrice:null,
       BtcOpacity:0,
       BtcFontColor:'#5597ff',
@@ -153,7 +154,7 @@ SlideMenu=()=>{
     this.props.navigation.navigate('Profile')
   }
   render() {
-    const data = [ 50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100 ]
+    
     const Line = ({ line }) => (
       <Path
           key={'line'}
@@ -218,7 +219,7 @@ SlideMenu=()=>{
           </View>
          
           <AreaChart style={{ height: 75,backgroundColor:'transparent',marginTop:10}}
-                data={data}
+                data={this.state.data}
                 showGrid={ false }
                 curve={shape.curveNatural}
                 svg={{ fill: '#60d8e6',stroke:'#25e2cd' }}
@@ -375,13 +376,15 @@ this.setState({
       }
       EtheriumClick=()=>
       {
-        this.setState({ Etherium1:'#14A9FF', Etherium2:'#2B84FF', Etherium3:'#6b00ff', Etherium4:'#8000FF',etheriumOpacity:0.4,EtheriumFontColor:'#fff'})
+        let data=[50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100]
+        this.setState({ Etherium1:'#14A9FF', Etherium2:'#2B84FF', Etherium3:'#6b00ff', Etherium4:'#8000FF',etheriumOpacity:0.4,EtheriumFontColor:'#fff',data:data})
         this.setState({TotalPrice:this.state.dataSource.usdforEther,})
         this.BtcReset()
       }
       BtcClick=()=>
       {
-        this.setState({Btc1:'#FF7267',Btc2:'#FF007F',BtcOpacity:0.4,BtcFontColor:'#fff'})
+        let data=[50, 60, 70, 95, 100, 100, 100, 80, 90, 150, 50, 40, 60, 100]
+        this.setState({Btc1:'#FF7267',Btc2:'#FF007F',BtcOpacity:0.4,BtcFontColor:'#fff',data:data})
         this.setState({TotalPrice:this.state.dataSource.usdforBtc,})
         this.EtheriumReset()
       }

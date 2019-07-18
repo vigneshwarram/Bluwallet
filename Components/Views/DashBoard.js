@@ -92,10 +92,6 @@ export default class DashBoard extends React.Component {
             title:"Etherium"
         },
         {
-          ShadowImages:require('./assets/shar.png'),
-            title:"Bitcoin"
-        },
-        {
           ShadowImages:require('./assets/mshadow.png'),
        
             title:"Monero"

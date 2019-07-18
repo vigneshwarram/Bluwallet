@@ -186,51 +186,34 @@ let CollapseExpand = (index, position) => {
       const MainNavigator =createStackNavigator({
         //Publish:{screen:Publish},
         Launch: { screen: Launch },
-       // UploadProgress:{screen:UploadProgress},
-        TakePhoto:{screen:TakePhoto},
-      
-        Sms:{screen:Sms},
-      
-      
+       //UploadProgress:{screen:UploadProgress},
+        TakePhoto:{screen:TakePhoto},     
+        Sms:{screen:Sms},     
         Home:{screen:TabNavigator},
         AddVault:{screen:AddVault},
-        ConfirmVault:{screen:ConfirmVault},
-
-      
+        ConfirmVault:{screen:ConfirmVault},    
         Login:{screen:Login},
         VerificationCards:{screen:VerificationCards},    
-        Welcome:{screen:Welcome}, 
-       
+        Welcome:{screen:Welcome},      
         ProfileRegister:{screen:ProfileRegister},      
-        NewWallet:{screen:NewWallet},    
-       
-       
-        
-      
-        DocumentPhoto:{screen:DocumentPhoto},
-     
-        TakePassportPhoto:{screen:TakePassportPhoto},
-       
+        NewWallet:{screen:NewWallet},       
+        DocumentPhoto:{screen:DocumentPhoto}, 
+        TakePassportPhoto:{screen:TakePassportPhoto},  
         DashBoard:{screen:DashBoard},        
         ForgotPassword:{screen:ForgotPassword},
         Confirm:{screen:Confirm},
        // Price:{screen:Price},                
         Profile:{screen:Profile},     
-        PinCode:{screen:PinCode},
-      
+        PinCode:{screen:PinCode},  
         Verify:{screen:Verify},
         CountrySearch:{screen:CountrySearch},
         Address:{screen:Address},
-      
         Payment:{screen:Payment},     
         Country:{screen:Country},
-        BankScreen:{screen:BankScreen},  
-        
+        BankScreen:{screen:BankScreen},     
         MoreInfo:{screen:MoreInfo},
-
         ChooseCountry:{screen:ChooseCountry},       
         },{
-
         //  transitionConfig: TransitionConfiguration,
           headerMode: 'none'
       });
