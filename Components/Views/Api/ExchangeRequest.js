@@ -29,7 +29,7 @@ export const ExchangeList=async(FetchExchangedata)=>
 
 export const ExchangeRequest=async(params,Request)=>
 {
-    fetch(Url+'bluewallet/exchange/request', {  
+    fetch(Url+'exchange/request', {  
         method: 'POST',
         headers: {
           'Accept': 'application/json',

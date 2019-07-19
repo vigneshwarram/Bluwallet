@@ -48,7 +48,7 @@ export default class Expandable_ListView extends Component {
              "transactionFee":data.transactionFee,
              "totalAmount":data.totalAmount
            }
-           //this.props.load()
+          // this.props.load
            ExchangeRequest(params,this.ExchangeRequestResponse)
            console.log('This params',params)
          }
@@ -56,7 +56,7 @@ export default class Expandable_ListView extends Component {
     ExchangeRequestResponse=(data)=>
     {
       console.log('Request data===>',data)
-      //this.props.hide()
+      //this.props.hide
       if(data!=DataUndefined)
 {
   if(data.status===ResponseSuccessStatus)
@@ -90,7 +90,7 @@ export default class Expandable_ListView extends Component {
       return (
         <View>
   
-          <TouchableOpacity activeOpacity={0.8} onPress={this.props.onClickFunction}>
+          <TouchableOpacity activeOpacity={0.8} onPress={this.props.onClickFunction} >
   
           <View style={{marginLeft:30,marginRight:30,marginBottom:20, shadowOffset: { width: 10, height: 10 },
   borderBottomWidth: 0,
