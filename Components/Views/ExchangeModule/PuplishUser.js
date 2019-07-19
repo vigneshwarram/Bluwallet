@@ -80,9 +80,8 @@ export default class  PuplishUser  extends React.Component {
   {
     if(data.status===ResponseSuccessStatus)
     {
-        
-     this.setState({dataSource:data.fetchExchageRequestDTO.exchangeDTOList})
-     const newFile = this.state.dataSource.map((file) => {
+    
+     const newFile =data.fetchExchageRequestDTO.exchangeDTOList.map((file) => {
 
         return {...file, expanded: false};
     });

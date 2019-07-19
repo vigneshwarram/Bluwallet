@@ -1,14 +1,16 @@
 
 import React, { Component } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
+import {ExchangeList,ExchangeRequest} from '../Api/ExchangeRequest'
+import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from './Constant'
 import { Alert, LayoutAnimation, StyleSheet, View, Text, ScrollView, UIManager, TouchableOpacity, Platform, Image } from 'react-native';
-
+let datasource=[1]
 export default class Expandable_ListView extends Component {
 
     constructor() {
   
       super();
-  
+    
       this.state = {
   
         layout_Height: 0
@@ -32,22 +34,41 @@ export default class Expandable_ListView extends Component {
         });
       }
     }
-    ExchangeRequest=(data)=>
+    SelectedExchangeRequest=(data)=>
     {
-        Alert.alert('hello')
+       // Alert.alert('hello')
        if(data!='undefined')
          {
             let params=
             {
-             "userId":data.id,
+             "userId":data.userId,
              "exchangeMode":data.exchangeType,
              "amountToTrade":data.amountToTrade,
              "amountYouGet":data.amountYouGet,
              "transactionFee":data.transactionFee,
              "totalAmount":data.totalAmount
            }
+           //this.props.load()
+           ExchangeRequest(params,this.ExchangeRequestResponse)
            console.log('This params',params)
          }
+    }
+    ExchangeRequestResponse=(data)=>
+    {
+      console.log('Request data===>',data)
+      //this.props.hide()
+      if(data!=DataUndefined)
+{
+  if(data.status===ResponseSuccessStatus)
+  {
+ // openOverlay()
+ Alert.alert(data.status,data.message)
+  }
+  else
+  {
+    Alert.alert(data.message)
+  }
+}
     }
     shouldComponentUpdate(nextProps, nextState) {
       if (this.state.layout_Height !== nextState.layout_Height) {
@@ -64,6 +85,8 @@ export default class Expandable_ListView extends Component {
     }
   
     render() {
+       // datasource=this.props.item
+        console.log(this.props)
       return (
         <View>
   
@@ -103,8 +126,9 @@ export default class Expandable_ListView extends Component {
           </TouchableOpacity>
   
           <View style={{ height: this.state.layout_Height, overflow: 'hidden' }}>
-  
-          <View style={{marginLeft:30,marginRight:30}}>
+         
+
+                <View style={{marginLeft:30,marginRight:30}}>
           <View style={{flexDirection:'row',justifyContent:'space-between',borderColor:'#5496FF',borderWidth:0.5,marginLeft:20}}>
 <View style={{alignItems:'center',justifyContent:'center',marginLeft:20}} >
 <Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Medium',marginBottom:10}}>Amount to Trade</Text>
@@ -155,7 +179,7 @@ export default class Expandable_ListView extends Component {
 <View style={{justifyContent:'center',alignItems:'center',marginBottom:10,width:"100%",marginTop:30}}>
 <View style={{width:"50%"}}>
 <LinearGradient colors={['#41da9c','#36deaf','#26e3ca']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{width:'100%',padding:12,backgroundColor:'green',justifyContent:'center',alignItems:'center',marginLeft:10,borderRadius:6}}>
-<TouchableOpacity onPress={this.ExchangeRequest(this,this.props.item)}>
+<TouchableOpacity  key={this.props.item} onPress={this.SelectedExchangeRequest.bind(this,this.props.item)}>
 <Text style={{color:'#fff',fontFamily:'Poppins-Medium'}}>Exchange</Text></TouchableOpacity>
 </LinearGradient>
 
@@ -163,6 +187,8 @@ export default class Expandable_ListView extends Component {
 
 </View>
      </View> 
+
+
   
           </View>
   
