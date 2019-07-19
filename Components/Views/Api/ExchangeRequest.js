@@ -29,7 +29,7 @@ export const ExchangeList=async(FetchExchangedata)=>
 
 export const ExchangeRequest=async(params,Request)=>
 {
-    fetch("http://192.168.2.78:9090/API/bluewallet/exchange/request", {  
+    fetch(Url+'bluewallet/exchange/request', {  
         method: 'POST',
         headers: {
           'Accept': 'application/json',

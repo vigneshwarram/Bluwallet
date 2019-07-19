@@ -22,6 +22,7 @@ import Exchange from './Components/Views/ExchangeModule/Exchange'
 import Country from './Components/Views/Country'
 import BankScreen from './Components/Views/BankScreen'
 import Publish from './Components/Views/ExchangeModule/Publish'
+import PuplishUser from './Components/Views/ExchangeModule/PuplishUser'
 import Welcome from './Components/Views/LoginModule/Welcome'
 import Verify from './Components/Views/LoginModule/Verify'
 import Address from  './Components/Views/LoginModule/Address'
@@ -115,6 +116,7 @@ let CollapseExpand = (index, position) => {
         Buy:{screen:Buy},
         Sell:{screen:Sell},
         Publish:{screen:Publish},
+        PuplishUser:{screen:PuplishUser}
       },
       )
       const TabNavigator = createBottomTabNavigator(
@@ -184,10 +186,12 @@ let CollapseExpand = (index, position) => {
         }},
        );
       const MainNavigator =createStackNavigator({
+       
         //Publish:{screen:Publish},
         Launch: { screen: Launch },
        //UploadProgress:{screen:UploadProgress},
         TakePhoto:{screen:TakePhoto},     
+        PuplishUser:{screen:PuplishUser},
         Sms:{screen:Sms},     
         Home:{screen:TabNavigator},
         AddVault:{screen:AddVault},

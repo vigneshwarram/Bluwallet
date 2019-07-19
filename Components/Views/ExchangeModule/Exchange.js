@@ -24,6 +24,8 @@ export default class  Buy  extends React.Component {
       switchValue:false,
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
+      Amount1:'ETH',
+      Amount2:'BTC',
       animate:false,
       w: 50,
       h: 45,
@@ -131,33 +133,50 @@ toggleSwitch=(value)=>{
           </TouchableOpacity>
 </LinearGradient> 
  <View style={{justifyContent:'center',alignItems:'center'}}>
-          <View style={{flexDirection:'row',marginTop:20}}>
+          <View style={{flexDirection:'row',marginTop:20,justifyContent:'space-between'}}>
           <Image style={{marginRight:10,width: 18, height: 22,resizeMode:'contain'}}   source={require("../assets/app4.png")} ></Image>     
           <Text style={{fontSize:18,color:'#fff',fontFamily:'Exo2-Regular'}}>Exchange</Text>
           </View>      
           <Text style={{fontSize:12,color:'#fff',marginTop:10,fontFamily:'Exo2-Regular'}}>How Much do you want to buy?</Text>           
           <View style={{flexDirection: 'row',marginLeft:20}}>
           <View style={{width:'40%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:10, justifyContent:"center"}}>
-<View style={{flexDirection:'row',marginLeft:20}}> 
-<TextInput
-          style={{height: 40, color:'#fff',fontFamily:'Exo2-Regular'}}
-       placeholderTextColor='#ffffff'
-       keyboardType = 'numeric'
-          placeholder="COP 0.000"
-          maxLength={10}
-        />
+<View style={{flexDirection:'row',marginLeft:20,justifyContent:'space-between'}}> 
+<View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center'}}>
+        <Text style={{color:'#fff',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.Amount1}</Text>
+        <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
+        <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}
+   selectedValue={this.state.Amount1}
+  onValueChange={(itemValue, itemIndex) => this.selected1(itemValue,itemIndex)}>
+  
+  <Picker.Item label="ETH" value="ETH" />
+  <Picker.Item label="BTC" value="BTC" />
+  </Picker>
+        </View>
+        <View>
+        <View>
+<Text style={{color:'#fff',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>0.000</Text>
+</View>
+        </View>
 </View>
           </View>
-          <View style={{width:'40%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:10,marginLeft:10, justifyContent:"center"}}>
-<View style={{flexDirection:'row',marginLeft:20}}>
+          <View style={{width:'40%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:10,marginLeft:10, justifyContent:"center",padding:10}}>
+<View style={{flexDirection:'row',marginLeft:20,justifyContent:'space-between'}}>
 
-<TextInput
-          style={{height: 40,color:'#fff',fontFamily:'Exo2-Regular'}}
-       placeholderTextColor='#ffffff'
-          placeholder="BTC 00.0"
-          keyboardType = 'numeric'
-          maxLength={10}
-        />
+<View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center'}}>
+        <Text style={{color:'#fff',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.Amount2}</Text>
+        <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
+        <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}
+   selectedValue={this.state.Amount2}
+  onValueChange={(itemValue, itemIndex) => this.selected2(itemValue,itemIndex)}>
+    <Picker.Item label="BTC" value="BTC" />
+  <Picker.Item label="ETH" value="ETH" />
+
+  </Picker>
+        </View>
+<View>
+<Text style={{color:'#fff',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>0.000</Text>
+</View>
+
 </View>
           </View>
     
@@ -332,6 +351,16 @@ toggleSwitch=(value)=>{
       clickedItemText=(item)=>
       {
           Alert.alert(item.Status)
+      }
+      selected1=(item,itemIndex)=>{
+        this.setState({
+          Amount1:item
+        })
+      }
+      selected2=(item,itemIndex)=>{
+        this.setState({
+          Amount2:item
+        })
       }
 }
 

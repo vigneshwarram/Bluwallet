@@ -230,17 +230,11 @@ space(){
         <Text style={{color:'#FFFFFF',opacity:1,fontSize:11,fontFamily:'Exo2-Regular'}}>{this.state.platform}</Text>
         <Image  style={{width: 9, height: 7,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
         <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}
-   selectedValue={this.state.Amount}
+   selectedValue={this.state.platform}
   onValueChange={(itemValue, itemIndex) => this.selectedPlatform(itemValue,itemIndex)}>
   
-  <Picker.Item label="COP" value="COP" />
-  <Picker.Item label="Inr" value="Inr" />
-  <Picker.Item label="USA" value="USA" />
-  <Picker.Item label="German" value="German" />
-  <Picker.Item label="Italy" value="Italy" />
-  <Picker.Item label="Aus" value="Aus" />
-  <Picker.Item label="India" value="India" />
-  <Picker.Item label="Aus" value="Aus" />
+  <Picker.Item label="platform" value="platform" />
+  <Picker.Item label="Users" value="Users" />
   </Picker>
         </View>
         
@@ -441,7 +435,7 @@ publicClick=()=>{
             this.ExchangeReset()
             this.BuyReset()
             this.SellReset()
-            this.props.navigation.navigate('Publish')
+            this.props.navigation.navigate('PuplishUser')
 }
 
       ExchangeClick=()=>{

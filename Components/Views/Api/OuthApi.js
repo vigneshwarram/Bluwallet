@@ -7,7 +7,7 @@ import Url from './CommonApi'
 formdata.append("username",params.email)
 formdata.append("password",params.password)
 formdata.append("grant_type",'password')
-    fetch('http://192.168.2.78:9090/oauth/token', {  
+    fetch('http://192.168.2.7:9090/oauth/token', {  
         method: 'POST',
         headers: {
           'Authorization':'Basic '+'Ymx1ZXdhbGxldC1jbGllbnQ6Ymx1ZXdhbGxldC1zZWNyZXQ='.trim()   

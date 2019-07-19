@@ -293,7 +293,7 @@ renderScane() {
       data={this.state.dataSource}
       keyExtractor={(item, index) => item.id}
           renderItem={({item,separators})=>(
-          <TouchableOpacity onPress={()=>this.clickedItemText(item)}>
+        
       <View style={{marginLeft:30,marginRight:30, shadowOffset: { width: 10, height: 10 },
   borderBottomWidth: 0,
   borderRadius:25}}>
@@ -311,21 +311,21 @@ renderScane() {
      <Text  style={{marginTop:10,marginLeft:10, color:'#5496FF',fontFamily:'Exo2-Regular'}}>{item.exchangeType}</Text>  
         </View>
         <View style={{marginTop:10}}>
-       
+        <TouchableOpacity onPress={()=>this.clickedItemText(item)}>
      <View>
      <LinearGradient colors={['#7498F9','#9B89F8','#D476F7']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:7,borderRadius:5,backgroundColor:'green',justifyContent:'center',alignItems:'center'}}>
 
 <Text style={{color:'#fff',fontFamily:'Exo2-Regular'}}>Exchange</Text>
 </LinearGradient>
      </View>
-          
+     </TouchableOpacity> 
      
         </View>
           
         </View>
 </LinearGradient>
   </View>
-  </TouchableOpacity>
+ 
           )
        }
     />
