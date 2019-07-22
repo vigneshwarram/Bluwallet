@@ -10,6 +10,8 @@ import Modal from "react-native-modal";
 import Dialog, { DialogContent } from 'react-native-popup-dialog';
 import Carousel ,{ Pagination } from 'react-native-snap-carousel';
 import { AreaChart, Grid } from 'react-native-svg-charts'
+import {VaultSystemApi,CryptoInvestment,CryptoTypeInvestment} from './Api/VaultSystemApi'
+import {ResponseSuccessStatus,InvalidResponse} from './Utils.js/Constant'
 import * as shape from 'd3-shape'
 import LinearGradient from 'react-native-linear-gradient';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
@@ -25,6 +27,7 @@ const instructions = Platform.select({
 let base64Logo = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAA..';
 const horizontalMargin = 20;
 const slideWidth = 280;
+let type='ETH';
 export default class DashBoard extends React.Component {
 
 
@@ -46,6 +49,9 @@ export default class DashBoard extends React.Component {
       OpenPop:false,
       BottomBar:false,
       ScanOpen:true,
+      CrptoType:'ETH',
+      Balance:null,
+      Usd:null,
       QrClick:true,
       QrLink:'http://facebook.github.io/react-native/',
       AnimatedWidth:new Animated.Value(50),
@@ -120,30 +126,8 @@ export default class DashBoard extends React.Component {
     this.props.navigation.setParams({bottombar:true})
     // this.GetListData()
     // this._animate()
+    this.GetData()
   }
-  GetListData=()=>{
-    this.Load()
-    var obj = {  
-      method: 'GET',
-      headers: {
-        'Content-Type'    : 'application/json',
-        'Accept'          : 'application/json',
-       'Authorization':'Bearer '+'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6ImJmNDczYTU5LTQxNzAtNDQ2My05YTI2LWZlNWNhYTVlZjMwZiIsIkV4cGlyeSI6bnVsbH0.tUaime3lRYn7wAu2KCnW3oFwIZa18eIL_4AOnoGJiKU'.trim()   
-         }
-  }
-  fetch("https://apptest.supplynow.co.uk/api/v1/Bookings/MyBookings",obj)  
-  .then((res)=> {
-    return res.json();
-   })
-   .then((resJson)=>{
-     this.dataset(resJson)
-   
-    return resJson;
-   })
-   .catch((error) => {
-    console.error(error);
-});
-}
 dataset=(data)=>{
   this.setState({
     dataSource:data
@@ -723,8 +707,8 @@ _animate=()=>{
                     renderItem={this._renderItem}            
                     inactiveSlideOpacity={0.1}                        
                     loop={true}
-                
                     onSnapToItem={(index) => this.action(index) }
+                  
                 />
       </View>
       
@@ -746,7 +730,7 @@ _animate=()=>{
                 </View>
                 <View>
                 <View style={{flexDirection:'row'}}>
-                <Text style={{marginLeft:30,fontSize:36,color:'#F5F6F9',fontFamily:'Exo2-SemiBold'}}>2.80258789</Text>
+                <Text style={{marginLeft:30,fontSize:36,color:'#F5F6F9',fontFamily:'Exo2-SemiBold'}}>{this.state.Balance}</Text>
                 <View style={{marginTop:-10,marginLeft:5}}>
                 <LinearGradient colors= {['#7498F9','#9B89F8','#D476F7']} style={{ width: 60,borderRadius:5, padding:5,
 justifyContent:'center',alignItems:"center"}} >
@@ -758,7 +742,7 @@ justifyContent:'center',alignItems:"center"}} >
                 </View>
                  </View>
                  <View style={{flexDirection:'row',justifyContent:'center',width:'100%',marginTop:20,alignItems:'center'}}>       		
-				 <Text style={{fontSize:12,color:'#F5F6F9',fontFamily:'Exo2-Regular'}}>880.889</Text>                                          
+				 <Text style={{fontSize:12,color:'#F5F6F9',fontFamily:'Exo2-Regular'}}>{this.state.Usd}</Text>                                          
         <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:20}}>
         <Text style={{color:'#ABB3D0',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.Amount}</Text>
         <Image  style={{width: 10, height: 10,marginLeft:10}}  source={require("./assets/down_arrow.png")} ></Image>
@@ -767,13 +751,6 @@ justifyContent:'center',alignItems:"center"}} >
   onValueChange={(itemValue, itemIndex) => this.selectedAmount(itemValue,itemIndex)}>
   
   <Picker.Item label="USDoller" value="USDoller" />
-  <Picker.Item label="Inr" value="Inr" />
-  <Picker.Item label="USA" value="USA" />
-  <Picker.Item label="German" value="German" />
-  <Picker.Item label="Italy" value="Italy" />
-  <Picker.Item label="Aus" value="Aus" />
-  <Picker.Item label="India" value="India" />
-  <Picker.Item label="Aus" value="Aus" />
   </Picker>
         </View>
         
@@ -910,10 +887,64 @@ justifyContent:'center',alignItems:"center"}} >
       {
           Alert.alert(item.Status)
       }
-      action=(index)=>
+      GetData=()=>
       {
-     console.log(index)
+        //this.Load()
+       // this.GetList()
+       // console.log(type)
+        VaultSystemApi(type,this.BalanceResponse)
       }
+      BalanceResponse=(data)=>
+{
+ // this.hide()
+  if(data!='undefined')
+  {
+    if(data.status===ResponseSuccessStatus)
+    {
+      if(data.CalculatingAmountDTO.cryptoType==='ETH')
+      {
+        this.setState({Usd:data.CalculatingAmountDTO.usdforEther,Balance:data.CalculatingAmountDTO.ethercurrentvalue})
+       
+      }
+      else
+      {
+        this.setState({Usd:data.CalculatingAmountDTO.usdforBtc,Balance:data.CalculatingAmountDTO.btcAmount})
+       
+      }
+    
+    }
+    else if(data.error==='invalid_token')
+    {
+      Alert.alert(
+        'Error',
+        'Token Expired',
+        [
+          {text: 'OK', onPress: () => this.props.navigation.navigate('Login')},
+        ],
+  
+      );
+    }
+    else
+    {
+      Alert.alert(InvalidResponse)
+    }
+  }
+}
+action=(index)=>
+{
+  
+    let num=index
+    if(num<=0)
+    {
+      type='ETH'           
+    }
+    else
+    {
+      type='BTC'
+  
+    }
+    this.GetData()
+  }
       selectedAmount=(item,itemIndex)=>{
         this.setState({
             Amount:item

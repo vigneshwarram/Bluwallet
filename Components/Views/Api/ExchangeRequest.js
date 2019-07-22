@@ -50,3 +50,27 @@ export const ExchangeRequest=async(params,Request)=>
         console.error(error);
     });
 }
+
+export const ExchangeOnLoad=async(exchangeType,params,Request)=>
+{
+    fetch(Url+exchangeType, {  
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'authorization':'bearer '+await AsyncStorage.getItem('AccessToken')
+        },
+        body:JSON.stringify(params)
+      }).then((res)=> {
+        return res.json();
+       })
+       .then((resJson)=>{
+         console.log(resJson)
+        Request(resJson)
+       
+        return resJson;
+       })
+       .catch((error) => {
+        console.error(error);
+    });
+}

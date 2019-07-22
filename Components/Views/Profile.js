@@ -4,7 +4,7 @@ import { View, StyleSheet, Image,ScrollView,NativeModules,Text,ActivityIndicator
 import { Alert } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {ProfileRetrive} from './Api/ProfileRegisterApi'
-
+import {ResponseSuccessStatus,InvalidResponse} from './Utils.js/Constant'
 export default class Profile  extends React.Component {
 
   static navigationOptions = {
@@ -22,7 +22,16 @@ export default class Profile  extends React.Component {
       animate:false,
       AnimatedWidth:new Animated.Value(50),
       AnimatedHieght:new Animated.Value(45),
-
+      "userName": "",
+      "email": "",
+      "mobileNo": "",
+      "firstName": "",
+      "lastName": "",
+      "dateOfBirth": "",
+      "address": "",
+      "address1": "",
+      "postalCode": "",
+      "cityId":0,
       RightSideWidth:new Animated.Value(50),
       RightsideHeight:new Animated.Value(45),
       app1icon:require('./assets/app1white.png'),
@@ -62,7 +71,11 @@ export default class Profile  extends React.Component {
   {
   if(data!='undefined')
      {
-
+      if(data.status===ResponseSuccessStatus)
+      
+      {
+        this.setState({userName:data.retrieveData.userName,userId:data.retrieveData.userId,email:data.retrieveData.email,mobileNo:data.retrieveData.mobileNo,dateOfBirth:data.retrieveData.dateOfBirth})
+      }
      }
 else
     {
@@ -216,7 +229,7 @@ right: 0,borderRadius:25,marginTop:-40,
     </View>
    
     <View style={{justifyContent:'center',alignItems:'center',marginTop:80}}>
-        <Text style={{color:'#fff',fontWeight:'bold',opacity:0.9,fontFamily:''}}>Jhon Doe</Text>
+        <Text style={{color:'#fff',fontWeight:'bold',opacity:0.9,fontFamily:''}}>{this.state.userName}</Text>
     </View>
    
                        <View
@@ -244,7 +257,7 @@ right: 0,borderRadius:25,marginTop:-40,
 </View>  
 
 <View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,textAlign:'center',opacity:0.7,fontFamily:''}}>1901</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,textAlign:'center',opacity:0.7,fontFamily:''}}>{this.state.userId}</Text> 
 </View>  
 
 </View>
@@ -261,7 +274,7 @@ right: 0,borderRadius:25,marginTop:-40,
 </View>
 
 <View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:''}}>+53 31265 845</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:''}}>{this.state.mobileNo}</Text> 
 </View>  
 
 </View>
@@ -274,10 +287,10 @@ right: 0,borderRadius:25,marginTop:-40,
 />
 <View style={{flexDirection:'row',marginLeft:30}}>  
 <View  style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Register</Text>  
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Date Of Birth</Text>  
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:''}}>2019 03 17</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:''}}>{this.state.dateOfBirth}</Text> 
 </View>
 </View>
 <View
@@ -316,7 +329,7 @@ right: 0,borderRadius:25,marginTop:-40,
 <Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>E-mail</Text>
 </View>
   <View style={{flex:1}}>
-  <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:''}}>vickyrams20@gmail.com</Text> 
+  <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:''}}>{this.state.email}</Text> 
   </View>
 
 </View>

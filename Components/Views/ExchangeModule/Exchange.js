@@ -1,14 +1,17 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet,TextInput, Image,Picker,ScrollView,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,KeyboardAvoidingView} from 'react-native';
+import { View, StyleSheet,TextInput, Image,Picker,ScrollView,Text,ActivityIndicator,TouchableOpacity,AsyncStorage,KeyboardAvoidingView} from 'react-native';
 import { Alert } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import { Switch} from 'react-native'
 import * as shape from 'd3-shape'
 import Logo from '../../logo'
+import {ExchangeOnLoad} from '../Api/ExchangeRequest'
+import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from '../Utils.js/Constant'
 import LinearGradient from 'react-native-linear-gradient';
 
-
+let crptoType="eth"
+let ExchangeType='getuserdetails'
 export default class  Buy  extends React.Component {
 
   static navigationOptions = {
@@ -24,8 +27,14 @@ export default class  Buy  extends React.Component {
       switchValue:false,
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
-      Amount1:'ETH',
-      Amount2:'BTC',
+      EthAmount:'ETH',
+      BtcAmount:'BTC',
+      ethercurrentvalue:null,
+      receivedAmount:null,
+      mincomercialValue:null,
+      maxcomercialValue:null,
+      usdforEther:null,
+      paidAmount:null,
       animate:false,
       w: 50,
       h: 45,
@@ -33,6 +42,7 @@ export default class  Buy  extends React.Component {
       hr:45,
       Ahr:80,
       Awr:80,
+      
       clickr:false,
       clickopen:false,
       click:false,
@@ -51,31 +61,37 @@ export default class  Buy  extends React.Component {
   
   componentDidMount()
   {
-   // this.GetListData()
+    this.OnLoad()
   }
-  GetListData=()=>{
-    this.Load()
-    var obj = {  
-      method: 'GET',
-      headers: {
-        'Content-Type'    : 'application/json',
-        'Accept'          : 'application/json',
-       'Authorization':'Bearer '+'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6ImJmNDczYTU5LTQxNzAtNDQ2My05YTI2LWZlNWNhYTVlZjMwZiIsIkV4cGlyeSI6bnVsbH0.tUaime3lRYn7wAu2KCnW3oFwIZa18eIL_4AOnoGJiKU'.trim()   
-         }
-  }
-  fetch("https://apptest.supplynow.co.uk/api/v1/Bookings/MyBookings",obj)  
-  .then((res)=> {
-    return res.json();
-   })
-   .then((resJson)=>{
-     this.dataset(resJson)
+  OnLoad=async()=>
+  {
+    let type=crptoType
+    let params=
+    {
+      userId:await AsyncStorage.getItem('UserId') ,
+      cryptoType:type
+
+    }
    
-    return resJson;
-   })
-   .catch((error) => {
-    console.error(error);
-});
-}
+    ExchangeOnLoad(ExchangeType,params,this.OnLoadResponse)
+  }
+  OnLoadResponse=(data)=>
+  {
+    if(data!=DataUndefined)
+    {
+      if(data.status===ResponseSuccessStatus)
+      {
+        this.setState({"usdforEther":data.CalculatingAmountDTO.usdforEther.toString(),
+        "ethercurrentvalue": data.CalculatingAmountDTO.ethercurrentvalue,
+        "cryptoType": data.CalculatingAmountDTO.cryptoType,
+        "receivedAmount":data.CalculatingAmountDTO.receivedAmount,
+        "paidAmount": data.CalculatingAmountDTO.paidAmount,
+        "mincomercialValue":data.CalculatingAmountDTO.mincomercialValue,
+        "maxcomercialValue":data.CalculatingAmountDTO.maxcomercialValue})
+      }
+    }
+  }
+
 dataset=(data)=>{
   this.setState({
     dataSource:data
@@ -142,10 +158,10 @@ toggleSwitch=(value)=>{
           <View style={{width:'40%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:10, justifyContent:"center"}}>
 <View style={{flexDirection:'row',marginLeft:20,justifyContent:'space-between'}}> 
 <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center'}}>
-        <Text style={{color:'#fff',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.Amount1}</Text>
+        <Text style={{color:'#fff',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.EthAmount}</Text>
         <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
         <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}
-   selectedValue={this.state.Amount1}
+   selectedValue={this.state.EthAmount}
   onValueChange={(itemValue, itemIndex) => this.selected1(itemValue,itemIndex)}>
   
   <Picker.Item label="ETH" value="ETH" />
@@ -154,7 +170,7 @@ toggleSwitch=(value)=>{
         </View>
         <View>
         <View>
-<Text style={{color:'#fff',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>0.000</Text>
+<Text style={{color:'#fff',opacity:1,fontSize:12,fontFamily:'Exo2-Regular',marginRight:10}}>0.000</Text>
 </View>
         </View>
 </View>
@@ -163,10 +179,10 @@ toggleSwitch=(value)=>{
 <View style={{flexDirection:'row',marginLeft:20,justifyContent:'space-between'}}>
 
 <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center'}}>
-        <Text style={{color:'#fff',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.Amount2}</Text>
+        <Text style={{color:'#fff',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.BtcAmount}</Text>
         <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
         <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}
-   selectedValue={this.state.Amount2}
+   selectedValue={this.state.BtcAmount}
   onValueChange={(itemValue, itemIndex) => this.selected2(itemValue,itemIndex)}>
     <Picker.Item label="BTC" value="BTC" />
   <Picker.Item label="ETH" value="ETH" />
@@ -204,9 +220,16 @@ toggleSwitch=(value)=>{
   </View>  
           <LinearGradient  colors= {['transparent','transparent','transparent']} style={{marginTop:20}} >
    <ScrollView>
-<View style={{marginTop:20,backgroundColor:'transparent',marginBottom:100}}>  
+<View style={{backgroundColor:'transparent',marginBottom:100}}>  
 <View style={{justifyContent:'center',alignItems:'center'}}>
-<Text style={{marginTop:10,fontSize:36,color:'#F5F6F9',fontFamily:'Exo2-SemiBold'}}>$ 0.00</Text>
+<TextInput
+          style={{height: 80,color:'#fff',fontSize:36}}
+          placeholder="$ 0.000" 
+          placeholderTextColor="#fff"
+          keyboardType = "number-pad"
+          onChangeText={(text) =>this.ChangeText(text)}
+          value={this.state.usdforEther}
+        />
 </View> 
 
 <View
@@ -222,7 +245,7 @@ toggleSwitch=(value)=>{
 </View>  
 
 <View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,textAlign:'center',fontFamily:'Exo2-Regular'}}>121ETH</Text> 
+<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,textAlign:'center',fontFamily:'Exo2-Regular'}}>{this.state.ethercurrentvalue}</Text> 
 
 </View>  
 
@@ -240,7 +263,7 @@ toggleSwitch=(value)=>{
 </View>
 
 <View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,fontFamily:'Exo2-Regular'}}>455$</Text> 
+<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,fontFamily:'Exo2-Regular'}}>{this.state.usdforEther}</Text> 
 </View>  
 
 </View>
@@ -256,7 +279,7 @@ toggleSwitch=(value)=>{
 <Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Medium'}}>Network fees</Text>  
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,fontFamily:'Exo2-Regular'}}>12ETH-199BTC</Text> 
+<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,fontFamily:'Exo2-Regular'}}>{this.state.receivedAmount}</Text> 
 </View>
 </View>
 <View
@@ -271,7 +294,7 @@ toggleSwitch=(value)=>{
 <Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Medium'}}>Commercial Limits</Text>
 </View>
   <View style={{flex:1}}>
-  <Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,fontFamily:'Exo2-Regular'}}>1000-100,00,00 COP</Text> 
+  <Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,fontFamily:'Exo2-Regular'}}>{this.state.mincomercialValue}-{this.state.maxcomercialValue} COP</Text> 
   </View>
 
 </View>
@@ -288,7 +311,7 @@ toggleSwitch=(value)=>{
 <Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Medium'}}>Send</Text>  
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,fontFamily:'Exo2-Regular'}}>20ETH</Text> 
+<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,fontFamily:'Exo2-Regular'}}>{this.state.paidAmount}ETH</Text> 
 </View>
 
 </View>
@@ -354,13 +377,25 @@ toggleSwitch=(value)=>{
       }
       selected1=(item,itemIndex)=>{
         this.setState({
-          Amount1:item
+          EthAmount:item
         })
       }
       selected2=(item,itemIndex)=>{
         this.setState({
-          Amount2:item
+          BtcAmount:item
         })
+      }
+      ChangeText=(UsdAmount)=>
+      {
+        if(UsdAmount.length<this.state.usdforEther.length)
+        {
+          this.setState({usdforEther:''})
+        }
+        else
+        {
+          this.setState({usdforEther:UsdAmount})
+        }
+       
       }
 }
 
