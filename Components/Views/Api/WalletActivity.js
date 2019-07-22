@@ -1,6 +1,6 @@
 import Url from './CommonApi'
 import{AsyncStorage} from 'react-native'
-export const VaultSystemApi=async(params,VaultResponse)=>
+export const getactivitydata=async(params,VaultResponse)=>
 {
     fetch(Url+'getactivitydata', {  
         method: 'POST',
@@ -9,12 +9,7 @@ export const VaultSystemApi=async(params,VaultResponse)=>
           'Content-Type': 'application/json',
           'authorization':'bearer '+await AsyncStorage.getItem('AccessToken')
         },
-        body: JSON.stringify({
-             cryptoType:params,
-             userId:await AsyncStorage.getItem('UserId') 
-             
-
-        })
+        body: JSON.stringify(params)
       }) .then((res)=> {
         return res.json();
        })

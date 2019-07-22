@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,Picker,NativeModules,Text,ActivityIndicator,TouchableOpacity, Animated,Platform,TextInput,Slider,
+import { View, StyleSheet, Image,Picker,NativeModules,Text,AsyncStorage,TouchableOpacity, Animated,Platform,TextInput,Slider,
   Easing,Dimensions} from 'react-native';
 import { Alert } from 'react-native';
 const { UIManager } = NativeModules;
@@ -11,7 +11,8 @@ import Dialog, { DialogContent } from 'react-native-popup-dialog';
 import Carousel ,{ Pagination } from 'react-native-snap-carousel';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import {VaultSystemApi,CryptoInvestment,CryptoTypeInvestment} from './Api/VaultSystemApi'
-import {ResponseSuccessStatus,InvalidResponse} from './Utils.js/Constant'
+import {ResponseSuccessStatus,InvalidResponse, InvalidToken} from './Utils.js/Constant'
+import {getactivitydata} from './Api/WalletActivity'
 import * as shape from 'd3-shape'
 import LinearGradient from 'react-native-linear-gradient';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
@@ -28,6 +29,8 @@ let base64Logo = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAA..';
 const horizontalMargin = 20;
 const slideWidth = 280;
 let type='ETH';
+let cryptoType="BTCTEST"
+let fetchAmountFlag='All'
 export default class DashBoard extends React.Component {
 
 
@@ -61,7 +64,7 @@ export default class DashBoard extends React.Component {
       RightsideHeight:new Animated.Value(45),
       currentIndex:0,
       data1:[require('./assets/biconback.png'),require('./assets/etherem.png'),require('./assets/biconback.png'),require('./assets/etherem.png')],
-      Time: 'Today',
+      Time: 'month',
       NoPopup:this.props.navigation.state.params.DashBoardPopup,
       animate:false,
       KyC:this.props.navigation.state.params.Kyc,
@@ -810,14 +813,10 @@ justifyContent:'center',alignItems:"center"}} >
    selectedValue={this.state.Time}
   onValueChange={(itemValue, itemIndex) => this.selectedTime(itemValue,itemIndex)}>
   
-  <Picker.Item label="India" value="India" />
-  <Picker.Item label="Aus" value="Aus" />
-  <Picker.Item label="USA" value="USA" />
-  <Picker.Item label="German" value="German" />
-  <Picker.Item label="Italy" value="Italy" />
-  <Picker.Item label="Aus" value="Aus" />
-  <Picker.Item label="India" value="India" />
-  <Picker.Item label="Aus" value="Aus" />
+  <Picker.Item label="Today" value="today" />
+  <Picker.Item label="week" value="week" />
+  <Picker.Item label="Month" value="month" />
+  
   </Picker>     
         </View>
         
@@ -828,7 +827,7 @@ justifyContent:'center',alignItems:"center"}} >
                  <View style={{flex:1,marginBottom:90}}>
                  <FlatList  style={{marginTop:10}}
       ItemSeparatorComponent={this.space}
-      data={this.state.data1}
+      data={this.state.dataSource}
           renderItem={({item,separators})  =>
         <TouchableOpacity onShowUnderlay={separators.highlight}
       onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
@@ -845,19 +844,19 @@ justifyContent:'center',alignItems:"center"}} >
           </View>
           <View style={{flexDirection:'column'}}>
           <View style={{flex:1, flexDirection: 'row',justifyContent:'space-between'}}>            
-         <Text  style={{marginRight:20,marginTop:10,color:'#fff',fontFamily:"Exo2-Bold"}}>Sent to Dan23</Text>       
+         <Text  style={{marginRight:20,marginTop:10,color:'#fff',fontFamily:"Exo2-Bold"}}>Sent to {item.sendby}</Text>       
      <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
      <Image style={{width: 25,marginTop:10, height: 25}}   source={require("./assets/plusblue.png")} ></Image>    
-     <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff',fontFamily:'Exo2-Regular'}}>$ 9060</Text> 
+     <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff',fontFamily:'Exo2-Regular'}}>$ {item.usdValue}</Text> 
      </View>
         
      </View>  
      <View style={{flex:1, flexDirection:'row',justifyContent:'space-between' ,paddingBottom:15}}>
  
             
-         <Text  style={{marginRight:20,marginTop:10,color:'#5496FF',fontFamily:'Exo2-Regular'}}>Feb 23 2019  . 11.05</Text>       
+         <Text  style={{marginRight:20,marginTop:10,color:'#5496FF',fontFamily:'Exo2-Regular'}}>{item.Date+" "+item.time}</Text>       
      
-      <Text  style={{marginRight:20,marginTop:10,color:'#5496FF',fontFamily:'Exo2-Regular'}}>5.4587ETH</Text>    
+      <Text  style={{marginRight:20,marginTop:10,color:'#5496FF',fontFamily:'Exo2-Regular'}}>{item.receivedAmount}ETH</Text>    
      </View>  
           </View>
          
@@ -904,6 +903,7 @@ justifyContent:'center',alignItems:"center"}} >
       if(data.CalculatingAmountDTO.cryptoType==='ETH')
       {
         this.setState({Usd:data.CalculatingAmountDTO.usdforEther,Balance:data.CalculatingAmountDTO.ethercurrentvalue})
+        this.GetList()
        
       }
       else
@@ -930,30 +930,74 @@ justifyContent:'center',alignItems:"center"}} >
     }
   }
 }
+GetList=async()=>
+{
+ let userId =await AsyncStorage.getItem('UserId') 
+ let params=
+ {
+  "userId":userId,
+  "fetchAmountFlag":'All',
+  "cryptoType":cryptoType,
+  "flagfordates":this.state.Time 
+ }
+ getactivitydata(params,this.ListData)
+}
+ListData=(data)=>
+{
+  if(data!='undefined')
+  {
+    if(data.status===ResponseSuccessStatus)
+    {
+     this.setState({dataSource:data.listCalculatingAmountDTO})
+    }
+    else if(data.error===InvalidToken)
+      {
+        Alert.alert(
+          'Error',
+          TokenExpired,
+          [
+            {text: 'OK', onPress: () => this.props.navigation.navigate("Login")},
+          ],
+    
+        );
+      }
+      else
+      {
+        Alert.alert(InvalidResponse)
+      }
+  }
+}
 action=(index)=>
 {
   
     let num=index
     if(num<=0)
     {
-      type='ETH'           
+      type='ETH'  
+      cryptoType='Eth'   
+      this.GetList()      
     }
     else
     {
       type='BTC'
-  
+      cryptoType='BTCTEST'  
+      this.GetList()    
     }
     this.GetData()
   }
-      selectedAmount=(item,itemIndex)=>{
+      selectedAmount=(item,itemIndex)=>
+      {
         this.setState({
             Amount:item
         })
+      
       }
       selectedTime=(item,itemIndex)=>{
         this.setState({
         Time:item
         })
+
+       this.GetList()
       }
       ContinueClick=()=>{
         this.props.navigation.navigate('Welcome')

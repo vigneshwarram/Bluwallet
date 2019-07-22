@@ -60,7 +60,7 @@ export default class Price  extends React.Component {
           'Error',
           TokenExpired,
           [
-            {text: 'OK', onPress: () => this.props.navigation.navigate(Login)},
+            {text: 'OK', onPress: () => this.props.navigation.navigate("Login")},
           ],
     
         );
