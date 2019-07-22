@@ -241,10 +241,19 @@ SlideMenu=()=>{
          if(data.status==ResponseSuccessStatus)
          {
           //await AsyncStorage.setItem('loginInfo',data.loginInfo); 
-        
+        if(data.loginInfo.gmailstatus==0)
+        {
+          this.props.navigation.navigate('Home',{
+            DashBoardPopup: false,Kyc:true
+          });
+        }
+        else
+        {
           this.props.navigation.navigate('Home',{
             DashBoardPopup: true,Kyc:true
           });
+        }
+          
          }
          else
          {
