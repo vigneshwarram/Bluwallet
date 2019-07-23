@@ -12,7 +12,7 @@ formdata.append("kycDoc2 ",{
     uri: params.DocumentPhoto2.path,
     name: params.DocumentPhoto2.fileName,
     type: params.DocumentPhoto2.type})
-    fetch('http://192.168.2.78:9090/API/user/upload/kyc', {  
+    fetch('http://bluwallet.colan.in/bluewallet-0.0.1-SNAPSHOT/API/user/upload/kyc', {  
         method: 'POST',
         headers: {
             'Content-Type': 'multipart/form-data',

@@ -317,9 +317,9 @@ SlideMenu=()=>{
          this.props.navigation.navigate('Sms')
          
         }
-        else if(Registerdata.status==InvalidResponse)
+        else if(Registerdata.status=='failure')
         {
-          Alert.alert(Registerdata.error)
+          Alert.alert(Registerdata.message)
         }
         else if(Registerdata.status==InvalidToken)
         {

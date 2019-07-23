@@ -2,7 +2,7 @@ import Url from './CommonApi'
 import{AsyncStorage} from 'react-native'
 export const CountryStateData= async(ApiLink,CountryStateData)=>
 {
-    fetch('http://192.168.2.78:9090/'+ApiLink, {  
+    fetch('http://bluwallet.colan.in/bluewallet-0.0.1-SNAPSHOT/'+ApiLink, {  
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
