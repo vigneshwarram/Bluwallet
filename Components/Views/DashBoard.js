@@ -53,7 +53,7 @@ export default class DashBoard extends React.Component {
       BottomBar:false,
       ScanOpen:true,
       CrptoType:'ETH',
-      Balance:null,
+      Balance:0.0000,
       Usd:null,
       QrClick:true,
       QrLink:'http://facebook.github.io/react-native/',
@@ -745,7 +745,7 @@ justifyContent:'center',alignItems:"center"}} >
                 </View>
                  </View>
                  <View style={{flexDirection:'row',justifyContent:'center',width:'100%',marginTop:20,alignItems:'center'}}>       		
-				 <Text style={{fontSize:12,color:'#F5F6F9',fontFamily:'Exo2-Regular'}}>{this.state.Usd}</Text>                                          
+				 <Text style={{fontSize:12,color:'#5183d8',fontFamily:'Exo2-Regular'}}>{this.state.Usd}</Text>                                          
         <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:20}}>
         <Text style={{color:'#ABB3D0',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.Amount}</Text>
         <Image  style={{width: 10, height: 10,marginLeft:10}}  source={require("./assets/down_arrow.png")} ></Image>
@@ -895,6 +895,7 @@ justifyContent:'center',alignItems:"center"}} >
       }
       BalanceResponse=(data)=>
 {
+  console.log('data',data)
  // this.hide()
   if(data!='undefined')
   {
@@ -902,13 +903,13 @@ justifyContent:'center',alignItems:"center"}} >
     {
       if(data.CalculatingAmountDTO.cryptoType==='ETH')
       {
-        this.setState({Usd:data.CalculatingAmountDTO.usdforEther,Balance:data.CalculatingAmountDTO.ethercurrentvalue})
+        this.setState({Usd:data.CalculatingAmountDTO.usdforEther,Balance:data.CalculatingAmountDTO.currentUsdforEther})
         this.GetList()
        
       }
       else
       {
-        this.setState({Usd:data.CalculatingAmountDTO.usdforBtc,Balance:data.CalculatingAmountDTO.btcAmount})
+        this.setState({Usd:data.CalculatingAmountDTO.usdforBtc,Balance:data.CalculatingAmountDTO.currentUsdforBtc})
        
       }
     

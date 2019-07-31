@@ -74,7 +74,9 @@ export default class  Publish  extends React.Component {
   {
     if(data.status===ResponseSuccessStatus)
     {
-     this.setState({dataSource:data.fetchExchageRequestDTO.exchangeDTOList})
+      let FinalResult=[];
+      FinalResult=this.search('BTC_ETH_ADMIN',data.fetchExchageRequestDTO.exchangeDTOList)
+     this.setState({dataSource:FinalResult})
     }
     else if(data.error===InvalidToken)
     {
@@ -92,6 +94,17 @@ export default class  Publish  extends React.Component {
       Alert.alert(InvalidResponse)
     }
   }
+}
+search = (key, inputArray) => {
+  console.log('inputArray length',inputArray.length)
+  let SearchArray=[]
+  for (let i=0; i < inputArray.length; i++) {
+      if (inputArray[i].exchangeType === key && inputArray[i].status===1) {
+        SearchArray.push(inputArray[i])
+      }
+      
+  }
+  return SearchArray;
 }
 dataset=(data)=>{
   this.setState({

@@ -350,14 +350,15 @@ toggleSwitch=(value)=>{
 />
 <View style={{backgroundColor:'#232d51'}}>
 <View style={{justifyContent:'center',alignItems:'center',marginBottom:100,width:"100%",marginTop:30}}>
+<TouchableOpacity onPress={() => this.exchangeApi()}>
 <View style={{width:"50%"}}>
 <LinearGradient colors={['#41da9c','#36deaf','#26e3ca']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{width:'100%',padding:12,backgroundColor:'green',justifyContent:'center',alignItems:'center',marginLeft:10,borderRadius:6}}>
-<TouchableOpacity onPress={() => this.exchangeApi()}>
-<Text style={{color:'#fff',fontFamily:'Poppins-Medium'}}>Exchange</Text></TouchableOpacity>
+
+<Text style={{color:'#fff',fontFamily:'Poppins-Medium'}}>Exchange</Text>
 </LinearGradient>
 
 </View>
-
+</TouchableOpacity>
 </View>
 </View>
    

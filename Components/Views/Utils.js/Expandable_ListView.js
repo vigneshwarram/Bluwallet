@@ -36,18 +36,36 @@ export default class Expandable_ListView extends Component {
     }
     SelectedExchangeRequest=(data)=>
     {
+      let params;
+      console.log('Expandable list response',data)
        // Alert.alert('hello')
        if(data!='undefined')
          {
-            let params=
+           if(data.exchangeType=='BTC_ETH_USER')
+           {
+             params=
             {
              "userId":data.userId,
-             "exchangeMode":data.exchangeType,
-             "amountToTrade":data.amountToTrade,
-             "amountYouGet":data.amountYouGet,
-             "transactionFee":data.transactionFee,
-             "totalAmount":data.totalAmount
+             "etherAmount":data.amountToTrade,
+             "toEthWalletAddress":data.ethWalletAddress,
+             "exchangeReqId":0,
+             "exchangeStatus":data.status,
+             
            }
+           }
+           else
+           {
+            params=
+            {
+             "userId":data.userId,
+             "btcAmount":data.amountToTrade,
+             "toBtcWalletAddress":data.btcWalletAddress,
+             "exchangeReqId":0,
+             "exchangeStatus":data.status,
+             
+           }
+           }
+          
           // this.props.load
            ExchangeRequest(params,this.ExchangeRequestResponse)
            console.log('This params',params)

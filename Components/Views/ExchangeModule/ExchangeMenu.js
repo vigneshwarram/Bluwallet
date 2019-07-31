@@ -94,7 +94,9 @@ export default class  ExchangeMenu  extends React.Component {
   {
     if(data.status===ResponseSuccessStatus)
     {
-     this.setState({dataSource:data.fetchExchageRequestDTO.exchangeDTOList})
+      let FinalResult=[];
+       FinalResult=this.search(0,data.fetchExchageRequestDTO.exchangeDTOList)
+     this.setState({dataSource:FinalResult})
     }
     else if(data.error===InvalidToken)
     {
@@ -111,6 +113,16 @@ export default class  ExchangeMenu  extends React.Component {
     {
       Alert.alert(InvalidResponse)
     }
+  }
+}
+search = (key, inputArray) => {
+  console.log('inputArray length',inputArray.length)
+  let SearchArray=[]
+  for (let i=0; i < inputArray.length; i++) {
+      if (inputArray[i].exchangeType === key ||inputArray[i].exchangeType === 'ETH_BTC_USER' && inputArray[i].status===1) {
+        SearchArray.push(inputArray[i])
+      }
+      
   }
 }
 dataset=(data)=>{
@@ -435,7 +447,15 @@ publicClick=()=>{
             this.ExchangeReset()
             this.BuyReset()
             this.SellReset()
-            this.props.navigation.navigate('PuplishUser')
+            if(this.state.Admin=='Admin')
+            {
+              this.props.navigation.navigate('Publish')
+            }
+            else
+            {
+              this.props.navigation.navigate('PuplishUser')
+            }
+           
 }
 
       ExchangeClick=()=>{
@@ -508,7 +528,7 @@ Exchangecolor5:'#4781DF'
 this.setState({
   Admin:item
 })
-console.log('selected_items',Admin)
+console.log('selected_items',this.state.Admin)
       }
 }
 

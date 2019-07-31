@@ -80,8 +80,9 @@ export default class  PuplishUser  extends React.Component {
   {
     if(data.status===ResponseSuccessStatus)
     {
-    
-     const newFile =data.fetchExchageRequestDTO.exchangeDTOList.map((file) => {
+      let FinalResult=[];
+       FinalResult=this.search('BTC_ETH_USER',data.fetchExchageRequestDTO.exchangeDTOList)
+     const newFile =FinalResult.map((file) => {
 
         return {...file, expanded: false};
     });
@@ -103,6 +104,17 @@ export default class  PuplishUser  extends React.Component {
       Alert.alert(InvalidResponse)
     }
   }
+}
+search = (key, inputArray) => {
+  console.log('inputArray length',inputArray.length)
+  let SearchArray=[]
+  for (let i=0; i < inputArray.length; i++) {
+      if (inputArray[i].exchangeType === key ||inputArray[i].exchangeType === 'ETH_BTC_USER' && inputArray[i].status===1) {
+        SearchArray.push(inputArray[i])
+      }
+      
+  }
+  return SearchArray;
 }
 update_Layout = (index) => {
 
