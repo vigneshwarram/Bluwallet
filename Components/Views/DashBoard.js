@@ -46,6 +46,8 @@ export default class DashBoard extends React.Component {
     this.RotateValueHolder = new Animated.Value(0);
     this.state = {
       dataSource:[],
+      currentUsdforEther:null,
+      currentUsdforBtc:null,
       dataImage:[{'image1':require("./assets/etherem.png"),'image1':require("./assets/etherem.png")}],
       cityItems:["US Doller,Indian,Eutherium"],
       Amount: 'USDoller',
@@ -762,11 +764,14 @@ justifyContent:'center',alignItems:"center"}} >
                  </View>       
                  <View style={{flexDirection:'row',marginTop:10}}> 
                  <View style={{flexDirection:'row'}}>
+                 <TouchableOpacity onPress={()=>this.props.navigation.navigate('Price')}>
                  <View style={{justifyContent:'center',alignItems:'center'}}>
                  <View style={{width:45,height:25,borderWidth:1,borderColor:'#4A6BCD',justifyContent:'center',alignItems:'center',borderRadius:6}}>
                  <Text style={{fontSize:12,color:'#ABB3D0',fontFamily:'Exo2-Regular'}}>All</Text>
                  </View>
                  </View>
+                 </TouchableOpacity>
+               
                 
                  <View style={{marginLeft:30}}>
                  <View style={{flexDirection:'row'}}>
@@ -776,7 +781,7 @@ justifyContent:'center',alignItems:"center"}} >
                  </View>
                  </View>
                   
-                 <Text style={{marginTop:1,fontSize:12,fontWeight:'bold',color:'#ABB3D0',fontFamily:'Exo2-Medium'}}>435$</Text> 
+                 <Text style={{marginTop:1,fontSize:12,fontWeight:'bold',color:'#ABB3D0',fontFamily:'Exo2-Medium'}}>{this.state.currentUsdforEther}$</Text> 
                  </View>
                  <View style={{marginLeft:40}}>
                  <View style={{flexDirection:'row'}}>
@@ -786,7 +791,7 @@ justifyContent:'center',alignItems:"center"}} >
                 </View>
                  </View>
              
-                 <Text style={{marginTop:1,fontSize:12,color:'#ABB3D0',fontFamily:'Exo2-Regular'}}>20.000$</Text>
+                 <Text style={{marginTop:1,fontSize:12,color:'#ABB3D0',fontFamily:'Exo2-Regular'}}>{this.state.currentUsdforBtc}$</Text>
                  </View>
                  <View  style={{marginLeft:40}}>
                  <View style={{flexDirection:'row'}}>
@@ -903,13 +908,14 @@ justifyContent:'center',alignItems:"center"}} >
     {
       if(data.CalculatingAmountDTO.cryptoType==='ETH')
       {
-        this.setState({Usd:data.CalculatingAmountDTO.usdforEther,Balance:data.CalculatingAmountDTO.currentUsdforEther})
+        this.setState({Usd:data.CalculatingAmountDTO.usdforEther,Balance:data.CalculatingAmountDTO.etherAmount,
+          currentUsdforEther:data.CalculatingAmountDTO.currentUsdforEther,currentUsdforBtc:data.CalculatingAmountDTO.currentUsdforBtc})
         this.GetList()
        
       }
       else
       {
-        this.setState({Usd:data.CalculatingAmountDTO.usdforBtc,Balance:data.CalculatingAmountDTO.currentUsdforBtc})
+        this.setState({Usd:data.CalculatingAmountDTO.usdforBtc,Balance:data.CalculatingAmountDTO.btcAmount})
        
       }
     

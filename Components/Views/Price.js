@@ -387,6 +387,11 @@ this.setState({
         this.setState({Btc1:'#FF7267',Btc2:'#FF007F',BtcOpacity:0.4,BtcFontColor:'#fff',data:data})
         this.setState({TotalPrice:this.state.dataSource.usdforBtc,})
         this.EtheriumReset()
+       // setInterval(this.nav, 700);
+      }
+      nav=()=>
+      {
+        this.props.navigation.navigate('DashBoard')
       }
       EtheriumReset=()=>
       {
