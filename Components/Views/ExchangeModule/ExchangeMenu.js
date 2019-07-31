@@ -45,7 +45,7 @@ export default class  ExchangeMenu  extends React.Component {
        PublicIcon:require('../assets/puplishcolor.png'),
        BuyIcon:require('../assets/buy.png'),
        SellIcon:require('../assets/sell.png'),
-       platform:'platform',
+       Admin:'Admin',
       Coin: 'Us Doller',
       animate:false,
 
@@ -227,13 +227,13 @@ space(){
 <Image  style={{width: 20, height: 20,resizeMode:'contain'}}  source={require("../assets/tv.png")} ></Image> 
 </View>
 <View style={{justifyContent:'center',flexDirection:'row',alignItems:'center',marginLeft:20,paddingTop:5,paddingBottom:5}}>
-        <Text style={{color:'#FFFFFF',opacity:1,fontSize:11,fontFamily:'Exo2-Regular'}}>{this.state.platform}</Text>
+        <Text style={{color:'#FFFFFF',opacity:1,fontSize:11,fontFamily:'Exo2-Regular'}}>{this.state.Admin}</Text>
         <Image  style={{width: 9, height: 7,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
         <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}
-   selectedValue={this.state.platform}
+   selectedValue={this.state.Admin}
   onValueChange={(itemValue, itemIndex) => this.selectedPlatform(itemValue,itemIndex)}>
   
-  <Picker.Item label="platform" value="platform" />
+  <Picker.Item label="Admin" value="Admin" />
   <Picker.Item label="Users" value="Users" />
   </Picker>
         </View>
@@ -506,8 +506,9 @@ Exchangecolor5:'#4781DF'
       }
       selectedPlatform=(item,index)=>{
 this.setState({
-  platform:item
+  Admin:item
 })
+console.log('selected_items',Admin)
       }
 }
 

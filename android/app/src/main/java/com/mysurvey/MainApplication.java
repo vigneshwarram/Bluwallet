@@ -3,6 +3,10 @@ package com.mysurvey;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.brentvatne.react.ReactVideoPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
+import com.reactlibrary.RNAdMobPackage;
+import com.reactlibrary.RNMyLibraryPackage;
 import com.bluroverly.SajjadBlurOverlayPackage;
 import com.imagepicker.ImagePickerPackage;
 import com.mg.app.PickerPackage;
@@ -36,6 +40,10 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new ReactVideoPackage(),
+            new VectorIconsPackage(),
+            new RNAdMobPackage(),
+            new RNMyLibraryPackage(),
             new SajjadBlurOverlayPackage(),
             new ImagePickerPackage(),
             new PickerPackage(),

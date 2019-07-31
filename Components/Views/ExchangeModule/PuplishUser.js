@@ -349,14 +349,20 @@ renderScane() {
        let params=
        {
         "userId":item.id.toString(),
-        "exchangeMode":item.exchangeType.toString(),
-        "amountToTrade":item.amountToTrade.toString(),
-        "amountYouGet":item.amountYouGet.toString(),
-        "transactionFee":item.transactionFee.toString(),
-        "totalAmount":item.totalAmount.toString()
+        //"exchangeMode":item.exchangeType.toString(),
+       // "amountToTrade":item.amountToTrade.toString(),
+        //"amountYouGet":item.amountYouGet.toString(),
+        //"transactionFee":item.transactionFee.toString(),
+        //"totalAmount":item.totalAmount.toString()
+        "etherAmount":item.amountToTrade.toString(),
+        //"toEthWalletAddress":await AsyncStorage.getItem('etherwalletAddress'),
+        "exchangeReqId":item.exchangeType.toString(),
+        "exchangeStatus":item.exchangeType.toString(),
+
+
       }
         this.Load()
-        ExchangeRequest(params,this.ExchangeRequestResponse)
+        //ExchangeRequest(params,this.ExchangeRequestResponse)
          // Alert.alert(item.id.toString())
          
       }

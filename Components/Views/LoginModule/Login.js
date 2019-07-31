@@ -22,8 +22,8 @@ export default class Login  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
-      Username:null,
-      Password:null,
+      Username:'Admin@gmail.com',
+      Password:'',
       clickr:false,
       clickopen:false,
       click:false,
@@ -36,8 +36,14 @@ export default class Login  extends React.Component {
   
   }
 
+  componentWillMount(){
+    this.setState({
+      Username: "Admin@gmail.com"
+    })
+  }
   componentDidMount()
   {
+    
     //this.GetListData()
   }
  
@@ -240,13 +246,13 @@ SlideMenu=()=>{
       }
       Login=()=>
       {
-        if(this.state.Username==null)
+        if(this.state.Username==='')
         {
-          Alert.alert('Please enter username')
+          Alert.alert('Alert!!','Please enter username')
         }
-        else if(this.state.Password==null)
+        else if(this.state.Password==='')
         {
-         Alert.alert('Please enter Password')
+         Alert.alert('Alert!!','Please enter Password')
         }
         else
         {
@@ -277,7 +283,7 @@ SlideMenu=()=>{
         }
         else
         {
-          Alert.alert(data.erro)
+          Alert.alert(data.error)
         }
       
       } 
@@ -299,10 +305,10 @@ SlideMenu=()=>{
        this.hide()
         if(data.status=='success')
         {
-           console.log('Loginresult',data)
+            console.log('Loginresult',data)
             await AsyncStorage.setItem('UserId',data.loginInfo.userId.toString()); 
             await AsyncStorage.setItem('email',data.loginInfo.emailId.toString()); 
-           await AsyncStorage.setItem('securedKey',data.securedKey.toString()); 
+            await AsyncStorage.setItem('securedKey',data.securedKey.toString()); 
             console.log('Loginresult',data)
             this.props.navigation.navigate('PinCode')
           

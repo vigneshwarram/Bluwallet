@@ -6,7 +6,7 @@ import { AreaChart, Grid } from 'react-native-svg-charts'
 import { Switch} from 'react-native'
 import * as shape from 'd3-shape'
 import Logo from '../../logo'
-import {ExchangeOnLoad} from '../Api/ExchangeRequest'
+import {ExchangeOnLoad ,ConvertToUsd , getEqualCryptoValueApi , exchangeRequestApi} from '../Api/ExchangeRequest'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from '../Utils.js/Constant'
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -33,7 +33,7 @@ export default class  Buy  extends React.Component {
       receivedAmount:null,
       mincomercialValue:null,
       maxcomercialValue:null,
-      usdforEther:null,
+      usdforEther:'',
       paidAmount:null,
       animate:false,
       w: 50,
@@ -54,7 +54,11 @@ export default class  Buy  extends React.Component {
       app2color:'#5099f0',
       app3color:'#5099f0',
       app4color:'#fff',
-      app5color:'#5099f0'
+      app5color:'#5099f0',
+      firstExchangeValue:'0.00',
+      secondExchangeValue:'0.00',
+      networkFeeValue:''
+    
     };
   
   }
@@ -86,8 +90,11 @@ export default class  Buy  extends React.Component {
         "cryptoType": data.CalculatingAmountDTO.cryptoType,
         "receivedAmount":data.CalculatingAmountDTO.receivedAmount,
         "paidAmount": data.CalculatingAmountDTO.paidAmount,
-        "mincomercialValue":data.CalculatingAmountDTO.mincomercialValue,
-        "maxcomercialValue":data.CalculatingAmountDTO.maxcomercialValue})
+        //"mincomercialValue":data.CalculatingAmountDTO.mincomercialValue,
+        //"maxcomercialValue":data.CalculatingAmountDTO.maxcomercialValue}
+        "mincomercialValue":data.CalculatingAmountDTO.minimumCryptoValue,
+        "maxcomercialValue":data.CalculatingAmountDTO.maximumCryptoValue}
+        )
       }
     }
   }
@@ -170,7 +177,7 @@ toggleSwitch=(value)=>{
         </View>
         <View>
         <View>
-<Text style={{color:'#fff',opacity:1,fontSize:12,fontFamily:'Exo2-Regular',marginRight:10}}>0.000</Text>
+<Text style={{color:'#fff',opacity:1,fontSize:12,fontFamily:'Exo2-Regular',marginRight:10}}>{this.state.firstExchangeValue}</Text>
 </View>
         </View>
 </View>
@@ -190,7 +197,7 @@ toggleSwitch=(value)=>{
   </Picker>
         </View>
 <View>
-<Text style={{color:'#fff',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>0.000</Text>
+<Text style={{color:'#fff',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.secondExchangeValue}</Text>
 </View>
 
 </View>
@@ -345,7 +352,7 @@ toggleSwitch=(value)=>{
 <View style={{justifyContent:'center',alignItems:'center',marginBottom:100,width:"100%",marginTop:30}}>
 <View style={{width:"50%"}}>
 <LinearGradient colors={['#41da9c','#36deaf','#26e3ca']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{width:'100%',padding:12,backgroundColor:'green',justifyContent:'center',alignItems:'center',marginLeft:10,borderRadius:6}}>
-<TouchableOpacity onPress={()=>this.props.navigation.navigate('Payment')}>
+<TouchableOpacity onPress={() => this.exchangeApi()}>
 <Text style={{color:'#fff',fontFamily:'Poppins-Medium'}}>Exchange</Text></TouchableOpacity>
 </LinearGradient>
 
@@ -357,12 +364,6 @@ toggleSwitch=(value)=>{
 </View>
     </ScrollView>    
 </LinearGradient>
-   
-      
-    
-       
- 
-  
       </View>
     
 </LinearGradient>
@@ -385,18 +386,137 @@ toggleSwitch=(value)=>{
           BtcAmount:item
         })
       }
+
+      //Exchage Api on click
+      exchangeApi=async()=>
+    {
+        let type=crptoType
+       
+        let params=
+      {
+        userId:await AsyncStorage.getItem('UserId') ,
+        exchangeMode:'BTC_ETH_USER',
+        amountToTrade:this.state.usdforEther
+ 
+      }
+      console.log('Request data.===>', params, this.state.usdforEther)
+      exchangeRequestApi(params,this.onExchangeResponse)
+    }
+    onExchangeResponse=(data)=>
+    {
+      if(data!=DataUndefined)
+     {
+      if(data.status===ResponseSuccessStatus)
+      {
+                  
+        console.log('Request data.Re===>',data.message)
+        Alert.alert(data.status,data.message)
+        
+      }else{
+        Alert.alert(data.status,data.message)
+      }
+
+      //Get value for Network fee and Crypto amount Apil̥
+      //this.cryptoValue()
+      //console.log('Request data.===>', 'cryptoValue()')
+    }
+  }
+    
+
       ChangeText=(UsdAmount)=>
       {
         if(UsdAmount.length<this.state.usdforEther.length)
+        
         {
           this.setState({usdforEther:''})
         }
         else
         {
           this.setState({usdforEther:UsdAmount})
+         
         }
+         //Get value for Network fee and Crypto amount Api
+        this.usdConvert()
+       
+        console.log('Request data.===>', "usdConvert calling")
        
       }
+     
+      //-----------------------------//
+     usdConvert=async()=>
+      {
+       let type=crptoType
+       console.log('Request data.===>', type,"type calling")
+       let params=
+     {
+       usd:this.state.usdforEther ,
+       cryptoType:type
+
+     }
+     
+     //Get value for Network fee and Crypto amount Api
+     ConvertToUsd(params,this.onUsdResponse)
+     console.log('Request data.===>',this.onUsdResponse)
+      
+    }
+
+    onUsdResponse=(data)=>
+    {
+    if(data!=DataUndefined)
+    {
+      if(data.status===ResponseSuccessStatus)
+      {
+                  
+        console.log('Request data.Re===>',data.CalculatingAmountDTO.usd)
+        this.setState({
+          firstExchangeValue: data.CalculatingAmountDTO.cryptoAmount,
+          secondExchangeValue: data.CalculatingAmountDTO.btcAmount,
+          receivedAmount: data.CalculatingAmountDTO.gasfee,
+
+        })
+        
+      }else{
+        Alert.alert(data.status,'Something went wrong')
+      }
+
+      //Get value for Network fee and Crypto amount Apil̥
+      //this.cryptoValue()
+      //console.log('Request data.===>', 'cryptoValue()')
+    }
+  }
+
+    //
+    cryptoValue=async()=>
+    {
+     let type=crptoType
+     console.log('Request data.===>', type,'type calling')
+     let params=
+     {
+       cryptAmount:this.state.firstExchangeValue ,
+       cryptoType:type
+     }
+
+      //Get value for Network fee and Crypto amount Api
+      getEqualCryptoValueApi(params,this.cryptoResponse)
+      console.log('Request data.===>','getEqualCryptoValueApi',this.cryptoResponse)
+    }
+ 
+    cryptoResponse=(data)=>
+    {
+      if(data!=DataUndefined)
+      {
+        if(data.status===ResponseSuccessStatus)
+        {
+          console.log('Request data.Re===>',data.CalculatingAmountDTO.cryptoAmount)
+          this.setState({
+            secondExchangeValue: data.CalculatingAmountDTO.cryptoAmount
+          })
+        }else{
+          Alert.alert('Alert!!','Something went wrong')
+        }
+      }
+    }
+
 }
 
 

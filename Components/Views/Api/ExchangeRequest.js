@@ -29,7 +29,7 @@ export const ExchangeList=async(FetchExchangedata)=>
 
 export const ExchangeRequest=async(params,Request)=>
 {
-    fetch(Url+'exchange/request', {  
+    fetch(Url+'eth_btc/user/exchange', {  
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -67,6 +67,80 @@ export const ExchangeOnLoad=async(exchangeType,params,Request)=>
        .then((resJson)=>{
          console.log(resJson)
         Request(resJson)
+       
+        return resJson;
+       })
+       .catch((error) => {
+        console.error(error);
+    });
+}
+
+
+export const ConvertToUsd=async(params,Request)=>
+{
+    fetch(Url+'convertusdtocrypptovalue', {  
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'authorization':'bearer '+await AsyncStorage.getItem('AccessToken')
+        },
+        body:JSON.stringify(params)
+      }).then((res)=> {
+        return res.json();
+       })
+       .then((resJson)=>{
+         console.log(resJson)
+        Request(resJson)
+       
+        return resJson;
+       })
+       .catch((error) => {
+        console.error(error);
+    });
+}
+
+
+export const getEqualCryptoValueApi=async(params,Response)=>
+{
+    fetch(Url+'getequavalentcryptovalue', {  
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'authorization':'bearer '+await AsyncStorage.getItem('AccessToken')
+        },
+        body:JSON.stringify(params)
+      }).then((res)=> {
+        return res.json();
+       })
+       .then((resJson)=>{
+         console.log(resJson)
+         Response(resJson)
+       
+        return resJson;
+       })
+       .catch((error) => {
+        console.error(error);
+    });
+}
+
+export const exchangeRequestApi=async(params,Response)=>
+{
+    fetch(Url+'exchange/request', {  
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'authorization':'bearer '+await AsyncStorage.getItem('AccessToken')
+        },
+        body:JSON.stringify(params)
+      }).then((res)=> {
+        return res.json();
+       })
+       .then((resJson)=>{
+         console.log(resJson)
+         Response(resJson)
        
         return resJson;
        })
