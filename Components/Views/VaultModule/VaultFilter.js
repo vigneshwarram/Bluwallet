@@ -203,10 +203,11 @@ Animated.timing(
   }
   GetData=()=>
   {
+    console.log('All Clicked :Get Data')
     //this.Load()
     this.GetList()
     console.log(type)
-    VaultSystemApi(type,this.BalanceResponse)
+    //VaultSystemApi(type,this.BalanceResponse)
   }
   GetAllData=()=>
   {
@@ -242,10 +243,7 @@ BalanceResponse=(data)=>
   
       );
     }
-    else
-    {
-      Alert.alert(InvalidResponse)
-    }
+    
   }
 }
 GetList=()=>
@@ -258,7 +256,9 @@ GetList=()=>
 GetAllList=()=>
 {
   //this.Load()
-  CryptoInvestment(this.GetListData)
+  //CryptoInvestment(this.GetListData)
+
+  CryptoTypeInvestment('All',this.GetListData)
 }
 GetListData=(data)=>
 {
@@ -281,10 +281,7 @@ GetListData=(data)=>
   
       );
     }
-    else
-    {
-      Alert.alert(InvalidResponse)
-    }
+    
   }
   
 }
@@ -602,7 +599,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
           <View style={{flexDirection: 'row',justifyContent:'space-between'}}>    
           <View style={{justifyContent:'space-around',alignItems:'center'}}>
           <Text  style={{ fontSize:12,fontFamily:'Exo2-Bold', color:'#ffffff',marginTop:-10}}>{item.typeOfInvestment}</Text> 
-          <Text  style={{fontSize:12,color:'#a9b4d4',marginTop:10}}>$435</Text> 
+          <Text  style={{fontSize:12,color:'#a9b4d4',marginTop:10}}>${item.ethValueInUsd}</Text> 
           </View>  
           <View>
           <View style={{flexDirection:'row',marginLeft:20}}>
@@ -649,10 +646,11 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
       }
       clickedItemText=(item)=>
       {
-          Alert.alert(item.Status)
+          //Alert.alert(item.status)
       }
       AllClick=()=>
       {
+        
        (!this.state.AnimationFlag)?this.Animation():this.DeAnimation()
        
       }

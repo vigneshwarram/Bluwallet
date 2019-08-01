@@ -508,7 +508,7 @@ Exchangecolor5:'#4781DF'
 this.setState({
   Admin:item
 })
-console.log('selected_items',Admin)
+
       }
 }
 

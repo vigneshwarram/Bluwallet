@@ -53,7 +53,10 @@ export default class Profile  extends React.Component {
       visible: false,
       hidden: false,
       app1color:'#fff',
-      app5color:'#fff'
+      app5color:'#fff',
+      mailVerifiedStatus:'',
+      mailStatusText:''
+    
     };
   
   }
@@ -61,6 +64,8 @@ export default class Profile  extends React.Component {
   componentDidMount()
   {
     this.GetListData()
+   
+    
   }
   GetListData=()=>
   {
@@ -74,7 +79,24 @@ export default class Profile  extends React.Component {
       if(data.status===ResponseSuccessStatus)
       
       {
+        console.log('data.retrieveData',data.retrieveData)
+        this.setState({mailVerifiedStatus:data.retrieveData.gmailstatus})
         this.setState({userName:data.retrieveData.userName,userId:data.retrieveData.userId,email:data.retrieveData.email,mobileNo:data.retrieveData.mobileNo,dateOfBirth:data.retrieveData.dateOfBirth})
+        console.log('data.retrieveData',data.retrieveData.gmailstatus)
+        console.log('data.retrieveData',this.state.mailVerifiedStatus)
+        //Check mail status
+        this.checkEmailStatus()
+
+      }else if(data.error==='invalid_token')
+      {
+        Alert.alert(
+          'Error',
+          'Token Expired',
+          [
+            {text: 'OK', onPress: () => this.props.navigation.navigate("Login")},
+          ],
+    
+        );
       }
      }
 else
@@ -132,6 +154,19 @@ space(){
             delay: 10,
           }).start(() => console.log('animation complete'));
           this.setState({clickopen:false})
+          Alert.alert(
+            'Alert!!',
+            'Are you sure want to logout?',
+            [
+              {  
+                text: 'Cancel',  
+                onPress: () => console.log('Cancel Pressed'),  
+                style: 'cancel',  
+            },  
+              {text: 'OK', onPress: () => this.props.navigation.navigate('Login')},
+            ],
+      
+          );
         }
       }
   render() {
@@ -427,14 +462,14 @@ right: 0,borderRadius:25,marginTop:-40,
 <View style={{width:'70%',}}>
 <LinearGradient colors={['#f4347f','#f85276','#fe7a6e']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:10 }}>
 <TouchableOpacity>
-<Text style={{color:'#fff'}}>Your email is'nt verified</Text>
+<Text style={{color:'#fff'}}>{this.state.mailStatusText}</Text>
 </TouchableOpacity>
 </LinearGradient>
 </View>
 <View style={{width:'50%',marginTop:20 }}>
 <LinearGradient colors={['#3ddba1','#30e0ba','#17e8e3']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:10}}>
 <TouchableOpacity>
-<Text style={{color:'#fff'}}>Resend e-mail</Text>
+<Text visible style={{color:'#fff'}}>Resend e-mail</Text>
 </TouchableOpacity>
 </LinearGradient>
 </View>
@@ -461,6 +496,21 @@ right: 0,borderRadius:25,marginTop:-40,
       clickedItemText=(item)=>
       {
           Alert.alert(item.Status)
+      }
+
+      checkEmailStatus=async=>{
+        console.log('checkEmailStatus',this.state.mailVerifiedStatus)
+        if(!this.state.mailVerifiedStatus==='0'){
+
+          console.log("mailStatusText","Your Email is'nt verified")
+          this.setState({mailStatusText:"Your Email is'nt verified"})
+          this.setState({visible:false})
+        }else{
+          console.log("mailStatusText","Your Email is verified")
+          this.setState({mailStatusText:"Your Email is verified"})
+          this.setState({visible:true})
+        }
+
       }
 }
 

@@ -412,7 +412,18 @@ toggleSwitch=(value)=>{
         console.log('Request data.Re===>',data.message)
         Alert.alert(data.status,data.message)
         
-      }else{
+      }else if(data.error==='invalid_token')
+      {
+        Alert.alert(
+          'Error',
+          'Token Expired',
+          [
+            {text: 'OK', onPress: () => this.props.navigation.navigate("Login")},
+          ],
+    
+        );
+      }
+      else{
         Alert.alert(data.status,data.message)
       }
 
@@ -475,7 +486,18 @@ toggleSwitch=(value)=>{
 
         })
         
-      }else{
+      }else if(data.error==='invalid_token')
+      {
+        Alert.alert(
+          'Error',
+          'Token Expired',
+          [
+            {text: 'OK', onPress: () => this.props.navigation.navigate("Login")},
+          ],
+    
+        );
+      }
+      else{
         Alert.alert(data.status,'Something went wrong')
       }
 
@@ -511,7 +533,18 @@ toggleSwitch=(value)=>{
           this.setState({
             secondExchangeValue: data.CalculatingAmountDTO.cryptoAmount
           })
-        }else{
+        } else if(data.error==='invalid_token')
+        {
+          Alert.alert(
+            'Error',
+            'Token Expired',
+            [
+              {text: 'OK', onPress: () => this.props.navigation.navigate("Login")},
+            ],
+      
+          );
+        }
+        else{
           Alert.alert('Alert!!','Something went wrong')
         }
       }
