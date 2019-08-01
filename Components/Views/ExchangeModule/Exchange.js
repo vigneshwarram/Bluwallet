@@ -5,7 +5,9 @@ import { Alert } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import { Switch} from 'react-native'
 import * as shape from 'd3-shape'
+import Modal from "react-native-simple-modal";
 import Logo from '../../logo'
+import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
 import {ExchangeOnLoad ,ConvertToUsd , getEqualCryptoValueApi , exchangeRequestApi} from '../Api/ExchangeRequest'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from '../Utils.js/Constant'
 import LinearGradient from 'react-native-linear-gradient';
@@ -25,6 +27,7 @@ export default class  Buy  extends React.Component {
     this.state = {
       dataSource:[],
       switchValue:false,
+      visibles:false,
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       EthAmount:'ETH',
@@ -143,6 +146,25 @@ toggleSwitch=(value)=>{
    
       <View style={styles.Maincontainers}>  
                  <LinearGradient  colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={styles.Maincontainers} >
+                 <View style={{paddingLeft:20,paddingRight:20}}>
+ <Dialog
+  onTouchOutside={() => {
+      this.setState({ visibles: false });
+    }}
+  
+    visible={this.state.visibles}>
+    <DialogContent>
+     <View style={{width:300,height:110,alignItems:'center'}}>
+         <View style={{alignItems:'center',paddingTop:10}}>
+         <Image style={{width: 50, height: 50,resizeMode:'contain'}}   source={require("../assets/successtik.png")} ></Image>     
+         </View>
+         <View style={{paddingTop:10,paddingBottom:10}}>
+         <Text style={{fontSize:15,color:'#454976',fontFamily:'Exo2-Regular',textAlign:'center'}}>Your Exchange request was send successfully</Text>           
+         </View>
+     </View>
+    </DialogContent>
+  </Dialog>
+ </View>
       <LinearGradient
    colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{height:'35%',opacity:0.9}}>     
       <LinearGradient
@@ -228,12 +250,15 @@ toggleSwitch=(value)=>{
           <LinearGradient  colors= {['transparent','transparent','transparent']} style={{marginTop:20}} >
    <ScrollView>
 <View style={{backgroundColor:'transparent',marginBottom:100}}>  
-<View style={{justifyContent:'center',alignItems:'center'}}>
+<View style={{justifyContent:'center',alignItems:'center',flexDirection:'row'}}>
+<Text style={{color:'#fff',fontSize:36}}>$</Text>
 <TextInput
           style={{height: 80,color:'#fff',fontSize:36}}
-          placeholder="$ 0.000" 
+          placeholder="0.000" 
           placeholderTextColor="#fff"
           keyboardType = "number-pad"
+          onSubmitEditing={this.handleKeyDown}
+      
           onChangeText={(text) =>this.ChangeText(text)}
           value={this.state.usdforEther}
         />
@@ -387,7 +412,10 @@ toggleSwitch=(value)=>{
           BtcAmount:item
         })
       }
-
+      handleKeyDown=()=>
+      {
+        this.usdConvert()
+      }
       //Exchage Api on click
       exchangeApi=async()=>
     {
@@ -401,20 +429,32 @@ toggleSwitch=(value)=>{
  
       }
       console.log('Request data.===>', params, this.state.usdforEther)
+      this.Load()   
       exchangeRequestApi(params,this.onExchangeResponse)
+    }
+    successStatus=()=>
+    {
+      this.setState({visibles:true})
+      setTimeout(this.nav, 500);
+    }
+    nav=()=>
+    {
+      this.setState({visibles:false})
+      this.props.navigation.navigate('PuplishUser')
     }
     onExchangeResponse=(data)=>
     {
+      this.hide()
       if(data!=DataUndefined)
      {
       if(data.status===ResponseSuccessStatus)
       {
                   
-        console.log('Request data.Re===>',data.message)
-        Alert.alert(data.status,data.message)
+       this.successStatus()
         
       }else{
         Alert.alert(data.status,data.message)
+        //this.successStatus()
       }
 
       //Get value for Network fee and Crypto amount Apil̥
@@ -437,7 +477,7 @@ toggleSwitch=(value)=>{
          
         }
          //Get value for Network fee and Crypto amount Api
-        this.usdConvert()
+       
        
         console.log('Request data.===>', "usdConvert calling")
        

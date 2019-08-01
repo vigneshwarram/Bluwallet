@@ -71,8 +71,7 @@ export default class Profile  extends React.Component {
   {
   if(data!='undefined')
      {
-      if(data.status===ResponseSuccessStatus)
-      
+      if(data.status===ResponseSuccessStatus)     
       {
         this.setState({userName:data.retrieveData.userName,userId:data.retrieveData.userId,email:data.retrieveData.email,mobileNo:data.retrieveData.mobileNo,dateOfBirth:data.retrieveData.dateOfBirth})
       }
