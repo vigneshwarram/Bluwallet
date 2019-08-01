@@ -5,6 +5,7 @@ import { Alert } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
 import Logo from '../logo'
+import {StackActions, NavigationActions } from 'react-navigation';
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from './Utils.js/Constant'
 import LinearGradient from 'react-native-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -387,6 +388,12 @@ this.setState({
         this.setState({Btc1:'#FF7267',Btc2:'#FF007F',BtcOpacity:0.4,BtcFontColor:'#fff',data:data})
         this.setState({TotalPrice:this.state.dataSource.usdforBtc,})
         this.EtheriumReset()
+        setTimeout(this.nav, 700);
+      }
+      nav=()=>
+      {
+        
+        this.props.navigation.navigate("DashBoard")
       }
       EtheriumReset=()=>
       {

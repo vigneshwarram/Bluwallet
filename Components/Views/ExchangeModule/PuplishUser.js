@@ -6,8 +6,10 @@ import { AreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
 import LinearGradient from 'react-native-linear-gradient';
 import BlurOverlay,{closeOverlay,openOverlay} from 'react-native-blur-overlay';
+import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
 import { ScrollView } from 'react-native-gesture-handler';
 import {ExchangeList,ExchangeRequest} from '../Api/ExchangeRequest'
+import {StackActions} from 'react-navigation'
 import Expandable_ListView from '../Utils.js/Expandable_ListView'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from '../Utils.js/Constant'
 
@@ -31,6 +33,7 @@ export default class  PuplishUser  extends React.Component {
       dataSource:[],
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
+      visibles:false,
       Amount:'COP',
       StatusMode:'Publications',
       animate:false,
@@ -71,17 +74,19 @@ export default class  PuplishUser  extends React.Component {
   {
     //ExchangeRequest(this.ExchangeRequestResponse)
    // this.openOverlay()
+   this.Load()
     ExchangeList(this.ExchangeListResponse)
   }
   ExchangeListResponse=(data)=>
 {
-  //this.hide()
+   this.hide()
   if(data!=DataUndefined)
   {
     if(data.status===ResponseSuccessStatus)
     {
-    
-     const newFile =data.fetchExchageRequestDTO.exchangeDTOList.map((file) => {
+      let FinalResult=[];
+       FinalResult=this.search('BTC_ETH_USER',data.fetchExchageRequestDTO.exchangeDTOList)
+     const newFile =FinalResult.map((file) => {
 
         return {...file, expanded: false};
     });
@@ -93,7 +98,7 @@ export default class  PuplishUser  extends React.Component {
         'Error',
         TokenExpired,
         [
-          {text: 'OK', onPress: () => this.props.navigation.navigate(Login)},
+          {text: 'OK', onPress: () => this.props.navigation.navigate("Login")},
         ],
   
       );
@@ -103,6 +108,17 @@ export default class  PuplishUser  extends React.Component {
       Alert.alert(InvalidResponse)
     }
   }
+}
+search = (key, inputArray) => {
+  console.log('inputArray length',inputArray.length)
+  let SearchArray=[]
+  for (let i=0; i < inputArray.length; i++) {
+      if (inputArray[i].exchangeType === key ||inputArray[i].exchangeType === 'ETH_BTC_USER' && inputArray[i].status===1) {
+        SearchArray.push(inputArray[i])
+      }
+      
+  }
+  return SearchArray;
 }
 update_Layout = (index) => {
 
@@ -124,10 +140,11 @@ dataset=(data)=>{
   })
   this.hide()
 }
-Load(){
+Load=()=>{
+  console.log('load fun')
   this.setState({animate:true})
 }
-hide(){
+hide=()=>{
   this.setState({animate:false})
 }
 space(){
@@ -202,6 +219,25 @@ renderScane() {
                     children={(this.state.SuccessPopup)?this.renderScane():null}
                 />   
         <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={styles.Maincontainers}>
+        <View style={{paddingLeft:20,paddingRight:20}}>
+ <Dialog
+  onTouchOutside={() => {
+      this.setState({ visibles: false });
+    }}
+  
+    visible={this.state.visibles}>
+    <DialogContent>
+     <View style={{width:300,height:110,alignItems:'center'}}>
+         <View style={{alignItems:'center',paddingTop:10}}>
+         <Image style={{width: 50, height: 50,resizeMode:'contain'}}   source={require("../assets/successtik.png")} ></Image>     
+         </View>
+         <View style={{paddingTop:10,paddingBottom:10}}>
+         <Text style={{fontSize:15,color:'#454976',fontFamily:'Exo2-Regular',textAlign:'center'}}>Your Exchange amount has been sent successfully</Text>           
+         </View>
+     </View>
+    </DialogContent>
+  </Dialog>
+ </View>
       <LinearGradient
   colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{height:'35%',opacity:0.9}}>    
       <LinearGradient
@@ -317,7 +353,7 @@ renderScane() {
           {
             this.state.dataSource.map((item, key) =>
               (
-                <Expandable_ListView key={item.exchangeDTOList} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
+                <Expandable_ListView popupShow={this.successStatus} onHide={this.hide} onLoad={this.Load} key={item.exchangeDTOList} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
               ))
           }
         </ScrollView>
@@ -342,47 +378,8 @@ renderScane() {
     
     );
       }
-      clickedItemText=(item)=>
-      {
-        //openOverlay()
-        
-       let params=
-       {
-        "userId":item.id.toString(),
-        //"exchangeMode":item.exchangeType.toString(),
-       // "amountToTrade":item.amountToTrade.toString(),
-        //"amountYouGet":item.amountYouGet.toString(),
-        //"transactionFee":item.transactionFee.toString(),
-        //"totalAmount":item.totalAmount.toString()
-        "etherAmount":item.amountToTrade.toString(),
-        //"toEthWalletAddress":await AsyncStorage.getItem('etherwalletAddress'),
-        "exchangeReqId":item.exchangeType.toString(),
-        "exchangeStatus":item.exchangeType.toString(),
-
-
-      }
-        this.Load()
-        //ExchangeRequest(params,this.ExchangeRequestResponse)
-         // Alert.alert(item.id.toString())
-         
-      }
-      ExchangeRequestResponse=(data)=>
-      {
-        console.log('Request data===>',data)
-        this.hide()
-        if(data!=DataUndefined)
-  {
-    if(data.status===ResponseSuccessStatus)
-    {
-   // openOverlay()
-   Alert.alert(data.status,data.message)
-    }
-    else
-    {
-      Alert.alert(data.message)
-    }
-  }
-      }
+    
+    
       selectedCop=(item,itemIndex)=>{
         this.setState({
           Amount:item
@@ -393,6 +390,25 @@ renderScane() {
         this.setState({
          StatusMode:item
         })
+      }
+      successStatus=()=>
+      {
+        this.setState({visibles:true})
+        setTimeout(this.nav, 650);
+      }
+      nav=()=>
+      {
+        this.setState({visibles:false})
+        //this.props.navigation.navigate("ExchangeMenu");
+         this.pushNavigate('ExchangeMenu')
+      }
+      pushNavigate=(routname)=>
+      {
+  
+        let pushAction=StackActions.push({
+          routeName:routname
+        })
+        this.props.navigation.dispatch(pushAction);
       }
 }
 

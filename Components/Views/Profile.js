@@ -76,8 +76,7 @@ export default class Profile  extends React.Component {
   {
   if(data!='undefined')
      {
-      if(data.status===ResponseSuccessStatus)
-      
+      if(data.status===ResponseSuccessStatus)     
       {
         console.log('data.retrieveData',data.retrieveData)
         this.setState({mailVerifiedStatus:data.retrieveData.gmailstatus})

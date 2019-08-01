@@ -6,8 +6,10 @@ import { AreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
 import LinearGradient from 'react-native-linear-gradient';
 import BlurOverlay,{closeOverlay,openOverlay} from 'react-native-blur-overlay';
+import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
 import { ScrollView } from 'react-native-gesture-handler';
-import {ExchangeList,ExchangeRequest} from '../Api/ExchangeRequest'
+import {ExchangeList,ExchangeRequest,ExchangeAdminRequest} from '../Api/ExchangeRequest'
+import {StackActions} from 'react-navigation'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from '../Utils.js/Constant'
 
 
@@ -25,6 +27,7 @@ export default class  Publish  extends React.Component {
       dataSource:[],
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
+      visibles:false,
       Amount:'COP',
       StatusMode:'Publications',
       animate:false,
@@ -65,16 +68,20 @@ export default class  Publish  extends React.Component {
   {
     //ExchangeRequest(this.ExchangeRequestResponse)
    // this.openOverlay()
+   this.Load()
     ExchangeList(this.ExchangeListResponse)
   }
   ExchangeListResponse=(data)=>
 {
+  this.hide()
   //this.hide()
   if(data!=DataUndefined)
   {
     if(data.status===ResponseSuccessStatus)
     {
-     this.setState({dataSource:data.fetchExchageRequestDTO.exchangeDTOList})
+      let FinalResult=[];
+      FinalResult=this.search('BTC_ETH_ADMIN',data.fetchExchageRequestDTO.exchangeDTOList)
+     this.setState({dataSource:FinalResult})
     }
     else if(data.error===InvalidToken)
     {
@@ -92,6 +99,17 @@ export default class  Publish  extends React.Component {
       Alert.alert(InvalidResponse)
     }
   }
+}
+search = (key, inputArray) => {
+  console.log('inputArray length',inputArray.length)
+  let SearchArray=[]
+  for (let i=0; i < inputArray.length; i++) {
+      if (inputArray[i].exchangeType === key || inputArray[i].exchangeType==='ETH_BTC_ADMIN' && inputArray[i].status===1) {
+        SearchArray.push(inputArray[i])
+      }
+      
+  }
+  return SearchArray;
 }
 dataset=(data)=>{
   this.setState({
@@ -177,6 +195,25 @@ renderScane() {
                     children={(this.state.SuccessPopup)?this.renderScane():null}
                 />   
         <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={styles.Maincontainers}>
+        <View style={{paddingLeft:20,paddingRight:20}}>
+ <Dialog
+  onTouchOutside={() => {
+      this.setState({ visibles: false });
+    }}
+  
+    visible={this.state.visibles}>
+    <DialogContent>
+     <View style={{width:300,height:110,alignItems:'center'}}>
+         <View style={{alignItems:'center',paddingTop:10}}>
+         <Image style={{width: 50, height: 50,resizeMode:'contain'}}   source={require("../assets/successtik.png")} ></Image>     
+         </View>
+         <View style={{paddingTop:10,paddingBottom:10}}>
+         <Text style={{fontSize:15,color:'#454976',fontFamily:'Exo2-Regular',textAlign:'center'}}>Your Exchange amount has been sent successfully</Text>           
+         </View>
+     </View>
+    </DialogContent>
+  </Dialog>
+ </View>
       <LinearGradient
   colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{height:'35%',opacity:0.9}}>    
       <LinearGradient
@@ -352,22 +389,60 @@ renderScane() {
       }
       clickedItemText=(item)=>
       {
+        let params;
+        let urlparams;
         //openOverlay()
         
-       let params=
-       {
-        "userId":item.id.toString(),
-        "exchangeMode":item.exchangeType.toString(),
-        "amountToTrade":item.amountToTrade.toString(),
-        "amountYouGet":item.amountYouGet.toString(),
-        "transactionFee":item.transactionFee.toString(),
-        "totalAmount":item.totalAmount.toString()
-      }
+
+        console.log('Admin exchange params',item)
+        if(item.exchangeType==='BTC_ETH_ADMIN')
+        {
+          urlparams='btc_eth/admin/exchange'
+          params=
+          {
+           "userId":item.userId.toString(),
+           "btcAmount":item.amountToTrade.toString(),    
+           "exchangeReqId":item.id.toString(),
+             "exchangeStatus":item.status,
+         }
+        }
+        else
+        {
+          urlparams='eth_btc/admin/exchange'
+          params=
+          {
+           "userId":item.userId.toString(),
+           "etherAmount":item.amountToTrade.toString(),    
+           "exchangeReqId":item.id.toString(),
+           "exchangeStatus":item.status,
+         }
+        }
+       
+      console.log('Admin exchange params Request',params)
         this.Load()
-        ExchangeRequest(params,this.ExchangeRequestResponse)
+        ExchangeAdminRequest(urlparams,params,this.ExchangeRequestResponse)
          // Alert.alert(item.id.toString())
          
       }
+      successStatus=()=>
+    {
+      this.setState({visibles:true})
+      setTimeout(this.nav, 650);
+    }
+    nav=()=>
+    {
+      this.setState({visibles:false})
+      //this.props.navigation.navigate("ExchangeMenu");
+       this.pushNavigate('ExchangeMenu')
+    }
+    pushNavigate=(routname)=>
+    {
+
+      let pushAction=StackActions.push({
+        routeName:routname
+      })
+      this.props.navigation.dispatch(pushAction);
+    }
       ExchangeRequestResponse=(data)=>
       {
         console.log('Request data===>',data)
@@ -376,12 +451,24 @@ renderScane() {
   {
     if(data.status===ResponseSuccessStatus)
     {
-   // openOverlay()
-   Alert.alert(data.status,data.message)
+      this.successStatus()
+     //Alert.alert(data.status,data.message)
     }
-    else
+    else if(data.status==='failure')
     {
-      Alert.alert(data.message)
+     // this.successStatus()
+      Alert.alert(data.status,data.message)
+    }
+    else 
+    {
+      Alert.alert(
+        'Error',
+        TokenExpired,
+        [
+          {text: 'OK', onPress: () => this.props.navigation.navigate("Login")},
+        ],
+  
+      );
     }
   }
       }

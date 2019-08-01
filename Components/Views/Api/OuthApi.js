@@ -1,5 +1,5 @@
 import Url from './CommonApi'
-
+import {Alert} from 'react-native'
  const OuthApi=(params,resultFromAPI)=>
 {
   
@@ -25,6 +25,7 @@ formdata.append("grant_type",'password')
        })
        .catch((error) => {
          //errorResponse(error)
+         Alert.alert(error.message)
         console.error(error,);
     });
 }

@@ -23,7 +23,7 @@ export default class Login  extends React.Component {
       Coin: 'Us Doller',
       animate:false,
       Username:'Admin@gmail.com',
-      Password:'',
+      Password:'password',
       clickr:false,
       clickopen:false,
       click:false,

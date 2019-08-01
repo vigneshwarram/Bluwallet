@@ -94,7 +94,9 @@ export default class  ExchangeMenu  extends React.Component {
   {
     if(data.status===ResponseSuccessStatus)
     {
-     this.setState({dataSource:data.fetchExchageRequestDTO.exchangeDTOList})
+      let FinalResult=[];
+       FinalResult=this.search(0,data.fetchExchageRequestDTO.exchangeDTOList)
+     this.setState({dataSource:FinalResult})
     }
     else if(data.error===InvalidToken)
     {
@@ -102,7 +104,7 @@ export default class  ExchangeMenu  extends React.Component {
         'Error',
         TokenExpired,
         [
-          {text: 'OK', onPress: () => this.props.navigation.navigate(Login)},
+          {text: 'OK', onPress: () => this.props.navigation.navigate("Login")},
         ],
   
       );
@@ -111,6 +113,16 @@ export default class  ExchangeMenu  extends React.Component {
     {
       Alert.alert(InvalidResponse)
     }
+  }
+}
+search = (key, inputArray) => {
+  console.log('inputArray length',inputArray.length)
+  let SearchArray=[]
+  for (let i=0; i < inputArray.length; i++) {
+      if (inputArray[i].exchangeType === key ||inputArray[i].exchangeType === 'ETH_BTC_USER' && inputArray[i].status===1) {
+        SearchArray.push(inputArray[i])
+      }
+      
   }
 }
 dataset=(data)=>{
@@ -407,6 +419,7 @@ buyClick=()=>{
             this.ExchangeReset()
             this.Publicreset()
             this.SellReset()
+            
             this.props.navigation.navigate('Buy')
 }
 SellClick=()=>{
@@ -435,7 +448,15 @@ publicClick=()=>{
             this.ExchangeReset()
             this.BuyReset()
             this.SellReset()
-            this.props.navigation.navigate('PuplishUser')
+            if(this.state.Admin=='Admin')
+            {
+              this.props.navigation.navigate('Publish')
+            }
+            else
+            {
+              this.props.navigation.navigate('PuplishUser')
+            }
+           
 }
 
       ExchangeClick=()=>{
@@ -508,7 +529,11 @@ Exchangecolor5:'#4781DF'
 this.setState({
   Admin:item
 })
+<<<<<<< HEAD
 
+=======
+console.log('selected_items',this.state.Admin)
+>>>>>>> 5169c1cec4cca1b5b6c21db64e58d71760719f33
       }
 }
 
