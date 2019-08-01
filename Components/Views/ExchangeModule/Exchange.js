@@ -6,6 +6,7 @@ import { AreaChart, Grid } from 'react-native-svg-charts'
 import { Switch} from 'react-native'
 import * as shape from 'd3-shape'
 import Modal from "react-native-simple-modal";
+import {StackActions} from 'react-navigation'
 import Logo from '../../logo'
 import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
 import {ExchangeOnLoad ,ConvertToUsd , getEqualCryptoValueApi , exchangeRequestApi} from '../Api/ExchangeRequest'
@@ -440,7 +441,15 @@ toggleSwitch=(value)=>{
     nav=()=>
     {
       this.setState({visibles:false})
-      this.props.navigation.navigate('PuplishUser')
+      this.pushNavigate('PuplishUser')
+    }
+    pushNavigate=(routname)=>
+    {
+
+      let pushAction=StackActions.push({
+        routeName:routname
+      })
+      this.props.navigation.dispatch(pushAction);
     }
     onExchangeResponse=(data)=>
     {

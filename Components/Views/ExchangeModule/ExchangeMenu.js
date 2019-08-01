@@ -104,7 +104,7 @@ export default class  ExchangeMenu  extends React.Component {
         'Error',
         TokenExpired,
         [
-          {text: 'OK', onPress: () => this.props.navigation.navigate(Login)},
+          {text: 'OK', onPress: () => this.props.navigation.navigate("Login")},
         ],
   
       );
@@ -419,6 +419,7 @@ buyClick=()=>{
             this.ExchangeReset()
             this.Publicreset()
             this.SellReset()
+            
             this.props.navigation.navigate('Buy')
 }
 SellClick=()=>{

@@ -915,7 +915,8 @@ justifyContent:'center',alignItems:"center"}} >
       }
       else
       {
-        this.setState({Usd:data.CalculatingAmountDTO.usdforBtc,Balance:data.CalculatingAmountDTO.btcAmount})
+        this.setState({Usd:data.CalculatingAmountDTO.usdforBtc,Balance:data.CalculatingAmountDTO.btcAmount,
+          currentUsdforEther:data.CalculatingAmountDTO.currentUsdforEther,currentUsdforBtc:data.CalculatingAmountDTO.currentUsdforBtc})
        
       }
     

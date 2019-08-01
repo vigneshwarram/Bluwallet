@@ -9,6 +9,7 @@ import BlurOverlay,{closeOverlay,openOverlay} from 'react-native-blur-overlay';
 import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
 import { ScrollView } from 'react-native-gesture-handler';
 import {ExchangeList,ExchangeRequest,ExchangeAdminRequest} from '../Api/ExchangeRequest'
+import {StackActions} from 'react-navigation'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from '../Utils.js/Constant'
 
 
@@ -207,7 +208,7 @@ renderScane() {
          <Image style={{width: 50, height: 50,resizeMode:'contain'}}   source={require("../assets/successtik.png")} ></Image>     
          </View>
          <View style={{paddingTop:10,paddingBottom:10}}>
-         <Text style={{fontSize:15,color:'#454976',fontFamily:'Exo2-Regular',textAlign:'center'}}>Your Exchange request was send successfully</Text>           
+         <Text style={{fontSize:15,color:'#454976',fontFamily:'Exo2-Regular',textAlign:'center'}}>Your Exchange amount has been sent successfully</Text>           
          </View>
      </View>
     </DialogContent>
@@ -426,12 +427,21 @@ renderScane() {
       successStatus=()=>
     {
       this.setState({visibles:true})
-      setTimeout(this.nav, 500);
+      setTimeout(this.nav, 650);
     }
     nav=()=>
     {
       this.setState({visibles:false})
-      this.props.navigation.navigate('PuplishUser')
+      //this.props.navigation.navigate("ExchangeMenu");
+       this.pushNavigate('ExchangeMenu')
+    }
+    pushNavigate=(routname)=>
+    {
+
+      let pushAction=StackActions.push({
+        routeName:routname
+      })
+      this.props.navigation.dispatch(pushAction);
     }
       ExchangeRequestResponse=(data)=>
       {
@@ -446,6 +456,7 @@ renderScane() {
     }
     else if(data.status==='failure')
     {
+     // this.successStatus()
       Alert.alert(data.status,data.message)
     }
     else 

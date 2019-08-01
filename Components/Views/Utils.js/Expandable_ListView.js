@@ -19,6 +19,7 @@ export default class Expandable_ListView extends Component {
     }
   
     componentWillReceiveProps(nextProps) {
+      
       if (nextProps.item.expanded) {
         this.setState(() => {
           return {
@@ -48,7 +49,7 @@ export default class Expandable_ListView extends Component {
              "userId":data.userId,
              "etherAmount":data.amountToTrade,
              "toEthWalletAddress":data.ethWalletAddress,
-             "exchangeReqId":0,
+             "exchangeReqId":data.id,
              "exchangeStatus":data.status,
              
            }
@@ -60,19 +61,20 @@ export default class Expandable_ListView extends Component {
              "userId":data.userId,
              "btcAmount":data.amountToTrade,
              "toBtcWalletAddress":data.btcWalletAddress,
-             "exchangeReqId":0,
+             "exchangeReqId":data.id,
              "exchangeStatus":data.status,
              
            }
            }
-          
-          // this.props.load
+          console.log(this.props)
+          this.props.onLoad()
            ExchangeRequest(params,this.ExchangeRequestResponse)
            console.log('This params',params)
          }
     }
     ExchangeRequestResponse=(data)=>
     {
+      this.props.onHide()
       console.log('Request data===>',data)
       //this.props.hide
       if(data!=DataUndefined)
@@ -80,11 +82,13 @@ export default class Expandable_ListView extends Component {
   if(data.status===ResponseSuccessStatus)
   {
  // openOverlay()
- Alert.alert(data.status,data.message)
+    this.props.popupShow()
+// Alert.alert(data.status,data.message)
   }
   else
   {
-    Alert.alert(data.message)
+    //this.props.popupShow()
+    Alert.alert(data.status,data.message)
   }
 }
     }
