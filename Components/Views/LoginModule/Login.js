@@ -22,7 +22,7 @@ export default class Login  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
-      Username:'Admin@gmail.com',
+      Username:'tamiltheyvanst@gmail.com',
       Password:'password',
       clickr:false,
       clickopen:false,
@@ -37,9 +37,7 @@ export default class Login  extends React.Component {
   }
 
   componentWillMount(){
-    this.setState({
-      Username: "Admin@gmail.com"
-    })
+    
   }
   componentDidMount()
   {
@@ -248,10 +246,12 @@ SlideMenu=()=>{
       {
         if(this.state.Username==='')
         {
+          console.log('login username')
           Alert.alert('Alert!!','Please enter username')
         }
         else if(this.state.Password==='')
         {
+          console.log('login Password')
          Alert.alert('Alert!!','Please enter Password')
         }
         else
@@ -260,6 +260,7 @@ SlideMenu=()=>{
            email:this.state.Username,
            password: this.state.Password,
          };
+         console.log('login params')
          this.Load()
          OuthApi(params,this.resultFromAPI);
         }
@@ -270,8 +271,18 @@ SlideMenu=()=>{
         this.hide()
       try 
       {
-        if(data.access_token!='undefined')
+       
+        console.log('login data',data)
+        if( data.error==='invalid_grant')
         {
+          console.log('login error', data.error_description)
+          Alert.alert(data.error_description)
+          this.setState({Username:''})
+          this.setState({Password:''})
+
+        }else if(data.access_token!='undefined'){
+         
+
           let AccessToken=data.access_token
           await AsyncStorage.setItem('AccessToken',AccessToken); 
            let params = {
@@ -280,16 +291,19 @@ SlideMenu=()=>{
            }
            this.Load()
            loginApi(params,this.LoginResult)  
+           console.log('login loginApi')
         }
         else
         {
-          Alert.alert(data.error)
+          console.log('login error')
+          Alert.alert(data.error_description)
         }
       
       } 
       catch (error) 
       {
-        Alert.alert(error)
+        console.log('login catch',error)
+        //Alert.alert(error)
         // Error saving data
       }
 
