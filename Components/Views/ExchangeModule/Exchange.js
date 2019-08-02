@@ -94,8 +94,6 @@ export default class  Buy  extends React.Component {
         "cryptoType": data.CalculatingAmountDTO.cryptoType,
         "receivedAmount":data.CalculatingAmountDTO.receivedAmount,
         "paidAmount": data.CalculatingAmountDTO.paidAmount,
-        //"mincomercialValue":data.CalculatingAmountDTO.mincomercialValue,
-        //"maxcomercialValue":data.CalculatingAmountDTO.maxcomercialValue}
         "mincomercialValue":data.CalculatingAmountDTO.minimumCryptoValue,
         "maxcomercialValue":data.CalculatingAmountDTO.maximumCryptoValue}
         )
@@ -166,11 +164,25 @@ toggleSwitch=(value)=>{
     </DialogContent>
   </Dialog>
  </View>
+ <View style={{flex:0.3}}>
+
+ <LinearGradient
+   colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{opacity:0.9,}}>     
       <LinearGradient
-   colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{height:'35%',opacity:0.9}}>     
-      <LinearGradient
-   colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} style={{height:'100%',marginRight:30,marginTop:30}}>
+   colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} style={{height:'100%',marginRight:30,marginTop:30,position:'relative'}}>
+    <View style={{position:'absolute',bottom:-10,left:0,right:0,justifyContent:'center',alignItems:"center"}}>
+  <LinearGradient colors= {['#97F5F9','#7ED5F6','#529DF3','#4781DF','#2D3CAD']} style={{width:70,
+    height: 70,
+    borderRadius: 70/2,
+    backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
+   
+    <Image  style={{width: 40, height: 40,resizeMode:'contain'}}  source={require('../assets/exchangenew.png')} ></Image>
+    
+            
+          </LinearGradient>
+  </View>
  <LinearGradient colors={['#fff','#fff','#CCCFE2']} style={{justifyContent:'center',marginTop:-10,height:this.state.h,width:this.state.w, alignItems:'flex-end',borderTopRightRadius:25,borderBottomRightRadius:25,position:'absolute'}}>
+
 <TouchableOpacity onPress={this._onPress}>
        <View style={{flexDirection: 'row'}}> 
           <Image style={{marginRight:10,width: 30, height: 30}}   source={require("../assets/note.PNG.png")} ></Image>     
@@ -235,23 +247,13 @@ toggleSwitch=(value)=>{
 
 
           </LinearGradient> 
+ </View>
+
         
-<View style={{flex:1}}>
-<View style={{justifyContent:'center',alignItems:'center'}}>
-  <LinearGradient colors= {['#97F5F9','#7ED5F6','#529DF3','#4781DF','#2D3CAD']} style={{width:70,
-    height: 70,
-    borderRadius: 70/2,
-    backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
-   
-    <Image  style={{width: 40, height: 40,resizeMode:'contain'}}  source={require('../assets/exchangenew.png')} ></Image>
-    
-            
-          </LinearGradient>
-  </View>  
-          <LinearGradient  colors= {['transparent','transparent','transparent']} style={{marginTop:20}} >
-   <ScrollView>
-<View style={{backgroundColor:'transparent',marginBottom:100}}>  
-<View style={{justifyContent:'center',alignItems:'center',flexDirection:'row'}}>
+<View style={{flex:0.7,paddingTop:50}}>
+<View style={{backgroundColor:'transparent',}}> 
+<ScrollView> 
+<View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',paddingTop:20,}}>
 <Text style={{color:'#fff',fontSize:36}}>$</Text>
 <TextInput
           style={{height: 80,color:'#fff',fontSize:36}}
@@ -387,10 +389,10 @@ toggleSwitch=(value)=>{
 </TouchableOpacity>
 </View>
 </View>
-   
+   </ScrollView>
 </View>
-    </ScrollView>    
-</LinearGradient>
+
+
       </View>
     
 </LinearGradient>

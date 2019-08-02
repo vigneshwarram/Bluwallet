@@ -241,7 +241,7 @@ SlideMenu=()=>{
          if(data.status==ResponseSuccessStatus)
          {
           //await AsyncStorage.setItem('loginInfo',data.loginInfo); 
-        if(data.loginInfo.gmailstatus==0)
+        if(data.loginInfo.kycStatus==1)
         {
         
            await AsyncStorage.setItem('etherwalletAddress',data.loginInfo.EtherwalletAddress.toString()); 
@@ -253,7 +253,7 @@ SlideMenu=()=>{
         else
         {
           this.props.navigation.navigate('Home',{
-            DashBoardPopup: false,Kyc:false
+            DashBoardPopup: true,Kyc:false
           });
         }
           
