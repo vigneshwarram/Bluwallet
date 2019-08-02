@@ -35,10 +35,13 @@ export default class Login  extends React.Component {
     };
   
   }
+<<<<<<< HEAD
 
   componentWillMount(){
     
   }
+=======
+>>>>>>> df804266a872929e7a2228f8396278876cc013a3
   componentDidMount()
   {
     
@@ -262,12 +265,14 @@ SlideMenu=()=>{
          };
          console.log('login params')
          this.Load()
+         console.log('Login params',params)
          OuthApi(params,this.resultFromAPI);
         }
        
       }
       resultFromAPI=async(data)=>
       {
+        console.log('Outh ',data)
         this.hide()
       try 
       {

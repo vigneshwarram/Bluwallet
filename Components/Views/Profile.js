@@ -465,13 +465,15 @@ right: 0,borderRadius:25,marginTop:-40,
 </TouchableOpacity>
 </LinearGradient>
 </View>
-<View style={{width:'50%',marginTop:20 }}>
+
+{(this.state.visible)?<View style={{width:'50%',marginTop:20 }}>
 <LinearGradient colors={['#3ddba1','#30e0ba','#17e8e3']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:10}}>
 <TouchableOpacity>
 <Text visible style={{color:'#fff'}}>Resend e-mail</Text>
 </TouchableOpacity>
 </LinearGradient>
-</View>
+</View>:null}
+
 
 
 </View>
@@ -499,15 +501,15 @@ right: 0,borderRadius:25,marginTop:-40,
 
       checkEmailStatus=async=>{
         console.log('checkEmailStatus',this.state.mailVerifiedStatus)
-        if(!this.state.mailVerifiedStatus==='0'){
+        if(this.state.mailVerifiedStatus==='0'){
 
           console.log("mailStatusText","Your Email is'nt verified")
           this.setState({mailStatusText:"Your Email is'nt verified"})
-          this.setState({visible:false})
+          this.setState({visible:true})
         }else{
           console.log("mailStatusText","Your Email is verified")
           this.setState({mailStatusText:"Your Email is verified"})
-          this.setState({visible:true})
+          this.setState({visible:false})
         }
 
       }

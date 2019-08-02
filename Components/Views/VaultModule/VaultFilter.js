@@ -207,7 +207,7 @@ Animated.timing(
     //this.Load()
     this.GetList()
     console.log(type)
-    //VaultSystemApi(type,this.BalanceResponse)
+    VaultSystemApi(type,this.BalanceResponse)
   }
   GetAllData=()=>
   {
@@ -215,6 +215,7 @@ Animated.timing(
   }
 BalanceResponse=(data)=>
 {
+  console.log(data)
   //this.hide()
   if(data!='undefined')
   {
@@ -222,7 +223,7 @@ BalanceResponse=(data)=>
     {
       if(data.CalculatingAmountDTO.cryptoType==='ETH')
       {
-        this.setState({Usd:data.CalculatingAmountDTO.usdforEther,Balance:data.CalculatingAmountDTO.ethercurrentvalue})
+        this.setState({Usd:data.CalculatingAmountDTO.usdforEther,Balance:data.CalculatingAmountDTO.etherAmount})
        
       }
       else

@@ -23,10 +23,9 @@ export default class  PuplishUser  extends React.Component {
 
   constructor(props) {
     super(props);
-    if (Platform.OS === 'android') {
- 
-        UIManager.setLayoutAnimationEnabledExperimental(true)
-   
+    if (Platform.OS === 'android')
+     {
+      UIManager.setLayoutAnimationEnabledExperimental(true)
       }
     this.springValue = new Animated.Value(0.3)
     this.state = {

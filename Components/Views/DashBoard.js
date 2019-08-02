@@ -909,14 +909,14 @@ justifyContent:'center',alignItems:"center"}} >
       if(data.CalculatingAmountDTO.cryptoType==='ETH')
       {
         this.setState({Usd:data.CalculatingAmountDTO.usdforEther,Balance:data.CalculatingAmountDTO.etherAmount,
-          currentUsdforEther:data.CalculatingAmountDTO.currentUsdforEther,currentUsdforBtc:data.CalculatingAmountDTO.currentUsdforBtc})
+        currentUsdforEther:data.CalculatingAmountDTO.currentUsdforEther,currentUsdforBtc:data.CalculatingAmountDTO.currentUsdforBtc})
         this.GetList()
        
       }
       else
-      {
+        {
         this.setState({Usd:data.CalculatingAmountDTO.usdforBtc,Balance:data.CalculatingAmountDTO.btcAmount,
-          currentUsdforEther:data.CalculatingAmountDTO.currentUsdforEther,currentUsdforBtc:data.CalculatingAmountDTO.currentUsdforBtc})
+        })
        
       }
     
@@ -945,13 +945,14 @@ GetList=async()=>
  {
   "userId":userId,
   "fetchAmountFlag":'All',
-  "cryptoType":cryptoType,
+  "cryptoType":"eth",
   "flagfordates":this.state.Time 
  }
  getactivitydata(params,this.ListData)
 }
 ListData=(data)=>
 {
+  console.log('Get Activity data',data)
   if(data!='undefined')
   {
     if(data.status===ResponseSuccessStatus)
@@ -983,13 +984,13 @@ action=(index)=>
     {
       type='ETH'  
       cryptoType='Eth'   
-      this.GetList()      
+     // this.GetList()      
     }
     else
     {
       type='BTC'
       cryptoType='BTCTEST'  
-      this.GetList()    
+     // this.GetList()    
     }
     this.GetData()
   }
