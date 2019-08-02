@@ -529,11 +529,6 @@ Exchangecolor5:'#4781DF'
 this.setState({
   Admin:item
 })
-<<<<<<< HEAD
-
-=======
-console.log('selected_items',this.state.Admin)
->>>>>>> 5169c1cec4cca1b5b6c21db64e58d71760719f33
       }
 }
 

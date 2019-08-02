@@ -22,7 +22,7 @@ export default class Login  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
-      Username:'Admin@gmail.com',
+      Username:'tamiltheyvanst@gmail.com',
       Password:'password',
       clickr:false,
       clickopen:false,
@@ -34,12 +34,6 @@ export default class Login  extends React.Component {
       app5color:'#fff'
     };
   
-  }
-
-  componentWillMount(){
-    this.setState({
-      Username: "Admin@gmail.com"
-    })
   }
   componentDidMount()
   {
@@ -261,12 +255,14 @@ SlideMenu=()=>{
            password: this.state.Password,
          };
          this.Load()
+         console.log('Login params',params)
          OuthApi(params,this.resultFromAPI);
         }
        
       }
       resultFromAPI=async(data)=>
       {
+        console.log('Outh ',data)
         this.hide()
       try 
       {

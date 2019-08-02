@@ -345,7 +345,7 @@ renderScane() {
         </View>
         <View>
         <Text  style={{marginRight:10,marginTop:10,marginLeft:10, color:"#ABB3D0",fontFamily:'Exo2-Regular'}}>{item.totalAmount}</Text> 
-     <Text  style={{marginTop:10,marginLeft:10, color:'#5496FF',fontFamily:'Exo2-Regular'}}>{item.exchangeType}</Text>  
+     <Text  style={{marginTop:10,marginLeft:10, color:'#5496FF',fontFamily:'Exo2-Regular',fontSize:10}}>{item.exchangeType}</Text>  
         </View>
         <View style={{marginTop:10}}>
         <TouchableOpacity onPress={()=>this.clickedItemText(item)}>
@@ -482,6 +482,10 @@ renderScane() {
         this.setState({
          StatusMode:item
         })
+        if(item==='Request')
+        {
+          
+        }
       }
 }
 
