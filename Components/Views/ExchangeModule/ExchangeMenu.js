@@ -529,10 +529,6 @@ Exchangecolor5:'#4781DF'
 this.setState({
   Admin:item
 })
-<<<<<<< HEAD
-
-=======
->>>>>>> df804266a872929e7a2228f8396278876cc013a3
       }
 }
 

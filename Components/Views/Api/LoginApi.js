@@ -1,5 +1,5 @@
 import Url from './CommonApi'
-import{AsyncStorage,NetInfo,} from 'react-native'
+import{AsyncStorage,NetInfo,Alert} from 'react-native'
 import CheckConnectivity from './CheckInternet'
  export const loginApi=async(params,LoginResult)=>
 {
@@ -28,6 +28,7 @@ import CheckConnectivity from './CheckInternet'
         })
         .catch((error) => {
          console.error(error);
+         Alert.alert(error)
      }); 
 }
 
@@ -57,7 +58,12 @@ export const loginSecureApi=async(params,LoginSecureResult)=>
        return resJson;
       })
       .catch((error) => {
-       console.error(error);
+        if(error)
+        {
+          this.handleErrors
+        }
+       
    });
+   
 }
-  ;
+

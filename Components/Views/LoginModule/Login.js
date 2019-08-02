@@ -35,13 +35,6 @@ export default class Login  extends React.Component {
     };
   
   }
-<<<<<<< HEAD
-
-  componentWillMount(){
-    
-  }
-=======
->>>>>>> df804266a872929e7a2228f8396278876cc013a3
   componentDidMount()
   {
     
@@ -249,12 +242,10 @@ SlideMenu=()=>{
       {
         if(this.state.Username==='')
         {
-          console.log('login username')
           Alert.alert('Alert!!','Please enter username')
         }
         else if(this.state.Password==='')
         {
-          console.log('login Password')
          Alert.alert('Alert!!','Please enter Password')
         }
         else
@@ -263,7 +254,6 @@ SlideMenu=()=>{
            email:this.state.Username,
            password: this.state.Password,
          };
-         console.log('login params')
          this.Load()
          console.log('Login params',params)
          OuthApi(params,this.resultFromAPI);
@@ -276,8 +266,6 @@ SlideMenu=()=>{
         this.hide()
       try 
       {
-       
-        console.log('login data',data)
         if( data.error==='invalid_grant')
         {
           console.log('login error', data.error_description)
@@ -307,8 +295,7 @@ SlideMenu=()=>{
       } 
       catch (error) 
       {
-        console.log('login catch',error)
-        //Alert.alert(error)
+        Alert.alert(error)
         // Error saving data
       }
 
