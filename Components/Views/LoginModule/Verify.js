@@ -103,6 +103,7 @@ pressRight=()=>{
     LayoutAnimation.spring();
     this.setState({wr:50})
     this.setState({clickr:false})
+    this.props.navigation.navigate('Welcome');
 }
 }
 SlideMenu=()=>{

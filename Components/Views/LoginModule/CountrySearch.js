@@ -232,7 +232,7 @@ export default class CountrySearch extends React.Component {
     if(this.state.CountryId=='undefined')
     {
       let params=this.props.navigation.state.params.RegisterDetails
-     // params.CountryId=this.state.CountryId
+      params.CountryId=this.state.CountryId
      this.load()
       registerUpdateApi(params,this.RegisterUpdateResult)
    

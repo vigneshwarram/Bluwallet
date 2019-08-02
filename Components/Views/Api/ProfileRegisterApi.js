@@ -11,12 +11,10 @@ import Url from './CommonApi'
         },
         body: JSON.stringify({
             userId: await AsyncStorage.getItem('userId'),
-            firstName:params.password,
-            lastName:params.conformPassword,      
-           dateOfBirth:1
+            firstName:params.firstname,
+            lastName:params.lastname,      
+            dateOfBirth:params.dates
         
-
-
         })
       }) .then((res)=> {
         return res.json();

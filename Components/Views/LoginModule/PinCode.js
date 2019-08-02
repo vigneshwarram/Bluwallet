@@ -243,6 +243,7 @@ SlideMenu=()=>{
           //await AsyncStorage.setItem('loginInfo',data.loginInfo); 
         if(data.loginInfo.gmailstatus==0)
         {
+        
            await AsyncStorage.setItem('etherwalletAddress',data.loginInfo.EtherwalletAddress.toString()); 
            await AsyncStorage.setItem('bitcoinWalletReceivingAddress',data.loginInfo.bitcoinWalletReceivingAddress.toString()); 
           this.props.navigation.navigate('Home',{
@@ -252,7 +253,7 @@ SlideMenu=()=>{
         else
         {
           this.props.navigation.navigate('Home',{
-            DashBoardPopup: true,Kyc:true
+            DashBoardPopup: false,Kyc:false
           });
         }
           
