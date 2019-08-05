@@ -265,15 +265,15 @@ SlideMenu=()=>{
       {
         if(this.state.Username==null)
         {
-          Alert.alert('Please Provide Email id')
+          Alert.alert('Alert','Please Provide Email id')
         }
         else if(this.state.Password==null)
         {
-          Alert.alert('Please Provide Password')
+          Alert.alert('Alert','Please Provide Password')
         }
         else if(this.state.ConfirmPassword==null)
         {
-          Alert.alert('Please Provide ConfirmPassword')
+          Alert.alert('Alert','Please Provide ConfirmPassword')
         }    
         else if(this.state.ConfirmPassword!=this.state.Password)
         {
@@ -296,7 +296,7 @@ SlideMenu=()=>{
           }
           else
           {
-            Alert.alert('Email Enter is wrong')
+            Alert.alert('Alert','Email Enter is wrong')
           }
          
         }
@@ -319,17 +319,17 @@ SlideMenu=()=>{
         }
         else if(Registerdata.status=='failure')
         {
-          Alert.alert(Registerdata.message)
+          Alert.alert('Alert',Registerdata.message)
         }
         else if(Registerdata.status==InvalidToken)
         {
-          Alert.alert(Registerdata.message)
+          Alert.alert('Alert',Registerdata.message)
         }
         console.log("Register", Registerdata)
       }
       errorResponse=(data)=>
       {
-        Alert.alert(data.message)
+        Alert.alert('Alert',data.message)
       }
         //
       

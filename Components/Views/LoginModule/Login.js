@@ -22,8 +22,8 @@ export default class Login  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
-      Username:'tamiltheyvanst@gmail.com',
-      Password:'password',
+      Username:'',
+      Password:'',
       clickr:false,
       clickopen:false,
       click:false,
@@ -269,7 +269,7 @@ SlideMenu=()=>{
         if( data.error==='invalid_grant')
         {
           console.log('login error', data.error_description)
-          Alert.alert(data.error_description)
+          Alert.alert('Alert',data.error_description)
           this.setState({Username:''})
           this.setState({Password:''})
 
@@ -289,7 +289,7 @@ SlideMenu=()=>{
         else
         {
           console.log('login error')
-          Alert.alert(data.error_description)
+          Alert.alert('Alert',data.error_description)
         }
       
       } 
@@ -322,7 +322,7 @@ SlideMenu=()=>{
         }
         else
         {
-          Alert.alert(data.message)
+          Alert.alert('Alert',data.message)
         }
       }
       Navigation=(data)=>
