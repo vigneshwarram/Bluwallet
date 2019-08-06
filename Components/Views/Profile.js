@@ -74,6 +74,7 @@ export default class Profile  extends React.Component {
   }
   GetProfileDetails=(data)=>
   {
+    console.log('data.retrieveData',data)
   if(data!='undefined')
      {
       if(data.status===ResponseSuccessStatus)     
@@ -85,6 +86,7 @@ export default class Profile  extends React.Component {
         console.log('data.retrieveData',this.state.mailVerifiedStatus)
         //Check mail status
         this.checkEmailStatus()
+        console.log('data.retrieveData','checkEmailStatus()')
 
       }else if(data.error==='invalid_token')
       {
