@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import {ExchangeList,ExchangeRequest} from '../Api/ExchangeRequest'
+import {ExchangeList,ExchangeRequest ,exchangeUserApi} from '../Api/ExchangeRequest'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from './Constant'
 import { Alert, LayoutAnimation, StyleSheet, View, Text, ScrollView, UIManager, TouchableOpacity, Platform, Image } from 'react-native';
 let datasource=[1]
@@ -42,7 +42,7 @@ export default class Expandable_ListView extends Component {
        // Alert.alert('hello')
        if(data!='undefined')
          {
-           if(data.exchangeType=='BTC_ETH_USER')
+           if(data.exchangeType=='ETH_BTC_USER')
            {
              params=
             {
@@ -53,6 +53,7 @@ export default class Expandable_ListView extends Component {
              "exchangeStatus":data.status,
              
            }
+           console.log('Expandable list params',params)
            }
            else
            {
@@ -65,11 +66,18 @@ export default class Expandable_ListView extends Component {
              "exchangeStatus":data.status,
              
            }
+           console.log('Expandable list params',params)
            }
           console.log(this.props)
           this.props.onLoad()
-           ExchangeRequest(params,this.ExchangeRequestResponse)
-           console.log('This params',params)
+          if(data.exchangeType ==='ETH_BTC_USER'){
+            exchangeUserApi('eth_btc/user/exchange',params,this.ExchangeRequestResponse)
+            console.log('This params',params)
+          }else{
+            exchangeUserApi('btc_eth/user/exchange',params,this.ExchangeRequestResponse)
+            console.log('This params',params)
+          }
+           
          }
     }
     ExchangeRequestResponse=(data)=>

@@ -56,6 +56,7 @@ export default class  Publish  extends React.Component {
       SalesColor:'transparent',
       PurchaseOpacity:1,
       SalesOpacity:0.6,
+      exchangeTypeMenu:this.props.navigation.state.params.Exchange_Type
     };
   
   }
@@ -82,6 +83,7 @@ export default class  Publish  extends React.Component {
       let FinalResult=[];
       FinalResult=this.search('BTC_ETH_ADMIN',data.fetchExchageRequestDTO.exchangeDTOList)
      this.setState({dataSource:FinalResult})
+     console.log('publish_data',{dataSource:FinalResult})
     }
     else if(data.error===InvalidToken)
     {

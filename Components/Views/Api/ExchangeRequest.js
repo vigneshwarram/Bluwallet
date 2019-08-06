@@ -171,3 +171,54 @@ export const ExchangeAdminRequest=async(urlparams,params,Response)=>
         console.error(error);
     });
 }
+
+
+
+export const exchangeAdmin_ETC_BTC_Api=async(params,Response)=>
+{
+    fetch(Url+'eth_btc/admin/exchange', {  
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'authorization':'bearer '+await AsyncStorage.getItem('AccessToken')
+        },
+        body:JSON.stringify(params)
+      }).then((res)=> {
+        return res.json();
+       })
+       .then((resJson)=>{
+         console.log(resJson)
+         Response(resJson)
+       
+        return resJson;
+       })
+       .catch((error) => {
+        console.error(error);
+    });
+}
+
+
+export const exchangeUserApi=async(urlparams,params,Response)=>
+{
+    fetch(Url+urlparams, {  
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'authorization':'bearer '+await AsyncStorage.getItem('AccessToken')
+        },
+        body:JSON.stringify(params)
+      }).then((res)=> {
+        return res.json();
+       })
+       .then((resJson)=>{
+         console.log(resJson)
+         Response(resJson)
+       
+        return resJson;
+       })
+       .catch((error) => {
+        console.error(error);
+    });
+}

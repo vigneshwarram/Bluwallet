@@ -9,7 +9,7 @@ import Modal from "react-native-simple-modal";
 import {StackActions} from 'react-navigation'
 import Logo from '../../logo'
 import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
-import {ExchangeOnLoad ,ConvertToUsd , getEqualCryptoValueApi , exchangeRequestApi} from '../Api/ExchangeRequest'
+import {ExchangeOnLoad ,ConvertToUsd , getEqualCryptoValueApi , exchangeRequestApi ,exchangeAdmin_ETC_BTC_Api} from '../Api/ExchangeRequest'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from '../Utils.js/Constant'
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -61,7 +61,8 @@ export default class  Buy  extends React.Component {
       app5color:'#5099f0',
       firstExchangeValue:'0.00',
       secondExchangeValue:'0.00',
-      networkFeeValue:''
+      networkFeeValue:'',
+      exchangeTypeMenu:this.props.navigation.state.params.Exchange_Type
     
     };
   
@@ -70,6 +71,9 @@ export default class  Buy  extends React.Component {
   componentDidMount()
   {
     this.OnLoad()
+    
+    
+    
   }
   OnLoad=async()=>
   {
@@ -97,6 +101,16 @@ export default class  Buy  extends React.Component {
         "mincomercialValue":data.CalculatingAmountDTO.minimumCryptoValue,
         "maxcomercialValue":data.CalculatingAmountDTO.maximumCryptoValue}
         )
+      }else if(data.error==='invalid_token')
+      {
+        Alert.alert(
+          'Error',
+          'Token Expired',
+          [
+            {text: 'OK', onPress: () => this.props.navigation.navigate("Login")},
+          ],
+    
+        );
       }
     }
   }
@@ -422,19 +436,94 @@ toggleSwitch=(value)=>{
       //Exchage Api on click
       exchangeApi=async()=>
     {
-        let type=crptoType
-       
-        let params=
+      if(this.state.exchangeTypeMenu ==='Admin')
       {
-        userId:await AsyncStorage.getItem('UserId') ,
-        exchangeMode:'BTC_ETH_USER',
-        amountToTrade:this.state.usdforEther
- 
+        if(this.state.EthAmount === 'ETH')
+        {
+            let params=
+        {
+          userId:await AsyncStorage.getItem('UserId') ,
+          exchangeMode:'ETH_BTC_ADMIN',
+          amountToTrade:this.state.usdforEther
+   
+        }
+        console.log('Request data.===>', params, this.state.usdforEther)
+        this.Load()   
+        exchangeRequestApi(params,this.onExchangeResponse)
+        }else
+        {
+  
+          let params=
+        {
+          userId:await AsyncStorage.getItem('UserId') ,
+          exchangeMode:'BTC_ETH_ADMIN',
+          amountToTrade:this.state.usdforEther
+   
+        }
+        console.log('Request data.===>', params, this.state.usdforEther)
+        this.Load()   
+        exchangeRequestApi(params,this.onExchangeResponse)
+        }
+    
+      }else{
+        if(this.state.EthAmount === 'ETH')
+        {
+            let params=
+        {
+          userId:await AsyncStorage.getItem('UserId') ,
+          exchangeMode:'ETH_BTC_USER',
+          amountToTrade:this.state.usdforEther
+   
+        }
+        console.log('Request data.===>', params, this.state.usdforEther)
+        this.Load()   
+        exchangeRequestApi(params,this.onExchangeResponse)
+        }else
+        {
+  
+          let params=
+        {
+          userId:await AsyncStorage.getItem('UserId') ,
+          exchangeMode:'BTC_ETH_USER',
+          amountToTrade:this.state.usdforEther
+   
+        }
+        console.log('Request data.===>', params, this.state.usdforEther)
+        this.Load()   
+        exchangeRequestApi(params,this.onExchangeResponse)
+        }
       }
-      console.log('Request data.===>', params, this.state.usdforEther)
-      this.Load()   
-      exchangeRequestApi(params,this.onExchangeResponse)
+        
     }
+
+    //Admin RTH_BTC Response
+    onAdminETH_BTCResponse=(data)=>{
+      this.hide()
+      if(data!=DataUndefined)
+     {
+      if(data.status===ResponseSuccessStatus)
+      {
+                  
+        Alert.alert(data.status,data.message)
+        
+      }else if(data.error==='invalid_token')
+      {
+        Alert.alert(
+          'Error',
+          'Token Expired',
+          [
+            {text: 'OK', onPress: () => this.props.navigation.navigate("Login")},
+          ],
+    
+        );
+      }
+      else{
+        Alert.alert(data.status,data.message)
+        //this.successStatus()
+      }
+    }
+   }
+
     successStatus=()=>
     {
       this.setState({visibles:true})
@@ -451,7 +540,7 @@ toggleSwitch=(value)=>{
       let pushAction=StackActions.push({
         routeName:routname
       })
-      this.props.navigation.dispatch(pushAction);
+      this.props.navigation.dispatch(pushAction ,{Exchange_Type: this.state.exchangeTypeMenu });
     }
     onExchangeResponse=(data)=>
     {

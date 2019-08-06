@@ -61,6 +61,7 @@ export default class  PuplishUser  extends React.Component {
       SalesColor:'transparent',
       PurchaseOpacity:1,
       SalesOpacity:0.6,
+      exchangeTypeMenu:this.props.navigation.state.params.Exchange_Type
     };
   
   }
@@ -308,7 +309,7 @@ renderScane() {
   <Picker.Item label="Aus" value="Aus" />
   <Picker.Item label="India" value="India" />
   <Picker.Item label="Aus" value="Aus" />
-  </Picker>
+  {/* </Picker>
         </View>
         
   
@@ -319,10 +320,10 @@ renderScane() {
         <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
         <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}
    selectedValue={this.state.StatusMode}
-  onValueChange={(itemValue, itemIndex) => this.selectedMode(itemValue,itemIndex)}>
+  onValueChange={(itemValue, itemIndex) => this.selectedMode(itemValue,itemIndex)}> */}
   
-  <Picker.Item label="Publication" value="Publication" />
-  <Picker.Item label="Request" value="Request" />
+  {/* <Picker.Item label="Publication" value="Publication" />
+  <Picker.Item label="Request" value="Request" /> */}
   
   </Picker>
         </View>

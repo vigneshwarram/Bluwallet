@@ -450,11 +450,11 @@ publicClick=()=>{
             this.SellReset()
             if(this.state.Admin=='Admin')
             {
-              this.props.navigation.navigate('Publish')
+              this.props.navigation.navigate('Publish', {Exchange_Type: this.state.Admin })
             }
             else
             {
-              this.props.navigation.navigate('PuplishUser')
+              this.props.navigation.navigate('PuplishUser',  {Exchange_Type: this.state.Admin })
             }
            
 }
@@ -473,7 +473,8 @@ Exchangecolor5:'#4781DF'
         this.BuyReset()
         this.Publicreset()
         this.SellReset()
-        this.props.navigation.navigate('Exchange')
+        this.props.navigation.navigate('Exchange', {Exchange_Type: this.state.Admin })
+        console.log("exchangeType", this.state.Admin)
 
       }
 
@@ -529,6 +530,7 @@ Exchangecolor5:'#4781DF'
 this.setState({
   Admin:item
 })
+
       }
 }
 
