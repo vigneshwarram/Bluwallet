@@ -4,6 +4,7 @@ import { View, StyleSheet, Image,ScrollView,Animated,Text,ActivityIndicator,Touc
 import { Alert } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {LoginApi,loginSecureApi} from '../Api/LoginApi'
+import { NavigationActions,StackActions } from 'react-navigation'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined} from '../Utils.js/Constant'
 import OTPInput from 'react-native-otp';
 export default class PinCode  extends React.Component {
@@ -246,15 +247,11 @@ SlideMenu=()=>{
         
            await AsyncStorage.setItem('etherwalletAddress',data.loginInfo.EtherwalletAddress.toString()); 
            await AsyncStorage.setItem('bitcoinWalletReceivingAddress',data.loginInfo.bitcoinWalletReceivingAddress.toString()); 
-          this.props.navigation.navigate('Home',{
-            DashBoardPopup: false,Kyc:true
-          });
+           this.NavigationReset('Home',true,false)
         }
         else
         {
-          this.props.navigation.navigate('Home',{
-            DashBoardPopup: true,Kyc:false
-          });
+          this.NavigationReset('Home',false,true)
         }
           
          }
@@ -269,6 +266,15 @@ SlideMenu=()=>{
          Alert.alert(InvalidResponse)
        }
      
+     }
+     NavigationReset=(routname,dashboardpopup,kycstatus)=>
+     {
+      this.props.navigation.dispatch(
+        StackActions.reset({
+         index: 0,
+         actions: [NavigationActions.navigate({ routeName: routname,params: {  DashBoardPopup: dashboardpopup,Kyc:kycstatus} })]
+        })
+       );
      }
 }
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet,TextInput, Image,Picker,FlatList,Text,ActivityIndicator,TouchableOpacity,Easing,Animated} from 'react-native';
+import { View, StyleSheet,TextInput, Image,Picker,FlatList,Text,ActivityIndicator,TouchableOpacity,Easing,Animated ,AsyncStorage} from 'react-native';
 import { Alert } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
@@ -56,7 +56,9 @@ export default class  Publish  extends React.Component {
       SalesColor:'transparent',
       PurchaseOpacity:1,
       SalesOpacity:0.6,
-      exchangeTypeMenu:this.props.navigation.state.params.Exchange_Type
+      exchangeTypeMenu:this.props.navigation.state.params.Exchange_Type,
+      exchangeOrRequest:false,
+      userIdLogin:''
     };
   
   }
@@ -64,11 +66,15 @@ export default class  Publish  extends React.Component {
   componentDidMount()
   {
     this.GetData()
+    
   }
+
+  
   GetData=()=>
   {
     //ExchangeRequest(this.ExchangeRequestResponse)
    // this.openOverlay()
+   
    this.Load()
     ExchangeList(this.ExchangeListResponse)
   }
@@ -340,9 +346,10 @@ renderScane() {
     colors={['#4262B5', '#3A549B','#314279','#2C3765','#2A335E']} style={{ borderRadius:25}}>
         <View style={{flexDirection:'row',padding:20,justifyContent:'space-between'}}>
         <View>
-        <View style={{flexDirection:'row'}}>
-     <Text  style={{marginRight:10,marginTop:10,color:"#ABB3D0",fontFamily:'Exo2-Bold',fontSize:11,marginLeft:10}}>{item.userName}</Text>  
-     <Text  style={{marginRight:10,marginTop:10,fontSize:10,color:'#5496FF',fontFamily:'Exo2-Regular'}}>100</Text>         
+        <View style={{flexDirection:'column'}}>
+     
+     <Text  style={{marginRight:10,marginTop:10,fontSize:10,color:'#5496FF',fontFamily:'Exo2-Regular',marginLeft:10}}>100</Text>         
+     <Text  style={{marginRight:10,marginTop:5,color:"#ABB3D0",fontFamily:'Exo2-Bold',fontSize:11}}>{item.userName}</Text>  
      </View>   
         </View>
         <View>
@@ -354,7 +361,7 @@ renderScane() {
      <View>
      <LinearGradient colors={['#7498F9','#9B89F8','#D476F7']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:7,borderRadius:5,backgroundColor:'green',justifyContent:'center',alignItems:'center'}}>
 
-<Text style={{color:'#fff',fontFamily:'Exo2-Regular'}}>Exchange</Text>
+<Text style={{color:'#fff',fontFamily:'Exo2-Regular'}}>{(this.state.StatusMode==='Request'?'Request':'Exchange')}</Text>
 </LinearGradient>
      </View>
      </TouchableOpacity> 
@@ -389,41 +396,46 @@ renderScane() {
     
     );
       }
-      clickedItemText=(item)=>
+      clickedItemText=async(item)=>
       {
-        let params;
-        let urlparams;
-        //openOverlay()
-        
-
-        console.log('Admin exchange params',item)
-        if(item.exchangeType==='BTC_ETH_ADMIN')
-        {
-          urlparams='btc_eth/admin/exchange'
-          params=
+        if(this.state.exchangeOrRequest === true){
+          let params;
+          let urlparams;
+          //openOverlay()
+          
+          let userId =await AsyncStorage.getItem('UserId') 
+          console.log('Admin exchange params',item)
+          if(item.exchangeType==='BTC_ETH_ADMIN')
           {
-           "userId":item.userId.toString(),
-           "btcAmount":item.amountToTrade.toString(),    
-           "exchangeReqId":item.id.toString(),
+            urlparams='btc_eth/admin/exchange'
+            params=
+            {
+             "userId":userId ,
+             "btcAmount":item.amountToTrade.toString(),    
+             "exchangeReqId":item.id.toString(),
              "exchangeStatus":item.status,
-         }
-        }
-        else
-        {
-          urlparams='eth_btc/admin/exchange'
-          params=
+           }
+          }
+          else
           {
-           "userId":item.userId.toString(),
-           "etherAmount":item.amountToTrade.toString(),    
-           "exchangeReqId":item.id.toString(),
-           "exchangeStatus":item.status,
-         }
+            urlparams='eth_btc/admin/exchange'
+            params=
+            {
+             "userId": userId,
+             "etherAmount":item.amountToTrade.toString(),    
+             "exchangeReqId":item.id.toString(),
+             "exchangeStatus":item.status,
+           }
+          }
+         
+        console.log('Admin exchange params Request',params)
+          this.Load()
+          ExchangeAdminRequest(urlparams,params,this.ExchangeRequestResponse)
+           // Alert.alert(item.id.toString())
+        }else{
+
         }
-       
-      console.log('Admin exchange params Request',params)
-        this.Load()
-        ExchangeAdminRequest(urlparams,params,this.ExchangeRequestResponse)
-         // Alert.alert(item.id.toString())
+        
          
       }
       successStatus=()=>
@@ -486,7 +498,11 @@ renderScane() {
         })
         if(item==='Request')
         {
-          
+          this.setState({exchangeOrRequest:true})
+          console.log('exchangeOrRequest',this.state.exchangeOrRequest)
+        }else{
+          this.setState({exchangeOrRequest:false})
+          console.log('exchangeOrRequest',this.state.exchangeOrRequest)
         }
       }
 }

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,ScrollView,TouchableOpacity,Text,ActivityIndicator,LayoutAnimation,} from 'react-native';
+import { View, StyleSheet, Image,ScrollView,TouchableOpacity,Text,ActivityIndicator,LayoutAnimation,ImageBackground} from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 
@@ -143,22 +143,15 @@ SlideMenu=()=>{
         
       <View style={styles.Maincontainers}>  
        
-     
-       <LinearGradient
-  colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={{height:'100%',opacity:0.9}}>   
-    <View style={{bottom:20,position:'absolute'}}>
-        <Image
-                style={{width:550,height:500, resizeMode: 'contain',opacity:0.1}}
-                source={require('../assets/bgLogo.png')}
-            />            
-        </View> 
+   <ImageBackground style={{flex:1,}} imageStyle={{resizeMode: 'stretch'}} source={require('../assets/Group_1316.png')}>
+ 
     <View style={{flex:0.6}}> 
    
              <View>
          
-             <View  style={{justifyContent:'center',alignItems:'center'
+             <View  style={{justifyContent:'center',alignItems:'center',paddingTop:20
         }}>
-              <Image  style={{width:200,height:200,resizeMode:'contain'}}  source={require("../assets/app-logo.png")} ></Image> 
+              <Image  style={{width:150,height:150,resizeMode:'contain'}}  source={require("../assets/app-logo.png")} ></Image> 
                  
             
         </View>
@@ -203,7 +196,7 @@ SlideMenu=()=>{
 </View>
         </View>      
         
- </LinearGradient> 
+   </ImageBackground>
  
 
      </View>
@@ -231,13 +224,9 @@ const styles = StyleSheet.create({
  
   Maincontainers: {
     flex: 1, 
-  
+  backgroundColor:'transparent'
   },
-  containers: {
-    backgroundColor: 'transparent',
-    marginTop:5,
-   
-  },
+ 
   activityIndicator: {
     flex: 1,
     justifyContent: 'center',

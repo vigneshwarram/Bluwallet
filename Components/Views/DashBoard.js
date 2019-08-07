@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,Picker,NativeModules,Text,AsyncStorage,TouchableOpacity, Animated,Platform,TextInput,Slider,
+import { View, StyleSheet, Image,Picker,NativeModules,Text,AsyncStorage,TouchableOpacity,BackHandler, Animated,Platform,TextInput,Slider,
   Easing,Dimensions} from 'react-native';
 import { Alert } from 'react-native';
 const { UIManager } = NativeModules;
@@ -131,7 +131,16 @@ export default class DashBoard extends React.Component {
     this.props.navigation.setParams({bottombar:true})
     // this.GetListData()
     // this._animate()
+   // this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
     this.GetData()
+  }
+  componentWillUnmount() {
+    this.backHandler.remove()
+  }
+  handleBackPress = () => {
+   // BackHandler.exitApp()
+    this.props.navigation.navigate('DashBoard')
+   
   }
 dataset=(data)=>{
   this.setState({
@@ -342,7 +351,7 @@ renderScane() {
       <View style={{flex:0.1}}></View>
     <View style={{alignItems:'center', flex:0.9,}}>
     <View style={{backgroundColor:'#fff',borderRadius:15,width:200}}>
-    <View style={{justifyContent:'center',alignItems:'center',marginTop:10}}>
+    <View style={{justifyContent:'center',alignItems:'center',marginTop:5}}>
     <Text style={styles.instructions2}>Amount</Text>
     <View style={{flexDirection:'row',justifyContent:'space-around',paddingLeft:10,paddingRight:10}}>
     <Text style={styles.instructions3}>0.00000</Text>
@@ -352,7 +361,7 @@ renderScane() {
     
 
     </View>
-    <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:50,height:150}}>
+    <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:10,height:150}}>
     <View style={{justifyContent:'center',alignItems:'center'}}>
     <Text style={{color:'#5496FF',fontFamily:'Exo2-Regular',fontSize:11,marginTop:10,marginLeft:10,marginRight:10}}>SCAN YOUR QR CODE OR WRITE DOWN</Text>
     </View>
@@ -368,7 +377,7 @@ source={require("./assets/portraitphoto.png")}
 </View>   
     </View>
     <View style={{marginTop:15,alignItems:'center'}}>
-<LinearGradient colors={['#FF7C6E','#F4317F']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{paddingTop:15,paddingBottom:15,paddingLeft:40,paddingRight:40, backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:50 }}>
+<LinearGradient colors={['#FF7C6E','#F4317F']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{height:30, backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:25,width:60 }}>
 <TouchableOpacity>
 <Text style={{color:'#fff',fontFamily:'Poppins-Regular'}}>Send</Text>
 </TouchableOpacity>
@@ -384,7 +393,7 @@ source={require("./assets/portraitphoto.png")}
     </View>
    
     </View>
-    <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:25,height:150}}>
+    <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:10,height:120}}>
     <View style={{justifyContent:'center',alignItems:'center'}}>
     <Text style={{color:'#ABB3D0',fontFamily:'Exo2-Regular',fontSize:18,marginTop:10,marginLeft:10,marginRight:10}}>Speed Bar</Text>
     <Slider
@@ -405,7 +414,7 @@ source={require("./assets/portraitphoto.png")}
     </View>
     
     <View style={{position:'absolute',bottom:0,width:'100%',left:0}}>
-    <LinearGradient colors={['#FF7C6E','#F4317F']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{borderTopLeftRadius:100,height:100,width:'100%',borderTopLeftRadius:25}}>
+    <LinearGradient colors={['#FF7C6E','#F4317F']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{borderTopLeftRadius:100,height:80,width:'100%',borderTopLeftRadius:25}}>
       <View style={{flexDirection:'row',justifyContent:'space-around',alignItems:'center'}}>
       <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:25,height:40,width:'40%'}}>
     <View style={{justifyContent:'center',alignItems:'center'}}>

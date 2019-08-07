@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {ExchangeList,ExchangeRequest ,exchangeUserApi} from '../Api/ExchangeRequest'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from './Constant'
-import { Alert, LayoutAnimation, StyleSheet, View, Text, ScrollView, UIManager, TouchableOpacity, Platform, Image } from 'react-native';
+import { Alert, LayoutAnimation, StyleSheet, View, Text, ScrollView, UIManager, TouchableOpacity, Platform, Image,AsyncStorage } from 'react-native';
 let datasource=[1]
 export default class Expandable_ListView extends Component {
 
@@ -13,13 +13,15 @@ export default class Expandable_ListView extends Component {
     
       this.state = {
   
-        layout_Height: 0
+        layout_Height: 0,
+        userIdLogin:''
   
       }
     }
   
     componentWillReceiveProps(nextProps) {
       
+     
       if (nextProps.item.expanded) {
         this.setState(() => {
           return {
@@ -35,10 +37,15 @@ export default class Expandable_ListView extends Component {
         });
       }
     }
-    SelectedExchangeRequest=(data)=>
+
+   
+
+    SelectedExchangeRequest=async(data)=>
     {
       let params;
+      let userId =await AsyncStorage.getItem('UserId') 
       console.log('Expandable list response',data)
+    
        // Alert.alert('hello')
        if(data!='undefined')
          {
@@ -46,7 +53,7 @@ export default class Expandable_ListView extends Component {
            {
              params=
             {
-             "userId":data.userId,
+             "userId":userId,
              "etherAmount":data.amountToTrade,
              "toEthWalletAddress":data.ethWalletAddress,
              "exchangeReqId":data.id,
@@ -59,7 +66,7 @@ export default class Expandable_ListView extends Component {
            {
             params=
             {
-             "userId":data.userId,
+             "userId":userId,
              "btcAmount":data.amountToTrade,
              "toBtcWalletAddress":data.btcWalletAddress,
              "exchangeReqId":data.id,

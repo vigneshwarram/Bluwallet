@@ -132,36 +132,30 @@ SlideMenu=()=>{
         
       <View style={styles.Maincontainers} >  
        
-      <View> 
 
        <LinearGradient
        
-  colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>   
-   <View style={{position:'absolute',left:0,bottom:20}}>
+  colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={styles.Maincontainers}>   
+
+  <View style={{flex:0.4}}>
+  <View  style={{justifyContent:'center',alignItems:'center',paddingTop:20
+        }}>
+              <Image  style={{width:150,height:150,resizeMode:'contain'}}  source={require("../assets/app-logo.png")} ></Image> 
+                           
+        </View>  
+  </View>
+  <View style={{flex:0.7,position:'relative',justifyContent:'center'}}>
+ 
  <Image
-                style={{width:550,height:500, resizeMode: 'contain',opacity:0.1}}
+                style={{width:500,height:500, resizeMode: 'contain',opacity:0.1,position:'absolute',bottom:30,}}
                 source={require('../assets/bgLogo.png')}
             />                       
-        </View>
-   <ScrollView>
-    <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-    <View></View>
-    <View style={{justifyContent:'center',alignItems:'center',marginLeft:40}}>
-    </View>
-     
-    </View>
-    <View style={{flex:1}}>          
-         
-             <View  style={{justifyContent:'center',alignItems:'center'
-        }}>
-              <Image  style={{width:200,height:200,resizeMode:'contain'}}  source={require("../assets/app-logo.png")} ></Image> 
-                           
-        </View>                   
+   
         <KeyboardAvoidingView 
   
   behavior='padding'
 >
-<View  style={{paddingVertical:80,marginLeft:30,marginRight:30
+<View  style={{paddingVertical:10,marginLeft:30,marginRight:30
        }}>
      <View style={{flexDirection:'row',justifyContent:'space-around'}}>
     <View style={{justifyContent:'center',alignItems:'center'}}>
@@ -210,14 +204,9 @@ SlideMenu=()=>{
 </TouchableOpacity>  
        </View> 
        </KeyboardAvoidingView> 
-</View>  
- 
-  
-      
-        
-       </ScrollView>
+  </View>
  </LinearGradient> 
- </View>
+ 
 
      </View>
       
@@ -314,7 +303,6 @@ SlideMenu=()=>{
             console.log('Loginresult',data)
             await AsyncStorage.setItem('UserId',data.loginInfo.userId.toString()); 
             await AsyncStorage.setItem('email',data.loginInfo.emailId.toString()); 
-            await AsyncStorage.setItem('securedKey',data.securedKey.toString()); 
             console.log('Loginresult',data)
             this.props.navigation.navigate('PinCode')
           
