@@ -6,6 +6,7 @@ import BackgroundIcon from '../../Background'
 import {loginApi} from '../Api/LoginApi'
 import OuthApi from '../Api/OuthApi'
 import LinearGradient from 'react-native-linear-gradient';
+import { NavigationActions,StackActions } from 'react-navigation'
 import { ScrollView } from 'react-native-gesture-handler';
 export default class Login  extends React.Component {
 
@@ -304,7 +305,23 @@ SlideMenu=()=>{
             await AsyncStorage.setItem('UserId',data.loginInfo.userId.toString()); 
             await AsyncStorage.setItem('email',data.loginInfo.emailId.toString()); 
             console.log('Loginresult',data)
-            this.props.navigation.navigate('PinCode')
+            if(data.loginInfo.twoFactorAuthenticationStatus===0)
+            {
+              if(data.loginInfo.kycStatus==1)
+              {
+                this.NavigationReset('Home',true,false)
+              }
+              else
+              {
+                this.NavigationReset('Home',false,true)
+              }
+             
+            }
+            else
+            {
+              this.props.navigation.navigate('PinCode')
+            }
+           
           
                
         }
@@ -313,6 +330,19 @@ SlideMenu=()=>{
           Alert.alert(data.message)
         }
       }
+      NavigationReset=(routname,dashboardpopup,kycstatus)=>
+      {
+       
+         this.props.navigation.dispatch(
+           StackActions.reset({
+            index: 0,
+            actions: [NavigationActions.navigate({ routeName: routname,params: {  DashBoardPopup: dashboardpopup,Kyc:kycstatus} })]
+           })
+          );
+         
+       }
+       
+      }
       Navigation=(data)=>
       {
        
@@ -320,7 +350,6 @@ SlideMenu=()=>{
           DashBoardPopup: true,Kyc:true
         });
       }
-}
 
 
 

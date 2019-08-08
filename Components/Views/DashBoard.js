@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
 import { View, StyleSheet, Image,Picker,NativeModules,Text,AsyncStorage,TouchableOpacity,BackHandler, Animated,Platform,TextInput,Slider,
-  Easing,Dimensions} from 'react-native';
+  Easing,Dimensions,PermissionsAndroid } from 'react-native';
 import { Alert } from 'react-native';
 const { UIManager } = NativeModules;
 import QRCode from 'react-native-qrcode-svg';
+import { CameraKitCameraScreen, } from 'react-native-camera-kit';
 import BlurOverlay,{closeOverlay,openOverlay} from 'react-native-blur-overlay';
 import Modal from "react-native-modal";
 import Dialog, { DialogContent } from 'react-native-popup-dialog';
@@ -46,7 +47,10 @@ export default class DashBoard extends React.Component {
     this.RotateValueHolder = new Animated.Value(0);
     this.state = {
       dataSource:[],
-      currentUsdforEther:null,
+      currentUsdforEther:null,    
+      QR_Code_Value: '',
+      Start_Scanner: false,
+      QrButton:false,
       currentUsdforBtc:null,
       dataImage:[{'image1':require("./assets/etherem.png"),'image1':require("./assets/etherem.png")}],
       cityItems:["US Doller,Indian,Eutherium"],
@@ -88,6 +92,7 @@ export default class DashBoard extends React.Component {
       click:false,
       slide:false,
       visible: false,
+      sendEtherAmount:'0.000',
       hidden: false,
       app1color:'#fff',
       app6color:'#5099f0',
@@ -157,6 +162,10 @@ hide(){
 }
 space(){
   return(<View style={{height: 10, width: 1, backgroundColor:'black'}}/>)
+}
+QrCodeTouch=()=>
+{
+
 }
 _onPress=()=>{
   this.setState({QrClick:true})
@@ -293,7 +302,37 @@ CloseLeftAction=()=>
  
  
 }
-
+open_QR_Code_Scanner=()=> {
+ 
+    var that = this;
+ 
+    if (Platform.OS === 'android') {
+      async function requestCameraPermission() {
+        try {
+          const granted = await PermissionsAndroid.request(
+            PermissionsAndroid.PERMISSIONS.CAMERA, {
+              'title': 'Camera App Permission',
+              'message': 'Camera App needs access to your camera '
+            }
+          )
+          if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+ 
+            that.setState({ QR_Code_Value: '' });
+            that.setState({ Start_Scanner: true });
+          } else {
+            alert("CAMERA permission denied");
+          }
+        } catch (err) {
+          alert("Camera permission err", err);
+          console.warn(err);
+        }
+      }
+      requestCameraPermission();
+    } else {
+      that.setState({ QR_Code_Value: '' });
+      that.setState({ Start_Scanner: true });
+    }
+  }
 CloseRight=()=>
 {
   Animated.timing(this.state.RightSideWidth, {
@@ -304,27 +343,19 @@ CloseRight=()=>
   }).start(() => console.log('animation complete'));
   this.setState({clickopen:false})
 }
-get pagination () {
-  const { carouselItems, activeSlide } = this.state;
-  return (
-      <Pagination
-        dotsLength={carouselItems.length}
-        activeDotIndex={activeSlide}
-        containerStyle={{ backgroundColor: 'transparent' }}
-        dotStyle={{
-            width: 10,
-            height: 10,
-            borderRadius: 5,
-            marginHorizontal: 8,
-            backgroundColor: '#5099f0'
-        }}
-        inactiveDotStyle={{
-            // Define styles for inactive dots here
-        }}
-        inactiveDotOpacity={0.4}
-        inactiveDotScale={0.6}
-      />
-  );
+onQR_Code_Scan_Done = (QR_Code) => {
+ 
+ // this.setState({ QR_Code_Value: QR_Code ,Start_Scanner: false,});
+  this.setState({QrButton:false})
+ // this.setState({QrClick:false})
+  this.pressRight()
+ // openOverlay()
+  //this._onPress();
+ console.log('This popup overlay is not openenng')
+}
+Scanner=()=>
+{
+  this.setState({QrButton:true})
 }
 renderScane() {
   return (
@@ -354,13 +385,19 @@ renderScane() {
     <View style={{justifyContent:'center',alignItems:'center',marginTop:5}}>
     <Text style={styles.instructions2}>Amount</Text>
     <View style={{flexDirection:'row',justifyContent:'space-around',paddingLeft:10,paddingRight:10}}>
-    <Text style={styles.instructions3}>0.00000</Text>
-    <Image style={{width: 25, height: 25}}   source={require("./assets/diamond.png")} ></Image>    
+    <Text style={styles.instructions3}>{this.state.sendEtherAmount}</Text>
+    {
+      (type==='ETH')? <Image style={{width: 25, height: 25}}   source={require("./assets/diamond.png")} ></Image>:
+      <Image style={{width: 25, height: 25}}   source={require("./assets/bshadow.png")} ></Image>
+     
+    }
+   
     </View>
     </View>
     
 
     </View>
+    <TouchableOpacity onPress={this.Scanner}>
     <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:10,height:150}}>
     <View style={{justifyContent:'center',alignItems:'center'}}>
     <Text style={{color:'#5496FF',fontFamily:'Exo2-Regular',fontSize:11,marginTop:10,marginLeft:10,marginRight:10}}>SCAN YOUR QR CODE OR WRITE DOWN</Text>
@@ -374,8 +411,9 @@ resizeMode: "contain",
 height: 100}}
 source={require("./assets/portraitphoto.png")}
     />  
-</View>   
+</View>    
     </View>
+    </TouchableOpacity>
     <View style={{marginTop:15,alignItems:'center'}}>
 <LinearGradient colors={['#FF7C6E','#F4317F']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{height:30, backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:25,width:60 }}>
 <TouchableOpacity>
@@ -576,6 +614,19 @@ _animate=()=>{
           fill={'none'}
       />
   )
+  if(this.state.QrButton)
+  {
+    return <CameraKitCameraScreen
+    showFrame={true}
+    scanBarcode={true}
+    laserColor={'#FF3D00'}
+    frameColor={'#00C853'}
+    colorForScannerFrame={'black'}
+    onReadCode={event =>
+      this.onQR_Code_Scan_Done(event.nativeEvent.codeStringValue)
+    }
+  />
+  }
   if(this.state.animate){  
     return <View style={{justifyContent:'center',alignItems:'center',flex:1}}>
      <Animated.Image 
@@ -586,7 +637,14 @@ _animate=()=>{
   }
     return (  
       <View style={styles.Maincontainers}> 
-              <BlurOverlay
+            
+        
+    
+      <LinearGradient   colors= {['#354E91','#314682','#283563','#222B50','#21284A']}>
+     
+      <ScrollView>
+      <View style={{justifyContent:'space-between',flexDirection:'row',}}>  
+      <BlurOverlay
                     radius={14}
                     downsampling={2}
                     brightness={-125}
@@ -600,13 +658,6 @@ _animate=()=>{
                     blurStyle='#222B50'
                     children={(this.state.QrClick)?this.renderScane():this.renderQrCode()}
                 />
-        
-    
-      <LinearGradient   colors= {['#354E91','#314682','#283563','#222B50','#21284A']}>
-     
-      <ScrollView>
-      <View style={{justifyContent:'space-between',flexDirection:'row',}}>  
-     
       
       <Animated.View style={{height:this.state.AnimatedHieght,width:this.state.AnimatedWidth, position:'absolute',left:0, marginTop:10,}}>
       <TouchableOpacity onPress={this._onPress}>

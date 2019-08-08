@@ -107,6 +107,8 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        missingDimensionStrategy 'react-native-camera', 'general'
+         multiDexEnabled true //important
     }
     signingConfigs {
 release {
@@ -147,6 +149,8 @@ keyPassword MYAPP_RELEASE_KEY_PASSWORD}}}
 }
 
 dependencies {
+    implementation project(':react-native-camera-kit')
+    implementation project(':react-native-camera')
     implementation project(':react-native-blur-overlay')
     implementation project(':react-native-image-picker')
     implementation project(':react-native-customized-image-picker')
