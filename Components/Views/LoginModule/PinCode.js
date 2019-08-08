@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,ScrollView,Animated,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,AsyncStorage,Easing} from 'react-native';
+import { View, StyleSheet, Image,ScrollView,Animated,Text,Keyboard,TouchableOpacity,LayoutAnimation,AsyncStorage,Easing} from 'react-native';
 import { Alert } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
 import {LoginApi,loginSecureApi} from '../Api/LoginApi'
 import { NavigationActions,StackActions } from 'react-navigation'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined} from '../Utils.js/Constant'
@@ -24,6 +25,7 @@ export default class PinCode  extends React.Component {
       animate:false,
       number:123456,
       w: 50,
+      visibles:false,
       h: 45,
       wr:50,
       hr:45,
@@ -174,7 +176,19 @@ SlideMenu=()=>{
     return (  
         
       <View style={styles.Maincontainers}>  
-       
+        <Dialog 
+    visible={this.state.visibles}>
+    <DialogContent>
+     <View style={{width:300,height:110,alignItems:'center'}}>
+         <View style={{alignItems:'center',paddingTop:10}}>
+         <Image style={{width: 50, height: 50,resizeMode:'contain'}}   source={require("../assets/successtik.png")} ></Image>     
+         </View>
+         <View style={{paddingTop:10,paddingBottom:10}}>
+         <Text style={{fontSize:15,color:'#454976',fontFamily:'Exo2-Regular',textAlign:'center'}}>Pincode Entered Successfully successfully</Text>           
+         </View>
+     </View>
+    </DialogContent>
+  </Dialog>
       <View> 
        <LinearGradient
   colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>   
@@ -186,7 +200,7 @@ SlideMenu=()=>{
       
         <View  style={{justifyContent:'center',alignItems:'center'
         }}>
-               <Text style={{color:'#4e649f',opacity:1,fontSize:18,marginTop:20,fontFamily:'Exo2-Bold'}}>Please Introduce your new pin</Text>
+               <Text style={{color:'#4e649f',opacity:1,fontSize:18,marginTop:20,fontFamily:'Exo2-Bold'}}>Please Enter OTP</Text>
                        
         </View>
         <View  style={{justifyContent:'center',alignItems:'center', marginTop:20
@@ -247,11 +261,16 @@ SlideMenu=()=>{
         
            await AsyncStorage.setItem('etherwalletAddress',data.loginInfo.EtherwalletAddress.toString()); 
            await AsyncStorage.setItem('bitcoinWalletReceivingAddress',data.loginInfo.bitcoinWalletReceivingAddress.toString()); 
-           this.NavigationReset('Home',true,false)
+           this.setState({visibles:true})
+           Keyboard.dismiss()
+           //setTimeout(this.setState({visibles:true}), 500);
+            this.NavigationReset('Home',true,false)
+          
         }
         else
         {
-          this.NavigationReset('Home',false,true)
+          setTimeout(this.NavigationReset('Home',false,true), 500);
+          
         }
           
          }
@@ -269,12 +288,17 @@ SlideMenu=()=>{
      }
      NavigationReset=(routname,dashboardpopup,kycstatus)=>
      {
-      this.props.navigation.dispatch(
-        StackActions.reset({
-         index: 0,
-         actions: [NavigationActions.navigate({ routeName: routname,params: {  DashBoardPopup: dashboardpopup,Kyc:kycstatus} })]
-        })
-       );
+      setTimeout(()=>{
+        this.setState({visibles:false})
+        this.props.navigation.dispatch(
+          StackActions.reset({
+           index: 0,
+           actions: [NavigationActions.navigate({ routeName: routname,params: {  DashBoardPopup: dashboardpopup,Kyc:kycstatus} })]
+          })
+         );
+        
+      },500)
+      
      }
 }
 
