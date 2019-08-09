@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,Picker,NativeModules,Text,AsyncStorage,TouchableOpacity,BackHandler, Animated,Platform,TextInput,Slider,
+import { View, StyleSheet, Image,Picker,NativeModules,Text,AsyncStorage,TouchableOpacity,ActivityIndicator, Animated,Platform,TextInput,Slider,
   Easing,Dimensions,PermissionsAndroid } from 'react-native';
 import { Alert } from 'react-native';
 const { UIManager } = NativeModules;
@@ -12,12 +12,15 @@ import Dialog, { DialogContent } from 'react-native-popup-dialog';
 import Carousel ,{ Pagination } from 'react-native-snap-carousel';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import {VaultSystemApi,CryptoInvestment,CryptoTypeInvestment} from './Api/VaultSystemApi'
-import {ResponseSuccessStatus,InvalidResponse, InvalidToken} from './Utils.js/Constant'
+import {SendApi} from './Api/SendAndRecieveApi'
+import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from './Utils.js/Constant'
+import {ExchangeOnLoad ,ConvertToUsd , getEqualCryptoValueApi , exchangeRequestApi ,exchangeAdmin_ETC_BTC_Api} from './Api/ExchangeRequest'
 import {getactivitydata} from './Api/WalletActivity'
 import * as shape from 'd3-shape'
 import LinearGradient from 'react-native-linear-gradient';
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 import ColumnChart from 'react-native-pure-chart/examples/pure-chart/components/column-chart';
+
 const { width } = Dimensions.get('window');
 const height = width * 0.8;
 const instructions = Platform.select({
@@ -48,7 +51,11 @@ export default class DashBoard extends React.Component {
     this.state = {
       dataSource:[],
       currentUsdforEther:null,    
-      QR_Code_Value: '',
+      QR_Code_Value:null,
+      visibles:false,
+      usdforEther:'',
+      sliderValue:0,
+      EtherWalletAddress:null,BtcWalletAddress:null,
       Start_Scanner: false,
       QrButton:false,
       currentUsdforBtc:null,
@@ -138,6 +145,7 @@ export default class DashBoard extends React.Component {
     // this._animate()
    // this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
     this.GetData()
+    
   }
   componentWillUnmount() {
     this.backHandler.remove()
@@ -189,7 +197,7 @@ _onPress=()=>{
     OpenPopupAction=()=>
     {
       this.props.navigation.setParams({bottombar:false})
-      openOverlay()
+       openOverlay()
       this.springValue.setValue(0.3),
       Animated.spring(
       this.springValue,
@@ -305,7 +313,7 @@ CloseLeftAction=()=>
 open_QR_Code_Scanner=()=> {
  
     var that = this;
- 
+    console.log('it is comming inside this method')
     if (Platform.OS === 'android') {
       async function requestCameraPermission() {
         try {
@@ -316,7 +324,8 @@ open_QR_Code_Scanner=()=> {
             }
           )
           if (granted === PermissionsAndroid.RESULTS.GRANTED) {
- 
+            that.setState({QrButton:true})
+            closeOverlay()
             that.setState({ QR_Code_Value: '' });
             that.setState({ Start_Scanner: true });
           } else {
@@ -345,17 +354,81 @@ CloseRight=()=>
 }
 onQR_Code_Scan_Done = (QR_Code) => {
  
- // this.setState({ QR_Code_Value: QR_Code ,Start_Scanner: false,});
+  this.setState({ QR_Code_Value: QR_Code ,Start_Scanner: false,});
   this.setState({QrButton:false})
- // this.setState({QrClick:false})
-  this.pressRight()
- // openOverlay()
-  //this._onPress();
+
  console.log('This popup overlay is not openenng')
 }
 Scanner=()=>
 {
-  this.setState({QrButton:true})
+  closeOverlay()
+  //this._onPress()
+   this.open_QR_Code_Scanner()
+ 
+}
+SendClick=async()=>
+{
+  let url;
+  let params;
+  if(this.state.QR_Code_Value==null)
+  {
+Alert.alert('Alert','Please enter Wallet  Address')
+  }
+  else if(this.state.sliderValue==0)
+  {
+    Alert.alert('Alert','Please enter amount to transfer')
+  }
+  else
+  {
+    if(type=='ETH')
+    {
+      url='eth/transfer'
+       params=
+      {
+        
+         "etherAmount":this.state.sliderValue,
+         "exchangeStatus": 0,
+         "toEthWalletAddress":this.state.QR_Code_Value,
+         "userId": await AsyncStorage.getItem('UserId') 
+      }
+    }
+    else
+    {
+      url='btc/transfer'
+      params=
+     {
+        
+        "btcAmount":this.state.sliderValue,
+        "exchangeStatus": 0,
+        "toBtcWalletAddress":this.state.QR_Code_Value,
+        "userId": await AsyncStorage.getItem('UserId') 
+     }
+    }
+    this.Load()
+    console.log('send params',params)
+    SendApi(url,params,this.SendResponse)
+  }
+ 
+ 
+}
+SendResponse=data=>
+{
+  this.hide()
+  if(data.status==='success')
+  {
+    this.setState({visibles:true})
+    setTimeout(this.PopUp, 700);
+  }
+  else
+  {
+    Alert.alert(data.status,data.message)
+  }
+  console.log('send response',data)
+}
+PopUp=()=>
+{
+  closeOverlay()
+  this.setState({visibles:false,QR_Code_Value:'',sliderValue:0,usdforEther:0.000})
 }
 renderScane() {
   return (
@@ -384,20 +457,35 @@ renderScane() {
     <View style={{backgroundColor:'#fff',borderRadius:15,width:200}}>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:5}}>
     <Text style={styles.instructions2}>Amount</Text>
-    <View style={{flexDirection:'row',justifyContent:'space-around',paddingLeft:10,paddingRight:10}}>
-    <Text style={styles.instructions3}>{this.state.sendEtherAmount}</Text>
+    </View>
+    <View style={{flexDirection:'row',justifyContent:'space-between',paddingLeft:20,paddingRight:20}}>
+    <View>
+    <TextInput
+          style={styles.instructions3}
+          placeholder="0.000" 
+          placeholderTextColor="#000"
+          keyboardType = "number-pad"
+          onSubmitEditing={this.handleKeyDown}
+        
+          onChangeText={(text) =>this.ChangeText(text)}
+          value={this.state.usdforEther}
+        />
+    </View>
+    <View>
     {
-      (type==='ETH')? <Image style={{width: 25, height: 25}}   source={require("./assets/diamond.png")} ></Image>:
+      (type==='ETH')? <Image style={{width: 25, height: 25,marginTop:10}}   source={require("./assets/diamond.png")} ></Image>:
       <Image style={{width: 25, height: 25}}   source={require("./assets/bshadow.png")} ></Image>
      
     }
+    </View>
+    
    
     </View>
-    </View>
+   
     
 
     </View>
-    <TouchableOpacity onPress={this.Scanner}>
+    <TouchableOpacity onPress={this.Scanner.bind(this)}>
     <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:10,height:150}}>
     <View style={{justifyContent:'center',alignItems:'center'}}>
     <Text style={{color:'#5496FF',fontFamily:'Exo2-Regular',fontSize:11,marginTop:10,marginLeft:10,marginRight:10}}>SCAN YOUR QR CODE OR WRITE DOWN</Text>
@@ -415,8 +503,8 @@ source={require("./assets/portraitphoto.png")}
     </View>
     </TouchableOpacity>
     <View style={{marginTop:15,alignItems:'center'}}>
-<LinearGradient colors={['#FF7C6E','#F4317F']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{height:30, backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:25,width:60 }}>
-<TouchableOpacity>
+<LinearGradient colors={['#FF7C6E','#F4317F']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{height:40, backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:25,width:100 }}>
+<TouchableOpacity onPress={this.SendClick}>
 <Text style={{color:'#fff',fontFamily:'Poppins-Regular'}}>Send</Text>
 </TouchableOpacity>
 </LinearGradient>
@@ -426,6 +514,7 @@ source={require("./assets/portraitphoto.png")}
     <TextInput
         style={{height: 40,fontFamily:'Exo2-Regular'}}
         placeholder="write here your wallet code"
+        value={this.state.QR_Code_Value}
          placeholderTextColor="#ABB3D0" 
       />
     </View>
@@ -436,15 +525,16 @@ source={require("./assets/portraitphoto.png")}
     <Text style={{color:'#ABB3D0',fontFamily:'Exo2-Regular',fontSize:18,marginTop:10,marginLeft:10,marginRight:10}}>Speed Bar</Text>
     <Slider
     style={{width:'100%',color:'#F4317F',marginTop:10}}
-          step={1}
-          maximumValue={100}
+          step={0.1}
+          value={this.state.sliderValue}
+          maximumValue={2}
           thumbTintColor='#F4317F'
           maximumTrackTintColor='#F4317F'
           minimumTrackTintColor='#F4317F'
         />
         <View style={{flexDirection:'row',justifyContent:'space-around',marginTop:10}}>
         <Text style={{color:'#ABB3D0',fontFamily:'Exo2-Regular',fontSize:18,marginTop:10,marginLeft:10,marginRight:10}}>Speed Fee</Text>
-    <Text style={{color:'#F4317F',fontSize:18,marginTop:10,marginLeft:10,marginRight:10}}>0.21ETH</Text>  
+    <Text style={{color:'#F4317F',fontSize:18,marginTop:10,marginLeft:10,marginRight:10}}>{this.state.sliderValue}ETH</Text>  
     </View>
     </View>
     
@@ -453,24 +543,18 @@ source={require("./assets/portraitphoto.png")}
     
     <View style={{position:'absolute',bottom:0,width:'100%',left:0}}>
     <LinearGradient colors={['#FF7C6E','#F4317F']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{borderTopLeftRadius:100,height:80,width:'100%',borderTopLeftRadius:25}}>
-      <View style={{flexDirection:'row',justifyContent:'space-around',alignItems:'center'}}>
-      <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:25,height:40,width:'40%'}}>
-    <View style={{justifyContent:'center',alignItems:'center'}}>
-    <TextInput
-        style={{height: 40,fontFamily:'Exo2-Regular',}}
-        placeholder="USD"
-         placeholderTextColor="#ABB3D0" 
-      />
+      <View style={{flexDirection:'row',justifyContent:'space-around',alignItems:'center',}}>
+      <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:25,height:40,width:'40%',justifyContent:'center'}}>
+    <View style={{flexDirection:'row',justifyContent:'space-between',paddingLeft:20,paddingRight:20}}>
+    <Text style={{color:'#000',fontSize:15,marginLeft:10}}>USD</Text>  
+    <Text style={{color:'#000',fontSize:15,marginLeft:10}}>{this.state.usdforEther}</Text>  
     </View>
    
     </View>
-    <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:25,height:40,width:'40%'}}>
-    <View style={{justifyContent:'center',alignItems:'center'}}>
-    <TextInput
-        style={{height: 40,fontFamily:'Exo2-Regular'}}
-        placeholder="COP"
-         placeholderTextColor="#ABB3D0" 
-      />
+    <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:25,height:40,width:'40%',justifyContent:'center'}}>
+    <View style={{flexDirection:'row',justifyContent:'space-between',paddingLeft:20,paddingRight:20}}>
+    <Text style={{color:'#000',fontSize:15,marginLeft:10}}>{(type=='ETH')?'ETH':"BTC"}</Text> 
+    <Text style={{color:'#000',fontSize:15,marginLeft:10}}>{this.state.sliderValue}</Text>  
     </View>
    
     </View>
@@ -539,7 +623,7 @@ renderQrCode() {
 </LinearGradient>
 </View>
  <View style={{width:'80%',height:40,borderWidth:1,borderColor:'#4D90E9',borderRadius:5,justifyContent:'center',alignItems:'center',marginTop:10,padding:10}}>
- <Text style={{color:'#464651',fontFamily:'Poppins-Regular'}}>3DKsjshGSKJsgkgSs54SFu5sdS76F...</Text>
+ <Text style={{color:'#464651',fontFamily:'Poppins-Regular',textAlign:'center',fontSize:8}}>{(type=='ETH')?this.state.EtherWalletAddress:this.state.BtcWalletAddress}</Text>
  </View>
    
     </View>
@@ -581,6 +665,72 @@ renderQrCode() {
     </Animated.View>
     
   );
+}
+ChangeText=(UsdAmount)=>
+{
+  if(UsdAmount.length<this.state.usdforEther.length)
+  
+  {
+    this.setState({usdforEther:''})
+  }
+  else
+  {
+    this.setState({usdforEther:UsdAmount})
+   
+  }
+   //Get value for Network fee and Crypto amount Api
+ 
+ 
+  console.log('Request data.===>', "usdConvert calling")
+ 
+}
+onUsdResponse=(data)=>
+{
+if(data!=DataUndefined)
+{
+  if(data.status===ResponseSuccessStatus)
+  {
+     console.log('Coverted ETH Amount',data)
+    this.setState({sliderValue:data.CalculatingAmountDTO.cryptoAmount})
+  }
+  else if(data.error==='invalid_token')
+  {
+    Alert.alert(
+      'Error',
+      'Token Expired',
+      [
+        {text: 'OK', onPress: () => this.props.navigation.navigate("Login")},
+      ],
+
+    );
+  }
+  else{
+    Alert.alert(data.status,'Something went wrong')
+  }
+
+  //Get value for Network fee and Crypto amount Apil̥
+  //this.cryptoValue()
+  //console.log('Request data.===>', 'cryptoValue()')
+}
+}
+usdConvert=async()=>
+      {
+    //   let type=crptoType
+       console.log('Request data.===>', type,"type calling")
+       let params=
+       {
+         usd:this.state.usdforEther ,
+         cryptoType:type
+  
+       }
+     //Get value for Network fee and Crypto amount Api
+     ConvertToUsd(params,this.onUsdResponse)
+     console.log('Request data.===>',this.onUsdResponse)
+      
+    }
+handleKeyDown=()=>
+{
+  this.usdConvert()
 }
 _animate=()=>{
   this.animatedValue.setValue(0)
@@ -629,22 +779,28 @@ _animate=()=>{
   }
   if(this.state.animate){  
     return <View style={{justifyContent:'center',alignItems:'center',flex:1}}>
-     <Animated.Image 
-                style={{width:100,height:100, resizeMode: 'contain' , transform: [{ rotate: RotateData }],}}
-                source={require('./assets/loader.gif')}
-            />   
+    <ActivityIndicator
+  color = '#1a5fe1'
+  size = "large"
+  style = {styles.activityIndicator}/>
   </View>
   }
     return (  
       <View style={styles.Maincontainers}> 
-            
-        
-    
-      <LinearGradient   colors= {['#354E91','#314682','#283563','#222B50','#21284A']}>
-     
-      <ScrollView>
-      <View style={{justifyContent:'space-between',flexDirection:'row',}}>  
-      <BlurOverlay
+           <Dialog 
+    visible={this.state.visibles}>
+    <DialogContent>
+     <View style={{width:300,height:110,alignItems:'center'}}>
+         <View style={{alignItems:'center',paddingTop:10}}>
+         <Image style={{width: 50, height: 50,resizeMode:'contain'}}   source={require("./assets/successtik.png")} ></Image>     
+         </View>
+         <View style={{paddingTop:10,paddingBottom:10}}>
+         <Text style={{fontSize:15,color:'#454976',fontFamily:'Exo2-Regular',textAlign:'center'}}>send Money Successfully</Text>           
+         </View>
+     </View>
+    </DialogContent>
+  </Dialog>
+              <BlurOverlay
                     radius={14}
                     downsampling={2}
                     brightness={-125}
@@ -658,9 +814,16 @@ _animate=()=>{
                     blurStyle='#222B50'
                     children={(this.state.QrClick)?this.renderScane():this.renderQrCode()}
                 />
+        
+    
+      <LinearGradient   colors= {['#354E91','#314682','#283563','#222B50','#21284A']}>
+     
+      <ScrollView>
+      <View style={{justifyContent:'space-between',flexDirection:'row',}}>  
+    
       
       <Animated.View style={{height:this.state.AnimatedHieght,width:this.state.AnimatedWidth, position:'absolute',left:0, marginTop:10,}}>
-      <TouchableOpacity onPress={this._onPress}>
+      <TouchableOpacity onPress={this._onPress.bind(this)}>
       <View>
       <LinearGradient colors={['#f4347f','#F4317F','#F4317F']} style={{justifyContent:'center',borderTopRightRadius:25,borderBottomRightRadius:25,alignItems:'flex-end',paddingTop:10,paddingBottom:10}}>
     
@@ -951,11 +1114,12 @@ justifyContent:'center',alignItems:"center"}} >
       {
           Alert.alert(item.Status)
       }
-      GetData=()=>
+      GetData=async()=>
       {
         //this.Load()
        // this.GetList()
        // console.log(type)
+       this.setState({EtherWalletAddress:await AsyncStorage.getItem('etherwalletAddress'),BtcWalletAddress:await AsyncStorage.getItem('bitcoinWalletReceivingAddress')})
         VaultSystemApi(type,this.BalanceResponse)
       }
       BalanceResponse=(data)=>
@@ -1049,6 +1213,7 @@ action=(index)=>
     else
     {
       type='BTC'
+      this.setState({QR_Code_Value:''})
       cryptoType='BTCTEST'  
      // this.GetList()    
     }
@@ -1172,6 +1337,7 @@ instructions2: {
     fontFamily:'Poppins-Regular'
 },
 instructions3: {
+   width:100,
   textAlign: 'center',
   color: '#474C84',
   marginBottom: 5,

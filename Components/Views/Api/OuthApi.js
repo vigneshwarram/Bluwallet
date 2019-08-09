@@ -11,12 +11,15 @@ formdata.append("grant_type",'password')
      // fetch('http://192.168.2.19:9090/oauth/token', {  
         method: 'POST',
         headers: {
-          'Authorization':'Basic '+'Ymx1ZXdhbGxldC1jbGllbnQ6Ymx1ZXdhbGxldC1zZWNyZXQ='.trim()   
+          'Authorization':'Basic '+'Ymx1ZXdhbGxldC1jbGllbnQ6Ymx1ZXdhbGxldC1zZWNyZXQ='.trim(),
+          'Content-Type': 'multipart/form-data'
+          //'Content-Type': 'application/json',
         },
         body:formdata
-      }) .then((res)=> {
-          console.log(res)
-        return res.json();
+      }).then((res)=> {
+
+          console.log('Reponse before json',res)
+        return  res.json();
        })
        .then((resJson)=>{
         console.log("success",resJson);
