@@ -362,6 +362,7 @@ onQR_Code_Scan_Done = (QR_Code) => {
 Scanner=()=>
 {
   closeOverlay()
+  this.props.navigation.setParams({bottombar:true})
   //this._onPress()
    this.open_QR_Code_Scanner()
  

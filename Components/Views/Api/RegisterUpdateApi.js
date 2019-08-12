@@ -1,4 +1,5 @@
 import Url from './CommonApi'
+import{AsyncStorage,NetInfo} from 'react-native'
 
 const registerUpdateApi=async(params,RegisterUpdateResponse)=>
 {
@@ -7,15 +8,19 @@ const registerUpdateApi=async(params,RegisterUpdateResponse)=>
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-         // 'authorization':'bearer '+params.accesstoke
+          'authorization':'bearer '+await AsyncStorage.getItem('AccessToken')
         },
         body: JSON.stringify({
           address: params.email,
           address1:params.password,
-          postalCode:params.conformPassword,
-          city:params.conformPassword,
-          countryId:1,
-          userId:await AsyncStorage.getItem('userId') 
+          postalCode:params.postalCode,
+          city:params.city,
+          countryId:params.countryId,
+          stateId:'',
+          userId:await AsyncStorage.getItem('userId'),
+          firstName:params.firstName,
+          lastName:params.lastName,
+          dateOfBirth:params.dateOfBirth
 
 
         })

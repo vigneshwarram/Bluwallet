@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,TextInput,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
+import { View, StyleSheet, Image,TextInput,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,Picker} from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 
 import LinearGradient from 'react-native-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
+import {StateDataApi, CityDataApi} from '../Api/AddressData'
 
 export default class Address  extends React.Component {
 
@@ -34,7 +35,13 @@ export default class Address  extends React.Component {
       visible: false,
       hidden: false,
       app1color:'#fff',
-      app5color:'#fff'
+      app5color:'#fff',
+      stateData:[],
+      selectedService:'State/Region/Province/Country',
+      selectedCity:'city/town/village',
+      cityData:[],
+      cityID:'',
+      countryID:''
     };
   
   }
@@ -42,7 +49,42 @@ export default class Address  extends React.Component {
   componentDidMount()
   {
     //this.GetListData()
+
+    let params=this.props.navigation.state.params.CountryID
+    this.GetState(params.CountryCode)
+    console.log('stateData',params.CountryCode)
+
+
   }
+
+    GetState=async(code)=>{
+      StateDataApi(code,this.OnResponse)
+    }
+
+    OnResponse=async(data)=>{
+      console.log('stateData',data)
+      if(data.status==='success'){
+        //this.setState({dataSource:data.countryData})
+         console.log('stateData',data.StateData)
+         this.SetStateData(data.StateData)
+         
+      }
+      else
+      {
+        console.log('stateData', data)
+        Alert.alert(data.status,data.message)
+      }
+    }
+
+    SetStateData=async=(stateData)=>{
+
+      this.setState({stateData:stateData})
+      
+    }
+
+  
+    
+
   GetListData=()=>{
     this.Load()
     var obj = {  
@@ -134,6 +176,12 @@ SlideMenu=()=>{
           fill={'none'}
       />
   )
+   let stateItems = this.state.stateData.map( (s, i) => {
+    return <Picker.Item key={i} value={s.id} label={s.stateName} />
+  });   
+  let cityItems = this.state.cityData.map( (s, i) => {
+    return <Picker.Item key={i} value={s.id} label={s.cityName} />
+  });
 
    
   if(this.state.animate){  
@@ -197,6 +245,7 @@ SlideMenu=()=>{
           style={{height: 50,padding:10,fontFamily:'Exo2-Regular'}}
           placeholderTextColor='#9ab8db'
           placeholder="Address Line 1"
+          returnKeyType = { "next" }
           onChangeText={(text) => this.setState({AddressLine1:text})}
         />
 </View>
@@ -208,6 +257,7 @@ SlideMenu=()=>{
           style={{height: 50,padding:10,fontFamily:'Exo2-Regular'}}
           placeholderTextColor='#9ab8db'
           placeholder="Address Line 2"
+          returnKeyType = { "next" }
           onChangeText={(text) => this.setState({AddressLine2:text})}
         />
 </View>
@@ -215,23 +265,28 @@ SlideMenu=()=>{
           <View style={{width:'100%',backgroundColor:'#fff',borderColor:'#d7dee8', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
 <View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
 
-<TextInput
-          style={{height: 50,padding:10,fontFamily:'Exo2-Regular'}}
-          placeholderTextColor='#9ab8db'
-          placeholder="city/town/village"
-          onChangeText={(text) => this.setState({city:text})}
-        />
+        <Picker style={{width: '50%',padding:10}}
+                    selectedValue={this.state.selectedCity}
+                    onValueChange={ (itemValue, itemIndex) =>this.selectedCity(itemValue, itemIndex) } >
+
+                   {cityItems}
+
+                </Picker>
 </View>
           </View>
           <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
 <View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
 
-<TextInput
-          style={{height: 50,padding:10,fontFamily:'Exo2-Regular'}}
-          placeholderTextColor='#9ab8db'
-          placeholder="State/Region/Province/Country"
-          onChangeText={(text) => this.setState({Country:text})}
-        />
+<Picker style={{width: '50%',padding:10}}
+                    selectedValue={this.state.selectedService}
+                    onValueChange={(item) =>this.selectedFromPickerState(item) }
+                    
+                     >
+
+                   {stateItems}
+
+                </Picker>
+
 </View>
           </View>
           <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
@@ -241,6 +296,8 @@ SlideMenu=()=>{
           style={{height: 50,padding:10,fontFamily:'Exo2-Regular'}}
           placeholderTextColor='#9ab8db'
           placeholder="Postal Code"
+          keyboardType='numeric'
+          returnKeyType = { "done" }
           onChangeText={(text) => this.setState({PostalCode:text})}
         />
 </View>
@@ -291,6 +348,49 @@ SlideMenu=()=>{
     
     );
       }
+     
+      selectedFromPickerState= (itemValue)=>{
+        Alert.alert('cityData.status,cityData.message')
+
+        this.setState({
+          selectedService:itemValue
+        })
+        console.log('cityId',this.state.selectedService)
+        this.CallCityGetApi(itemValue)
+        console.log('cityId',itemValue)
+      }
+      selectedCity=( itemValue, itemIndex)=>{
+        this.setState({
+          selectedCity:itemValue
+        })
+        this.setState({cityID:itemIndex})
+        console.log('cityId',this.state.selectedCity)
+      }
+
+      CallCityGetApi=async=(stateId)=>{
+        console.log('cityData',stateId)
+        CityDataApi(stateId,this.onCityResponse)
+      }
+  
+      onCityResponse=async=(data)=>{
+        console.log('stateData',data)
+        if(data.status==='success'){
+          //this.setState({dataSource:data.countryData})
+          if(this.data.CityData != ''&& this.data.CityData != null && this.state.CityData !== 'undefined'){
+            this.setState({cityData:data.cityName})
+            
+            console.log('stateData',data.cityName)
+          }else{
+            Alert.alert('Alert','Data not found!!')
+          }
+         
+        }
+        else
+        {
+        
+          Alert.alert(data.status,data.message)
+        }
+      }
       clickedItemText=(item)=>
       {
           Alert.alert(item.Status)
@@ -324,16 +424,26 @@ SlideMenu=()=>{
         }
         else
         {
+
+          let params=this.props.navigation.state.params.CountryID
             let RegisterDetails=
         {
           AddressLine1:this.state.AddressLine1,
           AddressLine2:this.state.AddressLine2,
           city:this.state.city,
-          CountryId:'',
+          CountryId:params.CountryId,
           PostalCode:this.state.PostalCode,
+          stateId:'',
+          cityId:cityID,
+          userId:'',
+          firstName:'',
+          lastName:'',
+          dateOfBirth:''
+
         } 
       
-        this.props.navigation.navigate('CountrySearch',{'RegisterDetails':RegisterDetails});
+        
+        this.props.navigation.navigate('ProfileRegister',{'RegisterDetails':RegisterDetails});
 
         }
 
