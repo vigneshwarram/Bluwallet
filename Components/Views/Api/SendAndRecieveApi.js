@@ -22,7 +22,7 @@ export const SendApi=async(url,params,data)=>
         console.error(error);
     });
 }
-export const RequestPaymentApi=async(url,params,data)=>
+export const RequestPaymentApi=async(params,data)=>
 {
     fetch(Url+'request', {  
         method: 'POST',

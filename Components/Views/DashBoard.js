@@ -55,6 +55,7 @@ export default class DashBoard extends React.Component {
       visibles:false,
       usdforEther:'',
       sliderValue:0,
+      ResponseStatus:null,
       EtherWalletAddress:null,BtcWalletAddress:null,
       Start_Scanner: false,
       QrButton:false,
@@ -414,24 +415,30 @@ Alert.alert('Alert','Please enter Wallet  Address')
 }
 RequestPayment=async()=>
 {
+  let id=await AsyncStorage.getItem('UserId') 
   this.Load()
   params=
   {
-    network:type,
-    requestAmount: this.state.sliderValue,
-    toAddress: this.state.QR_Code_Value,
-    "userId": await AsyncStorage.getItem('UserId') 
+    "network":type,
+    "requestAmount": this.state.sliderValue,
+    "toAddress": this.state.QR_Code_Value,
+    "userId":id
   }
   console.log('Request params',params)
-  RequestPaymentApi(url,params,this.RequestResponse)
+  RequestPaymentApi(params,this.RequestResponse)
 }
 RequestResponse=(data)=>
 {
   this.hide()
+  console.log('Request response data',data)
   if(data.status==='success')
   {
-    this.setState({visibles:true})
+    this.setState({visibles:true,ResponseStatus:data.message})
     setTimeout(this.PopUp, 700);
+  }
+  else
+  {
+    Alert.alert(data.status,data.message)
   }
 }
 SendResponse=data=>
@@ -439,7 +446,7 @@ SendResponse=data=>
   this.hide()
   if(data.status==='success')
   {
-    this.setState({visibles:true})
+    this.setState({visibles:true,ResponseStatus:data.message})
     setTimeout(this.PopUp, 700);
   }
   else
@@ -452,6 +459,7 @@ PopUp=()=>
 {
   closeOverlay()
   this.setState({visibles:false,QR_Code_Value:'',sliderValue:0,usdforEther:0.000})
+  this.props.navigation.setParams({bottombar:true})
 }
 renderScane() {
   return (
@@ -672,7 +680,7 @@ renderQrCode() {
  </View>
    
     </View>
-    <TouchableOpacity onPress={this.RequestPayment.bind(this)}>
+    <TouchableOpacity onPress={this.RequestPayment}>
     <View style={{alignItems:'center',justifyContent:'center',paddingTop:10}}>
 <LinearGradient colors={['#7498F9','#9B89F8','#D476F7']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{paddingTop:10,paddingBottom:10,paddingLeft:50,paddingRight:50, backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:50 }}>
 <TouchableOpacity>
@@ -837,7 +845,7 @@ _animate=()=>{
          <Image style={{width: 50, height: 50,resizeMode:'contain'}}   source={require("./assets/successtik.png")} ></Image>     
          </View>
          <View style={{paddingTop:10,paddingBottom:10}}>
-         <Text style={{fontSize:15,color:'#454976',fontFamily:'Exo2-Regular',textAlign:'center'}}>send Money Successfully</Text>           
+         <Text style={{fontSize:15,color:'#454976',fontFamily:'Exo2-Regular',textAlign:'center'}}>{this.state.ResponseStatus}</Text>           
          </View>
      </View>
     </DialogContent>
