@@ -1,12 +1,22 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,ScrollView,TouchableOpacity,Text,ActivityIndicator,LayoutAnimation,ImageBackground} from 'react-native';
+import { View, StyleSheet, Image,ScrollView,TouchableOpacity,Text,ActivityIndicator,LayoutAnimation,ImageBackground,AsyncStorage} from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
-
+import { NavigationActions,StackActions } from 'react-navigation'
 import LinearGradient from 'react-native-linear-gradient';
-
-
+import TouchID from 'react-native-touch-id';
+const optionalConfigObject = {
+  title: 'Authentication Required for Login', // Android
+  imageColor: '#5099f0', // Android
+  imageErrorColor: '#ff0000', // Android
+  sensorDescription: 'Touch sensor', // Android
+  sensorErrorDescription: 'Failed', // Android
+  fallbackLabel: 'Show Passcode', // iOS (if empty, then label is hidden)
+  unifiedErrors: false, // use unified error messages (default false)
+  passcodeFallback: false, // iOS - allows the device to fall back to using the passcode, if faceid/touch is not available. this does not mean that if touchid/faceid fails the first few times it will revert to passcode, rather that if the former are not enrolled, then it will use the passcode.
+};
+let userid;
 export default class Launch  extends React.Component {
 
   static navigationOptions = {
@@ -16,7 +26,7 @@ export default class Launch  extends React.Component {
 
   constructor(props) {
     super(props);
-    
+   
     this.state = {
       dataSource:[],
       cityItems:["US Doller,Indian,Eutherium"],
@@ -36,31 +46,70 @@ export default class Launch  extends React.Component {
   
   componentDidMount()
   {
+    this.CheckUserSignedIn()
+   
     //this.GetListData()
   }
-  GetListData=()=>{
-    this.Load()
-    var obj = {  
-      method: 'GET',
-      headers: {
-        'Content-Type'    : 'application/json',
-        'Accept'          : 'application/json',
-       'Authorization':'Bearer '+'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6ImJmNDczYTU5LTQxNzAtNDQ2My05YTI2LWZlNWNhYTVlZjMwZiIsIkV4cGlyeSI6bnVsbH0.tUaime3lRYn7wAu2KCnW3oFwIZa18eIL_4AOnoGJiKU'.trim()   
-         }
-  }
-  fetch("https://apptest.supplynow.co.uk/api/v1/Bookings/MyBookings",obj)  
-  .then((res)=> {
-    return res.json();
-   })
-   .then((resJson)=>{
-     this.dataset(resJson)
+  CheckUserSignedIn=async()=>
+  {
+    try
+    {
+      let userid=await AsyncStorage.getItem('UserId')
+      if(userid!=null)
+      {
+        this.GetAuthenticiate(userid)
+        console.log('user id',userid)
+      }
+      else
+      {
+        console.log('user id','else')
+      }
+    }
+    catch(error)
+    {
+      console.log(error)
+    }
    
-    return resJson;
-   })
-   .catch((error) => {
-    console.error(error);
-});
-}
+  //console.log('user id',userid)
+   // 
+  }
+  GetAuthenticiate=async(userids)=>
+  {
+    
+    TouchID.authenticate('To skip login use your fingerprint', optionalConfigObject)
+    .then (success => {
+     
+      console.log('touch id success',success)
+      
+     if(userids==null)
+     {
+      this.props.navigation.navigate('Login')
+     }
+     else
+     {
+      
+       console.log('user id is saved',userids)
+       this.NavigationReset('Home',true,false)
+     }
+      // Success code
+    })
+    .catch(error => {
+      // Failure code
+    });
+  }
+  NavigationReset=(routname,dashboardpopup,kycstatus)=>
+  {
+   setTimeout(()=>{
+     this.props.navigation.dispatch(
+       StackActions.reset({
+        index: 0,
+        actions: [NavigationActions.navigate({ routeName: routname,params: {  DashBoardPopup: dashboardpopup,Kyc:kycstatus} })]
+       })
+      );
+     
+   },0)
+   
+  }
 dataset=(data)=>{
   this.setState({
     dataSource:data

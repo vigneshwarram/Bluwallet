@@ -22,3 +22,25 @@ export const SendApi=async(url,params,data)=>
         console.error(error);
     });
 }
+export const RequestPaymentApi=async(url,params,data)=>
+{
+    fetch(Url+'request', {  
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'authorization':'bearer '+await AsyncStorage.getItem('AccessToken')
+        },
+        body:JSON.stringify(params)
+      }) .then((res)=> {
+        return res.json();
+       })
+       .then((resJson)=>{
+        data(resJson)
+       
+        return resJson;
+       })
+       .catch((error) => {
+        console.error(error);
+    });
+}

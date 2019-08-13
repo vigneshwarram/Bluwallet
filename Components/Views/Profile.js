@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,ScrollView,NativeModules,Text,ActivityIndicator,TouchableOpacity,Animated,Easing} from 'react-native';
+import { View, StyleSheet, Image,ScrollView,NativeModules,Text,ActivityIndicator,TouchableOpacity,Animated,Easing,AsyncStorage} from 'react-native';
 import { Alert } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {ProfileRetrive} from './Api/ProfileRegisterApi'
+
 import {ResponseSuccessStatus,InvalidResponse} from './Utils.js/Constant'
 export default class Profile  extends React.Component {
 
@@ -164,11 +165,16 @@ space(){
                 onPress: () => console.log('Cancel Pressed'),  
                 style: 'cancel',  
             },  
-              {text: 'OK', onPress: () => this.props.navigation.navigate('Login')},
+              {text: 'OK', onPress: () => this.Logout()},
             ],
       
           );
         }
+      }
+      Logout=async()=>
+      {
+        await AsyncStorage.removeItem("UserId");
+        this.props.navigation.navigate('Login')
       }
   render() {
     const shadowOpt = {

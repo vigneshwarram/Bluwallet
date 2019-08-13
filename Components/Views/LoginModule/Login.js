@@ -23,8 +23,8 @@ export default class Login  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
-      Username:'',
-      Password:'',
+      Username:'testdemo2@yopmail.com',
+      Password:'Admin@123new',
       clickr:false,
       clickopen:false,
       click:false,
@@ -304,6 +304,8 @@ SlideMenu=()=>{
             console.log('Loginresult',data)
             await AsyncStorage.setItem('UserId',data.loginInfo.userId.toString()); 
             await AsyncStorage.setItem('email',data.loginInfo.emailId.toString()); 
+            await AsyncStorage.setItem('etherwalletAddress',data.loginInfo.EtherwalletAddress.toString()); 
+            await AsyncStorage.setItem('bitcoinWalletReceivingAddress',data.loginInfo.bitcoinWalletReceivingAddress.toString()); 
             console.log('Loginresult',data)
             if(data.loginInfo.twoFactorAuthenticationStatus===0)
             {

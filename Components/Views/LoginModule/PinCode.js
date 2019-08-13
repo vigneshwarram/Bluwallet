@@ -258,9 +258,7 @@ SlideMenu=()=>{
           //await AsyncStorage.setItem('loginInfo',data.loginInfo); 
         if(data.loginInfo.kycStatus==1)
         {
-        
-           await AsyncStorage.setItem('etherwalletAddress',data.loginInfo.EtherwalletAddress.toString()); 
-           await AsyncStorage.setItem('bitcoinWalletReceivingAddress',data.loginInfo.bitcoinWalletReceivingAddress.toString()); 
+      
            this.setState({visibles:true})
            Keyboard.dismiss()
            //setTimeout(this.setState({visibles:true}), 500);
