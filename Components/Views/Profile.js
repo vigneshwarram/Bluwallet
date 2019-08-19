@@ -225,8 +225,8 @@ space(){
       <View style={styles.Maincontainers}>           
       
       <LinearGradient
-   colors={['#1569e6','#00a3ff','#00deff']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{height:'100%',position:'absolute',left: 0,
-right: 0}}>
+   colors={['#1569e6','#00a3ff','#00deff']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{flex:1,position:'relative'}}>
+
     <View style={{flexDirection:'row',justifyContent:'space-between'}}>
     <Animated.View style={{backgroundColor:'#fff',height:this.state.AnimatedHieght,width:this.state.AnimatedWidth,justifyContent:'center',borderWidth:1, alignItems:'flex-end',
   borderColor: '#fff',
@@ -260,36 +260,33 @@ right: 0}}>
      
    
     <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',marginTop:-30}}>
-    <Image style={{marginLeft:10,width: 25, height: 25,resizeMode:'contain'}}   source={require("./assets/app5.png")} ></Image>     
+    <Image style={{width: 25, height: 25,resizeMode:'contain'}}   source={require("./assets/app5.png")} ></Image>     
     <Text style={{color:'#fff',fontSize:15,fontWeight:
     'bold',marginLeft:10,fontFamily:''}}>User</Text>    
      </View>
      <View style={{alignItems:'flex-end'}}>
     <Image style={{marginLeft:10,width: 30, height: 30,marginTop:20,marginRight:10,resizeMode:'contain'}}   source={require("./assets/setting1.png")} ></Image> 
     </View>
-       
-          </LinearGradient>
-          
-
-    
-          <View style={{backgroundColor:'#354e91',borderTopRightRadius:180,borderTopLeftRadius:180, justifyContent:'flex-start',alignItems:'center',flex:1,marginTop:'30%',height:'100%',position:'absolute',left: 0,marginBottom:0,
-right: 0}}>
-
-<View style={{width: 30,position:'absolute',left: 150,
-right: 0,borderRadius:25,marginTop:-40,
+    <View style={{backgroundColor:'#354e91',borderTopRightRadius:175,borderTopLeftRadius:175,flex:1
+}}>
+<View style={{alignItems:'center',width:'100%',justifyContent:'center'}}>
+<View style={{width: 30,alignItems:'center',justifyContent:'center',
+borderRadius:25,
     height: 30}}>
     <TouchableOpacity onPress={this.BeginAction}>
 <View>
-{!this.state.error && <Image  style={{width:100,height:105,borderRadius:25}} source={{ uri: photo.uri }} onError={() => this.setState({ error: true })} />}
-{this.state.error && <Image  style={{width:100,height:105,borderRadius:25}} source={require("./assets/build.png")} />}
-<Image style={{width:25,height:25,marginHorizontal:80,marginTop:-25}}   source={require("./assets/profileround.png")} ></Image>
+
+<Image  style={{width:100,height:105,borderRadius:25}} source={require("./assets/build.png")} />
+<Image style={{width:25,height:25,marginTop:-25,alignSelf:'flex-end'}}   source={require("./assets/profileround.png")} ></Image>
 </View>
 </TouchableOpacity>
     </View>
+</View>
+
 
   
    
-    <View style={{justifyContent:'center',alignItems:'center',marginTop:80}}>
+    <View style={{justifyContent:'center',alignItems:'center',marginTop:60}}>
         <Text style={{color:'#fff',fontWeight:'bold',opacity:0.9,fontFamily:''}}>{this.state.userName}</Text>
     </View>
    
@@ -513,7 +510,12 @@ right: 0,borderRadius:25,marginTop:-40,
    
           </View>
           
-</View>  
+</View>
+          </LinearGradient>
+          
+
+    
+         
 
      
      </View>
