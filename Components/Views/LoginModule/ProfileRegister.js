@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, StyleSheet, Image,TextInput,NativeModules,Text,ActivityIndicator,TouchableOpacity,Dimensions,} from 'react-native';
+import { View, StyleSheet, Image,TextInput,NativeModules,Text,ActivityIndicator,TouchableOpacity,Dimensions,Alert} from 'react-native';
 import AlphaScrollFlatList from 'alpha-scroll-flat-list';
 const WIDTH = Dimensions.get('window').width;
 import DateTimePicker from "react-native-modal-datetime-picker";
 const ITEM_HEIGHT = 50;
 import LinearGradient from 'react-native-linear-gradient';
 import ProfileRegisters from '../Api/ProfileRegisterApi'
+import registerUpdateApi from '../Api/RegisterUpdateApi';
 export default class ProfileRegister extends React.Component {
   static navigationOptions = {
     header: null
@@ -234,7 +235,7 @@ colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>
     <TouchableOpacity onPress={this.BeginAction}>   
     <View>
     <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:15,justifyContent:'center',alignItems:'center',}}>
-<Text style={{color:'#fff',fontSize:20,fontFamily:'Poppins-Medium'}}>Next</Text>
+<Text style={{color:'#fff',fontSize:20,fontFamily:'Poppins-Medium'}}>Submit</Text>
 </LinearGradient>
     </View> 
     </TouchableOpacity> 
@@ -318,34 +319,92 @@ if(year>2015){
     }
     else
     {
-    
+      let params=this.props.navigation.state.params.RegisterDetails
+      console.log('regData',params.AddressLine1)
       let profileParams=
       {
+         address:params.AddressLine1.toString(),
+         address1:params.AddressLine2.toString(),
+         postalCode:params.PostalCode.toString(),
+         cityId:params.cityId.toString(),
+         countryId:params.CountryId.toString(),
+         stateId:'',
+         userId:'',
          firstname:this.state.FirstName,
          lastname:this.state.LastName,
-         dates:this.state.Dates
+         dates:this.state.Dates,
+
       }
-      ProfileRegisters(profileParams,this.ProfileRegisterResult)
+      //ProfileRegisters(profileParams,this.ProfileRegisterResult)
     
-      //need to call register API here
+      //need to call register update API here
+     
+      registerUpdateApi(JSON.stringify(profileParams),this.RegisterUpdateResult)
   
     }
   //  
   }
-  ProfileRegisterResult=(data)=>
-  {
-  if(data.status=='success')
-  {
-          Alert.alert(
-            Registerdata.status,
-            Registerdata.message,
-            [
-              {text: 'OK', onPress: () =>  this.props.navigation.push('Home',{DashBoardPopup:false,Kyc:true})},
-            ],
-            {cancelable: false},
-          );
+
+  RegisterUpdateResult=(data)=>{
+    if(data.status=='success')
+    {
+            Alert.alert(
+              data.status,
+              data.message,
+              [
+                {text: 'OK', onPress: () =>  this.props.navigation.push('Home',{DashBoardPopup:false,Kyc:true})},
+              ],
+              {cancelable: false},
+            );
+           
+    }else if(data.error==='Token Expired')
+    {
+      Alert.alert(
+        'Error',
+        'Token Expired',
+        [
+          {text: 'OK', onPress: () => this.props.navigation.navigate("Login")},
+        ],
+  
+      );
+    }
+    else 
+    {
+      Alert.alert(data.status,data.message)
+    }
+    
   }
-  }
+
+
+
+  // ProfileRegisterResult=(data)=>
+  // {
+  // if(data.status=='success')
+  // {
+  //         Alert.alert(
+  //           Registerdata.status,
+  //           Registerdata.message,
+  //           [
+  //             {text: 'OK', onPress: () =>  this.props.navigation.push('Home',{DashBoardPopup:false,Kyc:true})},
+  //           ],
+  //           {cancelable: false},
+  //         );
+  // }else if(data.error==='Token Expired')
+  //   {
+  //     Alert.alert(
+  //       'Error',
+  //       TokenExpired,
+  //       [
+  //         {text: 'OK', onPress: () => this.props.navigation.navigate("Login")},
+  //       ],
+  
+  //     );
+  //   }
+  //   else 
+  //   {
+  //     Alert.alert(data.status,data.message)
+  //   }
+  // }
 }
 
 const styles = StyleSheet.create({

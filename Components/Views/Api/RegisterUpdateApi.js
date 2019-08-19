@@ -11,10 +11,11 @@ const registerUpdateApi=async(params,RegisterUpdateResponse)=>
           'authorization':'bearer '+await AsyncStorage.getItem('AccessToken')
         },
         body: JSON.stringify({
-          address: params.email,
-          address1:params.password,
+          address: params.address,
+          address1:params.address1,
           postalCode:params.postalCode,
-          city:params.city,
+          //city:params.city,
+          cityId:'',
           countryId:params.countryId,
           stateId:'',
           userId:await AsyncStorage.getItem('userId'),

@@ -37,8 +37,8 @@ export default class Address  extends React.Component {
       app1color:'#fff',
       app5color:'#fff',
       stateData:[],
-      selectedService:'State/Region/Province/Country',
-      selectedCity:'city/town/village',
+      selectedService:'',
+      selectedCity:'',
       cityData:[],
       cityID:'',
       countryID:''
@@ -176,12 +176,14 @@ SlideMenu=()=>{
           fill={'none'}
       />
   )
-   let stateItems = this.state.stateData.map( (s, i) => {
-    return <Picker.Item key={i} value={s.id} label={s.stateName} />
-  });   
   let cityItems = this.state.cityData.map( (s, i) => {
     return <Picker.Item key={i} value={s.id} label={s.cityName} />
   });
+
+   let stateItems = this.state.stateData.map( (s, i) => {
+    return <Picker.Item key={i} value={s.id} label={s.stateName} />
+  });   
+  
 
    
   if(this.state.animate){  
@@ -262,31 +264,40 @@ SlideMenu=()=>{
         />
 </View>
           </View>
-          <View style={{width:'100%',backgroundColor:'#fff',borderColor:'#d7dee8', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
-<View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
-
-        <Picker style={{width: '50%',padding:10}}
-                    selectedValue={this.state.selectedCity}
-                    onValueChange={ (itemValue, itemIndex) =>this.selectedCity(itemValue, itemIndex) } >
-
-                   {cityItems}
-
-                </Picker>
-</View>
-          </View>
+          
           <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
 <View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
 
 <Picker style={{width: '50%',padding:10}}
                     selectedValue={this.state.selectedService}
-                    onValueChange={(item) =>this.selectedFromPickerState(item) }
-                    
-                     >
-
+                    onValueChange={(item) =>{
+                      if (item != "0"){
+                       
+                        this.selectedFromPickerState(item)
+                      }
+                    } }>
+<Picker.Item label="State/Region/Province/Country" value="0" />
                    {stateItems}
 
                 </Picker>
 
+</View>
+          </View>
+          <View style={{width:'100%',backgroundColor:'#fff',borderColor:'#d7dee8', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
+<View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
+
+        <Picker style={{width: '50%',padding:10}}
+                    selectedValue={this.state.selectedCity}
+                    onValueChange={ (itemValue, itemIndex) =>{
+                      if (itemIndex!= "0"){
+                        
+                        this.selectedCity(itemValue, itemIndex) 
+                      }
+                    }} >
+<Picker.Item label="city/town/village" value="0" />
+                   {cityItems}
+
+                </Picker>
 </View>
           </View>
           <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
@@ -355,9 +366,11 @@ SlideMenu=()=>{
         this.setState({
           selectedService:itemValue
         })
-        console.log('cityId',this.state.selectedService)
-        this.CallCityGetApi(itemValue)
+        
         console.log('cityId',itemValue)
+        console.log('selectedSatat',itemValue)
+        this.CallCityGetApi(itemValue)
+       
       }
       selectedCity=( itemValue, itemIndex)=>{
         this.setState({
@@ -375,12 +388,13 @@ SlideMenu=()=>{
       onCityResponse=async=(data)=>{
         console.log('cityData',data)
         if(data.status==='success'){
-          //this.setState({dataSource:data.countryData})
-          if(data.CityData != '' && data.CityData != null && state.CityData !== 'undefined'){
-          
-            this.setState({cityData:data.cityName})
+
+          if(data.CityData != '' && data.CityData != 'undefined'){
+            //console.log('cityData',data.CityData.cityName)
+            this.setState({cityData:data.CityData})
+            //this.setCityData(data.CityData.cityName)
             
-            console.log('cityData',data.cityName)
+            
           }else{
             Alert.alert('Alert','City data not found!!')
           }
@@ -391,8 +405,16 @@ SlideMenu=()=>{
         
           Alert.alert(data.status,data.message)
         }
+
+        setCityData=async=(cityData)=>{
+          console.log('cityData--',cityData)
+          this.setState({cityData:cityData})
+          
+        }
       }
-      clickedItemText=(item)=>
+     
+
+     clickedItemText=(item)=>
       {
           Alert.alert(item.Status)
       }
@@ -411,11 +433,11 @@ SlideMenu=()=>{
         {
           Alert.alert('Please Enter AddressLine2')
         }
-        else if(this.state.city==null)
+        else if(this.state.selectedCity==null)
         {
           Alert.alert('Please Enter city')
         }
-        else if(this.state.Country==null)
+        else if(this.state.selectedService==null)
         {
           Alert.alert('Please Enter Country')
         }
@@ -431,11 +453,11 @@ SlideMenu=()=>{
         {
           AddressLine1:this.state.AddressLine1,
           AddressLine2:this.state.AddressLine2,
-          city:this.state.city,
+          city:this.state.selectedCity,
           CountryId:params.CountryId,
           PostalCode:this.state.PostalCode,
           stateId:'',
-          cityId:cityID,
+          cityId:this.state.cityID,
           userId:'',
           firstName:'',
           lastName:'',
