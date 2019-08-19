@@ -1,5 +1,6 @@
 import React from 'react';
-import registerUpdateApi from '../Api/RegisterUpdateApi'
+import registerUpdateApi from '../Api/RegisterUpdateApi';
+import {CountryStateData} from '../Api/AddressData'
 import { View, StyleSheet, Image,TextInput,NativeModules,Text,Alert,TouchableOpacity,Dimensions,} from 'react-native';
 import AlphaScrollFlatList from 'alpha-scroll-flat-list';
 const WIDTH = Dimensions.get('window').width;
@@ -17,6 +18,7 @@ export default class CountrySearch extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
+      registerDetails:'',
       data: [
         {
           "id": "5b588d4acb1fe7c48301af77",
@@ -134,15 +136,42 @@ export default class CountrySearch extends React.Component {
       visible: false,
       hidden: false,
       app1color:'#fff',
-      app5color:'#fff'
+      app5color:'#fff',
+      countryCode:''
     };
   }
+
+  componentDidMount()
+  {
+    this.GetListCountryData()
+  }
+
+  GetListCountryData=()=>{
+    CountryStateData('countryData',this.OnResponse)
+
+  }
+
+  OnResponse=async(data)=>{
+    console.log('countryData',data)
+    if(data.status==='success'){
+      this.setState({dataSource:data.countryData})
+       console.log('countryData',this.state.dataSource)
+    }
+    else
+    {
+      console.log('countryData', data)
+      Alert.alert(data.status,data.message)
+    }
+  }
+
   renderItem ({item}) {
 
     return (
-      <TouchableOpacity onPress={(item)=>this.setState({CountryId:item.name})}>
+      //onPress={(item)=>this.setState({CountryId:item.countryCode})
+      <TouchableOpacity onPress={this.CountryPicker.bind(this,item)}>
          <View style={styles.itemContainer}>
-        <Text style={styles.itemTitle}>{item.name}</Text>
+        <Text style={styles.itemTitle}>{item.countryName}</Text>
+    
       </View>
       </TouchableOpacity>
      
@@ -185,9 +214,10 @@ export default class CountrySearch extends React.Component {
           </View>
     <AlphaScrollFlatList
           keyExtractor={this.keyExtractor.bind(this)}
-          data={this.state.data.sort((prev, next) => prev.name.localeCompare(next.name))}
+          data={this.state.dataSource.sort((prev, next) => prev.countryName.localeCompare(next.countryName))}
+          //data={this.state.dataSource}
           renderItem={this.renderItem.bind(this)}
-          scrollKey={'name'}
+          scrollKey={'countryName'}
           reverse={false}
           itemHeight={ITEM_HEIGHT}
         />  
@@ -222,31 +252,70 @@ export default class CountrySearch extends React.Component {
   }
   BeginAction=()=>
   {
-    this.props.navigation.navigate('ProfileRegister');
+    if(this.state.CountryId==''){
+      Alert.alert('Alert','Please select Country')
+    }else{
+      this.props.navigation.navigate('ProfileRegister',{'RegisterDetailsData':this.state.registerDetails});
+      ///this.props.navigation.navigate('ProfileRegister');
+    }
+    
     //this.CountryPicker()
    
     
   }
-  CountryPicker=()=>
+  CountryPicker=async(item)=>
   {
-    if(this.state.CountryId=='undefined')
+
+    console.log('paraa',item.countryCode)
+    if(item.countryCode!="undefined")
     {
-      let params=this.props.navigation.state.params.RegisterDetails
-      params.CountryId=this.state.CountryId
-     this.load()
-      registerUpdateApi(params,this.RegisterUpdateResult)
+      this.setState({CountryId:item.countryCode})
+      this.setState({countryCode:item.id})
+      //let params=this.props.navigation.state.params.RegisterDetails
+      //params.CountryId=item.countryCode
+     // console.log('paraa',params)
+      // this.setState({registerDetails:
+      //   {
+      //     AddressLine1:params.AddressLine1,
+      //     AddressLine2:params.AddressLine2,
+      //     city:params.city,
+      //     CountryId:params.CountryId,
+      //     PostalCode:params.PostalCode,
+      //   } })
+
+
+      
+
+
+     // console.log('paraa',this.state.registerDetails)
+
+
+
+      //console.log('paraa',this.state.registerDetails)
+     //this.load()
+      //registerUpdateApi(params,this.RegisterUpdateResult)
+      let countryData=
+        {
+          CountryId:item.countryCode,
+          CountryCode:item.id,
+         
+        } 
+        console.log('paraa',countryData.CountryCode)
+      this.props.navigation.navigate('Address',{'CountryID':countryData});
    
     }
     else
     {
-    Alert.alert('Please select Country')
+    Alert.alert('Alert','Please select Country')
     }
   }
   RegisterUpdateResult=(data)=>
   {
-    this.hide()
+    console.log('paraa',data)
+    //this.hide()
 if(data.status=='success')
 {
+  console.log('paraa',data.status)
   this.props.navigation.navigate('ProfileRegister');
 }
 else
