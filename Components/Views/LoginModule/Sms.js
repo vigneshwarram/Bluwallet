@@ -21,7 +21,7 @@ export default class Sms  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
-  
+      mail:this.props.navigation.state.params.email,
       w: 50,
       h: 45,
       wr:50,
@@ -170,7 +170,7 @@ SlideMenu=()=>{
         </View>
         
         <Text style={{color:'#4e649f',opacity:1,fontSize:20,marginTop:10,fontFamily:'Exo2-Bold'}}>Check your Inbox...</Text>
-        <Text style={{color:'#80b0fe',opacity:1,fontSize:20,marginTop:20,fontFamily:'Exo2-Bold'}}>Jhondoe@gmail.com</Text>
+        <Text style={{color:'#80b0fe',opacity:1,fontSize:20,marginTop:20,fontFamily:'Exo2-Bold'}}>{this.state.mail}</Text>
              <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:20,fontFamily:'Exo2-SemiBold'}}>Search on email on Blockchain</Text>
              <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:'Exo2-SemiBold'}}>And click the link of verification </Text>
              <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:'Exo2-SemiBold'}}>To complete the configuration</Text>

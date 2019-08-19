@@ -683,9 +683,7 @@ renderQrCode() {
     <TouchableOpacity onPress={this.RequestPayment}>
     <View style={{alignItems:'center',justifyContent:'center',paddingTop:10}}>
 <LinearGradient colors={['#7498F9','#9B89F8','#D476F7']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{paddingTop:10,paddingBottom:10,paddingLeft:50,paddingRight:50, backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:50 }}>
-<TouchableOpacity>
 <Text style={{color:'#fff',fontFamily:'Poppins-Regular'}}>Request Payment</Text>
-</TouchableOpacity>
 </LinearGradient>
 </View>
     </TouchableOpacity>
