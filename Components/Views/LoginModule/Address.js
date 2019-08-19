@@ -350,7 +350,7 @@ SlideMenu=()=>{
       }
      
       selectedFromPickerState= (itemValue)=>{
-        Alert.alert('cityData.status,cityData.message')
+        //Alert.alert('cityData.status,cityData.message')
 
         this.setState({
           selectedService:itemValue
@@ -368,20 +368,21 @@ SlideMenu=()=>{
       }
 
       CallCityGetApi=async=(stateId)=>{
-        console.log('cityData',stateId)
+        //console.log('cityData',stateId)
         CityDataApi(stateId,this.onCityResponse)
       }
   
       onCityResponse=async=(data)=>{
-        console.log('stateData',data)
+        console.log('cityData',data)
         if(data.status==='success'){
           //this.setState({dataSource:data.countryData})
-          if(this.data.CityData != ''&& this.data.CityData != null && this.state.CityData !== 'undefined'){
+          if(data.CityData != '' && data.CityData != null && state.CityData !== 'undefined'){
+          
             this.setState({cityData:data.cityName})
             
-            console.log('stateData',data.cityName)
+            console.log('cityData',data.cityName)
           }else{
-            Alert.alert('Alert','Data not found!!')
+            Alert.alert('Alert','City data not found!!')
           }
          
         }
