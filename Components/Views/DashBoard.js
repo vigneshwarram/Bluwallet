@@ -915,7 +915,7 @@ _animate=()=>{
           <Text style={{marginLeft:10,fontSize:16,color:'#FFFFFF',fontFamily:'Exo2-Regular'}}>Wallet</Text>       
           </View>       
           </View>
-      {((this.state.NoPopup?null:((!this.state.KyC)?
+      {((this.state.NoPopup?null:((this.state.KyC)?
         <View >
       <LinearGradient colors= {['#395ea4','#446ea8','#4c78a9']} style={{width:'95%',marginLeft:10,marginRight:10,padding:10,height:160,marginTop:15,borderRadius:10}}>
       <View style={{flexDirection:'row'}}>
