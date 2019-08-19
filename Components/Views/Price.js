@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,TextInput,FlatList,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,Picker} from 'react-native';
+import { View, StyleSheet, Image,TextInput,ImageBackground,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,Picker} from 'react-native';
 import { Alert } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
@@ -25,7 +25,11 @@ export default class Price  extends React.Component {
       dataSource:[],
       cityItems:["US Doller,Indian,Eutherium"],
       Amount: 'USDoller',
+      EtheriumShadowClick:false,
       animate:false,
+      zShadowClick:false,
+      BitShadowClick:false,
+      MoneroShadowClick:false,
       etheriumOpacity:0.4,
        data : [ 50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100 ],
       TotalPrice:null,
@@ -179,16 +183,16 @@ SlideMenu=()=>{
       <View style={styles.Maincontainers}>           
        <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={styles.Maincontainers}>  
      <LinearGradient
-   colors={['#1a5fe1','#00a5ff','#25e2cd']} style={{height:200,opacity:0.9}}>     
+   colors={['#1a5fe1','#00a5ff','#81DCF9']} start={{x: 0, y: 0}} end={{x: 0, y: 1}} style={{flex:0.3,opacity:0.9}}>     
       <LinearGradient
-   colors={['#1a5fe1','#00a5ff','#81DCF9']} style={{height:210,marginRight:30,marginTop:20}}>
+   colors={['#1a5fe1','#00a5ff','#81DCF9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{height:"100%",marginRight:30,marginTop:20}}>
  <View>
  <View style={{justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection:'row',marginTop:10}}>
       
           <Image style={{marginRight:10,width: 18, height: 16,resizeMode:'contain',marginTop:3}}   source={require("./assets/app3.png")} ></Image>            
           
-          <Text style={{fontSize:15,color:'#fff',fontFamily:'Roboto-Regular'}}>Price</Text>
+          <Text style={{fontSize:18,color:'#fff',fontFamily:'Exo2-SemiBold'}}>Price</Text>
           </View>      
           <View style={{flexDirection: 'row',marginTop:20,justifyContent:'space-around'}}>
          <View style={{justifyContent:'center',alignItems:'center'}}>
@@ -219,25 +223,27 @@ SlideMenu=()=>{
      </View>            
           </View>
          
-          <AreaChart style={{ height: 75,backgroundColor:'transparent',marginTop:10}}
+         
+
+          </View>
+          <AreaChart style={{ height: 100,backgroundColor:'transparent'}}
                 data={this.state.data}
                 showGrid={ false }
+               
                 curve={shape.curveNatural}
-                svg={{ fill: '#60d8e6',stroke:'#25e2cd' }}
+                svg={{ fill: '#7ED5F6',stroke:'#25e2cd' }}
             >
               
               
             </AreaChart>
 
-
-          </View>
           </LinearGradient>    
          
 
           
           </LinearGradient>          
    
-    <View style={{flex:1,marginTop:40,}}>
+    <View style={{flex:0.7,}}>
     <View
   style={{
     marginLeft:30,marginRight:30,
@@ -250,112 +256,178 @@ SlideMenu=()=>{
 <View style={{marginBottom:150}}>
 <View style={{flexDirection:'row'}}>
 
-<View style={{backgroundColor:'transparent',width:'40%',height:250,marginLeft:20,borderWidth:0.25,borderColor:'#5496FF',borderRadius:6
-  }} >
-
-   <LinearGradient style={{height:'100%',
-   borderRadius:6,}}
-            colors={[this.state.Etherium1,this.state.Etherium2,this.state.Etherium3,this.state.Etherium4]}>
-              <TouchableOpacity onPress={this.EtheriumClick}><View>
-       <View style={{justifyContent:'center',alignItems:'center', position: 'absolute',
-    top: 10,
-    bottom: 10,
-    left: 20,
-    right: 0,}}>
-    <Image  style={{width:200,height:200,
-    resizeMode: 'contain',marginLeft:10,opacity:this.state.etheriumOpacity}}   source={require("./assets/transparent-etherem.png")} ></Image>
-    </View>
-    <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
-        <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/diablue.png")} ></Image>
-
-        </View>
-         <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
-        
-        <Text style={{color:this.state.EtheriumFontColor,fontSize:15,fontFamily:'Exo2-SemiBold'}}>Etherium</Text>
-        <Text style={{color:this.state.EtheriumFontColor,fontSize:15,marginTop:10,fontFamily:'Exo2-SemiBold'}}>ETH</Text>
-
-        <Text style={{color:this.state.EtheriumFontColor,fontSize:15,marginTop:30,fontFamily:'Exo2-SemiBold'}}>Price</Text>
-        <Text style={{color:this.state.EtheriumFontColor,fontSize:15,marginTop:10,fontFamily:'Exo2-SemiBold'}}>{this.state.dataSource.usdforEther}</Text>
-    </View>
-    </View>
-   </TouchableOpacity>
-       
-       </LinearGradient>
- 
-   
-       </View>
-
-      
-      
-       <View style={{backgroundColor:'transparent',width:'40%',height:250,marginLeft:20,borderWidth:0.25,borderColor:'#5496FF',borderRadius:6}} >
-       <LinearGradient style={{height:'100%',borderRadius:6}}   colors={[this.state.Btc1,this.state.Btc2,]}>
-       <TouchableOpacity onPress={this.BtcClick}>
-       <View>
-       <View style={{justifyContent:'center',alignItems:'center', position: 'absolute',
-    top: 10,
-    bottom: 10,
-    left: 20,
-    right: 0,}}>
-    <Image  style={{width:180,height:150,
-    resizeMode: 'contain',opacity:this.state.BtcOpacity}}   source={require("./assets/bgbicon.png")} ></Image>
-    </View>
-    <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
-        <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/diaIcon.png")} ></Image>
-
-        </View>
+{(this.state.EtheriumShadowClick)?
+  <View style={{width: '40%', height: 230,marginLeft:30,borderRadius:6}}>
+  <ImageBackground  style={{width: '100%', height: '100%',borderRadius:6}} imageStyle={{resizeMode:'cover',width:'100%',height:280,borderRadius:6}} source={require("./assets/e.png")}>
+      <TouchableOpacity onPress={this.EtheriumClick}>
+      <Image  style={{width:30,height:30,marginLeft:'25%',marginTop:20,
+    resizeMode: 'contain',tintColor:'#fff'}}   source={require("./assets/diamond.png")} ></Image>
+     
         <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
-        
-            <Text style={{color:this.state.BtcFontColor,fontSize:15,fontWeight:'bold',fontFamily:''}}>Ripple</Text>
-            <Text style={{color:this.state.BtcFontColor,fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>Xrp</Text>
+ 
+            <Text style={{color:'#fff',fontSize:15,fontWeight:'bold',fontFamily:''}}>Etherium</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>ETH</Text>
 
-            <Text style={{color:this.state.BtcFontColor,fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:''}}>Price</Text>
-            <Text style={{color:this.state.BtcFontColor,fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>{this.state.dataSource.usdforBtc}</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:''}}>Price</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>{this.state.dataSource.usdforBtc}</Text>
+        </View>
+       </TouchableOpacity>
+
+      </ImageBackground>
+  </View>:
+        <View style={{backgroundColor:'transparent',width: '40%', height: 240,marginLeft:30,borderWidth:0.25,borderColor:'#5496FF',borderRadius:6}} >
+     
+       <TouchableOpacity onPress={this.EtheriumClick}>
+       <View>
+    <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
+    <Image  style={{width:30,height:30,
+    resizeMode: 'contain',}}   source={require("./assets/diamond.png")} ></Image>
+
+        </View>
+        <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:10}}>
+        
+            <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:''}}>Etherium</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>ETH</Text>
+
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:20,fontWeight:'bold',fontFamily:''}}>Price</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>{this.state.dataSource.usdforBtc}</Text>
         </View>
         </View>
        </TouchableOpacity>
-       </LinearGradient>
+      
    
        </View>
+      }
+
+      {(this.state.BitShadowClick)?<ImageBackground  style={{width: '100%', height: '100%',marginLeft:30,}} imageStyle={{resizeMode:'cover',width:'40%',height:280,borderRadius:6}} source={require("./assets/bitcoin.png")}>
+      <TouchableOpacity onPress={this.BtcClick}>
+      <Image  style={{width:30,height:30,marginLeft:'18%',marginTop:20,
+    resizeMode: 'contain',tintColor:'#fff'}}   source={require("./assets/b.png")} ></Image>
+     
+        <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
+ 
+            <Text style={{color:'#fff',fontSize:15,fontWeight:'bold',fontFamily:''}}>Bitcoin</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>BTC</Text>
+
+            <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:''}}>Price</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>{this.state.dataSource.usdforBtc}</Text>
+        </View>
+       </TouchableOpacity>
+
+      </ImageBackground>:
+        <View style={{backgroundColor:'transparent',width: '40%', height: 240,marginLeft:30,borderWidth:0.25,borderColor:'#5496FF',borderRadius:6}} >
+     
+       <TouchableOpacity onPress={this.BtcClick}>
+       <View>
+    <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
+    <Image  style={{width:30,height:30,
+    resizeMode: 'contain',}}   source={require("./assets/b.png")} ></Image>
+
+        </View>
+        <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:10}}>
+        
+            <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:''}}>Bitcoin</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>BTC</Text>
+
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:20,fontWeight:'bold',fontFamily:''}}>Price</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>{this.state.dataSource.usdforBtc}</Text>
+        </View>
+        </View>
+       </TouchableOpacity>
+      
+   
+       </View>
+      }
+      
+
      
      
          
         </View>
         <View style={{flexDirection:'row',marginTop:20}}>
-        <View style={{backgroundColor:'transparent',width:'40%',height:250,marginLeft:30,borderWidth:0.25,borderColor:'#5496FF',borderRadius:6}} >
-       <LinearGradient style={{height:'100%'}}   colors={['transparent','transparent','transparent']}>
+        {(this.state.MoneroShadowClick)?
+        <View style={{width: '40%', height: 230,marginLeft:30}}>
+        <ImageBackground  style={{width: '100%', height: '100%'}} imageStyle={{resizeMode:'cover',width:'100%',height:280,borderRadius:6}} source={require("./assets/monero.png")}>
+      <TouchableOpacity onPress={this.MoneroClick}>
+      <Image  style={{width:30,height:30,marginLeft:'23%',marginTop:20,
+    resizeMode: 'contain',tintColor:'#fff'}}   source={require("./assets/m.png")} ></Image>
+     
+        <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
+ 
+        <Text style={{color:'#fff',fontSize:15,fontWeight:'bold',fontFamily:''}}>Monero</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>XMR</Text>
+
+            <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:''}}>Price</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>121.6</Text>
+        </View>
+       </TouchableOpacity>
+
+      </ImageBackground>
+        </View>:
+        <View style={{backgroundColor:'transparent',width: '40%', height: 240,marginLeft:30,borderWidth:0.25,borderColor:'#5496FF',borderRadius:6}} >
+     
+       <TouchableOpacity onPress={this.MoneroClick}>
+       <View>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
-        <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/m.png")} ></Image>
+    <Image  style={{width:30,height:30,
+    resizeMode: 'contain',}}   source={require("./assets/m.png")} ></Image>
 
         </View>
-        <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
+        <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:10}}>
         
-            <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:''}}>Monero</Text>
+        <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:''}}>Monero</Text>
             <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>XMR</Text>
 
             <Text style={{color:'#5597ff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:''}}>Price</Text>
             <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>121.6</Text>
         </View>
-       </LinearGradient>
+        </View>
+       </TouchableOpacity>
+      
    
        </View>
+      }
+      
          
-       <View style={{backgroundColor:'transparent',width:'40%',height:250,marginLeft:20,borderWidth:0.25,borderColor:'#5496FF',borderRadius:6}} >
-       <LinearGradient style={{height:'100%'}}   colors={['transparent','transparent','transparent']}>
+      {(this.state.zShadowClick)?<ImageBackground  style={{width: '100%', height: '100%',marginLeft:30,}} imageStyle={{resizeMode:'cover',width:'40%',height:280,borderRadius:6}} source={require("./assets/z.png")}>
+      <TouchableOpacity onPress={this.zClick}>
+      <Image  style={{width:30,height:30,marginLeft:'18%',marginTop:20,
+    resizeMode: 'contain',tintColor:'#fff'}}   source={require("./assets/zcoinyellow.png")} ></Image>
+     
+        <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
+ 
+        <Text style={{color:'#fff',fontSize:15,fontWeight:'bold',fontFamily:''}}>Monero</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>XMR</Text>
+
+            <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:''}}>Price</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>121.6</Text>
+        </View>
+       </TouchableOpacity>
+
+      </ImageBackground>:
+        <View style={{backgroundColor:'transparent',width: '40%', height: 240,marginLeft:30,borderWidth:0.25,borderColor:'#5496FF',borderRadius:6}} >
+     
+       <TouchableOpacity onPress={this.zClick}>
+       <View>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
-        <Image style={{marginRight:10,width: 30, height: 30}}   source={require("./assets/zcoinyellow.png")} ></Image>
+    <Image  style={{width:30,height:30,
+    resizeMode: 'contain',}}   source={require("./assets/zcoinyellow.png")} ></Image>
 
         </View>
-        <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
+        <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:10}}>
         
-            <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:''}}>ZCash</Text>
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>ZEC</Text>
+        <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:''}}>Monero</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>XMR</Text>
 
             <Text style={{color:'#5597ff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:''}}>Price</Text>
             <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>121.6</Text>
         </View>
-       </LinearGradient>
+        </View>
+       </TouchableOpacity>
+      
    
        </View>
+      }
          
         </View>
  </View>
@@ -378,16 +450,14 @@ this.setState({
       EtheriumClick=()=>
       {
         let data=[50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100]
-        this.setState({ Etherium1:'#14A9FF', Etherium2:'#2B84FF', Etherium3:'#6b00ff', Etherium4:'#8000FF',etheriumOpacity:0.4,EtheriumFontColor:'#fff',data:data})
+        this.setState({data:data,EtheriumShadowClick:true,BitShadowClick:false,MoneroShadowClick:false,zShadowClick:false})
         this.setState({TotalPrice:this.state.dataSource.usdforEther,})
-        this.BtcReset()
+       
       }
       BtcClick=()=>
       {
         let data=[50, 60, 70, 95, 100, 100, 100, 80, 90, 150, 50, 40, 60, 100]
-        this.setState({Btc1:'#FF7267',Btc2:'#FF007F',BtcOpacity:0.4,BtcFontColor:'#fff',data:data})
-        this.setState({TotalPrice:this.state.dataSource.usdforBtc,})
-        this.EtheriumReset()
+        this.setState({data:data,BitShadowClick:true,MoneroShadowClick:false,TotalPrice:this.state.dataSource.usdforBtc,EtheriumShadowClick:false,zShadowClick:false})
         setTimeout(this.nav, 700);
       }
       nav=()=>
@@ -395,13 +465,16 @@ this.setState({
         
         this.props.navigation.navigate("DashBoard")
       }
-      EtheriumReset=()=>
+    
+      MoneroClick=()=>
       {
-        this.setState({Etherium1:'transparent',Etherium2:'transparent',Etherium3:'transparent',Etherium4:'transparent',etheriumOpacity:0,EtheriumFontColor:'#5597ff'})
+        console.log('Monero click')
+        this.setState({BitShadowClick:false,MoneroShadowClick:true,EtheriumShadowClick:false,zShadowClick:false})
+       
       }
-      BtcReset=()=>
+      zClick=()=>
       {
-        this.setState({Btc1:'transparent',Btc2:'transparent',BtcOpacity:0,BtcFontColor:'#5597ff'})
+        this.setState({BitShadowClick:false,MoneroShadowClick:false,EtheriumShadowClick:false,zShadowClick:true})
       }
 }
 

@@ -97,7 +97,7 @@ export default class  Publish  extends React.Component {
         'Error',
         TokenExpired,
         [
-          {text: 'OK', onPress: () => this.props.navigation.navigate(Login)},
+          {text: 'OK', onPress: () => this.props.navigation.navigate("Login")},
         ],
   
       );
