@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,Animated,TextInput,Text,Easing,TouchableOpacity,LayoutAnimation,KeyboardAvoidingView,Dimensions,AsyncStorage } from 'react-native';
+import { View, StyleSheet, Image,Animated,TextInput,Text,Easing,TouchableOpacity,LayoutAnimation,KeyboardAvoidingView,BackHandler,AsyncStorage } from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 import {loginApi} from '../Api/LoginApi'
@@ -36,10 +36,17 @@ export default class Login  extends React.Component {
     };
   
   }
-  componentDidMount()
-  {
-    
-    //this.GetListData()
+  componentDidMount() {
+    this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+  }
+
+  componentWillUnmount() {
+    this.backHandler.remove()
+  }
+
+  handleBackPress = () => {
+    this.props.navigation.navigate('Launch'); // works best when the goBack is async
+    return true;
   }
  
 Load(){

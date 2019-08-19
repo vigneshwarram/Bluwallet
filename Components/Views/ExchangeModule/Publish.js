@@ -281,7 +281,7 @@ renderScane() {
 <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center'}}>
         <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.Amount}</Text>
         <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
-        <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}
+        <Picker style={{ position:'absolute', top: 0, width: 1000, height: 3000}}
    selectedValue={this.state.Amount}
   onValueChange={(itemValue, itemIndex) => this.selectedCop(itemValue,itemIndex)}>
   
@@ -302,7 +302,7 @@ renderScane() {
 <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center'}}>
         <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.StatusMode}</Text>
         <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
-        <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}
+        <Picker style={{ position:'absolute', top: 0, width: 1000, height: 3000}}
    selectedValue={this.state.StatusMode}
   onValueChange={(itemValue, itemIndex) => this.selectedMode(itemValue,itemIndex)}>
   

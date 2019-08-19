@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet,TextInput, Image,Picker,ScrollView,Text,ActivityIndicator,TouchableOpacity,AsyncStorage,KeyboardAvoidingView} from 'react-native';
+import { View, StyleSheet,TextInput, Image,Picker,ScrollView,Text,Animated,ActivityIndicator,TouchableOpacity,AsyncStorage,KeyboardAvoidingView,Easing} from 'react-native';
 import { Alert } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import { Switch} from 'react-native'
@@ -24,13 +24,15 @@ export default class  Buy  extends React.Component {
 
   constructor(props) {
     super(props);
-    
+    AnimatedWidth=new Animated.Value(50),
+      AnimatedHieght=new Animated.Value(45),
     this.state = {
       dataSource:[],
       switchValue:false,
       visibles:false,
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
+      
       EthAmount:'ETH',
       BtcAmount:'BTC',
       ethercurrentvalue:null,
@@ -195,15 +197,19 @@ toggleSwitch=(value)=>{
             
           </LinearGradient>
   </View>
- <LinearGradient colors={['#fff','#fff','#CCCFE2']} style={{justifyContent:'center',marginTop:-10,height:this.state.h,width:this.state.w, alignItems:'flex-end',borderTopRightRadius:25,borderBottomRightRadius:25,position:'absolute'}}>
-
-<TouchableOpacity onPress={this._onPress}>
-       <View style={{flexDirection: 'row'}}> 
+ <Animated.View style={{height:AnimatedHieght,width:AnimatedWidth, position:'absolute',left:0, marginTop:10,}}>
+      <TouchableOpacity onPress={this._onPress.bind(this)}>
+      <View>
+      <LinearGradient colors={['#fff','#fff','#CCCFE2']} style={{justifyContent:'center',borderTopRightRadius:25,borderBottomRightRadius:25,alignItems:'flex-end',paddingTop:10,paddingBottom:10}}>
+    
+      <View style={{flexDirection: 'row'}}> 
           <Image style={{marginRight:10,width: 30, height: 30}}   source={require("../assets/note.PNG.png")} ></Image>     
      
           </View>
-          </TouchableOpacity>
-</LinearGradient> 
+</LinearGradient>
+</View>
+ </TouchableOpacity>
+      </Animated.View> 
  <View style={{justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection:'row',marginTop:20,justifyContent:'space-between'}}>
           <Image style={{marginRight:10,width: 18, height: 22,resizeMode:'contain'}}   source={require("../assets/app4.png")} ></Image>     
@@ -216,7 +222,7 @@ toggleSwitch=(value)=>{
 <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center'}}>
         <Text style={{color:'#fff',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.EthAmount}</Text>
         <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
-        <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}
+        <Picker style={{ position:'absolute', top: 0, width: 1000, height: 3000}}
    selectedValue={this.state.EthAmount}
   onValueChange={(itemValue, itemIndex) => this.selected1(itemValue,itemIndex)}>
   
@@ -237,7 +243,7 @@ toggleSwitch=(value)=>{
 <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center'}}>
         <Text style={{color:'#fff',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.BtcAmount}</Text>
         <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
-        <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}
+        <Picker style={{ position:'absolute', top: 0, width: 1000, height: 3000}}
    selectedValue={this.state.BtcAmount}
   onValueChange={(itemValue, itemIndex) => this.selected2(itemValue,itemIndex)}>
     <Picker.Item label="BTC" value="BTC" />
@@ -390,11 +396,10 @@ toggleSwitch=(value)=>{
     borderBottomWidth: 1,
   }}
 />
-<View style={{backgroundColor:'#232d51'}}>
-<View style={{justifyContent:'center',alignItems:'center',marginBottom:100,width:"100%",marginTop:30}}>
+<View style={{marginBottom:100,marginTop:30,paddingLeft:50,paddingRight:50}}>
 <TouchableOpacity onPress={() => this.exchangeApi()}>
-<View style={{width:"50%"}}>
-<LinearGradient colors={['#41da9c','#36deaf','#26e3ca']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{width:'100%',padding:12,backgroundColor:'green',justifyContent:'center',alignItems:'center',marginLeft:10,borderRadius:6}}>
+<View>
+<LinearGradient colors={['#41da9c','#36deaf','#26e3ca']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:12,backgroundColor:'green',justifyContent:'center',alignItems:'center',borderRadius:6}}>
 
 <Text style={{color:'#fff',fontFamily:'Poppins-Medium'}}>Exchange</Text>
 </LinearGradient>
@@ -402,7 +407,7 @@ toggleSwitch=(value)=>{
 </View>
 </TouchableOpacity>
 </View>
-</View>
+
    </ScrollView>
 </View>
 
@@ -418,6 +423,51 @@ toggleSwitch=(value)=>{
       clickedItemText=(item)=>
       {
           Alert.alert(item.Status)
+      }
+      _onPress=()=>
+      {
+        Animated.sequence([
+          Animated.timing(AnimatedWidth, {
+            toValue: 150,
+            duration: 250,
+            easing: Easing.inOut(Easing.ease),
+            delay: 50,
+          })
+         ,
+          Animated.timing(AnimatedWidth, {
+            toValue: 50,
+            duration: 250,
+            easing: Easing.inOut(Easing.ease),
+            delay: 50,
+          }),
+            
+        ]).start( this.OpenPopupAction())
+      }
+      OpenPopupAction=()=>
+      {
+        if(this.state.exchangeTypeMenu!='undefined')
+        {         
+            setTimeout(this.navigate, 600)                  
+        }
+        else
+        {
+          Alert.alert('Error','Exchange type undefined')
+        }
+       
+      }
+      navigate=()=>
+      {
+        if(this.state.exchangeTypeMenu ==='Admin')
+        {
+          this.props.navigation.navigate('Publish', {Exchange_Type: this.state.Admin })
+         
+        }
+        else
+        {
+          this.props.navigation.navigate('PuplishUser', {Exchange_Type: this.state.Admin })
+        }
+       
+        
       }
       selected1=(item,itemIndex)=>{
         this.setState({
@@ -538,9 +588,13 @@ toggleSwitch=(value)=>{
     {
 
       let pushAction=StackActions.push({
-        routeName:routname
+        routeName:routname,
+        params:
+        {
+          Exchange_Type: this.state.exchangeTypeMenu
+        }
       })
-      this.props.navigation.dispatch(pushAction ,{Exchange_Type: this.state.exchangeTypeMenu });
+      this.props.navigation.dispatch(pushAction);
     }
     onExchangeResponse=(data)=>
     {

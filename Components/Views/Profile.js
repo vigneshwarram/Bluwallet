@@ -3,9 +3,18 @@ import { Path } from 'react-native-svg'
 import { View, StyleSheet, Image,ScrollView,NativeModules,Text,ActivityIndicator,TouchableOpacity,Animated,Easing,AsyncStorage} from 'react-native';
 import { Alert } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import ImagePicker from 'react-native-image-picker';
 import {ProfileRetrive} from './Api/ProfileRegisterApi'
 
 import {ResponseSuccessStatus,InvalidResponse} from './Utils.js/Constant'
+const options = {
+  title: 'Select Avatar',
+  customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
+  storageOptions: {
+    skipBackup: true,
+    path: 'images',
+  },
+};
 export default class Profile  extends React.Component {
 
   static navigationOptions = {
@@ -21,9 +30,11 @@ export default class Profile  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
+      error:false,
       AnimatedWidth:new Animated.Value(50),
       AnimatedHieght:new Animated.Value(45),
       "userName": "",
+      photo:null,
       "email": "",
       "mobileNo": "",
       "firstName": "",
@@ -177,6 +188,7 @@ space(){
         this.props.navigation.navigate('Login')
       }
   render() {
+    const { photo } = this.state
     const shadowOpt = {
 			width:160,
 			height:170,
@@ -262,13 +274,20 @@ right: 0}}>
     
           <View style={{backgroundColor:'#354e91',borderTopRightRadius:180,borderTopLeftRadius:180, justifyContent:'flex-start',alignItems:'center',flex:1,marginTop:'30%',height:'100%',position:'absolute',left: 0,marginBottom:0,
 right: 0}}>
-   <View style={{width: 30,position:'absolute',left: 150,
+
+<View style={{width: 30,position:'absolute',left: 150,
 right: 0,borderRadius:25,marginTop:-40,
     height: 30}}>
-
-<Image style={{width:100,height:105,borderRadius:25}}   source={require("./assets/build.png")} ></Image> 
+    <TouchableOpacity onPress={this.BeginAction}>
+<View>
+{!this.state.error && <Image  style={{width:100,height:105,borderRadius:25}} source={{ uri: photo.uri }} onError={() => this.setState({ error: true })} />}
+{this.state.error && <Image  style={{width:100,height:105,borderRadius:25}} source={require("./assets/build.png")} />}
 <Image style={{width:25,height:25,marginHorizontal:80,marginTop:-25}}   source={require("./assets/profileround.png")} ></Image>
+</View>
+</TouchableOpacity>
     </View>
+
+  
    
     <View style={{justifyContent:'center',alignItems:'center',marginTop:80}}>
         <Text style={{color:'#fff',fontWeight:'bold',opacity:0.9,fontFamily:''}}>{this.state.userName}</Text>
@@ -520,6 +539,17 @@ right: 0,borderRadius:25,marginTop:-40,
           this.setState({visible:false})
         }
 
+      }
+      BeginAction=()=>
+      {
+        ImagePicker.launchCamera(options, (response) =>
+         {         // Same code as in above section!
+          if (response.uri) {
+            this.setState({ photo: response })
+          }
+          //this.GetImageFile(response)         
+        console.log(response)
+        });
       }
 }
 

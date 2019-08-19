@@ -314,7 +314,7 @@ SlideMenu=()=>{
           
          // await AsyncStorage.setItem('AccessToken',Registerdata.retrieveData.AccessToken); 
          // await AsyncStorage.setItem('userId',Registerdata.retrieveData.userId); 
-         this.props.navigation.navigate('Sms')
+         this.props.navigation.navigate('Sms',{'email':this.state.Username})
          
         }
         else if(Registerdata.status=='failure')

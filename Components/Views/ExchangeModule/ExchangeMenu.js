@@ -216,7 +216,7 @@ space(){
 <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center'}}>
         <Text style={{color:'#fff',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.Amount}</Text>
         <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
-        <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}
+        <Picker style={{ position:'absolute', top: 0, width: 1000, height: 5000}}
    selectedValue={this.state.Amount}
   onValueChange={(itemValue, itemIndex) => this.selectedCop(itemValue,itemIndex)}>
   
@@ -419,8 +419,12 @@ buyClick=()=>{
             this.ExchangeReset()
             this.Publicreset()
             this.SellReset()
-            
-            this.props.navigation.navigate('Buy')
+            setTimeout(this.navigateBuy,500)
+           
+}
+navigateBuy=()=>
+{
+  this.props.navigation.navigate('Buy')
 }
 SellClick=()=>{
   this.setState({
@@ -433,7 +437,12 @@ SellClick=()=>{
             this.ExchangeReset()
             this.Publicreset()
             this.BuyReset()
-            this.props.navigation.navigate('Sell')
+            setTimeout(this.navigateSend,500)
+           
+}
+navigateSend=()=>
+{
+  this.props.navigation.navigate('Sell')
 }
 publicClick=()=>{
   this.setState({
@@ -448,16 +457,22 @@ publicClick=()=>{
             this.ExchangeReset()
             this.BuyReset()
             this.SellReset()
-            if(this.state.Admin=='Admin')
-            {
-              this.props.navigation.navigate('Publish', {Exchange_Type: this.state.Admin })
-            }
-            else
-            {
-              this.props.navigation.navigate('PuplishUser',  {Exchange_Type: this.state.Admin })
-            }
+            setTimeout(this.navigatePublic,500)
+           
            
 }
+navigatePublic=()=>
+{
+  if(this.state.Admin=='Admin')
+  {
+    this.props.navigation.navigate('Publish', {Exchange_Type: this.state.Admin })
+  }
+  else
+  {
+    this.props.navigation.navigate('PuplishUser',  {Exchange_Type: this.state.Admin })
+  }
+}
+
 
       ExchangeClick=()=>{
          
@@ -473,11 +488,15 @@ Exchangecolor5:'#4781DF'
         this.BuyReset()
         this.Publicreset()
         this.SellReset()
-        this.props.navigation.navigate('Exchange', {Exchange_Type: this.state.Admin })
-        console.log("exchangeType", this.state.Admin)
+        setTimeout(this.navigateExchange,500)
+       
 
       }
-
+      navigateExchange=()=>
+      {
+        this.props.navigation.navigate('Exchange', {Exchange_Type: this.state.Admin })
+        console.log("exchangeType", this.state.Admin)
+      }
 
       ExchangeReset=()=>{
         this.setState({
