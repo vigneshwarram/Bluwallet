@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,ScrollView,TouchableOpacity,Text,ActivityIndicator,LayoutAnimation,ImageBackground,AsyncStorage} from 'react-native';
+import { View, StyleSheet, Image,StatusBar,TouchableOpacity,Text,ActivityIndicator,LayoutAnimation,ImageBackground,AsyncStorage} from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 import { NavigationActions,StackActions } from 'react-navigation'
@@ -46,6 +46,8 @@ export default class Launch  extends React.Component {
   
   componentDidMount()
   {
+    StatusBar.setBarStyle( 'light-content',true)
+    StatusBar.setBackgroundColor("#354E91")
     this.CheckUserSignedIn()
    
     //this.GetListData()

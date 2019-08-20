@@ -159,20 +159,23 @@ export default class VaultFilter extends React.Component {
       this.OpacityView,{
         toValue:0,
         duration:10,
-        easing: Easing.linear
+        easing: Easing.linear,
+       
       }).start()
     Animated.timing(
 this.AnimatedMarginLeft,{
   toValue:0,
   duration:500,
-  easing: Easing.linear
+  easing: Easing.linear,
+
 }).start()
 
 Animated.timing(
   this.AnimatedMarginRight,{
     toValue:0,
     duration:500,
-    easing: Easing.linear
+    easing: Easing.linear,
+   
   }).start(this.setState({AnimationFlag:true}))
   
   }
@@ -184,12 +187,13 @@ Animated.timing(
       this.OpacityView,{
         toValue:1,
         duration:1,
-        easing: Easing.linear
+        easing: Easing.linear,
       }).start()
     Animated.timing(
 this.AnimatedMarginLeft,{
   toValue:500,
   duration:500,
+ 
   //easing: Easing.linear
 }).start()
 
@@ -197,7 +201,8 @@ Animated.timing(
   this.AnimatedMarginRight,{
     toValue:500,
     duration:500,
-    easing: Easing.linear
+    easing: Easing.linear,
+   
   }).start(  this.setState({AnimationFlag:false}))
 
   }
@@ -592,7 +597,9 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
      colors={['#4262B5', '#3A549B','#314279','#2C3765','#2A335E']} style={{ borderRadius:25,paddingTop:10,paddingBottom:10}}>
         <View style={{alignItems:'center',flexDirection:'row',padding:15}}>
         <View style={{justifyContent:'center'}}>
-        <Image style={{width: 50, height: 50,resizeMode:'contain'}}   source={require("../assets/etheriumblue.png")} ></Image>
+        {(item.typeOfInvestment==='ETH')?  <Image style={{width: 50, height: 50,resizeMode:'contain'}}   source={require("../assets/etheriumshadow.png")} ></Image>:
+        <Image style={{width: 50, height: 50,resizeMode:'contain'}}   source={require("../assets/bitcoinshadow.png")} ></Image>}
+      
         </View>
       
       

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,Picker,NativeModules,Text,AsyncStorage,TouchableOpacity,ActivityIndicator, Animated,Platform,TextInput,Slider,
+import { View, StyleSheet, Image,Picker,NativeModules,Text,AsyncStorage,StatusBar,TouchableOpacity,ActivityIndicator, Animated,Platform,TextInput,Slider,
   Easing,Dimensions,PermissionsAndroid } from 'react-native';
 import { Alert } from 'react-native';
 const { UIManager } = NativeModules;
@@ -140,7 +140,8 @@ export default class DashBoard extends React.Component {
 }
   componentDidMount()
   {
-  
+    StatusBar.setBarStyle( 'light-content',true)
+    StatusBar.setBackgroundColor("#354E91")
     this.props.navigation.setParams({bottombar:true})
     // this.GetListData()
     // this._animate()
@@ -1105,8 +1106,7 @@ justifyContent:'center',alignItems:"center"}} >
       ItemSeparatorComponent={this.space}
       data={this.state.dataSource}
           renderItem={({item,separators})  =>
-        <TouchableOpacity onShowUnderlay={separators.highlight}
-      onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
+        
       <View elevation={5} style={{marginLeft:30,marginRight:30, shadowOffset: { width: 10, height: 10 },
   borderBottomWidth: 0,
   borderRadius:25}}>
@@ -1116,11 +1116,13 @@ justifyContent:'center',alignItems:"center"}} >
    
         <View style={{flexDirection:'row',justifyContent:'center'}}>
         <View style={{alignItems:'center'}} >
-          <Image  style={{width: 50, height: 50,resizeMode:'contain'}}  source={require("./assets/redicon.png")} ></Image>  
+        {(item.transactionType==='Send')?<Image  style={{width: 50, height: 50,resizeMode:'contain'}}  source={require("./assets/redicon.png")} ></Image>  :
+        <Image  style={{width: 50, height: 50,resizeMode:'contain'}}  source={require("./assets/greenD.png")} ></Image>  }
+          
           </View>
           <View style={{flexDirection:'column'}}>
           <View style={{flex:1, flexDirection: 'row',justifyContent:'space-between'}}>            
-         <Text  style={{marginRight:20,marginTop:10,color:'#fff',fontFamily:"Exo2-Bold"}}>Sent to {item.sendby}</Text>       
+         <Text  style={{marginRight:20,marginTop:10,color:'#fff',fontFamily:"Exo2-Bold"}}>Sent to {item.sendto}</Text>       
      <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
      <Image style={{width: 25,marginTop:10, height: 25}}   source={require("./assets/plusblue.png")} ></Image>    
      <Text  style={{marginRight:20,marginTop:10,color:(item.Status!='Completed')?'#fff':'#fff',fontFamily:'Exo2-Regular'}}>$ {item.usdValue}</Text> 
@@ -1140,7 +1142,7 @@ justifyContent:'center',alignItems:"center"}} >
 </LinearGradient>
   </View>
        
-  </TouchableOpacity>  
+ 
        }
     />
                  </View>
@@ -1221,7 +1223,7 @@ GetList=async()=>
   "cryptoType":type,
   "flagfordates":this.state.Time 
  }
-
+console.log('Request walletactivity data',params)
  getactivitydata(params,this.ListData)
 }
 ListData=(data)=>

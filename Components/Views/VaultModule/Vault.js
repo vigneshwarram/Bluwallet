@@ -207,8 +207,9 @@ CompleteTouch=()=>{
   }
     return (  
       <View style={styles.Maincontainers}>    
-      <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']}>
+      <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={styles.Maincontainers}>
       <ScrollView>
+      <View style={{}}></View>
       <View style={{justifyContent:'space-between',flexDirection:'row'}}> 
      
       <Animated.View style={{borderColor:'#c978f8',borderRightWidth:1,borderLeftWidth:0,borderTopWidth:1,borderBottomWidth:1,position:'absolute',height:this.state.AnimatedHieght,width:this.state.AnimatedWidth,borderTopRightRadius:25,borderBottomRightRadius:25,marginTop:10}}>

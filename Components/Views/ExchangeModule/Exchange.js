@@ -180,10 +180,10 @@ toggleSwitch=(value)=>{
     </DialogContent>
   </Dialog>
  </View>
- <View style={{flex:0.3}}>
+ <View style={{flex:1}}>
 
  <LinearGradient
-   colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{opacity:0.9,}}>     
+   colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{opacity:0.9,flex:0.3}}>     
       <LinearGradient
    colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} style={{height:'100%',marginRight:30,marginTop:30,position:'relative'}}>
     <View style={{position:'absolute',bottom:-10,left:0,right:0,justifyContent:'center',alignItems:"center"}}>
@@ -267,13 +267,13 @@ toggleSwitch=(value)=>{
 
 
           </LinearGradient> 
- </View>
 
-        
-<View style={{flex:0.7,paddingTop:50}}>
-<View style={{backgroundColor:'transparent',}}> 
-<ScrollView> 
-<View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',paddingTop:20,}}>
+
+  
+<View style={{flex:0.7}}>
+ <View style={{paddingTop:50,}}></View>
+ <ScrollView>
+<View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',}}>
 <Text style={{color:'#fff',fontSize:36}}>$</Text>
 <TextInput
           style={{height: 80,color:'#fff',fontSize:36}}
@@ -408,12 +408,13 @@ toggleSwitch=(value)=>{
 </TouchableOpacity>
 </View>
 
-   </ScrollView>
-</View>
 
 
+
+</ScrollView>
       </View>
-    
+      
+      </View>
 </LinearGradient>
      </View>
   

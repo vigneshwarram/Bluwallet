@@ -267,7 +267,7 @@ space(){
      <View style={{alignItems:'flex-end'}}>
     <Image style={{marginLeft:10,width: 30, height: 30,marginTop:20,marginRight:10,resizeMode:'contain'}}   source={require("./assets/setting1.png")} ></Image> 
     </View>
-    <View style={{backgroundColor:'#354e91',borderTopRightRadius:175,borderTopLeftRadius:175,flex:1
+    <View style={{backgroundColor:'#354e91',borderTopRightRadius:170,borderTopLeftRadius:170,flex:1
 }}>
 <View style={{alignItems:'center',width:'100%',justifyContent:'center'}}>
 <View style={{width: 30,alignItems:'center',justifyContent:'center',
