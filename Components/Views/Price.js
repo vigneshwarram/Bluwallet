@@ -3,6 +3,7 @@ import { Path } from 'react-native-svg'
 import { View, StyleSheet, Image,TextInput,ImageBackground,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,Picker} from 'react-native';
 import { Alert } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts'
+import Spinner from 'react-native-loading-spinner-overlay';
 import * as shape from 'd3-shape'
 import Logo from '../logo'
 import {StackActions, NavigationActions } from 'react-navigation';
@@ -27,6 +28,7 @@ export default class Price  extends React.Component {
       Amount: 'USDoller',
       EtheriumShadowClick:false,
       animate:false,
+      spinner:false,
       zShadowClick:false,
       BitShadowClick:false,
       MoneroShadowClick:false,
@@ -48,10 +50,12 @@ export default class Price  extends React.Component {
   }
   GetPriceData=()=>
   {
+    this.Load()
     PriceList(this.PriceResult)
   }
   PriceResult=(data)=>
   {
+    this.hide()
     if(data!=DataUndefined)
     {
       if(data.status===ResponseSuccessStatus)
@@ -83,10 +87,10 @@ dataset=(data)=>{
   this.hide()
 }
 Load(){
-  this.setState({animate:true})
+  this.setState({spinner:true})
 }
 hide(){
-  this.setState({animate:false})
+  this.setState({spinner:false})
 }
 space(){
   return(<View style={{height: 10, width: 1, backgroundColor:'black'}}/>)
@@ -182,6 +186,15 @@ SlideMenu=()=>{
         
       <View style={styles.Maincontainers}>           
        <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={styles.Maincontainers}>  
+       <Spinner
+          visible={this.state.spinner}
+          textContent={'Loading...'}
+          overlayColor='rgba(0,0,0,0.5)'
+          animation='fade'
+          size='large'
+          color='#f4347f'
+          textStyle={styles.spinnerTextStyle}
+        />
      <LinearGradient
    colors={['#1a5fe1','#00a5ff','#81DCF9']} start={{x: 0, y: 0}} end={{x: 0, y: 1}} style={{flex:0.3,opacity:0.9}}>     
       <LinearGradient
@@ -278,7 +291,7 @@ SlideMenu=()=>{
         <View style={{backgroundColor:'transparent',width: '40%', height: 240,marginLeft:30,borderWidth:0.25,borderColor:'#5496FF',borderRadius:6}} >
      
        <TouchableOpacity onPress={this.EtheriumClick}>
-       <View>
+       <View style={{height:'100%'}}>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
     <Image  style={{width:30,height:30,
     resizeMode: 'contain',}}   source={require("./assets/diamond.png")} ></Image>
@@ -318,7 +331,7 @@ SlideMenu=()=>{
         <View style={{backgroundColor:'transparent',width: '40%', height: 240,marginLeft:30,borderWidth:0.25,borderColor:'#5496FF',borderRadius:6}} >
      
        <TouchableOpacity onPress={this.BtcClick}>
-       <View>
+       <View  style={{height:'100%'}}>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
     <Image  style={{width:30,height:30,
     resizeMode: 'contain',}}   source={require("./assets/b.png")} ></Image>
@@ -367,7 +380,7 @@ SlideMenu=()=>{
         <View style={{backgroundColor:'transparent',width: '40%', height: 240,marginLeft:30,borderWidth:0.25,borderColor:'#5496FF',borderRadius:6}} >
      
        <TouchableOpacity onPress={this.MoneroClick}>
-       <View>
+       <View  style={{height:'100%'}}>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
     <Image  style={{width:30,height:30,
     resizeMode: 'contain',}}   source={require("./assets/m.png")} ></Image>
@@ -408,7 +421,7 @@ SlideMenu=()=>{
         <View style={{backgroundColor:'transparent',width: '40%', height: 240,marginLeft:30,borderWidth:0.25,borderColor:'#5496FF',borderRadius:6}} >
      
        <TouchableOpacity onPress={this.zClick}>
-       <View>
+       <View  style={{height:'100%'}}>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
     <Image  style={{width:30,height:30,
     resizeMode: 'contain',}}   source={require("./assets/zcoinyellow.png")} ></Image>
@@ -481,7 +494,9 @@ this.setState({
 
 
 const styles = StyleSheet.create({
- 
+  spinnerTextStyle: {
+    color: '#FFF'
+  },
   Maincontainers: {
     flex: 1,   
     backgroundColor: '#2b3f74',

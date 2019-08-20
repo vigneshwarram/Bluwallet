@@ -5,6 +5,7 @@ import { View, StyleSheet, Image,Picker,NativeModules,Text,AsyncStorage,StatusBa
 import { Alert } from 'react-native';
 const { UIManager } = NativeModules;
 import QRCode from 'react-native-qrcode-svg';
+import Spinner from 'react-native-loading-spinner-overlay';
 import { CameraKitCameraScreen, } from 'react-native-camera-kit';
 import BlurOverlay,{closeOverlay,openOverlay} from 'react-native-blur-overlay';
 import Modal from "react-native-modal";
@@ -53,6 +54,7 @@ export default class DashBoard extends React.Component {
       currentUsdforEther:null,    
       QR_Code_Value:null,
       visibles:false,
+      spinner: false,
       usdforEther:'',
       sliderValue:0,
       ResponseStatus:null,
@@ -165,10 +167,10 @@ dataset=(data)=>{
 }
 Load(){
   this.StartImageRotateFunction();
-  this.setState({animate:true})
+  this.setState({spinner:true})
 }
 hide(){
-  this.setState({animate:false})
+  this.setState({spinner:false})
 }
 space(){
   return(<View style={{height: 10, width: 1, backgroundColor:'black'}}/>)
@@ -866,7 +868,15 @@ _animate=()=>{
         
     
       <LinearGradient   colors= {['#354E91','#314682','#283563','#222B50','#21284A']}>
-     
+      <Spinner
+          visible={this.state.spinner}
+          textContent={'Loading...'}
+          overlayColor='rgba(0,0,0,0.5)'
+          animation='fade'
+          size='large'
+          color='#f4347f'
+          textStyle={styles.spinnerTextStyle}
+        />
       <ScrollView>
       <View style={{justifyContent:'space-between',flexDirection:'row',}}>  
     
@@ -1166,7 +1176,7 @@ justifyContent:'center',alignItems:"center"}} >
       }
       GetData=async()=>
       {
-        //this.Load()
+        this.Load()
        // this.GetList()
        // console.log(type)
        this.setState({EtherWalletAddress:await AsyncStorage.getItem('etherwalletAddress'),BtcWalletAddress:await AsyncStorage.getItem('bitcoinWalletReceivingAddress')})
@@ -1175,7 +1185,7 @@ justifyContent:'center',alignItems:"center"}} >
       BalanceResponse=(data)=>
 {
   console.log('data',data)
- // this.hide()
+  this.hide()
   if(data!='undefined')
   {
     if(data.status===ResponseSuccessStatus)
@@ -1310,7 +1320,9 @@ action=(index)=>
 
 
 const styles = StyleSheet.create({
- 
+  spinnerTextStyle: {
+    color: '#FFF'
+  },
   Maincontainers: {
     flex: 1,   
     backgroundColor: '#fff',

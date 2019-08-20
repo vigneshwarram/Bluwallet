@@ -225,13 +225,23 @@ renderScane() {
       <LinearGradient
   colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{height:'35%',opacity:0.9}}>    
       <LinearGradient
-  colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} style={{height:'100%',marginRight:30,marginTop:30}}>
+  colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} style={{height:'100%',marginRight:30,marginTop:30,}}>
 
-       
+<View style={{position:'absolute',justifyContent:'center',alignItems:'flex-start',top:15,left:10}}>
+<TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
+<View>
+<Image style={{width: 15, height: 15,resizeMode:'contain'}}   source={require("../assets/back.png")} ></Image> 
+</View>
+          </TouchableOpacity>
+       </View>
+      
  <View style={{justifyContent:'center',alignItems:'center'}}>
 
           <View style={{flexDirection:'row',marginTop:10}}>
+          <View style={{justifyContent:"center",alignItems:'center'}}>
           <Image style={{marginRight:10,width: 18, height: 22,resizeMode:'contain'}}   source={require("../assets/app4.png")} ></Image>     
+          </View>
+         
           <Text style={{fontSize:20,color:'#fff',fontFamily:'Exo2-Regular '}}>Exchange</Text>
           </View>
          

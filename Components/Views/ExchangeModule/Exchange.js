@@ -7,6 +7,7 @@ import { Switch} from 'react-native'
 import * as shape from 'd3-shape'
 import Modal from "react-native-simple-modal";
 import {StackActions} from 'react-navigation'
+import Spinner from 'react-native-loading-spinner-overlay';
 import Logo from '../../logo'
 import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
 import {ExchangeOnLoad ,ConvertToUsd , getEqualCryptoValueApi , exchangeRequestApi ,exchangeAdmin_ETC_BTC_Api} from '../Api/ExchangeRequest'
@@ -32,14 +33,14 @@ export default class  Buy  extends React.Component {
       visibles:false,
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
-      
+      spinner:false,
       EthAmount:'ETH',
       BtcAmount:'BTC',
       ethercurrentvalue:null,
       receivedAmount:null,
       mincomercialValue:null,
       maxcomercialValue:null,
-      usdforEther:'',
+      usdforEther:0,
       paidAmount:null,
       animate:false,
       w: 50,
@@ -73,7 +74,7 @@ export default class  Buy  extends React.Component {
   componentDidMount()
   {
     this.OnLoad()
-    
+    console.log('Exchange view',this.state.exchangeTypeMenu)
     
     
   }
@@ -86,11 +87,12 @@ export default class  Buy  extends React.Component {
       cryptoType:type
 
     }
-   
+    this.Load()
     ExchangeOnLoad(ExchangeType,params,this.OnLoadResponse)
   }
   OnLoadResponse=(data)=>
   {
+    this.hide()
     if(data!=DataUndefined)
     {
       if(data.status===ResponseSuccessStatus)
@@ -103,6 +105,7 @@ export default class  Buy  extends React.Component {
         "mincomercialValue":data.CalculatingAmountDTO.minimumCryptoValue,
         "maxcomercialValue":data.CalculatingAmountDTO.maximumCryptoValue}
         )
+        this.usdConvert(this.state.usdforEther)
       }else if(data.error==='invalid_token')
       {
         Alert.alert(
@@ -124,10 +127,10 @@ dataset=(data)=>{
   this.hide()
 }
 Load(){
-  this.setState({animate:true})
+  this.setState({spinner:true})
 }
 hide(){
-  this.setState({animate:false})
+  this.setState({spinner:false})
 }
 space(){
   return(<View style={{height: 10, width: 1, backgroundColor:'black'}}/>)
@@ -161,6 +164,15 @@ toggleSwitch=(value)=>{
    
       <View style={styles.Maincontainers}>  
                  <LinearGradient  colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={styles.Maincontainers} >
+                 <Spinner
+          visible={this.state.spinner}
+          textContent={'Loading...'}
+          overlayColor='rgba(0,0,0,0.5)'
+          animation='fade'
+          size='large'
+          color='#f4347f'
+          textStyle={styles.spinnerTextStyle}
+        />
                  <View style={{paddingLeft:20,paddingRight:20}}>
  <Dialog
   onTouchOutside={() => {
@@ -279,9 +291,9 @@ toggleSwitch=(value)=>{
           style={{height: 80,color:'#fff',fontSize:36}}
           placeholder="0.000" 
           placeholderTextColor="#fff"
-          keyboardType = "number-pad"
-          onSubmitEditing={this.handleKeyDown}
-      
+          keyboardType='numeric'
+          //onChange={this.handleKeyDown}
+          maxLength={10}
           onChangeText={(text) =>this.ChangeText(text)}
           value={this.state.usdforEther}
         />
@@ -458,14 +470,15 @@ toggleSwitch=(value)=>{
       }
       navigate=()=>
       {
+        this.setState({visibles:false})
         if(this.state.exchangeTypeMenu ==='Admin')
         {
-          this.props.navigation.navigate('Publish', {Exchange_Type: this.state.Admin })
+          this.props.navigation.navigate('Publish', {Exchange_Type: this.state.exchangeTypeMenu })
          
         }
         else
         {
-          this.props.navigation.navigate('PuplishUser', {Exchange_Type: this.state.Admin })
+          this.props.navigation.navigate('PuplishUser', {Exchange_Type: this.state.exchangeTypeMenu })
         }
        
         
@@ -480,11 +493,6 @@ toggleSwitch=(value)=>{
           BtcAmount:item
         })
       }
-      handleKeyDown=()=>
-      {
-        this.usdConvert()
-      }
-      //Exchage Api on click
       exchangeApi=async()=>
     {
       if(this.state.exchangeTypeMenu ==='Admin')
@@ -578,11 +586,11 @@ toggleSwitch=(value)=>{
     successStatus=()=>
     {
       this.setState({visibles:true})
-      setTimeout(this.nav, 500);
+      setTimeout(this.navigate, 500);
     }
     nav=()=>
     {
-      this.setState({visibles:false})
+     
       this.pushNavigate('PuplishUser')
     }
     pushNavigate=(routname)=>
@@ -632,38 +640,34 @@ toggleSwitch=(value)=>{
 
       ChangeText=(UsdAmount)=>
       {
-        if(UsdAmount.length<this.state.usdforEther.length)
-        
-        {
-          this.setState({usdforEther:''})
-        }
-        else
-        {
-          this.setState({usdforEther:UsdAmount})
-         
-        }
-         //Get value for Network fee and Crypto amount Api
-       
-       
-        console.log('Request data.===>', "usdConvert calling")
-       
+       let number=UsdAmount
+       if(UsdAmount==='')
+       {
+        number=0
+        console.log('empty')     
+       }
+
+        console.log('Changed Number',number)     
+        this.setState({usdforEther:number})
+        console.log('usdforEther Number',number)     
+          this.usdConvert(number)      
+             
       }
      
       //-----------------------------//
-     usdConvert=async()=>
+     usdConvert=async(UsdAmount)=>
       {
        let type=crptoType
-       console.log('Request data.===>', type,"type calling")
        let params=
      {
-       usd:this.state.usdforEther ,
+       usd:UsdAmount ,
        cryptoType:type
 
      }
      
      //Get value for Network fee and Crypto amount Api
      ConvertToUsd(params,this.onUsdResponse)
-     console.log('Request data.===>',this.onUsdResponse)
+   
       
     }
 
@@ -751,7 +755,9 @@ toggleSwitch=(value)=>{
 
 
 const styles = StyleSheet.create({
- 
+  spinnerTextStyle: {
+    color: '#FFF'
+  },
   Maincontainers: {
     flex: 1,   
     backgroundColor: '#fff',

@@ -463,7 +463,7 @@ publicClick=()=>{
 }
 navigatePublic=()=>
 {
-  if(this.state.Admin=='Admin')
+  if(this.state.Admin==='Admin')
   {
     this.props.navigation.navigate('Publish', {Exchange_Type: this.state.Admin })
   }
