@@ -43,7 +43,8 @@ export default class TakePhoto  extends React.Component {
       visible: false,
       hidden: false,
       app1color:'#fff',
-      app5color:'#fff'
+      app5color:'#fff',
+      photoUpload:this.props.navigation.state.params.photoUpload
     };
   
   }
@@ -52,29 +53,7 @@ export default class TakePhoto  extends React.Component {
   {
     //this.GetListData()
   }
-  GetListData=()=>{
-    this.Load()
-    var obj = {  
-      method: 'GET',
-      headers: {
-        'Content-Type'    : 'application/json',
-        'Accept'          : 'application/json',
-       'Authorization':'Bearer '+'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6ImJmNDczYTU5LTQxNzAtNDQ2My05YTI2LWZlNWNhYTVlZjMwZiIsIkV4cGlyeSI6bnVsbH0.tUaime3lRYn7wAu2KCnW3oFwIZa18eIL_4AOnoGJiKU'.trim()   
-         }
-  }
-  fetch("https://apptest.supplynow.co.uk/api/v1/Bookings/MyBookings",obj)  
-  .then((res)=> {
-    return res.json();
-   })
-   .then((resJson)=>{
-     this.dataset(resJson)
-   
-    return resJson;
-   })
-   .catch((error) => {
-    console.error(error);
-});
-}
+
 dataset=(data)=>{
   this.setState({
     dataSource:data
@@ -224,21 +203,19 @@ SlideMenu=()=>{
       }
       BeginAction=()=>
       {
+      
         ImagePicker.launchCamera(options, (response) =>
          {         // Same code as in above section!
           this.GetImageFile(response)         
-        console.log(response)
+        console.log("Take Photo response----->",response)
         });
+        
+      
       }
-      selectedCountry=(item,index)=>{
-          this.setState({
-              Country:item
-          })
-          this.props.navigation.navigate('VerificationCards')
-      }
+     
       GetImageFile=(response)=>
       {
-        this.props.navigation.navigate('DocumentPhoto',{SelfieImageFile:response})
+        this.props.navigation.navigate('DocumentBackside',{SelfieImageFile:response,photoUpload:this.state.photoUpload})
       }
 }
 

@@ -40,8 +40,9 @@ import Login from  './Components/Views/LoginModule/Login'
 import ForgotPassword from  './Components/Views/LoginModule/ForgotPassword'
 import Confirm from  './Components/Views/LoginModule/Confirm'
 import TakePhoto from  './Components/Views/LoginModule/TakePhoto'
-import TakePassportPhoto from  './Components/Views/LoginModule/TakePassportPhoto'
-import DocumentPhoto from  './Components/Views/LoginModule/DocumentPhoto'
+import DocumentBackside from  './Components/Views/LoginModule/DocumentBackside'
+import SelfieWithDocument from  './Components/Views/LoginModule/SelfieWithDocument'
+import DocumentFront from  './Components/Views/LoginModule/DocumentFront'
 import {
   createStackNavigator,createBottomTabNavigator,createAppContainer
 } from 'react-navigation'
@@ -201,8 +202,8 @@ let CollapseExpand = (index, position) => {
         Welcome:{screen:Welcome},      
         ProfileRegister:{screen:ProfileRegister},      
         NewWallet:{screen:NewWallet},       
-        DocumentPhoto:{screen:DocumentPhoto}, 
-        TakePassportPhoto:{screen:TakePassportPhoto},  
+        DocumentFront:{screen:DocumentFront}, 
+        DocumentBackside:{screen:DocumentBackside},  
         DashBoard:{screen:DashBoard},        
         ForgotPassword:{screen:ForgotPassword},
         Confirm:{screen:Confirm},
@@ -214,6 +215,7 @@ let CollapseExpand = (index, position) => {
         Address:{screen:Address},
         Payment:{screen:Payment},     
         Country:{screen:Country},
+        SelfieWithDocument:{screen:SelfieWithDocument},
         BankScreen:{screen:BankScreen},     
         MoreInfo:{screen:MoreInfo},
         ChooseCountry:{screen:ChooseCountry},       

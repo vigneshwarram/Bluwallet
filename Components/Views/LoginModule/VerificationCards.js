@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,Picker,TextInput,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
+import { View, StyleSheet, Image,Picker,TextInput,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,Dimensions,ScrollView} from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
-
+const { height } = Dimensions.get('window');
 import LinearGradient from 'react-native-linear-gradient';
-import { ScrollView } from 'react-native-gesture-handler';
 
 export default class VerificationCards  extends React.Component {
 
@@ -23,6 +22,7 @@ export default class VerificationCards  extends React.Component {
       Coin: 'Us Doller',
       animate:false,
       Country:'Documents Country',
+      screenHeight: 0,
       w: 50,
       h: 45,
       wr:50,
@@ -140,7 +140,12 @@ SlideMenu=()=>{
     this.setState({slide:false})
   }
   }
+  onContentSizeChange = (contentWidth, contentHeight) => {
+    // Save the content height in state
+    this.setState({ screenHeight: contentHeight });
+  };
   render() {
+    const scrollEnabled = this.state.screenHeight > height;
     const { navigate } = this.props.navigation;
     const data = [ 50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100 ]
     const Line = ({ line }) => (
@@ -162,15 +167,17 @@ SlideMenu=()=>{
   </View>
   }
     return (  
-        
       <View style={styles.Maincontainers}>  
-  
-       
-
+      <ScrollView style={{ flex: 1 }}
+      contentContainerStyle={styles.scrollview}
+      scrollEnabled={scrollEnabled}
+      onContentSizeChange={this.onContentSizeChange}>
+    
 <LinearGradient
-colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>   
-     <ScrollView>
+colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={styles.Maincontainers}>   
+     
      <View style={{flex:1}}>
+    
 <View style={{flex:0.2}}>
 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
 <View style={{justifyContent:'center',alignItems:'center'}}>
@@ -202,7 +209,7 @@ colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>
 </View> 
 </View>
 
-<View style={{flex:0.6}}> 
+<View style={{flex:0.8}}> 
 
 <View>
 
@@ -266,16 +273,8 @@ colors={[this.state.drivercolor1,this.state.drivercolor2,this.state.drivercolor3
 </TouchableOpacity>
 </View>   
 
-</View>    
-</View>  
-
-
-     </View>
-
-  
- </ScrollView>
-</LinearGradient> 
-    <View style={{bottom:0,position:'absolute',width:'100%'}}>
+</View>   
+   <View style={{marginBottom:0}} >
  <TouchableOpacity onPress={this.BeginAction}>  
  <View>
  <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{padding:15,justifyContent:'center',alignItems:'center',}}>
@@ -296,11 +295,12 @@ colors={[this.state.drivercolor1,this.state.drivercolor2,this.state.drivercolor3
 </TouchableOpacity>
 </LinearGradient>
         </View>  
-
-    
-
+</View>  
      </View>
-      
+</LinearGradient> 
+     </ScrollView>
+     </View>
+    
     
     );
       }
@@ -308,8 +308,26 @@ colors={[this.state.drivercolor1,this.state.drivercolor2,this.state.drivercolor3
       {
           Alert.alert(item.Status)
       }
-      BeginAction=()=>{
-        this.props.navigation.navigate('TakePhoto');
+      BeginAction=()=>
+      {
+        let photoupload;
+        if(this.state.passportcolor1=='#4476d7')
+        {
+          photoupload='Passport'
+        }
+        else if(this.state.idcolor1=='#4476d7')
+        {
+          photoupload='idcard'
+        }
+        else if(this.state.residencegradientcolor1=='#4476d7')
+        {
+          photoupload='residence'
+        }
+        else if(this.state.drivercolor1=='#4476d7')
+        {
+          photoupload='license'
+        }
+        this.props.navigation.navigate('TakePhoto',{photoUpload:photoupload});
       }
       PassPortSelect=()=>{
       this.setState({
@@ -391,7 +409,6 @@ const styles = StyleSheet.create({
  
   Maincontainers: {
     flex: 1, 
-    height:'100%'
   },
   containers: {
     backgroundColor: 'transparent',
