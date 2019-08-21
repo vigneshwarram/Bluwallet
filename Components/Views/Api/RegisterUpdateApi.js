@@ -10,22 +10,8 @@ const registerUpdateApi=async(params,RegisterUpdateResponse)=>
           'Content-Type': 'application/json',
           'authorization':'bearer '+await AsyncStorage.getItem('AccessToken')
         },
-        body: JSON.stringify({
-          address: params.address,
-          address1:params.address1,
-          postalCode:params.postalCode,
-          //city:params.city,
-          cityId:'',
-          countryId:params.countryId,
-          stateId:'',
-          userId:await AsyncStorage.getItem('userId'),
-          firstName:params.firstName,
-          lastName:params.lastName,
-          dateOfBirth:params.dateOfBirth
-
-
-        })
-      }) .then((res)=> {
+        body:JSON.stringify(params)
+      }).then((res)=> {
         return res.json();
        })
        .then((resJson)=>{

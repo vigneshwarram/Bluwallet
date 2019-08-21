@@ -1,9 +1,11 @@
 import React from 'react';
-import { View, StyleSheet, Image,TextInput,NativeModules,Text,ActivityIndicator,TouchableOpacity,Dimensions,Alert} from 'react-native';
+import { View, StyleSheet, Image,TextInput,NativeModules,Text,ActivityIndicator,TouchableOpacity,Dimensions,Alert,AsyncStorage} from 'react-native';
 import AlphaScrollFlatList from 'alpha-scroll-flat-list';
 const WIDTH = Dimensions.get('window').width;
 import DateTimePicker from "react-native-modal-datetime-picker";
 const ITEM_HEIGHT = 50;
+import Spinner from 'react-native-loading-spinner-overlay';
+import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
 import LinearGradient from 'react-native-linear-gradient';
 import ProfileRegisters from '../Api/ProfileRegisterApi'
 import registerUpdateApi from '../Api/RegisterUpdateApi';
@@ -19,6 +21,9 @@ export default class ProfileRegister extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       Dates:'Date of Birth',
+      spinner:false,
+      responsemessage:'',
+      visibles:false,
       animate:false,
       FirstName:null,
       LastName:null,
@@ -164,6 +169,34 @@ export default class ProfileRegister extends React.Component {
 
 <LinearGradient
 colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>   
+  <Spinner
+          visible={this.state.spinner}
+          textContent={'Loading...'}
+          overlayColor='rgba(0,0,0,0.5)'
+          animation='fade'
+          size='large'
+          color='#f4347f'
+          textStyle={styles.spinnerTextStyle}
+        />
+                         <View style={{paddingLeft:20,paddingRight:20}}>
+ <Dialog
+  onTouchOutside={() => {
+      this.setState({ visibles: false });
+    }}
+  
+    visible={this.state.visibles}>
+    <DialogContent>
+     <View style={{width:300,height:110,alignItems:'center'}}>
+         <View style={{alignItems:'center',paddingTop:10}}>
+         <Image style={{width: 50, height: 50,resizeMode:'contain'}}   source={require("../assets/successtik.png")} ></Image>     
+         </View>
+         <View style={{paddingTop:10,paddingBottom:10}}>
+         <Text style={{fontSize:15,color:'#454976',fontFamily:'Exo2-Regular',textAlign:'center'}}>{this.state.responsemessage}</Text>           
+         </View>
+     </View>
+    </DialogContent>
+  </Dialog>
+ </View>
  <View style={{justifyContent:'center',alignItems:'center',position:'absolute',bottom:100,}}>
         <Image
                 style={{width: Dimensions.get('window').width,
@@ -270,7 +303,7 @@ if(year>2015){
 }
     if (month.length < 2) month = '0' + month;
     if (day.length < 2) day = '0' + day;
-    this.setState({ isDateTimePickerVisible: false,Dates:month+'/'+day+'/'+year});
+    this.setState({ isDateTimePickerVisible: false,Dates:year+'-'+month+'-'+day});
   };
  
   handleDatePicked = date => {
@@ -298,7 +331,7 @@ if(year>2015){
     //this.props.navigation.push('Home',{DashBoardPopup:false,Kyc:true})
      this.Profile()
   }
-  Profile=()=>
+  Profile=async()=>
   {
     if(this.state.FirstName==null){
       this.setState({
@@ -320,44 +353,46 @@ if(year>2015){
     else
     {
       let params=this.props.navigation.state.params.RegisterDetails
+      let userid=await AsyncStorage.getItem('UserId')
       console.log('regData',params.AddressLine1)
       let profileParams=
       {
-         address:params.AddressLine1.toString(),
-         address1:params.AddressLine2.toString(),
-         postalCode:params.PostalCode.toString(),
-         cityId:params.cityId.toString(),
-         countryId:params.CountryId.toString(),
-         stateId:'',
-         userId:'',
-         firstname:this.state.FirstName,
-         lastname:this.state.LastName,
-         dates:this.state.Dates,
+         address:params.AddressLine1,
+         address1:params.AddressLine2,
+         postalCode:params.PostalCode,
+         cityId:params.cityId,
+         countryId:params.CountryId,
+         stateId:params.cityId,
+         userId:parseInt(userid,10),
+         firstName:this.state.FirstName,
+         lastName:this.state.LastName,
+         dob:this.state.Dates,
 
       }
       //ProfileRegisters(profileParams,this.ProfileRegisterResult)
     
       //need to call register update API here
-     
-      registerUpdateApi(JSON.stringify(profileParams),this.RegisterUpdateResult)
+     console.log('Profile register data request',profileParams)
+     this.Load()
+      registerUpdateApi(profileParams,this.RegisterUpdateResult)
   
     }
   //  
   }
-
+  Load(){
+    //this.StartImageRotateFunction();
+    this.setState({spinner:true})
+  }
+  hide(){
+    this.setState({spinner:false})
+  }
   RegisterUpdateResult=(data)=>{
+    this.hide()
     if(data.status=='success')
     {
-            Alert.alert(
-              data.status,
-              data.message,
-              [
-                {text: 'OK', onPress: () =>  this.props.navigation.push('Home',{DashBoardPopup:false,Kyc:true})},
-              ],
-              {cancelable: false},
-            );
-           
-    }else if(data.error==='Token Expired')
+         this.successStatus(data)
+    }
+    else if(data.error==='Token Expired')
     {
       Alert.alert(
         'Error',
@@ -374,6 +409,17 @@ if(year>2015){
     }
     
   }
+  successStatus=(data)=>
+  {
+    this.setState({visibles:true,responsemessage:data.message})
+    setTimeout(this.navigate, 700);
+  }
+  navigate=()=>
+  {
+    this.setState({visibles:false})   
+    this.props.navigation.push('Home',{DashBoardPopup:false,Kyc:false})
+  }
+
 
 
 
@@ -412,6 +458,9 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     paddingVertical: 20
+  },
+  spinnerTextStyle: {
+    color: '#FFF'
   },
   itemContainer: {
     width: WIDTH,

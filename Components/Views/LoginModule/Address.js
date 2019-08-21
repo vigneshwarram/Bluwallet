@@ -37,11 +37,11 @@ export default class Address  extends React.Component {
       app1color:'#fff',
       app5color:'#fff',
       stateData:[],
-      selectedService:'',
-      selectedCity:'',
+      selectedService:'select State',
+      selectedCity:'city/town/village',
       cityData:[],
       cityID:'',
-      countryID:''
+      stateid:'',
     };
   
   }
@@ -51,8 +51,8 @@ export default class Address  extends React.Component {
     //this.GetListData()
 
     let params=this.props.navigation.state.params.CountryID
-    this.GetState(params.CountryCode)
-    console.log('stateData',params.CountryCode)
+    this.GetState(params.CountryId)
+    console.log('stateData',params)
 
 
   }
@@ -82,32 +82,6 @@ export default class Address  extends React.Component {
       
     }
 
-  
-    
-
-  GetListData=()=>{
-    this.Load()
-    var obj = {  
-      method: 'GET',
-      headers: {
-        'Content-Type'    : 'application/json',
-        'Accept'          : 'application/json',
-       'Authorization':'Bearer '+'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6ImJmNDczYTU5LTQxNzAtNDQ2My05YTI2LWZlNWNhYTVlZjMwZiIsIkV4cGlyeSI6bnVsbH0.tUaime3lRYn7wAu2KCnW3oFwIZa18eIL_4AOnoGJiKU'.trim()   
-         }
-  }
-  fetch("https://apptest.supplynow.co.uk/api/v1/Bookings/MyBookings",obj)  
-  .then((res)=> {
-    return res.json();
-   })
-   .then((resJson)=>{
-     this.dataset(resJson)
-   
-    return resJson;
-   })
-   .catch((error) => {
-    console.error(error);
-});
-}
 dataset=(data)=>{
   this.setState({
     dataSource:data
@@ -177,11 +151,11 @@ SlideMenu=()=>{
       />
   )
   let cityItems = this.state.cityData.map( (s, i) => {
-    return <Picker.Item key={i} value={s.id} label={s.cityName} />
+    return <Picker.Item key={i} value={s} label={s.cityName} />
   });
 
    let stateItems = this.state.stateData.map( (s, i) => {
-    return <Picker.Item key={i} value={s.id} label={s.stateName} />
+    return <Picker.Item key={i} value={s} label={s.stateName} />
   });   
   
 
@@ -265,39 +239,39 @@ SlideMenu=()=>{
 </View>
           </View>
           
-          <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
+          <View style={{width:'100%',height: 50,backgroundColor:'#fff',borderColor:'#d7dee8', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
 <View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
 
-<Picker style={{width: '50%',padding:10}}
-                    selectedValue={this.state.selectedService}
-                    onValueChange={(item) =>{
-                      if (item != "0"){
-                       
-                        this.selectedFromPickerState(item)
-                      }
-                    } }>
-<Picker.Item label="State/Region/Province/Country" value="0" />
+   
+
+<View style={{justifyContent:'space-between',flexDirection:'row'}}>
+<Text style={{color:(this.state.selectedService==='select State')?'#9ab8db':'#000',opacity:1,fontSize:15,fontFamily:'Exo2-Regular',marginLeft:10}}>{this.state.selectedService}</Text>
+</View>
+
+<Picker style={{ position:'absolute', top: 0, width: 1000, height: 3000 }}
+ selectedValue={this.state.selectedService}
+ onValueChange={this.pickerChange.bind(this)}>
+ <Picker.Item label="Please select state" value="Please select state" />
                    {stateItems}
-
-                </Picker>
-
+</Picker>
 </View>
           </View>
-          <View style={{width:'100%',backgroundColor:'#fff',borderColor:'#d7dee8', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
+		  
+          <View style={{width:'100%',height: 50,backgroundColor:'#fff',borderColor:'#d7dee8', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
 <View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
 
-        <Picker style={{width: '50%',padding:10}}
-                    selectedValue={this.state.selectedCity}
-                    onValueChange={ (itemValue, itemIndex) =>{
-                      if (itemIndex!= "0"){
-                        
-                        this.selectedCity(itemValue, itemIndex) 
-                      }
-                    }} >
-<Picker.Item label="city/town/village" value="0" />
-                   {cityItems}
+   
 
-                </Picker>
+<View style={{justifyContent:'space-between',flexDirection:'row'}}>
+<Text style={{color:(this.state.selectedCity==='city/town/village')?'#9ab8db':'#000',opacity:1,fontSize:15,fontFamily:'Exo2-Regular',marginLeft:10}}>{this.state.selectedCity}</Text>
+</View>
+
+<Picker style={{ position:'absolute', top: 0, width: 1000, height: 3000 }}
+ selectedValue={this.state.selectedCity}
+                    itemStyle={{color: "blue"}}
+                    onValueChange={(itemValue, itemIndex) =>this.selectedCity(itemValue, itemIndex)}>
+                   {cityItems}
+</Picker>
 </View>
           </View>
           <View style={{width:'100%',borderColor:'#d7dee8',backgroundColor:'#fff', justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1}}>
@@ -360,24 +334,24 @@ SlideMenu=()=>{
     );
       }
      
-      selectedFromPickerState= (itemValue)=>{
+      pickerChange =(item)=>
+      {
         //Alert.alert('cityData.status,cityData.message')
-
-        this.setState({
-          selectedService:itemValue
-        })
-        
-        console.log('cityId',itemValue)
-        console.log('selectedSatat',itemValue)
-        this.CallCityGetApi(itemValue)
-       
+console.log('state Value',item)
+if(item!='Please select state')
+{
+  this.setState({
+    selectedService:item.stateName,
+    stateid:item.id
+  })
+  this.CallCityGetApi(item.id) 
+}
       }
-      selectedCity=( itemValue, itemIndex)=>{
+      selectedCity=(item)=>{
         this.setState({
-          selectedCity:itemValue
+          selectedCity:item.cityName,
+          cityID:item.id
         })
-        this.setState({cityID:itemIndex})
-        console.log('cityId',this.state.selectedCity)
       }
 
       CallCityGetApi=async=(stateId)=>{
@@ -447,22 +421,15 @@ SlideMenu=()=>{
         }
         else
         {
-
-          let params=this.props.navigation.state.params.CountryID
             let RegisterDetails=
         {
           AddressLine1:this.state.AddressLine1,
           AddressLine2:this.state.AddressLine2,
           city:this.state.selectedCity,
-          CountryId:params.CountryId,
+          CountryId:this.props.navigation.state.params.CountryID.CountryId,
           PostalCode:this.state.PostalCode,
-          stateId:'',
+          stateId:this.state.stateid,
           cityId:this.state.cityID,
-          userId:'',
-          firstName:'',
-          lastName:'',
-          dateOfBirth:''
-
         } 
       
         

@@ -5,7 +5,7 @@ import { Alert } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import ImagePicker from 'react-native-image-picker';
 import {ProfileRetrive} from './Api/ProfileRegisterApi'
-
+import Spinner from 'react-native-loading-spinner-overlay';
 import {ResponseSuccessStatus,InvalidResponse} from './Utils.js/Constant'
 const options = {
   title: 'Select Avatar',
@@ -37,13 +37,15 @@ export default class Profile  extends React.Component {
       photo:null,
       "email": "",
       "mobileNo": "",
-      "firstName": "",
-      "lastName": "",
-      "dateOfBirth": "",
-      "address": "",
-      "address1": "",
-      "postalCode": "",
-      "cityId":0,
+      Country:'',
+      spinner:false,
+      firstName: "",
+      lastName: "",
+      dateOfBirth: "",
+      address : "",
+      address1: "",
+      postalCode: "",
+      cityId:0,
       RightSideWidth:new Animated.Value(50),
       RightsideHeight:new Animated.Value(45),
       app1icon:require('./assets/app1white.png'),
@@ -81,19 +83,32 @@ export default class Profile  extends React.Component {
   }
   GetListData=()=>
   {
-   // this.Load()  
+     this.Load()  
     ProfileRetrive(this.GetProfileDetails)
   }
   GetProfileDetails=(data)=>
   {
+    this.hide()
     console.log('data.retrieveData',data)
   if(data!='undefined')
      {
       if(data.status===ResponseSuccessStatus)     
       {
         console.log('data.retrieveData',data.retrieveData)
-        this.setState({mailVerifiedStatus:data.retrieveData.gmailstatus})
-        this.setState({userName:data.retrieveData.userName,userId:data.retrieveData.userId,email:data.retrieveData.email,mobileNo:data.retrieveData.mobileNo,dateOfBirth:data.retrieveData.dateOfBirth})
+     
+        this.setState(
+          {
+            userName:data.retrieveData.userName,
+            userId:data.retrieveData.userId,
+            email:data.retrieveData.email,
+            mobileNo:data.retrieveData.mobileNo,
+            dateOfBirth:data.retrieveData.dateOfBirth,
+            firstName:data.retrieveData.firstName,
+            lastName:data.retrieveData.lastName,            
+            proImgPath:data.retrieveData.proImgPath,
+            mailVerifiedStatus:data.retrieveData.gmailstatus,
+            Country:data.retrieveData.countryName
+          })
         console.log('data.retrieveData',data.retrieveData.gmailstatus)
         console.log('data.retrieveData',this.state.mailVerifiedStatus)
         //Check mail status
@@ -119,10 +134,10 @@ else
   }
 
 Load(){
-  this.setState({animate:true})
+  this.setState({spinner:true})
 }
 hide(){
-  this.setState({animate:false})
+  this.setState({spinner:false})
 }
 space(){
   return(<View style={{height: 10, width: 1, backgroundColor:'black'}}/>)
@@ -226,7 +241,15 @@ space(){
       
       <LinearGradient
    colors={['#1569e6','#00a3ff','#00deff']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{flex:1,position:'relative'}}>
-
+  <Spinner
+          visible={this.state.spinner}
+          textContent={'Loading...'}
+          overlayColor='rgba(0,0,0,0.5)'
+          animation='fade'
+          size='large'
+          color='#f4347f'
+          textStyle={styles.spinnerTextStyle}
+        />
     <View style={{flexDirection:'row',justifyContent:'space-between'}}>
     <Animated.View style={{backgroundColor:'#fff',height:this.state.AnimatedHieght,width:this.state.AnimatedWidth,justifyContent:'center',borderWidth:1, alignItems:'flex-end',
   borderColor: '#fff',
@@ -311,11 +334,11 @@ borderRadius:25,
 />
 <View style={{flexDirection:'row',marginLeft:30}}>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>ID</Text>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>First Name</Text>
 </View>  
 
 <View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,textAlign:'center',opacity:0.7,fontFamily:''}}>{this.state.userId}</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,textAlign:'center',opacity:0.7,fontFamily:''}}>{this.state.firstName}</Text> 
 </View>  
 
 </View>
@@ -328,11 +351,11 @@ borderRadius:25,
 />
 <View style={{flexDirection:'row',marginLeft:30}}>  
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Celular</Text>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Last Name</Text>
 </View>
 
 <View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:''}}>{this.state.mobileNo}</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:''}}>{this.state.lastName}</Text> 
 </View>  
 
 </View>
@@ -371,7 +394,7 @@ borderRadius:25,
 <Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Country</Text>
 </View>
   <View style={{flex:1}}>
-  <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:''}}>Colombia</Text> 
+  <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:''}}>{this.state.Country}</Text> 
   </View>
 
 </View>
@@ -588,6 +611,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fbfbfb',
 
    
+  },
+  spinnerTextStyle: {
+    color: '#FFF'
   },
   separator: {
     flex: 1,

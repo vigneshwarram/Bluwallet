@@ -318,7 +318,7 @@ SlideMenu=()=>{
             {
               if(data.loginInfo.kycStatus==1)
               {
-                this.NavigationReset('Home',true,false)
+                this.NavigationReset('Home',false,true)
               }
               else
               {

@@ -269,8 +269,8 @@ export default class CountrySearch extends React.Component {
     console.log('paraa',item.countryCode)
     if(item.countryCode!="undefined")
     {
-      this.setState({CountryId:item.countryCode})
-      this.setState({countryCode:item.id})
+      this.setState({CountryId:item.id})
+      this.setState({countryCode:item.countryCode})
       //let params=this.props.navigation.state.params.RegisterDetails
       //params.CountryId=item.countryCode
      // console.log('paraa',params)
@@ -296,8 +296,8 @@ export default class CountrySearch extends React.Component {
       //registerUpdateApi(params,this.RegisterUpdateResult)
       let countryData=
         {
-          CountryId:item.countryCode,
-          CountryCode:item.id,
+          CountryId:item.id,
+          CountryCode:item.countryCode,
          
         } 
         console.log('paraa',countryData.CountryCode)
