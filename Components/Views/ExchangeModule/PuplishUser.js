@@ -239,7 +239,7 @@ renderScane() {
   </Dialog>
  </View>
       <LinearGradient
-  colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{height:'35%',opacity:0.9}}>    
+  colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{flex:0.3,opacity:0.9}}>    
       <LinearGradient
   colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} style={{height:'100%',marginRight:30,marginTop:30,position:'relative'}}>
 
@@ -256,39 +256,6 @@ renderScane() {
           <View style={{flexDirection:'row',marginTop:10}}>
           <Image style={{marginRight:10,width: 18, height: 22,resizeMode:'contain'}}   source={require("../assets/app4.png")} ></Image>     
           <Text style={{fontSize:20,color:'#fff',fontFamily:'Exo2-Regular '}}>Exchange</Text>
-          </View>
-         
-          <View style={{flexDirection:'row',marginTop:10}}>
-          <TouchableOpacity onPress={this.PurchaseTab}>
-          <View>
-          <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',opacity:this.state.PurchaseOpacity,fontFamily:''}}>Buy</Text>  
-          <View
-  style={{
-    marginTop:5,
-    width:'100%',
-    borderBottomColor: this.state.PurchaseColor,marginBottom:10,
-    borderBottomWidth: 1,
-  }}
-/>  
-          </View>
-          </TouchableOpacity>
-
-        <TouchableOpacity onPress={this.SalesTab}>
-        <View>
-         <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginLeft:30,opacity:this.state.SalesOpacity,fontFamily:''}}>Sell</Text>
-         <View
-  style={{
-    marginLeft:30,marginRight:30,
-    marginTop:5,
-    width:'50%',
-    borderBottomColor: this.state.SalesColor,marginBottom:10,
-    borderBottomWidth: 1,
-  }}
-/>  
-         </View>
-        </TouchableOpacity>
-       
-          
           </View>
           <View style={{width:'70%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:20, justifyContent:'space-between',flexDirection:'row'}}>
 <View style={{flexDirection:'row',marginLeft:20}}>
@@ -355,8 +322,8 @@ renderScane() {
             
           </LinearGradient>
   </View>    
-         <View style={{flex:1,marginTop:20,marginBottom:30}}>
-         <ScrollView contentContainerStyle={{ paddingHorizontal: 10, paddingVertical: 5 }}>
+         <View style={{flex:0.7,marginTop:10}}>
+         <ScrollView contentContainerStyle={{ paddingBottom:90 }}>
           {
             this.state.dataSource.map((item, key) =>
               (

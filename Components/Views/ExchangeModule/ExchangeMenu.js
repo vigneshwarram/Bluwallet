@@ -126,7 +126,7 @@ search = (key, inputArray) => {
   let SearchArray=[]
   for (let i=0; i < inputArray.length; i++) {
     //if (inputArray[i].exchangeType === key ||inputArray[i].exchangeType === 'ETH_BTC_USER' && inputArray[i].status===1) {
-        if (inputArray[i].status===0) {
+        if (inputArray[i].status===1) {
         SearchArray.push(inputArray[i])
       }
       
@@ -172,7 +172,7 @@ space(){
    
       <View style={styles.Maincontainers}> 
       
-      <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={{height:'100%'}}>
+      <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={{flex:1}}>
       <Spinner
           visible={this.state.spinner}
           textContent={'Loading...'}
@@ -182,41 +182,15 @@ space(){
           color='#f4347f'
           textStyle={styles.spinnerTextStyle}
         />
-<View style={{flex:0.3}}>
 
 <LinearGradient
-   colors={['#1a5fe1','#00a5ff','#81DCF9',]} style={{opacity:0.9}}>    
+   colors={['#1a5fe1','#00a5ff','#81DCF9',]} style={{opacity:0.9,flex:0.3}}>    
       <LinearGradient
    colors={['#1a5fe1','#00a5ff','#81DCF9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{height:'100%', marginRight:30,marginTop:30,opacity:1}}>
  <View style={{justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection:'row',marginTop:10}}>
           <Image style={{marginRight:10,width: 18, height: 22,resizeMode:'contain'}}   source={require("../assets/app4.png")} ></Image>     
           <Text style={{fontSize:16,color:'#fff',fontFamily:'Exo2-Regular'}}>Exchange</Text>
-          </View>
-          <View style={{flexDirection:'row',marginTop:10}}>
-          <View>
-          <Text style={{fontSize:12,color:'#fff',fontFamily:'Exo2-Regular'}}>Buy</Text>  
-          <View
-  style={{
-    marginTop:5,
-    width:'100%',
-    borderBottomColor: '#fff',marginBottom:10,
-    borderBottomWidth: 1,
-  }}
-/>  
-          </View>
-         <View>
-         <Text style={{fontSize:12,color:'#fff',marginLeft:30,fontFamily:'Exo2-Regular'}}>Sell</Text>
-         <View
-  style={{
-    marginLeft:30,marginRight:30,
-    marginTop:5,
-    borderBottomColor: '#fff',marginBottom:10,
-    borderBottomWidth: 1,
-  }}
-/>  
-         </View>
-          
           </View>
           <View style={{width:'80%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:5,marginBottom:20, justifyContent:'space-between',flexDirection:'row'}}>
 <View style={{flexDirection:'row',marginLeft:20}}>
@@ -277,8 +251,8 @@ space(){
 
 
           </LinearGradient>  
-</View>
-     <View style={{flex:0.7,marginTop:70}}>
+
+     <View style={{flex:0.7,marginTop:50}}>
      
      <ScrollView contentContainerStyle={{paddingBottom: 100}}>
      <View>
@@ -565,7 +539,9 @@ this.setState({
 
 
 const styles = StyleSheet.create({
- 
+  spinnerTextStyle: {
+    color: '#FFF'
+  },
   Maincontainers: {
     flex: 1,   
     backgroundColor: '#fff',

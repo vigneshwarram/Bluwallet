@@ -319,8 +319,8 @@ SlideMenu=()=>{
               if(data.loginInfo.kycStatus==1 && data.loginInfo.profileStatus==1 )
               {
                  //this.NavigationReset('Home',false,true) //Profile popup apprear,kyc popup appear
-                 this.NavigationReset('Home',false,false) //Profile popup not apprear,kyc popup appear
-                //this.NavigationReset('Home',true,false) //Profile popup not apprear,kyc popup appear
+                 //this.NavigationReset('Home',false,false) //Profile popup not apprear,kyc popup appear
+                 this.NavigationReset('Home',true,false) //Profile popup not apprear,kyc popup appear
               }
               else if(data.loginInfo.kycStatus!=1 && data.loginInfo.profileStatus!=1  )
               {

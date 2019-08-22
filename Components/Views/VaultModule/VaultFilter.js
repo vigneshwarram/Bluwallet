@@ -641,7 +641,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
           </View>    
          
           </View>
-          <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',marginLeft:20}}>
+          <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',paddingRight:5}}>
           <Text  style={{fontFamily:'Exo2-Regular',color:'#5496FF'}}>+{item.percentage}%</Text> 
           <Image style={{width: 10, height: 10,resizeMode:'contain'}}   source={require("../assets/green.png")} ></Image> 
           </View>                

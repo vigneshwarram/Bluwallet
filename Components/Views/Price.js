@@ -60,6 +60,7 @@ export default class Price  extends React.Component {
     {
       if(data.status===ResponseSuccessStatus)
       {
+        console.log('price results',data)
        this.setState({dataSource:data.CalculatingAmountDTO,})
        this.setState({TotalPrice:this.state.dataSource.usdforEther,})
       }
@@ -282,7 +283,7 @@ SlideMenu=()=>{
             <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>ETH</Text>
 
             <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:''}}>Price</Text>
-            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>{this.state.dataSource.usdforBtc}</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>{this.state.dataSource.usdforEther}</Text>
         </View>
        </TouchableOpacity>
 
@@ -303,7 +304,7 @@ SlideMenu=()=>{
             <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>ETH</Text>
 
             <Text style={{color:'#5597ff',fontSize:15,marginTop:20,fontWeight:'bold',fontFamily:''}}>Price</Text>
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>{this.state.dataSource.usdforBtc}</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>{this.state.dataSource.usdforEther}</Text>
         </View>
         </View>
        </TouchableOpacity>
@@ -323,7 +324,7 @@ SlideMenu=()=>{
             <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>BTC</Text>
 
             <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:''}}>Price</Text>
-            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>{this.state.dataSource.usdforBtc}</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>{this.state.dataSource.usdforEther}</Text>
         </View>
        </TouchableOpacity>
 
