@@ -311,23 +311,33 @@ colors={[this.state.drivercolor1,this.state.drivercolor2,this.state.drivercolor3
       BeginAction=()=>
       {
         let photoupload;
-        if(this.state.passportcolor1=='#4476d7')
+
+        if(this.state.passportcolor1!='#4476d7'&&this.state.idcolor1!='#4476d7'&&this.state.residencegradientcolor1!='#4476d7'&&this.state.drivercolor1!='#4476d7')
         {
-          photoupload='Passport'
+          Alert.alert('Alert','Please Upload any one Document')
         }
-        else if(this.state.idcolor1=='#4476d7')
+        else
         {
-          photoupload='idcard'
+          if(this.state.passportcolor1=='#4476d7')
+          {
+            photoupload='Passport'
+          }
+          else if(this.state.idcolor1=='#4476d7')
+          {
+            photoupload='idcard'
+          }
+          else if(this.state.residencegradientcolor1=='#4476d7')
+          {
+            photoupload='residence'
+          }
+          else if(this.state.drivercolor1=='#4476d7')
+          {
+            photoupload='license'
+          }
+         
+          this.props.navigation.navigate('TakePhoto',{photoUpload:photoupload});
         }
-        else if(this.state.residencegradientcolor1=='#4476d7')
-        {
-          photoupload='residence'
-        }
-        else if(this.state.drivercolor1=='#4476d7')
-        {
-          photoupload='license'
-        }
-        this.props.navigation.navigate('TakePhoto',{photoUpload:photoupload});
+       
       }
       PassPortSelect=()=>{
       this.setState({

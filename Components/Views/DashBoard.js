@@ -487,12 +487,12 @@ renderScane() {
  </TouchableOpacity>
       </Animated.View>
       <View style={{flex:0.1}}></View>
-    <View style={{alignItems:'center', flex:0.9,}}>
-    <View style={{backgroundColor:'#fff',borderRadius:15,width:200}}>
+    <View style={{ flex:0.9,paddingLeft:50,paddingRight:50}}>
+    <View style={{backgroundColor:'#fff',borderRadius:15}}>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:5}}>
     <Text style={styles.instructions2}>Amount</Text>
     </View>
-    <View style={{flexDirection:'row',justifyContent:'space-between',paddingLeft:20,paddingRight:20}}>
+    <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
     <View>
     <TextInput
           style={styles.instructions3}
@@ -505,10 +505,10 @@ renderScane() {
           value={this.state.usdforEther}
         />
     </View>
-    <View>
+    <View style={{marginTop:-10}}>
     {
-      (type==='ETH')? <Image style={{width: 25, height: 25,marginTop:10}}   source={require("./assets/diamond.png")} ></Image>:
-      <Image style={{width: 25, height: 25}}   source={require("./assets/bshadow.png")} ></Image>
+      (type==='ETH')? <Image style={{width: 25, height: 25,resizeMode:'contain'}}   source={require("./assets/diamond.png")} ></Image>:
+      <Image style={{width: 20, height: 20,resizeMode:'contain'}}   source={require("./assets/bshadow.png")} ></Image>
      
     }
     </View>
@@ -537,7 +537,7 @@ source={require("./assets/portraitphoto.png")}
     </View>
     </TouchableOpacity>
     <View style={{marginTop:15,alignItems:'center'}}>
-<LinearGradient colors={['#FF7C6E','#F4317F']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{height:40, backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:25,width:100 }}>
+<LinearGradient colors={['#FF7C6E','#F4317F']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{height:40, backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:25,width:150 }}>
 <TouchableOpacity onPress={this.SendClick}>
 <Text style={{color:'#fff',fontFamily:'Poppins-Regular'}}>Send</Text>
 </TouchableOpacity>
@@ -547,7 +547,7 @@ source={require("./assets/portraitphoto.png")}
     <View style={{justifyContent:'center',alignItems:'center',paddingLeft:10,paddingRight:10}}>
     <TextInput
         style={{height: 40,fontFamily:'Exo2-Regular'}}
-        placeholder="write here your wallet code"
+        placeholder="write here your wallet address codee"
         value={this.state.QR_Code_Value}
          placeholderTextColor="#ABB3D0" 
       />
@@ -620,28 +620,26 @@ renderQrCode() {
  </TouchableOpacity>
       </Animated.View>
       <View style={{flex:0.1}}></View>
-    <View style={{alignItems:'center',flex:0.9}}>
+    <View style={{flex:0.9,paddingLeft:40,paddingRight:40}}>
    
     <View style={{backgroundColor:'#fff',borderRadius:15,}}>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:10}}>
     <Text style={styles.instructions2}>Amount</Text>
-    <View style={{flexDirection:'row',justifyContent:'space-between',paddingLeft:20,paddingRight:20}}>
+    <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',}}>
     <View>
     <TextInput
           style={styles.instructions3}
           placeholder="0.000" 
           placeholderTextColor="#000"
-          keyboardType = "number-pad"
-          onSubmitEditing={this.handleKeyDown}
-        
+          keyboardType = "number-pad"     
           onChangeText={(text) =>this.ChangeText(text)}
           value={this.state.usdforEther}
         />
     </View>
-    <View>
+    <View style={{marginTop:-15}}>
     {
-      (type==='ETH')? <Image style={{width: 25, height: 25,marginTop:10}}   source={require("./assets/diamond.png")} ></Image>:
-      <Image style={{width: 25, height: 25}}   source={require("./assets/bshadow.png")} ></Image>
+      (type==='ETH')? <Image style={{width: 25, height: 25,resizeMode:'contain'}}   source={require("./assets/diamond.png")} ></Image>:
+      <Image style={{width: 25, height: 25,resizeMode:'contain'}}   source={require("./assets/bshadow.png")} ></Image>
      
     }
     </View>
@@ -653,7 +651,7 @@ renderQrCode() {
 
     </View>
     <TouchableOpacity onPress={this.Scanner.bind(this)}>
-    <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:10,height:150,width:250}}>   
+    <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:10,height:150,}}>   
     <View style={{justifyContent:'center',alignItems:'center',paddingTop:10}}>
     <QRCode
        size={120}
@@ -669,7 +667,7 @@ renderQrCode() {
     </View>
     </TouchableOpacity>
   
-    <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:10,height:150,width:250,justifyContent:'center',alignItems:'center'}}>
+    <View style={{backgroundColor:'#fff',borderRadius:15,marginTop:10,height:150,justifyContent:'center',alignItems:'center'}}>
   
     <View style={{alignItems:'center',justifyContent:'center'}}>
 <LinearGradient colors={['#7498F9','#9B89F8','#D476F7']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{paddingTop:10,paddingBottom:10,paddingLeft:40,paddingRight:40, backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:50 }}>
@@ -719,18 +717,18 @@ renderQrCode() {
 }
 ChangeText=(UsdAmount)=>
 {
-  if(UsdAmount.length<this.state.usdforEther.length)
-  
-  {
-    this.setState({usdforEther:''})
-  }
-  else
-  {
-    this.setState({usdforEther:UsdAmount})
-   
-  }
-   //Get value for Network fee and Crypto amount Api
- 
+  let number=UsdAmount
+       if(UsdAmount==='')
+       {
+        number=0
+        console.log('empty')     
+       }
+
+        console.log('Changed Number',number)     
+        this.setState({usdforEther:number})
+        console.log('usdforEther Number',number)     
+          this.usdConvert(number)      
+             
  
   console.log('Request data.===>', "usdConvert calling")
  
@@ -764,13 +762,13 @@ if(data!=DataUndefined)
   //console.log('Request data.===>', 'cryptoValue()')
 }
 }
-usdConvert=async()=>
+usdConvert=async(amount)=>
       {
     //   let type=crptoType
        console.log('Request data.===>', type,"type calling")
        let params=
        {
-         usd:this.state.usdforEther ,
+         usd:amount,
          cryptoType:type
   
        }
@@ -779,10 +777,6 @@ usdConvert=async()=>
      console.log('Request data.===>',this.onUsdResponse)
       
     }
-handleKeyDown=()=>
-{
-  this.usdConvert()
-}
 _animate=()=>{
   this.animatedValue.setValue(0)
   Animated.timing(
@@ -877,7 +871,7 @@ _animate=()=>{
           color='#f4347f'
           textStyle={styles.spinnerTextStyle}
         />
-      <ScrollView>
+      <ScrollView contentContainerStyle={{paddingBottom: 90}}>
       <View style={{justifyContent:'space-between',flexDirection:'row',}}>  
     
       
@@ -1000,7 +994,7 @@ _animate=()=>{
       </View>
       
     
-      <View style={styles.containers}>
+      <View >
     
     <Image style={{width:350,height:180,opacity:0.4,marginTop:-30,
     resizeMode: 'contain'}}   source={require("./assets/etherium_original.png")} ></Image>   
@@ -1012,9 +1006,12 @@ _animate=()=>{
                
                <View style={{ marginTop:30,justifyContent:'center',alignItems:'center'}}>
                  <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+                 <TouchableOpacity onPress={this.GetData}>
                  <View style={{marginTop:-10}}>
                  <Image  style={{resizeMode:'contain',width:60,height:60}}  source={require("./assets/Refresh.png")} ></Image>
                 </View>
+                 </TouchableOpacity>
+                
                 <View>
                 <View style={{flexDirection:'row'}}>
                 <Text style={{marginLeft:30,fontSize:36,color:'#F5F6F9',fontFamily:'Exo2-SemiBold'}}>{this.state.Balance}</Text>
@@ -1111,7 +1108,7 @@ justifyContent:'center',alignItems:"center"}} >
 
                
                  </View>
-                 <View style={{flex:1,marginBottom:90}}>
+                 <View style={{flex:1}}>
                  <FlatList  style={{marginTop:10}}
       ItemSeparatorComponent={this.space}
       data={this.state.dataSource}
@@ -1234,11 +1231,12 @@ GetList=async()=>
   "flagfordates":this.state.Time 
  }
 console.log('Request walletactivity data',params)
+this.Load()
  getactivitydata(params,this.ListData)
 }
 ListData=(data)=>
 {
-
+this.hide()
   console.log('Get Activity data',data)
   if(data!='undefined')
   {
@@ -1403,9 +1401,7 @@ instructions2: {
 },
 instructions3: {
    width:100,
-  textAlign: 'center',
   color: '#474C84',
-  marginBottom: 5,
   fontSize:25,
   fontFamily:'Poppins-Regular'
 },

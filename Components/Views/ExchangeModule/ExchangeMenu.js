@@ -4,6 +4,7 @@ import { View, StyleSheet,TextInput, Image,Picker,FlatList,Text,ActivityIndicato
 import { Alert } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
+import Spinner from 'react-native-loading-spinner-overlay';
 import {ExchangeList} from '../Api/ExchangeRequest'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from '../Utils.js/Constant'
 
@@ -21,6 +22,7 @@ export default class  ExchangeMenu  extends React.Component {
       dataSource:[],
       cityItems:["US Doller,Indian,Eutherium"],
       Amount:'COP',
+      spinner:false,
        Buycolor1:'transparent',
        Buycolor2:'transparent',
        Buycolor3:'transparent',
@@ -81,21 +83,25 @@ export default class  ExchangeMenu  extends React.Component {
   
   componentDidMount()
   {
+   
     this.GetData()
   }
   GetData=()=>
   {
+    this.Load()
     ExchangeList(this.ExchangeListResponse)
   }
   ExchangeListResponse=(data)=>
 {
-  //this.hide()
+  console.log('Exhchange List',data)
+   this.hide()
   if(data!=DataUndefined)
   {
     if(data.status===ResponseSuccessStatus)
     {
       let FinalResult=[];
        FinalResult=this.search(0,data.fetchExchageRequestDTO.exchangeDTOList)
+       console.log('Final result',FinalResult)
      this.setState({dataSource:FinalResult})
     }
     else if(data.error===InvalidToken)
@@ -119,11 +125,13 @@ search = (key, inputArray) => {
   console.log('inputArray length',inputArray.length)
   let SearchArray=[]
   for (let i=0; i < inputArray.length; i++) {
-      if (inputArray[i].exchangeType === key ||inputArray[i].exchangeType === 'ETH_BTC_USER' && inputArray[i].status===1) {
+    //if (inputArray[i].exchangeType === key ||inputArray[i].exchangeType === 'ETH_BTC_USER' && inputArray[i].status===1) {
+        if (inputArray[i].status===0) {
         SearchArray.push(inputArray[i])
       }
       
   }
+  return SearchArray
 }
 dataset=(data)=>{
   this.setState({
@@ -132,10 +140,10 @@ dataset=(data)=>{
   this.hide()
 }
 Load(){
-  this.setState({animate:true})
+  this.setState({spinner:true})
 }
 hide(){
-  this.setState({animate:false})
+  this.setState({spinner:false})
 }
 space(){
   return(<View style={{height: 10, width: 1, backgroundColor:'black'}}/>)
@@ -165,7 +173,15 @@ space(){
       <View style={styles.Maincontainers}> 
       
       <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={{height:'100%'}}>
-      
+      <Spinner
+          visible={this.state.spinner}
+          textContent={'Loading...'}
+          overlayColor='rgba(0,0,0,0.5)'
+          animation='fade'
+          size='large'
+          color='#f4347f'
+          textStyle={styles.spinnerTextStyle}
+        />
 <View style={{flex:0.3}}>
 
 <LinearGradient
@@ -264,7 +280,7 @@ space(){
 </View>
      <View style={{flex:0.7,marginTop:70}}>
      
-     <ScrollView>
+     <ScrollView contentContainerStyle={{paddingBottom: 100}}>
      <View>
     
      
@@ -376,14 +392,7 @@ space(){
         </View>
 
    
-   <View
-  style={{
-    marginLeft:30,marginRight:30,
-    marginTop:10,
-    borderBottomColor: '#000000',marginBottom:10,
-    borderBottomWidth: 1,
-  }}
-/>  
+   
   
     </ScrollView>
 

@@ -8,6 +8,7 @@ import Logo from '../../logo'
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
 import LinearGradient from 'react-native-linear-gradient';
+import Spinner from 'react-native-loading-spinner-overlay';
 import {VaultSystemApi,CryptoInvestment,CryptoTypeInvestment} from '../Api/VaultSystemApi'
 import {ResponseSuccessStatus,InvalidResponse} from '../Utils.js/Constant'
 import ImageCarousel from 'react-native-image-carousel';
@@ -35,6 +36,7 @@ export default class VaultFilter extends React.Component {
     this.OpacityView=new Animated.Value(1)
     this.state = {
       dataSource:[],
+      spinner:false,
       data1:[require('../assets/biconback.png'),require('../assets/etherem.png'),require('../assets/biconback.png'),require('../assets/etherem.png')],
       ImageData:[{'image':require('../assets/biconback.png')},
       {'image':require('../assets/biconback.png')},
@@ -212,7 +214,7 @@ Animated.timing(
   GetData=()=>
   {
     console.log('All Clicked :Get Data')
-    //this.Load()
+    this.Load()
     this.GetList()
     console.log(type)
     VaultSystemApi(type,this.BalanceResponse)
@@ -224,7 +226,7 @@ Animated.timing(
 BalanceResponse=(data)=>
 {
   console.log(data)
-  //this.hide()
+  this.hide()
   if(data!='undefined')
   {
     if(data.status===ResponseSuccessStatus)
@@ -257,7 +259,7 @@ BalanceResponse=(data)=>
 }
 GetList=()=>
 {
-  //this.Load()
+  this.Load()
   
   console.log('Changing Type',type)
   CryptoTypeInvestment(type,this.GetListData)
@@ -271,7 +273,7 @@ GetAllList=()=>
 }
 GetListData=(data)=>
 {
-//  this.hide()
+   this.hide()
   if(data!=='undefined')
   {
     if(data.status==ResponseSuccessStatus)
@@ -295,10 +297,10 @@ GetListData=(data)=>
   
 }
 Load(){
-  this.setState({animate:true})
+  this.setState({spinner:true})
 }
 hide(){
-  this.setState({animate:false})
+  this.setState({spinner:false})
 }
 space(){
   return(<View style={{height: 10, width: 1, backgroundColor:'black'}}/>)
@@ -385,8 +387,17 @@ HideMenu=()=>{
     return (  
       <View style={styles.Maincontainers}>    
       <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={{height:'100%'}}>
-      <ScrollView>
-      <View style={{flex:1,marginBottom:100}}>
+      <Spinner
+          visible={this.state.spinner}
+          textContent={'Loading...'}
+          overlayColor='rgba(0,0,0,0.5)'
+          animation='fade'
+          size='large'
+          color='#f4347f'
+          textStyle={styles.spinnerTextStyle}
+        />
+      <ScrollView contentContainerStyle={{paddingBottom: 90}}>
+      <View style={{flex:1}}>
       <View style={{justifyContent:'space-between',flexDirection:'row'}}> 
      
      <Animated.View style={{borderColor:'#c978f8',borderRightWidth:1,borderLeftWidth:0,borderTopWidth:1,borderBottomWidth:1,position:'absolute',height:45,width:AnimatedLeftWidth,borderTopRightRadius:25,borderBottomRightRadius:25,marginTop:10}}>
@@ -522,7 +533,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
 
 </Animated.View>
 </View>
-      <View style={styles.containers}>
+      <View>
             <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
                  <Text style={{marginLeft:10,marginTop:15,fontSize:20,fontWeight:'bold',color:'#ABB3D0',fontFamily:'Exo2-SemiBold'}}>Balance</Text> 
                  </View>
@@ -581,7 +592,7 @@ justifyContent:'center',alignItems:"center"}} colors= {['#fd7170','#fa5a76','#f5
                </View>
     </View> 
  
-<View style={{height:'100%'}}>
+<View >
 <FlatList  style={{marginTop:20}}
       ItemSeparatorComponent={this.space}
       data={this.state.dataSource}
