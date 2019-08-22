@@ -4,7 +4,8 @@ import { View, StyleSheet, Image,Picker,Dimensions,Text,ActivityIndicator,Toucha
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 import ImageResizer from 'react-native-image-resizer';
-import ImagePicker from 'react-native-customized-image-picker';
+import ImagePicker from 'react-native-image-picker';
+//import ImagePicker from 'react-native-customized-image-picker';
 import LinearGradient from 'react-native-linear-gradient';
 const options = {
   title: 'Select Avatar',
@@ -204,6 +205,7 @@ SlideMenu=()=>{
       }
       BeginAction=()=>
       {
+        /*
         ImagePicker.openCamera({
           width: 300,
           height: 400,
@@ -214,11 +216,16 @@ SlideMenu=()=>{
           
         });
        //this.props.navigation.navigate('Login')
+       */
+      ImagePicker.launchCamera(options, (response) => {
+        this.GetImageFile(response)
+        // Same code as in above section!
+      });
       }
 
       GetImageFile=(response)=>
       {     
-        ImageResizer.createResizedImage(response[0].path, 10, 10, 'JPEG', 80).then((response) => 
+        ImageResizer.createResizedImage(response.uri, 10, 10, 'JPEG', 80).then((response) => 
         {
           this.props.navigation.navigate('DocumentBackside',{DocumentFront:response,selfieImage:this.props.navigation.state.params.SelfieImageFile,photoUpload:this.props.navigation.state.params.photoUpload})
          // PassportUpload(response.uri,this.Responsedata,userid)

@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
 import {PassportUpload,IdUpload,ResidentUpload,LicenseUpload} from '../Api/KYCApi'
-import { View, StyleSheet, Image,Picker,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,AsyncStorage} from 'react-native';
+import { View, StyleSheet, Image,PermissionsAndroid,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,AsyncStorage} from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 import LinearGradient from 'react-native-linear-gradient';
-import ImagePicker from 'react-native-customized-image-picker';
+import ImagePicker from 'react-native-image-picker';
+//import ImagePicker from 'react-native-customized-image-picker';
 import ImageResizer from 'react-native-image-resizer';
 const options = {
   title: 'Select Avatar',
@@ -205,22 +206,39 @@ SlideMenu=()=>{
       }
       BeginAction=()=>
       {
-        ImagePicker.openCamera({
-          width: 300,
-          height: 400,
+       
         
-        }).then(image => {
-          console.log("take photo",image);
-          this.GetImageFile(image)
-          
-        });      
+  
+        this.requestCameraPermission()
       }
      
+       requestCameraPermission=async()=> {
+        try {
+          const granted = await PermissionsAndroid.request(
+            PermissionsAndroid.PERMISSIONS.CAMERA, {
+              'title': 'Camera App Permission',
+              'message': 'Camera App needs access to your camera '
+            }
+          )
+          if (granted === PermissionsAndroid.RESULTS.GRANTED)
+           {
+            ImagePicker.launchCamera(options, (response) => {
+              this.GetImageFile(response)
+              // Same code as in above section!
+            });
+           } else {
+            alert("CAMERA permission denied");
+          }
+        } catch (err) {
+          alert("Camera permission err", err);
+          console.warn(err);
+        }
+      }
       GetImageFile=async(response)=>
       {
         let userid= await AsyncStorage.getItem('UserId')  
-        console.log(response[0].path)
-        ImageResizer.createResizedImage(response[0].path, 10, 10, 'JPEG', 80).then((response) => 
+        console.log(response.uri)
+        ImageResizer.createResizedImage(response.uri, 10, 10, 'JPEG', 80).then((response) => 
         {
           this.props.navigation.navigate('DocumentFront',{SelfieImageFile:response,photoUpload:this.state.photoUpload})
          // PassportUpload(response.uri,this.Responsedata,userid)

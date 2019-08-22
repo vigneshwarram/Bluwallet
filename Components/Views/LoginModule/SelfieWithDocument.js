@@ -2,12 +2,13 @@ import * as React from 'react';
 import { Path } from 'react-native-svg'
 import { View, StyleSheet, Image,Picker,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,AsyncStorage,Animated,Easing } from 'react-native';
 import { Alert } from 'react-native';
+import ImagePicker from 'react-native-image-picker';
 import ImageResizer from 'react-native-image-resizer';
 import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
 import BackgroundIcon from '../../Background'
 import LinearGradient from 'react-native-linear-gradient';
 import {PassportUpload,IdUpload,ResidentUpload,LicenseUpload} from '../Api/KYCApi'
-import ImagePicker from 'react-native-customized-image-picker';
+//import ImagePicker from 'react-native-customized-image-picker';
 const options = {
   title: 'Select Avatar',
   customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
@@ -246,6 +247,7 @@ SlideMenu=()=>{
       }
       BeginAction=()=>
       {
+        /*
         ImagePicker.openCamera({
           width: 300,
           height: 400,
@@ -254,7 +256,12 @@ SlideMenu=()=>{
           console.log(image);
           this.GetImageFile(image)
           
-        });      
+        });    
+        */
+       ImagePicker.launchCamera(options, (response) => {
+        this.GetImageFile(response)
+        // Same code as in above section!
+      });  
       }
      
     
@@ -266,7 +273,7 @@ SlideMenu=()=>{
       }
       GetImageFile=async(response)=>
       {
-        ImageResizer.createResizedImage(response[0].path, 10, 10, 'JPEG', 80).then((response) => 
+        ImageResizer.createResizedImage(response.uri, 10, 10, 'JPEG', 80).then((response) => 
         {
         this.UploadCall(response)
           console.log(response)

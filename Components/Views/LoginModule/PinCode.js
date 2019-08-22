@@ -256,15 +256,24 @@ SlideMenu=()=>{
          if(data.status==ResponseSuccessStatus)
          {
           //await AsyncStorage.setItem('loginInfo',data.loginInfo); 
-        if(data.loginInfo.kycStatus==1)
-        {
-      
-           this.setState({visibles:true})
-           Keyboard.dismiss()
-           //setTimeout(this.setState({visibles:true}), 500);
-            this.NavigationReset('Home',true,false)
-          
-        }
+          if(data.loginInfo.kycStatus==1 && data.loginInfo.profileStatus==1 )
+          {
+             //this.NavigationReset('Home',false,true) //Profile popup apprear,kyc popup appear
+             this.NavigationReset('Home',false,false) //Profile popup not apprear,kyc popup appear
+            //this.NavigationReset('Home',true,false) //Profile popup not apprear,kyc popup appear
+          }
+          else if(data.loginInfo.kycStatus!=1 && data.loginInfo.profileStatus!=1  )
+          {
+            this.NavigationReset('Home',true,false) //Profile popup not  apprear,kyc popup not appear
+          }
+          else if(data.loginInfo.kycStatus==1 && data.loginInfo.profileStatus!=1 )
+          {
+            this.NavigationReset('Home',false,false) //Profile popup not apprear,kyc popup appear
+          }
+          else if(data.loginInfo.kycStatus!=1 && data.loginInfo.profileStatus==1 )
+          {
+            this.NavigationReset('Home',false,true) //Profile popup apprear,kyc popup appear
+          }
         else
         {
           setTimeout(this.NavigationReset('Home',false,true), 500);

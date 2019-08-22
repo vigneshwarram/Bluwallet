@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Path } from 'react-native-svg'
 import { View, StyleSheet, Image,Picker,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
 import { Alert } from 'react-native';
-//import ImagePicker from 'react-native-image-picker';
+import ImagePicker from 'react-native-image-picker';
 import ImageResizer from 'react-native-image-resizer';
 import BackgroundIcon from '../../Background'
-import ImagePicker from 'react-native-customized-image-picker';
+//import ImagePicker from 'react-native-customized-image-picker';
 import LinearGradient from 'react-native-linear-gradient';
 const options = {
   title: 'Select Avatar',
@@ -229,6 +229,7 @@ SlideMenu=()=>{
       }
       BeginAction=()=>
       {
+        /*
         ImagePicker.openCamera({
           width: 300,
           height: 400,
@@ -238,12 +239,16 @@ SlideMenu=()=>{
           this.GetImageFile(image)
           
         });
-       
+       */
+      ImagePicker.launchCamera(options, (response) => {
+        this.GetImageFile(response)
+        // Same code as in above section!
+      });
       }
   
       GetImageFile=(data)=>
       {
-        ImageResizer.createResizedImage(data[0].path, 10, 10, 'JPEG', 80).then((response) => 
+        ImageResizer.createResizedImage(data.uri, 10, 10, 'JPEG', 80).then((response) => 
         {
           this.props.navigation.navigate('SelfieWithDocument',{DocumentBack:response,selfieImage:this.props.navigation.state.params.selfieImage,DocumentFront:this.state.DocumentFront,photoUpload:this.props.navigation.state.params.photoUpload})
          // PassportUpload(response.uri,this.Responsedata,userid)
