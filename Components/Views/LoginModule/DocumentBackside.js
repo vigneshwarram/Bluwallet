@@ -2,9 +2,9 @@ import * as React from 'react';
 import { Path } from 'react-native-svg'
 import { View, StyleSheet, Image,Picker,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
 import { Alert } from 'react-native';
-import ImagePicker from 'react-native-image-picker';
+//import ImagePicker from 'react-native-image-picker';
 import BackgroundIcon from '../../Background'
-
+import ImagePicker from 'react-native-customized-image-picker';
 import LinearGradient from 'react-native-linear-gradient';
 const options = {
   title: 'Select Avatar',
@@ -45,7 +45,7 @@ export default class DocumentBackside  extends React.Component {
       app1color:'#fff',
       app5color:'#fff',
       SelfieImage:this.props.navigation.state.params.selfieImage,
-      //DocumentFront:this.props.navigation.state.params.DocumentFront
+      DocumentFront:this.props.navigation.state.params.DocumentFront
     };
   
   }
@@ -228,18 +228,27 @@ SlideMenu=()=>{
       }
       BeginAction=()=>
       {
-        ImagePicker.launchCamera(options, (response) =>
-         {         // Same code as in above section!
-         let data= response.fileSize/1000000
-           this.GetImageFile(data)         
-          console.log("Document back Photo response----->",response)
+        ImagePicker.clean().then(() => {
+          console.log('removed all tmp images from tmp directory');
+        }).catch(e => {
+          console.log(e);
         });
+        ImagePicker.openCamera({
+          width: 300,
+          height: 400,
+        
+        }).then(image => {
+          console.log(image);
+          this.GetImageFile(image)
+          
+        });
+       
       }
   
       GetImageFile=(data)=>
       {
-        this.props.navigation.navigate('Login')
-        //this.props.navigation.navigate('SelfieWithDocument',{DocumentBack:data,selfieImage:this.props.navigation.state.params.SelfieImageFile,DocumentFront:this.state.DocumentFront,photoUpload:this.props.navigation.state.params.photoUpload})
+       
+        this.props.navigation.navigate('SelfieWithDocument',{DocumentBack:data,selfieImage:this.props.navigation.state.params.selfieImage,DocumentFront:this.state.DocumentFront,photoUpload:this.props.navigation.state.params.photoUpload})
       }
 }
 

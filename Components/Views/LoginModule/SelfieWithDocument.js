@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,Picker,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
+import { View, StyleSheet, Image,Picker,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,AsyncStorage } from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 import LinearGradient from 'react-native-linear-gradient';
 import {PassportUpload,IdUpload,ResidentUpload,LicenseUpload} from '../Api/KYCApi'
-import ImagePicker from 'react-native-image-picker';
+import ImagePicker from 'react-native-customized-image-picker';
 const options = {
   title: 'Select Avatar',
   customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
@@ -206,12 +206,18 @@ SlideMenu=()=>{
       }
       BeginAction=()=>
       {
-        ImagePicker.launchCamera(options, (response) =>
-         {         // Same code as in above section!
-          this.GetImageFile(response)         
-        console.log(response)
-        });
+        ImagePicker.openCamera({
+          width: 300,
+          height: 400,
+        
+        }).then(image => {
+          console.log(image);
+          this.GetImageFile(image)
+          
+        });      
       }
+     
+    
       selectedCountry=(item,index)=>{
           this.setState({
               Country:item
@@ -225,11 +231,16 @@ SlideMenu=()=>{
         let photoUpload=this.props.navigation.state.params.photoUpload
           let Params=
           {
-              Selfie:this.state.DocumentBack,
+              Selfie:this.state.selfie,
               documentback:this.state.DocumentBack,
               documentfront:this.state.front,
               selfiewithdocument:response
           }
+          console.log('params',Params)
+          console.log('path',Params.Selfie[0].path)
+          console.log('type',Params.Selfie[0].mime)
+         
+        //  console.log('path',Params.documentback[0].path)
           if(photoUpload==='Passport')
           {
             PassportUpload(Params,this.Responsedata,parseInt(userid, 10))
@@ -259,8 +270,7 @@ SlideMenu=()=>{
             Alert.alert(data.status,data.message)
           }
       }
-}
-
+    }
 
 
 const styles = StyleSheet.create({

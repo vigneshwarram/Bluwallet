@@ -3,7 +3,7 @@ import { Path } from 'react-native-svg'
 import { View, StyleSheet, Image,Picker,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
-import ImagePicker from 'react-native-image-picker';
+import ImagePicker from 'react-native-customized-image-picker';
 import LinearGradient from 'react-native-linear-gradient';
 const options = {
   title: 'Select Avatar',
@@ -203,24 +203,26 @@ SlideMenu=()=>{
       }
       BeginAction=()=>
       {
-        try {
-          ImagePicker.launchCamera(options, (response) =>
-         {         // Same code as in above section!
-        // this.GetImageFile(response)  
-        this.props.navigation.navigate('Login')       
-          console.log("Document front Photo response----->",response)
+        ImagePicker.clean().then(() => {
+          console.log('removed all tmp images from tmp directory');
+        }).catch(e => {
+          console.log(e);
         });
-       }
-       catch (e) {
-         console.error(e.message);
-       }
+        ImagePicker.openCamera({
+          width: 300,
+          height: 400,
+        
+        }).then(image => {
+          console.log(image);
+          this.GetImageFile(image)
+          
+        });
        //this.props.navigation.navigate('Login')
       }
 
       GetImageFile=(response)=>
-      {
-      
-       // this.props.navigation.navigate('DocumentBackside',{DocumentFront:response,selfieImage:this.props.navigation.state.params.SelfieImageFile,photoUpload:this.props.navigation.state.params.photoUpload})
+      {     
+        this.props.navigation.navigate('DocumentBackside',{DocumentFront:response,selfieImage:this.props.navigation.state.params.SelfieImageFile,photoUpload:this.props.navigation.state.params.photoUpload})
       }
 }
 

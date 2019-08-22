@@ -4,7 +4,7 @@ import { View, StyleSheet, Image,Picker,Dimensions,Text,ActivityIndicator,Toucha
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 import LinearGradient from 'react-native-linear-gradient';
-import ImagePicker from 'react-native-image-picker';
+import ImagePicker from 'react-native-customized-image-picker';
 const options = {
   title: 'Select Avatar',
   customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
@@ -203,19 +203,20 @@ SlideMenu=()=>{
       }
       BeginAction=()=>
       {
-      
-        ImagePicker.launchCamera(options, (response) =>
-         {         // Same code as in above section!
-          this.GetImageFile(response)         
-        console.log("Take Photo response----->",response)
-        });
+        ImagePicker.openCamera({
+          width: 300,
+          height: 400,
         
-      
+        }).then(image => {
+          console.log("take photo",image);
+          this.GetImageFile(image)
+          
+        });      
       }
      
       GetImageFile=(response)=>
       {
-        this.props.navigation.navigate('DocumentBackside',{SelfieImageFile:response,photoUpload:this.state.photoUpload})
+        this.props.navigation.navigate('DocumentFront',{SelfieImageFile:response,photoUpload:this.state.photoUpload})
       }
 }
 
