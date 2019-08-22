@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,Picker,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,AsyncStorage } from 'react-native';
+import { View, StyleSheet, Image,Picker,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,AsyncStorage,Animated,Easing } from 'react-native';
 import { Alert } from 'react-native';
+import ImageResizer from 'react-native-image-resizer';
+import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
 import BackgroundIcon from '../../Background'
 import LinearGradient from 'react-native-linear-gradient';
 import {PassportUpload,IdUpload,ResidentUpload,LicenseUpload} from '../Api/KYCApi'
@@ -23,11 +25,13 @@ export default class SelfieWithDocument  extends React.Component {
 
   constructor(props) {
     super(props);
-    
+    this.RotateValueHolder = new Animated.Value(0);
+    this.opacity = new Animated.Value(0)
     this.state = {
       dataSource:[],
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
+      visibles:false,
       animate:false,
       KycDocument1:[],
       Country:'Documents Country',
@@ -63,10 +67,11 @@ dataset=(data)=>{
   })
   this.hide()
 }
-Load(){
+Load=()=>{
+  this.StartImageRotateFunction();
   this.setState({animate:true})
 }
-hide(){
+hide=()=>{
   this.setState({animate:false})
 }
 space(){
@@ -114,7 +119,24 @@ SlideMenu=()=>{
     this.setState({slide:false})
   }
   }
+  StartImageRotateFunction() {
+    this.RotateValueHolder.setValue(0);
+    Animated.timing(this.opacity, {
+      duration: 500, 
+      toValue: 1,
+    }).start()
+    Animated.timing(this.RotateValueHolder, {
+      toValue: 1,
+      duration: 2500,
+      easing: Easing.linear,
+      useNativeDriver: true
+    }).start(() => this.StartImageRotateFunction());
+  }
   render() {
+    const RotateData = this.RotateValueHolder.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['0deg', '360deg'],
+    });
     const { navigate } = this.props.navigation;
     const data = [ 50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100 ]
     const Line = ({ line }) => (
@@ -129,20 +151,38 @@ SlideMenu=()=>{
    
   if(this.state.animate){  
     return <View style={{justifyContent:'center',alignItems:'center',flex:1}}>
-    <ActivityIndicator
-  color = '#1a5fe1'
-  size = "large"
-  style = {styles.activityIndicator}/>
+    <Animated.Image 
+                style={{width:200,height:200, resizeMode: 'contain' , transform: [{ rotate: RotateData }],}}
+                source={require('../assets/loader.gif')}
+            />     
+             <Animated.Text style={{color:'#4e649f',opacity:this.opacity.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, 1],
+    extrapolate: 'clamp',
+  }),fontSize:36,marginTop:10,fontFamily:'Exo2-Bold'}}>Uploading...</Animated.Text>
   </View>
   }
     return (  
         
       <View style={styles.Maincontainers}>  
        
-   
+       <Dialog 
+    visible={this.state.visibles}>
+    <DialogContent>
+     <View style={{width:300,height:110,alignItems:'center'}}>
+         <View style={{alignItems:'center',paddingTop:10}}>
+         <Image style={{width: 50, height: 50,resizeMode:'contain'}}   source={require("../assets/successtik.png")} ></Image>     
+         </View>
+         <View style={{paddingTop:10,paddingBottom:10}}>
+         <Text style={{fontSize:15,color:'#454976',fontFamily:'Exo2-Regular',textAlign:'center'}}>KYC Documents Uploaded Successfully</Text>           
+         </View>
+     </View>
+    </DialogContent>
+  </Dialog>
 
        <LinearGradient
   colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>   
+   
    <View style={{flex:0.4}}>
    <View  style={{justifyContent:'center',alignItems:'center'
         }}>
@@ -226,7 +266,18 @@ SlideMenu=()=>{
       }
       GetImageFile=async(response)=>
       {
-          let userid= await AsyncStorage.getItem('userId')  
+        ImageResizer.createResizedImage(response[0].path, 10, 10, 'JPEG', 80).then((response) => 
+        {
+        this.UploadCall(response)
+          console.log(response)
+        }).catch((err) => {
+          console.log(err)
+        });
+         
+      }
+      UploadCall=async(response)=>
+      {
+        let userid= await AsyncStorage.getItem('UserId')  
 
         let photoUpload=this.props.navigation.state.params.photoUpload
           let Params=
@@ -236,40 +287,58 @@ SlideMenu=()=>{
               documentfront:this.state.front,
               selfiewithdocument:response
           }
-          console.log('params',Params)
-          console.log('path',Params.Selfie[0].path)
-          console.log('type',Params.Selfie[0].mime)
+        
          
         //  console.log('path',Params.documentback[0].path)
           if(photoUpload==='Passport')
           {
+            this.Load()
             PassportUpload(Params,this.Responsedata,parseInt(userid, 10))
           }
           else if(photoUpload==='idcard')
           {
+            this.Load()
             IdUpload(Params,this.Responsedata,parseInt(userid, 10))
           }
           else if(photoUpload==='residence')
           {
+            this.Load()
             ResidentUpload(Params,this.Responsedata,parseInt(userid, 10))
           }
           else if(photoUpload==='license')
           {
+            this.Load()
             LicenseUpload(Params,this.Responsedata,parseInt(userid, 10))
           }
         //this.props.navigation.navigate('DocumentFront',{SelfieImageFile:response})
       }
+      timeout=()=>
+      {
+        this.setState({animate:false})
+      }
+      timeoutIn=()=>
+      {
+               this.setState({visibles:false})
+              this.props.navigation.navigate("Home",{DashBoardPopup: true,Kyc:false})
+      }
       Responsedata=(data)=>
       {
+        setTimeout(  this.timeout, 10000);
+    
+       
           if(data.status==='success')
           {
-          Alert.alert(data.status,data.message)
+            this.setState({visibles:true})
+            setTimeout(this.timeoutIn, 10000);
+            
           }
           else
           {
             Alert.alert(data.status,data.message)
           }
       }
+     
+    
     }
 
 

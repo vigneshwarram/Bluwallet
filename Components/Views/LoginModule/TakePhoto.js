@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,Picker,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
+import {PassportUpload,IdUpload,ResidentUpload,LicenseUpload} from '../Api/KYCApi'
+import { View, StyleSheet, Image,Picker,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,AsyncStorage} from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 import LinearGradient from 'react-native-linear-gradient';
 import ImagePicker from 'react-native-customized-image-picker';
+import ImageResizer from 'react-native-image-resizer';
 const options = {
   title: 'Select Avatar',
   customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
@@ -214,9 +216,24 @@ SlideMenu=()=>{
         });      
       }
      
-      GetImageFile=(response)=>
+      GetImageFile=async(response)=>
       {
-        this.props.navigation.navigate('DocumentFront',{SelfieImageFile:response,photoUpload:this.state.photoUpload})
+        let userid= await AsyncStorage.getItem('UserId')  
+        console.log(response[0].path)
+        ImageResizer.createResizedImage(response[0].path, 10, 10, 'JPEG', 80).then((response) => 
+        {
+          this.props.navigation.navigate('DocumentFront',{SelfieImageFile:response,photoUpload:this.state.photoUpload})
+         // PassportUpload(response.uri,this.Responsedata,userid)
+          console.log(response)
+        }).catch((err) => {
+          console.log(err)
+        });
+       // 
+      
+      }
+      Responsedata=(data)=>
+      {
+        console.log(data)
       }
 }
 

@@ -3,6 +3,7 @@ import { Path } from 'react-native-svg'
 import { View, StyleSheet, Image,Picker,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
+import ImageResizer from 'react-native-image-resizer';
 import ImagePicker from 'react-native-customized-image-picker';
 import LinearGradient from 'react-native-linear-gradient';
 const options = {
@@ -203,11 +204,6 @@ SlideMenu=()=>{
       }
       BeginAction=()=>
       {
-        ImagePicker.clean().then(() => {
-          console.log('removed all tmp images from tmp directory');
-        }).catch(e => {
-          console.log(e);
-        });
         ImagePicker.openCamera({
           width: 300,
           height: 400,
@@ -222,7 +218,15 @@ SlideMenu=()=>{
 
       GetImageFile=(response)=>
       {     
-        this.props.navigation.navigate('DocumentBackside',{DocumentFront:response,selfieImage:this.props.navigation.state.params.SelfieImageFile,photoUpload:this.props.navigation.state.params.photoUpload})
+        ImageResizer.createResizedImage(response[0].path, 10, 10, 'JPEG', 80).then((response) => 
+        {
+          this.props.navigation.navigate('DocumentBackside',{DocumentFront:response,selfieImage:this.props.navigation.state.params.SelfieImageFile,photoUpload:this.props.navigation.state.params.photoUpload})
+         // PassportUpload(response.uri,this.Responsedata,userid)
+          console.log(response)
+        }).catch((err) => {
+          console.log(err)
+        });
+      
       }
 }
 
