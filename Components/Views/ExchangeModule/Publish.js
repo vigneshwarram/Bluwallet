@@ -474,6 +474,8 @@ renderScane() {
         this.setState({
          StatusMode:item
         })
+        this.Load()
+    ExchangeList(this.ExchangeListResponse)
         if(item==='Request')
         {
           this.setState({exchangeOrRequest:true})

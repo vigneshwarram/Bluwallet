@@ -862,7 +862,7 @@ export default class DashBoard extends React.Component {
         />
 
 
-        <LinearGradient colors={['#354E91', '#314682', '#283563', '#222B50', '#21284A']}>
+        <LinearGradient colors={['#354E91', '#314682', '#283563', '#222B50', '#21284A']} style={{flex:1}}>
           <Spinner
             visible={this.state.spinner}
             textContent={'Loading...'}
@@ -1318,7 +1318,6 @@ const styles = StyleSheet.create({
   },
   Maincontainers: {
     flex: 1,
-    backgroundColor: '#fff',
   },
   containers: {
     backgroundColor: 'transparent',
