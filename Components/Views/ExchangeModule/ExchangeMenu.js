@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet,TextInput, Image,Picker,FlatList,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,Animated} from 'react-native';
+import { View, StyleSheet,TextInput, Image,Picker,FlatList,Text,ActivityIndicator,TouchableOpacity,BackHandler,Animated} from 'react-native';
 import { Alert } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -82,10 +82,10 @@ export default class  ExchangeMenu  extends React.Component {
   }
   
   componentDidMount()
-  {
-   
+  { 
     this.GetData()
   }
+ 
   GetData=()=>
   {
     this.Load()
