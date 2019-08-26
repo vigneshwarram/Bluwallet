@@ -476,6 +476,8 @@ renderScane() {
         })
         if(item==='Request')
         {
+          this.Load()
+          ExchangeList(this.ExchangeListResponse)
           this.setState({exchangeOrRequest:true})
           console.log('exchangeOrRequest',this.state.exchangeOrRequest)
         }else{
