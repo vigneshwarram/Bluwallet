@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
 import {
-  View, StyleSheet, Image, Picker, NativeModules, Text, AsyncStorage, StatusBar, BackHandler, TouchableOpacity, ActivityIndicator, Animated, Platform, TextInput, Slider,
+  View, StyleSheet, Image, Picker, NativeModules, Text,Clipboard,AsyncStorage, StatusBar, BackHandler, TouchableOpacity, ActivityIndicator, Animated, Platform, TextInput, Slider,
   Easing, Dimensions, PermissionsAndroid
 } from 'react-native';
 import { Alert } from 'react-native';
@@ -57,6 +57,7 @@ export default class DashBoard extends React.Component {
       currentUsdforEther: null,
       QR_Code_Value: null,
       backoption: false,
+      clipboardContent:'',
       visibles: false,
       spinner: false,
       usdforEther: '',
@@ -556,7 +557,7 @@ export default class DashBoard extends React.Component {
               <TextInput
                 style={{ height: 40, fontFamily: 'Exo2-Regular' }}
                 placeholder="write here your wallet address codee"
-                value={this.state.QR_Code_Value}
+                value={(this.state.QR_Code_Value==null)&& this.state.clickedItemText}
                 placeholderTextColor="#ABB3D0"
               />
             </View>
@@ -678,11 +679,15 @@ export default class DashBoard extends React.Component {
           <View style={{ backgroundColor: '#fff', borderRadius: 15, marginTop: 10, height: 150, justifyContent: 'center', alignItems: 'center' }}>
 
             <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+            <TouchableOpacity onPress={this.readFromClipboard}>
+            <View>
               <LinearGradient colors={['#7498F9', '#9B89F8', '#D476F7']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={{ paddingTop: 10, paddingBottom: 10, paddingLeft: 40, paddingRight: 40, backgroundColor: 'red', justifyContent: 'center', alignItems: 'center', borderRadius: 50 }}>
-                <TouchableOpacity>
+               
                   <Text style={{ color: '#fff', fontFamily: 'Poppins-Regular' }}>Copy All</Text>
-                </TouchableOpacity>
+              
               </LinearGradient>
+              </View>
+              </TouchableOpacity>
             </View>
             <View style={{ width: '80%', height: 40, borderWidth: 1, borderColor: '#4D90E9', borderRadius: 5, justifyContent: 'center', alignItems: 'center', marginTop: 10, padding: 10 }}>
               <Text style={{ color: '#464651', fontFamily: 'Poppins-Regular', textAlign: 'center', fontSize: 8 }}>{(type == 'ETH') ? this.state.EtherWalletAddress : this.state.BtcWalletAddress}</Text>
@@ -724,19 +729,28 @@ export default class DashBoard extends React.Component {
     );
   }
   ChangeText = (UsdAmount) => {
-    let number = UsdAmount
-    if (UsdAmount === '') {
-      number = 0
-      console.log('empty')
+    if(UsdAmount===',')
+    {
+Alert.alert('Alert','please enter numeric value')
     }
-
-    console.log('Changed Number', number)
-    this.setState({ usdforEther: number })
-    console.log('usdforEther Number', number)
-    this.usdConvert(number)
-
-
-    console.log('Request data.===>', "usdConvert calling")
+    else
+    
+    {
+      let number = UsdAmount
+      if (UsdAmount === '') {
+        number = 0
+        console.log('empty')
+      }
+  
+      console.log('Changed Number', number)
+      this.setState({ usdforEther: number })
+      console.log('usdforEther Number', number)
+      this.usdConvert(number)
+  
+  
+      console.log('Request data.===>', "usdConvert calling")
+    }
+  
 
   }
   onUsdResponse = (data) => {
@@ -1188,6 +1202,11 @@ export default class DashBoard extends React.Component {
     this.setState({ EtherWalletAddress: await AsyncStorage.getItem('etherwalletAddress'), BtcWalletAddress: await AsyncStorage.getItem('bitcoinWalletReceivingAddress') })
     VaultSystemApi(type, this.BalanceResponse)
   }
+  readFromClipboard = async () => {  
+    console.log('its comming') 
+    await Clipboard.setString((type == 'ETH') ? this.state.EtherWalletAddress : this.state.BtcWalletAddress);
+    Alert.alert('address copied')
+  };
   BalanceResponse = (data) => {
     console.log('data', data)
     this.hide()
@@ -1201,6 +1220,7 @@ export default class DashBoard extends React.Component {
 
 
         }
+
         else {
           this.setState({
             Usd: data.CalculatingAmountDTO.usdforBtc, Balance: data.CalculatingAmountDTO.btcAmount,
