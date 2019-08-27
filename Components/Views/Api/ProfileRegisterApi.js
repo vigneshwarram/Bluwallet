@@ -10,7 +10,7 @@ import Url from './CommonApi'
          // 'authorization':'bearer '+await AsyncStorage.getItem('AccessToken')
         },
         body: JSON.stringify({
-            userId: await AsyncStorage.getItem('userId'),
+            userId: await AsyncStorage.getItem('UserId'),
             firstName:params.firstname,
             lastName:params.lastname,      
             dateOfBirth:params.dates
@@ -38,7 +38,7 @@ export const ProfileRetrive=async(registerDetails)=>
           'authorization':'bearer '+await AsyncStorage.getItem('AccessToken')
         },
         body: JSON.stringify({
-            userId:10,
+            userId: await AsyncStorage.getItem('UserId'),
         })
       }) .then((res)=> {
         return res.json();

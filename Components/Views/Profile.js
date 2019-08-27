@@ -81,8 +81,10 @@ export default class Profile  extends React.Component {
    
     
   }
-  GetListData=()=>
+  GetListData=async()=>
   {
+    let userid=await AsyncStorage.getItem('UserId')
+    console.log('userid',userid)
      this.Load()  
     ProfileRetrive(this.GetProfileDetails)
   }
@@ -111,6 +113,7 @@ export default class Profile  extends React.Component {
           })
         console.log('data.retrieveData',data.retrieveData.gmailstatus)
         console.log('data.retrieveData',this.state.mailVerifiedStatus)
+        console.log('data.retrieveData',this.state.proImgPath)
         //Check mail status
         this.checkEmailStatus()
         console.log('data.retrieveData','checkEmailStatus()')
@@ -203,30 +206,7 @@ space(){
         this.props.navigation.navigate('Login')
       }
   render() {
-    const { photo } = this.state
-    const shadowOpt = {
-			width:160,
-			height:170,
-			color:"#000",
-			border:2,
-			radius:3,
-			opacity:0.2,
-			x:0,
-			y:3,
-			style:{marginVertical:5}
-		}
-    const { navigate } = this.props.navigation;
-    const data = [ 50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100 ]
-    const Line = ({ line }) => (
-      <Path
-          key={'line'}
-          d={line}
-          stroke={'#5099f0'}
-          fill={'none'}
-      />
-  )
-
-   
+    let image=this.GetImage()
   if(this.state.animate){  
     return <View style={{justifyContent:'center',alignItems:'center',flex:1}}>
     <ActivityIndicator
@@ -298,9 +278,12 @@ borderRadius:25,
     height: 30}}>
     <TouchableOpacity onPress={this.BeginAction}>
 <View>
+<View style={{width:100,height:105,borderRadius:25,backgroundColor:'#fff'}}>
+{(image!=null)?<Image  style={{width:100,height:105,borderRadius:25}} source={image} />:<Image  style={{width:100,height:105,borderRadius:25}} source={require("./assets/build.png")} />}
 
-<Image  style={{width:100,height:105,borderRadius:25}} source={require("./assets/build.png")} />
 <Image style={{width:25,height:25,marginTop:-25,alignSelf:'flex-end'}}   source={require("./assets/profileround.png")} ></Image>
+</View>
+
 </View>
 </TouchableOpacity>
     </View>
@@ -570,12 +553,24 @@ borderRadius:25,
         ImagePicker.launchCamera(options, (response) =>
          {         // Same code as in above section!
           if (response.uri) {
-            this.setState({ photo: response })
+            this.setState({ proImgPath: response.uri })
           }
           //this.GetImageFile(response)         
         console.log(response)
         });
       }
+
+      GetImage() {
+        if(this.state.proImgPath!='')
+        {
+          return { uri: this.state.proImgPath };
+        }
+        else
+        {
+          return null
+        }
+   
+  }
 }
 
 

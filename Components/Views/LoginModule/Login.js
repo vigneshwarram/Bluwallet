@@ -23,8 +23,8 @@ export default class Login  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
-      Username:'testdemo2@yopmail.com',
-      Password:'Admin@123new',
+      Username:'ameenulla@colanonline.com',
+      Password:'Ameen@123',
       clickr:false,
       clickopen:false,
       click:false,
@@ -300,7 +300,7 @@ SlideMenu=()=>{
       }
       ForgotAction=()=>
       {
-         this.props.navigation.navigate('ForgotPassword')
+         this.props.navigation.navigate('RetrivePassword')
       }
 
       LoginResult=async (data)=>
@@ -324,7 +324,8 @@ SlideMenu=()=>{
               }
               else if(data.loginInfo.kycStatus!=1 && data.loginInfo.profileStatus!=1  )
               {
-                this.NavigationReset('Home',true,false) //Profile popup not  apprear,kyc popup not appear
+                this.NavigationReset('Home',false,true) //Profile popup apprear,kyc popup appear
+               // this.NavigationReset('Home',true,false) //Profile popup not  apprear,kyc popup not appear
               }
               else if(data.loginInfo.kycStatus==1 && data.loginInfo.profileStatus!=1 )
               {

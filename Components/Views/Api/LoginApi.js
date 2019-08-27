@@ -32,6 +32,35 @@ import CheckConnectivity from './CheckInternet'
      }); 
 }
 
+export const ForgotAPI=async(email,LoginResult)=>
+{
+
+ 
+  
+   
+     fetch("http://bluwallet.colan.in/bluewallet-0.0.1-SNAPSHOT/API/mobile/forgot/password", {  
+         method: 'POST',
+         headers: {
+           'Content-Type':'application/json'
+         },
+             body: JSON.stringify({
+             email: email,
+    
+           })
+       }).then((res)=> {
+           console.log(res)
+         return res.json();
+        })
+        .then((resJson)=>{
+         console.log("success",resJson);
+         LoginResult(resJson)
+         return resJson;
+        })
+        .catch((error) => {
+         console.error(error);
+         Alert.alert(error)
+     }); 
+}
 
 
 export const loginSecureApi=async(params,LoginSecureResult)=>

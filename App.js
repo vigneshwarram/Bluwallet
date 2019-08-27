@@ -43,6 +43,7 @@ import TakePhoto from  './Components/Views/LoginModule/TakePhoto'
 import DocumentBackside from  './Components/Views/LoginModule/DocumentBackside'
 import SelfieWithDocument from  './Components/Views/LoginModule/SelfieWithDocument'
 import DocumentFront from  './Components/Views/LoginModule/DocumentFront'
+import RetrivePassword from  './Components/Views/LoginModule/RetrivePassword'
 import {
   createStackNavigator,createBottomTabNavigator,createAppContainer
 } from 'react-navigation'
@@ -191,7 +192,8 @@ let CollapseExpand = (index, position) => {
         //Publish:{screen:Publish},
         Launch: { screen: Launch },
        //UploadProgress:{screen:UploadProgress},
-        TakePhoto:{screen:TakePhoto},     
+        TakePhoto:{screen:TakePhoto},    
+        RetrivePassword:{screen:RetrivePassword}, 
         PuplishUser:{screen:PuplishUser},
         Sms:{screen:Sms},     
         Home:{screen:TabNavigator},
