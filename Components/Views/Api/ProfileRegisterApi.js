@@ -28,6 +28,28 @@ import Url from './CommonApi'
         console.error(error);
     });
 }
+export const TwoFactorApi=async(params,RegisterUpdateResponse)=>
+{
+    fetch(Url+'twofactor/authentication', {  
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'authorization':'bearer '+await AsyncStorage.getItem('AccessToken')
+        },
+        body: JSON.stringify(params)
+      }).then((res)=> {
+        return res.json();
+       })
+       .then((resJson)=>{
+        RegisterUpdateResponse(resJson)
+       
+        return resJson;
+       })
+       .catch((error) => {
+        console.error(error);
+    });
+}
 export const ProfileRetrive=async(registerDetails)=>
 {
     fetch(Url+'retrievedata', {  

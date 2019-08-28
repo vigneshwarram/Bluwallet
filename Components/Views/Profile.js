@@ -4,7 +4,7 @@ import { View, StyleSheet, Image,ScrollView,NativeModules,Text,ActivityIndicator
 import { Alert } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import ImagePicker from 'react-native-image-picker';
-import {ProfileRetrive} from './Api/ProfileRegisterApi'
+import {ProfileRetrive,TwoFactorApi} from './Api/ProfileRegisterApi'
 import Spinner from 'react-native-loading-spinner-overlay';
 import {ResponseSuccessStatus,InvalidResponse} from './Utils.js/Constant'
 const options = {
@@ -15,6 +15,7 @@ const options = {
     path: 'images',
   },
 };
+
 export default class Profile  extends React.Component {
 
   static navigationOptions = {
@@ -40,6 +41,7 @@ export default class Profile  extends React.Component {
       Country:'',
       spinner:false,
       firstName: "",
+      twofactor:'',
       lastName: "",
       dateOfBirth: "",
       address : "",
@@ -77,9 +79,39 @@ export default class Profile  extends React.Component {
   
   componentDidMount()
   {
+    this.getTwoFactors()
     this.GetListData()
    
     
+  }
+  getTwoFactors=async()=>
+  {
+    let userid=await AsyncStorage.getItem('UserId')
+    let params=
+    {
+      "userId":userid,
+    }
+    TwoFactorApi(params,this.TwoFactorRespose)
+  }
+  TwoFactorRespose=(data)=>
+  {
+    if(data.status==='success')
+    {
+     console.log('data',data)
+     this.setState({twofactor:data.twoFactorStatus})
+
+    }
+  }
+  setEnable=async()=>
+  {
+    let params=
+    {
+      "userId":await AsyncStorage.getItem('UserId'),
+    	"twoFactorAuthenticationStatus":this.state.twofactor,
+	    "otpSecureKey":""
+    }
+    this.props.navigation.push('PicodeEnable',{TwoFactorParams:params})
+    //TwoFactorApi(params,this.TwoFactorRespose)
   }
   GetListData=async()=>
   {
@@ -440,17 +472,23 @@ borderRadius:25,
 />
 <View>
  <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
+ <TouchableOpacity onPress={this.setEnable}>
+ <View>
  <View style={{flexDirection:'row',justifyContent:'space-around'}}>
  <View style={{alignItems:'center'}}>
  <Image style={{width: 30, height: 30,resizeMode:'contain'}}   source={require('./assets/keys.png')} ></Image>
  <Image style={{width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/monitor1.png")} ></Image>   
  </View>  
  <View style={{alignItems:'center',marginLeft:30}}>
- <Text style={{color:'#4286f4',fontSize:15,textAlign:'center',marginTop:5,fontFamily:''}}>Segundo Factor</Text>
+ <Text style={{color:'#4286f4',fontSize:15,textAlign:'center',marginTop:5,fontFamily:''}}>{(this.state.twofactor==1)?'Enabled':'Disabled'}</Text>
  <Text style={{color:'#4286f4',fontSize:15,textAlign:'center',marginTop:10,fontFamily:''}}>E-wallet web</Text>
  </View>
   
   </View>
+ </View>
+ </TouchableOpacity>
+
+
  </View>
  
 

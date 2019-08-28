@@ -42,6 +42,8 @@ import Confirm from  './Components/Views/LoginModule/Confirm'
 import TakePhoto from  './Components/Views/LoginModule/TakePhoto'
 import DocumentBackside from  './Components/Views/LoginModule/DocumentBackside'
 import SelfieWithDocument from  './Components/Views/LoginModule/SelfieWithDocument'
+import PincodeEnable from  './Components/Views/LoginModule/PincodeEnable'
+import OtpPin from  './Components/Views/LoginModule/OtpPin'
 import DocumentFront from  './Components/Views/LoginModule/DocumentFront'
 import RetrivePassword from  './Components/Views/LoginModule/RetrivePassword'
 import {
@@ -220,6 +222,8 @@ let CollapseExpand = (index, position) => {
         SelfieWithDocument:{screen:SelfieWithDocument},
         BankScreen:{screen:BankScreen},     
         MoreInfo:{screen:MoreInfo},
+        PicodeEnable:{screen:PincodeEnable},
+        OtpPin:{screen:OtpPin},
         ChooseCountry:{screen:ChooseCountry},       
         },{
         //  transitionConfig: TransitionConfiguration,
