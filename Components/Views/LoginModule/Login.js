@@ -311,34 +311,19 @@ SlideMenu=()=>{
             console.log('Loginresult',data)
             await AsyncStorage.setItem('UserId',data.loginInfo.userId.toString()); 
             await AsyncStorage.setItem('email',data.loginInfo.emailId.toString()); 
+            await AsyncStorage.setItem('profilestatus',data.loginInfo.profileStatus.toString()); 
+            await AsyncStorage.setItem('kycstatus',data.loginInfo.kycStatus.toString()); 
             await AsyncStorage.setItem('etherwalletAddress',data.loginInfo.EtherwalletAddress.toString()); 
             await AsyncStorage.setItem('bitcoinWalletReceivingAddress',data.loginInfo.bitcoinWalletReceivingAddress.toString()); 
             console.log('Loginresult',data)
             if(data.loginInfo.twoFactorAuthenticationStatus===0)
             {
-              if(data.loginInfo.kycStatus==1 && data.loginInfo.profileStatus==1 )
-              {
-                 //this.NavigationReset('Home',false,true) //Profile popup apprear,kyc popup appear
-                 //this.NavigationReset('Home',false,false) //Profile popup not apprear,kyc popup appear
-                 this.NavigationReset('Home',true,false) //Profile popup not apprear,kyc popup appear
-              }
-              else if(data.loginInfo.kycStatus!=1 && data.loginInfo.profileStatus!=1  )
-              {
-                this.NavigationReset('Home',false,true) //Profile popup apprear,kyc popup appear
-               // this.NavigationReset('Home',true,false) //Profile popup not  apprear,kyc popup not appear
-              }
-              else if(data.loginInfo.kycStatus==1 && data.loginInfo.profileStatus!=1 )
-              {
-                this.NavigationReset('Home',false,false) //Profile popup not apprear,kyc popup appear
-              }
-              else if(data.loginInfo.kycStatus!=1 && data.loginInfo.profileStatus==1 )
-              {
-                this.NavigationReset('Home',false,true) //Profile popup apprear,kyc popup appear
-              }
+             
+              this.NavigationReset('Home',data.loginInfo.profileStatus,data.loginInfo.kycStatus) //Profile popup not apprear,kyc popup appear            
             }
             else
             {
-              this.props.navigation.navigate('PinCode')
+              this.props.navigation.navigate('PinCode',{profilestatus:data.loginInfo.profileStatus,kycstatus:data.loginInfo.kycStatus})
             }
            
           
@@ -355,21 +340,13 @@ SlideMenu=()=>{
          this.props.navigation.dispatch(
            StackActions.reset({
             index: 0,
-            actions: [NavigationActions.navigate({ routeName: routname,params: {  DashBoardPopup: dashboardpopup,Kyc:kycstatus} })]
+            actions: [NavigationActions.navigate({ routeName: routname,params: {  profilestatus: dashboardpopup,kycstatus:kycstatus} })]
            })
           );
          
        }
        
       }
-      Navigation=(data)=>
-      {
-       
-        this.props.navigation.navigate('Home',{
-          DashBoardPopup: true,Kyc:true
-        });
-      }
-
 
 
 const styles = StyleSheet.create({

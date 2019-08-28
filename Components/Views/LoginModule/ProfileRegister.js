@@ -414,10 +414,12 @@ if(year>2015){
     this.setState({visibles:true,responsemessage:data.message})
     setTimeout(this.navigate, 700);
   }
-  navigate=()=>
+  navigate=async()=>
   {
     this.setState({visibles:false})   
-    this.props.navigation.push('Home',{DashBoardPopup:false,Kyc:false})
+    await AsyncStorage.setItem('kycstatus',1); 
+    await AsyncStorage.setItem('profilestatus',1); 
+    this.props.navigation.push('Home',{profilestatus:1,kycstatus:1})
   }
 
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
 import {
-  View, StyleSheet, Image, Picker, NativeModules, Text, Clipboard, AsyncStorage, StatusBar, BackHandler, TouchableOpacity, ActivityIndicator, Animated, Platform, TextInput, Slider,
+  View, StyleSheet, Image, Picker, NativeModules, Text, Clipboard,LayoutAnimation, AsyncStorage, StatusBar, BackHandler, TouchableOpacity, ActivityIndicator, Animated, Platform, TextInput, Slider,
   Easing, Dimensions, PermissionsAndroid
 } from 'react-native';
 import { Alert } from 'react-native';
@@ -13,6 +13,7 @@ import BlurOverlay, { closeOverlay, openOverlay } from 'react-native-blur-overla
 import Modal from "react-native-modal";
 import Dialog, { DialogContent } from 'react-native-popup-dialog';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
+import ExpandabelList from '../Views/Utils.js/Expandable_DashBoard_List'
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import { VaultSystemApi, CryptoInvestment, CryptoTypeInvestment } from './Api/VaultSystemApi'
 import { SendApi, RequestPaymentApi } from './Api/SendAndRecieveApi'
@@ -46,6 +47,10 @@ export default class DashBoard extends React.Component {
   constructor(props) {
 
     super(props);
+    if (Platform.OS === 'android')
+    {
+     UIManager.setLayoutAnimationEnabledExperimental(true)
+     }
     this.onBackPress = this.onBackPress.bind(this);
     this.springValue = new Animated.Value(0.3)
     this.animatedValue = new Animated.Value(0)
@@ -74,6 +79,7 @@ export default class DashBoard extends React.Component {
       BottomBar: false,
       ScanOpen: true,
       CrptoType: 'ETH',
+      profilecompleted:false,
       Balance: 0.0000,
       Usd: null,
       QrClick: true,
@@ -108,6 +114,8 @@ export default class DashBoard extends React.Component {
       slide: false,
       visible: false,
       sendEtherAmount: '0.000',
+      profilestatus:this.props.navigation.state.params.profilestatus,
+      kycstatus:this.props.navigation.state.params.kycstatus,
       hidden: false,
       app1color: '#fff',
       app6color: '#5099f0',
@@ -411,6 +419,7 @@ export default class DashBoard extends React.Component {
 
 
   }
+  
   RequestPayment = async () => {
     let id = await AsyncStorage.getItem('UserId')
     this.Load()
@@ -802,7 +811,103 @@ export default class DashBoard extends React.Component {
       }
     ).start(() => this._animate())
   }
+  getPopUp()
+  {
+   if(this.state.profilestatus==1 && this.state.kycstatus==1 )
+   {
+     return null
+   }
+   else if(this.state.profilestatus==0 && this.state.kycstatus==1 )
+   {
+    return (<View >
+    <LinearGradient colors={['#395ea4', '#446ea8', '#4c78a9']} style={{ width: '95%', marginLeft: 10, marginRight: 10, padding: 10, height: 160, marginTop: 15, borderRadius: 10 }}>
+      <View style={{ flexDirection: 'row' }}>
+        <View>
+          <Text style={{ marginLeft: 20, fontSize: 18, color: '#fff', fontFamily: 'Exo2-Medium' }}>Complete Your Profile</Text>
+          <View style={{ flexDirection: 'row', marginTop: 10 }}>
+            <Text style={{ marginLeft: 20, fontSize: 10, color: '#fff', width: '65%', fontFamily: '' }}>Complete you profile today to start using your wallet successfully </Text>
+          </View>
+          <TouchableOpacity onPress={this.ContinueClick}>
+            <View style={{ width: '60%', marginLeft: 20, marginTop: 30 }}>
+              <LinearGradient colors={['#41d99c', '#34ddb2', '#21e4d3']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={{ padding: 10, backgroundColor: 'red', justifyContent: 'center', alignItems: 'center', borderRadius: 10 }}>
+                <Text style={{ color: '#fff', fontFamily: 'Poppins-Medium' }}>Continue</Text>
+              </LinearGradient>
+            </View>
+          </TouchableOpacity>
+        </View>
+        <View >
+        </View>
+        <View style={{}}>
+          <Image style={{
+            height: 200, marginLeft: -100, marginTop: -40,
+            width: 250,
+            resizeMode: 'contain'
+          }} source={require("./assets/threelogo.png")} ></Image>
+        </View>
+      </View>
+    </LinearGradient>
+  </View>)
+   }
+   else if(this.state.profilestatus==1 && this.state.kycstatus==0)
+   {
+return(<View >
+  <LinearGradient colors={['#395ea4', '#446ea8', '#4c78a9']} style={{ width: '95%', marginLeft: 10, marginRight: 10, padding: 10, height: 160, marginTop: 15, borderRadius: 10 }}>
+    <Text style={{ marginLeft: 20, fontSize: 18, fontWeight: 'bold', color: '#fff' }}>Document Needed</Text>
+    <View style={{ flexDirection: 'row' }}>
+      <Text style={{ marginLeft: 20, fontSize: 10, color: '#fff', width: '65%' }}>we have some issue with the documents you've supplied.please try uploading them again to continue </Text>
+      <Image style={{
+        marginLeft: 10, height: 50,
+        width: 100,
+        resizeMode: 'contain'
+      }} source={require("./assets/profileicon.png")} ></Image>
+    </View>
+    <TouchableOpacity onPress={() => this.props.navigation.navigate('ChooseCountry')}>
+      <View style={{ width: '50%', marginTop: 20 }}>
+        <LinearGradient colors={['#17e8e3', '#30e0ba', '#3ddba1']} style={{ padding: 10, backgroundColor: 'red', justifyContent: 'center', alignItems: 'center', borderRadius: 10 }}>
+          <TouchableOpacity>
+            <Text style={{ color: '#fff' }}>Upload again</Text>
+          </TouchableOpacity>
+        </LinearGradient>
+      </View>
+    </TouchableOpacity>
+  </LinearGradient>
+</View>)
+   }
+   else
+   {
+      return (<View >
+        <LinearGradient colors={['#395ea4', '#446ea8', '#4c78a9']} style={{ width: '95%', marginLeft: 10, marginRight: 10, padding: 10, height: 160, marginTop: 15, borderRadius: 10 }}>
+          <View style={{ flexDirection: 'row' }}>
+            <View>
+              <Text style={{ marginLeft: 20, fontSize: 18, color: '#fff', fontFamily: 'Exo2-Medium' }}>Complete Your Profile</Text>
+              <View style={{ flexDirection: 'row', marginTop: 10 }}>
+                <Text style={{ marginLeft: 20, fontSize: 10, color: '#fff', width: '65%', fontFamily: '' }}>Complete you profile today to start using your wallet successfully </Text>
+              </View>
+              <TouchableOpacity onPress={this.ContinueClick}>
+                <View style={{ width: '60%', marginLeft: 20, marginTop: 30 }}>
+                  <LinearGradient colors={['#41d99c', '#34ddb2', '#21e4d3']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={{ padding: 10, backgroundColor: 'red', justifyContent: 'center', alignItems: 'center', borderRadius: 10 }}>
+                    <Text style={{ color: '#fff', fontFamily: 'Poppins-Medium' }}>Continue</Text>
+                  </LinearGradient>
+                </View>
+              </TouchableOpacity>
+            </View>
+            <View >
+            </View>
+            <View style={{}}>
+              <Image style={{
+                height: 200, marginLeft: -100, marginTop: -40,
+                width: 250,
+                resizeMode: 'contain'
+              }} source={require("./assets/threelogo.png")} ></Image>
+            </View>
+          </View>
+        </LinearGradient>
+      </View>)
+     
+   }
+  }
   render() {
+   let Renderpopup=this.getPopUp()
     const RotateData = this.RotateValueHolder.interpolate({
       inputRange: [0, 1],
       outputRange: ['0deg', '360deg'],
@@ -915,7 +1020,7 @@ export default class DashBoard extends React.Component {
                     <LinearGradient colors={['#17e8e3', '#30e0ba', '#3ddba1']} style={{ justifyContent: 'center', alignItems: 'flex-start', borderTopLeftRadius: 25, borderBottomLeftRadius: 25, paddingTop: 10, paddingBottom: 10 }}>
 
                       <View style={{ flexDirection: 'row' }}>
-                        <Image style={{ marginLeft: 10, width: 30, height: 30, resizeMode: 'contain' }} source={require("./assets/app1white.png")} ></Image>
+                        <Image style={{ marginLeft: 10, width: 30, height: 30, resizeMode: 'contain',tintColor:'#fff' }} source={require("./assets/greenD.png")} ></Image>
 
                       </View>
 
@@ -932,71 +1037,8 @@ export default class DashBoard extends React.Component {
                 <Text style={{ marginLeft: 10, fontSize: 16, color: '#FFFFFF', fontFamily: 'Exo2-Regular' }}>Wallet</Text>
               </View>
             </View>
-            {((this.state.NoPopup ? null : ((this.state.KyC) ?
-              <View >
-                <LinearGradient colors={['#395ea4', '#446ea8', '#4c78a9']} style={{ width: '95%', marginLeft: 10, marginRight: 10, padding: 10, height: 160, marginTop: 15, borderRadius: 10 }}>
-                  <View style={{ flexDirection: 'row' }}>
-                    <View>
-                      <Text style={{ marginLeft: 20, fontSize: 18, color: '#fff', fontFamily: 'Exo2-Medium' }}>Complete Your Profile</Text>
-                      <View style={{ flexDirection: 'row', marginTop: 10 }}>
-                        <Text style={{ marginLeft: 20, fontSize: 10, color: '#fff', width: '65%', fontFamily: '' }}>Complete you profile today to start using your wallet successfully </Text>
-                      </View>
-                      <TouchableOpacity onPress={this.ContinueClick}>
-                        <View style={{ width: '60%', marginLeft: 20, marginTop: 30 }}>
-                          <LinearGradient colors={['#41d99c', '#34ddb2', '#21e4d3']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={{ padding: 10, backgroundColor: 'red', justifyContent: 'center', alignItems: 'center', borderRadius: 10 }}>
-                            <Text style={{ color: '#fff', fontFamily: 'Poppins-Medium' }}>Continue</Text>
-                          </LinearGradient>
-                        </View>
-                      </TouchableOpacity>
-                    </View>
-
-                    <View >
-
-
-
-
-                    </View>
-                    <View style={{}}>
-                      <Image style={{
-                        height: 200, marginLeft: -100, marginTop: -40,
-                        width: 250,
-                        resizeMode: 'contain'
-                      }} source={require("./assets/threelogo.png")} ></Image>
-                    </View>
-                  </View>
-
-
-
-
-
-                </LinearGradient>
-              </View> : <View >
-                <LinearGradient colors={['#395ea4', '#446ea8', '#4c78a9']} style={{ width: '95%', marginLeft: 10, marginRight: 10, padding: 10, height: 160, marginTop: 15, borderRadius: 10 }}>
-                  <Text style={{ marginLeft: 20, fontSize: 18, fontWeight: 'bold', color: '#fff' }}>Document Needed</Text>
-                  <View style={{ flexDirection: 'row' }}>
-                    <Text style={{ marginLeft: 20, fontSize: 10, color: '#fff', width: '65%' }}>we have some issue with the documents you've supplied.please try uploading them again to continue </Text>
-                    <Image style={{
-                      marginLeft: 10, height: 50,
-                      width: 100,
-                      resizeMode: 'contain'
-                    }} source={require("./assets/profileicon.png")} ></Image>
-                  </View>
-                  <TouchableOpacity onPress={() => this.props.navigation.navigate('ChooseCountry')}>
-                    <View style={{ width: '50%', marginTop: 20 }}>
-                      <LinearGradient colors={['#17e8e3', '#30e0ba', '#3ddba1']} style={{ padding: 10, backgroundColor: 'red', justifyContent: 'center', alignItems: 'center', borderRadius: 10 }}>
-                        <TouchableOpacity>
-                          <Text style={{ color: '#fff' }}>Upload again</Text>
-                        </TouchableOpacity>
-                      </LinearGradient>
-                    </View>
-                  </TouchableOpacity>
-                </LinearGradient>
-              </View>
-            ))
-
-
-            )}
-
+           
+                {Renderpopup}
 
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginBottom: 30 }}>
               <Carousel
@@ -1052,7 +1094,7 @@ export default class DashBoard extends React.Component {
                   <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', marginLeft: 20 }}>
                     <Text style={{ color: '#ABB3D0', opacity: 1, fontSize: 12, fontFamily: 'Exo2-Regular' }}>{this.state.Amount}</Text>
                     <Image style={{ width: 10, height: 10, marginLeft: 10 }} source={require("./assets/down_arrow.png")} ></Image>
-                    <Picker style={{ position: 'absolute', top: 0, width: 1000, height: 1000 }}
+                    <Picker style={{ position: 'absolute', top: 0, width: 1000, height: 3000 }}
                       selectedValue={this.state.Amount}
                       onValueChange={(itemValue, itemIndex) => this.selectedAmount(itemValue, itemIndex)}>
 
@@ -1115,7 +1157,7 @@ export default class DashBoard extends React.Component {
                   <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', padding: 10, backgroundColor: '#2c4b9d', borderRadius: 15 }}>
                     <Image style={{ width: 10, height: 10, tintColor: '#5496FF' }} source={require("./assets/down_arrow.png")} ></Image>
                     <Text style={{ color: '#5496FF', opacity: 1, fontSize: 12, marginLeft: 5, fontFamily: 'Exo2-Bold' }}>{this.state.Time}</Text>
-                    <Picker style={{ position: 'absolute', top: 0, width: 1000, height: 1000 }}
+                    <Picker style={{ position: 'absolute', top: 0, width: 1000, height: 3000 }}
                       selectedValue={this.state.Time}
                       onValueChange={(itemValue, itemIndex) => this.selectedTime(itemValue, itemIndex)}>
 
@@ -1130,52 +1172,13 @@ export default class DashBoard extends React.Component {
 
 
                 </View>
-                <View style={{ flex: 1 }}>
-                  <FlatList style={{ marginTop: 10 }}
-                    ItemSeparatorComponent={this.space}
-                    data={this.state.dataSource}
-                    renderItem={({ item, separators }) =>
-
-                      <View elevation={5} style={{
-                        marginLeft: 30, marginRight: 30, shadowOffset: { width: 10, height: 10 },
-                        borderBottomWidth: 0,
-                        borderRadius: 25
-                      }}>
-
-                        <LinearGradient
-                          colors={['#4262B5', '#3A549B', '#314279', '#2C3765', '#2A335E']} style={{ borderRadius: 25, paddingTop: 10, paddingBottom: 10 }}>
-
-                          <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-                            <View style={{ alignItems: 'center' }} >
-                              {(item.transactionType === 'Send') ? <Image style={{ width: 50, height: 50, resizeMode: 'contain' }} source={require("./assets/redicon.png")} ></Image> :
-                                <Image style={{ width: 50, height: 50, resizeMode: 'contain' }} source={require("./assets/greenD.png")} ></Image>}
-
-                            </View>
-                            <View style={{ flexDirection: 'column' }}>
-                              <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
-                                <Text style={{ marginRight: 20, marginTop: 10, color: '#fff', fontFamily: "Exo2-Bold" }}>Sent to {item.sendto}</Text>
-                                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                                  <Image style={{ width: 25, marginTop: 10, height: 25 }} source={require("./assets/plusblue.png")} ></Image>
-                                  <Text style={{ marginRight: 20, marginTop: 10, color: (item.Status != 'Completed') ? '#fff' : '#fff', fontFamily: 'Exo2-Regular' }}>$ {item.usdValue}</Text>
-                                </View>
-
-                              </View>
-                              <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 15 }}>
-
-
-                                <Text style={{ marginRight: 20, marginTop: 10, color: '#5496FF', fontFamily: 'Exo2-Regular' }}>{item.Date + " " + item.time}</Text>
-
-                                <Text style={{ marginRight: 20, marginTop: 10, color: '#5496FF', fontFamily: 'Exo2-Regular' }}>{item.receivedAmount}ETH</Text>
-                              </View>
-                            </View>
-
-                          </View>
-                        </LinearGradient>
-                      </View>
-
-
-                    }
-                  />
+                <View style={{ flex: 1,marginTop:10 }}>
+                {
+            this.state.dataSource.map((item, key) =>
+              (
+                <ExpandabelList  key={item.listCalculatingAmountDTO} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
+              ))
+          }
                 </View>
 
               </View>
@@ -1190,6 +1193,20 @@ export default class DashBoard extends React.Component {
       </View>
 
     );
+  }
+  update_Layout = (index) => {
+
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+
+    const array = [...this.state.dataSource];
+
+    array[index]['expanded'] = !array[index]['expanded'];
+
+    this.setState(() => {
+      return {
+        dataSource: array
+      }
+    });
   }
   clickedItemText = (item) => {
     Alert.alert(item.Status)
@@ -1262,7 +1279,14 @@ export default class DashBoard extends React.Component {
     console.log('Get Activity data', data)
     if (data != 'undefined') {
       if (data.status === ResponseSuccessStatus) {
-        this.setState({ dataSource: data.listCalculatingAmountDTO })
+        let FinalResult=[]
+        FinalResult=data.listCalculatingAmountDTO
+        const newFile =FinalResult.map((file) => {
+
+          return {...file, expanded: false};
+      });
+      this.setState({dataSource: newFile });
+       
       }
       else if (data.error === InvalidToken) {
         Alert.alert(

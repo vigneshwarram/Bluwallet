@@ -323,10 +323,12 @@ SlideMenu=()=>{
       {
         this.setState({animate:false})
       }
-      timeoutIn=()=>
+      timeoutIn=async()=>
       {
                this.setState({visibles:false})
-              this.props.navigation.navigate("Home",{DashBoardPopup: true,Kyc:false})
+               await AsyncStorage.setItem('kycstatus',1); 
+               await AsyncStorage.setItem('profilestatus',1); 
+               this.props.navigation.push('Home',{profilestatus:1,kycstatus:1})
       }
       Responsedata=(data)=>
       {

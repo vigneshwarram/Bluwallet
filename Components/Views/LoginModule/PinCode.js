@@ -38,7 +38,9 @@ export default class PinCode  extends React.Component {
       visible: false,
       hidden: false,
       app1color:'#fff',
-      app5color:'#fff'
+      app5color:'#fff',
+      profilestatus:this.props.navigation.state.params.profilestatus,
+      kycstatus:this.props.navigation.state.params.kycstatus
     };
   
   }
@@ -49,35 +51,6 @@ export default class PinCode  extends React.Component {
   
     //this.GetListData()
   }
-  GetListData=()=>{
-    this.Load()
-    var obj = {  
-      method: 'GET',
-      headers: {
-        'Content-Type'    : 'application/json',
-        'Accept'          : 'application/json',
-       'Authorization':'Bearer '+'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6ImJmNDczYTU5LTQxNzAtNDQ2My05YTI2LWZlNWNhYTVlZjMwZiIsIkV4cGlyeSI6bnVsbH0.tUaime3lRYn7wAu2KCnW3oFwIZa18eIL_4AOnoGJiKU'.trim()   
-         }
-  }
-  fetch("https://apptest.supplynow.co.uk/api/v1/Bookings/MyBookings",obj)  
-  .then((res)=> {
-    return res.json();
-   })
-   .then((resJson)=>{
-     this.dataset(resJson)
-   
-    return resJson;
-   })
-   .catch((error) => {
-    console.error(error);
-});
-}
-dataset=(data)=>{
-  this.setState({
-    dataSource:data
-  })
-  this.hide()
-}
 Load(){
   this.StartImageRotateFunction()
   this.setState({animate:true})
@@ -256,30 +229,8 @@ SlideMenu=()=>{
          if(data.status==ResponseSuccessStatus)
          {
           //await AsyncStorage.setItem('loginInfo',data.loginInfo); 
-          if(data.loginInfo.kycStatus==1 && data.loginInfo.profileStatus==1 )
-          {
-             //this.NavigationReset('Home',false,true) //Profile popup apprear,kyc popup appear
-             //this.NavigationReset('Home',false,false) //Profile popup not apprear,kyc popup appear
-             this.NavigationReset('Home',true,false) //Profile popup not apprear,kyc popup appear
-          }
-          else if(data.loginInfo.kycStatus!=1 && data.loginInfo.profileStatus!=1  )
-          {
-            this.NavigationReset('Home',false,true) //Profile popup apprear,kyc popup appear
-           // this.NavigationReset('Home',true,false) //Profile popup not  apprear,kyc popup not appear
-          }
-          else if(data.loginInfo.kycStatus==1 && data.loginInfo.profileStatus!=1 )
-          {
-            this.NavigationReset('Home',false,false) //Profile popup not apprear,kyc popup appear
-          }
-          else if(data.loginInfo.kycStatus!=1 && data.loginInfo.profileStatus==1 )
-          {
-            this.NavigationReset('Home',false,true) //Profile popup apprear,kyc popup appear
-          }
-        else
-        {
-          setTimeout(this.NavigationReset('Home',false,true), 500);
-          
-        }
+          this.NavigationReset('Home',this.state.profilestatus,this.state.kycstatus) //Profile popup not apprear,kyc popup appear        
+        
           
          }
          else
@@ -301,7 +252,7 @@ SlideMenu=()=>{
         this.props.navigation.dispatch(
           StackActions.reset({
            index: 0,
-           actions: [NavigationActions.navigate({ routeName: routname,params: {  DashBoardPopup: dashboardpopup,Kyc:kycstatus} })]
+           actions: [NavigationActions.navigate({ routeName: routname,params: {  profilestatus: dashboardpopup,kycstatus:kycstatus} })]
           })
          );
         
