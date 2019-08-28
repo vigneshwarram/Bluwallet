@@ -472,7 +472,7 @@ this.setState({
       {
         let data=[50, 60, 70, 95, 100, 100, 100, 80, 90, 150, 50, 40, 60, 100]
         this.setState({data:data,BitShadowClick:true,MoneroShadowClick:false,TotalPrice:this.state.dataSource.usdforBtc,EtheriumShadowClick:false,zShadowClick:false})
-        setTimeout(this.nav, 700);
+        setTimeout(this.nav, 3000);
       }
       nav=()=>
       {

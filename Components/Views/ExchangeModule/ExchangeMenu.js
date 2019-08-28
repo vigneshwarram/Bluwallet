@@ -325,7 +325,7 @@ space(){
     <View style={{flexDirection:'row'}}>
       <View style={{
      justifyContent:'center',alignItems:"center"}} >
-          <Image  style={{width: 30, height: 30}}  source={require("../assets/exchange.png")} ></Image>  
+          <Image  style={{width: 50, height: 50}}  source={require("../assets/exchange.png")} ></Image>  
     
 
           </View>
@@ -402,7 +402,7 @@ buyClick=()=>{
             this.ExchangeReset()
             this.Publicreset()
             this.SellReset()
-            setTimeout(this.navigateBuy,500)
+            setTimeout(this.navigateBuy,1000)
            
 }
 navigateBuy=()=>
@@ -420,7 +420,7 @@ SellClick=()=>{
             this.ExchangeReset()
             this.Publicreset()
             this.BuyReset()
-            setTimeout(this.navigateSend,500)
+            setTimeout(this.navigateSend,1000)
            
 }
 navigateSend=()=>

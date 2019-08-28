@@ -323,14 +323,17 @@ renderScane() {
           </LinearGradient>
   </View>    
          <View style={{flex:0.7,marginTop:10}}>
-         <ScrollView contentContainerStyle={{ paddingBottom:90 }}>
+         <ScrollView contentContainerStyle={{ paddingBottom:100 }}>
+         <View>
           {
             this.state.dataSource.map((item, key) =>
               (
                 <Expandable_ListView popupShow={this.successStatus} onHide={this.hide} onLoad={this.Load} key={item.exchangeDTOList} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
               ))
           }
+          </View>
         </ScrollView>
+        
          </View>
 
    
