@@ -65,7 +65,7 @@ export default class Expandable_DashBoard_List extends Component {
               <View style={{ flexDirection: 'row', }}>
                 <View>
                   {(this.props.item.transactionType === 'Send') ? <Image style={{ width: 50, height: 50, }} source={require("../assets/redicon.png")} ></Image> :
-                    <Image style={{ width: 50, height: 50,  }} source={require("../assets/greenD.png")} ></Image>}
+                    <Image style={{ width: 50, height: 50,  }} source={require("../assets/icon2.png")} ></Image>}
 
                 </View>
                 <View style={{ flexDirection: 'column' }}>
@@ -98,57 +98,54 @@ export default class Expandable_DashBoard_List extends Component {
           <View style={{ height: this.state.layout_Height, overflow: 'hidden' }}>
          
 
-         <View style={{marginLeft:30,marginRight:30}}>
-   <View style={{flexDirection:'row',justifyContent:'space-between',borderColor:'#5496FF',borderWidth:0.5,marginLeft:20}}>
-<View style={{alignItems:'center',justifyContent:'center',marginLeft:20}} >
+         <View style={{paddingLeft:50,paddingRight:50,paddingBottom:20}}>
+   <View style={{flexDirection:'row',justifyContent:'space-between',borderColor:'#5496FF',borderWidth:0.5,}}>
+<View style={{marginLeft:20}} >
 <Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Medium',marginBottom:10}}>TransactionType</Text>
 </View>  
 
-<View >
+<View style={{marginRight:20}}>
 <Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,fontFamily:'Exo2-Regular',marginBottom:10}}>{this.props.item.transactionType}</Text> 
 
 </View>  
-<View></View>
+
 </View>
-<View style={{flexDirection:'row',justifyContent:'space-between',borderColor:'#5496FF',borderWidth:0.5,marginLeft:20}}>
+<View style={{flexDirection:'row',justifyContent:'space-between',borderColor:'#5496FF',borderWidth:0.5,}}>
 <View style={{marginLeft:20}}>
 <Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Medium',marginBottom:10}}>Amount</Text>
 </View>  
 
-<View >
+<View style={{marginRight:20}}>
 <Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,fontFamily:'Exo2-Regular',marginBottom:10}}>{this.props.item.amount}</Text> 
 
 </View>  
-<View></View>
+
 </View>
-<View style={{flexDirection:'row',justifyContent:'space-between',borderColor:'#5496FF',marginLeft:20,borderWidth:0.5}}>
+<View style={{flexDirection:'row',justifyContent:'space-between',borderColor:'#5496FF',borderWidth:0.5}}>
 <View style={{marginLeft:20}}>
 <Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Medium',marginBottom:10}}>USD</Text>
 
 </View>  
 
-<View >
-<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,fontFamily:'Exo2-Regular',marginBottom:10,marginLeft:20}}>{this.props.item.usdValue}</Text> 
+<View style={{marginRight:20}} >
+<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,fontFamily:'Exo2-Regular',marginBottom:10,}}>{this.props.item.usdValue}</Text> 
 
 </View>  
-<View></View>
+
 </View>
 
-<View style={{flexDirection:'row',justifyContent:'space-between',borderColor:'#5496FF',borderWidth:0.5,marginLeft:20}}>
+<View style={{flexDirection:'row',justifyContent:'space-between',borderColor:'#5496FF',borderWidth:0.5,}}>
 <View style={{marginLeft:20}}>
 <Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Medium',marginBottom:10}}>Date</Text>
 </View>  
 
-<View >
-<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,fontFamily:'Exo2-Regular',marginBottom:10}}>{this.props.item.Date + " " + this.props.item.time}</Text> 
+<View style={{marginRight:20}}>
+<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,fontFamily:'Exo2-Regular',marginBottom:10}}>{this.props.item.Date}</Text> 
 
 </View>  
-<View></View>
-</View>
-<View style={{justifyContent:'center',alignItems:'center',marginBottom:10,width:"100%",marginTop:30}}>
-
 
 </View>
+
 </View> 
 
 
