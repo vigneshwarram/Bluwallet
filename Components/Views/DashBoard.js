@@ -168,6 +168,7 @@ export default class DashBoard extends React.Component {
     BackHandler.removeEventListener('hardwareBackPress', this.onBackPress);
   }
   onBackPress = () => {
+    this.setState({ QrButton:false })
     if (this.state.backoption) {
       closeOverlay()
       this.setState({ backoption: false })

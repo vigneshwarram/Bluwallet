@@ -557,18 +557,12 @@ export default class VaultFilter extends React.Component {
                       <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', marginLeft: -60 }}>
                         <Text style={{ color: '#ABB3D0', opacity: 1, fontSize: 12, fontFamily: 'Exo2-Regular' }}>{this.state.Amount}</Text>
                         <Image style={{ width: 10, height: 10, marginLeft: 10, tintColor: '#ABB3D0' }} source={require("../assets/down_arrow.png")} ></Image>
-                        <Picker style={{ position: 'absolute', top: 0, width: 1000, height: 1000 }}
+                        <Picker style={{ position: 'absolute', top: 0, width: 1000, height: 3000 }}
                           selectedValue={this.state.Amount}
                           onValueChange={(itemValue, itemIndex) => this.selectedPrice(itemValue, itemIndex)}>
 
                           <Picker.Item label="USDoller" value="USDoller" />
-                          <Picker.Item label="Inr" value="Inr" />
-                          <Picker.Item label="USA" value="USA" />
-                          <Picker.Item label="German" value="German" />
-                          <Picker.Item label="Italy" value="Italy" />
-                          <Picker.Item label="Aus" value="Aus" />
-                          <Picker.Item label="India" value="India" />
-                          <Picker.Item label="Aus" value="Aus" />
+                      
                         </Picker>
                       </View>
 
@@ -589,7 +583,7 @@ export default class VaultFilter extends React.Component {
                           marginLeft: 30, marginRight: 30, shadowOffset: { width: 10, height: 10 },
 
                           borderBottomWidth: 0,
-                          shadowColor: '#394d88',
+      
                           shadowOffset: { width: 0, height: 12 },
                           shadowOpacity: 0.8,
                           shadowRadius: 2,

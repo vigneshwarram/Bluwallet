@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet,TextInput, Image,Picker,FlatList,Text,ActivityIndicator,TouchableOpacity,Easing,Animated ,AsyncStorage} from 'react-native';
+import { View, StyleSheet,TextInput, Image,Picker,FlatList,Text,ActivityIndicator,ScrollView,TouchableOpacity,Easing,Animated ,AsyncStorage} from 'react-native';
 import { Alert } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
 import LinearGradient from 'react-native-linear-gradient';
 import BlurOverlay,{closeOverlay,openOverlay} from 'react-native-blur-overlay';
 import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
-import { ScrollView } from 'react-native-gesture-handler';
 import {ExchangeList,ExchangeRequest,ExchangeAdminRequest} from '../Api/ExchangeRequest'
 import {StackActions} from 'react-navigation'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from '../Utils.js/Constant'
@@ -309,9 +308,12 @@ renderScane() {
     
             
           </LinearGradient>
-  </View>    
-         <View style={{flex:0.6,marginTop:20,marginBottom:30}}>
-         <FlatList 
+  </View>  
+
+  <View style={{flex:0.6,marginTop:20}}>
+  <ScrollView contentContainerStyle={{paddingBottom: 100}}>
+  <View>
+  <FlatList 
       ItemSeparatorComponent={this.space}
       data={this.state.dataSource}
       keyExtractor={(item, index) => item.id}
@@ -339,7 +341,7 @@ renderScane() {
      <View>
      <LinearGradient colors={['#7498F9','#9B89F8','#D476F7']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:7,borderRadius:5,backgroundColor:'green',justifyContent:'center',alignItems:'center'}}>
 
-<Text style={{color:'#fff',fontFamily:'Exo2-Regular'}}>{(this.state.StatusMode==='Request'?'Request':'Exchange')}</Text>
+<Text style={{color:'#fff',fontFamily:'Exo2-Regular'}}>{(this.state.StatusMode==='Request'?'Accept':'Exchange')}</Text>
 </LinearGradient>
      </View>
      </TouchableOpacity> 
@@ -353,18 +355,15 @@ renderScane() {
           )
        }
     />
+  </View>
+       
+     </ScrollView>
          </View>
+ 
+        
 
    
-   <View
-  style={{
-    marginLeft:30,marginRight:30,
-    marginTop:10,
-    borderBottomColor: '#000000',marginBottom:10,
-    borderBottomWidth: 1,
-  }}
-/>  
-  
+
   
 
 
@@ -481,7 +480,9 @@ renderScane() {
           this.setState({exchangeOrRequest:true})
           console.log('exchangeOrRequest',this.state.exchangeOrRequest)
         }else{
+          this.Load()
           this.setState({exchangeOrRequest:false})
+          ExchangeList(this.ExchangeListResponse)
           console.log('exchangeOrRequest',this.state.exchangeOrRequest)
         }
       }

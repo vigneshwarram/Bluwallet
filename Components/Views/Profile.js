@@ -248,7 +248,7 @@ space(){
   </View>
   }
     return (  
-        
+      <ScrollView contentContainerStyle={{paddingBottom:100}} style={{backgroundColor:'#21284A'}}>
       <View style={styles.Maincontainers}>           
       
       <LinearGradient
@@ -337,7 +337,7 @@ borderRadius:25,
   }}>
 </View>
 <View  style={{flex:1,width:'100%'}}>
-<ScrollView>
+
 <View style={{marginTop:20,backgroundColor:'#fff'}}>   
 <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']}>
 <View
@@ -389,14 +389,6 @@ borderRadius:25,
 <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:''}}>{this.state.dateOfBirth}</Text> 
 </View>
 </View>
-<View
-  style={{
-    marginTop:10,
-    borderBottomColor: '#43549c',marginBottom:10,
-    borderBottomWidth: 1,
-  }}
-/>
-<View style={{height:30,width:'100%',backgroundColor:'transparent'}}></View>
 <View
   style={{
     marginTop:10,
@@ -524,7 +516,7 @@ borderRadius:25,
 </View>
 </View>
 
-<View style={{marginTop:30,marginBottom:100,justifyContent:'center',alignItems:"center"}}>
+<View style={{marginTop:30,justifyContent:'center',alignItems:"center"}}>
 
 <View style={{width:'70%',}}>
 <LinearGradient colors={['#f4347f','#f85276','#fe7a6e']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:10 }}>
@@ -550,7 +542,7 @@ borderRadius:25,
   </LinearGradient>
 </View>
 
-    </ScrollView>    
+    
    
           </View>
           
@@ -564,7 +556,7 @@ borderRadius:25,
      
      </View>
       
-    
+     </ScrollView>    
     );
       }
       clickedItemText=(item)=>
@@ -617,7 +609,6 @@ const styles = StyleSheet.create({
  
   Maincontainers: {
     flex: 1,   
-    backgroundColor: '#fff',
   },
   containers: {
     backgroundColor: 'transparent',
