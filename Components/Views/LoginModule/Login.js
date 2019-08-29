@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,Animated,TextInput,Text,Easing,TouchableOpacity,LayoutAnimation,KeyboardAvoidingView,BackHandler,AsyncStorage } from 'react-native';
+import { View, StyleSheet, Image,Animated,TextInput,Text,Keyboard,Easing,TouchableOpacity,LayoutAnimation,KeyboardAvoidingView,BackHandler,AsyncStorage } from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 import {loginApi} from '../Api/LoginApi'
@@ -38,8 +38,16 @@ export default class Login  extends React.Component {
   }
   componentDidMount() {
     this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+    this.keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      this._keyboardDidHide,
+    );
   }
-
+  _keyboardDidHide=()=>
+  {
+    console.log('its comming')
+    this.textInputRef.focus()
+  }
   componentWillUnmount() {
     this.backHandler.remove()
   }
@@ -172,6 +180,9 @@ SlideMenu=()=>{
      
      <TextInput  placeholder="User"
          placeholderTextColor="#3d5498" 
+         ref={this.focusreference}
+        
+         onSubmitEditing={this.focus}
          onChangeText={(text) => this.setState({Username:text})}
          style={styles.inputBox} />
      </View>
@@ -184,6 +195,7 @@ SlideMenu=()=>{
          // Adding hint in TextInput using Placeholder option.
          placeholder="Password"
          placeholderTextColor="#3d5498" 
+         ref={ref => this.textInputRef = ref}
          style={styles.inputBox}
          secureTextEntry={true}
          onChangeText={(text) => this.setState({Password:text})}
@@ -224,6 +236,10 @@ SlideMenu=()=>{
       clickedItemText=(item)=>
       {
           Alert.alert(item.Status)
+      }
+      focus=()=>
+      {
+       this.textInputRef.focus()
       }
       LoginAction=()=>
       {

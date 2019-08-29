@@ -326,14 +326,13 @@ renderScane() {
     colors={['#4262B5', '#3A549B','#314279','#2C3765','#2A335E']} style={{ borderRadius:25}}>
         <View style={{flexDirection:'row',padding:20,justifyContent:'space-between'}}>
         <View>
-        <View style={{flexDirection:'column'}}>
-     
-     <Text  style={{marginRight:10,marginTop:10,fontSize:10,color:'#5496FF',fontFamily:'Exo2-Regular',marginLeft:10}}>100</Text>         
+        <View style={{flexDirection:'row'}}>
      <Text  style={{marginRight:10,marginTop:5,color:"#ABB3D0",fontFamily:'Exo2-Bold',fontSize:11}}>{item.userName}</Text>  
+     <Text  style={{marginRight:10,fontSize:10,color:'#5496FF',fontFamily:'Exo2-Regular'}}>100+</Text>         
      </View>   
         </View>
         <View>
-        <Text  style={{marginRight:10,marginTop:10,marginLeft:10, color:"#ABB3D0",fontFamily:'Exo2-Regular'}}>{item.totalAmount}</Text> 
+        <Text  style={{marginRight:10,marginTop:10,marginLeft:10, color:"#ABB3D0",fontFamily:'Exo2-Regular'}}>{item.amountToTrade}</Text> 
      <Text  style={{marginTop:10,marginLeft:10, color:'#5496FF',fontFamily:'Exo2-Regular',fontSize:10}}>{item.exchangeType}</Text>  
         </View>
         <View style={{marginTop:10}}>

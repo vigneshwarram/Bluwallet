@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet,TextInput, Image,Picker,FlatList,Text,ActivityIndicator,TouchableOpacity,BackHandler,Animated} from 'react-native';
+import { View, StyleSheet,TextInput, Image,Picker,LayoutAnimation,Text,ActivityIndicator,TouchableOpacity,UIManager,Animated,Platform} from 'react-native';
 import { Alert } from 'react-native';
+
 import LinearGradient from 'react-native-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
 import Spinner from 'react-native-loading-spinner-overlay';
 import {ExchangeList} from '../Api/ExchangeRequest'
+import ExchangeMenu_Expandable from '../Utils.js/ExchangeMenu_Expandable'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from '../Utils.js/Constant'
 
 export default class  ExchangeMenu  extends React.Component {
@@ -17,8 +19,12 @@ export default class  ExchangeMenu  extends React.Component {
 
   constructor(props) {
     super(props);
-    
+    if (Platform.OS === 'android')
+    {
+     UIManager.setLayoutAnimationEnabledExperimental(true)
+     }
     this.state = {
+      totalresponse:[],
       dataSource:[],
       cityItems:["US Doller,Indian,Eutherium"],
       Amount:'COP',
@@ -91,6 +97,20 @@ export default class  ExchangeMenu  extends React.Component {
     this.Load()
     ExchangeList(this.ExchangeListResponse)
   }
+  update_Layout = (index) => {
+
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+
+    const array = [...this.state.dataSource];
+
+    array[index]['expanded'] = !array[index]['expanded'];
+
+    this.setState(() => {
+      return {
+        dataSource: array
+      }
+    });
+  }
   ExchangeListResponse=(data)=>
 {
   console.log('Exhchange List',data)
@@ -99,10 +119,14 @@ export default class  ExchangeMenu  extends React.Component {
   {
     if(data.status===ResponseSuccessStatus)
     {
+      this.setState({totalresponse:data.fetchExchageRequestDTO.exchangeDTOList})
       let FinalResult=[];
-       FinalResult=this.search(0,data.fetchExchageRequestDTO.exchangeDTOList)
-       console.log('Final result',FinalResult)
-     this.setState({dataSource:FinalResult})
+       //FinalResult=this.search(1,data.fetchExchageRequestDTO.exchangeDTOList)
+       const newFile =data.fetchExchageRequestDTO.exchangeDTOList.map((file) => {
+
+        return {...file, expanded: false};
+    });
+    this.setState({dataSource: newFile });
     }
     else if(data.error===InvalidToken)
     {
@@ -120,6 +144,18 @@ export default class  ExchangeMenu  extends React.Component {
       Alert.alert(InvalidResponse)
     }
   }
+}
+search = (key, inputArray) => {
+  console.log('inputArray length',inputArray.length)
+  let SearchArray=[]
+  for (let i=0; i < inputArray.length; i++) {
+    //if (inputArray[i].exchangeType === key ||inputArray[i].exchangeType === 'ETH_BTC_USER' && inputArray[i].status===1) {
+        if (inputArray[i].status===1) {
+        SearchArray.push(inputArray[i])
+      }
+      
+  }
+  return SearchArray
 }
 search = (key, inputArray) => {
   console.log('inputArray length',inputArray.length)
@@ -308,62 +344,18 @@ space(){
               <Image  style={{width: 100, height: 150,resizeMode:'contain'}}  source={require("../assets/tree.png")} ></Image> 
         </View>
     </View>
-  
-        <View style={{flex:1}}>
-        <FlatList  style={{marginTop:10}}
-      ItemSeparatorComponent={this.space}
-      data={this.state.dataSource}
-          renderItem={({item,separators})  =>
-        <TouchableOpacity onShowUnderlay={separators.highlight}
-      onHideUnderlay={separators.unhighlight} onPress = { this.clickedItemText.bind(this, item)}>
-      <View style={{marginLeft:30,marginRight:30, shadowOffset: { width: 10, height: 10 }, 
-  borderBottomWidth: 0,
-  borderRadius:25}}>
-  <LinearGradient
-    colors={['#4262B5', '#3A549B','#314279','#2C3765','#2A335E']}  style={{ borderRadius:25}}>
-    <View style={{flexDirection:'row',justifyContent:'space-between',padding:20,}}>
-    <View style={{flexDirection:'row'}}>
-      <View style={{
-     justifyContent:'center',alignItems:"center"}} >
-          <Image  style={{width: 50, height: 50}}  source={require("../assets/exchange.png")} ></Image>  
+    <View style={{ flex: 1,marginTop:10 }}>
+    <View style={{marginLeft:45,marginBottom:15}}>
+    <Text style={{fontSize:15,color:'#fff',fontFamily:"Exo2-SemiBold"}}>History</Text>
+    </View>
     
-
-          </View>
-        
-          <View style={{marginLeft:30,justifyContent:
-        'space-around'}}>
-        <View style={{paddingBottom:10}}>
-        <Text  style={{marginRight:20,color:(item.status==1)?'#fff':'#fff',fontFamily:"Exo2-Bold",}}>{(item.status==1)?'Exchanged':"Exchanged"}</Text>
-        </View>
-    <View>
-    <Text  style={{marginRight:20,color:'#5496FF',fontFamily:'Exo2-Regular'}}>{item.date1}</Text> 
-    </View>
-        
-     </View>
-      </View>
-      <View>
-      <View style={{justifyContent:'space-between',paddingBottom:10}}>    
-     
-     <Text  style={{marginRight:20,color:'#fff',fontFamily:'Exo2-Regular'}}>{item.totalAmount}</Text>    
-    </View>
-    <View style={{justifyContent:'space-between'}}>    
-    
-    <Text  style={{marginRight:20,color:'#5496FF',fontFamily:'Exo2-Regular'}}>{item.transactionFee}ETH</Text> 
-    </View>
-      </View>
-      
-    </View>
-  
-     
-  
-      
-</LinearGradient>
-  </View>
-       
-  </TouchableOpacity>  
-       }
-    />
-        </View>
+                {
+            this.state.dataSource.map((item, key) =>
+              (
+                <ExchangeMenu_Expandable  key={item.exchangeDTOList} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
+              ))
+          }
+                </View>
 
    
    
@@ -532,7 +524,20 @@ Exchangecolor5:'#4781DF'
 this.setState({
   Admin:item
 })
+         if(item=='user')
+         {
+          let FinalResult=[];
+          FinalResult=this.search(0,this.state.totalresponse)
+          const newFile =FinalResult.map((file) => {
+   
+           return {...file, expanded: false};
+       });
+       this.setState({dataSource: newFile });
+         }
+         else
+         {
 
+         }
       }
 }
 

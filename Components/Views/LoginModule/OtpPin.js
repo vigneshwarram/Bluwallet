@@ -180,6 +180,7 @@ export default class OtpPin extends React.Component {
                         }}>
                             <OTPInput
                                 value={this.state.otp}
+                        
                                 onChange={this.handleOTPChange}
                                 tintColor="#354e91"
                                 otpLength={6}

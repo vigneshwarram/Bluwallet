@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
 import {
-  View, StyleSheet, Image, Picker, NativeModules, Text, Clipboard,LayoutAnimation, AsyncStorage, StatusBar, BackHandler, TouchableOpacity, ActivityIndicator, Animated, Platform, TextInput, Slider,
+  View, StyleSheet, Image, Picker, UIManager, Text, Clipboard,LayoutAnimation, AsyncStorage, StatusBar, BackHandler, TouchableOpacity, ActivityIndicator, Animated, Platform, TextInput, Slider,
   Easing, Dimensions, PermissionsAndroid
 } from 'react-native';
 import { Alert } from 'react-native';
-const { UIManager } = NativeModules;
 import QRCode from 'react-native-qrcode-svg';
 import Spinner from 'react-native-loading-spinner-overlay';
 import { CameraKitCameraScreen, } from 'react-native-camera-kit';
@@ -1091,7 +1090,7 @@ return(<View >
                   </View>
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'center', width: '100%', marginTop: 20, alignItems: 'center' }}>
-                  <Text style={{ fontSize: 12, color: '#5183d8', fontFamily: 'Exo2-Regular' }}>{this.state.Usd}</Text>
+                  <Text style={{ fontSize: 12, color: '#F5F6F9', fontFamily: 'Exo2-Regular' }}>{this.state.Usd}</Text>
                   <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', marginLeft: 20 }}>
                     <Text style={{ color: '#ABB3D0', opacity: 1, fontSize: 12, fontFamily: 'Exo2-Regular' }}>{this.state.Amount}</Text>
                     <Image style={{ width: 10, height: 10, marginLeft: 10 }} source={require("./assets/down_arrow.png")} ></Image>

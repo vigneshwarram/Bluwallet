@@ -37,6 +37,7 @@ export default class Price  extends React.Component {
       TotalPrice:null,
       BtcOpacity:0,
       BtcFontColor:'#5597ff',
+      currency:'ETH',
       EtheriumFontColor:'#fff',
       Etherium1:'#14A9FF', Etherium2:'#2B84FF', Etherium3:'#6b00ff', Etherium4:'#8000FF',
       Btc1:'transparent', Btc2:'transparent', Btc3:'transparent', Btc4:'transparent',
@@ -210,7 +211,7 @@ SlideMenu=()=>{
           </View>      
           <View style={{flexDirection: 'row',marginTop:20,justifyContent:'space-around'}}>
          <View style={{justifyContent:'center',alignItems:'center'}}>
-         <Text style={{fontSize:18,color:'#2939a8',fontFamily:'Exo2-Regular'}}>ETH</Text> 
+         <Text style={{fontSize:18,color:'#2939a8',fontFamily:'Exo2-Regular'}}>{this.state.currency}</Text> 
          </View>
 <Text style={{fontSize:25,color:'#fff',marginLeft:10,fontFamily:'Exo2-Medium'}}>{this.state.TotalPrice}</Text>      
         
@@ -464,14 +465,14 @@ this.setState({
       EtheriumClick=()=>
       {
         let data=[50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100]
-        this.setState({data:data,EtheriumShadowClick:true,BitShadowClick:false,MoneroShadowClick:false,zShadowClick:false})
+        this.setState({data:data,EtheriumShadowClick:true,BitShadowClick:false,MoneroShadowClick:false,zShadowClick:false,currency:'ETH'})
         this.setState({TotalPrice:this.state.dataSource.usdforEther,})
        
       }
       BtcClick=()=>
       {
         let data=[50, 60, 70, 95, 100, 100, 100, 80, 90, 150, 50, 40, 60, 100]
-        this.setState({data:data,BitShadowClick:true,MoneroShadowClick:false,TotalPrice:this.state.dataSource.usdforBtc,EtheriumShadowClick:false,zShadowClick:false})
+        this.setState({data:data,BitShadowClick:true,MoneroShadowClick:false,TotalPrice:this.state.dataSource.usdforBtc,EtheriumShadowClick:false,zShadowClick:false,currency:'BTC'})
         setTimeout(this.nav, 3000);
       }
       nav=()=>
