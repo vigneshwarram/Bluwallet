@@ -80,24 +80,9 @@ export default class VaultFilter extends React.Component {
           title: "Etherium"
         },
         {
-          ShadowImages: require('../assets/miconback.png'),
-          colo1: '#fd7170', color2: '#fa5a76', color3: '#f53d7b',
-          title: "Monero"
-        },
-        {
           ShadowImages: require('../assets/biconback.png'),
           colo1: '#f8bc73', color2: '#f0824d', color3: '#ec643a',
           title: "Bitcoin"
-        },
-        {
-          colo1: '#faaf15', color2: '#fbcc0a', color3: '#fddf01',
-          ShadowImages: require('../assets/ziconback.png'),
-          title: "ZiCoin"
-        },
-        {
-          colo1: '#8be6f8', color2: '#59a7f2', color3: '#3652bd',
-          ShadowImages: require('../assets/shareicon.png'),
-          title: "Share"
         },
 
       ]
@@ -594,7 +579,7 @@ export default class VaultFilter extends React.Component {
                             colors={['#4262B5', '#3A549B', '#314279', '#2C3765', '#2A335E']} style={{ borderRadius: 25, paddingTop: 10, paddingBottom: 10 }}>
                             <View style={{ alignItems: 'center', flexDirection: 'row', padding: 15 }}>
                               <View style={{ justifyContent: 'center' }}>
-                                {(item.typeOfInvestment === 'ETH') ? <Image style={{ width: 50, height: 50, resizeMode: 'contain' }} source={require("../assets/etheriumshadow.png")} ></Image> :
+                                {(item.typeOfInvestment === 'ETH' || item.typeOfInvestment === 'eth') ? <Image style={{ width: 50, height: 50, resizeMode: 'contain' }} source={require("../assets/etheriumshadow.png")} ></Image> :
                                   <Image style={{ width: 50, height: 50, resizeMode: 'contain' }} source={require("../assets/bitcoinshadow.png")} ></Image>}
 
                               </View>
@@ -604,26 +589,32 @@ export default class VaultFilter extends React.Component {
                                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                                   <View style={{ justifyContent: 'space-around', alignItems: 'center' }}>
                                     <Text style={{ fontSize: 12, fontFamily: 'Exo2-Bold', color: '#ffffff', marginTop: -10 }}>{item.typeOfInvestment}</Text>
-                                    <Text style={{ fontSize: 12, color: '#a9b4d4', marginTop: 10 }}>${item.ethValueInUsd}</Text>
+                                    <Text style={{ fontSize: 12, color: '#a9b4d4', marginTop: 10 }}>{item.cryptoAmount}</Text>
                                   </View>
                                   <View>
                                     <View style={{ flexDirection: 'row', marginLeft: 20 }}>
                                       <View>
                                         <Text style={{ fontSize: 12, color: '#ABB3D0', marginTop: -10, fontFamily: 'Exo2-Regular' }}>Produced</Text>
+                                        <View style={{flexDirection:'row'}}>
                                         <Text style={{ fontSize: 12, fontFamily: 'Exo2-Regular', marginTop: 10, color: '#ABB3D0' }}>Coins</Text>
+                                        <Text style={{ fontSize: 12, textAlign: 'center', fontFamily: 'Exo2-Bold', color: '#ABB3D0',marginLeft:10 , marginTop: 10}}>${(item.typeOfInvestment==='ETH'||item.typeOfInvestment==='eth')?item.ethValueInUsd:item.btcValueInUsd}</Text>
+                                        </View>
+
                                       </View>
 
                                       <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: -15 }}>
                                         <Image style={{ width: 25, height: 25, resizeMode: 'contain', tintColor: '#15E9E9' }} source={require("../assets/plusblue.png")} ></Image>
                                         <View style={{ marginTop: 5 }}>
-                                          <Text style={{ fontSize: 12, textAlign: 'center', fontFamily: 'Exo2-Bold', color: '#2A335E' }}>$ {item.cryptoAmount}</Text>
+                                          <Text style={{ fontSize: 12, textAlign: 'center', fontFamily: 'Exo2-Bold', color: '#2A335E' }}>$ {item.investmentPercentInUsd}</Text>
                                         </View>
+                                      
 
                                       </View>
+                                     
                                     </View>
 
                                   </View>
-                                  <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', paddingRight: 5 }}>
+                                  <View style={{ flexDirection: 'row', justifyContent: 'center', paddingRight: 5 }}>
                                     <Text style={{ fontFamily: 'Exo2-Regular', color: '#5496FF' }}>+{item.percentage}%</Text>
                                     <Image style={{ width: 10, height: 10, resizeMode: 'contain' }} source={require("../assets/green.png")} ></Image>
                                   </View>

@@ -21,7 +21,7 @@ export default class Expandable_DashBoard_List extends Component {
   
     componentWillReceiveProps(nextProps) {
       
-     
+     console.log('receive is comming')
       if (nextProps.item.expanded) {
         this.setState(() => {
           return {

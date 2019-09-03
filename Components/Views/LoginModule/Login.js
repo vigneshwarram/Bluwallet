@@ -38,15 +38,7 @@ export default class Login  extends React.Component {
   }
   componentDidMount() {
     this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
-    this.keyboardDidHideListener = Keyboard.addListener(
-      'keyboardDidHide',
-      this._keyboardDidHide,
-    );
-  }
-  _keyboardDidHide=()=>
-  {
-    console.log('its comming')
-    this.textInputRef.focus()
+
   }
   componentWillUnmount() {
     this.backHandler.remove()
@@ -180,9 +172,6 @@ SlideMenu=()=>{
      
      <TextInput  placeholder="User"
          placeholderTextColor="#3d5498" 
-         ref={this.focusreference}
-        
-         onSubmitEditing={this.focus}
          onChangeText={(text) => this.setState({Username:text})}
          style={styles.inputBox} />
      </View>
@@ -195,7 +184,7 @@ SlideMenu=()=>{
          // Adding hint in TextInput using Placeholder option.
          placeholder="Password"
          placeholderTextColor="#3d5498" 
-         ref={ref => this.textInputRef = ref}
+      
          style={styles.inputBox}
          secureTextEntry={true}
          onChangeText={(text) => this.setState({Password:text})}
@@ -325,6 +314,7 @@ SlideMenu=()=>{
         if(data.status=='success')
         {
             console.log('Loginresult',data)
+            await AsyncStorage.setItem('password',this.state.Password); 
             await AsyncStorage.setItem('UserId',data.loginInfo.userId.toString()); 
             await AsyncStorage.setItem('email',data.loginInfo.emailId.toString()); 
             await AsyncStorage.setItem('profilestatus',data.loginInfo.profileStatus.toString()); 

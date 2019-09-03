@@ -213,6 +213,7 @@ let CollapseExpand = (index, position) => {
         Confirm:{screen:Confirm},
        // Price:{screen:Price},                
         Profile:{screen:Profile},     
+        VaultFilter:{screen:VaultFilter},    
         PinCode:{screen:PinCode},  
         Verify:{screen:Verify},
         CountrySearch:{screen:CountrySearch},

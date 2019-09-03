@@ -47,7 +47,7 @@ export const TwoFactorApi=async(params,RegisterUpdateResponse)=>
         return resJson;
        })
        .catch((error) => {
-        console.error(error);
+       alert.alert(error);
     });
 }
 export const ProfileRetrive=async(registerDetails)=>

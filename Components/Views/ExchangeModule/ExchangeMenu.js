@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet,TextInput, Image,Picker,LayoutAnimation,Text,ActivityIndicator,TouchableOpacity,UIManager,Animated,Platform} from 'react-native';
+import { View, StyleSheet,TextInput, Image,Picker,LayoutAnimation,Text,ActivityIndicator,TouchableOpacity,UIManager,Animated,Platform,TouchableHighlight} from 'react-native';
 import { Alert } from 'react-native';
 
 import LinearGradient from 'react-native-linear-gradient';
@@ -297,7 +297,7 @@ space(){
     <View style={{flexDirection:'row',padding:10,justifyContent:'space-between',marginLeft:25,marginRight:25}}>
    
     <Animated.View>
-    <TouchableOpacity onPress={this.buyClick}>
+    <TouchableHighlight /*Press={this.buyClick}*/>
     <View >
     <LinearGradient style={{backgroundColor:'transparent',width:130, height:130,borderWidth:1,borderColor:'#415b94',borderRadius:20,justifyContent:'center',alignItems:'center'}}
    colors={[this.state.Buycolor1,this.state.Buycolor2,this.state.Buycolor3]}>
@@ -305,9 +305,9 @@ space(){
     <Text style={{fontSize:12,color:this.state.Buytintcolor,fontFamily:'Exo2-Regular'}}>To Buy</Text>
    </LinearGradient>
     </View>
-    </TouchableOpacity>
+    </TouchableHighlight>
     </Animated.View>
-    <TouchableOpacity onPress={this.SellClick}>
+    <TouchableHighlight /*onPress={this.SellClick}*/>
     <View >
     <LinearGradient style={{backgroundColor:'transparent',width:130,height:130,marginLeft:20, borderWidth:1,borderColor:'#415b94',borderRadius:20,justifyContent:'center',alignItems:'center'}}
    colors={[this.state.sellcolor1,this.state.sellcolor2,this.state.sellcolor3]}>
@@ -315,7 +315,7 @@ space(){
     <Text style={{fontSize:12,color:this.state.selltintcolor,fontFamily:'Exo2-Regular'}}>To Sell</Text>
     </LinearGradient>
     </View>
-    </TouchableOpacity>
+    </TouchableHighlight>
     </View>  
     <View style={{flexDirection:'row',padding:10,justifyContent:'space-between',marginLeft:25,marginRight:25}}>
     <TouchableOpacity onPress={this.publicClick}>

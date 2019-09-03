@@ -1,15 +1,24 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,Picker,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,Dimensions} from 'react-native';
+import { View, StyleSheet, Image,AsyncStorage ,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,Dimensions,TextInput} from 'react-native';
 import { Alert } from 'react-native';
 const { UIManager } = NativeModules;
 import Carousel from 'react-native-snap-carousel';
+import Spinner from 'react-native-loading-spinner-overlay';
+import {StackActions} from 'react-navigation'
+import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
 import { AreaChart, Grid } from 'react-native-svg-charts'
+import { ExchangeOnLoad, ConvertToUsd, getEqualCryptoValueApi, exchangeRequestApi, exchangeAdmin_ETC_BTC_Api } from '../Api/ExchangeRequest'
 import * as shape from 'd3-shape'
 import LinearGradient from 'react-native-linear-gradient';
+import { VaultSystemApi, CryptoInvestment, CryptoTypeInvestment } from '../Api/VaultSystemApi'
+import { ResponseSuccessStatus, InvalidResponse, DataUndefined, InvalidToken, TokenExpired } from '../Utils.js/Constant'
 import ImageCarousel from 'react-native-image-carousel';
 const { width } = Dimensions.get('window');
+import {AddVaults} from '../Api/AddVault'
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
+let type='ETH'
+let timeperiod=3
 export default class AddVault extends React.Component {
 
   static navigationOptions = {
@@ -34,18 +43,27 @@ export default class AddVault extends React.Component {
       {'image':require('../assets/biconback.png')},
       {'image':require('../assets/biconback.png')}],
       ImagArray:['image1'],
+      Availableamount:'',
+      totalamount:'0.000',
+      cointype:'',
       Amount:'USDoller',
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
       w: 50,
       h: 45,
+      fees:'0.000',
+      usdforgasfee:'0.000',
+      spinner:false,
       wr:50,
+      usd:'0.000',
       hr:45,
       Ahr:80,
       Awr:80,
+      usdforEther:'',
       clickr:false,
       clickopen:false,
+      itemMonths:[{value:'3 Moths-3%',id:1},{value:'6 Moths-6%',id:2},{value:'12 Moths-12%',id:3}],
       click:false,
       slide:false,
       visible: false,
@@ -58,68 +76,88 @@ export default class AddVault extends React.Component {
             title:"Etherium"
         },
         {
-          ShadowImages:require('../assets/miconback.png'),
-          colo1:'#fd7170',color2:'#fa5a76',color3:'#f53d7b',
-            title:"Monero"
-        },
-        {
           ShadowImages:require('../assets/biconback.png'),
           colo1:'#f8bc73',color2:'#f0824d',color3:'#ec643a',
             title:"Bitcoin"
         },
-        {
-          colo1:'#faaf15',color2:'#fbcc0a',color3:'#fddf01',
-          ShadowImages:require('../assets/ziconback.png'),
-            title:"ZiCoin"
-        },
-        {
-          colo1:'#8be6f8',color2:'#59a7f2',color3:'#3652bd',
-          ShadowImages:require('../assets/shareicon.png'),
-            title:"Share"
-        },
-       
     ]}
+ 
   
   }
   
   componentDidMount()
   {
-     //this.GetListData()
+     this.GetData()
   }
-  GetListData=()=>{
+  GetData=()=>
+  {
     this.Load()
-    var obj = {  
-      method: 'GET',
-      headers: {
-        'Content-Type'    : 'application/json',
-        'Accept'          : 'application/json',
-       'Authorization':'Bearer '+'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6ImJmNDczYTU5LTQxNzAtNDQ2My05YTI2LWZlNWNhYTVlZjMwZiIsIkV4cGlyeSI6bnVsbH0.tUaime3lRYn7wAu2KCnW3oFwIZa18eIL_4AOnoGJiKU'.trim()   
-         }
+    VaultSystemApi(type, this.BalanceResponse)
   }
-  fetch("https://apptest.supplynow.co.uk/api/v1/Bookings/MyBookings",obj)  
-  .then((res)=> {
-    return res.json();
-   })
-   .then((resJson)=>{
-     this.dataset(resJson)
-   
-    return resJson;
-   })
-   .catch((error) => {
-    console.error(error);
-});
-}
+  BalanceResponse = (data) => {
+    this.hide()
+    console.log('data', data)
+    this.hide()
+    if (data != 'undefined') {
+      if (data.status === ResponseSuccessStatus) {
+        if (data.CalculatingAmountDTO.cryptoType === 'ETH') {
+          let totalamount='';
+          if(this.state.usdforEther!='')
+          {
+          totalamount=  parseFloat(this.state.usdforEther)+parseFloat(this.state.fees)
+          }
+          else
+          {
+            totalamount='0.000'
+          }
+      
+          this.setState({
+            Availableamount:data.CalculatingAmountDTO.etherAmount,
+            Usd: data.CalculatingAmountDTO.usdforEther,
+            cointype:data.CalculatingAmountDTO.cryptoType,
+            totalamount:totalamount,
+          })
+
+
+        }
+
+        else {
+          this.setState({
+            Availableamount:data.CalculatingAmountDTO.btcAmount,
+            Usd: data.CalculatingAmountDTO.usd,
+            cointype:data.CalculatingAmountDTO.cryptoType
+          })
+
+        }
+
+
+      }
+      else if (data.error === 'invalid_token') {
+        Alert.alert(
+          'Error',
+          'Token Expired',
+          [
+            { text: 'OK', onPress: () => this.props.navigation.navigate('Login') },
+          ],
+
+        );
+      }
+      else {
+        Alert.alert(InvalidResponse)
+      }
+    }
+  }
 dataset=(data)=>{
   this.setState({
     dataSource:data
   })
   this.hide()
 }
-Load(){
-  this.setState({animate:true})
+Load() {
+  this.setState({ spinner: true })
 }
-hide(){
-  this.setState({animate:false})
+hide() {
+  this.setState({ spinner: false })
 }
 space(){
   return(<View style={{height: 10, width: 1, backgroundColor:'black'}}/>)
@@ -192,7 +230,35 @@ HideMenu=()=>{
   }
     return (  
       <View style={styles.Maincontainers}>    
-      <LinearGradient colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>
+      <LinearGradient colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{flex:1}}>
+      <View style={{paddingLeft:20,paddingRight:20}}>
+ <Dialog
+  onTouchOutside={() => {
+      this.setState({ visibles: false });
+    }}
+  
+    visible={this.state.visibles}>
+    <DialogContent>
+     <View style={{width:300,height:110,alignItems:'center'}}>
+         <View style={{alignItems:'center',paddingTop:10}}>
+         <Image style={{width: 50, height: 50,resizeMode:'contain'}}   source={require("../assets/successtik.png")} ></Image>     
+         </View>
+         <View style={{paddingTop:10,paddingBottom:10}}>
+         <Text style={{fontSize:15,color:'#454976',fontFamily:'Exo2-Regular',textAlign:'center'}}>Your New Vault has been successfully added</Text>           
+         </View>
+     </View>
+    </DialogContent>
+  </Dialog>
+ </View>
+      <Spinner
+            visible={this.state.spinner}
+            textContent={'Loading...'}
+            overlayColor='rgba(0,0,0,0.5)'
+            animation='fade'
+            size='large'
+            color='#f4347f'
+            textStyle={styles.spinnerTextStyle}
+          />
       <View style={{justifyContent:'center',alignItems:'center',position:'absolute',bottom:110,marginLeft:50}}>
         <Image
                 style={{width: Dimensions.get('window').width,opacity:0.1,
@@ -201,7 +267,7 @@ HideMenu=()=>{
                 source={require('../assets/bcb.png')}
             />            
         </View>
-      <ScrollView>
+      <ScrollView contentContainerStyle={{paddingBottom:100}}>
       <View style={{flex:1}}>
       <View style={{flex:0.3}}>
       <View style={{flexDirection: 'row',marginTop:15,justifyContent:'space-between'}}> 
@@ -247,7 +313,7 @@ HideMenu=()=>{
       <View style={{borderBottomWidth:0.8,borderBottomColor:'#D1C9FF'}}>
 <View style={{flexDirection:'row',justifyContent:'space-evenly',padding:20}}>
 <Text style={{marginLeft:10,fontSize:11,color:'#5496FF',fontFamily:'Exo2-Regular'}}>Available Balance</Text>
-<Text style={{marginLeft:10,fontSize:12,color:'#354E91',fontFamily:'Exo2-Regular'}}>0.0000000BTC</Text>
+<Text style={{marginLeft:10,fontSize:12,color:'#354E91',fontFamily:'Exo2-Regular'}}>{this.state.Availableamount}</Text>
 </View>
 
 
@@ -256,14 +322,25 @@ HideMenu=()=>{
 <View style={{flexDirection:'row',justifyContent:'space-between',borderBottomWidth:1,borderBottomColor:'#D1C9FF'}}>
 <View style={{width:'50%',height:50,justifyContent:'center',borderRightWidth:1,borderRightColor:'#D1C9FF'}}>
 <View style={{flexDirection:'row',justifyContent:'space-evenly',alignItems:'center'}}>
-<Text style={{marginLeft:10,fontSize:11,color:'#5496FF',fontFamily:'Exo2-Regular'}}>BTC</Text>
-<Text style={{marginLeft:10,fontSize:11,color:'#ABB3D0',fontFamily:'Exo2-Regular'}}>0.00</Text>
+<Text style={{marginLeft:10,fontSize:11,color:'#5496FF',fontFamily:'Exo2-Regular'}}>{this.state.cointype}</Text>
+<View>
+                <TextInput
+                  style={{color:"#ABB3D0"}}
+                  placeholder="0.000"
+                  placeholderTextColor="#ABB3D0"
+                  keyboardType="number-pad"
+                  onSubmitEditing={this.handleKeyDown}
+                  maxLength={10}
+                  onChangeText={(text) => this.ChangeText(text)}
+                  value={this.state.usdforEther}
+                />
+              </View>
 </View>
 </View>
 <View style={{width:'50%',height:50,justifyContent:'center'}}>
 <View style={{flexDirection:'row',justifyContent:'space-evenly'}}>
 <Text style={{marginLeft:10,fontSize:11,color:'#5496FF',fontFamily:'Exo2-Regular'}}>USD</Text>
-<Text style={{marginLeft:10,fontSize:11,color:'#ABB3D0',fontFamily:'Exo2-Regular'}}>0.00</Text>
+<Text style={{marginLeft:10,fontSize:11,color:'#ABB3D0',fontFamily:'Exo2-Regular'}}>{this.state.usd}</Text>
 </View>
 
 </View>
@@ -277,13 +354,13 @@ HideMenu=()=>{
 <View style={{width:'50%',height:50,justifyContent:'center',borderRightWidth:1,borderRightColor:'#D1C9FF'}}>
 <View style={{flexDirection:'row',justifyContent:'space-evenly',alignItems:'center'}}>
 <Text style={{marginLeft:10,fontSize:11,color:'#5496FF',fontFamily:'Exo2-Regular'}}>Fees</Text>
-<Text style={{marginLeft:10,fontSize:11,color:'#ABB3D0',fontFamily:'Exo2-Regular'}}>0.00</Text>
+<Text style={{marginLeft:10,fontSize:11,color:'#ABB3D0',fontFamily:'Exo2-Regular'}}>{this.state.fees}</Text>
 </View>
 </View>
 <View style={{width:'50%',height:50,justifyContent:'center'}}>
 <View style={{flexDirection:'row',justifyContent:'space-evenly'}}>
 <Text style={{marginLeft:10,fontSize:11,color:'#5496FF',fontFamily:'Exo2-Regular'}}>USD</Text>
-<Text style={{marginLeft:10,fontSize:11,color:'#ABB3D0',fontFamily:'Exo2-Regular'}}>0.00</Text>
+<Text style={{marginLeft:10,fontSize:11,color:'#ABB3D0',fontFamily:'Exo2-Regular'}}>{this.state.usdforgasfee}</Text>
 </View>
 
 </View>
@@ -300,9 +377,15 @@ HideMenu=()=>{
 <View style={{justifyContent:'center',alignItems:'center',marginTop:30}}>
       <Text style={{marginLeft:10,fontSize:16,color:'#354E91',fontFamily:'Exo2-Regular'}}>Duration</Text>
       </View>
-      <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
-      <Text style={{marginLeft:10,fontSize:18,color:'#5496FF',fontFamily:'Exo2-SemiBold'}}>3 months-3% </Text>
-      </View>
+      <Carousel
+                    data={this.state.itemMonths}
+                    inactiveSlideOpacity={0.1}
+                    sliderWidth={400}
+                    itemWidth={150}
+                    renderItem={this._renderItemMonths}
+                    onSnapToItem={this.snapItemMonths}
+                />
+    
       <View style={{justifyContent:'center',alignItems:'center',marginTop:30}}>
       <Text style={{marginLeft:10,fontSize:18,color:'#354E91',fontFamily:'Exo2-Regular'}}>Total Earnings</Text>
       </View>
@@ -310,19 +393,13 @@ HideMenu=()=>{
       <View style={{borderBottomWidth:0.8,borderBottomColor:'#D1C9FF',backgroundColor:'#ffffff',marginTop:10,}}>
       <View>
 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-<View style={{width:'50%',height:50,justifyContent:'center',borderRightWidth:1,borderRightColor:'#D1C9FF'}}>
+<View style={{width:'100%',height:50,justifyContent:'center',borderRightWidth:1,borderRightColor:'#D1C9FF'}}>
 <View style={{flexDirection:'row',justifyContent:'space-evenly',alignItems:'center'}}>
-<Text style={{marginLeft:10,fontSize:11,color:'#5496FF',fontFamily:'Exo2-Regular'}}>BTC</Text>
-<Text style={{marginLeft:10,fontSize:11,color:'#ABB3D0',fontFamily:'Exo2-Regular'}}>0.00</Text>
+<Text style={{marginLeft:10,fontSize:11,color:'#5496FF',fontFamily:'Exo2-Regular'}}>Total</Text>
+<Text style={{marginLeft:10,fontSize:11,color:'#ABB3D0',fontFamily:'Exo2-Regular'}}>{this.state.totalamount}</Text>
 </View>
-</View>
-<View style={{width:'50%',height:50,justifyContent:'center'}}>
-<View style={{flexDirection:'row',justifyContent:'space-evenly'}}>
-<Text style={{marginLeft:10,fontSize:11,color:'#5496FF',fontFamily:'Exo2-Regular'}}>USD</Text>
-<Text style={{marginLeft:10,fontSize:11,color:'#ABB3D0',fontFamily:'Exo2-Regular'}}>0.00</Text>
 </View>
 
-</View>
 
 </View>
 
@@ -342,7 +419,7 @@ HideMenu=()=>{
         <TouchableOpacity onPress={this.BeginAction}>
         <View>
         <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:15,justifyContent:'center',alignItems:'center',}}>
-<Text style={{color:'#fff',fontSize:20,fontFamily:'Poppins-Medium'}}>Next</Text>
+<Text style={{color:'#fff',fontSize:20,fontFamily:'Poppins-Medium'}}>Add Vault</Text>
 </LinearGradient>
         </View>
         </TouchableOpacity>
@@ -367,25 +444,156 @@ HideMenu=()=>{
   
     );
       }
+      snapItemMonths=(index)=>
+      {
+        switch(index)
+        {
+          case 0:
+              timeperiod=3;
+            break;
+          case 1:
+              timeperiod=6;
+            break;
+            case 2:
+                timeperiod=12;
+              break;
+        }
+      }
       snapItem=(index)=>{
         switch (index){
           case 0:
-              this.setState({selectedimage:require('../assets/diablue.png')})
+              this.setState({selectedimage:require('../assets/diablue.png'),usdforEther:'',fees:'0.000',usdforgasfee:'0.000',totalamount:'0.000'})
+              type='ETH'
+              this.GetData()
               break;
           case 1:
-              this.setState({selectedimage:require('../assets/miconback.png')})
-              break;
-          case 2:
-            this.setState({selectedimage:require('../assets/biconback.png')})
+              this.setState({selectedimage:require('../assets/biconback.png'),usdforEther:'',fees:'0.000',usdforgasfee:'0.000',totalamount:'0.000'})
+              type='BTC'
+              this.GetData()
             break;    
-          case 3:
-                this.setState({selectedimage:require('../assets/ziconback.png')})
-                break;    
-           case 4:
-                    this.setState({selectedimage:require('../assets/shareicon.png')})
-                    break;    
         }
        
+      }
+      successStatus=()=>
+      {
+        this.setState({visibles:true})
+        setTimeout(this.nav, 650);
+      }
+      nav=()=>
+      {
+        this.setState({visibles:false})
+        this.pushNavigate('VaultFilter')
+      }
+      pushNavigate=(routname)=>
+      {
+        try
+        {
+          this.props.navigation.navigate('VaultFilter')
+        }
+        catch(error)
+        {
+          console.error(error)
+         // Alert.alert('Alert',error)
+        }
+       
+      }
+      ChangeText = (UsdAmount) => {
+        console.log('values', UsdAmount)
+        if (UsdAmount.includes(',')) {
+          Alert.alert('Alert', 'please enter numeric value')
+        }
+        else if(this.state.Availableamount<UsdAmount)
+        {
+          if(type=='ETH')
+          {
+            Alert.alert('Alert', 'Insufficient ETH Amount')
+          }
+         
+          else
+          {
+            Alert.alert('Alert', 'Insufficient BTC Amount')
+          }
+
+        }
+        else {
+          let number = UsdAmount
+          if (UsdAmount === '') {
+            number = 0
+            console.log('empty')
+          }
+    
+          console.log('Changed Number', number)
+          let totalamount=''
+        
+          this.setState({ usdforEther: number,totalamount:totalamount })
+          console.log('usdforEther Number', number)
+          this.usdConvert(number)
+    
+    
+          console.log('Request data.===>', "usdConvert calling")
+        }
+    
+    
+      }
+      usdConvert = async (amount) => {
+        //   let type=crptoType
+        console.log('Request data.===>', type, "type calling")
+        let params =
+        {
+          usd: amount,
+          cryptoType: type
+    
+        }
+        //Get value for Network fee and Crypto amount Api
+        ConvertToUsd(params, this.onUsdResponse)
+        console.log('Request data.===>', this.onUsdResponse)
+    
+      }
+      error=(data)=>
+      {
+        Alert.alert(data.error,data.message)
+      }
+      onUsdResponse = (data) => {
+        if (data != DataUndefined) {
+          if (data.status === ResponseSuccessStatus) {
+            console.log('Coverted ETH Amount', data)
+            if(type=='ETH')
+            {
+              this.setState({usdforgasfee:data.CalculatingAmountDTO.usdforgasfee,fees:data.CalculatingAmountDTO.gasfee,usd:data.CalculatingAmountDTO.usd})
+            }
+            else
+            {
+              this.setState({usdforgasfee:data.CalculatingAmountDTO.usdfoestimationfee,fees:data.CalculatingAmountDTO.fee,usd:data.CalculatingAmountDTO.usd})
+            }
+          
+            let totalamount='';
+           
+            if(this.state.usdforEther!='')
+            {
+            
+              totalamount=parseFloat(this.state.usdforEther)+parseFloat(data.CalculatingAmountDTO.gasfee)
+              //let parsenum= parseFloat(totalamount).toFixed(1)
+            }
+            this.setState({totalamount:totalamount})
+          }
+          else if (data.error === 'invalid_token') {
+            Alert.alert(
+              'Error',
+              'Token Expired',
+              [
+                { text: 'OK', onPress: () => this.props.navigation.navigate("Login") },
+              ],
+    
+            );
+          }
+          else {
+            Alert.alert(data.error, data.errormessage)
+          }
+    
+          //Get value for Network fee and Crypto amount Apil̥
+          //this.cryptoValue()
+          //console.log('Request data.===>', 'cryptoValue()')
+        }
       }
       
       clickedItemText=(item)=>
@@ -393,8 +601,43 @@ HideMenu=()=>{
           Alert.alert(item.Status)
       }
       BeginAction=()=>{
-    
-        this.props.navigation.navigate('ConfirmVault',{ImageName:this.state.selectedimage,ImageTitle:this.state.selectedTitle,itemColor1:this.state.ItemColor1,itemColor2:this.state.ItemColor2,itemColor3:this.state.ItemColor3 })
+    this.AddVault()
+       // this.props.navigation.navigate('ConfirmVault',{ImageName:this.state.selectedimage,ImageTitle:this.state.selectedTitle,itemColor1:this.state.ItemColor1,itemColor2:this.state.ItemColor2,itemColor3:this.state.ItemColor3 })
+      }
+      AddVault=async()=>
+      {
+        if(this.state.usdforEther=='')
+        {
+          Alert.alert('Alert',"Amount should not be empty")
+        }
+        else
+        {
+          let params=
+          {
+            email:await AsyncStorage.getItem('email'),
+            cryptoAmount:this.state.usdforEther,
+            typeOfInvestment:type,
+            investmentPeriod:timeperiod,
+            ethWalletPassword:await AsyncStorage.getItem('password')
+          }
+          this.Load()
+          AddVaults(params,this.getResponse)
+        }
+        
+       
+      }
+      getResponse=(data)=>
+      {
+        this.hide()
+        if(data.status==='success')
+        {
+          this.successStatus()
+
+        }
+        else
+        {
+          Alert.alert(data.status,data.message)
+        }
       }
       _renderItem=({item,index})=>{
 
@@ -412,6 +655,15 @@ justifyContent:'center',alignItems:"center"}} colors= {[item.colo1,item.color2,i
             </View>
         )
         }
+        _renderItemMonths=({item,index})=>{
+
+          //this.setState({selectedimage:item.ShadowImages,selectedTitle:item.title,ItemColor1:item.colo1,itemColor2:item.color2,itemColor3:item.color3})
+          return (
+            <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
+            <Text style={{marginLeft:10,fontSize:18,color:'#5496FF',fontFamily:'Exo2-SemiBold'}}>{item.value}</Text>
+            </View>
+          )
+          }
 }
 
 

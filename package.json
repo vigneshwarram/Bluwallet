@@ -21,6 +21,7 @@
     "react-native-camera-kit": "^8.0.1",
     "react-native-card-carousel": "^1.1.0",
     "react-native-card-view": "0.0.3",
+    "react-native-chart-kit": "^3.2.1",
     "react-native-custom-picker": "^0.4.0",
     "react-native-customized-image-picker": "^0.1.5",
     "react-native-d3multiline-chart": "^1.0.18",

@@ -96,7 +96,7 @@ export const ConvertToUsd=async(params,Request)=>
         return resJson;
        })
        .catch((error) => {
-        console.error(error);
+        return   Request(error.json())
     });
 }
 

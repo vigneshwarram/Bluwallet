@@ -5,6 +5,15 @@ import {
   Easing, Dimensions, PermissionsAndroid
 } from 'react-native';
 import { Alert } from 'react-native';
+import {
+  LineChart,
+  BarChart,
+  PieChart,
+  ProgressChart,
+  ContributionGraph,
+  StackedBarChart
+} from 'react-native-chart-kit'
+ 
 import QRCode from 'react-native-qrcode-svg';
 import Spinner from 'react-native-loading-spinner-overlay';
 import { CameraKitCameraScreen, } from 'react-native-camera-kit';
@@ -38,6 +47,7 @@ const slideWidth = 280;
 let type = 'ETH';
 let cryptoType = "BTCTEST"
 let fetchAmountFlag = 'All'
+const datas=[100,120,130,140,150];
 export default class DashBoard extends React.Component {
 
 
@@ -60,6 +70,9 @@ export default class DashBoard extends React.Component {
       dataSource: [],
       currentUsdforEther: null,
       QR_Code_Value: null,
+      dates:[],
+      datas:[],
+      dateU:[],
       backoption: false,
       clipboardContent: '',
       visibles: false,
@@ -72,8 +85,8 @@ export default class DashBoard extends React.Component {
       QrButton: false,
       currentUsdforBtc: null,
       dataImage: [{ 'image1': require("./assets/etherem.png"), 'image1': require("./assets/etherem.png") }],
-      cityItems: ["US Doller,Indian,Eutherium"],
-      Amount: 'USDoller',
+      cityItems: ["US Dollar,Indian,Eutherium"],
+      Amount: 'USDollar',
       OpenPop: false,
       BottomBar: false,
       ScanOpen: true,
@@ -131,11 +144,6 @@ export default class DashBoard extends React.Component {
           title: "Etherium"
         },
         {
-          ShadowImages: require('./assets/mshadow.png'),
-
-          title: "Monero"
-        },
-        {
           ShadowImages: require('./assets/bshadow.png'),
           title: "Bitcoin"
         },
@@ -161,6 +169,7 @@ export default class DashBoard extends React.Component {
     // this._animate()
     BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
     this.GetData()
+    
 
   }
   componentWillUnmount() {
@@ -1055,11 +1064,36 @@ return(<View >
 
 
             <View >
-
-              <Image style={{
-                width: 350, height: 180, opacity: 0.4, marginTop: -30,
-                resizeMode: 'contain'
-              }} source={require("./assets/etherium_original.png")} ></Image>
+<View style={{paddingLeft:10,paddingRight:20}}>
+<LineChart
+    data={{
+      labels:this.state.dateU,
+      datasets: [{
+        data: datas
+      }]
+    }}
+    width={Dimensions.get('window').width-20} // from react-native
+    height={200}
+    yAxisLabel={'$'}
+    chartConfig={{
+      backgroundColor: '#395ea4',
+      backgroundGradientFrom: '#395ea1',
+      backgroundGradientTo: '#395ea1',
+      decimalPlaces: 2, // optional, defaults to 2dp
+      color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+      style: {
+        borderRadius: 16,
+        opacity:0.1
+      }
+    }}
+    bezier
+    style={{
+      marginVertical: 8,
+      borderRadius: 16
+    }}
+  />
+</View>
+         
 
 
               <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: -80 }}>
@@ -1069,13 +1103,13 @@ return(<View >
               <View style={{ marginTop: 30, justifyContent: 'center', alignItems: 'center' }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                   <TouchableOpacity onPress={this.GetData}>
-                    <View style={{ marginTop: -10 }}>
+                    <View style={{ marginTop: 20 }}>
                       <Image style={{ resizeMode: 'contain', width: 60, height: 60 }} source={require("./assets/Refresh.png")} ></Image>
                     </View>
                   </TouchableOpacity>
 
                   <View>
-                    <View style={{ flexDirection: 'row' }}>
+                    <View style={{ flexDirection: 'row', marginTop: 20 }}>
                       <Text style={{ marginLeft: 30, fontSize: 36, color: '#F5F6F9', fontFamily: 'Exo2-SemiBold' }}>{this.state.Balance}</Text>
                       <View style={{ marginTop: -10, marginLeft: 5 }}>
                         <LinearGradient colors={['#7498F9', '#9B89F8', '#D476F7']} style={{
@@ -1098,7 +1132,7 @@ return(<View >
                       selectedValue={this.state.Amount}
                       onValueChange={(itemValue, itemIndex) => this.selectedAmount(itemValue, itemIndex)}>
 
-                      <Picker.Item label="USDoller" value="USDoller" />
+                      <Picker.Item label="USDollar" value="USDollar" />
                     </Picker>
                   </View>
 
@@ -1176,6 +1210,7 @@ return(<View >
                 {
             this.state.dataSource.map((item, key) =>
               (
+              
                 <ExpandabelList  key={item.listCalculatingAmountDTO} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
               ))
           }
@@ -1285,8 +1320,20 @@ return(<View >
 
           return {...file, expanded: false};
       });
-      this.setState({dataSource: newFile });
-       
+      this.setState({dataSource: newFile,dates:newFile.listCalculatingAmountDTO });
+     let dataarray=[]
+     let gpdata=[]
+      let newdates =FinalResult.map((file,key) => {
+
+        if(key<4)
+        {
+          gpdata.push(file.usdValue)
+          dataarray.push(file.Date)
+          return file.Date
+        }
+    });
+    this.setState({dateU:dataarray,datas:gpdata})
+       console.log('dats',this.state.datas)
       }
       else if (data.error === InvalidToken) {
         Alert.alert(
