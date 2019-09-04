@@ -1067,7 +1067,7 @@ return(<View >
 
 
             <View >
-<View style={{paddingLeft:10}}>
+<View style={{marginLeft:-30}}>
 
 <LineChart
     data={{
@@ -1079,11 +1079,17 @@ return(<View >
     width={Dimensions.get('window').width} // from react-native
     height={130}
     yAxisLabel={''}
-    label={true}
+    label={false}
+   
     shadowcolor='#2b396a'
     strokecolor='#79b7e8'
     dots={true}
     chartConfig={{
+      shadowgradientback1:'#4E8EE5',
+    shadowgradientback2:'#4E8EE5',
+    shadowgradientback3:'#4E8EE5',
+    shadowgradientback4:'#58AAF3',
+    shadowgradientback5:'#97F4F7',
       backgroundColor: '#395ea4',
       backgroundGradientFrom: '#264aa8',
       backgroundGradientTo: '#2b396a',

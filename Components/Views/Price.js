@@ -263,6 +263,7 @@ SlideMenu=()=>{
         data:mass
       }]
     }}
+
     width={Dimensions.get('window').width} // from react-native
     height={130}
     label={false}
@@ -270,6 +271,11 @@ SlideMenu=()=>{
     shadowcolor='#67d8e8'
     dots={false}
     chartConfig={{
+      shadowgradientback1:'#48d0e0',
+    shadowgradientback2:'#48d0e0',
+    shadowgradientback3:'#48d0e0',
+    shadowgradientback4:'#48d0e0',
+    shadowgradientback5:'#48d0e0',
       backgroundColor: '#395ea4',
       backgroundGradientFrom: '#3acddd',
       backgroundGradientTo: '#83daf6',
