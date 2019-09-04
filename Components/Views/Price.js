@@ -1,17 +1,27 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,TextInput,ImageBackground,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,Picker} from 'react-native';
+import { View, StyleSheet, Image,Dimensions,ImageBackground,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,Picker} from 'react-native';
 import { Alert } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import Spinner from 'react-native-loading-spinner-overlay';
 import * as shape from 'd3-shape'
 import Logo from '../logo'
 import {StackActions, NavigationActions } from 'react-navigation';
+import {
+  LineChart,
+  BarChart,
+  PieChart,
+  ProgressChart,
+  ContributionGraph,
+  StackedBarChart
+} from 'react-native-chart-kit'
+ 
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from './Utils.js/Constant'
 import LinearGradient from 'react-native-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
 import {PriceList} from './Api/PriceApi'
 let CrptoType='ETH'
+let mass=[ 100,600,300,600,300,600,100,600,300,600,300,600,300]
 export default class Price  extends React.Component {
 
   static navigationOptions = {
@@ -64,6 +74,11 @@ export default class Price  extends React.Component {
         console.log('price results',data)
        this.setState({dataSource:data.CalculatingAmountDTO,})
        this.setState({TotalPrice:this.state.dataSource.usdforEther,})
+     let  result=[100,600,300,600,300,600,100,600,300,600,300,600,300]
+     for(let i=0;i<result.length.length;i++)
+     {
+       mass.push(result[i])
+     }
       }
       else if(data.error===InvalidToken)
       {
@@ -241,16 +256,39 @@ SlideMenu=()=>{
          
 
           </View>
-          <AreaChart style={{ height: 100,backgroundColor:'transparent'}}
-                data={this.state.data}
-                showGrid={ false }
-               
-                curve={shape.curveNatural}
-                svg={{ fill: '#7ED5F6',stroke:'#25e2cd' }}
-            >
-              
-              
-            </AreaChart>
+<View style={{position:'absolute',bottom:-15,left:-60,right:0,opacity:0.7,width:'100%'}}>
+<LineChart
+    data={{
+      datasets: [{
+        data:mass
+      }]
+    }}
+    width={Dimensions.get('window').width} // from react-native
+    height={130}
+    label={false}
+    strokecolor='#00e2ab'
+    shadowcolor='#67d8e8'
+    dots={false}
+    chartConfig={{
+      backgroundColor: '#395ea4',
+      backgroundGradientFrom: '#3acddd',
+      backgroundGradientTo: '#83daf6',
+      decimalPlaces: 1, // optional, defaults to 2dp
+      color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+      style: {
+        width:'100%',
+        opacity:0.1
+      }
+    }}
+    bezier
+    style={{
+      width:'100%',
+      marginLeft:0,
+      borderRadius: 16
+    }}
+  />
+</View>
+
 
           </LinearGradient>    
          
@@ -464,15 +502,15 @@ this.setState({
       }
       EtheriumClick=()=>
       {
-        let data=[50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100]
-        this.setState({data:data,EtheriumShadowClick:true,BitShadowClick:false,MoneroShadowClick:false,zShadowClick:false,currency:'ETH'})
+         mass=[100,600,300,600,300,600,100,600,300,600,300,600,300]
+        this.setState({data:mass,EtheriumShadowClick:true,BitShadowClick:false,MoneroShadowClick:false,zShadowClick:false,currency:'ETH'})
         this.setState({TotalPrice:this.state.dataSource.usdforEther,})
        
       }
       BtcClick=()=>
       {
-        let data=[50, 60, 70, 95, 100, 100, 100, 80, 90, 150, 50, 40, 60, 100]
-        this.setState({data:data,BitShadowClick:true,MoneroShadowClick:false,TotalPrice:this.state.dataSource.usdforBtc,EtheriumShadowClick:false,zShadowClick:false,currency:'BTC'})
+         mass=[50, 60, 70, 95, 100, 100, 100, 80, 90, 150, 50, 40, 60, 100]
+        this.setState({data:mass,BitShadowClick:true,MoneroShadowClick:false,TotalPrice:this.state.dataSource.usdforBtc,EtheriumShadowClick:false,zShadowClick:false,currency:'BTC'})
         setTimeout(this.nav, 3000);
       }
       nav=()=>
