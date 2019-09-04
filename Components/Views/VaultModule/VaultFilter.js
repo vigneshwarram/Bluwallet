@@ -594,14 +594,8 @@ export default class VaultFilter extends React.Component {
                                   <View>
                                     <View style={{ flexDirection: 'row', marginLeft: 20 }}>
                                       <View>
-                                        <Text style={{ fontSize: 12, color: '#ABB3D0', marginTop: -10, fontFamily: 'Exo2-Regular' }}>Produced</Text>
-                                        <View style={{flexDirection:'row'}}>
-                                        <Text style={{ fontSize: 12, fontFamily: 'Exo2-Regular', marginTop: 10, color: '#ABB3D0' }}>Coins</Text>
-                                        <Text style={{ fontSize: 12, textAlign: 'center', fontFamily: 'Exo2-Bold', color: '#ABB3D0',marginLeft:10 , marginTop: 10}}>${(item.typeOfInvestment==='ETH'||item.typeOfInvestment==='eth')?item.ethValueInUsd:item.btcValueInUsd}</Text>
-                                        </View>
-
-                                      </View>
-
+                                      <View style={{flexDirection:'row'}}>
+                                      <Text style={{ fontSize: 12, color: '#ABB3D0', marginTop: -10, fontFamily: 'Exo2-Regular' }}>Produced</Text>
                                       <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: -15 }}>
                                         <Image style={{ width: 25, height: 25, resizeMode: 'contain', tintColor: '#15E9E9' }} source={require("../assets/plusblue.png")} ></Image>
                                         <View style={{ marginTop: 5 }}>
@@ -610,14 +604,25 @@ export default class VaultFilter extends React.Component {
                                       
 
                                       </View>
+                                      </View>
+                                       
+                                        <View style={{flexDirection:'row'}}>
+                                        <Text style={{ fontSize: 12, fontFamily: 'Exo2-Regular', marginTop: 10, color: '#ABB3D0' }}>Coins</Text>
+                                        <Text style={{ fontSize: 12, textAlign: 'center', fontFamily: 'Exo2-Bold', color: '#ABB3D0',marginLeft:10 , marginTop: 10}}>${(item.typeOfInvestment==='ETH'||item.typeOfInvestment==='eth')?item.ethValueInUsd:item.btcValueInUsd}</Text>
+                                        <View style={{ flexDirection: 'row',paddingLeft:10 ,marginTop: 10}}>
+                                    <Text style={{ fontFamily: 'Exo2-Regular', color: '#5496FF' }}>+{item.percentage}%</Text>
+                                    <Image style={{ width: 10, height: 10, resizeMode: 'contain' }} source={require("../assets/green.png")} ></Image>
+                                  </View>
+                                        </View>
+
+                                      </View>
+
+               
                                      
                                     </View>
 
                                   </View>
-                                  <View style={{ flexDirection: 'row', justifyContent: 'center', paddingRight: 5 }}>
-                                    <Text style={{ fontFamily: 'Exo2-Regular', color: '#5496FF' }}>+{item.percentage}%</Text>
-                                    <Image style={{ width: 10, height: 10, resizeMode: 'contain' }} source={require("../assets/green.png")} ></Image>
-                                  </View>
+                                  
                                 </View>
                               </View>
 

@@ -734,5 +734,8 @@ const styles = StyleSheet.create({
       color: '#fff',
       textAlign: 'center',
       fontWeight: '700'
+  },
+  spinnerTextStyle:{
+    color:'#fff'
   }
 });

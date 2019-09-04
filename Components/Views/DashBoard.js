@@ -47,7 +47,8 @@ const slideWidth = 280;
 let type = 'ETH';
 let cryptoType = "BTCTEST"
 let fetchAmountFlag = 'All'
-const datas=[100,120,130,140,150];
+let datas=[]
+let  mass=[0,0,0,0,0];
 export default class DashBoard extends React.Component {
 
 
@@ -168,6 +169,8 @@ export default class DashBoard extends React.Component {
     // this.GetListData()
     // this._animate()
     BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
+
+
     this.GetData()
     
 
@@ -331,7 +334,7 @@ export default class DashBoard extends React.Component {
       }).start(closeOverlay(), this.setState({ clickopen: false }));
       this.props.navigation.setParams({ bottombar: true })
     }
-    this.setState({ visibles: false, QR_Code_Value: '', sliderValue: 0, usdforEther: 0.000 })
+    this.setState({ visibles: false, QR_Code_Value: null, sliderValue: 0, usdforEther: 0.000 })
 
   }
   open_QR_Code_Scanner = () => {
@@ -350,7 +353,7 @@ export default class DashBoard extends React.Component {
           if (granted === PermissionsAndroid.RESULTS.GRANTED) {
             that.setState({ QrButton: true })
             closeOverlay()
-            that.setState({ QR_Code_Value: '' });
+            that.setState({ QR_Code_Value: null });
             that.setState({ Start_Scanner: true });
           } else {
             alert("CAMERA permission denied");
@@ -362,7 +365,7 @@ export default class DashBoard extends React.Component {
       }
       requestCameraPermission();
     } else {
-      that.setState({ QR_Code_Value: '' });
+      that.setState({ QR_Code_Value: null });
       that.setState({ Start_Scanner: true });
     }
   }
@@ -376,7 +379,7 @@ export default class DashBoard extends React.Component {
     this.setState({ clickopen: false })
   }
   onQR_Code_Scan_Done = (QR_Code) => {
-
+    console.log('Qr code value',QR_Code)
     this.setState({ QR_Code_Value: QR_Code, Start_Scanner: false, });
     this.setState({ QrButton: false })
 
@@ -575,7 +578,7 @@ export default class DashBoard extends React.Component {
               <TextInput
                 style={{ height: 40, fontFamily: 'Exo2-Regular' }}
                 placeholder="write here your wallet address codee"
-                value={(this.state.QR_Code_Value == null) && this.state.clickedItemText}
+                value={(this.state.QR_Code_Value===null)?this.state.clickedItemText:this.state.QR_Code_Value}
                 placeholderTextColor="#ABB3D0"
               />
             </View>
@@ -1065,20 +1068,21 @@ return(<View >
 
             <View >
 <View style={{paddingLeft:10,paddingRight:20}}>
+
 <LineChart
     data={{
       labels:this.state.dateU,
       datasets: [{
-        data: datas
+        data: [100,600,300,600,300,600]
       }]
     }}
-    width={Dimensions.get('window').width-20} // from react-native
-    height={200}
-    yAxisLabel={'$'}
+    width={Dimensions.get('window').width} // from react-native
+    height={130}
+    yAxisLabel={''}
     chartConfig={{
       backgroundColor: '#395ea4',
-      backgroundGradientFrom: '#395ea1',
-      backgroundGradientTo: '#395ea1',
+      backgroundGradientFrom: '#264aa8',
+      backgroundGradientTo: '#2b396a',
       decimalPlaces: 2, // optional, defaults to 2dp
       color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
       style: {
@@ -1096,7 +1100,7 @@ return(<View >
          
 
 
-              <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: -80 }}>
+              <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: -60 }}>
                 <Text style={{ marginLeft: 10, marginTop: 15, fontSize: 16, color: '#ABB3D0', fontFamily: 'Exo2-Regular' }}>Balance</Text>
               </View>
 
@@ -1320,6 +1324,7 @@ return(<View >
 
           return {...file, expanded: false};
       });
+      console.log('Get Activity new file', newFile)
       this.setState({dataSource: newFile,dates:newFile.listCalculatingAmountDTO });
      let dataarray=[]
      let gpdata=[]
@@ -1327,11 +1332,12 @@ return(<View >
 
         if(key<4)
         {
-          gpdata.push(file.usdValue)
-          dataarray.push(file.Date)
+          gpdata.push(file.amount)
+         // dataarray.push(file.Date)
           return file.Date
         }
     });
+    mass=gpdata
     this.setState({dateU:dataarray,datas:gpdata})
        console.log('dats',this.state.datas)
       }
