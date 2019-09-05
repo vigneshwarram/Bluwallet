@@ -81,6 +81,7 @@ export default class DashBoard extends React.Component {
       usdforEther: '',
       sliderValue: 0,
       ResponseStatus: null,
+      graphshow:'',
       EtherWalletAddress: null, BtcWalletAddress: null,
       Start_Scanner: false,
       QrButton: false,
@@ -918,6 +919,10 @@ return(<View >
      
    }
   }
+  closeleft=()=>
+  {
+    this.setState({QrButton:false})
+  }
   render() {
    let Renderpopup=this.getPopUp()
     const RotateData = this.RotateValueHolder.interpolate({
@@ -943,6 +948,7 @@ return(<View >
     if (this.state.QrButton) {
       return <CameraKitCameraScreen
         showFrame={true}
+        closeaction={this.closeleft}
         scanBarcode={true}
         laserColor={'#FF3D00'}
         frameColor={'#00C853'}
@@ -1073,7 +1079,7 @@ return(<View >
     data={{
       labels:this.state.dateU,
       datasets: [{
-        data: [100,600,300,600,300,600]
+        data:mass
       }]
     }}
     width={Dimensions.get('window').width} // from react-native
@@ -1111,7 +1117,7 @@ return(<View >
 
 
               <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: -60 }}>
-                <Text style={{ marginLeft: 10, marginTop: 15, fontSize: 16, color: '#ABB3D0', fontFamily: 'Exo2-Regular' }}>Balance</Text>
+                <Text style={{ marginLeft: 10, marginTop: 15, fontSize: 16, color: '#ABB3D0', fontFamily: 'Exo2-Regular' }}>{this.state.graphshow}</Text>
               </View>
 
               <View style={{ marginTop: 30, justifyContent: 'center', alignItems: 'center' }}>
@@ -1347,7 +1353,17 @@ return(<View >
           return file.Date
         }
     });
-    mass=gpdata
+    if(gpdata.length===0)
+    {
+      this.setState({graphshow:'No Data'})
+      mass=[0.1]
+    }
+    else
+    {
+      this.setState({graphshow:'Balance'})
+      mass=gpdata
+    }
+ 
     this.setState({dateU:dataarray,datas:gpdata})
        console.log('dats',this.state.datas)
       }
