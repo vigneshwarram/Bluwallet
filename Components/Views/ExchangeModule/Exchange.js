@@ -8,6 +8,7 @@ import * as shape from 'd3-shape'
 import Modal from "react-native-simple-modal";
 import {StackActions} from 'react-navigation'
 import Spinner from 'react-native-loading-spinner-overlay';
+import { VaultSystemApi, CryptoInvestment, CryptoTypeInvestment } from '../Api/VaultSystemApi'
 import Logo from '../../logo'
 import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
 import {ExchangeOnLoad ,ConvertToUsd , getEqualCryptoValueApi , exchangeRequestApi ,exchangeAdmin_ETC_BTC_Api} from '../Api/ExchangeRequest'
@@ -31,6 +32,7 @@ export default class  Buy  extends React.Component {
       dataSource:[],
       switchValue:false,
       visibles:false,
+      priceMode:'ETH Price',
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       spinner:false,
@@ -73,10 +75,39 @@ export default class  Buy  extends React.Component {
   
   componentDidMount()
   {
-    this.OnLoad()
+  
+     this.OnLoad()
     console.log('Exchange view',this.state.exchangeTypeMenu)
     
     
+  }
+  BalanceResponse = (data) => {
+    console.log(data)
+    this.hide()
+    if (data != 'undefined') {
+      if (data.status === ResponseSuccessStatus) {
+        if (data.CalculatingAmountDTO.cryptoType === 'ETH'||data.CalculatingAmountDTO.cryptoType === 'eth') {
+         this.setState({"amount":data.CalculatingAmountDTO.etherAmount})
+
+        }
+        else {
+          this.setState({ amount: data.CalculatingAmountDTO.btcAmount})
+
+        }
+
+      }
+      else if (data.error === 'invalid_token') {
+        Alert.alert(
+          'Error',
+          'Token Expired',
+          [
+            { text: 'OK', onPress: () => this.props.navigation.navigate('Login') },
+          ],
+
+        );
+      }
+
+    }
   }
   OnLoad=async()=>
   {
@@ -97,6 +128,7 @@ export default class  Buy  extends React.Component {
     {
       if(data.status===ResponseSuccessStatus)
       {
+      
         this.setState({"usdforEther":data.CalculatingAmountDTO.usdforEther.toString(),
         "ethercurrentvalue": data.CalculatingAmountDTO.ethercurrentvalue,
         "cryptoType": data.CalculatingAmountDTO.cryptoType,
@@ -106,6 +138,7 @@ export default class  Buy  extends React.Component {
         "maxcomercialValue":data.CalculatingAmountDTO.maximumCryptoValue}
         )
         this.usdConvert(this.state.usdforEther)
+        VaultSystemApi(crptoType, this.BalanceResponse)
       }else if(data.error==='invalid_token')
       {
         Alert.alert(
@@ -199,7 +232,9 @@ toggleSwitch=(value)=>{
       <LinearGradient
    colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} style={{height:'100%',marginRight:30,marginTop:30,position:'relative'}}>
     <View style={{position:'absolute',bottom:-10,left:0,right:0,justifyContent:'center',alignItems:"center"}}>
-  <LinearGradient colors= {['#97F5F9','#7ED5F6','#529DF3','#4781DF','#2D3CAD']} style={{width:70,
+    <TouchableOpacity onPress={this.ExchangeLogic}> 
+    <View>
+    <LinearGradient colors= {['#97F5F9','#7ED5F6','#529DF3','#4781DF','#2D3CAD']} style={{width:70,
     height: 70,
     borderRadius: 70/2,
     backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
@@ -208,6 +243,10 @@ toggleSwitch=(value)=>{
     
             
           </LinearGradient>
+    </View>
+    </TouchableOpacity>
+ 
+ 
   </View>
  <Animated.View style={{height:AnimatedHieght,width:AnimatedWidth, position:'absolute',left:0, marginTop:10,}}>
       <TouchableOpacity onPress={this._onPress.bind(this)}>
@@ -236,6 +275,7 @@ toggleSwitch=(value)=>{
         <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
         <Picker style={{ position:'absolute', top: 0, width: 1000, height: 3000}}
    selectedValue={this.state.EthAmount}
+   enabled={false}
   onValueChange={(itemValue, itemIndex) => this.selected1(itemValue,itemIndex)}>
   
   <Picker.Item label="ETH" value="ETH" />
@@ -257,6 +297,7 @@ toggleSwitch=(value)=>{
         <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
         <Picker style={{ position:'absolute', top: 0, width: 1000, height: 3000}}
    selectedValue={this.state.BtcAmount}
+   enabled={false}
   onValueChange={(itemValue, itemIndex) => this.selected2(itemValue,itemIndex)}>
     <Picker.Item label="BTC" value="BTC" />
   <Picker.Item label="ETH" value="ETH" />
@@ -308,11 +349,11 @@ toggleSwitch=(value)=>{
 />
 <View style={{flexDirection:'row',marginLeft:20}}>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Medium'}}>BTC Price</Text>
+<Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Medium'}}>{(this.state.cryptoType==='eth'||this.state.cryptoType==='ETH')?'ETH Price':'BTC Price'}</Text>
 </View>  
 
 <View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,textAlign:'center',fontFamily:'Exo2-Regular'}}>{this.state.ethercurrentvalue}</Text> 
+<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,textAlign:'center',fontFamily:'Exo2-Regular'}}>{this.state.amount}</Text> 
 
 </View>  
 
@@ -437,6 +478,7 @@ toggleSwitch=(value)=>{
       {
           Alert.alert(item.Status)
       }
+      ExchangeLogic=()=>{}
       _onPress=()=>
       {
         Animated.sequence([

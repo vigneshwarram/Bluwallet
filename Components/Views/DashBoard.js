@@ -568,11 +568,15 @@ export default class DashBoard extends React.Component {
             </View>
           </TouchableOpacity>
           <View style={{ marginTop: 15, alignItems: 'center' }}>
-            <LinearGradient colors={['#FF7C6E', '#F4317F']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={{ height: 40, backgroundColor: 'red', justifyContent: 'center', alignItems: 'center', borderRadius: 25, width: 150 }}>
-              <TouchableOpacity onPress={this.SendClick}>
+          <TouchableOpacity onPress={this.SendClick}>
+          <View>
+          <LinearGradient colors={['#FF7C6E', '#F4317F']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={{ height: 40, backgroundColor: 'red', justifyContent: 'center', alignItems: 'center', borderRadius: 25, width: 150 }}>
+             
                 <Text style={{ color: '#fff', fontFamily: 'Poppins-Regular' }}>Send</Text>
-              </TouchableOpacity>
+            
             </LinearGradient>
+          </View>
+          </TouchableOpacity>
           </View>
           <View style={{ backgroundColor: '#fff', borderRadius: 15, marginTop: 10, height: 40, }}>
             <View style={{ justifyContent: 'center', alignItems: 'center', paddingLeft: 10, paddingRight: 10 }}>
@@ -1091,6 +1095,11 @@ return(<View >
     strokecolor='#79b7e8'
     dots={true}
     chartConfig={{
+      gradientOpacity1:0.4,
+      gradientOpacity2:0.3,
+      gradientOpacity3:0.05,
+      gradientOpacity4:0,
+      gradientOpacity5:0,
       shadowgradientback1:'#4E8EE5',
     shadowgradientback2:'#4E8EE5',
     shadowgradientback3:'#4E8EE5',
@@ -1116,7 +1125,7 @@ return(<View >
          
 
 
-              <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: -60 }}>
+              <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: -30 }}>
                 <Text style={{ marginLeft: 10, marginTop: 15, fontSize: 16, color: '#ABB3D0', fontFamily: 'Exo2-Regular' }}>{this.state.graphshow}</Text>
               </View>
 
@@ -1346,7 +1355,7 @@ return(<View >
      let gpdata=[]
       let newdates =FinalResult.map((file,key) => {
 
-        if(key<4)
+        if(key<10)
         {
           gpdata.push(file.amount)
          // dataarray.push(file.Date)
@@ -1361,6 +1370,7 @@ return(<View >
     else
     {
       this.setState({graphshow:'Balance'})
+      console.log(gpdata)
       mass=gpdata
     }
  

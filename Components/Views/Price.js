@@ -21,7 +21,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
 import {PriceList} from './Api/PriceApi'
 let CrptoType='ETH'
-let mass=[ 100,600,300,600,300,600,100,600,300,600,300,600,300]
+let mass=[ 50, 100, 150, 200, 100, 300, 350, 400, 300, 100, 50, 40, 60, 100]
 export default class Price  extends React.Component {
 
   static navigationOptions = {
@@ -74,7 +74,7 @@ export default class Price  extends React.Component {
         console.log('price results',data)
        this.setState({dataSource:data.CalculatingAmountDTO,})
        this.setState({TotalPrice:this.state.dataSource.usdforEther,})
-     let  result=[100,600,300,600,300,600,100,600,300,600,300,600,300]
+     let  result=[50, 100, 150, 200, 100, 300, 350, 400, 300, 100, 50, 40, 60, 100]
      for(let i=0;i<result.length.length;i++)
      {
        mass.push(result[i])
@@ -268,28 +268,30 @@ SlideMenu=()=>{
     height={130}
     label={false}
     strokecolor='#00e2ab'
-    shadowcolor='#67d8e8'
     dots={false}
     chartConfig={{
-      shadowgradientback1:'#48d0e0',
-    shadowgradientback2:'#48d0e0',
-    shadowgradientback3:'#48d0e0',
-    shadowgradientback4:'#48d0e0',
-    shadowgradientback5:'#48d0e0',
-      backgroundColor: '#395ea4',
-      backgroundGradientFrom: '#3acddd',
-      backgroundGradientTo: '#83daf6',
+      gradientOpacity1:0.7,
+      gradientOpacity2:0.6,
+      gradientOpacity3:0.5,
+      gradientOpacity4:0.3,
+      gradientOpacity5:0.2,
+      shadowgradientback1:'#00e2ab',
+    shadowgradientback2:'#00e2ab',
+    shadowgradientback3:'#00e2ab',
+    shadowgradientback4:'#00e2ab',
+    shadowgradientback5:'#00e2ab',
+
+      backgroundGradientTo: '#00e2ab',
       decimalPlaces: 1, // optional, defaults to 2dp
       color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-      style: {
-        width:'100%',
+    style: {
+        borderRadius: 16,
         opacity:0.1
       }
     }}
     bezier
     style={{
-      width:'100%',
-      marginLeft:0,
+      marginVertical: 8,
       borderRadius: 16
     }}
   />
@@ -508,7 +510,7 @@ this.setState({
       }
       EtheriumClick=()=>
       {
-         mass=[100,600,300,600,300,600,100,600,300,600,300,600,300]
+         mass=[50, 100, 150, 200, 100, 300, 350, 400, 300, 100, 50, 40, 60, 100]
         this.setState({data:mass,EtheriumShadowClick:true,BitShadowClick:false,MoneroShadowClick:false,zShadowClick:false,currency:'ETH'})
         this.setState({TotalPrice:this.state.dataSource.usdforEther,})
        

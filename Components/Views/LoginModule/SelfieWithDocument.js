@@ -326,8 +326,8 @@ SlideMenu=()=>{
       timeoutIn=async()=>
       {
                this.setState({visibles:false})
-               await AsyncStorage.setItem('kycstatus',1); 
-               await AsyncStorage.setItem('profilestatus',1); 
+               await AsyncStorage.setItem('kycstatus','1'); 
+               await AsyncStorage.setItem('profilestatus','1'); 
                this.props.navigation.push('Home',{profilestatus:1,kycstatus:1})
       }
       Responsedata=(data)=>

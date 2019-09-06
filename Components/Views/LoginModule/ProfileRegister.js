@@ -373,7 +373,8 @@ if(year>2015){
     
       //need to call register update API here
      console.log('Profile register data request',profileParams)
-     this.Load()
+      this.Load()
+  
       registerUpdateApi(profileParams,this.RegisterUpdateResult)
   
     }
@@ -417,9 +418,9 @@ if(year>2015){
   navigate=async()=>
   {
     this.setState({visibles:false})   
-    await AsyncStorage.setItem('kycstatus',1); 
-    await AsyncStorage.setItem('profilestatus',1); 
-    this.props.navigation.push('Home',{profilestatus:1,kycstatus:1})
+    await AsyncStorage.setItem('kycstatus','1'); 
+    await AsyncStorage.setItem('profilestatus','1'); 
+    this.props.navigation.push('Home',{profilestatus:1,kycstatus:0})
   }
 
 
