@@ -12,7 +12,7 @@ export default class ExpandableList_Vault extends Component {
       super();
     
       this.state = {
-  
+        Updation:false,
         layout_Height: 0,
         userIdLogin:''
   
@@ -20,7 +20,14 @@ export default class ExpandableList_Vault extends Component {
     }
   
     componentWillReceiveProps(nextProps) {
-      
+      if(this.props.item!=nextProps)
+      {
+        this.setState(() => {
+          return {
+            Updation: true
+          }
+        });
+      }
      
       if (nextProps.item.expanded) {
         this.setState(() => {
@@ -43,15 +50,16 @@ export default class ExpandableList_Vault extends Component {
    
   
     shouldComponentUpdate(nextProps, nextState) {
-      if (this.state.layout_Height !== nextState.layout_Height) {
+      if(this.state.Updation)
+      {
+        return true;
+      }
+      if (this.state.layout_Height !== nextState.layout_Height ) {
         return true;
       }
       return false;
     }
     render() {
-       // datasource=this.props.item
-       console.log('getItemt',this.props.GetItem)
-        console.log('Expandable list data',this.props)
       return (
         <View>
           <TouchableOpacity activeOpacity={0.8} onPress={this.props.onClickFunction} >
@@ -64,7 +72,7 @@ export default class ExpandableList_Vault extends Component {
         borderRadius:20 }}>
                             <View style={{  flexDirection: 'row' }}>
                               <View>
-                                {(this.props.item.typeOfInvestment === 'ETH') ? <Image style={{ width: 50, height: 50, resizeMode: 'contain' }} source={require("../assets/etheriumshadow.png")} ></Image> :
+                                {(this.props.item.typeOfInvestment === 'ETH' ||this.props.item.typeOfInvestment === 'eth' ) ? <Image style={{ width: 50, height: 50, resizeMode: 'contain' }} source={require("../assets/etheriumshadow.png")} ></Image> :
                                   <Image style={{ width: 50, height: 50, resizeMode: 'contain' }} source={require("../assets/bitcoinshadow.png")} ></Image>}
 
                               </View>

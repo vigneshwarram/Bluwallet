@@ -14,6 +14,7 @@ import { ResponseSuccessStatus, InvalidResponse } from '../Utils.js/Constant'
 import ImageCarousel from 'react-native-image-carousel';
 const { width } = Dimensions.get('window');
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
+import ExpandabelList from '../Utils.js/ExpandableList_Vault'
 let type = 'ETH';
 let CompletedData;
 export default class VaultFilter extends React.Component {
@@ -135,6 +136,7 @@ export default class VaultFilter extends React.Component {
   }
   Animation = () => {
     this.setState({ AllBackgroundColor: '#2B4699' })
+    type='All'
     this.GetAllData()
     Animated.timing(
       this.OpacityView, {
@@ -162,6 +164,7 @@ export default class VaultFilter extends React.Component {
   }
   DeAnimation = () => {
     this.setState({ AllBackgroundColor: 'transparent' })
+    type='ETH'
     this.GetData()
     Animated.timing(
       this.OpacityView, {
@@ -234,14 +237,20 @@ export default class VaultFilter extends React.Component {
     //this.Load()
     //CryptoInvestment(this.GetListData)
 
-    CryptoTypeInvestment('All', this.GetListData)
+    CryptoTypeInvestment(type, this.GetListData)
   }
   GetListData = (data) => {
     this.hide()
     if (data !== 'undefined') {
       if (data.status == ResponseSuccessStatus) {
         console.log('VaultList', data)
-        this.setState({ dataSource: data.listofuserCryptoinvestmentdto })
+        let FinalResult=[]
+        FinalResult=data.listofuserCryptoinvestmentdto
+        const newFile =FinalResult.map((file) => {
+
+          return {...file, expanded: false};
+      });
+        this.setState({ dataSource:newFile })
       }
       else if (data.error === 'invalid_token') {
         Alert.alert(
@@ -558,81 +567,13 @@ export default class VaultFilter extends React.Component {
                 </View>
 
                 <View >
-                  <FlatList style={{ marginTop: 20 }}
-                    ItemSeparatorComponent={this.space}
-                    data={this.state.dataSource}
-                    renderItem={({ item, separators }) =>
-                      <TouchableOpacity onShowUnderlay={separators.highlight}
-                        onHideUnderlay={separators.unhighlight} onPress={this.clickedItemText.bind(this, item)}>
-                        <View style={{
-                          marginLeft: 30, marginRight: 30, shadowOffset: { width: 10, height: 10 },
-
-                          borderBottomWidth: 0,
-      
-                          shadowOffset: { width: 0, height: 12 },
-                          shadowOpacity: 0.8,
-                          shadowRadius: 2,
-                          elevation: 24,
-                          borderRadius: 25
-                        }}>
-                          <LinearGradient
-                            colors={['#4262B5', '#3A549B', '#314279', '#2C3765', '#2A335E']} style={{ borderRadius: 25, paddingTop: 10, paddingBottom: 10 }}>
-                            <View style={{ alignItems: 'center', flexDirection: 'row', padding: 15 }}>
-                              <View style={{ justifyContent: 'center' }}>
-                                {(item.typeOfInvestment === 'ETH' || item.typeOfInvestment === 'eth') ? <Image style={{ width: 50, height: 50, resizeMode: 'contain' }} source={require("../assets/etheriumshadow.png")} ></Image> :
-                                  <Image style={{ width: 50, height: 50, resizeMode: 'contain' }} source={require("../assets/bitcoinshadow.png")} ></Image>}
-
-                              </View>
-
-
-                              <View style={{ flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-                                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                                  <View style={{ justifyContent: 'space-around', alignItems: 'center' }}>
-                                    <Text style={{ fontSize: 12, fontFamily: 'Exo2-Bold', color: '#ffffff', marginTop: -10 }}>{item.typeOfInvestment}</Text>
-                                    <Text style={{ fontSize: 12, color: '#a9b4d4', marginTop: 10 }}>{item.cryptoAmount}</Text>
-                                  </View>
-                                  <View>
-                                    <View style={{ flexDirection: 'row', marginLeft: 20 }}>
-                                      <View>
-                                      <View style={{flexDirection:'row'}}>
-                                      <Text style={{ fontSize: 12, color: '#ABB3D0', marginTop: -10, fontFamily: 'Exo2-Regular' }}>Produced</Text>
-                                      <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: -15 }}>
-                                        <Image style={{ width: 25, height: 25, resizeMode: 'contain', tintColor: '#15E9E9' }} source={require("../assets/plusblue.png")} ></Image>
-                                        <View style={{ marginTop: 5 }}>
-                                          <Text style={{ fontSize: 12, textAlign: 'center', fontFamily: 'Exo2-Bold', color: '#2A335E' }}>$ {item.investmentPercentInUsd}</Text>
-                                        </View>
-                                      
-
-                                      </View>
-                                      </View>
-                                       
-                                        <View style={{flexDirection:'row'}}>
-                                        <Text style={{ fontSize: 12, fontFamily: 'Exo2-Regular', marginTop: 10, color: '#ABB3D0' }}>Coins</Text>
-                                        <Text style={{ fontSize: 12, textAlign: 'center', fontFamily: 'Exo2-Bold', color: '#ABB3D0',marginLeft:10 , marginTop: 10}}>${(item.typeOfInvestment==='ETH'||item.typeOfInvestment==='eth')?item.ethValueInUsd:item.btcValueInUsd}</Text>
-                                        <View style={{ flexDirection: 'row',paddingLeft:10 ,marginTop: 10}}>
-                                    <Text style={{ fontFamily: 'Exo2-Regular', color: '#5496FF' }}>+{item.percentage}%</Text>
-                                    <Image style={{ width: 10, height: 10, resizeMode: 'contain' }} source={require("../assets/green.png")} ></Image>
-                                  </View>
-                                        </View>
-
-                                      </View>
-
-               
-                                     
-                                    </View>
-
-                                  </View>
-                                  
-                                </View>
-                              </View>
-
-                            </View>
-                          </LinearGradient>
-                        </View>
-
-                      </TouchableOpacity>
-                    }
-                  />
+                {
+            this.state.dataSource.map((item, key) =>
+              (
+              
+                <ExpandabelList hide={this.hide}  key={item.listofuserCryptoinvestmentdto} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
+              ))
+          }
                 </View>
 
 
@@ -652,6 +593,20 @@ export default class VaultFilter extends React.Component {
 
     (!this.state.AnimationFlag) ? this.Animation() : this.DeAnimation()
 
+  }
+  update_Layout = (index) => {
+
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+
+    const array = [...this.state.dataSource];
+
+    array[index]['expanded'] = !array[index]['expanded'];
+
+    this.setState(() => {
+      return {
+        dataSource: array
+      }
+    });
   }
   action = (index) => {
 

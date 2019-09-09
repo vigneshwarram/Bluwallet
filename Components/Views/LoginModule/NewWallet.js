@@ -148,7 +148,7 @@ SlideMenu=()=>{
 <View style={{flexDirection:'row',marginLeft:20,justifyContent:'flex-start',alignItems:'center'}}>
 
 <TextInput
-   style={{height: 80,padding:10,fontFamily:'Exo2-Regular'}}
+   style={{height: 80,padding:10,fontFamily:'Exo2-Regular',width:'100%'}}
  placeholderTextColor='#9ab8db'
    placeholder="Email"
    onChangeText={(text) => this.setState({Username:text})}

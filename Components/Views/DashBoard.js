@@ -381,8 +381,8 @@ export default class DashBoard extends React.Component {
   }
   onQR_Code_Scan_Done = (QR_Code) => {
     console.log('Qr code value',QR_Code)
-    this.setState({ QR_Code_Value: QR_Code, Start_Scanner: false, });
-    this.setState({ QrButton: false })
+    this.setState({ QR_Code_Value: QR_Code, Start_Scanner: false,QrButton: false,});
+    this._onPress.bind(this)
 
     console.log('This popup overlay is not openenng')
   }
@@ -472,6 +472,7 @@ export default class DashBoard extends React.Component {
     if (data.status === 'success') {
       this.setState({ visibles: true, ResponseStatus: data.message })
       setTimeout(this.PopUp, 700);
+      this.GetData()
     }
     else if (data.error === 'invalid_token') {
       Alert.alert(
@@ -494,6 +495,19 @@ export default class DashBoard extends React.Component {
     this.props.navigation.setParams({ bottombar: true })
   }
   renderScane() {
+    if (this.state.QrButton) {
+      return <CameraKitCameraScreen
+        showFrame={true}
+        closeaction={this.closeleft}
+        scanBarcode={true}
+        laserColor={'#FF3D00'}
+        frameColor={'#00C853'}
+        colorForScannerFrame={'black'}
+        onReadCode={event =>
+          this.onQR_Code_Scan_Done(event.nativeEvent.codeStringValue)
+        }
+      />
+    }
     return (
       <Animated.View style={{ flex: 1, width: '100%', transform: [{ scale: this.springValue }] }}>
 
@@ -1240,7 +1254,7 @@ return(<View >
             this.state.dataSource.map((item, key) =>
               (
               
-                <ExpandabelList  key={item.listCalculatingAmountDTO} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
+                <ExpandabelList hide={this.hide}  key={item.listCalculatingAmountDTO} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
               ))
           }
                 </View>
@@ -1277,8 +1291,6 @@ return(<View >
   }
   GetData = async () => {
     this.Load()
-    // this.GetList()
-    // console.log(type)
     this.setState({ EtherWalletAddress: await AsyncStorage.getItem('etherwalletAddress'), BtcWalletAddress: await AsyncStorage.getItem('bitcoinWalletReceivingAddress') })
     VaultSystemApi(type, this.BalanceResponse)
   }
@@ -1404,6 +1416,7 @@ return(<View >
       type = 'BTC'
       this.setState({ QR_Code_Value: '' })
       cryptoType = 'BTCTEST'
+      type = 'BTCTEST'
       // this.GetList()    
     }
     this.GetData()

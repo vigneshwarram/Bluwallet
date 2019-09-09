@@ -14,14 +14,22 @@ export default class Expandable_DashBoard_List extends Component {
       this.state = {
   
         layout_Height: 0,
-        userIdLogin:''
+        Updation:false,
+        userIdLogin:[]
   
       }
     }
   
     componentWillReceiveProps(nextProps) {
-      
-     console.log('receive is comming')
+      if(this.props.item!=nextProps)
+      {
+        this.setState(() => {
+          return {
+            Updation: true
+          }
+        });
+      }
+
       if (nextProps.item.expanded) {
         this.setState(() => {
           return {
@@ -36,6 +44,7 @@ export default class Expandable_DashBoard_List extends Component {
           }
         });
       }
+      
     }
 
    
@@ -43,14 +52,18 @@ export default class Expandable_DashBoard_List extends Component {
    
   
     shouldComponentUpdate(nextProps, nextState) {
-      if (this.state.layout_Height !== nextState.layout_Height) {
+      console.log('its comming')
+      if(this.state.Updation)
+      {
+        return true;
+      }
+      if (this.state.layout_Height !== nextState.layout_Height ) 
+      {
         return true;
       }
       return false;
     }
     render() {
-       // datasource=this.props.item
-        console.log(this.props)
       return (
         <View>
           <TouchableOpacity activeOpacity={0.8} onPress={this.props.onClickFunction} >
