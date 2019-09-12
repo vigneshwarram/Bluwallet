@@ -213,9 +213,9 @@ SlideMenu=()=>{
           textStyle={styles.spinnerTextStyle}
         />
      <LinearGradient
-   colors={['#1a5fe1','#00a5ff','#81DCF9']} start={{x: 0, y: 0}} end={{x: 0, y: 1}} style={{flex:0.3,opacity:0.9}}>     
+   colors={['transparent','transparent','transparent']} start={{x: 0, y: 0}} end={{x: 0, y: 1}} style={{flex:0.3,opacity:0.9}}>     
       <LinearGradient
-   colors={['#1a5fe1','#00a5ff','#81DCF9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{height:"100%",marginRight:30,marginTop:20}}>
+   colors={['transparent','transparent','transparent']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{height:"100%",marginRight:30,marginTop:20}}>
  <View>
  <View style={{justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection:'row',marginTop:10}}>
@@ -226,13 +226,13 @@ SlideMenu=()=>{
           </View>      
           <View style={{flexDirection: 'row',marginTop:20,justifyContent:'space-around'}}>
          <View style={{justifyContent:'center',alignItems:'center'}}>
-         <Text style={{fontSize:18,color:'#2939a8',fontFamily:'Exo2-Regular'}}>{this.state.currency}</Text> 
+         <Text style={{fontSize:18,color:'#fff',fontFamily:'Exo2-Regular'}}>{this.state.currency}</Text> 
          </View>
 <Text style={{fontSize:25,color:'#fff',marginLeft:10,fontFamily:'Exo2-Medium'}}>{this.state.TotalPrice}</Text>      
         
 <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:20}}>
-        <Text style={{color:'#3440b0',opacity:1,fontSize:18,fontFamily:'Exo2-Regular'}}>{this.state.Amount}</Text>
-        <Image  style={{width: 10, height: 10,marginLeft:10,resizeMode:'contain',tintColor:"#3440b0"}}  source={require("./assets/down_arrow.png")} ></Image>
+        <Text style={{color:'#fff',opacity:1,fontSize:18,fontFamily:'Exo2-Regular'}}>{this.state.Amount}</Text>
+        <Image  style={{width: 10, height: 10,marginLeft:10,resizeMode:'contain',tintColor:"#fff"}}  source={require("./assets/down_arrow.png")} ></Image>
         <Picker style={{ position:'absolute', top: 0, width: 500, height: 3000 }}
    selectedValue={this.state.Amount}
   onValueChange={(itemValue, itemIndex) => this.selectedAmount(itemValue,itemIndex)}>
@@ -307,14 +307,12 @@ SlideMenu=()=>{
     <View style={{flex:0.7,}}>
     <View
   style={{
-    marginLeft:30,marginRight:30,
-    marginTop:20,
-    borderBottomColor: '#2c548f',marginBottom:10,
-    borderBottomWidth: 1,
+   paddingTop:50
   }}
 />
-<ScrollView>
-<View style={{marginBottom:150}}>
+<ScrollView contentContainerStyle={{paddingBottom:100}}>
+
+<View>
 <View style={{flexDirection:'row'}}>
 
 {(this.state.EtheriumShadowClick)?

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet,TextInput, Image,Picker,FlatList,Text,ActivityIndicator,ScrollView,TouchableOpacity,Easing,Animated ,AsyncStorage} from 'react-native';
+import { View, StyleSheet,TextInput, Image,Picker,ImageBackground, FlatList,Text,ActivityIndicator,ScrollView,TouchableOpacity,Easing,Animated ,AsyncStorage} from 'react-native';
 import { Alert } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
@@ -221,12 +221,26 @@ renderScane() {
     </DialogContent>
   </Dialog>
  </View>
-      <LinearGradient
-  colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{flex:0.4,opacity:0.9}}>    
-      <LinearGradient
-  colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} style={{height:'100%',marginRight:30,marginTop:30,}}>
 
-<View style={{position:'absolute',justifyContent:'center',alignItems:'flex-start',top:15,left:10}}>
+ <ImageBackground source={require('../assets/Group_20501.png')} imageStyle={{resizeMode:'cover',width:'100%',height:'100%'}} style={{opacity:0.9,flex:0.33}}>
+ <View style={{position:'absolute',bottom:-10,left:0,right:0,justifyContent:'center',alignItems:"center"}}>
+    <TouchableOpacity onPress={this.ExchangeLogic}> 
+    <View>
+    <LinearGradient colors= {['#97F5F9','#7ED5F6','#529DF3','#4781DF','#2D3CAD']} style={{width:70,
+    height: 70,
+    borderRadius: 70/2,
+    backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
+   
+    <Image  style={{width: 40, height: 40,resizeMode:'contain'}}  source={require('../assets/publication.png')} ></Image>
+    
+            
+          </LinearGradient>
+    </View>
+    </TouchableOpacity>
+ 
+ 
+  </View>
+<View style={{justifyContent:'center',alignItems:'flex-start',top:20,left:15,position:'absolute'}}>
 <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
 <View>
 <Image style={{width: 15, height: 15,resizeMode:'contain'}}   source={require("../assets/back.png")} ></Image> 
@@ -293,21 +307,9 @@ renderScane() {
           </View>
           </View>   
       
-          </LinearGradient>    
-         
-
-
-          </LinearGradient>
+</ImageBackground>
           <View style={{justifyContent:'center',alignItems:'center'}}>
-  <LinearGradient colors= {['#97F5F9','#7ED5F6','#529DF3','#4781DF','#2D3CAD']} style={{width:70,
-    height: 70,
-    borderRadius: 70/2,
-    backgroundColor:this.state.app1color,justifyContent:'center',alignItems:"center"}} >
-   
-    <Image  style={{width: 40, height: 40,resizeMode:'contain'}}  source={require('../assets/publication.png')} ></Image>
-    
-            
-          </LinearGradient>
+  
   </View>  
 
   <View style={{flex:0.6,marginTop:20}}>

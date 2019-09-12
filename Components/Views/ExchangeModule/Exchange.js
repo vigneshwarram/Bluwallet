@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet,TextInput, Image,Picker,ScrollView,Text,Animated,ActivityIndicator,TouchableOpacity,AsyncStorage,KeyboardAvoidingView,Easing} from 'react-native';
+import { View, StyleSheet,TextInput, Image,Picker,ImageBackground,ScrollView,Text,Animated,ActivityIndicator,TouchableOpacity,AsyncStorage,KeyboardAvoidingView,Easing} from 'react-native';
 import { Alert } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import { Switch} from 'react-native'
@@ -227,10 +227,7 @@ toggleSwitch=(value)=>{
  </View>
  <View style={{flex:1}}>
 
- <LinearGradient
-   colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{opacity:0.9,flex:0.3}}>     
-      <LinearGradient
-   colors={['#2D3CAD','#4781DF','#529DF3','#7ED5F6','#97F5F9']} style={{height:'100%',marginRight:30,marginTop:30,position:'relative'}}>
+ <ImageBackground source={require('../assets/Group_20501.png')} imageStyle={{resizeMode:'cover',width:'100%',height:'100%'}} style={{opacity:0.9,flex:0.33}}>
     <View style={{position:'absolute',bottom:-10,left:0,right:0,justifyContent:'center',alignItems:"center"}}>
     <TouchableOpacity onPress={this.ExchangeLogic}> 
     <View>
@@ -315,21 +312,17 @@ toggleSwitch=(value)=>{
           </View>
          <View>  
           </View>
-          </LinearGradient>    
-         
-
-
-          </LinearGradient> 
+          </ImageBackground>    
 
 
   
 <View style={{flex:0.7}}>
- <View style={{paddingTop:50,}}></View>
- <ScrollView>
+ <ScrollView contentContainerStyle={{paddingBottom:100}}>
+ <View style={{paddingTop:20,}}></View>
 <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',}}>
 <Text style={{color:'#fff',fontSize:36}}>$</Text>
 <TextInput
-          style={{height: 80,color:'#fff',fontSize:36}}
+          style={{height: 80,color:'#fff',fontSize:36,fontFamily:'Exo2-Regular'}}
           placeholder="0.000" 
           placeholderTextColor="#fff"
           keyboardType='numeric'
@@ -449,7 +442,7 @@ toggleSwitch=(value)=>{
     borderBottomWidth: 1,
   }}
 />
-<View style={{marginBottom:100,marginTop:30,paddingLeft:50,paddingRight:50}}>
+<View style={{marginTop:30,paddingLeft:50,paddingRight:50}}>
 <TouchableOpacity onPress={() => this.exchangeApi()}>
 <View>
 <LinearGradient colors={['#41da9c','#36deaf','#26e3ca']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:12,backgroundColor:'green',justifyContent:'center',alignItems:'center',borderRadius:6}}>

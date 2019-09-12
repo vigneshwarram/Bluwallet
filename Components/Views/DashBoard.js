@@ -1091,7 +1091,7 @@ return(<View >
 
 
             <View >
-<View style={{marginLeft:-30}}>
+<View style={{marginLeft:-70}}>
 
 <LineChart
     data={{
@@ -1107,7 +1107,7 @@ return(<View >
    
     shadowcolor='#2b396a'
     strokecolor='#79b7e8'
-    dots={true}
+    dots={false}
     chartConfig={{
       gradientOpacity1:0.4,
       gradientOpacity2:0.3,

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet,TextInput, Image,Picker,LayoutAnimation,Text,ActivityIndicator,TouchableOpacity,UIManager,Animated,Platform,TouchableHighlight} from 'react-native';
+import { View, StyleSheet,TextInput, Image,ImageBackground,Picker,LayoutAnimation,Text,ActivityIndicator,TouchableOpacity,UIManager,Animated,Platform,TouchableHighlight} from 'react-native';
 import { Alert } from 'react-native';
 
 import LinearGradient from 'react-native-linear-gradient';
@@ -218,12 +218,9 @@ space(){
           color='#f4347f'
           textStyle={styles.spinnerTextStyle}
         />
-
-<LinearGradient
-   colors={['#1a5fe1','#00a5ff','#81DCF9',]} style={{opacity:0.9,flex:0.3}}>    
-      <LinearGradient
-   colors={['#1a5fe1','#00a5ff','#81DCF9']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{height:'100%', marginRight:30,marginTop:30,opacity:1}}>
- <View style={{justifyContent:'center',alignItems:'center'}}>
+     
+<ImageBackground source={require('../assets/Group_20501.png')} imageStyle={{resizeMode:'cover',width:'100%',height:'100%'}} style={{opacity:0.9,flex:0.33}}>
+<View style={{justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection:'row',marginTop:10}}>
           <Image style={{marginRight:10,width: 18, height: 22,resizeMode:'contain'}}   source={require("../assets/app4.png")} ></Image>     
           <Text style={{fontSize:16,color:'#fff',fontFamily:'Exo2-Regular'}}>Exchange</Text>
@@ -281,14 +278,16 @@ space(){
   
           </View>
           </View>   
+</ImageBackground>
+
           
-          </LinearGradient>    
+          
          
 
 
-          </LinearGradient>  
+      
 
-     <View style={{flex:0.7,marginTop:50}}>
+     <View style={{flex:0.67}}>
      
      <ScrollView contentContainerStyle={{paddingBottom: 100}}>
      <View>

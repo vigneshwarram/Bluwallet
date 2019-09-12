@@ -31,12 +31,15 @@ export default class Expandable_DashBoard_List extends Component {
       }
 
       if (nextProps.item.expanded) {
-        this.setState(() => {
-          return {
-            layout_Height: null
-          }
-        });
-      }
+        console.log('nextprops',nextProps.item.expanded)
+      
+          this.setState(() => {
+            return {
+              layout_Height: null
+            }
+          });
+
+        }    
       else {
         this.setState(() => {
           return {
@@ -52,7 +55,7 @@ export default class Expandable_DashBoard_List extends Component {
    
   
     shouldComponentUpdate(nextProps, nextState) {
-      console.log('its comming')
+      console.log('nextstate',nextState.layout_Height)
       if(this.state.Updation)
       {
         return true;
@@ -70,36 +73,42 @@ export default class Expandable_DashBoard_List extends Component {
         <View elevation={5} style={{shadowOffset: { width: 10, height: 10 }}}>
           
            
-<LinearGradient
-              colors={['#4262B5', '#3A549B', '#314279', '#2C3765', '#2A335E']} style={{marginLeft:30,marginRight:30,marginBottom:20,height:100, shadowOffset: { width: 10, height: 10 },
-       borderWidth:0.4,borderColor:'#7894f8',justifyContent:'center',alignItems:'center',
+        <LinearGradient
+    colors={['#4262B5', '#3A549B', '#314279', '#2C3765', '#2A335E']} style={{marginLeft:30,marginRight:30,marginBottom:20,height:100, shadowOffset: { width: 10, height: 10 },
+       borderWidth:0.4,borderColor:'#7894f8',justifyContent:'center',
         borderRadius:20}}>
 
-              <View style={{ flexDirection: 'row', }}>
-                <View>
-                  {(this.props.item.transactionType === 'Send') ? <Image style={{ width: 50, height: 50, }} source={require("../assets/redicon.png")} ></Image> :
-                    <Image style={{ width: 50, height: 50,  }} source={require("../assets/icon2.png")} ></Image>}
+              <View style={{flexDirection:'row',justifyContent:'space-between',paddingLeft:20,paddingRight:20}}>
+    <View style={{flexDirection:'row',marginTop:-10}}>
+                  {(this.props.item.transactionType === 'Send') ? 
+         <Image style={{ width: 50, height: 50,  }} source={require("../assets/redicon.png")} ></Image>  
+    
+
+         :
+                    
+         <Image style={{ width: 50, height: 50,  }} source={require("../assets/icon2.png")} ></Image>
+  }
 
                 </View>
-                <View style={{ flexDirection: 'column' }}>
-                  <View style={{  flexDirection: 'row', justifyContent: 'space-between' }}>
-                    <Text style={{ marginRight: 20, marginTop: 10, color: '#fff', fontFamily: "Exo2-Bold" }}> {this.props.item.transactionType}</Text>
-                    <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
-                      <Image style={{ width: 25, marginTop: 10, height: 25 }} source={require("../assets/plusblue.png")} ></Image>
-                      <Text style={{ marginRight: 20, marginTop: 10, color: (this.props.item.Status != 'Completed') ? '#fff' : '#fff', fontFamily: 'Exo2-Regular' }}>$ {this.props.item.usdValue}</Text>
+                <View style={{ flexDirection: 'column',justifyContent:'space-around' }}>
+
+                <Text style={{  color: '#fff', fontFamily: "Exo2-Bold" }}> {this.props.item.transactionType}</Text>
+                <Text style={{   color: '#5496FF', fontFamily: 'Exo2-Regular' }}>{this.props.item.Date}</Text>
+                </View>
+                <View style={{justifyContent:'space-around',alignSelf:'flex-end'}}>
+                <View style={{ flexDirection: 'row' }}>
+                      <Image style={{ width: 25,height: 25 }} source={require("../assets/plusblue.png")} ></Image>
+                      <Text style={{ color: (this.props.item.Status != 'Completed') ? '#fff' : '#fff', fontFamily: 'Exo2-Regular' }}>$ {this.props.item.usdValue}</Text>
                     </View>
-
-                  </View>
-                  <View style={{  flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 15 }}>
-
-
-                    <Text style={{ marginRight: 20, marginTop: 10, color: '#5496FF', fontFamily: 'Exo2-Regular' }}>{this.props.item.Date + " " + this.props.item.time}</Text>
-
-                    <Text style={{ marginRight: 20, marginTop: 10, color: '#5496FF', fontFamily: 'Exo2-Regular' }}>{this.props.item.receivedAmount}ETH</Text>
-                  </View>
+                    <View>
+                    <Text style={{color: '#5496FF', fontFamily: 'Exo2-Regular',alignSelf:'flex-end'}}>{this.props.item.amount}ETH</Text>
+                    </View>
+              
                 </View>
-
+              
+               
               </View>
+           
             </LinearGradient>
 
            
