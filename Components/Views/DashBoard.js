@@ -143,7 +143,7 @@ export default class DashBoard extends React.Component {
 
           ShadowImages: require('./assets/etherem.png'),
 
-          title: "Etherium"
+          title: "Ethereum"
         },
         {
           ShadowImages: require('./assets/bshadow.png'),
