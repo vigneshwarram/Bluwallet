@@ -316,7 +316,7 @@ toggleSwitch=(value)=>{
 
 
   
-<View style={{flex:0.7}}>
+<View style={{flex:0.67}}>
  <ScrollView contentContainerStyle={{paddingBottom:100}}>
  <View style={{paddingTop:20,}}></View>
 <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',}}>
