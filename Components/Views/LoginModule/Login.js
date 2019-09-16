@@ -8,6 +8,7 @@ import OuthApi from '../Api/OuthApi'
 import LinearGradient from 'react-native-linear-gradient';
 import { NavigationActions,StackActions } from 'react-navigation'
 import { ScrollView } from 'react-native-gesture-handler';
+import SnackBar from '../Utils.js/Snackbar'
 export default class Login  extends React.Component {
 
   static navigationOptions = {
@@ -23,12 +24,14 @@ export default class Login  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
+      AlertMessage:'',
       Username:'testdemo2@yopmail.com',
       Password:'Admin@123new',
       clickr:false,
       clickopen:false,
       click:false,
       slide:false,
+      AlertVisible:false,
       visible: false,
       hidden: false,
       app1color:'#fff',
@@ -144,7 +147,7 @@ SlideMenu=()=>{
        <LinearGradient
        
   colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={styles.Maincontainers}>   
-
+<SnackBar AlertVisible={this.state.AlertVisible} message={this.state.AlertMessage}></SnackBar>
   <View style={{flex:0.4}}>
   <View  style={{justifyContent:'center',alignItems:'center',paddingTop:20
         }}>
@@ -172,7 +175,7 @@ SlideMenu=()=>{
      
      <TextInput  placeholder="User"
          placeholderTextColor="#3d5498" 
-         onChangeText={(text) => this.setState({Username:text})}
+         onChangeText={(text) => this.setState({Username:text,AlertVisible:false})}
          style={styles.inputBox} />
      </View>
      <View style={{flexDirection:'row',justifyContent:'space-around'}}>
@@ -187,7 +190,7 @@ SlideMenu=()=>{
       
          style={styles.inputBox}
          secureTextEntry={true}
-         onChangeText={(text) => this.setState({Password:text})}
+         onChangeText={(text) => this.setState({Password:text,AlertVisible:false})}
        />
      </View>
             
@@ -244,11 +247,12 @@ SlideMenu=()=>{
       {
         if(this.state.Username==='')
         {
-          Alert.alert('Alert!!','Please enter username')
+          this.setState({AlertVisible:true,AlertMessage:'Please enter username'})
+          //Alert.alert('Alert!!','Please enter username')
         }
         else if(this.state.Password==='')
         {
-         Alert.alert('Alert!!','Please enter Password')
+          this.setState({AlertVisible:true,AlertMessage:'Please enter Password'})
         }
         else
         {
@@ -271,9 +275,10 @@ SlideMenu=()=>{
         if( data.error==='invalid_grant')
         {
           console.log('login error', data.error_description)
-          Alert.alert('Alert','Incorrect username and password.')
-          this.setState({Username:''})
-          this.setState({Password:''})
+          this.setState({AlertVisible:true,AlertMessage:'Incorrect username and password'})
+          //Alert.alert('Alert','Incorrect username and password.')
+         // this.setState({Username:''})
+         // this.setState({Password:''})
 
         }else if(data.access_token!='undefined'){
          

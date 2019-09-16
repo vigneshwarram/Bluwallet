@@ -15,23 +15,29 @@ export default class Snackbar extends Component {
         
       }
     }
-
-   componentWillReceiveProps(nextProps)
-   {
-    console.log('nextProps',nextProps.Visible)
-    this.setState({Shown:nextProps.Visible})   
-       
-   }
-shouldComponentUpdate(nextProps,nextState)
+componentDidMount()
 {
-    if(nextProps.Visible!=this.props.Visible)
-    {
-        //this.SnackbarAction()
-        this.SnackbarAction()
-        return true
-    }
-    return false
+    console.log('component did mount','cccoming')
+    this.setState({Shown:this.props.AlertVisible})  
+    this.SnackbarAction() 
+       
 }
+componentWillReceiveProps(nextProps)
+{
+    this.setState({Shown:nextProps.AlertVisible})  
+  
+}
+  
+// shouldComponentUpdate(nextProps,nextState)
+// {
+//     if(nextProps.AlertVisible!=this.props.AlertVisible)
+//     {
+//         //this.SnackbarAction()
+       
+//         return true
+//     }
+//     return false
+// }
       
    
    SnackbarAction=()=>
@@ -47,6 +53,8 @@ shouldComponentUpdate(nextProps,nextState)
 
    
     render() {
+        this.SnackbarAction() 
+        console.log('render function','it is comming')
       return (
        <Animated.View style={{position:'absolute',bottom:0,backgroundColor:'red',width:width,transform:[{
            translateY:this.state.animated.interpolate({
@@ -55,7 +63,7 @@ shouldComponentUpdate(nextProps,nextState)
            })
        }]}}>
            <View style={{justifyContent:'center',padding:20,paddingRight:20}}>
-               <Text style={{color:'#fff'}}>Invalid credentials</Text>
+               <Text style={{color:'#fff'}}>{this.props.message}</Text>
 
            </View>
        </Animated.View>

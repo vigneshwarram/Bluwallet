@@ -72,6 +72,7 @@ export default class DashBoard extends React.Component {
       currentUsdforEther: null,
       QR_Code_Value: null,
       dates:[],
+      animated:new Animated.Value(0),
       datas:[],
       dateU:[],
       backoption: false,
@@ -171,10 +172,17 @@ export default class DashBoard extends React.Component {
     // this._animate()
     BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
 
-
+this.GraphAnimation()
     this.GetData()
     
 
+  }
+  GraphAnimation=()=>
+  {
+    Animated.timing(this.state.animated,{
+      toValue:1,
+      duration:500
+  }).start() 
   }
   componentWillUnmount() {
     BackHandler.removeEventListener('hardwareBackPress', this.onBackPress);
@@ -1091,6 +1099,12 @@ return(<View >
 
 
             <View >
+            <Animated.View style={{transform:[{
+              translateX:this.state.animated.interpolate({
+               inputRange:[0,1],
+               outputRange:[150,1]
+           })
+            }]}}>
 <View style={{marginLeft:-70}}>
 
 <LineChart
@@ -1136,7 +1150,7 @@ return(<View >
     }}
   />
 </View>
-         
+         </Animated.View>
 
 
               <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: -30 }}>

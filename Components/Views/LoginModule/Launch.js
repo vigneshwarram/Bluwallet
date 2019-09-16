@@ -54,8 +54,8 @@ export default class Launch extends React.Component {
   CheckUserSignedIn = async () => {
     try {
       let userid = await AsyncStorage.getItem('UserId')
-      let kycstatus = await AsyncStorage.setItem('kycstatus',1); 
-      let profilestatus= await AsyncStorage.setItem('profilestatus',1); 
+      let kycstatus = await AsyncStorage.setItem('kycstatus','1'); 
+      let profilestatus= await AsyncStorage.setItem('profilestatus','1'); 
       if (userid != null) {
         this.GetAuthenticiate(userid,profilestatus,kycstatus)
         console.log('user id', userid)
