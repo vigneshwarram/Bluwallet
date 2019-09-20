@@ -55,7 +55,7 @@ export default class Expandable_DashBoard_List extends Component {
    
   
     shouldComponentUpdate(nextProps, nextState) {
-      console.log('nextstate',nextState.layout_Height)
+     
       if(this.state.Updation)
       {
         return true;

@@ -54,8 +54,8 @@ export default class Launch extends React.Component {
   CheckUserSignedIn = async () => {
     try {
       let userid = await AsyncStorage.getItem('UserId')
-      let kycstatus = await AsyncStorage.setItem('kycstatus','1'); 
-      let profilestatus= await AsyncStorage.setItem('profilestatus','1'); 
+      let kycstatus = await AsyncStorage.getItem('kycstatus'); 
+      let profilestatus= await AsyncStorage.getItem('profilestatus'); 
       if (userid != null) {
         this.GetAuthenticiate(userid,profilestatus,kycstatus)
         console.log('user id', userid)
@@ -188,17 +188,15 @@ export default class Launch extends React.Component {
 
         <ImageBackground style={{ flex: 1, }} imageStyle={{ resizeMode: 'stretch' }} source={require('../assets/Group_1316.png')}>
 
-          <View style={{ flex: 0.6 }}>
+          <View style={{ flex: 0.6 ,justifyContent: 'center',alignItems:'center'}}>
 
-            <View>
+           
 
-              <View style={{
-                justifyContent: 'center', alignItems: 'center', paddingTop: 20
-              }}>
-                <Image style={{ width: 150, height: 150, resizeMode: 'contain' }} source={require("../assets/app-logo.png")} ></Image>
+              <View>
+                <Image style={{ width: 150, height: 150, resizeMode: 'contain' }} source={require("../assets/Group_2054.png")} ></Image>
 
 
-              </View>
+              
 
 
             </View>

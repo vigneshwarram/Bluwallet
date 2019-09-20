@@ -61,6 +61,7 @@ export default class DashBoard extends React.Component {
     {
      UIManager.setLayoutAnimationEnabledExperimental(true)
      }
+     this.animated=new Animated.Value(0),
     this.onBackPress = this.onBackPress.bind(this);
     this.springValue = new Animated.Value(0.3)
     this.animatedValue = new Animated.Value(0)
@@ -72,7 +73,7 @@ export default class DashBoard extends React.Component {
       currentUsdforEther: null,
       QR_Code_Value: null,
       dates:[],
-      animated:new Animated.Value(0),
+     
       datas:[],
       dateU:[],
       backoption: false,
@@ -150,7 +151,10 @@ export default class DashBoard extends React.Component {
           ShadowImages: require('./assets/bshadow.png'),
           title: "Bitcoin"
         },
-
+         {
+           ShadowImages:require('./assets/bitwingslogowallet.png'),
+           title: "Bitwings"
+         }
 
       ]
     }
@@ -172,16 +176,17 @@ export default class DashBoard extends React.Component {
     // this._animate()
     BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
 
-this.GraphAnimation()
+
     this.GetData()
     
 
   }
   GraphAnimation=()=>
   {
-    Animated.timing(this.state.animated,{
+    Animated.timing(this.animated,{
       toValue:1,
-      duration:500
+      duration:3000,
+     useNativeDriver:true
   }).start() 
   }
   componentWillUnmount() {
@@ -881,7 +886,7 @@ this.GraphAnimation()
             height: 200, marginLeft: -100, marginTop: -40,
             width: 250,
             resizeMode: 'contain'
-          }} source={require("./assets/threelogo.png")} ></Image>
+          }} source={require("./assets/slogo.png")} ></Image>
         </View>
       </View>
     </LinearGradient>
@@ -1100,7 +1105,7 @@ return(<View >
 
             <View >
             <Animated.View style={{transform:[{
-              translateX:this.state.animated.interpolate({
+              translateX:this.animated.interpolate({
                inputRange:[0,1],
                outputRange:[150,1]
            })
@@ -1417,6 +1422,7 @@ return(<View >
         Alert.alert(InvalidResponse)
       }
     }
+    this.GraphAnimation()
   }
   action = (index) => {
 

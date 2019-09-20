@@ -33,6 +33,7 @@ export default class VaultFilter extends React.Component {
     AnimatedLeftWidth = new Animated.Value(50)
     AnimatedWidth = new Animated.Value(50),
       AnimatedHieght = new Animated.Value(45),
+     this.AnimatedTop=new Animated.Value(20),
       this.AnimatedMarginRight = new Animated.Value(500)
     this.OpacityView = new Animated.Value(1)
     this.state = {
@@ -76,16 +77,20 @@ export default class VaultFilter extends React.Component {
       carouselItems: [
         {
 
-          ShadowImages: require('../assets/etheremicon.png'),
-          colo1: '#5582ff', color2: '#5e5cff', color3: '#6730ff',
-          title: "Etherium"
+          ShadowImages: require('../assets/etheriumlogo.png'),
+        
+          title: "Ethereum"
         },
         {
-          ShadowImages: require('../assets/biconback.png'),
-          colo1: '#f8bc73', color2: '#f0824d', color3: '#ec643a',
+          ShadowImages: require('../assets/bitcoinlogo.png'),
+          
           title: "Bitcoin"
         },
-
+        {
+          ShadowImages: require('../assets/bitwingslogo.png'),
+        
+          title: "Bitwings"
+        },
       ]
     }
 
@@ -135,59 +140,89 @@ export default class VaultFilter extends React.Component {
     this.ActiveClick()
   }
   Animation = () => {
-    this.setState({ AllBackgroundColor: '#2B4699' })
+  
     type='All'
-    this.GetAllData()
-    Animated.timing(
-      this.OpacityView, {
-        toValue: 0,
-        duration: 10,
-        easing: Easing.linear,
-
-      }).start()
-    Animated.timing(
-      this.AnimatedMarginLeft, {
-        toValue: 0,
-        duration: 500,
-        easing: Easing.linear,
-
-      }).start()
-
-    Animated.timing(
-      this.AnimatedMarginRight, {
-        toValue: 0,
-        duration: 500,
-        easing: Easing.linear,
-
-      }).start(this.setState({ AnimationFlag: true }))
-
+    Animated.sequence([
+      Animated.timing(
+        this.OpacityView, {
+          toValue: 0,
+          duration: 300,
+          easing: Easing.linear,
+  
+        }),
+        Animated.parallel([ Animated.timing(
+          this.AnimatedMarginLeft, {
+            toValue: 0,
+            duration: 300,
+            easing: Easing.linear,
+    
+          }),
+          
+        Animated.timing(
+          this.AnimatedMarginRight, {
+            toValue: 0,
+            duration: 300,
+            easing: Easing.linear,
+    
+          })
+        ]),
+     
+        Animated.timing(
+          this.AnimatedTop, {
+            toValue: -50,
+            duration: 300,
+            easing: Easing.linear,
+    
+          }),
+    ]).start(()=>this.GetAnimation())
+  
   }
-  DeAnimation = () => {
-    this.setState({ AllBackgroundColor: 'transparent' })
+  GetAnimation=()=>
+  {
+    this.setState({ AnimationFlag: true , AllBackgroundColor: '#2B4699' })
+     this.GetAllData()
+  }
+  DeAnimation = () => { 
     type='ETH'
+    Animated.sequence([
+    
+        Animated.timing(
+          this.AnimatedTop, {
+            toValue: 20,
+            duration: 300,
+            easing: Easing.linear,
+    
+          }),
+          Animated.parallel([   Animated.timing(
+            this.AnimatedMarginLeft, {
+              toValue: 500,
+              duration: 300, 
+              easing: Easing.linear
+            }),
+      
+          Animated.timing(
+            this.AnimatedMarginRight, {
+              toValue: 500,
+              duration: 300,
+              easing: Easing.linear,
+      
+            }),
+            Animated.timing(
+              this.OpacityView, {
+                toValue: 1,
+                duration: 300,
+                easing: Easing.linear,
+              }),
+           ]),
+    
+   
+    ]).start(()=>this.GetDeanimation())
+   
+  }
+  GetDeanimation=()=>
+  {
+    this.setState({ AnimationFlag: false,AllBackgroundColor: 'transparent' })  
     this.GetData()
-    Animated.timing(
-      this.OpacityView, {
-        toValue: 1,
-        duration: 1,
-        easing: Easing.linear,
-      }).start()
-    Animated.timing(
-      this.AnimatedMarginLeft, {
-        toValue: 500,
-        duration: 500,
-
-        //easing: Easing.linear
-      }).start()
-
-    Animated.timing(
-      this.AnimatedMarginRight, {
-        toValue: 500,
-        duration: 500,
-        easing: Easing.linear,
-
-      }).start(this.setState({ AnimationFlag: false }))
-
   }
   GetData = () => {
     console.log('All Clicked :Get Data')
@@ -200,7 +235,7 @@ export default class VaultFilter extends React.Component {
     this.GetAllList()
   }
   BalanceResponse = (data) => {
-    console.log(data)
+    //console.log(data)
     this.hide()
     if (data != 'undefined') {
       if (data.status === ResponseSuccessStatus) {
@@ -234,16 +269,16 @@ export default class VaultFilter extends React.Component {
     CryptoTypeInvestment(type, this.GetListData)
   }
   GetAllList = () => {
-    //this.Load()
+    this.Load()
     //CryptoInvestment(this.GetListData)
-
+    
     CryptoTypeInvestment(type, this.GetListData)
   }
   GetListData = (data) => {
     this.hide()
     if (data !== 'undefined') {
       if (data.status == ResponseSuccessStatus) {
-        console.log('VaultList', data)
+      //  console.log('VaultList', data)
         let FinalResult=[]
         FinalResult=data.listofuserCryptoinvestmentdto
         const newFile =FinalResult.map((file) => {
@@ -443,78 +478,53 @@ export default class VaultFilter extends React.Component {
                       </View>
                     </View>
                   </Animated.View>
-                  <Animated.View style={{ flexDirection: 'row', marginTop: -115 }}>
+                  <Animated.View style={{ flexDirection: 'row', marginTop: -180 }}>
 
                     <Animated.View style={{ flexDirection: 'row', marginRight: this.AnimatedMarginRight, }}>
 
-                      <View >
-                        <LinearGradient style={{
-                          width: 90, marginLeft: 10,
-                          height: 90,
-                          borderRadius: 90 / 2,
-                          justifyContent: 'center', alignItems: "center"
-                        }} colors={['#f8bc73', '#f0824d', '#ec643a']}>
-                          <Image style={{ width: 50, height: 50 }} source={require("../assets/biconback.png")} ></Image>
-                        </LinearGradient>
+                      <View  style={{marginLeft:10}} >
+                      
+                          <Image style={{ width: 150, height: 150 }} source={require("../assets/bitcoinlogo.png")} ></Image>
+                       
 
                       </View>
 
 
-                      <View>
-                        <LinearGradient style={{
-                          width: 90, marginLeft: -20,
-                          height: 90,
-                          borderRadius: 90 / 2,
-                          justifyContent: 'center', alignItems: "center"
-                        }} colors={['#5582ff', '#5e5cff', '#6730ff']}>
-                          <Image style={{ width: 50, height: 50 }} source={require("../assets/etheremicon.png")} ></Image>
-                        </LinearGradient>
-
+                      <View style={{marginLeft:-90}}>
+                       
+                          <Image style={{ width: 150, height: 150 }} source={require("../assets/etheriumlogo.png")} ></Image>
+                      
                       </View>
 
 
-                      <View>
-                        <LinearGradient style={{
-                          width: 90, marginLeft: -20,
-                          height: 90,
-                          borderRadius: 90 / 2,
-                          justifyContent: 'center', alignItems: "center"
-                        }} colors={['#8be6f8', '#59a7f2', '#3652bd']}>
-                          <Image style={{ width: 50, height: 50 }} source={require("../assets/shareicon.png")} ></Image>
-                        </LinearGradient>
+                      <View style={{marginLeft:-90}}>
+                       
+                          <Image style={{ width: 150, height: 150 }} source={require("../assets/sharelogo.png")} ></Image>
+                        
 
                       </View>
                     </Animated.View>
                     <Animated.View style={{ flexDirection: 'row', marginLeft: this.AnimatedMarginLeft }}>
-                      <View>
-                        <LinearGradient style={{
-                          width: 90, marginLeft: -20, marginRight: -20,
-                          height: 90,
-                          borderRadius: 90 / 2,
-                          justifyContent: 'center', alignItems: "center"
-                        }} colors={['#faaf15', '#fbcc0a', '#fddf01']}>
-                          <Image style={{ width: 50, height: 50 }} source={require("../assets/ziconback.png")} ></Image>
-                        </LinearGradient>
+                      <View style={{marginLeft:-90,zIndex:1}}>
+                       
+                          <Image style={{ width: 150, height: 150 }} source={require("../assets/zcoinlogo.png")} ></Image>
+                    
 
                       </View>
 
-                      <View>
-                        <LinearGradient style={{
-                          width: 90, marginRight: 10,
-                          height: 90,
-                          borderRadius: 90 / 2,
-                          justifyContent: 'center', alignItems: "center"
-                        }} colors={['#fd7170', '#fa5a76', '#f53d7b']}>
-                          <Image style={{ width: 50, height: 50 }} source={require("../assets/miconback.png")} ></Image>
-                        </LinearGradient>
+                      <View style={{marginLeft:-90}}>
+                       
+                          <Image style={{ width: 150, height: 150 }} source={require("../assets/mcoinlogo.png")} ></Image>
+                      
 
                       </View>
                     </Animated.View>
 
                   </Animated.View>
                 </View>
-                <View>
-                  <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 20 }}>
+                <Animated.View style={{marginTop: this.AnimatedTop}}>
+                <View >
+                  <View style={{ justifyContent: 'center', alignItems: 'center',  }}>
                     <Text style={{ marginLeft: 10, marginTop: 15, fontSize: 20, fontWeight: 'bold', color: '#ABB3D0', fontFamily: 'Exo2-SemiBold' }}>Balance</Text>
                   </View>
 
@@ -533,7 +543,7 @@ export default class VaultFilter extends React.Component {
                       </View>
                     </View>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-around', width: '100%', marginTop: 20 }}>
-                      <TouchableOpacity onPress={this.AllClick}>
+                      <TouchableOpacity onPress={this.AllClick} style={{width:30,height:30}}>
                         <View>
                           <View style={{ width: 40, height: 15, backgroundColor: this.state.AllBackgroundColor, justifyContent: 'center', alignItems: 'center', marginTop: -10, marginRight: 30, padding: 10, borderRadius: 5, borderColor: '#4A6BCD', borderWidth: 1 }}>
                             <Text style={{ fontSize: 12, color: '#5496FF', fontFamily: 'Exo2-Regular' }}>All</Text>
@@ -565,7 +575,6 @@ export default class VaultFilter extends React.Component {
                     </View>
                   </View>
                 </View>
-
                 <View >
                 {
             this.state.dataSource.map((item, key) =>
@@ -575,6 +584,8 @@ export default class VaultFilter extends React.Component {
               ))
           }
                 </View>
+</Animated.View>
+            
 
 
               </View>
@@ -633,14 +644,9 @@ export default class VaultFilter extends React.Component {
     return (
       <View style={{ justifyContent: 'center', alignItems: 'center' }}>
         <Text style={{ color: '#fff', marginBottom: 10, fontFamily: 'Exo2-Regular' }}>{item.title}</Text>
-        <LinearGradient style={{
-          width: 110,
-          height: 110,
-          borderRadius: 110 / 2,
-          justifyContent: 'center', alignItems: "center"
-        }} colors={[item.colo1, item.color2, item.color3]}>
-          <Image style={{ width: 60, height: 60 }} source={item.ShadowImages} ></Image>
-        </LinearGradient>
+      
+          <Image style={{ width: 150, height: 150, }} source={item.ShadowImages} ></Image>
+      
 
       </View>
     )

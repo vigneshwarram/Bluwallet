@@ -4,7 +4,7 @@ import {
   Easing,Animated,Image,View
 } from 'react-native';
 import DashBoard from './Components/Views/DashBoard'
-import Vault from './Components/Views/VaultModule/Vault'
+
 import VaultFilter from './Components/Views/VaultModule/VaultFilter'
 import AddVault from './Components/Views/VaultModule/AddVault'
 import ConfirmVault from './Components/Views/VaultModule/ConfirmVault'
@@ -103,7 +103,7 @@ let CollapseExpand = (index, position) => {
       
       const VaultStack=createStackNavigator({    
        VaultFilter:{screen:VaultFilter},
-       // Vault:{screen:Vault},  
+     
       })
       const CreditCardStack=createStackNavigator({
         CreditCard:{screen:CreditCard},

@@ -338,9 +338,9 @@ space(){
     </View>
     </TouchableOpacity>
     </View>  
-    <View  style={{position: 'absolute', left: 0, right: 0, bottom: 80, justifyContent: 'center', alignItems: 'center'
+    <View  style={{position: 'absolute', left: 0, right: 0, bottom: 70, justifyContent: 'center', alignItems: 'center'
         }}>
-              <Image  style={{width: 100, height: 150,resizeMode:'contain'}}  source={require("../assets/tree.png")} ></Image> 
+              <Image  style={{width: 150, height: 200,resizeMode:'contain'}}  source={require("../assets/slogo.png")} ></Image> 
         </View>
     </View>
     <View style={{ flex: 1,marginTop:10 }}>
