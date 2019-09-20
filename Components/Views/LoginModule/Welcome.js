@@ -186,7 +186,7 @@ SlideMenu=()=>{
         }}>
               <Image  style={{  width: Dimensions.get('window').width,
     resizeMode: "contain",
-    height: 250,}}  source={require("../assets/threelogo.png")} ></Image> 
+    height: 200,}}  source={require("../assets/threelogo.png")} ></Image> 
                  
             
         </View>

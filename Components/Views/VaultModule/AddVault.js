@@ -70,17 +70,22 @@ export default class AddVault extends React.Component {
       hidden: false,
       carouselItems: [
         {
-         
-           ShadowImages:require('../assets/diablue.png'),
-            colo1:'#5582ff',color2:'#5e5cff',color3:'#6730ff',
-            title:"Etherium"
+
+          ShadowImages: require('../assets/etheriumlogo.png'),
+        
+          title: "Ethereum"
         },
         {
-          ShadowImages:require('../assets/biconback.png'),
-          colo1:'#f8bc73',color2:'#f0824d',color3:'#ec643a',
-            title:"Bitcoin"
+          ShadowImages: require('../assets/bitcoinlogo.png'),
+          
+          title: "Bitcoin"
         },
-    ]}
+        {
+          ShadowImages: require('../assets/bitwingslogo.png'),
+        
+          title: "Bitwings"
+        },
+      ]}
  
   
   }
@@ -297,14 +302,14 @@ HideMenu=()=>{
    <View style={{marginTop:20}}>
    <View style={{justifyContent:'center',alignItems:'center'}}>
    <Carousel
-                    data={this.state.carouselItems}
-                    loop={true}
-                    inactiveSlideOpacity={0.1}
-                    sliderWidth={400}
-                    itemWidth={150}
-                    renderItem={this._renderItem}
-                    onSnapToItem={this.snapItem}
-                />
+                          data={this.state.carouselItems}
+                          loop={true}
+                          inactiveSlideOpacity={0.2}
+                          sliderWidth={400}
+                          itemWidth={130}
+                          renderItem={this._renderItem}
+                          onSnapToItem={this.snapItem}
+                        />
     </View>
    </View>
     </View> 
@@ -641,18 +646,15 @@ HideMenu=()=>{
       }
       _renderItem=({item,index})=>{
 
-        this.setState({selectedimage:item.ShadowImages,selectedTitle:item.title,ItemColor1:item.colo1,itemColor2:item.color2,itemColor3:item.color3})
+      //  this.setState({selectedimage:item.ShadowImages,selectedTitle:item.title,ItemColor1:item.colo1,itemColor2:item.color2,itemColor3:item.color3})
         return (
-            <View style={{justifyContent:'center',alignItems:'center'}}> 
-             <Text style={{color:'#5496FF',marginBottom:10,fontFamily:'Exo2-Regular'}}>{item.title}</Text>
-            <LinearGradient style={{  width: 110,
-height: 110,
-borderRadius: 110/2,
-justifyContent:'center',alignItems:"center"}} colors= {[item.colo1,item.color2,item.color3]}>
-   <Image style={{width: 60, height: 60,resizeMode:'contain'}}   source={item.ShadowImages} ></Image> 
-</LinearGradient>
-                
-            </View>
+          <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+        <Text style={{ color: '#000', fontFamily: 'Exo2-Regular' }}>{item.title}</Text>
+      
+          <Image style={{ width: 150, height: 150, }} source={item.ShadowImages} ></Image>
+      
+
+      </View>
         )
         }
         _renderItemMonths=({item,index})=>{

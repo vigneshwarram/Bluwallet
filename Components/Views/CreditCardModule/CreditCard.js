@@ -78,9 +78,9 @@ export default class CreditCard extends React.Component {
         toValue: 100,
         duration: 250,
         easing: Easing.inOut(Easing.ease),
-        delay: 50,
-      }).start();
-      this.setState({ click: true })
+       
+      }).start( this.setState({ click: true }));
+    
 
     }
     else {
@@ -88,9 +88,9 @@ export default class CreditCard extends React.Component {
         toValue: 50,
         duration: 250,
         easing: Easing.inOut(Easing.ease),
-        delay: 50,
-      }).start(() => console.log('animation complete'));
-      this.setState({ click: false })
+       
+      }).start( this.setState({ click: false }));
+    
     }
 
   }
@@ -100,18 +100,18 @@ export default class CreditCard extends React.Component {
         toValue: 100,
         duration: 250,
         easing: Easing.inOut(Easing.ease),
-        delay: 10,
-      }).start();
-      this.setState({ clickopen: true })
+      
+      }).start( this.setState({ clickopen: true }));
+     
     }
     else {
       Animated.timing(this.RightSideWidth, {
         toValue: 50,
         duration: 250,
         easing: Easing.inOut(Easing.ease),
-        delay: 10,
-      }).start(() => console.log('animation complete'));
-      this.setState({ clickopen: false })
+     
+      }).start( this.setState({ clickopen: false }));
+     
     }
   }
   render() {
@@ -182,7 +182,7 @@ export default class CreditCard extends React.Component {
               <View style={{ flex: 0.5 }}>
                 <View>
                   <Animated.View style={{ justifyContent: 'center', alignItems: 'center', opacity: this.AnimateOpacity }}>
-                    <Image style={{ width: 300, height: 300, resizeMode: 'contain' }} source={require("../assets/threelogo.png")}>
+                    <Image style={{ width: 300, height: 300, resizeMode: 'contain' }} source={require("../assets/slogo.png")}>
                     </Image>
                   </Animated.View>
                   <View>

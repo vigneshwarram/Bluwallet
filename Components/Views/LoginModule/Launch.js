@@ -57,7 +57,7 @@ export default class Launch extends React.Component {
       let kycstatus = await AsyncStorage.getItem('kycstatus'); 
       let profilestatus= await AsyncStorage.getItem('profilestatus'); 
       if (userid != null) {
-        this.GetAuthenticiate(userid,profilestatus,kycstatus)
+        this.GetAuthenticiate(userid,1,kycstatus)
         console.log('user id', userid)
       }
       else {

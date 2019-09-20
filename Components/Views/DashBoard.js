@@ -940,9 +940,9 @@ return(<View >
             <View style={{}}>
               <Image style={{
                 height: 200, marginLeft: -100, marginTop: -40,
-                width: 250,
+                width: 200,
                 resizeMode: 'contain'
-              }} source={require("./assets/threelogo.png")} ></Image>
+              }} source={require("./assets/slogo.png")} ></Image>
             </View>
           </View>
         </LinearGradient>

@@ -419,25 +419,24 @@ export default class VaultFilter extends React.Component {
                     </View>
                   </TouchableOpacity>
                 </Animated.View>
+     
+                <TouchableOpacity onPress={this.pressRight} style={{position: 'absolute', right: 0}} >
+                <Animated.View style={{ height: AnimatedHieght, width: AnimatedWidth,backgroundColor:'#fff', borderTopLeftRadius: 25, borderBottomLeftRadius: 25, marginTop: 10,justifyContent:'center'  }}>
 
-
-                <Animated.View style={{ height: AnimatedHieght, width: AnimatedWidth, borderTopLeftRadius: 25, borderBottomLeftRadius: 25, marginTop: 10, position: 'absolute', right: 0 }}>
-                  <TouchableOpacity onPress={this.pressRight}>
                     <View>
-                      <LinearGradient colors={['#fff', '#fff', '#fff']} style={{ justifyContent: 'center', alignItems: 'flex-start', paddingTop: 10, paddingBottom: 10, borderTopLeftRadius: 25, borderBottomLeftRadius: 25 }}>
-
+                      
                         <View style={{ flexDirection: 'row' }}>
-                          <Image style={{ marginLeft: 10, width: 30, height: 30, resizeMode: 'contain' }} source={require("../assets/app4-blue.png")} ></Image>
+                          <Image style={{ marginLeft: 10, width: 30, height: 30, resizeMode: 'contain' }} source={require("../assets/Group_537.png")} ></Image>
                           <View style={{ justifyContent: 'center', }}>
                             <Text style={{ color: '#000', fontFamily: 'Exo2-Regular', fontSize: 12, marginLeft: 20 }}>New Vault</Text>
                           </View>
 
                         </View>
-                      </LinearGradient>
+                     
                     </View>
-                  </TouchableOpacity>
+               
                 </Animated.View>
-
+                </TouchableOpacity>
               </View>
               <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: "center", marginTop: 15 }}>
                 <Image style={{ width: 20, height: 20, resizeMode: 'contain' }} source={require("../assets/app2.png")} ></Image>
@@ -462,16 +461,16 @@ export default class VaultFilter extends React.Component {
                   </TouchableOpacity>
 
                 </View>
-                <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 10 }}>
+                <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                   <Animated.View style={{ opacity: this.OpacityView }}>
                     <View style={{ marginTop: 20, }}>
                       <View style={{ justifyContent: 'center', alignItems: 'center', height: 150 }}>
                         <Carousel
                           data={this.state.carouselItems}
                           loop={true}
-                          inactiveSlideOpacity={0.1}
+                          inactiveSlideOpacity={0.2}
                           sliderWidth={400}
-                          itemWidth={150}
+                          itemWidth={130}
                           renderItem={this._renderItem}
                           onSnapToItem={(index) => this.action(index)}
                         />
@@ -643,7 +642,7 @@ export default class VaultFilter extends React.Component {
   _renderItem({ item, index }) {
     return (
       <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-        <Text style={{ color: '#fff', marginBottom: 10, fontFamily: 'Exo2-Regular' }}>{item.title}</Text>
+        <Text style={{ color: '#fff', fontFamily: 'Exo2-Regular' }}>{item.title}</Text>
       
           <Image style={{ width: 150, height: 150, }} source={item.ShadowImages} ></Image>
       
