@@ -73,7 +73,7 @@ export default class DashBoard extends React.Component {
       currentUsdforEther: null,
       QR_Code_Value: null,
       dates:[],
-     
+      pops:false,
       datas:[],
       dateU:[],
       backoption: false,
@@ -393,11 +393,13 @@ export default class DashBoard extends React.Component {
     this.setState({ clickopen: false })
   }
   onQR_Code_Scan_Done = (QR_Code) => {
-    console.log('Qr code value',QR_Code)
-    this.setState({ QR_Code_Value: QR_Code, Start_Scanner: false,QrButton: false,});
-    this._onPress.bind(this)
-
-    console.log('This popup overlay is not openenng')
+   console.log('Qr code value',QR_Code)
+    this.setState({ QR_Code_Value: QR_Code, Start_Scanner: false,QrButton: false,QrClick:true,pops:true});
+    this.GraphAnimation()
+   //this._onPress()
+   this.props.navigation.setParams({ bottombar: false })
+     openOverlay()
+  //  console.log('This popup overlay is not openenng')
   }
   Scanner = () => {
     closeOverlay()
@@ -713,7 +715,7 @@ export default class DashBoard extends React.Component {
 
 
           </View>
-          <TouchableOpacity onPress={this.Scanner.bind(this)}>
+       
             <View style={{ backgroundColor: '#fff', borderRadius: 15, marginTop: 10, height: 150, }}>
               <View style={{ justifyContent: 'center', alignItems: 'center', paddingTop: 10 }}>
                 <QRCode
@@ -728,7 +730,7 @@ export default class DashBoard extends React.Component {
               </View>
 
             </View>
-          </TouchableOpacity>
+        
 
           <View style={{ backgroundColor: '#fff', borderRadius: 15, marginTop: 10, height: 150, justifyContent: 'center', alignItems: 'center' }}>
 
@@ -955,6 +957,7 @@ return(<View >
     this.setState({QrButton:false})
   }
   render() {
+    console.log('render camera close')
    let Renderpopup=this.getPopUp()
     const RotateData = this.RotateValueHolder.interpolate({
       inputRange: [0, 1],
@@ -1015,6 +1018,7 @@ return(<View >
         <BlurOverlay
           radius={14}
           downsampling={2}
+          showBlur={this.state.pops}
           brightness={-125}
           onPress={() => {
             //  closeOverlay();

@@ -15,7 +15,7 @@ import {
   ContributionGraph,
   StackedBarChart
 } from 'react-native-chart-kit'
- 
+import { VaultSystemApi, CryptoInvestment, CryptoTypeInvestment } from './Api/VaultSystemApi'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from './Utils.js/Constant'
 import LinearGradient from 'react-native-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
@@ -36,6 +36,8 @@ export default class Price  extends React.Component {
       dataSource:[],
       cityItems:["US Doller,Indian,Eutherium"],
       Amount: 'USDoller',
+      usdforEther:'',usdforBtc:'',
+      
       EtheriumShadowClick:false,
       animate:false,
       spinner:false,
@@ -59,10 +61,34 @@ export default class Price  extends React.Component {
   {
     this.GetPriceData()
   }
+  BalanceResponse = (data) => {
+    console.log('data', data)
+    this.hide()
+    if (data != 'undefined') {
+      if (data.status === ResponseSuccessStatus) {
+        this.setState({TotalPrice:data.CalculatingAmountDTO.currentUsdforEther,})
+       this.setState({usdforEther: data.CalculatingAmountDTO.currentUsdforEther,usdforBtc:data.CalculatingAmountDTO.currentUsdforBtc}) 
+      }
+      else if (data.error === 'invalid_token') {
+        Alert.alert(
+          'Error',
+          'Token Expired',
+          [
+            { text: 'OK', onPress: () => this.props.navigation.navigate('Login') },
+          ],
+
+        );
+      }
+      else {
+        Alert.alert(InvalidResponse)
+      }
+    }
+  }
   GetPriceData=()=>
   {
     this.Load()
     PriceList(this.PriceResult)
+    VaultSystemApi('ETH', this.BalanceResponse)
   }
   PriceResult=(data)=>
   {
@@ -73,7 +99,7 @@ export default class Price  extends React.Component {
       {
         console.log('price results',data)
        this.setState({dataSource:data.CalculatingAmountDTO,})
-       this.setState({TotalPrice:this.state.dataSource.usdforEther,})
+      
      let  result=[50, 100, 150, 200, 100, 300, 350, 400, 300, 100, 50, 40, 60, 100]
      for(let i=0;i<result.length.length;i++)
      {
@@ -328,7 +354,7 @@ SlideMenu=()=>{
             <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>ETH</Text>
 
             <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:''}}>Price</Text>
-            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>{this.state.dataSource.usdforEther}</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>{this.state.usdforEther}</Text>
         </View>
        </TouchableOpacity>
 
@@ -349,7 +375,7 @@ SlideMenu=()=>{
             <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>ETH</Text>
 
             <Text style={{color:'#5597ff',fontSize:15,marginTop:20,fontWeight:'bold',fontFamily:''}}>Price</Text>
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>{this.state.dataSource.usdforEther}</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>{this.state.usdforEther}</Text>
         </View>
         </View>
        </TouchableOpacity>
@@ -369,7 +395,7 @@ SlideMenu=()=>{
             <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>BTC</Text>
 
             <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:''}}>Price</Text>
-            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>{this.state.dataSource.usdforEther}</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>{this.state.usdforBtc}</Text>
         </View>
        </TouchableOpacity>
 
@@ -389,7 +415,7 @@ SlideMenu=()=>{
             <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>BTC</Text>
 
             <Text style={{color:'#5597ff',fontSize:15,marginTop:20,fontWeight:'bold',fontFamily:''}}>Price</Text>
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>{this.state.dataSource.usdforBtc}</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>{this.state.usdforBtc}</Text>
         </View>
         </View>
        </TouchableOpacity>
@@ -510,13 +536,13 @@ this.setState({
       {
          mass=[50, 100, 150, 200, 100, 300, 350, 400, 300, 100, 50, 40, 60, 100]
         this.setState({data:mass,EtheriumShadowClick:true,BitShadowClick:false,MoneroShadowClick:false,zShadowClick:false,currency:'ETH'})
-        this.setState({TotalPrice:this.state.dataSource.usdforEther,})
+        this.setState({TotalPrice:this.state.usdforEther,})
        
       }
       BtcClick=()=>
       {
          mass=[50, 60, 70, 95, 100, 100, 100, 80, 90, 150, 50, 40, 60, 100]
-        this.setState({data:mass,BitShadowClick:true,MoneroShadowClick:false,TotalPrice:this.state.dataSource.usdforBtc,EtheriumShadowClick:false,zShadowClick:false,currency:'BTC'})
+        this.setState({data:mass,BitShadowClick:true,MoneroShadowClick:false,TotalPrice:this.state.usdforBtc,EtheriumShadowClick:false,zShadowClick:false,currency:'BTC'})
         setTimeout(this.nav, 3000);
       }
       nav=()=>
