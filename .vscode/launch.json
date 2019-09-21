@@ -5,6 +5,13 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+        {
+            "name": "Debug iOS",
+            "cwd": "${workspaceFolder}",
+            "type": "reactnative",
+            "request": "launch",
+            "platform": "ios"
+        },
     
         {
             "name": "Debug Android",
@@ -21,16 +28,6 @@
             "request": "launch",
             "platform": "android"
         },
-
-    {
-        "name": "Debug Android",
-        "program": "${workspaceRoot}/.vscode/launchReactNative.js",
-        "type": "reactnative",
-        "request": "launch",
-        "platform": "android",
-        "sourceMaps": true,
-        "outDir": "${workspaceRoot}/.vscode/.react"
-    },
         {
             "type": "extensionHost",
             "request": "launch",
@@ -44,14 +41,6 @@
             ],
             "preLaunchTask": "npm"
         },
-        {
-            "name": "Debug iOS",
-            "program": "${workspaceRoot}/.vscode/launchReactNative.js",
-            "type": "reactnative",
-            "request": "launch",
-            "platform": "ios",
-            "sourceMaps": true,
-            "outDir": "${workspaceRoot}/.vscode/.react"
-        },
+ 
     ]
 }

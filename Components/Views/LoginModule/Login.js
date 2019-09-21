@@ -8,7 +8,7 @@ import OuthApi from '../Api/OuthApi'
 import LinearGradient from 'react-native-linear-gradient';
 import { NavigationActions,StackActions } from 'react-navigation'
 import { ScrollView } from 'react-native-gesture-handler';
-import SnackBar from '../Utils.js/Snackbar'
+import Snackbar from '../Utils.js/Snackbar'
 export default class Login  extends React.Component {
 
   static navigationOptions = {
@@ -19,19 +19,19 @@ export default class Login  extends React.Component {
   constructor(props) {
     super(props);
     this.RotateValueHolder = new Animated.Value(0);
+    
     this.state = {
       dataSource:[],
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
+      ShowAlert:false,
       animate:false,
-      AlertMessage:'',
-      Username:'',
-      Password:'',
+      Username:'testdemo2@yopmail.com',
+      Password:'Admin@123new',
       clickr:false,
       clickopen:false,
       click:false,
       slide:false,
-      AlertVisible:false,
       visible: false,
       hidden: false,
       app1color:'#fff',
@@ -142,12 +142,12 @@ SlideMenu=()=>{
     return (  
         
       <View style={styles.Maincontainers} >  
-       
+      
 
        <LinearGradient
        
   colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={styles.Maincontainers}>   
-<SnackBar AlertVisible={this.state.AlertVisible} message={this.state.AlertMessage}></SnackBar>
+ <Snackbar Visible={this.state.ShowAlert}></Snackbar>
   <View style={{flex:0.4}}>
   <View  style={{justifyContent:'center',alignItems:'center',paddingTop:20
         }}>
@@ -175,7 +175,7 @@ SlideMenu=()=>{
      
      <TextInput  placeholder="User"
          placeholderTextColor="#3d5498" 
-         onChangeText={(text) => this.setState({Username:text,AlertVisible:false})}
+         onChangeText={(text) => this.setState({Username:text})}
          style={styles.inputBox} />
      </View>
      <View style={{flexDirection:'row',justifyContent:'space-around'}}>
@@ -190,7 +190,7 @@ SlideMenu=()=>{
       
          style={styles.inputBox}
          secureTextEntry={true}
-         onChangeText={(text) => this.setState({Password:text,AlertVisible:false})}
+         onChangeText={(text) => this.setState({Password:text})}
        />
      </View>
             
@@ -247,12 +247,11 @@ SlideMenu=()=>{
       {
         if(this.state.Username==='')
         {
-          this.setState({AlertVisible:true,AlertMessage:'Please enter username'})
-          //Alert.alert('Alert!!','Please enter username')
+          Alert.alert('Alert!!','Please enter username')
         }
         else if(this.state.Password==='')
         {
-          this.setState({AlertVisible:true,AlertMessage:'Please enter Password'})
+         Alert.alert('Alert!!','Please enter Password')
         }
         else
         {
@@ -275,10 +274,9 @@ SlideMenu=()=>{
         if( data.error==='invalid_grant')
         {
           console.log('login error', data.error_description)
-          this.setState({AlertVisible:true,AlertMessage:'Incorrect username and password'})
-          //Alert.alert('Alert','Incorrect username and password.')
-         // this.setState({Username:''})
-         // this.setState({Password:''})
+          Alert.alert('Alert','Incorrect username and password.')
+          this.setState({Username:''})
+          this.setState({Password:''})
 
         }else if(data.access_token!='undefined'){
          
@@ -310,7 +308,8 @@ SlideMenu=()=>{
       }
       ForgotAction=()=>
       {
-         this.props.navigation.navigate('RetrivePassword')
+        this.setState({ShowAlert:true})
+         //this.props.navigation.navigate('RetrivePassword')
       }
 
       LoginResult=async (data)=>
