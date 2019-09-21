@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,Animated,TextInput,Text,Keyboard,Easing,TouchableOpacity,LayoutAnimation,KeyboardAvoidingView,BackHandler,AsyncStorage } from 'react-native';
+import { View, StyleSheet,SafeAreaView, Image,Animated,TextInput,Text,Keyboard,Easing,TouchableOpacity,LayoutAnimation,KeyboardAvoidingView,BackHandler,AsyncStorage } from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 import {loginApi} from '../Api/LoginApi'
@@ -140,7 +140,7 @@ SlideMenu=()=>{
   </View>
   }
     return (  
-        
+      <SafeAreaView style={styles.Maincontainers}>
       <View style={styles.Maincontainers} >  
       
 
@@ -221,7 +221,7 @@ SlideMenu=()=>{
  
 
      </View>
-      
+     </SafeAreaView>
      
     );
       }

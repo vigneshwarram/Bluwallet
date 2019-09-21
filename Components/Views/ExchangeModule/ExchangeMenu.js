@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet,TextInput, Image,ImageBackground,Picker,LayoutAnimation,Text,ActivityIndicator,TouchableOpacity,UIManager,Animated,Platform,TouchableHighlight} from 'react-native';
+import { View, SafeAreaView,StyleSheet,TextInput, Image,ImageBackground,Picker,LayoutAnimation,Text,ActivityIndicator,TouchableOpacity,UIManager,Animated,Platform,TouchableHighlight} from 'react-native';
 import { Alert } from 'react-native';
-
+import RNPickerSelect from 'react-native-picker-select';
 import LinearGradient from 'react-native-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
 import Spinner from 'react-native-loading-spinner-overlay';
@@ -205,7 +205,7 @@ space(){
   </View>
   }
     return (  
-   
+      <SafeAreaView style={{flex:1,backgroundColor:'#354E91'}}>
       <View style={styles.Maincontainers}> 
       
       <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={{flex:1}}>
@@ -236,22 +236,65 @@ space(){
           maxLength={10}
         />
 </View>
-<View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center'}}>
-        <Text style={{color:'#fff',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.Amount}</Text>
+<View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',paddingRight:30}}>
+  <View>
+  {Platform.OS === 'ios' ? <RNPickerSelect 
+placeholder={{
+  label: 'Amount',
+  value: null,
+  color: '#fff',
+}}
+
+style={{ 
+  iconContainer: {
+    top: 20,
+    right: 10,
+    color: '#fff',
+  },
+  placeholder: {
+    color: '#fff',
+    fontSize: 12,
+    fontWeight: 'bold',
+  },
+}}
+            value={this.state.Amount}
+           onValueChange={(itemValue, itemIndex) => this.selectedCop(itemValue,itemIndex)}
+            items={[
+                { label:"COP", value:"COP" },
+                { label: 'Baseball', value:'baseball' },
+                { label:"Inr" ,value:"Inr"  },
+            ]}
+            Icon={() => {
+              return (
+                <View
+                  style={{
+                    backgroundColor: 'transparent',
+                    borderTopWidth: 10,
+                    borderTopColor: 'gray',
+                    borderRightWidth: 10,
+                    borderRightColor: 'transparent',
+                    borderLeftWidth: 10,
+                    borderLeftColor: 'transparent',
+                    width: 0,
+                    height: 0,
+                  }}
+                />
+              );
+            }}
+        />:    <Picker style={{  width: 50, height: 30}}
+        selectedValue={this.state.Amount}
+       onValueChange={(itemValue, itemIndex) => this.selectedCop(itemValue,itemIndex)}>
+       
+       <Picker.Item label="COP" value="COP" />
+       <Picker.Item label="Inr" value="Inr" />
+      
+       </Picker>}
+  </View>
+
         <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
-        <Picker style={{ position:'absolute', top: 0, width: 1000, height: 5000}}
-   selectedValue={this.state.Amount}
-  onValueChange={(itemValue, itemIndex) => this.selectedCop(itemValue,itemIndex)}>
-  
-  <Picker.Item label="COP" value="COP" />
-  <Picker.Item label="Inr" value="Inr" />
-  <Picker.Item label="USA" value="USA" />
-  <Picker.Item label="German" value="German" />
-  <Picker.Item label="Italy" value="Italy" />
-  <Picker.Item label="Aus" value="Aus" />
-  <Picker.Item label="India" value="India" />
-  <Picker.Item label="Aus" value="Aus" />
-  </Picker>
+        
+   
+    
         </View>
         
   
@@ -264,13 +307,22 @@ space(){
 <View style={{justifyContent:'center',flexDirection:'row',alignItems:'center',marginLeft:20,paddingTop:5,paddingBottom:5}}>
         <Text style={{color:'#FFFFFF',opacity:1,fontSize:11,fontFamily:'Exo2-Regular'}}>{this.state.Admin}</Text>
         <Image  style={{width: 9, height: 7,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
-        <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}
-   selectedValue={this.state.Admin}
-  onValueChange={(itemValue, itemIndex) => this.selectedPlatform(itemValue,itemIndex)}>
-  
-  <Picker.Item label="Admin" value="Admin" />
-  <Picker.Item label="Users" value="Users" />
-  </Picker>
+       
+        {Platform.OS === 'ios' ? <RNPickerSelect
+           
+           onValueChange={(itemValue, itemIndex) => this.selectedPlatform(itemValue,itemIndex)}
+            items={[
+                {  label:"Admin" ,value:"Admin" },
+                { label:"Users"},
+            ]}
+        />: <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}
+        selectedValue={this.state.Admin}
+       onValueChange={(itemValue, itemIndex) => this.selectedPlatform(itemValue,itemIndex)}>
+       
+       <Picker.Item label="Admin" value="Admin" />
+       <Picker.Item label="Users" value="Users" />
+       </Picker>}
+     
         </View>
         
 </View>
@@ -369,7 +421,7 @@ space(){
 
       </LinearGradient>
      </View>
-  
+     </SafeAreaView>
     
     );
       }

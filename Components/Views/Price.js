@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,Dimensions,ImageBackground,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,Picker} from 'react-native';
+import { View, StyleSheet,SafeAreaView, Image,Dimensions,ImageBackground,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,Picker} from 'react-native';
 import { Alert } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import Spinner from 'react-native-loading-spinner-overlay';
@@ -226,7 +226,7 @@ SlideMenu=()=>{
   </View>
   }
     return (  
-        
+      <SafeAreaView style={{flex:1,backgroundColor:'#354E91'}}>
       <View style={styles.Maincontainers}>           
        <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={styles.Maincontainers}>  
        <Spinner
@@ -522,7 +522,7 @@ SlideMenu=()=>{
 
    </LinearGradient>
       </View>
-      
+      </SafeAreaView> 
     
     );
       }

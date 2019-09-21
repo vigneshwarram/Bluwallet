@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
 import {
-  View, StyleSheet, Image, Picker, UIManager, Text, Clipboard,LayoutAnimation, AsyncStorage, StatusBar, BackHandler, TouchableOpacity, ActivityIndicator, Animated, Platform, TextInput, Slider,
+  View, StyleSheet, Image, Picker, UIManager, SafeAreaView,Text, Clipboard,LayoutAnimation, AsyncStorage, StatusBar, BackHandler, TouchableOpacity, ActivityIndicator, Animated, Platform, TextInput, Slider,
   Easing, Dimensions, PermissionsAndroid
 } from 'react-native';
 import { Alert } from 'react-native';
@@ -1001,6 +1001,7 @@ return(<View >
       </View>
     }
     return (
+      <SafeAreaView style={{flex:1,backgroundColor:'#354E91'}}>
       <View style={styles.Maincontainers}>
         <Dialog
           visible={this.state.visibles}>
@@ -1292,7 +1293,7 @@ return(<View >
 
         </LinearGradient>
       </View>
-
+      </SafeAreaView>
     );
   }
   update_Layout = (index) => {
