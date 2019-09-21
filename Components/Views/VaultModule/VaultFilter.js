@@ -450,13 +450,13 @@ export default class VaultFilter extends React.Component {
                 <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row', marginLeft: 70 }}>
                   <TouchableOpacity onPress={this.ActiviePress}>
                     <View style={{ width: 80, height: 50, borderRightWidth: 1, borderRightColor: '#4d6bc1' }}>
-                      <Text style={{ marginLeft: 10, marginTop: 15, fontSize: 15, fontWeight: 'bold', color: '#fff', fontFamily: '', opacity: this.state.ActiveOpacity }}>Active</Text>
+                      <Text style={{ marginLeft: 10, marginTop: 15, fontSize: 15, fontWeight: 'bold', color: '#fff', fontFamily: 'Exo2-Regular', opacity: this.state.ActiveOpacity }}>Active</Text>
                     </View>
                   </TouchableOpacity>
 
                   <TouchableOpacity onPress={this.CompletePress}>
                     <View style={{ width: 150, height: 50 }}>
-                      <Text style={{ marginLeft: 20, marginTop: 15, fontSize: 15, fontWeight: 'bold', color: '#fff', opacity: this.state.CompleteOpacity, fontFamily: '' }}>Completed</Text>
+                      <Text style={{ marginLeft: 20, marginTop: 15, fontSize: 15, fontWeight: 'bold', color: '#fff', opacity: this.state.CompleteOpacity, fontFamily: 'Exo2-Regular' }}>Completed</Text>
                     </View>
                   </TouchableOpacity>
 

@@ -350,11 +350,11 @@ SlideMenu=()=>{
      
         <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
  
-            <Text style={{color:'#fff',fontSize:15,fontWeight:'bold',fontFamily:''}}>Etherium</Text>
-            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>ETH</Text>
+            <Text style={{color:'#fff',fontSize:15,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Etherium</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>ETH</Text>
 
-            <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:''}}>Price</Text>
-            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>{this.state.usdforEther}</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Price</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>{this.state.usdforEther}</Text>
         </View>
        </TouchableOpacity>
 
@@ -371,11 +371,11 @@ SlideMenu=()=>{
         </View>
         <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:10}}>
         
-            <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:''}}>Etherium</Text>
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>ETH</Text>
+            <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Etherium</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>ETH</Text>
 
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:20,fontWeight:'bold',fontFamily:''}}>Price</Text>
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>{this.state.usdforEther}</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:20,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Price</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>{this.state.usdforEther}</Text>
         </View>
         </View>
        </TouchableOpacity>
@@ -391,11 +391,11 @@ SlideMenu=()=>{
      
         <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
  
-            <Text style={{color:'#fff',fontSize:15,fontWeight:'bold',fontFamily:''}}>Bitcoin</Text>
-            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>BTC</Text>
+            <Text style={{color:'#fff',fontSize:15,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Bitcoin</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>BTC</Text>
 
-            <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:''}}>Price</Text>
-            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>{this.state.usdforBtc}</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Price</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>{this.state.usdforBtc}</Text>
         </View>
        </TouchableOpacity>
 
@@ -411,11 +411,11 @@ SlideMenu=()=>{
         </View>
         <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:10}}>
         
-            <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:''}}>Bitcoin</Text>
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>BTC</Text>
+            <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Bitcoin</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>BTC</Text>
 
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:20,fontWeight:'bold',fontFamily:''}}>Price</Text>
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>{this.state.usdforBtc}</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:20,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Price</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>{this.state.usdforBtc}</Text>
         </View>
         </View>
        </TouchableOpacity>
@@ -439,11 +439,11 @@ SlideMenu=()=>{
      
         <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
  
-        <Text style={{color:'#fff',fontSize:15,fontWeight:'bold',fontFamily:''}}>Monero</Text>
-            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>XMR</Text>
+        <Text style={{color:'#fff',fontSize:15,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Monero</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>XMR</Text>
 
-            <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:''}}>Price</Text>
-            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>121.6</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Price</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>121.6</Text>
         </View>
        </TouchableOpacity>
 
@@ -460,11 +460,11 @@ SlideMenu=()=>{
         </View>
         <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:10}}>
         
-        <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:''}}>Monero</Text>
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>XMR</Text>
+        <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Monero</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>XMR</Text>
 
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:''}}>Price</Text>
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>121.6</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Price</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>121.6</Text>
         </View>
         </View>
        </TouchableOpacity>
@@ -481,11 +481,11 @@ SlideMenu=()=>{
      
         <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
  
-        <Text style={{color:'#fff',fontSize:15,fontWeight:'bold',fontFamily:''}}>Monero</Text>
-            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>XMR</Text>
+        <Text style={{color:'#fff',fontSize:15,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Monero</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>XMR</Text>
 
-            <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:''}}>Price</Text>
-            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>121.6</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Price</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>121.6</Text>
         </View>
        </TouchableOpacity>
 
@@ -501,11 +501,11 @@ SlideMenu=()=>{
         </View>
         <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:10}}>
         
-        <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:''}}>Monero</Text>
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>XMR</Text>
+        <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Monero</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>XMR</Text>
 
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:''}}>Price</Text>
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:''}}>121.6</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Price</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>121.6</Text>
         </View>
         </View>
        </TouchableOpacity>

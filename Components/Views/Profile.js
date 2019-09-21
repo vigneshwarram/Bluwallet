@@ -297,7 +297,7 @@ space(){
     <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',marginTop:-30}}>
     <Image style={{width: 25, height: 25,resizeMode:'contain'}}   source={require("./assets/app5.png")} ></Image>     
     <Text style={{color:'#fff',fontSize:15,fontWeight:
-    'bold',marginLeft:10,fontFamily:''}}>User</Text>    
+    'bold',marginLeft:10,fontFamily:'Exo2-Regular'}}>User</Text>    
      </View>
      <View style={{alignItems:'flex-end'}}>
     <Image style={{marginLeft:10,width: 30, height: 30,marginTop:20,marginRight:10,resizeMode:'contain'}}   source={require("./assets/setting1.png")} ></Image> 
@@ -325,7 +325,7 @@ borderRadius:25,
   
    
     <View style={{justifyContent:'center',alignItems:'center',marginTop:60}}>
-        <Text style={{color:'#fff',fontWeight:'bold',opacity:0.9,fontFamily:''}}>{this.state.userName}</Text>
+        <Text style={{color:'#fff',fontWeight:'bold',opacity:0.9,fontFamily:'Exo2-Regular'}}>{this.state.userName}</Text>
     </View>
    
                        <View
@@ -349,11 +349,11 @@ borderRadius:25,
 />
 <View style={{flexDirection:'row',marginLeft:30}}>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>First Name</Text>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:'Exo2-Regular'}}>First Name</Text>
 </View>  
 
 <View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,textAlign:'center',opacity:0.7,fontFamily:''}}>{this.state.firstName}</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,textAlign:'center',opacity:0.7,fontFamily:'Exo2-Regular'}}>{this.state.firstName}</Text> 
 </View>  
 
 </View>
@@ -366,11 +366,11 @@ borderRadius:25,
 />
 <View style={{flexDirection:'row',marginLeft:30}}>  
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Last Name</Text>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:'Exo2-Regular'}}>Last Name</Text>
 </View>
 
 <View style={{flexDirection:'row',flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:''}}>{this.state.lastName}</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:'Exo2-Regular'}}>{this.state.lastName}</Text> 
 </View>  
 
 </View>
@@ -383,10 +383,10 @@ borderRadius:25,
 />
 <View style={{flexDirection:'row',marginLeft:30}}>  
 <View  style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Date Of Birth</Text>  
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:'Exo2-Regular'}}>Date Of Birth</Text>  
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:''}}>{this.state.dateOfBirth}</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:'Exo2-Regular'}}>{this.state.dateOfBirth}</Text> 
 </View>
 </View>
 <View
@@ -398,10 +398,10 @@ borderRadius:25,
 />
 <View style={{flexDirection:'row',marginLeft:30}}>  
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Country</Text>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:'Exo2-Regular'}}>Country</Text>
 </View>
   <View style={{flex:1}}>
-  <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:''}}>{this.state.Country}</Text> 
+  <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:'Exo2-Regular'}}>{this.state.Country}</Text> 
   </View>
 
 </View>
@@ -414,10 +414,10 @@ borderRadius:25,
 />
 <View style={{flexDirection:'row',marginLeft:30}}>  
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>E-mail</Text>
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:'Exo2-Regular'}}>E-mail</Text>
 </View>
   <View style={{flex:1}}>
-  <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:''}}>{this.state.email}</Text> 
+  <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:'Exo2-Regular'}}>{this.state.email}</Text> 
   </View>
 
 </View>
@@ -431,10 +431,10 @@ borderRadius:25,
 
 <View style={{flexDirection:'row',marginLeft:30}}>  
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Coin purse</Text>  
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:'Exo2-Regular'}}>Coin purse</Text>  
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:''}}>Bit coin</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:'Exo2-Regular'}}>Bit coin</Text> 
 </View>
 
 </View>
@@ -447,10 +447,10 @@ borderRadius:25,
 />
 <View style={{flexDirection:'row',marginLeft:30}}>  
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:''}}>Version</Text>  
+<Text style={{fontSize:12,fontWeight:'bold',color:'#4286f4',marginTop:10,fontFamily:'Exo2-Regular'}}>Version</Text>  
 </View>
 <View style={{flex:1}}>
-<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:''}}>2.0.4</Text> 
+<Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,opacity:0.7,fontFamily:'Exo2-Regular'}}>2.0.4</Text> 
 </View>
 
 
@@ -472,8 +472,8 @@ borderRadius:25,
  <Image style={{width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/monitor1.png")} ></Image>   
  </View>  
  <View style={{alignItems:'center',marginLeft:30}}>
- <Text style={{color:'#4286f4',fontSize:15,textAlign:'center',marginTop:5,fontFamily:''}}>{(this.state.twofactor==1)?'Enabled':'Disabled'}</Text>
- <Text style={{color:'#4286f4',fontSize:15,textAlign:'center',marginTop:10,fontFamily:''}}>E-wallet web</Text>
+ <Text style={{color:'#4286f4',fontSize:15,textAlign:'center',marginTop:5,fontFamily:'Exo2-Regular'}}>{(this.state.twofactor==1)?'Enabled':'Disabled'}</Text>
+ <Text style={{color:'#4286f4',fontSize:15,textAlign:'center',marginTop:10,fontFamily:'Exo2-Regular'}}>E-wallet web</Text>
  </View>
   
   </View>
@@ -488,7 +488,7 @@ borderRadius:25,
 
 <View style={{justifyContent:'center',alignItems:'center'}}>
 <Image style={{width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/notify.png")} ></Image> 
-<Text style={{color:'#4286f4',fontSize:10,textAlign:'center',fontFamily:''}}>Notification</Text>
+<Text style={{color:'#4286f4',fontSize:10,textAlign:'center',fontFamily:'Exo2-Regular'}}>Notification</Text>
 
 </View>
 
@@ -496,12 +496,12 @@ borderRadius:25,
 
 <View style={{justifyContent:'center',alignItems:'center'}}>
 <Image style={{width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/secure-user.png")} ></Image> 
-<Text style={{color:'#4286f4',fontSize:10,textAlign:'center',fontFamily:''}}>Security</Text>
+<Text style={{color:'#4286f4',fontSize:10,textAlign:'center',fontFamily:'Exo2-Regular'}}>Security</Text>
 </View>
 <View style={{justifyContent:'center',alignItems:'center'}}>
 <Image style={{width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/terms.png")} ></Image> 
 <View style={{justifyContent:'center',alignItems:'center'}}>
-<Text style={{color:'#4286f4',fontSize:10,textAlign:'center',fontFamily:''}}>Terms of use</Text>
+<Text style={{color:'#4286f4',fontSize:10,textAlign:'center',fontFamily:'Exo2-Regular'}}>Terms of use</Text>
 </View>
 
 
@@ -510,7 +510,7 @@ borderRadius:25,
 <View style={{justifyContent:'center',alignItems:'center'}} >
 <Image style={{width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/Share.png")} ></Image> 
 
-<Text style={{color:'#4286f4',fontSize:10,textAlign:'center',fontFamily:''}}>Invite Friends</Text>
+<Text style={{color:'#4286f4',fontSize:10,textAlign:'center',fontFamily:'Exo2-Regular'}}>Invite Friends</Text>
 
 
 </View>
