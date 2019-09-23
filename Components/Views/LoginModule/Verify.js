@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,ScrollView,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
+import { View, StyleSheet, Image,ScrollView,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,Animated,Easing} from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 
@@ -15,7 +15,7 @@ export default class Welcome  extends React.Component {
 
   constructor(props) {
     super(props);
-    
+    this.AnimatedWidth= new Animated.Value(50),
     this.state = {
       dataSource:[],
       cityItems:["US Doller,Indian,Eutherium"],
@@ -44,35 +44,6 @@ export default class Welcome  extends React.Component {
   {
     //this.GetListData()
   }
-  GetListData=()=>{
-    this.Load()
-    var obj = {  
-      method: 'GET',
-      headers: {
-        'Content-Type'    : 'application/json',
-        'Accept'          : 'application/json',
-       'Authorization':'Bearer '+'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6ImJmNDczYTU5LTQxNzAtNDQ2My05YTI2LWZlNWNhYTVlZjMwZiIsIkV4cGlyeSI6bnVsbH0.tUaime3lRYn7wAu2KCnW3oFwIZa18eIL_4AOnoGJiKU'.trim()   
-         }
-  }
-  fetch("https://apptest.supplynow.co.uk/api/v1/Bookings/MyBookings",obj)  
-  .then((res)=> {
-    return res.json();
-   })
-   .then((resJson)=>{
-     this.dataset(resJson)
-   
-    return resJson;
-   })
-   .catch((error) => {
-    console.error(error);
-});
-}
-dataset=(data)=>{
-  this.setState({
-    dataSource:data
-  })
-  this.hide()
-}
 Load(){
   this.setState({animate:true})
 }
@@ -95,16 +66,21 @@ _onPress=()=>{
    
 }
 pressRight=()=>{
-  if(!this.state.clickr){
-    LayoutAnimation.spring();
-    this.setState({wr: this.state.wr + 50})
-    this.setState({clickr:true})
-  }else{
-    LayoutAnimation.spring();
-    this.setState({wr:50})
-    this.setState({clickr:false})
-    this.props.navigation.navigate('Welcome');
-}
+  Animated.sequence([
+    Animated.timing(this.AnimatedWidth, {
+      toValue: 100,
+      duration: 250,
+      easing: Easing.inOut(Easing.ease),
+      delay: 10,
+    }),
+    Animated.timing(this.AnimatedWidth, {
+      toValue: 50,
+      duration: 250,
+      easing: Easing.inOut(Easing.ease),
+      delay: 10,
+    })
+  ]).start(() => this.props.navigation.navigate('Welcome'));
+
 }
 SlideMenu=()=>{
   if(!this.state.slide){
@@ -164,19 +140,21 @@ SlideMenu=()=>{
         </View>
     <View style={{justifyContent:'space-between',flex:0.4}}>
    
-      <View style={{backgroundColor:'#fd6d71',height:this.state.hr,width:this.state.wr,justifyContent:'center', borderTopStartRadius:25,borderBottomStartRadius:25, marginTop:10,position:'absolute',right:0}}>
-            <TouchableOpacity onPress={this.pressRight}>
+    <TouchableOpacity onPress={this.pressRight} style={{position:'absolute',right:0}}>
+      <Animated.View style={{backgroundColor:'#fd6d71',height:this.state.hr,width:this.AnimatedWidth,justifyContent:'center', borderTopStartRadius:25,borderBottomStartRadius:25, marginTop:10,}}>
+           
        <View style={{flexDirection: 'row'}}> 
           <Image style={{marginLeft:10,width: 20, height: 20}}   source={require("../assets/cancel.png")} ></Image>     
      
           </View>
-          </TouchableOpacity>
-            </View>
+         
+            </Animated.View>
+            </TouchableOpacity>
             <View  style={{justifyContent:'center',alignItems:'center',paddingTop:30
         }}>
-              <Image  style={{  width: Dimensions.get('window').width,
+              <Image  style={{  width: 150,
     resizeMode: "contain",
-    height: 200,}}  source={require("../assets/threelogo.png")} ></Image> 
+    height: 150,}}  source={require("../assets/threelogo.png")} ></Image> 
                  
             
         </View>

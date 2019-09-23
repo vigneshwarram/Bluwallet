@@ -158,9 +158,9 @@ export default class PincodeEnable extends React.Component {
               justifyContent: 'center', alignItems: 'center', paddingTop: 30
             }}>
               <Image style={{
-                width: Dimensions.get('window').width,
+                width: 150,
                 resizeMode: "contain",
-                height: 250,
+                height: 150,
               }} source={require("../assets/threelogo.png")} ></Image>
 
 

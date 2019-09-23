@@ -249,63 +249,7 @@ space(){
 </View>
 <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',paddingRight:30}}>
   <View>
-  {Platform.OS === 'ios' ? <RNPickerSelect 
-placeholder={{
-  label: 'Amount',
-  value: null,
-  color: '#fff',
-}}
-
-style={{ 
-  iconContainer: {
-    top: 20,
-    right: 10,
-    color: '#fff',
-  },
-  placeholder: {
-    color: '#fff',
-    fontSize: 12,
-    fontWeight: 'bold',
-  },
-}}
-            value={this.state.Amount}
-           onValueChange={(itemValue, itemIndex) => this.selectedCop(itemValue,itemIndex)}
-            items={[
-                { label:"COP", value:"COP" },
-                { label: 'Baseball', value:'baseball' },
-                { label:"Inr" ,value:"Inr"  },
-            ]}
-            Icon={() => {
-              return (
-                <View
-                  style={{
-                    backgroundColor: 'transparent',
-                    borderTopWidth: 10,
-                    borderTopColor: 'gray',
-                    borderRightWidth: 10,
-                    borderRightColor: 'transparent',
-                    borderLeftWidth: 10,
-                    borderLeftColor: 'transparent',
-                    width: 0,
-                    height: 0,
-                  }}
-                />
-              );
-            }}
-        />:    <Picker style={{  width: 50, height: 30}}
-        selectedValue={this.state.Amount}
-       onValueChange={(itemValue, itemIndex) => this.selectedCop(itemValue,itemIndex)}>
-       
-       <Picker.Item label="COP" value="COP" />
-       <Picker.Item label="Inr" value="Inr" />
-      
-       </Picker>}
   </View>
-
-        <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
-        
-   
-    
         </View>
         
   

@@ -206,7 +206,7 @@ colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>
             />            
         </View>
         <View style={{flexDirection:'row',justifyContent:'space-between',backgroundColor:'#fff'}}>
-        <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
+        <TouchableOpacity onPress={()=>this.props.navigation.goBack(null)}>
     <View style={{justifyContent:'center',alignItems:'center'}}>
     <Image  style={{width: 6, height: 11,marginLeft:20,marginTop:20,resizeMode:'contain'}}  source={require("../assets/left-arrow.png")} ></Image> 
     </View>
@@ -217,7 +217,7 @@ colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>
     <View></View>
     </View>
     <View style={{justifyContent:'center',alignItems:'center',backgroundColor:'#fff'}}>
-    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:25,fontFamily:'Exo2-SemiBold'}}>We need this to verify your identify,In order for</Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:15,fontFamily:'Exo2-SemiBold'}}>We need this to verify your identify,In order for</Text>
     <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:'Exo2-SemiBold'}}> you to use this improved feature.It should only</Text>
     <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:'Exo2-SemiBold'}}> Take a couple of minutes</Text>
           <View style={{width:'100%',borderColor:this.state.FirstNameBodercolor,backgroundColor:'#fff',marginTop:30, justifyContent:"center",borderLeftWidth:1,borderRightWidth:1,borderTopWidth:1,borderBottomWidth:this.state.FirstNameBoderWidth}}>
@@ -298,9 +298,6 @@ colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
         year = d.getFullYear();
-if(year>2015){
-  alert('You cant enter')
-}
     if (month.length < 2) month = '0' + month;
     if (day.length < 2) day = '0' + day;
     this.setState({ isDateTimePickerVisible: false,Dates:year+'-'+month+'-'+day});

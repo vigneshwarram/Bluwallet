@@ -186,7 +186,7 @@ export default class CountrySearch extends React.Component {
     return (
       <View style={styles.container}>
         <View style={{flexDirection:'row',justifyContent:'space-between',marginTop:-10}}>
-        <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
+        <TouchableOpacity onPress={()=>this.props.navigation.goBack(null)}  style={{width:50,height:50}}>
     <View style={{justifyContent:'center',alignItems:'center'}}>
     <Image  style={{width: 6, height: 11,marginLeft:20,marginTop:30,resizeMode:'contain'}}  source={require("../assets/left-arrow.png")} ></Image> 
     </View>
@@ -197,7 +197,7 @@ export default class CountrySearch extends React.Component {
     <View></View>
     </View>
     <View style={{justifyContent:'center',alignItems:'center'}}>
-    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:25,fontFamily:'Exo2-SemiBold'}}>Digital Currency are only available in </Text>
+    <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:25,fontFamily:'Exo2-SemiBold'}}>Please select the country of your nationality </Text>
     <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:'Exo2-SemiBold'}}> select country</Text>
 
     <View style={{width:'80%',borderRadius:25,borderWidth:1,borderColor:'#d7dee8',marginTop:10,marginBottom:20, justifyContent:"center",backgroundColor:'#fff'}}>
@@ -221,29 +221,6 @@ export default class CountrySearch extends React.Component {
           reverse={false}
           itemHeight={ITEM_HEIGHT}
         />  
-        <View style={{position:'absolute',bottom:0,width:'100%'}}>
-        <TouchableOpacity onPress={this.BeginAction}>
-        <View>
-        <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:15,justifyContent:'center',alignItems:'center',}}>
-<Text style={{color:'#fff',fontSize:20,fontFamily:'Poppins-Medium'}}>Next</Text>
-</LinearGradient>
-        </View>
-        </TouchableOpacity>
-       
-        <View>
-<LinearGradient colors={['#354e91','#354e91','#354e91']}  style={{padding:15,alignItems:'center'}}>
-<TouchableOpacity>
-<Text style={{color:'#fff',opacity:1,fontSize:11,marginTop:2,fontFamily:'Exo2-Regular'}}>when you create a wallet,you accept</Text>
-<View style={{flexDirection:'row',marginTop:2,}}>
-<Text style={{color:'#5496ff',opacity:1,fontSize:11,marginTop:5,fontFamily:'Exo2-SemiBold'}}>Terms of Service</Text>
-<Text style={{color:'#fff',opacity:1,fontSize:11,marginTop:5,marginLeft:8,fontFamily:'Exo2-Regular'}}>&</Text>
-<Text style={{color:'#5496ff',opacity:1,fontSize:11,marginTop:5,marginLeft:8,fontFamily:'Exo2-SemiBold'}}>Politic and privacy</Text>
-</View>
-
-</TouchableOpacity>
-</LinearGradient>
-</View>
-        </View>
        
 
     

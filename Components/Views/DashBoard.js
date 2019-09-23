@@ -537,7 +537,7 @@ export default class DashBoard extends React.Component {
                     <Text style={{ color: '#fff', fontFamily: 'Exo2-Regular', fontSize: 15, marginLeft: -60 }}>Exit</Text>
                   </View>
 
-                  <Image style={{ marginRight: 10, width: 20, height: 20 }} source={require("./assets/clo.png")} ></Image>
+                  <Image style={{ marginRight: 10, width: 20, height: 20 }} source={require("./assets/cancel.png")} ></Image>
 
                 </View>
 
@@ -564,12 +564,13 @@ export default class DashBoard extends React.Component {
                   value={this.state.usdforEther}
                 />
               </View>
-              <View style={{ marginTop: -10 }}>
-                {
+              <View style={{ marginTop: -15 }}>
+                {/* {
                   (type === 'ETH') ? <Image style={{ width: 25, height: 25, resizeMode: 'contain' }} source={require("./assets/diamond.png")} ></Image> :
                     <Image style={{ width: 20, height: 20, resizeMode: 'contain' }} source={require("./assets/bshadow.png")} ></Image>
 
-                }
+                } */}
+                <Text style={{fontSize:30,color:'#000'}}>$</Text>
               </View>
 
 
@@ -676,7 +677,7 @@ export default class DashBoard extends React.Component {
                   <View style={{ justifyContent: 'center', alignItems: 'flex-start', }}>
                     <Text style={{ color: '#fff', fontFamily: 'Exo2-Regular', fontSize: 15, marginLeft: -60 }}>Exit</Text>
                   </View>
-                  <Image style={{ marginRight: 10, width: 20, height: 20 }} source={require("./assets/clo.png")} ></Image>
+                  <Image style={{ marginRight: 10, width: 20, height: 20 }} source={require("./assets/cancel.png")} ></Image>
 
                 </View>
 
@@ -703,11 +704,12 @@ export default class DashBoard extends React.Component {
                   />
                 </View>
                 <View style={{ marginTop: -15 }}>
-                  {
+                  {/* {
                     (type === 'ETH') ? <Image style={{ width: 25, height: 25, resizeMode: 'contain' }} source={require("./assets/diamond.png")} ></Image> :
                       <Image style={{ width: 25, height: 25, resizeMode: 'contain' }} source={require("./assets/bshadow.png")} ></Image>
 
-                  }
+                  } */}
+                  <Text style={{fontSize:30,color:'#000'}}>$</Text>
                 </View>
 
 
@@ -843,7 +845,7 @@ export default class DashBoard extends React.Component {
 
     }
     //Get value for Network fee and Crypto amount Api
-    ExchangeList(CONVERT_USD,params, this.onUsdResponse,this.error,this.NetworkIssue)
+    ExchangeList(params,CONVERT_USD, this.onUsdResponse,this.error,this.NetworkIssue)
     console.log('Request data.===>', this.onUsdResponse)
 
   }

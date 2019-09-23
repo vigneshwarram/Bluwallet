@@ -274,25 +274,7 @@ renderScane() {
           maxLength={10}
         />
 </View>
-<View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center'}}>
-        <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.Amount}</Text>
-        <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
-        <Picker style={{ position:'absolute', top: 0, width: 1000, height: 3000}}
-   selectedValue={this.state.Amount}
-  onValueChange={(itemValue, itemIndex) => this.selectedCop(itemValue,itemIndex)}>
-  
-  <Picker.Item label="COP" value="COP" />
-  <Picker.Item label="Inr" value="Inr" />
-  <Picker.Item label="USA" value="USA" />
-  <Picker.Item label="German" value="German" />
-  <Picker.Item label="Italy" value="Italy" />
-  <Picker.Item label="Aus" value="Aus" />
-  <Picker.Item label="India" value="India" />
-  <Picker.Item label="Aus" value="Aus" />
-  </Picker>
-        </View>
         
-  
           </View>
           <View style={{width:'50%',borderRadius:25,borderWidth:1,borderColor:'#fff', alignItems:'center',flexDirection:'row',justifyContent:'center',padding:5}}>
 <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center'}}>

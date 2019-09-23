@@ -193,7 +193,7 @@ export default class Launch extends React.Component {
            
 
               <View>
-                <Image style={{ width: 150, height: 150, resizeMode: 'contain' }} source={require("../assets/Group_2054.png")} ></Image>
+                <Image style={{ width: 200, height: 200, resizeMode: 'contain' }} source={require("../assets/Group_2054.png")} ></Image>
 
 
               

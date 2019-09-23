@@ -188,7 +188,7 @@ SlideMenu=()=>{
    <View style={{flex:1}}>
 <View style={{flex:0.8}}>
 <View style={{flexDirection:'row',justifyContent:'space-between'}}>
-    <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
+    <TouchableOpacity onPress={()=>this.props.navigation.goBack(null)} style={{width:50,height:50}}>
     <View style={{justifyContent:'center',alignItems:'center'}}>
     <Image  style={{width: 6, height: 11,marginLeft:20,marginTop:30,resizeMode:'contain'}}  source={require("../assets/left-arrow.png")} ></Image> 
     </View>
@@ -309,9 +309,9 @@ SlideMenu=()=>{
 <TouchableOpacity>
 <Text style={{color:'#fff',opacity:1,fontSize:11,marginTop:2,fontFamily:'Exo2-Regular'}}>when you create a wallet,you accept</Text>
 <View style={{flexDirection:'row',marginTop:2,}}>
-<Text style={{color:'#5496ff',opacity:1,fontSize:11,marginTop:5,fontFamily:'Exo2-SemiBold'}}>Terms of Service</Text>
+<Text style={{color:'#5496ff',opacity:1,fontSize:11,marginTop:5,fontFamily:'Exo2-SemiBold'}}>Terms of Services</Text>
 <Text style={{color:'#fff',opacity:1,fontSize:11,marginTop:5,marginLeft:8,fontFamily:'Exo2-Regular'}}>&</Text>
-<Text style={{color:'#5496ff',opacity:1,fontSize:11,marginTop:5,marginLeft:8,fontFamily:'Exo2-SemiBold'}}>Politic and privacy</Text>
+<Text style={{color:'#5496ff',opacity:1,fontSize:11,marginTop:5,marginLeft:8,fontFamily:'Exo2-SemiBold'}}>Politics and privacy</Text>
 </View>
 
 </TouchableOpacity>

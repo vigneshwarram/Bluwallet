@@ -165,7 +165,7 @@ export default class OtpPin extends React.Component {
                         <View style={{
                             justifyContent: 'center', alignItems: 'center', marginTop: 30
                         }}>
-                            <Image style={{ width: 100, height: 150 }} source={require("../assets/threelogo.png")} ></Image>
+                            <Image style={{ width: 150, height: 150,resizeMode:'contain' }} source={require("../assets/threelogo.png")} ></Image>
 
                         </View>
 

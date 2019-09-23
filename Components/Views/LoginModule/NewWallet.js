@@ -197,9 +197,9 @@ SlideMenu=()=>{
 <TouchableOpacity>
 <Text style={{color:'#fff',opacity:1,fontSize:12,marginTop:2,marginLeft:-30,fontFamily:'Exo2-Regular'}}>when you create a wallet, you accept</Text>
 <View style={{flexDirection:'row',marginTop:2,marginLeft:-30}}>
-<Text style={{color:'#5496ff',opacity:1,fontSize:12,marginTop:5,fontFamily:'Exo2-SemiBold'}}>Terms of Service</Text>
+<Text style={{color:'#5496ff',opacity:1,fontSize:12,marginTop:5,fontFamily:'Exo2-SemiBold'}}>Terms of Services</Text>
 <Text style={{color:'#fff',opacity:1,fontSize:12,marginTop:5,marginLeft:8,fontFamily:'Exo2-Regular'}}>&</Text>
-<Text style={{color:'#5496ff',opacity:1,fontSize:12,marginTop:5,marginLeft:8,fontFamily:'Exo2-SemiBold'}}>Politic and privacy</Text>
+<Text style={{color:'#5496ff',opacity:1,fontSize:12,marginTop:5,marginLeft:8,fontFamily:'Exo2-SemiBold'}}>Politics and privacy</Text>
 </View>
 
 </TouchableOpacity>

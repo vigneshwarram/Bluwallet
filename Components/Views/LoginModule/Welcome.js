@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,ScrollView,Dimensions,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,} from 'react-native';
+import { View, StyleSheet, Image,ScrollView,Dimensions,Text,ActivityIndicator,Easing,TouchableOpacity,LayoutAnimation,Animated} from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 
@@ -15,7 +15,7 @@ export default class Welcome  extends React.Component {
 
   constructor(props) {
     super(props);
-    
+    this.AnimatedWidth= new Animated.Value(50),
     this.state = {
       dataSource:[],
       cityItems:["US Doller,Indian,Eutherium"],
@@ -35,6 +35,7 @@ export default class Welcome  extends React.Component {
       visible: false,
       hidden: false,
       app1color:'#fff',
+     
       app5color:'#fff'
     };
   
@@ -44,29 +45,7 @@ export default class Welcome  extends React.Component {
   {
     //this.GetListData()
   }
-  GetListData=()=>{
-    this.Load()
-    var obj = {  
-      method: 'GET',
-      headers: {
-        'Content-Type'    : 'application/json',
-        'Accept'          : 'application/json',
-       'Authorization':'Bearer '+'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6ImJmNDczYTU5LTQxNzAtNDQ2My05YTI2LWZlNWNhYTVlZjMwZiIsIkV4cGlyeSI6bnVsbH0.tUaime3lRYn7wAu2KCnW3oFwIZa18eIL_4AOnoGJiKU'.trim()   
-         }
-  }
-  fetch("https://apptest.supplynow.co.uk/api/v1/Bookings/MyBookings",obj)  
-  .then((res)=> {
-    return res.json();
-   })
-   .then((resJson)=>{
-     this.dataset(resJson)
-   
-    return resJson;
-   })
-   .catch((error) => {
-    console.error(error);
-});
-}
+
 dataset=(data)=>{
   this.setState({
     dataSource:data
@@ -95,17 +74,21 @@ _onPress=()=>{
    
 }
 pressRight=()=>{
-  if(!this.state.clickr){
-    LayoutAnimation.spring();
-    this.setState({wr: this.state.wr + 50})
-    this.setState({clickr:true})
-  }else{
-    LayoutAnimation.spring();
-    this.setState({wr:50})
-    this.setState({clickr:false})
+  Animated.sequence([
+    Animated.timing(this.AnimatedWidth, {
+      toValue: 100,
+      duration: 250,
+      easing: Easing.inOut(Easing.ease),
+      delay: 10,
+    }),
+    Animated.timing(this.AnimatedWidth, {
+      toValue: 50,
+      duration: 250,
+      easing: Easing.inOut(Easing.ease),
+      delay: 10,
+    })
+  ]).start(() => this.props.navigation.navigate('Home'));
 
-    this.props.navigation.navigate('Home')
-}
 }
 SlideMenu=()=>{
   if(!this.state.slide){
@@ -164,15 +147,16 @@ SlideMenu=()=>{
             />            
         </View>
     <View style={{justifyContent:'space-between',flex:0.1}}>
-   
-      <View style={{backgroundColor:'#fd6d71',height:this.state.hr,width:this.state.wr,justifyContent:'center', borderTopStartRadius:25,borderBottomStartRadius:25, marginTop:10,position:'absolute',right:0}}>
-            <TouchableOpacity onPress={this.pressRight}>
+    <TouchableOpacity onPress={this.pressRight} style={{position:'absolute',right:0}}>
+      <Animated.View style={{backgroundColor:'#fd6d71',height:this.state.hr,width:this.AnimatedWidth,justifyContent:'center', borderTopStartRadius:25,borderBottomStartRadius:25, marginTop:10,}}>
+           
        <View style={{flexDirection: 'row'}}> 
           <Image style={{marginLeft:10,width: 20, height: 20}}   source={require("../assets/cancel.png")} ></Image>     
      
           </View>
-          </TouchableOpacity>
-            </View>
+         
+            </Animated.View>
+            </TouchableOpacity>
             <View style={{justifyContent:'center',alignItems:'center',marginTop:25}}>
         <Text style={{color:'#4e649f',fontWeight:'bold',opacity:1,fontSize:20,fontFamily:'Exo2-Bold'}}>Welcome!</Text>
     </View>
@@ -184,9 +168,9 @@ SlideMenu=()=>{
          
              <View  style={{justifyContent:'center',alignItems:'center'
         }}>
-              <Image  style={{  width: Dimensions.get('window').width,
+              <Image  style={{  width:150,
     resizeMode: "contain",
-    height: 200,}}  source={require("../assets/threelogo.png")} ></Image> 
+    height: 150,}}  source={require("../assets/threelogo.png")} ></Image> 
                  
             
         </View>
@@ -195,13 +179,10 @@ SlideMenu=()=>{
             
 </View>  
 <View style={{flex:0.4}}>
-<View  style={{justifyContent:'center',alignItems:'center',paddingVertical:60
+<View  style={{justifyContent:'center',alignItems:'center',paddingVertical:30
         }}>
-             <Text style={{color:'#4e649f',opacity:1,fontSize:12,fontFamily:'Exo2-SemiBold'}}>Verify your Identity to request your XLM.Will</Text>
-             <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:'Exo2-SemiBold'}}>Take a few minutes.Once Verification,you</Text>
-             <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:'Exo2-SemiBold'}}>Could use our product of last generation</Text>
-             <Text style={{color:'#4e649f',opacity:1,fontSize:12,marginTop:2,fontFamily:'Exo2-SemiBold'}}>Exchange</Text>
-         
+             <Text style={{color:'#4e649f',opacity:1,fontSize:12,fontFamily:'Exo2-SemiBold',textAlign:'center'}}>Verify your Identity in order to use </Text>
+             <Text style={{color:'#4e649f',opacity:1,fontSize:12,fontFamily:'Exo2-SemiBold',textAlign:'center'}}> all the functions of the wallet</Text>
         </View>
 </View>
 
@@ -225,9 +206,9 @@ SlideMenu=()=>{
 <TouchableOpacity>
 <Text style={{color:'#fff',opacity:1,fontSize:11,marginTop:2,fontFamily:'Exo2-Regular'}}>when you create a wallet,you accept</Text>
 <View style={{flexDirection:'row',marginTop:2,}}>
-<Text style={{color:'#5496ff',opacity:1,fontSize:11,marginTop:5,fontFamily:'Exo2-SemiBold'}}>Terms of Service</Text>
+<Text style={{color:'#5496ff',opacity:1,fontSize:11,marginTop:5,fontFamily:'Exo2-SemiBold'}}>Terms of Services</Text>
 <Text style={{color:'#fff',opacity:1,fontSize:11,marginTop:5,marginLeft:8,fontFamily:'Exo2-Regular'}}>&</Text>
-<Text style={{color:'#5496ff',opacity:1,fontSize:11,marginTop:5,marginLeft:8,fontFamily:'Exo2-SemiBold'}}>Politic and privacy</Text>
+<Text style={{color:'#5496ff',opacity:1,fontSize:11,marginTop:5,marginLeft:8,fontFamily:'Exo2-SemiBold'}}>Politics and privacy</Text>
 </View>
 
 </TouchableOpacity>

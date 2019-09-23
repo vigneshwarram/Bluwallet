@@ -46,13 +46,13 @@ export default class VaultFilter extends React.Component {
       { 'image': require('../assets/biconback.png') },
       { 'image': require('../assets/biconback.png') }],
       ImagArray: ['image1'],
-      Amount: 'USDoller',
+      Amount: 'USDollar',
       ShowFilter: true,
       CrptoType: 'ETH',
       CompleteOpacity: 0.5,
       ActiveOpacity: 1,
-      cityItems: ["US Doller,Indian,Eutherium"],
-      Coin: 'Us Doller',
+      cityItems: ["UsDollar"],
+      Coin: 'UsDollar',
       animate: false,
       Balance: null,
       Usd: null,
@@ -313,7 +313,7 @@ export default class VaultFilter extends React.Component {
   _onPress = () => {
     Animated.sequence([
       Animated.timing(AnimatedLeftWidth, {
-        toValue: 150,
+        toValue: 130,
         duration: 250,
         easing: Easing.inOut(Easing.ease),
         delay: 50,
@@ -405,15 +405,15 @@ export default class VaultFilter extends React.Component {
             <View style={{ flex: 1 }}>
               <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
               <TouchableOpacity onPress={this._onPress} style={{position: 'absolute', left: 0}}>
-                <Animated.View style={{ borderColor: '#c978f8',justifyContent:'center', borderRightWidth: 1, borderLeftWidth: 0, borderTopWidth: 1, borderBottomWidth: 1, position: 'absolute', height: 45, width: AnimatedLeftWidth, borderTopRightRadius: 25, borderBottomRightRadius: 25, marginTop: 10 }}>
+                <Animated.View style={{ borderColor: '#c978f8',justifyContent:'center',alignItems:'flex-end', borderRightWidth: 1, borderLeftWidth: 0, borderTopWidth: 1, borderBottomWidth: 1, height: 45, width: AnimatedLeftWidth, borderTopRightRadius: 25, borderBottomRightRadius: 25, marginTop: 10 }}>
               
                     <View>
                    
-                        <View style={{ flexDirection: 'row' }}>
-                          <View style={{ justifyContent: 'center', alignItems: 'flex-start', }}>
-                            <Text style={{ color: '#fff', fontFamily: 'Exo2-SemiBold', fontSize: 12, marginLeft: -80 }}>Information</Text>
+                        <View style={{ flexDirection: 'row',marginLeft:-30 }}>
+                          <View style={{ justifyContent: 'center', }}>
+                            <Text style={{ color: '#fff', fontFamily: 'Exo2-SemiBold', fontSize: 12,marginRight:10}}>Information</Text>
                           </View>
-                          <Image style={{ marginRight: 10, width: 30, height: 30, resizeMode: 'contain' }} source={require("../assets/iicon.png")} ></Image>
+                          <Image style={{marginRight:10, width: 30, height: 30, resizeMode: 'contain'}} source={require("../assets/iicon.png")} ></Image>
                         </View>
                 
                     </View>
@@ -564,7 +564,7 @@ export default class VaultFilter extends React.Component {
                           selectedValue={this.state.Amount}
                           onValueChange={(itemValue, itemIndex) => this.selectedPrice(itemValue, itemIndex)}>
 
-                          <Picker.Item label="USDoller" value="USDoller" />
+                          <Picker.Item label="USDollar" value="USDollar" />
                       
                         </Picker>
                       </View>

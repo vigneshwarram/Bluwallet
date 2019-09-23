@@ -347,7 +347,8 @@ SlideMenu=()=>{
             if(data.loginInfo.twoFactorAuthenticationStatus===0)
             {
              
-              this.NavigationReset('Home',data.loginInfo.profileStatus,data.loginInfo.kycStatus) //Profile popup not apprear,kyc popup appear            
+              // this.NavigationReset('Home',data.loginInfo.profileStatus,data.loginInfo.kycStatus) //Profile popup not apprear,kyc popup appear
+              this.NavigationReset('Home',1,0)            
             }
             else
             {
