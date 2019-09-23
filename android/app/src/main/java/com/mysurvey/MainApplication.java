@@ -55,9 +55,8 @@ public class MainApplication extends Application implements ReactApplication {
             new FingerprintAuthPackage(),
            // 
             new ReanimatedPackage(),
-            new RNDeviceInfo(),
-        
-            new RNGestureHandlerPackage(),
+            new RNDeviceInfo(),       
+            new RNGestureHandlerPackage()
           
       );
     }

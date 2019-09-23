@@ -18,13 +18,13 @@ export default class Snackbar extends Component {
 componentDidMount()
 {
     console.log('component did mount','cccoming')
-    this.setState({Shown:this.props.AlertVisible})  
+    this.setState({Shown:this.props.Visible})  
     this.SnackbarAction() 
        
 }
 componentWillReceiveProps(nextProps)
 {
-    this.setState({Shown:nextProps.AlertVisible})  
+    this.setState({Shown:nextProps.Visible})  
   
 }
   
@@ -53,7 +53,7 @@ componentWillReceiveProps(nextProps)
 
    
     render() {
-        this.SnackbarAction() 
+       this.SnackbarAction() 
         console.log('render function','it is comming')
       return (
        <Animated.View style={{position:'absolute',bottom:0,backgroundColor:'red',width:width,transform:[{
@@ -63,7 +63,7 @@ componentWillReceiveProps(nextProps)
            })
        }]}}>
            <View style={{justifyContent:'center',padding:20,paddingRight:20}}>
-               <Text style={{color:'#fff'}}>{this.props.message}</Text>
+               <Text style={{color:'#fff'}}>{this.props.alert}</Text>
 
            </View>
        </Animated.View>

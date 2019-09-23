@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import {ExchangeList,ExchangeRequest ,exchangeUserApi} from '../Api/ExchangeRequest'
+import {ExchangeList} from '../Api/ExchangeRequest'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from './Constant'
 import { Alert, LayoutAnimation, StyleSheet, View, Text, ScrollView, UIManager, TouchableOpacity, Platform, Image,AsyncStorage } from 'react-native';
 let datasource=[1]
@@ -78,10 +78,10 @@ export default class Expandable_ListView extends Component {
           console.log(this.props)
           this.props.onLoad()
           if(data.exchangeType ==='ETH_BTC_USER'){
-            exchangeUserApi('eth_btc/user/exchange',params,this.ExchangeRequestResponse)
+            ExchangeList('eth_btc/user/exchange',params,this.ExchangeRequestResponse,)
             console.log('This params',params)
           }else{
-            exchangeUserApi('btc_eth/user/exchange',params,this.ExchangeRequestResponse)
+            ExchangeList('btc_eth/user/exchange',params,this.ExchangeRequestResponse)
             console.log('This params',params)
           }
            

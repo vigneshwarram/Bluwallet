@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet,TextInput, Image,Picker,ImageBackground,ScrollView,Text,Animated,ActivityIndicator,TouchableOpacity,AsyncStorage,KeyboardAvoidingView,Easing} from 'react-native';
+import { View, StyleSheet,TextInput , Image,Picker,ImageBackground,ScrollView,Text,Animated,ActivityIndicator,TouchableOpacity,AsyncStorage,KeyboardAvoidingView,Easing} from 'react-native';
 import { Alert } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import { Switch} from 'react-native'
@@ -11,7 +11,8 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import { VaultSystemApi, CryptoInvestment, CryptoTypeInvestment } from '../Api/VaultSystemApi'
 import Logo from '../../logo'
 import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
-import {ExchangeOnLoad ,ConvertToUsd , getEqualCryptoValueApi , exchangeRequestApi ,exchangeAdmin_ETC_BTC_Api} from '../Api/ExchangeRequest'
+import {CONVERT_USD,getEqualCryptoValueApi,ExchangeRequestsUrl } from '../Api/RequestUrl'
+import {ExchangeList} from '../Api/ExchangeRequest'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from '../Utils.js/Constant'
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -87,7 +88,7 @@ export default class  Buy  extends React.Component {
     if (data != 'undefined') {
       if (data.status === ResponseSuccessStatus) {
         if (data.CalculatingAmountDTO.cryptoType === 'ETH'||data.CalculatingAmountDTO.cryptoType === 'eth') {
-         this.setState({"amount":data.CalculatingAmountDTO.etherAmount})
+         this.setState({amount:data.CalculatingAmountDTO.etherAmount})
 
         }
         else {
@@ -119,7 +120,11 @@ export default class  Buy  extends React.Component {
 
     }
     this.Load()
-    ExchangeOnLoad(ExchangeType,params,this.OnLoadResponse)
+    ExchangeList(params,ExchangeType,this.OnLoadResponse,this.error,this.NetworkIssue)
+  }
+  error=(data)=>
+  {
+    Alert.alert(data)
   }
   OnLoadResponse=(data)=>
   {
@@ -328,8 +333,8 @@ toggleSwitch=(value)=>{
           keyboardType='numeric'
           //onChange={this.handleKeyDown}
           maxLength={10}
-          onChangeText={(text) =>this.ChangeText(text)}
-          value={this.state.usdforEther}
+         onChangeText={(text) =>this.ChangeText(text)}
+         value={this.state.usdforEther}
         />
 </View> 
 
@@ -543,7 +548,7 @@ toggleSwitch=(value)=>{
         }
         console.log('Request data.===>', params, this.state.usdforEther)
         this.Load()   
-        exchangeRequestApi(params,this.onExchangeResponse)
+        ExchangeList(params,ExchangeRequestsUrl,this.onExchangeResponse,this.error,this.NetworkIssue)
         }else
         {
   
@@ -556,7 +561,7 @@ toggleSwitch=(value)=>{
         }
         console.log('Request data.===>', params, this.state.usdforEther)
         this.Load()   
-        exchangeRequestApi(params,this.onExchangeResponse)
+        ExchangeList(params,ExchangeRequestsUrl,this.onExchangeResponse,this.error,this.NetworkIssue)
         }
     
       }else{
@@ -571,7 +576,7 @@ toggleSwitch=(value)=>{
         }
         console.log('Request data.===>', params, this.state.usdforEther)
         this.Load()   
-        exchangeRequestApi(params,this.onExchangeResponse)
+        ExchangeList(params,ExchangeRequestsUrl,this.onExchangeResponse,this.error,this.NetworkIssue)
         }else
         {
   
@@ -584,7 +589,7 @@ toggleSwitch=(value)=>{
         }
         console.log('Request data.===>', params, this.state.usdforEther)
         this.Load()   
-        exchangeRequestApi(params,this.onExchangeResponse)
+        ExchangeList(params,ExchangeRequestsUrl,this.onExchangeResponse,this.error,this.NetworkIssue)
         }
       }
         
@@ -695,13 +700,13 @@ toggleSwitch=(value)=>{
        let type=crptoType
        let params=
      {
-       usd:UsdAmount ,
+       usd:UsdAmount,
        cryptoType:type
 
      }
      
      //Get value for Network fee and Crypto amount Api
-     ConvertToUsd(params,this.onUsdResponse)
+     ExchangeList(params,CONVERT_USD,this.onUsdResponse,this.error,this.NetworkIssue)
    
       
     }
@@ -754,7 +759,7 @@ toggleSwitch=(value)=>{
      }
 
       //Get value for Network fee and Crypto amount Api
-      getEqualCryptoValueApi(params,this.cryptoResponse)
+      ExchangeList(params,getEqualCryptoValueApi,this.cryptoResponse,this.error,this.NetworkIssue)
       console.log('Request data.===>','getEqualCryptoValueApi',this.cryptoResponse)
     }
  

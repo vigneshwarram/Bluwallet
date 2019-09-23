@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, SafeAreaView,StyleSheet,TextInput, Image,ImageBackground,Picker,LayoutAnimation,Text,ActivityIndicator,TouchableOpacity,UIManager,Animated,Platform,TouchableHighlight} from 'react-native';
+import { View, SafeAreaView,StyleSheet,TextInput,AsyncStorage , Image,ImageBackground,Picker,LayoutAnimation,Text,ActivityIndicator,TouchableOpacity,UIManager,Animated,Platform,TouchableHighlight} from 'react-native';
 import { Alert } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import LinearGradient from 'react-native-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
 import Spinner from 'react-native-loading-spinner-overlay';
 import {ExchangeList} from '../Api/ExchangeRequest'
+import {ExchangeRequest} from '../Api/RequestUrl'
 import ExchangeMenu_Expandable from '../Utils.js/ExchangeMenu_Expandable'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from '../Utils.js/Constant'
 
@@ -92,10 +93,20 @@ export default class  ExchangeMenu  extends React.Component {
     this.GetData()
   }
  
-  GetData=()=>
+  GetData=async()=>
   {
     this.Load()
-    ExchangeList(this.ExchangeListResponse)
+  let UserId=await AsyncStorage.getItem('UserId') 
+  console.log(UserId)
+  let params=
+  {
+    userId:UserId
+  }
+    ExchangeList(params,ExchangeRequest,this.ExchangeListResponse,this.error,this.NetworkIssue)
+  }
+  error=()=>
+  {
+    Alert.alert(error)
   }
   update_Layout = (index) => {
 

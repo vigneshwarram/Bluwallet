@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import {ExchangeList,ExchangeRequest ,exchangeUserApi} from '../Api/ExchangeRequest'
+import {ExchangeList,ExchangeRequest} from '../Api/ExchangeRequest'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from './Constant'
 import { Alert, LayoutAnimation,TouchableHighlight, StyleSheet, View, Text, ScrollView, UIManager, TouchableOpacity, Platform, Image,AsyncStorage } from 'react-native';
 
@@ -166,8 +166,8 @@ export default class ExchangeMenu_Expandable extends Component {
 <View style={{justifyContent:'center',alignItems:'center',marginBottom:10,width:"100%"}}>
 <View style={{width:"50%"}}>
 <LinearGradient colors={[(status==='Exchanged')?'transparent':'#41da9c',(status==='Exchanged')?'transparent':'#36deaf',(status==='Exchanged')?'transparent':'#26e3ca']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{borderColor:'#26e3ca', width:'100%',padding:12,borderWidth:0.8,justifyContent:'center',alignItems:'center',marginLeft:10,borderRadius:6}}>
-<TouchableHighlight >
-<Text style={{color:(status==='Exchanged')?'#fff':'#fff',fontFamily:'Poppins-Medium'}}>{status}</Text></TouchableHighlight>
+
+<Text style={{color:(status==='Exchanged')?'#fff':'#fff',fontFamily:'Poppins-Medium'}}>{status}</Text>
 </LinearGradient>
 
 </View>

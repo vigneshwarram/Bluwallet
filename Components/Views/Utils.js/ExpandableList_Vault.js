@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import {ExchangeList,ExchangeRequest ,exchangeUserApi} from '../Api/ExchangeRequest'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from './Constant'
 import { Alert, LayoutAnimation, StyleSheet, View, Text, ScrollView, UIManager, TouchableOpacity, Platform, Image,AsyncStorage } from 'react-native';
 let datasource=[1]

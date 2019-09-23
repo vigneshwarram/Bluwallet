@@ -404,22 +404,22 @@ export default class VaultFilter extends React.Component {
           <ScrollView contentContainerStyle={{ paddingBottom: 90 }}>
             <View style={{ flex: 1 }}>
               <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
-
-                <Animated.View style={{ borderColor: '#c978f8', borderRightWidth: 1, borderLeftWidth: 0, borderTopWidth: 1, borderBottomWidth: 1, position: 'absolute', height: 45, width: AnimatedLeftWidth, borderTopRightRadius: 25, borderBottomRightRadius: 25, marginTop: 10 }}>
-                  <TouchableOpacity onPress={this._onPress}>
+              <TouchableOpacity onPress={this._onPress} style={{position: 'absolute', left: 0}}>
+                <Animated.View style={{ borderColor: '#c978f8',justifyContent:'center', borderRightWidth: 1, borderLeftWidth: 0, borderTopWidth: 1, borderBottomWidth: 1, position: 'absolute', height: 45, width: AnimatedLeftWidth, borderTopRightRadius: 25, borderBottomRightRadius: 25, marginTop: 10 }}>
+              
                     <View>
-                      <LinearGradient colors={['transparent', 'transparent', 'transparent']} style={{ justifyContent: 'center', alignItems: 'flex-end', paddingTop: 10, paddingBottom: 10 }}>
+                   
                         <View style={{ flexDirection: 'row' }}>
                           <View style={{ justifyContent: 'center', alignItems: 'flex-start', }}>
                             <Text style={{ color: '#fff', fontFamily: 'Exo2-SemiBold', fontSize: 12, marginLeft: -80 }}>Information</Text>
                           </View>
                           <Image style={{ marginRight: 10, width: 30, height: 30, resizeMode: 'contain' }} source={require("../assets/iicon.png")} ></Image>
                         </View>
-                      </LinearGradient>
+                
                     </View>
-                  </TouchableOpacity>
+                
                 </Animated.View>
-     
+                </TouchableOpacity>
                 <TouchableOpacity onPress={this.pressRight} style={{position: 'absolute', right: 0}} >
                 <Animated.View style={{ height: AnimatedHieght, width: AnimatedWidth,backgroundColor:'#fff', borderTopLeftRadius: 25, borderBottomLeftRadius: 25, marginTop: 10,justifyContent:'center'  }}>
 

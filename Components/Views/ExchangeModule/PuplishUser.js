@@ -8,7 +8,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import BlurOverlay,{closeOverlay,openOverlay} from 'react-native-blur-overlay';
 import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
 import { ScrollView } from 'react-native-gesture-handler';
-import {ExchangeList,ExchangeRequest} from '../Api/ExchangeRequest'
+import {ExchangeList} from '../Api/ExchangeRequest'
+import {ExchangeRequest} from '../Api/RequestUrl'
 import {StackActions} from 'react-navigation'
 import Expandable_ListView from '../Utils.js/Expandable_ListView'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from '../Utils.js/Constant'
@@ -70,12 +71,17 @@ export default class  PuplishUser  extends React.Component {
   {
     this.GetData()
   }
-  GetData=()=>
+  GetData=async()=>
   {
     //ExchangeRequest(this.ExchangeRequestResponse)
    // this.openOverlay()
    this.Load()
-    ExchangeList(this.ExchangeListResponse)
+   let UserId=await AsyncStorage.getItem('UserId') 
+   let params=
+   {
+     userId:UserId
+   }
+    ExchangeList(params,ExchangeRequest,this.ExchangeListResponse,this.error,this.NetworkIssue)
   }
   ExchangeListResponse=(data)=>
 {

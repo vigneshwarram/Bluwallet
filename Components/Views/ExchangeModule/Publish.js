@@ -7,7 +7,8 @@ import * as shape from 'd3-shape'
 import LinearGradient from 'react-native-linear-gradient';
 import BlurOverlay,{closeOverlay,openOverlay} from 'react-native-blur-overlay';
 import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
-import {ExchangeList,ExchangeRequest,ExchangeAdminRequest} from '../Api/ExchangeRequest'
+import {ExchangeList} from '../Api/ExchangeRequest'
+import {ExchangeRequest} from '../Api/RequestUrl'
 import {StackActions} from 'react-navigation'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from '../Utils.js/Constant'
 
@@ -69,13 +70,17 @@ export default class  Publish  extends React.Component {
   }
 
   
-  GetData=()=>
+  GetData=async()=>
   {
     //ExchangeRequest(this.ExchangeRequestResponse)
    // this.openOverlay()
    
-   this.Load()
-    ExchangeList(this.ExchangeListResponse)
+   let UserId=await AsyncStorage.getItem('UserId') 
+   let params=
+   {
+     userId:UserId
+   }
+    ExchangeList(params,ExchangeRequest,this.ExchangeListResponse,this.error,this.NetworkIssue)
   }
   ExchangeListResponse=(data)=>
 {
@@ -408,7 +413,7 @@ renderScane() {
          
         console.log('Admin exchange params Request',params)
           this.Load()
-          ExchangeAdminRequest(urlparams,params,this.ExchangeRequestResponse)
+          ExchangeList(urlparams,params,this.ExchangeRequestResponse,this.error,this.NetworkIssue)
            // Alert.alert(item.id.toString())
         }else{
 
@@ -469,7 +474,7 @@ renderScane() {
           Amount:item
         })
       }
-      selectedMode=(item,itemIndex)=>
+      selectedMode=async(item,itemIndex)=>
       {
         this.setState({
          StatusMode:item
@@ -477,13 +482,23 @@ renderScane() {
         if(item==='Request')
         {
           this.Load()
-          ExchangeList(this.ExchangeListResponse)
+          let UserId=await AsyncStorage.getItem('UserId') 
+          let params=
+          {
+            userId:UserId
+          }
+           ExchangeList(params,ExchangeRequest,this.ExchangeListResponse,this.error,this.NetworkIssue)
           this.setState({exchangeOrRequest:true})
           console.log('exchangeOrRequest',this.state.exchangeOrRequest)
         }else{
           this.Load()
           this.setState({exchangeOrRequest:false})
-          ExchangeList(this.ExchangeListResponse)
+          let UserId=await AsyncStorage.getItem('UserId') 
+   let params=
+   {
+     userId:UserId
+   }
+    ExchangeList(params,ExchangeRequest,this.ExchangeListResponse,this.error,this.NetworkIssue)
           console.log('exchangeOrRequest',this.state.exchangeOrRequest)
         }
       }

@@ -9,6 +9,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { NavigationActions,StackActions } from 'react-navigation'
 import { ScrollView } from 'react-native-gesture-handler';
 import Snackbar from '../Utils.js/Snackbar'
+
 export default class Login  extends React.Component {
 
   static navigationOptions = {
@@ -25,6 +26,7 @@ export default class Login  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       ShowAlert:false,
+      alert:'',
       animate:false,
       Username:'testdemo2@yopmail.com',
       Password:'Admin@123new',
@@ -147,7 +149,7 @@ SlideMenu=()=>{
        <LinearGradient
        
   colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={styles.Maincontainers}>   
- <Snackbar Visible={this.state.ShowAlert}></Snackbar>
+ <Snackbar Visible={this.state.ShowAlert} alert={this.state.alert}></Snackbar>
   <View style={{flex:0.4}}>
   <View  style={{justifyContent:'center',alignItems:'center',paddingTop:20
         }}>
@@ -175,7 +177,7 @@ SlideMenu=()=>{
      
      <TextInput  placeholder="User"
          placeholderTextColor="#3d5498" 
-         onChangeText={(text) => this.setState({Username:text})}
+         onChangeText={(text) => this.setState({Username:text,ShowAlert:false})}
          style={styles.inputBox} />
      </View>
      <View style={{flexDirection:'row',justifyContent:'space-around'}}>
@@ -190,7 +192,7 @@ SlideMenu=()=>{
       
          style={styles.inputBox}
          secureTextEntry={true}
-         onChangeText={(text) => this.setState({Password:text})}
+         onChangeText={(text) => this.setState({Password:text,ShowAlert:false})}
        />
      </View>
             
@@ -240,6 +242,7 @@ SlideMenu=()=>{
           DashBoardPopup: true,Kyc:true
         });
         */
+        
         this.Login()
       
       }
@@ -247,11 +250,13 @@ SlideMenu=()=>{
       {
         if(this.state.Username==='')
         {
-          Alert.alert('Alert!!','Please enter username')
+        //  Alert.alert('Alert!!','Please enter username')
+        this.setState({ShowAlert:true,alert:'Please enter username'})
         }
         else if(this.state.Password==='')
         {
-         Alert.alert('Alert!!','Please enter Password')
+        // Alert.alert('Alert!!','Please enter Password')
+         this.setState({ShowAlert:true,alert:'Please enter Password'})
         }
         else
         {
@@ -261,7 +266,7 @@ SlideMenu=()=>{
          };
          this.Load()
          console.log('Login params',params)
-         OuthApi(params,this.resultFromAPI);
+         OuthApi(params,this.resultFromAPI,this.error,this.NetworkIssue);
         }
        
       }
@@ -288,13 +293,14 @@ SlideMenu=()=>{
              password: this.state.Password,
            }
            this.Load()
-           loginApi(params,this.LoginResult)  
+           loginApi(params,this.LoginResult,this.error,this.NetworkIssue)  
            console.log('login loginApi')
         }
         else
         {
           console.log('login error')
-          Alert.alert('Alert',data.error_description)
+          this.hide()
+         this.setState({ShowAlert:true,alert:data.error_description})
         }
       
       } 
@@ -306,10 +312,22 @@ SlideMenu=()=>{
 
      
       }
+      error=(error)=>
+      {
+        console.log(error)
+        this.hide()
+        this.setState({ShowAlert:true,alert:error})
+      }
+      NetworkIssue=(error)=>
+      {
+        console.log(error)
+        this.hide()
+        this.setState({ShowAlert:true,alert:error})
+      }
       ForgotAction=()=>
       {
-        this.setState({ShowAlert:true})
-         //this.props.navigation.navigate('RetrivePassword')
+        //this.setState({ShowAlert:true})
+         this.props.navigation.navigate('RetrivePassword')
       }
 
       LoginResult=async (data)=>

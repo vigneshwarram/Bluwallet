@@ -26,7 +26,8 @@ import { AreaChart, Grid } from 'react-native-svg-charts'
 import { VaultSystemApi, CryptoInvestment, CryptoTypeInvestment } from './Api/VaultSystemApi'
 import { SendApi, RequestPaymentApi } from './Api/SendAndRecieveApi'
 import { ResponseSuccessStatus, InvalidResponse, DataUndefined, InvalidToken, TokenExpired } from './Utils.js/Constant'
-import { ExchangeOnLoad, ConvertToUsd, getEqualCryptoValueApi, exchangeRequestApi, exchangeAdmin_ETC_BTC_Api } from './Api/ExchangeRequest'
+import {  CONVERT_USD } from './Api/RequestUrl'
+import {  ExchangeList } from './Api/ExchangeRequest'
 import { getactivitydata } from './Api/WalletActivity'
 import * as shape from 'd3-shape'
 import LinearGradient from 'react-native-linear-gradient';
@@ -842,7 +843,7 @@ export default class DashBoard extends React.Component {
 
     }
     //Get value for Network fee and Crypto amount Api
-    ConvertToUsd(params, this.onUsdResponse)
+    ExchangeList(CONVERT_USD,params, this.onUsdResponse,this.error,this.NetworkIssue)
     console.log('Request data.===>', this.onUsdResponse)
 
   }
