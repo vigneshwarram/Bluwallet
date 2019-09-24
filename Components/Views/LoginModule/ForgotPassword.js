@@ -42,29 +42,6 @@ export default class ForgotPassword  extends React.Component {
   {
     //this.GetListData()
   }
-  GetListData=()=>{
-    this.Load()
-    var obj = {  
-      method: 'GET',
-      headers: {
-        'Content-Type'    : 'application/json',
-        'Accept'          : 'application/json',
-       'Authorization':'Bearer '+'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6ImJmNDczYTU5LTQxNzAtNDQ2My05YTI2LWZlNWNhYTVlZjMwZiIsIkV4cGlyeSI6bnVsbH0.tUaime3lRYn7wAu2KCnW3oFwIZa18eIL_4AOnoGJiKU'.trim()   
-         }
-  }
-  fetch("https://apptest.supplynow.co.uk/api/v1/Bookings/MyBookings",obj)  
-  .then((res)=> {
-    return res.json();
-   })
-   .then((resJson)=>{
-     this.dataset(resJson)
-   
-    return resJson;
-   })
-   .catch((error) => {
-    console.error(error);
-});
-}
 dataset=(data)=>{
   this.setState({
     dataSource:data
@@ -150,8 +127,7 @@ SlideMenu=()=>{
        
    
 
-       <LinearGradient
-  colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{flex:1}}>   
+       <ImageBackground style={{ flex: 1, }} imageStyle={{ resizeMode: 'stretch' }} source={require('../assets/bg.png')}>
    
     <View style={{marginTop:40,flex:0.6}}>          
          
@@ -183,7 +159,7 @@ SlideMenu=()=>{
         </View>   
            
        
- </LinearGradient> 
+</ImageBackground>
  
 
  

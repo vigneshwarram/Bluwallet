@@ -80,7 +80,16 @@ export default class  Publish  extends React.Component {
    {
      userId:UserId
    }
+   this.Load()
     ExchangeList(params,ExchangeRequest,this.ExchangeListResponse,this.error,this.NetworkIssue)
+  }
+  error=(error)=>
+  {
+    Alert.alert('Alert',error)
+  }
+  NetworkIssue=(error)=>
+  {
+    Alert.alert('Alert',error)
   }
   ExchangeListResponse=(data)=>
 {

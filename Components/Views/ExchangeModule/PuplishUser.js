@@ -115,6 +115,14 @@ export default class  PuplishUser  extends React.Component {
     }
   }
 }
+error=(error)=>
+{
+  Alert.alert('Alert',error)
+}
+NetworkIssue=(error)=>
+{
+  Alert.alert('Alert',error)
+}
 search = (key, inputArray) => {
   console.log('inputArray length',inputArray.length)
   let SearchArray=[]

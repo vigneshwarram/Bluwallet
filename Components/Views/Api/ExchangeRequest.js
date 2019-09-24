@@ -1,13 +1,17 @@
 import Url from './CommonApi'
-import{AsyncStorage} from 'react-native'
+import{AsyncStorage,NetInfo} from 'react-native'
 export const ExchangeList=async(params,RequestUrl,FetchExchangedata,errors,InternetIssue)=>
 {
-    fetch(Url+RequestUrl, {  
+  let accessToken=await AsyncStorage.getItem('AccessToken')
+  NetInfo.isConnected.fetch().then(isConnected => {
+    if(isConnected)
+    {
+      fetch(Url+RequestUrl, {  
         method: 'POST',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'authorization':'bearer '+await AsyncStorage.getItem('AccessToken')
+          'authorization':'bearer '+accessToken
         },
         body: JSON.stringify(params)
       }) .then((res)=> {
@@ -21,5 +25,12 @@ export const ExchangeList=async(params,RequestUrl,FetchExchangedata,errors,Inter
        .catch((error) => {
         errors(error.message);
     });
+    }
+    else
+    {
+      InternetIssue('Please check your network connection')
+    }
+})  
 }
+
 

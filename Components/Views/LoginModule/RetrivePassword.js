@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image, Animated, TextInput, Text, Easing, TouchableOpacity, LayoutAnimation, KeyboardAvoidingView, BackHandler, AsyncStorage } from 'react-native';
+import { View, StyleSheet, Image, Animated, TextInput,ImageBackground, Text, Easing, TouchableOpacity, LayoutAnimation, KeyboardAvoidingView, BackHandler, AsyncStorage } from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 import { ForgotAPI } from '../Api/LoginApi'
@@ -141,9 +141,7 @@ export default class RetrivePassword extends React.Component {
             <View style={styles.Maincontainers} >
 
 
-                <LinearGradient
-
-                    colors={['#FFFFFF', '#DFE1ED', '#CCCFE2']} style={styles.Maincontainers}>
+<ImageBackground style={{ flex: 1, }} imageStyle={{ resizeMode: 'stretch' }} source={require('../assets/bg.png')}>
 
                     <View style={{ flex: 0.4 }}>
                         <View style={{
@@ -198,7 +196,7 @@ export default class RetrivePassword extends React.Component {
                             </View>
                         </KeyboardAvoidingView>
                     </View>
-                </LinearGradient>
+                    </ImageBackground>
 
 
             </View>

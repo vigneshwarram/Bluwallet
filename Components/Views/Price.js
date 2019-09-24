@@ -35,7 +35,7 @@ export default class Price  extends React.Component {
     this.state = {
       dataSource:[],
       cityItems:["US Doller,Indian,Eutherium"],
-      Amount: 'USDoller',
+      Amount: 'USDollar',
       usdforEther:'',usdforBtc:'',
       
       EtheriumShadowClick:false,
@@ -263,14 +263,7 @@ SlideMenu=()=>{
    selectedValue={this.state.Amount}
   onValueChange={(itemValue, itemIndex) => this.selectedAmount(itemValue,itemIndex)}>
   
-  <Picker.Item label="USDoller" value="USDoller" />
-  <Picker.Item label="Inr" value="Inr" />
-  <Picker.Item label="USA" value="USA" />
-  <Picker.Item label="German" value="German" />
-  <Picker.Item label="Italy" value="Italy" />
-  <Picker.Item label="Aus" value="Aus" />
-  <Picker.Item label="India" value="India" />
-  <Picker.Item label="Aus" value="Aus" />
+  <Picker.Item label="USDollar" value="USDollar" />
   </Picker>
         </View>
 

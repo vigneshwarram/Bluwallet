@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet,SafeAreaView, Image,Animated,TextInput,Text,Keyboard,Easing,TouchableOpacity,LayoutAnimation,KeyboardAvoidingView,BackHandler,AsyncStorage } from 'react-native';
+import { View, StyleSheet,SafeAreaView, Image,Animated,TextInput,Text,ImageBackground,Easing,TouchableOpacity,LayoutAnimation,KeyboardAvoidingView,BackHandler,AsyncStorage } from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 import {loginApi} from '../Api/LoginApi'
@@ -28,8 +28,10 @@ export default class Login  extends React.Component {
       ShowAlert:false,
       alert:'',
       animate:false,
-      Username:'testdemo2@yopmail.com',
-      Password:'Admin@123new',
+      // Username:'testdemo2@yopmail.com',
+      // Password:'Admin@123new',
+      Username:'sathishavs1@gmail.com',
+      Password:'password123',
       clickr:false,
       clickopen:false,
       click:false,
@@ -146,14 +148,12 @@ SlideMenu=()=>{
       <View style={styles.Maincontainers} >  
       
 
-       <LinearGradient
-       
-  colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={styles.Maincontainers}>   
+      <ImageBackground style={{ flex: 1, }} imageStyle={{ resizeMode: 'stretch' }} source={require('../assets/bg.png')}> 
  <Snackbar Visible={this.state.ShowAlert} alert={this.state.alert}></Snackbar>
   <View style={{flex:0.4}}>
   <View  style={{justifyContent:'center',alignItems:'center',paddingTop:20
         }}>
-              <Image  style={{width:150,height:150,resizeMode:'contain'}}  source={require("../assets/app-logo.png")} ></Image> 
+              <Image  style={{width:200,height:200,resizeMode:'contain'}}  source={require("../assets/app-logo.png")} ></Image> 
                            
         </View>  
   </View>
@@ -218,10 +218,8 @@ SlideMenu=()=>{
 </TouchableOpacity>  
        </View> 
        </KeyboardAvoidingView> 
-  </View>
- </LinearGradient> 
- 
-
+  </View> 
+</ImageBackground>
      </View>
      </SafeAreaView>
      

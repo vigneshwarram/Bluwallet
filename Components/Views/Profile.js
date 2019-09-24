@@ -311,7 +311,7 @@ borderRadius:25,
     <TouchableOpacity onPress={this.BeginAction}>
 <View>
 <View style={{width:100,height:105,borderRadius:25,backgroundColor:'#fff'}}>
-{(image!=null)?<Image  style={{width:100,height:105,borderRadius:25}} source={image} />:<Image  style={{width:100,height:105,borderRadius:25}} source={require("./assets/build.png")} />}
+{image!=null || image!=''?<Image  style={{width:100,height:105,borderRadius:25}} source={image} />:<Image  style={{width:100,height:105,borderRadius:25}} source={require("./assets/build.png")} />}
 
 <Image style={{width:25,height:25,marginTop:-25,alignSelf:'flex-end'}}   source={require("./assets/profileround.png")} ></Image>
 </View>
