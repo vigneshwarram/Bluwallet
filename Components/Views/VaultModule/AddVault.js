@@ -8,7 +8,7 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import {StackActions} from 'react-navigation'
 import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
 import { AreaChart, Grid } from 'react-native-svg-charts'
-import { ExchangeOnLoad, ConvertToUsd, getEqualCryptoValueApi, exchangeRequestApi, exchangeAdmin_ETC_BTC_Api } from '../Api/ExchangeRequest'
+import {ExchangeList} from '../Api/ExchangeRequest'
 import * as shape from 'd3-shape'
 import LinearGradient from 'react-native-linear-gradient';
 import { VaultSystemApi, CryptoInvestment, CryptoTypeInvestment } from '../Api/VaultSystemApi'
@@ -16,6 +16,7 @@ import { ResponseSuccessStatus, InvalidResponse, DataUndefined, InvalidToken, To
 import ImageCarousel from 'react-native-image-carousel';
 const { width } = Dimensions.get('window');
 import {AddVaults} from '../Api/AddVault'
+import {CONVERT_USD} from '../Api/RequestUrl'
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 let type='ETH'
 let timeperiod=3
@@ -66,7 +67,7 @@ export default class AddVault extends React.Component {
       itemMonths:[{value:'3 Moths-3%',id:1},{value:'6 Moths-6%',id:2},{value:'12 Moths-12%',id:3}],
       click:false,
       slide:false,
-      visible: false,
+      visibles: false,
       hidden: false,
       carouselItems: [
         {
@@ -550,14 +551,15 @@ HideMenu=()=>{
     
         }
         //Get value for Network fee and Crypto amount Api
-        ConvertToUsd(params, this.onUsdResponse)
+        ExchangeList(params,CONVERT_USD, this.onUsdResponse,this.error,this.NetworkIssue)
         console.log('Request data.===>', this.onUsdResponse)
     
       }
       error=(data)=>
-      {
-        Alert.alert(data.error,data.message)
-      }
+  {
+    this.hide()
+    Alert.alert('Alert',data)
+  }
       onUsdResponse = (data) => {
         if (data != DataUndefined) {
           if (data.status === ResponseSuccessStatus) {
@@ -611,7 +613,8 @@ HideMenu=()=>{
       }
       AddVault=async()=>
       {
-        if(this.state.usdforEther=='')
+        console.log('this.state.usdforEther===>',this.state.usdforEther)
+        if(this.state.usdforEther=='' || this.state.usdforEther==0)
         {
           Alert.alert('Alert',"Amount should not be empty")
         }

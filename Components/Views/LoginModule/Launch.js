@@ -83,8 +83,8 @@ export default class Launch extends React.Component {
         }
         else {
           
-          console.log('user id is saved', userids)
-          this.NavigationReset('Home', profilestatus, kycstatus)
+          console.log('user id is saved', userids)          
+          this.NavigationReset('Home', parseInt(profilestatus), parseInt(kycstatus))
         }
         // Success code
       })
@@ -97,7 +97,7 @@ export default class Launch extends React.Component {
       this.props.navigation.dispatch(
         StackActions.reset({
           index: 0,
-          actions: [NavigationActions.navigate({ routeName: routname, params: { DashBoardPopup: dashboardpopup, Kyc: kycstatus } })]
+          actions: [NavigationActions.navigate({ routeName: routname, params: { profilestatus: dashboardpopup, kycstatus: kycstatus } })]
         })
       );
 

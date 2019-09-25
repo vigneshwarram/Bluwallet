@@ -85,6 +85,7 @@ export default class DashBoard extends React.Component {
       spinner: false,
       usdforEther: '',
       sliderValue: 0,
+      blurclick:false,
       ResponseStatus: null,
       graphshow:'',
       EtherWalletAddress: null, BtcWalletAddress: null,
@@ -258,7 +259,7 @@ export default class DashBoard extends React.Component {
    
   }
   OpenPopupAction = () => {
-    this.setState({ QrClick: true, backoption: true })
+    this.setState({ QrClick: true, backoption: true ,blurclick:true})
     this.props.navigation.setParams({ bottombar: false })
     openOverlay()
     this.springValue.setValue(0.3),
@@ -1033,7 +1034,7 @@ return(<View >
             </View>
           </DialogContent>
         </Dialog>
-        <BlurOverlay
+        {this.state.blurclick?<BlurOverlay
           radius={14}
           downsampling={2}
           showBlur={this.state.pops}
@@ -1048,7 +1049,7 @@ return(<View >
           }}
           blurStyle='#222B50'
           children={(this.state.QrClick) ? this.renderScane() : this.renderQrCode()}
-        />
+        />:null}
 
 
         <LinearGradient colors={['#354E91', '#314682', '#283563', '#222B50', '#21284A']} style={{ flex: 1 }}>

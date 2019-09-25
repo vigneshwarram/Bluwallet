@@ -34,7 +34,7 @@ export default class Price  extends React.Component {
     
     this.state = {
       dataSource:[],
-      cityItems:["US Doller,Indian,Eutherium"],
+      cityItems:["US Dollar,Indian,Euthereum"],
       Amount: 'USDollar',
       usdforEther:'',usdforBtc:'',
       

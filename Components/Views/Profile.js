@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,ScrollView,NativeModules,Text,ActivityIndicator,TouchableOpacity,Animated,Easing,AsyncStorage} from 'react-native';
+import { View, StyleSheet, Image,ScrollView,ImageBackground,Text,ActivityIndicator,TouchableOpacity,Animated,Easing,AsyncStorage} from 'react-native';
 import { Alert } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import ImagePicker from 'react-native-image-picker';
@@ -47,6 +47,7 @@ export default class Profile  extends React.Component {
       address : "",
       address1: "",
       postalCode: "",
+      proImgPath:'',
       cityId:0,
       RightSideWidth:new Animated.Value(50),
       RightsideHeight:new Animated.Value(45),
@@ -137,7 +138,7 @@ export default class Profile  extends React.Component {
       if(data.status===ResponseSuccessStatus)     
       {
         console.log('data.retrieveData',data.retrieveData)
-        this.checkEmailStatus()
+        
         this.setState(
           {
             userName:data.retrieveData.userName,
@@ -151,7 +152,9 @@ export default class Profile  extends React.Component {
             mailVerifiedStatus:data.retrieveData.gmailstatus,
             Country:data.retrieveData.countryName
           })
-      }else if(data.error==='invalid_token')
+          this.checkEmailStatus()
+      }
+      else if(data.error==='invalid_token')
       {
         Alert.alert(
           'Error',
@@ -250,12 +253,10 @@ space(){
   </View>
   }
     return (  
-      <ScrollView contentContainerStyle={{paddingBottom:100}} style={{backgroundColor:'#21284A'}}>
+     
       <View style={styles.Maincontainers}>           
-      
-      <LinearGradient
-   colors={['#1569e6','#00a3ff','#00deff']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{flex:1,position:'relative'}}>
-  <Spinner
+<LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={{flex:1}}>
+<Spinner
           visible={this.state.spinner}
           textContent={'Loading...'}
           overlayColor='rgba(0,0,0,0.5)'
@@ -264,7 +265,14 @@ space(){
           color='#f4347f'
           textStyle={styles.spinnerTextStyle}
         />
-    <View style={{flexDirection:'row',justifyContent:'space-between'}}>
+ 
+<ImageBackground source={require('./assets/topCurve.png')} imageStyle={{resizeMode:'stretch',width:'100%',height:'100%'}} style={{flex:0.35,position:"relative"}}>
+<View style={{alignItems:'center',position:'absolute',top:10,left:0,right:0,flexDirection:'row',justifyContent:'center'}}>
+    <Image style={{width: 25, height: 25,resizeMode:'contain'}}   source={require("./assets/app5.png")} ></Image>     
+    <Text style={{color:'#fff',fontSize:15,fontWeight:
+    'bold',marginLeft:10,fontFamily:'Exo2-Regular'}}>User</Text>    
+     </View>
+<View style={{flexDirection:'row',justifyContent:'space-between'}}>
     <Animated.View style={{backgroundColor:'#fff',height:this.state.AnimatedHieght,width:this.state.AnimatedWidth,justifyContent:'center',borderWidth:1, alignItems:'flex-end',
   borderColor: '#fff',
   marginTop:10,
@@ -294,56 +302,25 @@ space(){
     </Animated.View>
      
     </View>
-     
-   
-    <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',marginTop:-30}}>
-    <Image style={{width: 25, height: 25,resizeMode:'contain'}}   source={require("./assets/app5.png")} ></Image>     
-    <Text style={{color:'#fff',fontSize:15,fontWeight:
-    'bold',marginLeft:10,fontFamily:'Exo2-Regular'}}>User</Text>    
-     </View>
-     <View style={{alignItems:'flex-end'}}>
+    <View style={{alignItems:'flex-end'}}>
     <Image style={{marginLeft:10,width: 30, height: 30,marginTop:20,marginRight:10,resizeMode:'contain'}}   source={require("./assets/setting1.png")} ></Image> 
     </View>
-    <View style={{backgroundColor:'#354e91',borderTopRightRadius:170,borderTopLeftRadius:170,flex:1
-}}>
-<View style={{alignItems:'center',width:'100%',justifyContent:'center'}}>
-<View style={{width: 30,alignItems:'center',justifyContent:'center',
-borderRadius:25,
-    height: 30}}>
-    <TouchableOpacity onPress={this.BeginAction}>
-<View>
-<View style={{width:100,height:105,borderRadius:25,backgroundColor:'#fff'}}>
-{/* {image!=null || image!=''?<Image  style={{width:100,height:105,borderRadius:25}} source={{uri:image}} />:<Image  style={{width:100,height:105,borderRadius:25}} source={require("./assets/build.png")} />} */}
-{/* <Image  style={{width:100,height:105,borderRadius:25}} source={{uri:image}} /> */}
-{this.state.proImgPath=='undefined'?<Image  style={{width:100,height:105,borderRadius:25}} source={require("./assets/build.png")} />:<Image  style={{width:100,height:105,borderRadius:25}} source={{uri:this.state.proImgPath}} />}
+    <View style={{alignItems:'center',position:'absolute',bottom:0,right:0,justifyContent:'center',left:0,top:-10}}>
+    <View style={{width:100,height:105,borderRadius:25,backgroundColor:'#fff'}}>
+{this.state.proImgPath==''?<Image  style={{width:100,height:105,borderRadius:25}} source={require("./assets/build.png")} />:<Image  style={{width:100,height:105,borderRadius:25}}  source={require("./assets/build.png")} />}
 <Image style={{width:25,height:25,marginTop:-25,alignSelf:'flex-end'}}   source={require("./assets/profileround.png")} ></Image>
 </View>
-
-</View>
-</TouchableOpacity>
     </View>
-</View>
+    
+</ImageBackground>
 
+<View style={{flex:0.75}}>
 
-  
-   
-    <View style={{justifyContent:'center',alignItems:'center',marginTop:60}}>
+<ScrollView contentContainerStyle={{paddingBottom: 200}}>
+<View style={{justifyContent:'center',alignItems:'center'}}>
         <Text style={{color:'#fff',fontWeight:'bold',opacity:0.9,fontFamily:'Exo2-Regular'}}>{this.state.userName}</Text>
     </View>
-   
-                       <View
-  style={{
-      width:'100%',
-    marginTop:60,
-    borderBottomColor:'#e6e8f1',
-    borderBottomWidth:0
-  }}>
-</View>
-<View  style={{flex:1,width:'100%'}}>
-
-<View style={{marginTop:20,backgroundColor:'#fff'}}>   
-<LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']}>
-<View
+    <View
   style={{
     marginTop:10,
     borderBottomColor: '#43549c',marginBottom:10,
@@ -357,8 +334,7 @@ borderRadius:25,
 
 <View style={{flexDirection:'row',flex:1}}>
 <Text style={{fontSize:12,fontWeight:'bold',color:'#fff',marginTop:10,textAlign:'center',opacity:0.7,fontFamily:'Exo2-Regular'}}>{this.state.firstName}</Text> 
-</View>  
-
+</View> 
 </View>
 <View
   style={{
@@ -377,6 +353,7 @@ borderRadius:25,
 </View>  
 
 </View>
+
 <View
   style={{
     marginTop:10,
@@ -465,8 +442,7 @@ borderRadius:25,
     borderBottomWidth: 1,
   }}
 />
-<View>
- <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
+<View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
  <TouchableOpacity onPress={this.setEnable}>
  <View>
  <View style={{flexDirection:'row',justifyContent:'space-around'}}>
@@ -485,9 +461,7 @@ borderRadius:25,
 
 
  </View>
- 
-
-<View style={{flexDirection:'row', marginTop:20,marginLeft:20,marginRight:20,justifyContent:'space-between'}}>
+ <View style={{flexDirection:'row', marginTop:20,marginLeft:20,marginRight:20,justifyContent:'space-between'}}>
 
 <View style={{justifyContent:'center',alignItems:'center'}}>
 <Image style={{width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/notify.png")} ></Image> 
@@ -506,9 +480,6 @@ borderRadius:25,
 <View style={{justifyContent:'center',alignItems:'center'}}>
 <Text style={{color:'#4286f4',fontSize:10,textAlign:'center',fontFamily:'Exo2-Regular'}}>Terms of use</Text>
 </View>
-
-
-
 </View>
 <View style={{justifyContent:'center',alignItems:'center'}} >
 <Image style={{width: 30, height: 30,resizeMode:'contain'}}   source={require("./assets/Share.png")} ></Image> 
@@ -518,9 +489,7 @@ borderRadius:25,
 
 </View>
 </View>
-
 <View style={{marginTop:30,justifyContent:'center',alignItems:"center"}}>
-
 <View style={{width:'70%',}}>
 <LinearGradient colors={['#f4347f','#f85276','#fe7a6e']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:10 }}>
 <TouchableOpacity>
@@ -528,38 +497,19 @@ borderRadius:25,
 </TouchableOpacity>
 </LinearGradient>
 </View>
-
 {(this.state.visible)?<View style={{width:'50%',marginTop:20 }}>
 <LinearGradient colors={['#3ddba1','#30e0ba','#17e8e3']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:10,backgroundColor:'red',justifyContent:'center',alignItems:'center',borderRadius:10}}>
 <TouchableOpacity>
 <Text visible style={{color:'#fff'}}>Resend e-mail</Text>
 </TouchableOpacity>
 </LinearGradient>
-</View>:null}
-
-
-
+</View>:null}</View>
+</ScrollView>
 </View>
 
-  </View>
-  </LinearGradient>
-</View>
-
-    
-   
-          </View>
-          
-</View>
-          </LinearGradient>
-          
-
-    
-         
-
+  </LinearGradient>  
+   </View>         
      
-     </View>
-      
-     </ScrollView>    
     );
       }
       clickedItemText=(item)=>
@@ -581,17 +531,7 @@ borderRadius:25,
         }
 
       }
-      BeginAction=()=>
-      {
-        ImagePicker.launchCamera(options, (response) =>
-         {         // Same code as in above section!
-          if (response.uri) {
-            this.setState({ proImgPath: response.uri })
-          }
-          //this.GetImageFile(response)         
-        console.log(response)
-        });
-      }
+ 
 
  
 }
