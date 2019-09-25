@@ -343,7 +343,7 @@ SlideMenu=()=>{
      
         <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
  
-            <Text style={{color:'#fff',fontSize:15,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Etherium</Text>
+            <Text style={{color:'#fff',fontSize:15,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Ethereum</Text>
             <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>ETH</Text>
 
             <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Price</Text>
@@ -364,7 +364,7 @@ SlideMenu=()=>{
         </View>
         <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:10}}>
         
-            <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Etherium</Text>
+            <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Ethereum</Text>
             <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>ETH</Text>
 
             <Text style={{color:'#5597ff',fontSize:15,marginTop:20,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Price</Text>

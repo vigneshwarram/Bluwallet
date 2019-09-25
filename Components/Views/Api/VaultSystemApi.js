@@ -1,6 +1,6 @@
 import Url from './CommonApi'
 import{AsyncStorage} from 'react-native'
-export const VaultSystemApi=async(params,VaultResponse)=>
+export const VaultSystemApi=async(params,VaultResponse,errors)=>
 {
     fetch(Url+'currentcryptovalue', {  
         method: 'POST',
@@ -24,7 +24,7 @@ export const VaultSystemApi=async(params,VaultResponse)=>
         return resJson;
        })
        .catch((error) => {
-        console.error(error);
+        errors(error.message);
     });
 }
 

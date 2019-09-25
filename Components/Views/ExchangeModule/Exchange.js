@@ -28,6 +28,7 @@ export default class  Buy  extends React.Component {
   constructor(props) {
     super(props);
     AnimatedWidth=new Animated.Value(50),
+    AnimatedLeftWidth = new Animated.Value(50)
       AnimatedHieght=new Animated.Value(45),
     this.state = {
       dataSource:[],
@@ -250,19 +251,22 @@ toggleSwitch=(value)=>{
  
  
   </View>
- <Animated.View style={{height:AnimatedHieght,width:AnimatedWidth, position:'absolute',left:0, marginTop:10,}}>
-      <TouchableOpacity onPress={this._onPress.bind(this)}>
-      <View>
-      <LinearGradient colors={['#fff','#fff','#CCCFE2']} style={{justifyContent:'center',borderTopRightRadius:25,borderBottomRightRadius:25,alignItems:'flex-end',paddingTop:10,paddingBottom:10}}>
-    
-      <View style={{flexDirection: 'row'}}> 
-          <Image style={{marginRight:10,width: 30, height: 30}}   source={require("../assets/note.PNG.png")} ></Image>     
-     
-          </View>
-</LinearGradient>
-</View>
- </TouchableOpacity>
-      </Animated.View> 
+  <TouchableOpacity onPress={this._onPress} style={{position: 'absolute', left: 0}}>
+                <Animated.View style={{ backgroundColor:'#fff', borderColor: '#fff',justifyContent:'center',alignItems:'flex-end', borderRightWidth: 1, borderLeftWidth: 0, borderTopWidth: 1, borderBottomWidth: 1, height: 45, width: AnimatedLeftWidth, borderTopRightRadius: 25, borderBottomRightRadius: 25, marginTop: 10 }}>
+              
+                    <View>
+                   
+                        <View style={{ flexDirection: 'row',marginLeft:-30 }}>
+                          <View style={{ justifyContent: 'center', }}>
+                            <Text style={{ color: '#fff', fontFamily: 'Exo2-SemiBold', fontSize: 12,marginRight:10}}>Puplications</Text>
+                          </View>
+                          <Image style={{marginRight:10, width: 30, height: 30, resizeMode: 'contain'}} source={require("../assets/note.PNG.png")} ></Image>
+                        </View>
+                
+                    </View>
+                
+                </Animated.View>
+                </TouchableOpacity>
  <View style={{justifyContent:'center',alignItems:'center'}}>
           <View style={{flexDirection:'row',marginTop:20,justifyContent:'space-between'}}>
           <Image style={{marginRight:10,width: 18, height: 22,resizeMode:'contain'}}   source={require("../assets/app4.png")} ></Image>     
@@ -325,7 +329,7 @@ toggleSwitch=(value)=>{
  <ScrollView contentContainerStyle={{paddingBottom:100}}>
  <View style={{paddingTop:20,}}></View>
 <View style={{justifyContent:'center',alignItems:'center',flexDirection:'row',}}>
-<Text style={{color:'#fff',fontSize:36}}>$</Text>
+<Text style={{color:'#fff',fontSize:36,fontFamily:'Exo2-Regular'}}>$</Text>
 <TextInput
           style={{height: 80,color:'#fff',fontSize:36,fontFamily:'Exo2-Regular'}}
           placeholder="0.000" 
@@ -477,24 +481,20 @@ toggleSwitch=(value)=>{
           Alert.alert(item.Status)
       }
       ExchangeLogic=()=>{}
-      _onPress=()=>
-      {
+      _onPress = () => {
         Animated.sequence([
-          Animated.timing(AnimatedWidth, {
-            toValue: 150,
-            duration: 250,
-            easing: Easing.inOut(Easing.ease),
-            delay: 50,
-          })
-         ,
-          Animated.timing(AnimatedWidth, {
-            toValue: 50,
+          Animated.timing(AnimatedLeftWidth, {
+            toValue: 130,
             duration: 250,
             easing: Easing.inOut(Easing.ease),
             delay: 50,
           }),
-            
-        ]).start( this.OpenPopupAction())
+          Animated.timing(AnimatedLeftWidth, {
+            toValue: 50,
+            duration: 250,
+            easing: Easing.inOut(Easing.ease),
+            delay: 50,
+          })]).start(this.navigate());
       }
       OpenPopupAction=()=>
       {
@@ -510,7 +510,7 @@ toggleSwitch=(value)=>{
       }
       navigate=()=>
       {
-        this.setState({visibles:false})
+        //this.setState({visibles:false})
         if(this.state.exchangeTypeMenu ==='Admin')
         {
           this.props.navigation.navigate('Publish', {Exchange_Type: this.state.exchangeTypeMenu })

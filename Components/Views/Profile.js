@@ -79,10 +79,17 @@ export default class Profile  extends React.Component {
   
   componentDidMount()
   {
-    this.getTwoFactors()
-    this.GetListData()
-   
     
+    this.focusListener = this.props.navigation.addListener('didFocus', () => {
+      this.onFocusFunction()
+    })
+     
+  }
+  onFocusFunction = () => {
+    this.GetListData()
+  }
+  componentWillUnmount () {
+    this.focusListener.remove()
   }
   getTwoFactors=async()=>
   {
@@ -115,6 +122,7 @@ export default class Profile  extends React.Component {
   }
   GetListData=async()=>
   {
+    this.getTwoFactors()
     let userid=await AsyncStorage.getItem('UserId')
     console.log('userid',userid)
      this.Load()  
@@ -129,7 +137,7 @@ export default class Profile  extends React.Component {
       if(data.status===ResponseSuccessStatus)     
       {
         console.log('data.retrieveData',data.retrieveData)
-     
+        this.checkEmailStatus()
         this.setState(
           {
             userName:data.retrieveData.userName,
@@ -143,13 +151,6 @@ export default class Profile  extends React.Component {
             mailVerifiedStatus:data.retrieveData.gmailstatus,
             Country:data.retrieveData.countryName
           })
-        console.log('data.retrieveData',data.retrieveData.gmailstatus)
-        console.log('data.retrieveData',this.state.mailVerifiedStatus)
-        console.log('data.retrieveData',this.state.proImgPath)
-        //Check mail status
-        this.checkEmailStatus()
-        console.log('data.retrieveData','checkEmailStatus()')
-
       }else if(data.error==='invalid_token')
       {
         Alert.alert(
@@ -238,7 +239,8 @@ space(){
         this.props.navigation.navigate('Login')
       }
   render() {
-    let image=this.GetImage()
+  
+  console.log('this.state.proImgPath',this.state.proImgPath)
   if(this.state.animate){  
     return <View style={{justifyContent:'center',alignItems:'center',flex:1}}>
     <ActivityIndicator
@@ -311,8 +313,9 @@ borderRadius:25,
     <TouchableOpacity onPress={this.BeginAction}>
 <View>
 <View style={{width:100,height:105,borderRadius:25,backgroundColor:'#fff'}}>
-{image!=null || image!=''?<Image  style={{width:100,height:105,borderRadius:25}} source={image} />:<Image  style={{width:100,height:105,borderRadius:25}} source={require("./assets/build.png")} />}
-
+{/* {image!=null || image!=''?<Image  style={{width:100,height:105,borderRadius:25}} source={{uri:image}} />:<Image  style={{width:100,height:105,borderRadius:25}} source={require("./assets/build.png")} />} */}
+{/* <Image  style={{width:100,height:105,borderRadius:25}} source={{uri:image}} /> */}
+{this.state.proImgPath=='undefined'?<Image  style={{width:100,height:105,borderRadius:25}} source={require("./assets/build.png")} />:<Image  style={{width:100,height:105,borderRadius:25}} source={{uri:this.state.proImgPath}} />}
 <Image style={{width:25,height:25,marginTop:-25,alignSelf:'flex-end'}}   source={require("./assets/profileround.png")} ></Image>
 </View>
 
@@ -564,7 +567,7 @@ borderRadius:25,
           Alert.alert(item.Status)
       }
 
-      checkEmailStatus=async=>{
+      checkEmailStatus=()=>{
         console.log('checkEmailStatus',this.state.mailVerifiedStatus)
         if(this.state.mailVerifiedStatus==='0'){
 
@@ -590,17 +593,7 @@ borderRadius:25,
         });
       }
 
-      GetImage() {
-        if(this.state.proImgPath!='')
-        {
-          return { uri: this.state.proImgPath };
-        }
-        else
-        {
-          return null
-        }
-   
-  }
+ 
 }
 
 

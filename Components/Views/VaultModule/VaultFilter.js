@@ -98,8 +98,17 @@ export default class VaultFilter extends React.Component {
 
   componentDidMount() {
     //this.Animation()
+    this.focusListener = this.props.navigation.addListener('didFocus', () => {
+      this.onFocusFunction()
+    })
+   
+  }
+  onFocusFunction = () => {
     this.GetData()
     this.ActiveClick()
+  }
+  componentWillUnmount () {
+    this.focusListener.remove()
   }
   completedClick = () => {
     if (this.state.dataSource.length != 0) {

@@ -65,6 +65,8 @@ export default class DashBoard extends React.Component {
      this.animated=new Animated.Value(0),
     this.onBackPress = this.onBackPress.bind(this);
     this.springValue = new Animated.Value(0.3)
+    this.AnimatedWidth= new Animated.Value(50),
+    this.AnimatedHieght=new Animated.Value(45),
     this.animatedValue = new Animated.Value(0)
     this.AnimatedLeftWidth = new Animated.Value(50)
     this.AnimatedRightWidth = new Animated.Value(50)
@@ -101,8 +103,7 @@ export default class DashBoard extends React.Component {
       Usd: null,
       QrClick: true,
       QrLink: 'http://facebook.github.io/react-native/',
-      AnimatedWidth: new Animated.Value(50),
-      AnimatedHieght: new Animated.Value(45),
+
       ModelVisible: false,
       RightSideWidth: new Animated.Value(50),
       RightsideHeight: new Animated.Value(45),
@@ -170,17 +171,26 @@ export default class DashBoard extends React.Component {
 
   }
   componentDidMount() {
-    StatusBar.setBarStyle('light-content', true)
-    StatusBar.setBackgroundColor("#354E91")
-    this.props.navigation.setParams({ bottombar: true })
+
+    this.focusListener = this.props.navigation.addListener('didFocus', () => {
+      this.onFocusFunction()
+    })
+
     // this.GetListData()
     // this._animate()
     BackHandler.addEventListener('hardwareBackPress', this.onBackPress);
 
 
-    this.GetData()
+ 
     
 
+  }
+  onFocusFunction=()=>
+  {
+    StatusBar.setBarStyle('light-content', true)
+    StatusBar.setBackgroundColor("#354E91")
+    this.props.navigation.setParams({ bottombar: true })
+    this.GetData()
   }
   GraphAnimation=()=>
   {
@@ -192,6 +202,7 @@ export default class DashBoard extends React.Component {
   }
   componentWillUnmount() {
     BackHandler.removeEventListener('hardwareBackPress', this.onBackPress);
+    this.focusListener.remove()
   }
   onBackPress = () => {
     this.setState({ QrButton:false })
@@ -227,16 +238,16 @@ export default class DashBoard extends React.Component {
 
   }
   _onPress = () => {
-    this.setState({ QrClick: true, backoption: true })
+   
     Animated.sequence([
-      Animated.timing(this.state.AnimatedWidth, {
+      Animated.timing(this.AnimatedWidth, {
         toValue: 150,
         duration: 250,
         easing: Easing.inOut(Easing.ease),
         delay: 50,
       })
       ,
-      Animated.timing(this.state.AnimatedWidth, {
+      Animated.timing(this.AnimatedWidth, {
         toValue: 50,
         duration: 250,
         easing: Easing.inOut(Easing.ease),
@@ -244,8 +255,10 @@ export default class DashBoard extends React.Component {
       }),
 
     ]).start(this.OpenPopupAction())
+   
   }
   OpenPopupAction = () => {
+    this.setState({ QrClick: true, backoption: true })
     this.props.navigation.setParams({ bottombar: false })
     openOverlay()
     this.springValue.setValue(0.3),
@@ -260,7 +273,7 @@ export default class DashBoard extends React.Component {
   }
   close = () => {
     this.setState({ backoption: false })
-    Animated.timing(this.state.AnimatedWidth, {
+    Animated.timing(this.AnimatedWidth, {
       toValue: 50,
       duration: 250,
       easing: Easing.inOut(Easing.ease),
@@ -271,7 +284,7 @@ export default class DashBoard extends React.Component {
 
     this.props.navigation.setParams({ bottombar: false })
     this.setState({ click: false, ModelVisible: true, OpenPop: true })
-    Animated.timing(this.state.AnimatedWidth, {
+    Animated.timing(this.AnimatedWidth, {
       toValue: 50,
       duration: 250,
       easing: Easing.inOut(Easing.ease),
@@ -888,8 +901,8 @@ export default class DashBoard extends React.Component {
         </View>
         <View style={{}}>
           <Image style={{
-            height: 200, marginLeft: -100, marginTop: -40,
-            width: 250,
+            height: 150, marginLeft: -100, marginTop: -40,
+            width: 150,
             resizeMode: 'contain'
           }} source={require("./assets/slogo.png")} ></Image>
         </View>
@@ -924,7 +937,7 @@ return(<View >
    }
    else
    {
-      return (<View >
+      return (<View style={{position:'relative'}} >
         <LinearGradient colors={['#395ea4', '#446ea8', '#4c78a9']} style={{ width: '95%', marginLeft: 10, marginRight: 10, padding: 10, height: 160, marginTop: 15, borderRadius: 10 }}>
           <View style={{ flexDirection: 'row' }}>
             <View>
@@ -942,14 +955,14 @@ return(<View >
             </View>
             <View >
             </View>
-            <View style={{}}>
+          </View>
+          <View style={{position:'absolute',right:0,justifyContent:'center'}}>
               <Image style={{
-                height: 200, marginLeft: -100, marginTop: -40,
-                width: 200,
+                height: 150,
+                width: 150,
                 resizeMode: 'contain'
               }} source={require("./assets/slogo.png")} ></Image>
             </View>
-          </View>
         </LinearGradient>
       </View>)
      
@@ -958,6 +971,7 @@ return(<View >
   closeleft=()=>
   {
     this.setState({QrButton:false})
+    this.GraphAnimation()
   }
   render() {
     console.log('render camera close')
@@ -1051,7 +1065,7 @@ return(<View >
             <View style={{ justifyContent: 'space-between', flexDirection: 'row', }}>
 
 
-              <Animated.View style={{ height: this.state.AnimatedHieght, width: this.state.AnimatedWidth, position: 'absolute', left: 0, marginTop: 10, }}>
+              <Animated.View style={{ height: this.AnimatedHieght, width: this.AnimatedWidth, position: 'absolute', left: 0, marginTop: 10, }}>
                 <TouchableOpacity onPress={this._onPress.bind(this)}>
                   <View>
                     <LinearGradient colors={['#f4347f', '#F4317F', '#F4317F']} style={{ justifyContent: 'center', borderTopRightRadius: 25, borderBottomRightRadius: 25, alignItems: 'flex-end', paddingTop: 10, paddingBottom: 10 }}>
@@ -1198,7 +1212,7 @@ return(<View >
                   <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', marginLeft: 20 }}>
                     <Text style={{ color: '#ABB3D0', opacity: 1, fontSize: 12, fontFamily: 'Exo2-Regular' }}>{this.state.Amount}</Text>
                     <Image style={{ width: 10, height: 10, marginLeft: 10 }} source={require("./assets/down_arrow.png")} ></Image>
-                    <Picker style={{ position: 'absolute', top: 0, width: 1000, height: 3000 }}
+                    <Picker style={{ position: 'absolute', top: 0, width: 3000, height: 3000 }}
                       selectedValue={this.state.Amount}
                       onValueChange={(itemValue, itemIndex) => this.selectedAmount(itemValue, itemIndex)}>
 
@@ -1319,7 +1333,12 @@ return(<View >
   GetData = async () => {
     this.Load()
     this.setState({ EtherWalletAddress: await AsyncStorage.getItem('etherwalletAddress'), BtcWalletAddress: await AsyncStorage.getItem('bitcoinWalletReceivingAddress') })
-    VaultSystemApi(type, this.BalanceResponse)
+    VaultSystemApi(type, this.BalanceResponse,this.error)
+  }
+  error=(data)=>
+  {
+    this.hide()
+    Alert.alert('Alert',data)
   }
   readFromClipboard = async () => {
     console.log('its comming')

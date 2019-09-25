@@ -28,10 +28,10 @@ export default class Login  extends React.Component {
       ShowAlert:false,
       alert:'',
       animate:false,
-      // Username:'testdemo2@yopmail.com',
-      // Password:'Admin@123new',
-      Username:'sathishavs1@gmail.com',
-      Password:'password123',
+      Username:'testdemo2@yopmail.com',
+      Password:'Admin@123new',
+      // Username:'sathishavs1@gmail.com',
+      // Password:'password123',
       clickr:false,
       clickopen:false,
       click:false,
@@ -330,7 +330,7 @@ SlideMenu=()=>{
 
       LoginResult=async (data)=>
       {
-       this.hide()
+    
         if(data.status=='success')
         {
             console.log('Loginresult',data)
@@ -345,15 +345,15 @@ SlideMenu=()=>{
             if(data.loginInfo.twoFactorAuthenticationStatus===0)
             {
              
-              // this.NavigationReset('Home',data.loginInfo.profileStatus,data.loginInfo.kycStatus) //Profile popup not apprear,kyc popup appear
-              this.NavigationReset('Home',1,0)            
+               this.NavigationReset('Home',data.loginInfo.profileStatus,data.loginInfo.kycStatus) //Profile popup not apprear,kyc popup appear
+              // this.NavigationReset('Home',1,0)            
             }
             else
             {
               this.props.navigation.navigate('PinCode',{profilestatus:data.loginInfo.profileStatus,kycstatus:data.loginInfo.kycStatus})
             }
            
-          
+            this.hide()
                
         }
         else

@@ -21,7 +21,7 @@ export default class  ExchangeMenu  extends React.Component {
   constructor(props) {
     super(props);
     if (Platform.OS === 'android')
-    {
+     {
      UIManager.setLayoutAnimationEnabledExperimental(true)
      }
     this.state = {
@@ -90,9 +90,18 @@ export default class  ExchangeMenu  extends React.Component {
   
   componentDidMount()
   { 
+    this.focusListener = this.props.navigation.addListener('didFocus', () => {
+      this.onFocusFunction()
+    })
+   
+  }
+  onFocusFunction = () => {
     this.GetData()
   }
- 
+  
+  componentWillUnmount () {
+    this.focusListener.remove()
+  }
   GetData=async()=>
   {
     this.Load()
