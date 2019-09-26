@@ -258,7 +258,7 @@ toggleSwitch=(value)=>{
                    
                         <View style={{ flexDirection: 'row',marginLeft:-30 }}>
                           <View style={{ justifyContent: 'center', }}>
-                            <Text style={{ color: '#fff', fontFamily: 'Exo2-SemiBold', fontSize: 12,marginRight:10}}>Puplications</Text>
+                            <Text style={{ color: '#000', fontFamily: 'Exo2-SemiBold', fontSize: 12,marginRight:10}}>Puplications</Text>
                           </View>
                           <Image style={{marginRight:10, width: 30, height: 30, resizeMode: 'contain'}} source={require("../assets/note.PNG.png")} ></Image>
                         </View>
@@ -494,7 +494,7 @@ toggleSwitch=(value)=>{
             duration: 250,
             easing: Easing.inOut(Easing.ease),
             delay: 50,
-          })]).start(this.navigate());
+          })]).start(()=>this.navigate());
       }
       OpenPopupAction=()=>
       {

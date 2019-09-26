@@ -33,10 +33,10 @@ export default class Profile extends React.Component {
       error: false,
       AnimatedWidth: new Animated.Value(50),
       AnimatedHieght: new Animated.Value(45),
-      "userName": "",
+      userName: "",
       photo: null,
-      "email": "",
-      "mobileNo": "",
+      email: "",
+      mobileNo: "",
       Country: '',
       spinner: false,
       firstName: "",
@@ -271,9 +271,15 @@ export default class Profile extends React.Component {
                 <TouchableOpacity onPress={this._onPress}>
                   <View>
 
-                    <View style={{ flexDirection: 'row' }}>
-                      <Image style={{ marginRight: 10, width: 30, height: 30 }} source={require("./assets/star.png")} ></Image>
-
+                    <View style={{ flexDirection: 'row' ,justifyContent:'space-between'}}>
+                    <View style={{ justifyContent: 'center' }}>
+                            <Text style={{ color: '#000', fontFamily: 'Exo2-Regular', alignSelf:'flex-start' ,fontSize: 12, }}>Ratings</Text>
+                          </View>
+                          <View style={{marginLeft:10}}>
+                          <Image style={{ marginRight: 10, width: 30, height: 30 }} source={require("./assets/star.png")} ></Image>
+                          </View>
+                    
+                      
                     </View>
 
 
@@ -286,6 +292,9 @@ export default class Profile extends React.Component {
 
                     <View style={{ flexDirection: 'row' }}>
                       <Image style={{ marginLeft: 10, width: 30, height: 30 }} source={require("./assets/logout.png")} ></Image>
+                      <View style={{ justifyContent: 'center', }}>
+                            <Text style={{ color: '#000', fontFamily: 'Exo2-Regular', fontSize: 12, marginLeft: 10 }}>Logout</Text>
+                          </View>
                     </View>
                   </View>
                 </TouchableOpacity>
@@ -311,7 +320,7 @@ export default class Profile extends React.Component {
 
             <ScrollView contentContainerStyle={{ paddingBottom: 200 }}>
               <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                <Text style={{ color: '#fff', fontWeight: 'bold', opacity: 0.9, fontFamily: 'Exo2-Regular' }}>{this.state.userName}</Text>
+                <Text style={{ color: '#fff',  opacity: 0.9, fontFamily: 'Exo2-Regular' }}>{this.state.userName}</Text>
               </View>
               <View
                 style={{
@@ -322,11 +331,11 @@ export default class Profile extends React.Component {
               />
               <View style={{ flexDirection: 'row', marginLeft: 30 }}>
                 <View style={{ flex: 1 }}>
-                  <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#4286f4', marginTop: 10, fontFamily: 'Exo2-Regular' }}>First Name</Text>
+                  <Text style={{ fontSize: 12,  color: '#4286f4', marginTop: 10, fontFamily: 'Exo2-Regular' }}>First Name</Text>
                 </View>
 
                 <View style={{ flexDirection: 'row', flex: 1 }}>
-                  <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#fff', marginTop: 10, textAlign: 'center', opacity: 0.7, fontFamily: 'Exo2-Regular' }}>{this.state.firstName}</Text>
+                  <Text style={{ fontSize: 12,  color: '#fff', marginTop: 10, textAlign: 'center', opacity: 0.7, fontFamily: 'Exo2-Regular' }}>{this.state.firstName}</Text>
                 </View>
               </View>
               <View
@@ -338,11 +347,11 @@ export default class Profile extends React.Component {
               />
               <View style={{ flexDirection: 'row', marginLeft: 30 }}>
                 <View style={{ flex: 1 }}>
-                  <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#4286f4', marginTop: 10, fontFamily: 'Exo2-Regular' }}>Last Name</Text>
+                  <Text style={{ fontSize: 12,  color: '#4286f4', marginTop: 10, fontFamily: 'Exo2-Regular' }}>Last Name</Text>
                 </View>
 
                 <View style={{ flexDirection: 'row', flex: 1 }}>
-                  <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#fff', marginTop: 10, opacity: 0.7, fontFamily: 'Exo2-Regular' }}>{this.state.lastName}</Text>
+                  <Text style={{ fontSize: 12,  color: '#fff', marginTop: 10, opacity: 0.7, fontFamily: 'Exo2-Regular' }}>{this.state.lastName}</Text>
                 </View>
 
               </View>
@@ -356,10 +365,10 @@ export default class Profile extends React.Component {
               />
               <View style={{ flexDirection: 'row', marginLeft: 30 }}>
                 <View style={{ flex: 1 }}>
-                  <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#4286f4', marginTop: 10, fontFamily: 'Exo2-Regular' }}>Date Of Birth</Text>
+                  <Text style={{ fontSize: 12,  color: '#4286f4', marginTop: 10, fontFamily: 'Exo2-Regular' }}>Date Of Birth</Text>
                 </View>
                 <View style={{ flex: 1 }}>
-                  <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#fff', marginTop: 10, opacity: 0.7, fontFamily: 'Exo2-Regular' }}>{this.state.dateOfBirth}</Text>
+                  <Text style={{ fontSize: 12,  color: '#fff', marginTop: 10, opacity: 0.7, fontFamily: 'Exo2-Regular' }}>{this.state.dateOfBirth}</Text>
                 </View>
               </View>
               <View
@@ -371,10 +380,10 @@ export default class Profile extends React.Component {
               />
               <View style={{ flexDirection: 'row', marginLeft: 30 }}>
                 <View style={{ flex: 1 }}>
-                  <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#4286f4', marginTop: 10, fontFamily: 'Exo2-Regular' }}>Country</Text>
+                  <Text style={{ fontSize: 12,  color: '#4286f4', marginTop: 10, fontFamily: 'Exo2-Regular' }}>Country</Text>
                 </View>
                 <View style={{ flex: 1 }}>
-                  <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#fff', marginTop: 10, opacity: 0.7, fontFamily: 'Exo2-Regular' }}>{this.state.Country}</Text>
+                  <Text style={{ fontSize: 12,  color: '#fff', marginTop: 10, opacity: 0.7, fontFamily: 'Exo2-Regular' }}>{this.state.Country}</Text>
                 </View>
 
               </View>
@@ -387,10 +396,10 @@ export default class Profile extends React.Component {
               />
               <View style={{ flexDirection: 'row', marginLeft: 30 }}>
                 <View style={{ flex: 1 }}>
-                  <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#4286f4', marginTop: 10, fontFamily: 'Exo2-Regular' }}>E-mail</Text>
+                  <Text style={{ fontSize: 12,  color: '#4286f4', marginTop: 10, fontFamily: 'Exo2-Regular' }}>E-mail</Text>
                 </View>
                 <View style={{ flex: 1 }}>
-                  <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#fff', marginTop: 10, opacity: 0.7, fontFamily: 'Exo2-Regular' }}>{this.state.email}</Text>
+                  <Text style={{ fontSize: 12,  color: '#fff', marginTop: 10, opacity: 0.7, fontFamily: 'Exo2-Regular' }}>{this.state.email}</Text>
                 </View>
 
               </View>
@@ -404,10 +413,10 @@ export default class Profile extends React.Component {
 
               <View style={{ flexDirection: 'row', marginLeft: 30 }}>
                 <View style={{ flex: 1 }}>
-                  <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#4286f4', marginTop: 10, fontFamily: 'Exo2-Regular' }}>Coin purse</Text>
+                  <Text style={{ fontSize: 12,  color: '#4286f4', marginTop: 10, fontFamily: 'Exo2-Regular' }}>Coin purse</Text>
                 </View>
                 <View style={{ flex: 1 }}>
-                  <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#fff', marginTop: 10, opacity: 0.7, fontFamily: 'Exo2-Regular' }}>Bit coin</Text>
+                  <Text style={{ fontSize: 12,  color: '#fff', marginTop: 10, opacity: 0.7, fontFamily: 'Exo2-Regular' }}>Bit coin</Text>
                 </View>
 
               </View>
@@ -420,10 +429,10 @@ export default class Profile extends React.Component {
               />
               <View style={{ flexDirection: 'row', marginLeft: 30 }}>
                 <View style={{ flex: 1 }}>
-                  <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#4286f4', marginTop: 10, fontFamily: 'Exo2-Regular' }}>Version</Text>
+                  <Text style={{ fontSize: 12,  color: '#4286f4', marginTop: 10, fontFamily: 'Exo2-Regular' }}>Version</Text>
                 </View>
                 <View style={{ flex: 1 }}>
-                  <Text style={{ fontSize: 12, fontWeight: 'bold', color: '#fff', marginTop: 10, opacity: 0.7, fontFamily: 'Exo2-Regular' }}>2.0.4</Text>
+                  <Text style={{ fontSize: 12,  color: '#fff', marginTop: 10, opacity: 0.7, fontFamily: 'Exo2-Regular' }}>2.0.4</Text>
                 </View>
 
 

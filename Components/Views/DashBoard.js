@@ -255,11 +255,16 @@ export default class DashBoard extends React.Component {
         delay: 50,
       }),
 
-    ]).start(this.OpenPopupAction())
+    ]).start(()=>this.leftopen())
    
   }
-  OpenPopupAction = () => {
+  leftopen=()=>
+  {
     this.setState({ QrClick: true, backoption: true ,blurclick:true,})
+    this.OpenPopupAction()
+  }
+  OpenPopupAction = () => {
+   
     this.props.navigation.setParams({ bottombar: false })
     openOverlay()
     this.springValue.setValue(0.3),
@@ -301,9 +306,7 @@ export default class DashBoard extends React.Component {
       useNativeDriver: true
     }).start(() => this.StartImageRotateFunction());
   }
-  pressRight = () => {
-
-    this.setState({ QrClick: false, backoption: true })
+  pressRight = () => {  
     Animated.sequence
       ([
 
@@ -319,52 +322,38 @@ export default class DashBoard extends React.Component {
           easing: Easing.inOut(Easing.ease),
           delay: 10,
         }),
-      ]).start(this.OpenPopupAction());
+      ]).start(()=>this.rightclose());
 
   }
-  CloseRightAction = () => {
-    if (!this.state.clickopen) {
-      Animated.timing(this.AnimatedRightWidth, {
-        toValue: 150,
-        duration: 250,
-        easing: Easing.inOut(Easing.ease),
-        delay: 10,
-      }).start(this.setState({ clickopen: true }));
-
-    }
-    else {
-      Animated.timing(this.AnimatedRightWidth, {
-        toValue: 50,
-        duration: 250,
-        easing: Easing.inOut(Easing.ease),
-        delay: 10,
-      }).start(closeOverlay(), this.setState({ clickopen: false }));
-      this.props.navigation.setParams({ bottombar: true })
-    }
-
-
+  rightclose=()=>
+  {
+    this.setState({ QrClick: false, backoption: true })
+    this.OpenPopupAction()
   }
   CloseLeftAction = () => {
-    if (!this.state.clickopen) {
+    Animated.sequence
+    ([
       Animated.timing(this.AnimatedLeftWidth, {
         toValue: 150,
         duration: 250,
         easing: Easing.inOut(Easing.ease),
         delay: 10,
-      }).start(this.setState({ clickopen: true }));
-
-    }
-    else {
+      }),
       Animated.timing(this.AnimatedLeftWidth, {
         toValue: 50,
         duration: 250,
         easing: Easing.inOut(Easing.ease),
         delay: 10,
-      }).start(closeOverlay(), this.setState({ clickopen: false }));
-      this.props.navigation.setParams({ bottombar: true })
-    }
-    this.setState({ visibles: false, QR_Code_Value: null, sliderValue: 0, usdforEther: 0.000 })
+      })
+    ]).start(()=>this.exit());
+    
 
+  }
+  exit=()=>
+  {
+    closeOverlay()
+    this.props.navigation.setParams({ bottombar: true })
+    this.setState({ visibles: false, QR_Code_Value: null, sliderValue: 0, usdforEther: 0.000 })
   }
   open_QR_Code_Scanner = () => {
 
@@ -1067,7 +1056,10 @@ return(<View >
                     <LinearGradient colors={['#f4347f', '#F4317F', '#F4317F']} style={{ justifyContent: 'center', borderTopRightRadius: 25, borderBottomRightRadius: 25, alignItems: 'flex-end', paddingTop: 10, paddingBottom: 10 }}>
 
                       <View style={{ flexDirection: 'row' }}>
-                        <Image style={{ marginRight: 10, width: 30, height: 30 }} source={require("./assets/whitebox.png")} ></Image>
+                      <View style={{ justifyContent: 'center' }}>
+                            <Text style={{ color: '#fff', fontFamily: 'Exo2-Regular', alignSelf:'flex-start' ,fontSize: 12, }}>Send</Text>
+                          </View>
+                        <Image style={{ marginRight: 10,marginLeft:10, width: 30, height: 30 }} source={require("./assets/whitebox.png")} ></Image>
 
                       </View>
 
@@ -1088,7 +1080,9 @@ return(<View >
 
                       <View style={{ flexDirection: 'row' }}>
                         <Image style={{ marginLeft: 10, width: 30, height: 30, resizeMode: 'contain',tintColor:'#fff' }} source={require("./assets/greenD.png")} ></Image>
-
+                        <View style={{ justifyContent: 'center' }}>
+                            <Text style={{ color: '#fff', fontFamily: 'Exo2-Regular', alignSelf:'flex-start' ,fontSize: 12, marginLeft:10}}>Recieve</Text>
+                          </View>
                       </View>
 
                     </LinearGradient>
