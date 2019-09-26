@@ -13,7 +13,7 @@ export default class ExchangeMenu_Expandable extends Component {
       super();
     
       this.state = {
-  
+        Updation:false,
         layout_Height: 0,
         userIdLogin:''
   
@@ -22,7 +22,14 @@ export default class ExchangeMenu_Expandable extends Component {
   
     componentWillReceiveProps(nextProps) {
       
-     
+      if(this.props.item!=nextProps)
+      {
+        this.setState(() => {
+          return {
+            Updation: true
+          }
+        });
+      }
       if (nextProps.item.expanded) {
         this.setState(() => {
           return {
@@ -44,16 +51,20 @@ export default class ExchangeMenu_Expandable extends Component {
    
   
     shouldComponentUpdate(nextProps, nextState) {
-      if (this.state.layout_Height !== nextState.layout_Height) {
+       if(this.state.Updation)
+      {
+        return true;
+      }
+      if (this.state.layout_Height !== nextState.layout_Height ) {
         return true;
       }
       return false;
     }
     render() {
-        var icon = (this.props.item.status==1)
+        var icon = (this.props.item.status==0)
         ? require('../assets/exchange.png')
         : require('../assets/greenD.png');
-        var status=(this.props.item.status===1)?'Exchanged':'Exchange'
+        var status=(this.props.item.status===0)?'Exchanged':'Exchange'
         console.log('status',status)
        // datasource=this.props.item
         console.log(this.props)
@@ -78,11 +89,11 @@ export default class ExchangeMenu_Expandable extends Component {
         
           <View style={{marginLeft:30,justifyContent:
         'space-around'}}>
-        <View style={{paddingBottom:10}}>
-        <Text  style={{marginRight:20,color:(this.props.item.status==1)?'#fff':'#fff',fontFamily:"Exo2-Bold",}}>{status}</Text>
+        <View style={{paddingBottom:10,width:100}}>
+        <Text numberOfLines={1} style={{flexWrap: 'wrap', marginRight:20,color:(this.props.item.status==1)?'#fff':'#fff',fontFamily:"Exo2-Bold",}}>{this.props.item.userName}</Text>
         </View>
     <View>
-    <Text  style={{marginRight:20,color:'#5496FF',fontFamily:'Exo2-Regular'}}>{this.props.item.date1}</Text> 
+    <Text  style={{marginRight:20,color:'#5496FF',fontFamily:'Exo2-Regular',}}>{this.props.item.date1}</Text> 
     </View>
         
      </View>
@@ -94,7 +105,7 @@ export default class ExchangeMenu_Expandable extends Component {
     </View>
     <View style={{justifyContent:'space-between'}}>    
     
-    <Text  style={{marginRight:20,color:'#5496FF',fontFamily:'Exo2-Regular'}}>{this.props.item.transactionFee}ETH</Text> 
+    <Text  style={{marginRight:20,color:'#5496FF',fontFamily:'Exo2-Regular'}}>{this.props.item.transactionFee} {this.props.mode}</Text> 
     </View>
       </View>
       

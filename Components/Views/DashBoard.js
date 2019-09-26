@@ -1442,7 +1442,7 @@ return(<View >
         );
       }
       else {
-        Alert.alert(InvalidResponse)
+        Alert.alert(data.status,data.message)
       }
     }
     this.GraphAnimation()

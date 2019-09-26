@@ -7,7 +7,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
 import Spinner from 'react-native-loading-spinner-overlay';
 import {ExchangeList} from '../Api/ExchangeRequest'
-import {ExchangeRequest} from '../Api/RequestUrl'
+import {ExchangeRequest,EXCHANGE_HISTORY_LIST} from '../Api/RequestUrl'
 import ExchangeMenu_Expandable from '../Utils.js/ExchangeMenu_Expandable'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from '../Utils.js/Constant'
 
@@ -54,10 +54,11 @@ export default class  ExchangeMenu  extends React.Component {
        PublicIcon:require('../assets/puplishcolor.png'),
        BuyIcon:require('../assets/buy.png'),
        SellIcon:require('../assets/sell.png'),
-       Admin:'Admin',
+       Admin:'PlatForm',
       Coin: 'Us Doller',
       animate:false,
-
+      mode:'All',
+      ExchangeMode:'admin',
       w: 50,
       h: 45,
       wr:50,
@@ -109,9 +110,11 @@ export default class  ExchangeMenu  extends React.Component {
   console.log(UserId)
   let params=
   {
+    cryptoType:this.state.mode,
+    exchangeMode:this.state.ExchangeMode,
     userId:UserId
   }
-    ExchangeList(params,ExchangeRequest,this.ExchangeListResponse,this.error,this.NetworkIssue)
+    ExchangeList(params,EXCHANGE_HISTORY_LIST,this.ExchangeListResponse,this.error,this.NetworkIssue)
   }
   error=()=>
   {
@@ -256,9 +259,18 @@ space(){
           maxLength={10}
         />
 </View>
-<View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',paddingRight:30}}>
-  <View>
-  </View>
+<View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',paddingRight:10,marginLeft:-30}}>
+<Image  style={{width: 9, height: 7,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
+<Text style={{color:'#FFFFFF',opacity:1,fontSize:11,fontFamily:'Exo2-Regular'}}>{this.state.mode}</Text>
+  <Picker style={{ position:'absolute', top: 0, width: 1500, height: 1500}}
+        selectedValue={this.state.mode}
+       onValueChange={(itemValue, itemIndex) => this.selectedcoin(itemValue,itemIndex)}>
+       
+       <Picker.Item label="All" value="All" />
+       <Picker.Item label="BTC" value="BTC" />
+       <Picker.Item label="ETH" value="ETH" />
+       {/* <Picker.Item label="Bitwings" value="Bitwings" /> */}
+       </Picker>
         </View>
         
   
@@ -276,14 +288,14 @@ space(){
            
            onValueChange={(itemValue, itemIndex) => this.selectedPlatform(itemValue,itemIndex)}
             items={[
-                {  label:"Admin" ,value:"Admin" },
+                {  label:"PlatForm" ,value:"PlatForm" },
                 { label:"Users"},
             ]}
         />: <Picker style={{ position:'absolute', top: 0, width: 1000, height: 1000}}
         selectedValue={this.state.Admin}
        onValueChange={(itemValue, itemIndex) => this.selectedPlatform(itemValue,itemIndex)}>
        
-       <Picker.Item label="Admin" value="Admin" />
+       <Picker.Item label="PlatForm" value="PlatForm" />
        <Picker.Item label="Users" value="Users" />
        </Picker>}
      
@@ -367,7 +379,7 @@ space(){
                 {
             this.state.dataSource.map((item, key) =>
               (
-                <ExchangeMenu_Expandable  key={item.exchangeDTOList} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
+                <ExchangeMenu_Expandable mode={this.state.mode}  key={item.exchangeDTOList} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
               ))
           }
                 </View>
@@ -453,7 +465,7 @@ publicClick=()=>{
 }
 navigatePublic=()=>
 {
-  if(this.state.Admin==='Admin')
+  if(this.state.Admin==='PlatForm')
   {
     this.props.navigation.navigate('Publish', {Exchange_Type: this.state.Admin })
   }
@@ -536,23 +548,26 @@ Exchangecolor5:'#4781DF'
 
       }
       selectedPlatform=(item,index)=>{
-this.setState({
-  Admin:item
-})
-         if(item=='user')
-         {
-          let FinalResult=[];
-          FinalResult=this.search(0,this.state.totalresponse)
-          const newFile =FinalResult.map((file) => {
-   
-           return {...file, expanded: false};
-       });
-       this.setState({dataSource: newFile });
+        if(item==='PlatForm')
+        {
+          this.setState({
+            Admin:item,ExchangeMode:'admin'
+          })
+             
+        }
+     else{       
+      this.setState({
+        Admin:item,ExchangeMode:'user'
+      })
          }
-         else
-         {
-
-         }
+        this.GetData()
+      }
+      selectedcoin=(item,index)=>
+      {
+        this.setState({
+          mode:item
+        })
+        this.GetData()
       }
 }
 

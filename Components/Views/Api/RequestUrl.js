@@ -5,3 +5,5 @@ export const getEqualCryptoValueApi='getequavalentcryptovalue'
 export const ExchangeRequestsUrl='exchange/request'
 export const AdminRequest='eth_btc/admin/exchange'
 export const exchangeAdmin_ETC_BTC_Api='eth_btc/admin/exchange'
+
+export const EXCHANGE_HISTORY_LIST='fetchrequestsbymode'

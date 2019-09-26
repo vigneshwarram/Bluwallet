@@ -336,6 +336,7 @@ SlideMenu=()=>{
             console.log('Loginresult',data)
             await AsyncStorage.setItem('password',this.state.Password); 
             await AsyncStorage.setItem('UserId',data.loginInfo.userId.toString()); 
+            await AsyncStorage.setItem('roleId',data.loginInfo.roleId.toString()); 
             await AsyncStorage.setItem('email',data.loginInfo.emailId.toString()); 
             await AsyncStorage.setItem('profilestatus',data.loginInfo.profileStatus.toString()); 
             await AsyncStorage.setItem('kycstatus',data.loginInfo.kycStatus.toString()); 
