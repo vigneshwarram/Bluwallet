@@ -74,3 +74,31 @@ export const ProfileRetrive=async(registerDetails)=>
         console.error(error);
     });
 }
+export const ProfileUpdate=async(uri,name,registerDetails,errors)=>
+{
+  let formdata = new FormData();  
+     formdata.append("profileimg ",{
+      uri: uri,
+      name:  name,
+      type:'image/jpeg'})
+      formdata.append('userId',await AsyncStorage.getItem('UserId'))
+    fetch(Url+'updateprofiledata', {  
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'multipart/form-data',
+          'authorization':'bearer '+await AsyncStorage.getItem('AccessToken')
+        },
+        body:formdata
+      }) .then((res)=> {
+        return res.json();
+       })
+       .then((resJson)=>{
+        registerDetails(resJson)
+       
+        return resJson;
+       })
+       .catch((error) => {
+        errors(error.message);
+    });
+}

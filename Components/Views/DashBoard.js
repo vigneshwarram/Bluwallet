@@ -259,7 +259,7 @@ export default class DashBoard extends React.Component {
    
   }
   OpenPopupAction = () => {
-    this.setState({ QrClick: true, backoption: true ,blurclick:true})
+    this.setState({ QrClick: true, backoption: true ,blurclick:true,})
     this.props.navigation.setParams({ bottombar: false })
     openOverlay()
     this.springValue.setValue(0.3),
@@ -409,11 +409,12 @@ export default class DashBoard extends React.Component {
   }
   onQR_Code_Scan_Done = (QR_Code) => {
    console.log('Qr code value',QR_Code)
-    this.setState({ QR_Code_Value: QR_Code, Start_Scanner: false,QrButton: false,QrClick:true,pops:true});
+    this.setState({ QR_Code_Value: QR_Code, Start_Scanner: false,QrButton: false,QrClick:true});
     this.GraphAnimation()
    //this._onPress()
-   this.props.navigation.setParams({ bottombar: false })
+   this.props.navigation.setParams({ bottombar: true })
      openOverlay()
+    // this.setState({pops:true})
   //  console.log('This popup overlay is not openenng')
   }
   Scanner = () => {
@@ -1034,7 +1035,7 @@ return(<View >
             </View>
           </DialogContent>
         </Dialog>
-        {this.state.blurclick?<BlurOverlay
+       <BlurOverlay
           radius={14}
           downsampling={2}
           showBlur={this.state.pops}
@@ -1049,7 +1050,7 @@ return(<View >
           }}
           blurStyle='#222B50'
           children={(this.state.QrClick) ? this.renderScane() : this.renderQrCode()}
-        />:null}
+        />
 
 
         <LinearGradient colors={['#354E91', '#314682', '#283563', '#222B50', '#21284A']} style={{ flex: 1 }}>
