@@ -9,12 +9,12 @@ import BlurOverlay,{closeOverlay,openOverlay} from 'react-native-blur-overlay';
 import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
 import { ScrollView } from 'react-native-gesture-handler';
 import {ExchangeList} from '../Api/ExchangeRequest'
-import {ExchangeRequest} from '../Api/RequestUrl'
+import {ExchangeRequest,EXCHANGE_HISTORY_LIST} from '../Api/RequestUrl'
 import {StackActions} from 'react-navigation'
 import Expandable_ListView from '../Utils.js/Expandable_ListView'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from '../Utils.js/Constant'
 
-
+let FinalResult=[]
 export default class  PuplishUser  extends React.Component {
 
   static navigationOptions = {
@@ -37,6 +37,7 @@ export default class  PuplishUser  extends React.Component {
       Amount:'COP',
       StatusMode:'Publications',
       animate:false,
+      mode:'All',
       w: 50,
       SuccessPopup:true,
       h: 45,
@@ -79,9 +80,11 @@ export default class  PuplishUser  extends React.Component {
    let UserId=await AsyncStorage.getItem('UserId') 
    let params=
    {
-     userId:UserId
+    cryptoType:this.state.mode,
+    exchangeMode:'user',
+    userId:UserId
    }
-    ExchangeList(params,ExchangeRequest,this.ExchangeListResponse,this.error,this.NetworkIssue)
+    ExchangeList(params,EXCHANGE_HISTORY_LIST,this.ExchangeListResponse,this.error,this.NetworkIssue)
   }
   ExchangeListResponse=(data)=>
 {
@@ -90,13 +93,9 @@ export default class  PuplishUser  extends React.Component {
   {
     if(data.status===ResponseSuccessStatus)
     {
-      let FinalResult=[];
-       FinalResult=this.search('BTC_ETH_USER',data.fetchExchageRequestDTO.exchangeDTOList)
-     const newFile =FinalResult.map((file) => {
-
-        return {...file, expanded: false};
-    });
-    this.setState({dataSource: newFile });
+     this.setState({dataSource:data.fetchExchageRequestDTO.exchangeDTOList})
+     FinalResult=data.fetchExchageRequestDTO.exchangeDTOList;
+     
     }
     else if(data.error===InvalidToken)
     {
@@ -137,12 +136,17 @@ search = (key, inputArray) => {
 filterSearch(text){
   const newData = this.state.dataSource.filter((item)=>{
     const itemData = item.amountToTrade
-    return itemData.indexOf(text)>-1
+    return itemData.toString().indexOf(text)>-1
   });
   this.setState({
     text:text,
     dataSource: newData // after filter we are setting users to new array
   });
+  if (!text || text === '') {
+    this.setState({
+      dataSource: FinalResult
+    })
+  }
 }
 update_Layout = (index) => {
 
@@ -158,12 +162,6 @@ update_Layout = (index) => {
       }
     });
   }
-dataset=(data)=>{
-  this.setState({
-    dataSource:data
-  })
-  this.hide()
-}
 Load=()=>{
   console.log('load fun')
   this.setState({animate:true})
@@ -306,9 +304,24 @@ renderScane() {
        placeholderTextColor='#ffffff'
           placeholder="Quantity"
           keyboardType = 'numeric'
+           onChangeText={(text) => this.filterSearch(text)}
+           value={this.state.text}
           maxLength={10}
         />
 </View>
+      <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',paddingRight:10,marginLeft:-30}}>
+<Image  style={{width: 9, height: 7,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
+<Text style={{color:'#FFFFFF',opacity:1,fontSize:11,fontFamily:'Exo2-Regular'}}>{this.state.mode}</Text>
+  <Picker style={{ position:'absolute', top: 0, width: 1500, height: 1500}}
+        selectedValue={this.state.mode}
+       onValueChange={(itemValue, itemIndex) => this.selectedcoin(itemValue,itemIndex)}>
+       
+       <Picker.Item label="All" value="All" />
+       <Picker.Item label="BTC" value="BTC" />
+       <Picker.Item label="ETH" value="ETH" />
+       {/* <Picker.Item label="Bitwings" value="Bitwings" /> */}
+       </Picker>
+        </View> 
           </View>
           </View>   
       
@@ -318,10 +331,14 @@ renderScane() {
          <View style={{paddingTop:20}}></View>
          <View>
           {
-            this.state.dataSource.map((item, key) =>
+            this.state.dataSource.length!=0?this.state.dataSource.map((item, key) =>
               (
-                <Expandable_ListView popupShow={this.successStatus} onHide={this.hide} onLoad={this.Load} key={item.exchangeDTOList} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
-              ))
+                <Expandable_ListView  mode={this.state.mode} popupShow={this.successStatus} onHide={this.hide} onLoad={this.Load} key={item.exchangeDTOList} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
+              )):<View>
+              <View style={{justifyContent:'center',alignItems:'center'}}>
+              <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:15,fontFamily:'Exo2-Regular'}}>No Request Found</Text>
+              </View>
+              </View>
           }
           </View>
         </ScrollView>
@@ -348,7 +365,13 @@ renderScane() {
     );
       }
     
-    
+      selectedcoin=(item,index)=>
+      {
+        this.setState({
+          mode:item
+        })
+        this.GetData()
+      }
       selectedCop=(item,itemIndex)=>{
         this.setState({
           Amount:item

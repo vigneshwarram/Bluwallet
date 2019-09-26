@@ -129,19 +129,21 @@ export default class Expandable_ListView extends Component {
   
           <TouchableOpacity activeOpacity={0.8} onPress={this.props.onClickFunction} >
   
-          <View style={{marginLeft:30,marginRight:30,marginBottom:20, shadowOffset: { width: 10, height: 10 },
-  borderBottomWidth: 0,
-  borderRadius:25}}>
-   <LinearGradient
-   colors={['#4262B5', '#3A549B','#314279','#2C3765','#2A335E']} style={{ borderRadius:25,}}>
+          <View elevation={5} style={{shadowOffset: { width: 10, height: 10 }}}>
+          
+           
+          <LinearGradient
+      colors={['#4262B5', '#3A549B', '#314279', '#2C3765', '#2A335E']} style={{marginLeft:30,marginRight:30,marginBottom:20,height:100, shadowOffset: { width: 10, height: 10 },
+         borderWidth:0.4,borderColor:'#7894f8',justifyContent:'center',
+          borderRadius:20}}>
    
         <View style={{flexDirection:'row',justifyContent:'space-between',padding:15}}>
         <View style={{flexDirection:'row'}}>
         <View style={{alignItems:'center',justifyContent:'center'}} >
           <Image  style={{width: 30, height: 30,resizeMode:'contain'}}  source={require("../assets/greenD.png")} ></Image>  
           </View>
-          <View style={{marginLeft:20}}>
-          <Text  style={{marginRight:20,marginTop:10,color:'#fff',fontFamily:"Exo2-Bold"}}>{this.props.item.userName}</Text>  
+          <View style={{marginLeft:20,width:100}}>
+          <Text  style={{marginRight:20,flexWrap: 'wrap',marginTop:10,color:'#fff',fontFamily:"Exo2-Bold"}}>{this.props.item.userName}</Text>  
           <Text  style={{marginRight:20,marginTop:10,color:'#5496FF',fontFamily:'Exo2-Regular'}}>{this.props.item.date1}</Text>       
           </View>
          
@@ -153,7 +155,7 @@ export default class Expandable_ListView extends Component {
      <Text  style={{color:'#fff',fontFamily:'Exo2-Regular',marginTop:10}}>$ {this.props.item.totalAmount}</Text> 
      </View>   
     <View>
-    <Text  style={{color:'#5496FF',fontFamily:'Exo2-Regular',marginTop:10}}>{this.props.item.amountYouGet}ETH</Text>     
+    <Text  style={{color:'#5496FF',fontFamily:'Exo2-Regular',marginTop:10}}>{this.props.item.amountYouGet}{this.props.mode}</Text>     
     </View>
           </View>       
         </View>
