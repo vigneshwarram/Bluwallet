@@ -6,7 +6,6 @@ import com.facebook.react.ReactApplication;
 import fr.bamlab.rnimageresizer.ImageResizerPackage;
 
 import com.wix.RNCameraKit.RNCameraKitPackage;
-import org.reactnative.camera.RNCameraPackage;
 import com.bluroverly.SajjadBlurOverlayPackage;
 import com.imagepicker.ImagePickerPackage;
 import com.mg.app.PickerPackage;
@@ -42,7 +41,7 @@ public class MainApplication extends Application implements ReactApplication {
           new MainReactPackage(),
             new ImageResizerPackage(),
             new RNCameraKitPackage(),
-            new RNCameraPackage(),
+         
   
           
          
