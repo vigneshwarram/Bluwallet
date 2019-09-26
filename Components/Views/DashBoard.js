@@ -410,12 +410,16 @@ export default class DashBoard extends React.Component {
   onQR_Code_Scan_Done = (QR_Code) => {
    console.log('Qr code value',QR_Code)
     this.setState({ QR_Code_Value: QR_Code, Start_Scanner: false,QrButton: false,QrClick:true});
-    this.GraphAnimation()
-   //this._onPress()
-   this.props.navigation.setParams({ bottombar: true })
-     openOverlay()
-    // this.setState({pops:true})
-  //  console.log('This popup overlay is not openenng')
+    openOverlay()
+    this.props.navigation.setParams({ bottombar: false })
+ 
+  //   Alert.alert('Alert',QR_Code)
+  //   
+  //  //this._onPress()
+  //  
+  //    //openOverlay()
+  //   // this.setState({pops:true})
+  // //  console.log('This popup overlay is not openenng')
   }
   Scanner = () => {
     closeOverlay()
@@ -499,6 +503,7 @@ export default class DashBoard extends React.Component {
     }
   }
   SendResponse = data => {
+    this.GraphAnimation()
     this.hide()
     if (data.status === 'success') {
       this.setState({ visibles: true, ResponseStatus: data.message })
@@ -526,19 +531,6 @@ export default class DashBoard extends React.Component {
     this.props.navigation.setParams({ bottombar: true })
   }
   renderScane() {
-    if (this.state.QrButton) {
-      return <CameraKitCameraScreen
-        showFrame={true}
-        closeaction={this.closeleft}
-        scanBarcode={true}
-        laserColor={'#FF3D00'}
-        frameColor={'#00C853'}
-        colorForScannerFrame={'black'}
-        onReadCode={event =>
-          this.onQR_Code_Scan_Done(event.nativeEvent.codeStringValue)
-        }
-      />
-    }
     return (
       <Animated.View style={{ flex: 1, width: '100%', transform: [{ scale: this.springValue }] }}>
 
@@ -998,19 +990,7 @@ return(<View >
         fill={'none'}
       />
     )
-    if (this.state.QrButton) {
-      return <CameraKitCameraScreen
-        showFrame={true}
-        closeaction={this.closeleft}
-        scanBarcode={true}
-        laserColor={'#FF3D00'}
-        frameColor={'#00C853'}
-        colorForScannerFrame={'black'}
-        onReadCode={event =>
-          this.onQR_Code_Scan_Done(event.nativeEvent.codeStringValue)
-        }
-      />
-    }
+   
     if (this.state.animate) {
       return <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
         <ActivityIndicator
@@ -1022,6 +1002,20 @@ return(<View >
     return (
       <SafeAreaView style={{flex:1,backgroundColor:'#354E91'}}>
       <View style={styles.Maincontainers}>
+      
+      { (this.state.QrButton) ?<View style={{zIndex:1,flex:1}}><CameraKitCameraScreen
+        showFrame={true}
+        closeaction={this.closeleft}
+        scanBarcode={true}
+        laserColor={'#FF3D00'}
+        frameColor={'#00C853'}
+        colorForScannerFrame={'black'}
+        onReadCode={event =>
+          this.onQR_Code_Scan_Done(event.nativeEvent.codeStringValue)
+        }
+        
+      ></CameraKitCameraScreen></View>:null
+    }
         <Dialog
           visible={this.state.visibles}>
           <DialogContent>
