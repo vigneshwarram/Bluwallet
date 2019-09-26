@@ -134,6 +134,16 @@ search = (key, inputArray) => {
   }
   return SearchArray;
 }
+filterSearch(text){
+  const newData = this.state.dataSource.filter((item)=>{
+    const itemData = item.amountToTrade
+    return itemData.indexOf(text)>-1
+  });
+  this.setState({
+    text:text,
+    dataSource: newData // after filter we are setting users to new array
+  });
+}
 update_Layout = (index) => {
 
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);

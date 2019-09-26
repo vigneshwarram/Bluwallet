@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet,TextInput, Image,Picker,ImageBackground, FlatList,Text,ActivityIndicator,ScrollView,TouchableOpacity,Easing,Animated ,AsyncStorage} from 'react-native';
+import { View, StyleSheet,TextInput,Platform, Image,Picker,UIManager,ImageBackground,LayoutAnimation, FlatList,Text,ActivityIndicator,ScrollView,TouchableOpacity,Easing,Animated ,AsyncStorage} from 'react-native';
 import { Alert } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
@@ -8,11 +8,12 @@ import LinearGradient from 'react-native-linear-gradient';
 import BlurOverlay,{closeOverlay,openOverlay} from 'react-native-blur-overlay';
 import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
 import {ExchangeList} from '../Api/ExchangeRequest'
-import {ExchangeRequest} from '../Api/RequestUrl'
+import {ExchangeRequest,EXCHANGE_HISTORY_LIST} from '../Api/RequestUrl'
 import {StackActions} from 'react-navigation'
+import Expandable_Admin from '../Utils.js/Expandable_Admin'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from '../Utils.js/Constant'
 
-
+let FinalResult=[]
 export default class  Publish  extends React.Component {
 
   static navigationOptions = {
@@ -22,6 +23,10 @@ export default class  Publish  extends React.Component {
 
   constructor(props) {
     super(props);
+    if (Platform.OS === 'android')
+    {
+    UIManager.setLayoutAnimationEnabledExperimental(true)
+    }
     this.springValue = new Animated.Value(0.3)
     this.state = {
       dataSource:[],
@@ -37,6 +42,7 @@ export default class  Publish  extends React.Component {
       wr:50,
       hr:45,
       Ahr:80,
+      mode:'All',
       AnimatedWidth:new Animated.Value(50),
       AnimatedHieght:new Animated.Value(45),
       Awr:80,
@@ -78,10 +84,12 @@ export default class  Publish  extends React.Component {
    let UserId=await AsyncStorage.getItem('UserId') 
    let params=
    {
-     userId:UserId
+    cryptoType:this.state.mode,
+    exchangeMode:'admin',
+    userId:UserId
    }
    this.Load()
-    ExchangeList(params,ExchangeRequest,this.ExchangeListResponse,this.error,this.NetworkIssue)
+    ExchangeList(params,EXCHANGE_HISTORY_LIST,this.ExchangeListResponse,this.error,this.NetworkIssue)
   }
   error=(error)=>
   {
@@ -99,10 +107,9 @@ export default class  Publish  extends React.Component {
   {
     if(data.status===ResponseSuccessStatus)
     {
-      let FinalResult=[];
-      FinalResult=this.search('BTC_ETH_ADMIN',data.fetchExchageRequestDTO.exchangeDTOList)
-     this.setState({dataSource:FinalResult})
-     console.log('publish_data',{dataSource:FinalResult})
+     this.setState({dataSource:data.fetchExchageRequestDTO.exchangeDTOList})
+     FinalResult=data.fetchExchageRequestDTO.exchangeDTOList;
+     
     }
     else if(data.error===InvalidToken)
     {
@@ -121,22 +128,16 @@ export default class  Publish  extends React.Component {
     }
   }
 }
-search = (key, inputArray) => {
+search = (status, inputArray) => {
   console.log('inputArray length',inputArray.length)
   let SearchArray=[]
   for (let i=0; i < inputArray.length; i++) {
-      if (inputArray[i].exchangeType === key || inputArray[i].exchangeType==='ETH_BTC_ADMIN' && inputArray[i].status===1) {
+      if (inputArray[i].status===status) {
         SearchArray.push(inputArray[i])
       }
       
   }
   return SearchArray;
-}
-dataset=(data)=>{
-  this.setState({
-    dataSource:data
-  })
-  this.hide()
 }
 Load(){
   this.setState({animate:true})
@@ -272,18 +273,33 @@ renderScane() {
           <Text style={{fontSize:20,color:'#fff',fontFamily:'Exo2-Regular '}}>Exchange</Text>
           </View>
          
-          <View style={{width:'70%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:20, justifyContent:'space-between',flexDirection:'row'}}>
+          <View style={{width:'80%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:20, justifyContent:'space-between',flexDirection:'row'}}>
 <View style={{flexDirection:'row',marginLeft:20}}>
 <Image  style={{width: 20, height: 20,marginTop:10}}  source={require("../assets/Searchicon.png")} ></Image> 
 <TextInput
           style={{height: 40,width:100,color:'#ffffff',fontFamily:'Exo2-Regular'}}
        placeholderTextColor='#ffffff'
           placeholder="Quantity"
+          onChangeText={(text) => this.filterSearch(text)}
+           value={this.state.text}
           keyboardType = 'numeric'
           maxLength={10}
         />
+    
 </View>
-        
+          <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',paddingRight:10,marginLeft:-30}}>
+<Image  style={{width: 9, height: 7,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
+<Text style={{color:'#FFFFFF',opacity:1,fontSize:11,fontFamily:'Exo2-Regular'}}>{this.state.mode}</Text>
+  <Picker style={{ position:'absolute', top: 0, width: 1500, height: 1500}}
+        selectedValue={this.state.mode}
+       onValueChange={(itemValue, itemIndex) => this.selectedcoin(itemValue,itemIndex)}>
+       
+       <Picker.Item label="All" value="All" />
+       <Picker.Item label="BTC" value="BTC" />
+       <Picker.Item label="ETH" value="ETH" />
+       {/* <Picker.Item label="Bitwings" value="Bitwings" /> */}
+       </Picker>
+        </View>  
           </View>
           <View style={{width:'50%',borderRadius:25,borderWidth:1,borderColor:'#fff', alignItems:'center',flexDirection:'row',justifyContent:'center',padding:5}}>
 <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center'}}>
@@ -311,47 +327,18 @@ renderScane() {
   <View style={{flex:0.6,marginTop:20}}>
   <ScrollView contentContainerStyle={{paddingBottom: 100}}>
   <View>
-  <FlatList 
-      ItemSeparatorComponent={this.space}
-      data={this.state.dataSource}
-      keyExtractor={(item, index) => item.id}
-          renderItem={({item,separators})=>(
-        
-      <View style={{marginLeft:30,marginRight:30, shadowOffset: { width: 10, height: 10 },
-  borderBottomWidth: 0,
-  borderRadius:25}}>
-  <LinearGradient
-    colors={['#4262B5', '#3A549B','#314279','#2C3765','#2A335E']} style={{ borderRadius:25}}>
-        <View style={{flexDirection:'row',padding:20,justifyContent:'space-between'}}>
-        <View>
-        <View style={{flexDirection:'row'}}>
-     <Text  style={{marginRight:10,marginTop:5,color:"#ABB3D0",fontFamily:'Exo2-Bold',fontSize:11}}>{item.userName}</Text>  
-     <Text  style={{marginRight:10,fontSize:10,color:'#5496FF',fontFamily:'Exo2-Regular'}}>100+</Text>         
-     </View>   
-        </View>
-        <View>
-        <Text  style={{marginRight:10,marginTop:10,marginLeft:10, color:"#ABB3D0",fontFamily:'Exo2-Regular'}}>{item.amountToTrade}</Text> 
-     <Text  style={{marginTop:10,marginLeft:10, color:'#5496FF',fontFamily:'Exo2-Regular',fontSize:10}}>{item.exchangeType}</Text>  
-        </View>
-        <View style={{marginTop:10}}>
-        <TouchableOpacity onPress={()=>this.clickedItemText(item)}>
-     <View>
-     <LinearGradient colors={['#7498F9','#9B89F8','#D476F7']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:7,borderRadius:5,backgroundColor:'green',justifyContent:'center',alignItems:'center'}}>
-
-<Text style={{color:'#fff',fontFamily:'Exo2-Regular'}}>{(this.state.StatusMode==='Request'?'Accept':'Exchange')}</Text>
-</LinearGradient>
-     </View>
-     </TouchableOpacity> 
-     
-        </View>
-          
-        </View>
-</LinearGradient>
-  </View>
- 
-          )
-       }
-    />
+          {
+            this.state.dataSource.length!=0? this.state.dataSource.map((item, key) =>
+              (
+                <Expandable_Admin mode={this.state.mode}  key={item.exchangeDTOList} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
+              )):
+              <View>
+              <View style={{justifyContent:'center',alignItems:'center'}}>
+              <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:15,fontFamily:'Exo2-Regular'}}>No Request Found</Text>
+              </View>
+              </View>
+           
+          }
   </View>
        
      </ScrollView>
@@ -412,6 +399,13 @@ renderScane() {
         
          
       }
+      selectedcoin=(item,index)=>
+      {
+        this.setState({
+          mode:item
+        })
+        this.GetData()
+      }
       successStatus=()=>
     {
       this.setState({visibles:true})
@@ -422,6 +416,36 @@ renderScane() {
       this.setState({visibles:false})
       //this.props.navigation.navigate("ExchangeMenu");
        this.pushNavigate('ExchangeMenu')
+    }
+    update_Layout = (index) => {
+
+      LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+  
+      const array = [...this.state.dataSource];
+  
+      array[index]['expanded'] = !array[index]['expanded'];
+  
+      this.setState(() => {
+        return {
+          dataSource: array
+        }
+      });
+    }
+    filterSearch(text) {
+    
+      const newData = this.state.dataSource.filter((item) => {
+        const itemData = item.amountToTrade
+        return itemData.toString().indexOf(text) > -1
+      });
+      this.setState({
+        text: text,
+        dataSource: newData // after filter we are setting users to new array
+      });
+      if (!text || text === '') {
+        this.setState({
+          dataSource: FinalResult
+        })
+      }
     }
     pushNavigate=(routname)=>
     {
@@ -472,25 +496,13 @@ renderScane() {
         })
         if(item==='Request')
         {
-          this.Load()
-          let UserId=await AsyncStorage.getItem('UserId') 
-          let params=
-          {
-            userId:UserId
-          }
-           ExchangeList(params,ExchangeRequest,this.ExchangeListResponse,this.error,this.NetworkIssue)
-          this.setState({exchangeOrRequest:true})
-          console.log('exchangeOrRequest',this.state.exchangeOrRequest)
-        }else{
-          this.Load()
-          this.setState({exchangeOrRequest:false})
-          let UserId=await AsyncStorage.getItem('UserId') 
-   let params=
-   {
-     userId:UserId
-   }
-    ExchangeList(params,ExchangeRequest,this.ExchangeListResponse,this.error,this.NetworkIssue)
-          console.log('exchangeOrRequest',this.state.exchangeOrRequest)
+         let RequestArray=[]
+         RequestArray=this.search(1,this.state.dataSource)
+         this.setState({dataSource:RequestArray})
+        }
+        else
+        {
+        this.GetData()
         }
       }
 }
