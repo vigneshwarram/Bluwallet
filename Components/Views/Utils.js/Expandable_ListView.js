@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 import {ExchangeList} from '../Api/ExchangeRequest'
+import {BTC_ETH_ADMIN_EXCHANGE,ETH_BTC_ADMIN_EXCHANGE,BITWINGS_ADMIN_EXCHANGE,BTC_ETH_USER_EXCHANGE,ETH_BTC_USER_EXCHANGE,REJECT} from '../Api/RequestUrl'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from './Constant'
 import { Alert, LayoutAnimation, StyleSheet, View, Text, ScrollView, UIManager, TouchableOpacity, Platform, Image,AsyncStorage } from 'react-native';
 let datasource=[1]
@@ -44,23 +45,19 @@ export default class Expandable_ListView extends Component {
     {
       let params;
       let userId =await AsyncStorage.getItem('UserId') 
-      console.log('Expandable list response',data)
-    
-       // Alert.alert('hello')
        if(data!='undefined')
          {
            if(data.exchangeType=='ETH_BTC_USER')
            {
              params=
             {
-             "userId":userId,
-             "etherAmount":data.amountToTrade,
-             "toEthWalletAddress":data.ethWalletAddress,
-             "exchangeReqId":data.id,
-             "exchangeStatus":data.status,
-             
+
+              "userId": userId,
+              "etherAmount": data.amountToTrade,
+              "toEthWalletAddress": data.ethWalletAddress,
+              "exchangeReqId": data.id,
+              "exchangeStatus": data.status        
            }
-           console.log('Expandable list params',params)
            }
            else
            {
@@ -73,24 +70,46 @@ export default class Expandable_ListView extends Component {
              "exchangeStatus":data.status,
              
            }
-           console.log('Expandable list params',params)
-           }
-          console.log(this.props)
+         // console.log('Expandable list params',params)
+          }
+        
           this.props.onLoad()
           if(data.exchangeType ==='ETH_BTC_USER'){
-            ExchangeList('eth_btc/user/exchange',params,this.ExchangeRequestResponse,)
-            console.log('This params',params)
+            ExchangeList(params,ETH_BTC_USER_EXCHANGE,this.ExchangeRequestResponse,this.error,this.NetworkIssue)
           }else{
-            ExchangeList('btc_eth/user/exchange',params,this.ExchangeRequestResponse)
-            console.log('This params',params)
+            ExchangeList(params,BTC_ETH_USER_EXCHANGE,this.ExchangeRequestResponse,this.error,this.NetworkIssue)
           }
            
          }
     }
+    error=(data)=>
+    {
+      Alert.alert('Failure',data)
+    }
+    NetworkIssue=()=>
+    {
+
+    }
+    Accept=(data)=>
+    {
+      this.SelectedExchangeRequest(data)
+    }
+    Reject=(data)=>
+    {
+      console.log(data)
+      let params;    
+      params=
+      {
+        "userId":data.userId.toString(),
+        "declineStatus":"1",
+       "exchangeReqId":data.id.toString(),      
+      }
+      this.props.onLoad()
+      ExchangeList(params,REJECT,this.ExchangeRequestResponse,this.error,this.NetworkIssue)
+    }
     ExchangeRequestResponse=(data)=>
     {
       this.props.onHide()
-      console.log('Request data===>',data)
       //this.props.hide
       if(data!=DataUndefined)
 {
@@ -124,6 +143,7 @@ export default class Expandable_ListView extends Component {
     render() {
        // datasource=this.props.item
         console.log(this.props)
+        var status=(this.props.item.status===0)?'Exchanged':'Exchange'
       return (
         <View>
   
@@ -140,7 +160,9 @@ export default class Expandable_ListView extends Component {
         <View style={{flexDirection:'row',justifyContent:'space-between',padding:15}}>
         <View style={{flexDirection:'row'}}>
         <View style={{alignItems:'center',justifyContent:'center'}} >
-          <Image  style={{width: 30, height: 30,resizeMode:'contain'}}  source={require("../assets/greenD.png")} ></Image>  
+        {this.props.item.status==0?  <Image style={{ width: 50, height: 50,resizeMode:'contain' }} source={require("../assets/redicon.png")} ></Image>:<Image  style={{width: 30, height: 30,resizeMode:'contain'}}  source={require("../assets/greenD.png")} ></Image>  }
+          
+         
           </View>
           <View style={{marginLeft:20,width:100}}>
           <Text  style={{marginRight:20,flexWrap: 'wrap',marginTop:10,color:'#fff',fontFamily:"Exo2-Bold"}}>{this.props.item.userName}</Text>  
@@ -215,14 +237,19 @@ export default class Expandable_ListView extends Component {
 </View>  
 <View></View>
 </View>
-<View style={{justifyContent:'center',alignItems:'center',marginBottom:10,width:"100%",marginTop:30}}>
-<View style={{width:"50%"}}>
-<LinearGradient colors={['#41da9c','#36deaf','#26e3ca']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{width:'100%',padding:12,backgroundColor:'green',justifyContent:'center',alignItems:'center',marginLeft:10,borderRadius:6}}>
-<TouchableOpacity  key={this.props.item} onPress={this.SelectedExchangeRequest.bind(this,this.props.item)}>
-<Text style={{color:'#fff',fontFamily:'Poppins-Medium'}}>Exchange</Text></TouchableOpacity>
+<View style={{justifyContent:'center',alignItems:'center',marginBottom:10,width:"100%",flexDirection:'row',marginTop:10}}>
+<TouchableOpacity onPress={()=>this.Accept(this.props.item)} style={{width:"30%"}}>
+<View >
+<LinearGradient colors={[(status==='Exchanged')?'transparent':'#41da9c',(status==='Exchanged')?'transparent':'#36deaf',(status=='Exchanged')?'transparent':'#26e3ca']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{borderColor:'#26e3ca', width:'100%',padding:12,borderWidth:0.8,justifyContent:'center',alignItems:'center',marginLeft:10,borderRadius:6}}>
+<Text style={{color:(status==='Exchanged')?'#fff':'#fff',fontFamily:'Poppins-Medium'}}>{status}</Text>
 </LinearGradient>
-
 </View>
+</TouchableOpacity>
+{this.props.item.status!==0?<TouchableOpacity onPress={()=>this.Reject(this.props.item)} style={{width:"30%",marginLeft:10}}><View >
+<LinearGradient colors={['#f4347f', '#f85276', '#fe7a6e']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={{ width:'100%',padding:12,justifyContent:'center',alignItems:'center',marginLeft:10,borderRadius:6}}>
+<Text style={{color:(status==='Exchanged')?'#fff':'#fff',fontFamily:'Poppins-Medium'}}>Reject</Text>
+</LinearGradient>
+</View></TouchableOpacity>:null}
 
 </View>
      </View> 

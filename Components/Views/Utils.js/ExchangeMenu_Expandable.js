@@ -65,9 +65,7 @@ export default class ExchangeMenu_Expandable extends Component {
         ? require('../assets/exchange.png')
         : require('../assets/greenD.png');
         var status=(this.props.item.status===0)?'Exchanged':'Exchange'
-        console.log('status',status)
-       // datasource=this.props.item
-        console.log(this.props)
+    
       return (
         <View>
           <TouchableOpacity activeOpacity={0.8} onPress={this.props.onClickFunction} >

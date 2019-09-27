@@ -176,16 +176,18 @@ export default class Expandable_Admin extends Component {
 </View> 
 <View>
 <View style={{justifyContent:'center',alignItems:'center',marginBottom:10,width:"100%",flexDirection:'row'}}>
+<TouchableOpacity>
 <View style={{width:"30%"}}>
 <LinearGradient colors={[(status==='Exchanged')?'transparent':'#41da9c',(status==='Exchanged')?'transparent':'#36deaf',(status=='Exchanged')?'transparent':'#26e3ca']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{borderColor:'#26e3ca', width:'100%',padding:12,borderWidth:0.8,justifyContent:'center',alignItems:'center',marginLeft:10,borderRadius:6}}>
 <Text style={{color:(status==='Exchanged')?'#fff':'#fff',fontFamily:'Poppins-Medium'}}>{status=='Exchanged'?'Exchanged':'Accept'}</Text>
 </LinearGradient>
 </View>
-{this.props.item.status!==0?<View style={{width:"30%",marginLeft:10}}>
-<LinearGradient colors={['red','red','red']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{ width:'100%',padding:12,justifyContent:'center',alignItems:'center',marginLeft:10,borderRadius:6}}>
+</TouchableOpacity>
+{this.props.item.status!==0?<TouchableOpacity><View style={{width:"30%",marginLeft:10}}>
+<LinearGradient  colors={['#f4347f', '#f85276', '#fe7a6e']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={{ width:'100%',padding:12,justifyContent:'center',alignItems:'center',marginLeft:10,borderRadius:6}}>
 <Text style={{color:(status==='Exchanged')?'#fff':'#fff',fontFamily:'Poppins-Medium'}}>Reject</Text>
 </LinearGradient>
-</View>:null}
+</View></TouchableOpacity>:null}
 
 </View>
 

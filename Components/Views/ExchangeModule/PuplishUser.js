@@ -242,11 +242,7 @@ renderScane() {
                 />   
         <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={styles.Maincontainers}>
         <View style={{paddingLeft:20,paddingRight:20}}>
- <Dialog
-  onTouchOutside={() => {
-      this.setState({ visibles: false });
-    }}
-  
+ <Dialog 
     visible={this.state.visibles}>
     <DialogContent>
      <View style={{width:300,height:110,alignItems:'center'}}>
@@ -386,7 +382,7 @@ renderScane() {
       successStatus=()=>
       {
         this.setState({visibles:true})
-        setTimeout(this.nav, 650);
+        setTimeout(()=>this.nav, 650);
       }
       nav=()=>
       {

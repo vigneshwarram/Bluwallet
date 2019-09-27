@@ -11,6 +11,7 @@ import { ExchangeRequest, EXCHANGE_HISTORY_LIST } from '../Api/RequestUrl'
 import ExchangeMenu_Expandable from '../Utils.js/ExchangeMenu_Expandable'
 import { ResponseSuccessStatus, InvalidResponse, DataUndefined, InvalidToken, TokenExpired } from '../Utils.js/Constant'
 let FinalResult=[]
+let roleid;
 export default class ExchangeMenu extends React.Component {
 
   static navigationOptions = {
@@ -102,18 +103,22 @@ export default class ExchangeMenu extends React.Component {
     this.focusListener.remove()
   }
   GetData = async () => {
-    this.Load()
+ 
     let UserId = await AsyncStorage.getItem('UserId')
+     roleid = await AsyncStorage.getItem('roleId')
+     roleid==1?this.setState({'Admin':'user'}):this.setState({'Admin':this.state.Admin})
     console.log(UserId)
     let params =
     {
       cryptoType: this.state.mode,
-      exchangeMode: this.state.ExchangeMode,
+      exchangeMode:  roleid==1?'user':this.state.ExchangeMode,
       userId: UserId
     }
+    this.Load()
     ExchangeList(params, EXCHANGE_HISTORY_LIST, this.ExchangeListResponse, this.error, this.NetworkIssue)
   }
   error = () => {
+    this.hide()
     Alert.alert(error)
   }
   update_Layout = (index) => {
@@ -131,8 +136,8 @@ export default class ExchangeMenu extends React.Component {
     });
   }
   ExchangeListResponse = (data) => {
-    console.log('Exhchange List', data)
-    this.hide()
+   // console.log('Exhchange List', data)
+   
     if (data != DataUndefined) {
       if (data.status === ResponseSuccessStatus) {
         this.setState({ totalresponse: data.fetchExchageRequestDTO.exchangeDTOList })
@@ -158,6 +163,7 @@ export default class ExchangeMenu extends React.Component {
         Alert.alert(InvalidResponse)
       }
     }
+    this.hide()
   }
   dataset = (data) => {
     this.setState({
@@ -276,11 +282,15 @@ export default class ExchangeMenu extends React.Component {
                           { label: "PlatForm", value: "PlatForm" },
                           { label: "Users" },
                         ]}
-                      /> : <Picker style={{ position: 'absolute', top: 0, width: 1000, height: 1000 }}
+                      /> :  roleid==0? <Picker style={{ position: 'absolute', top: 0, width: 1000, height: 1000 }}
                         selectedValue={this.state.Admin}
                         onValueChange={(itemValue, itemIndex) => this.selectedPlatform(itemValue, itemIndex)}>
 
-                          <Picker.Item label="PlatForm" value="PlatForm" />
+                       <Picker.Item label="PlatForm" value="PlatForm" /> 
+                          <Picker.Item label="Users" value="Users" />
+                        </Picker>:<Picker style={{ position: 'absolute', top: 0, width: 1000, height: 1000 }}
+                        selectedValue={this.state.Admin}
+                        onValueChange={(itemValue, itemIndex) => this.selectedPlatform(itemValue, itemIndex)}>
                           <Picker.Item label="Users" value="Users" />
                         </Picker>}
 

@@ -500,7 +500,7 @@ toggleSwitch=(value)=>{
       {
         if(this.state.exchangeTypeMenu!='undefined')
         {         
-            setTimeout(this.navigate, 600)                  
+            setTimeout(()=>this.navigate, 600)                  
         }
         else
         {
