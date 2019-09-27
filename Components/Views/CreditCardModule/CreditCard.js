@@ -182,7 +182,7 @@ export default class CreditCard extends React.Component {
               <View style={{ flex: 0.5 }}>
                 <View>
                   <Animated.View style={{ justifyContent: 'center', alignItems: 'center', opacity: this.AnimateOpacity }}>
-                    <Image style={{ width: 300, height: 300, resizeMode: 'contain' }} source={require("../assets/slogo.png")}>
+                    <Image style={{ width: 200, height: 200, resizeMode: 'contain' }} source={require("../assets/d.png")}>
                     </Image>
                   </Animated.View>
                   <View>
@@ -384,7 +384,7 @@ export default class CreditCard extends React.Component {
         delay: 10,
       }).start();
       Animated.timing(this.AnimateMarginTop, {
-        toValue: -250,
+        toValue: -200,
         duration: 200,
         easing: Easing.inOut(Easing.ease),
         delay: 10,

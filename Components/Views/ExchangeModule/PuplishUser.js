@@ -7,6 +7,7 @@ import * as shape from 'd3-shape'
 import LinearGradient from 'react-native-linear-gradient';
 import BlurOverlay,{closeOverlay,openOverlay} from 'react-native-blur-overlay';
 import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
+import Spinner from 'react-native-loading-spinner-overlay';
 import { ScrollView } from 'react-native-gesture-handler';
 import {ExchangeList} from '../Api/ExchangeRequest'
 import {ExchangeRequest,EXCHANGE_HISTORY_LIST} from '../Api/RequestUrl'
@@ -218,16 +219,6 @@ renderScane() {
           fill={'none'}
       />
   )
-
-   
-  if(this.state.animate){  
-    return <View style={{justifyContent:'center',alignItems:'center',flex:1}}>
-    <ActivityIndicator
-  color = '#1a5fe1'
-  size = "large"
-  style = {styles.activityIndicator}/>
-  </View>
-  }
     return (  
    
       <View style={styles.Maincontainers}>  
@@ -241,6 +232,16 @@ renderScane() {
                     children={(this.state.SuccessPopup)?this.renderScane():null}
                 />   
         <LinearGradient colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={styles.Maincontainers}>
+
+        <Spinner
+            visible={this.state.animate}
+            textContent={'Loading...'}
+            overlayColor='rgba(0,0,0,0.5)'
+            animation='fade'
+            size='large'
+            color='#f4347f'
+            textStyle={styles.spinnerTextStyle}
+          />
         <View style={{paddingLeft:20,paddingRight:20}}>
  <Dialog 
     visible={this.state.visibles}>
@@ -403,7 +404,9 @@ renderScane() {
 
 
 const styles = StyleSheet.create({
- 
+  spinnerTextStyle: {
+    color: '#FFF'
+  },
   Maincontainers: {
     flex: 1,   
     backgroundColor: '#fff',

@@ -46,7 +46,7 @@ let base64Logo = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAA..';
 const horizontalMargin = 20;
 const slideWidth = 280;
 let type = 'ETH';
-let cryptoType = "BTCTEST"
+let cryptoType = "BTC"
 let fetchAmountFlag = 'All'
 let datas=[]
 let  mass=[0,0,0,0,0];
@@ -397,8 +397,9 @@ export default class DashBoard extends React.Component {
     this.setState({ clickopen: false })
   }
   onQR_Code_Scan_Done = (QR_Code) => {
-   console.log('Qr code value',QR_Code)
-    this.setState({ QR_Code_Value: QR_Code, Start_Scanner: false,QrButton: false,QrClick:true});
+   console.log('Qr code click',this.state.QrClick)
+
+    this.setState({ QR_Code_Value: QR_Code, Start_Scanner: false,QrButton: false,QrClick:this.state.QrClick});
     openOverlay()
     this.props.navigation.setParams({ bottombar: false })
  
@@ -714,7 +715,7 @@ export default class DashBoard extends React.Component {
 
 
           </View>
-       
+          <TouchableOpacity onPress={this.Scanner.bind(this)}>
             <View style={{ backgroundColor: '#fff', borderRadius: 15, marginTop: 10, height: 150, }}>
               <View style={{ justifyContent: 'center', alignItems: 'center', paddingTop: 10 }}>
                 <QRCode
@@ -729,7 +730,7 @@ export default class DashBoard extends React.Component {
               </View>
 
             </View>
-        
+      </TouchableOpacity>
 
           <View style={{ backgroundColor: '#fff', borderRadius: 15, marginTop: 10, height: 150, justifyContent: 'center', alignItems: 'center' }}>
 
@@ -1081,7 +1082,7 @@ return(<View >
                       <View style={{ flexDirection: 'row' }}>
                         <Image style={{ marginLeft: 10, width: 30, height: 30, resizeMode: 'contain',tintColor:'#fff' }} source={require("./assets/greenD.png")} ></Image>
                         <View style={{ justifyContent: 'center' }}>
-                            <Text style={{ color: '#fff', fontFamily: 'Exo2-Regular', alignSelf:'flex-start' ,fontSize: 12, marginLeft:10}}>Recieve</Text>
+                            <Text style={{ color: '#fff', fontFamily: 'Exo2-Regular' ,fontSize: 12, marginLeft:10}}>Request</Text>
                           </View>
                       </View>
 
