@@ -117,6 +117,11 @@ export default class Expandable_ListView extends Component {
   {
  // openOverlay()
     this.props.popupShow()
+    setTimeout(function(){
+
+      this.props.hidepopup()
+
+    }.bind(this), 1000);
 // Alert.alert(data.status,data.message)
   }
   else

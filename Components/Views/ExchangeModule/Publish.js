@@ -44,6 +44,7 @@ export default class  Publish  extends React.Component {
       hr:45,
       Ahr:80,
       mode:'All',
+      successstatus:'Success',
       AnimatedWidth:new Animated.Value(50),
       AnimatedHieght:new Animated.Value(45),
       Awr:80,
@@ -221,7 +222,7 @@ renderScane() {
             textStyle={styles.spinnerTextStyle}
           />
         <View style={{paddingLeft:20,paddingRight:20}}>
- <Dialog
+         <Dialog
   onTouchOutside={() => {
       this.setState({ visibles: false });
     }}
@@ -233,11 +234,12 @@ renderScane() {
          <Image style={{width: 50, height: 50,resizeMode:'contain'}}   source={require("../assets/successtik.png")} ></Image>     
          </View>
          <View style={{paddingTop:10,paddingBottom:10}}>
-         <Text style={{fontSize:15,color:'#454976',fontFamily:'Exo2-Regular',textAlign:'center'}}>Your Exchange amount has been sent successfully</Text>           
+         <Text style={{fontSize:15,color:'#454976',fontFamily:'Exo2-Regular',textAlign:'center'}}>{this.state.successstatus}</Text>           
          </View>
      </View>
     </DialogContent>
   </Dialog>
+
  </View>
 
  <ImageBackground source={require('../assets/Group_20501.png')} imageStyle={{resizeMode:'cover',width:'100%',height:'100%'}} style={{opacity:0.9,flex:0.33}}>
@@ -333,7 +335,7 @@ renderScane() {
           {
             this.state.dataSource.length!=0? this.state.dataSource.map((item, key) =>
               (
-                <Expandable_Admin mode={this.state.mode}  popupShow={this.successStatus} onHide={this.hide} onLoad={this.Load}  key={item.exchangeDTOList} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
+                <Expandable_Admin mode={this.state.mode} hidepopup={this.GetData}  popupShow={this.successStatus.bind(this)} onHide={this.hide} onLoad={this.Load}  key={item.exchangeDTOList} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
               )):
               <View>
               <View style={{justifyContent:'center',alignItems:'center'}}>
@@ -409,17 +411,16 @@ renderScane() {
         })
         this.GetData()
       }
-      successStatus=()=>
+      successStatus=(data)=>
     {
-      console.log('its comming success status')
-      this.setState({visibles:true})
-      setTimeout(this.nav.bind(this), 1000);
+      console.log('its comming success status',data)
      
+       this.setState({visibles:true,successstatus:data.message})
+       
     }
     nav=()=>
     {
       this.setState({visibles:false})
-      this.GetData()
     }
     update_Layout = (index) => {
 
@@ -467,7 +468,7 @@ renderScane() {
   {
     if(data.status===ResponseSuccessStatus)
     {
-      this.successStatus()
+      this.successStatus(data)
      //Alert.alert(data.status,data.message)
     }
     else if(data.status==='failure')

@@ -124,12 +124,18 @@ export default class Expandable_Admin extends Component {
   {
     console.log('response---->',data)
  // openOverlay()
-    this.props.popupShow()
-// Alert.alert(data.status,data.message)
+//  this.props.popupShow(data)
+//  setTimeout(this.props.hidepopup(), 1000);
+Alert.alert(
+  data.status,
+  data.message,
+  [  
+    {text: 'OK'},
+  ],
+);
   }
   else
   {
-    //this.props.popupShow()
     Alert.alert(data.status,data.message)
   }
 }
