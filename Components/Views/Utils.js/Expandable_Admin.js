@@ -151,6 +151,8 @@ Alert.alert(
       return false;
     }
     render() {
+      var ExchangeCoin=this.props.item.exchangeType!=null?this.props.item.exchangeType.split('_', 1):null
+      var getAmount=this.props.item.exchangeType!=null?this.props.item.exchangeType.split('_', 2):null
         var icon = (this.props.item.status==0)
         ? require('../assets/exchange.png')
         : require('../assets/greenD.png');
@@ -195,7 +197,7 @@ Alert.alert(
     </View>
     <View style={{justifyContent:'space-between'}}>    
     
-    <Text  style={{marginRight:20,color:'#5496FF',fontFamily:'Exo2-Regular'}}>{this.props.item.transactionFee} {this.props.mode}</Text> 
+    <Text  style={{marginRight:20,color:'#5496FF',fontFamily:'Exo2-Regular'}}>{this.props.mode=='All'?ExchangeCoin:this.props.mode}</Text> 
     </View>
       </View>
       
@@ -233,7 +235,7 @@ Alert.alert(
 </View>  
 
 <View style={{marginRight:20}}>
-<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,fontFamily:'Exo2-Regular',marginBottom:10}}>{this.props.item.amountYouGet}</Text> 
+<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,fontFamily:'Exo2-Regular',marginBottom:10}}>{this.props.item.amountYouGet} {getAmount}</Text> 
 
 </View>  
 
@@ -245,7 +247,7 @@ Alert.alert(
 </View>  
 
 <View style={{marginRight:20}} >
-<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,fontFamily:'Exo2-Regular',marginBottom:10,}}>{this.props.item.amountToTrade}</Text> 
+<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,fontFamily:'Exo2-Regular',marginBottom:10,}}>{this.props.item.amountToTrade} {ExchangeCoin}</Text> 
 
 </View>  
 

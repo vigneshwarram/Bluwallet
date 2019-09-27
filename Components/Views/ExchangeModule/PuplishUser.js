@@ -316,7 +316,7 @@ renderScane() {
        <Picker.Item label="All" value="All" />
        <Picker.Item label="BTC" value="BTC" />
        <Picker.Item label="ETH" value="ETH" />
-       {/* <Picker.Item label="Bitwings" value="Bitwings" /> */}
+       <Picker.Item label="Bitwings" value="BWN" />
        </Picker>
         </View> 
           </View>

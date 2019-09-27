@@ -46,7 +46,7 @@ let base64Logo = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAA..';
 const horizontalMargin = 20;
 const slideWidth = 280;
 let type = 'ETH';
-let cryptoType = "BTC"
+let cryptoType = "ETH"
 let fetchAmountFlag = 'All'
 let datas=[]
 let  mass=[0,0,0,0,0];
@@ -1350,11 +1350,19 @@ return(<View >
 
         }
 
-        else {
+        else if (data.CalculatingAmountDTO.cryptoType === 'BTC') {
           this.setState({
             Usd: data.CalculatingAmountDTO.usdforBtc, Balance: data.CalculatingAmountDTO.btcAmount,
+            currentUsdforEther: data.CalculatingAmountDTO.currentUsdforEther, currentUsdforBtc: data.CalculatingAmountDTO.currentUsdforBtc
           })
 
+        }
+        else
+        {
+          this.setState({
+            Usd: data.CalculatingAmountDTO.usdForBwn, Balance: data.CalculatingAmountDTO.bwnAmount,
+            currentUsdforEther: data.CalculatingAmountDTO.currentUsdforEther, currentUsdforBtc: data.CalculatingAmountDTO.currentUsdforBtc
+          })
         }
         this.GetList()
 
@@ -1380,7 +1388,7 @@ return(<View >
     {
       "userId": userId,
       "fetchAmountFlag": 'All',
-      "cryptoType": type,
+      "cryptoType": cryptoType,
       "flagfordates": this.state.Time
     }
     console.log('Request walletactivity data', params)
@@ -1447,15 +1455,21 @@ return(<View >
     let num = index
     if (num <= 0) {
       type = 'ETH'
-      cryptoType = 'Eth'
+      cryptoType = 'ETH'
       // this.GetList()      
     }
-    else {
+    else if(num==1) {
       type = 'BTC'
       this.setState({ QR_Code_Value: '' })
       cryptoType = 'BTCTEST'
-      type = 'BTCTEST'
+      // type = 'BTCTEST'
       // this.GetList()    
+    }
+    else
+    {
+      type = 'BWN'
+      this.setState({ QR_Code_Value: '' })
+      cryptoType = 'BWN'
     }
     this.GetData()
   }

@@ -13,7 +13,7 @@ export default class Expandable_ListView extends Component {
       super();
     
       this.state = {
-  
+        Updation:false,
         layout_Height: 0,
         userIdLogin:''
   
@@ -21,7 +21,14 @@ export default class Expandable_ListView extends Component {
     }
   
     componentWillReceiveProps(nextProps) {
-      
+      if(this.props.item!=nextProps)
+      {
+        this.setState(() => {
+          return {
+            Updation: true
+          }
+        });
+      }
      
       if (nextProps.item.expanded) {
         this.setState(() => {
@@ -38,7 +45,16 @@ export default class Expandable_ListView extends Component {
         });
       }
     }
-
+    shouldComponentUpdate(nextProps, nextState) {
+      if(this.state.Updation)
+     {
+       return true;
+     }
+     if (this.state.layout_Height !== nextState.layout_Height ) {
+       return true;
+     }
+     return false;
+   }
    
 
     SelectedExchangeRequest=async(data)=>
@@ -115,14 +131,7 @@ export default class Expandable_ListView extends Component {
 {
   if(data.status===ResponseSuccessStatus)
   {
- // openOverlay()
-    this.props.popupShow()
-    setTimeout(function(){
-
-      this.props.hidepopup()
-
-    }.bind(this), 1000);
-// Alert.alert(data.status,data.message)
+    Alert.alert(data.status,data.message)
   }
   else
   {
@@ -131,12 +140,7 @@ export default class Expandable_ListView extends Component {
   }
 }
     }
-    shouldComponentUpdate(nextProps, nextState) {
-      if (this.state.layout_Height !== nextState.layout_Height) {
-        return true;
-      }
-      return false;
-    }
+ 
   
     show_Selected_Category = (item) => {
   
@@ -148,6 +152,7 @@ export default class Expandable_ListView extends Component {
     render() {
        // datasource=this.props.item
         console.log(this.props)
+        var ExchangeCoin=this.props.item.exchangeType!=null?this.props.item.exchangeType.split('_', 1):null
         var status=(this.props.item.status===0)?'Exchanged':'Exchange'
       return (
         <View>
@@ -182,7 +187,7 @@ export default class Expandable_ListView extends Component {
      <Text  style={{color:'#fff',fontFamily:'Exo2-Regular',marginTop:10}}>$ {this.props.item.totalAmount}</Text> 
      </View>   
     <View>
-    <Text  style={{color:'#5496FF',fontFamily:'Exo2-Regular',marginTop:10}}>{this.props.item.amountYouGet}{this.props.mode}</Text>     
+    <Text  style={{color:'#5496FF',fontFamily:'Exo2-Regular',marginTop:10}}>{this.props.mode=='All'?ExchangeCoin:this.props.mode}</Text>     
     </View>
           </View>       
         </View>
@@ -201,7 +206,7 @@ export default class Expandable_ListView extends Component {
 </View>  
 
 <View >
-<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,textAlign:'center',fontFamily:'Exo2-Regular',marginBottom:10}}>{this.props.item.amountToTrade}</Text> 
+<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,textAlign:'center',fontFamily:'Exo2-Regular',marginBottom:10}}>{this.props.item.amountToTrade} {ExchangeCoin}</Text> 
 
 </View>  
 <View></View>
@@ -212,7 +217,7 @@ export default class Expandable_ListView extends Component {
 </View>  
 
 <View >
-<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,textAlign:'center',fontFamily:'Exo2-Regular',marginBottom:10}}>{this.props.item.amountYouGet}</Text> 
+<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,textAlign:'center',fontFamily:'Exo2-Regular',marginBottom:10}}>{this.props.item.amountYouGet} </Text> 
 
 </View>  
 <View></View>
