@@ -139,10 +139,10 @@ search = (status, inputArray) => {
   }
   return SearchArray;
 }
-Load(){
+Load=()=>{
   this.setState({animate:true})
 }
-hide(){
+hide=()=>{
   this.setState({animate:false})
 }
 space(){
@@ -330,7 +330,7 @@ renderScane() {
           {
             this.state.dataSource.length!=0? this.state.dataSource.map((item, key) =>
               (
-                <Expandable_Admin mode={this.state.mode}  key={item.exchangeDTOList} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
+                <Expandable_Admin mode={this.state.mode}  popupShow={this.successStatus} onHide={this.hide} onLoad={this.Load}  key={item.exchangeDTOList} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
               )):
               <View>
               <View style={{justifyContent:'center',alignItems:'center'}}>
@@ -409,7 +409,7 @@ renderScane() {
       successStatus=()=>
     {
       this.setState({visibles:true})
-      setTimeout(this.nav, 650);
+      setTimeout(()=>this.nav, 650);
     }
     nav=()=>
     {

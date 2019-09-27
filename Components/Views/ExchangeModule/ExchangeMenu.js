@@ -7,7 +7,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
 import Spinner from 'react-native-loading-spinner-overlay';
 import { ExchangeList } from '../Api/ExchangeRequest'
-import { ExchangeRequest, EXCHANGE_HISTORY_LIST } from '../Api/RequestUrl'
+import { ExchangeRequest, EXCHANGE_HISTORY_LIST ,TRANSACTION_HISTORY} from '../Api/RequestUrl'
 import ExchangeMenu_Expandable from '../Utils.js/ExchangeMenu_Expandable'
 import { ResponseSuccessStatus, InvalidResponse, DataUndefined, InvalidToken, TokenExpired } from '../Utils.js/Constant'
 let FinalResult=[]
@@ -111,11 +111,11 @@ export default class ExchangeMenu extends React.Component {
     let params =
     {
       cryptoType: this.state.mode,
-      exchangeMode:  roleid==1?'user':this.state.ExchangeMode,
+      // exchangeMode:  roleid==1?'user':this.state.ExchangeMode,
       userId: UserId
     }
     this.Load()
-    ExchangeList(params, EXCHANGE_HISTORY_LIST, this.ExchangeListResponse, this.error, this.NetworkIssue)
+    ExchangeList(params, TRANSACTION_HISTORY, this.ExchangeListResponse, this.error, this.NetworkIssue)
   }
   error = () => {
     this.hide()
@@ -136,7 +136,7 @@ export default class ExchangeMenu extends React.Component {
     });
   }
   ExchangeListResponse = (data) => {
-   // console.log('Exhchange List', data)
+    console.log('Exhchange List', data)
    
     if (data != DataUndefined) {
       if (data.status === ResponseSuccessStatus) {

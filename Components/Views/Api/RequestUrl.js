@@ -17,3 +17,6 @@ export const ETH_BTC_USER_EXCHANGE='eth_btc/user/exchange'
 
 //Reject API
 export const REJECT='decline'
+
+//TRANSACTION HISTORY
+export const TRANSACTION_HISTORY='retrieve/exchange/userid'
