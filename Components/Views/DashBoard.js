@@ -451,12 +451,49 @@ export default class DashBoard extends React.Component {
           }
       }
       this.Load()
-      console.log('send params', params)
+    //  console.log('send params', params)
       SendApi(url, params, this.SendResponse)
     }
 
 
   }
+
+
+
+  SendClickfromchild = async (data) => {
+    console.log('data',data)
+    let url;
+    let params;
+      if (type == 'ETH') {
+        url = 'eth/transfer'
+        params =
+          {
+
+            "etherAmount": this.state.sliderValue,
+            "exchangeStatus": 0,
+            "toEthWalletAddress": this.state.QR_Code_Value,
+            "userId": await AsyncStorage.getItem('UserId')
+          }
+      }
+      else {
+        url = 'btc/transfer'
+        params =
+          {
+
+            "btcAmount": this.state.sliderValue,
+            "exchangeStatus": 0,
+            "toBtcWalletAddress": this.state.QR_Code_Value,
+            "userId": await AsyncStorage.getItem('UserId')
+          }
+      }
+      this.Load()
+     // console.log('send params', params)
+      SendApi(url, params, this.SendResponse)
+    
+
+
+  }
+  
   
   RequestPayment = async () => {
     let id = await AsyncStorage.getItem('UserId')
@@ -468,12 +505,12 @@ export default class DashBoard extends React.Component {
         "toAddress": this.state.QR_Code_Value,
         "userId": id
       }
-    console.log('Request params', params)
+   // console.log('Request params', params)
     RequestPaymentApi(params, this.RequestResponse)
   }
   RequestResponse = (data) => {
     this.hide()
-    console.log('Request response data', data)
+    //console.log('Request response data', data)
     if (data.status === 'success') {
       this.setState({ visibles: true, ResponseStatus: data.message })
       setTimeout(this.PopUp, 700);
@@ -513,7 +550,7 @@ export default class DashBoard extends React.Component {
     else {
       Alert.alert(data.status, data.message)
     }
-    console.log('send response', data)
+  //  console.log('send response', data)
   }
   PopUp = () => {
     closeOverlay()
@@ -630,8 +667,8 @@ export default class DashBoard extends React.Component {
                 minimumTrackTintColor='#F4317F'
               />
               <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 10 }}>
-                <Text style={{ color: '#ABB3D0', fontFamily: 'Exo2-Regular', fontSize: 18, marginTop: 10, marginLeft: 10, marginRight: 10 }}>Speed Fee</Text>
-                <Text style={{ color: '#F4317F', fontSize: 18, marginTop: 10, marginLeft: 10, marginRight: 10 }}>{this.state.sliderValue}ETH</Text>
+                <Text style={{ color: '#ABB3D0', fontFamily: 'Exo2-Regular', fontSize: 18, marginTop: 10, marginLeft: 10, marginRight: 10 }}>Speed Fee :</Text>
+                <Text style={{ color: '#F4317F', fontSize: 18, marginTop: 10, marginLeft: 10, marginRight: 10 }}>{this.state.sliderValue} {(type == 'ETH') ? 'ETH' : "BTC"}</Text>
               </View>
             </View>
 
@@ -785,7 +822,7 @@ export default class DashBoard extends React.Component {
     );
   }
   ChangeText = (UsdAmount) => {
-    console.log('values', UsdAmount)
+ //   console.log('values', UsdAmount)
     if (UsdAmount.includes(',')) {
       Alert.alert('Alert', 'please enter numeric value')
     }
@@ -1266,7 +1303,7 @@ return(<View >
                   <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', padding: 10, backgroundColor: '#2c4b9d', borderRadius: 15 }}>
                     <Image style={{ width: 10, height: 10, tintColor: '#5496FF' }} source={require("./assets/down_arrow.png")} ></Image>
                     <Text style={{ color: '#5496FF', opacity: 1, fontSize: 12, marginLeft: 5, fontFamily: 'Exo2-Bold' }}>{this.state.Time}</Text>
-                    <Picker style={{ position: 'absolute', top: 0, width: 1000, height: 3000 }}
+                    <Picker style={{ position: 'absolute', top: 0, width: 3000, height: 3000 }}
                       selectedValue={this.state.Time}
                       onValueChange={(itemValue, itemIndex) => this.selectedTime(itemValue, itemIndex)}>
 
@@ -1286,7 +1323,7 @@ return(<View >
             this.state.dataSource.map((item, key) =>
               (
               
-                <ExpandabelList hide={this.hide}  key={item.listCalculatingAmountDTO} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
+                <ExpandabelList hide={this.hide} Send={this.SendClickfromchild.bind(this)}  key={item.listCalculatingAmountDTO} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
               ))
           }
                 </View>
@@ -1397,7 +1434,7 @@ return(<View >
   }
   ListData = (data) => {
     this.hide()
-    console.log('Get Activity data', data)
+  //  console.log('Get Activity data', data)
     if (data != 'undefined') {
       if (data.status === ResponseSuccessStatus) {
         let FinalResult=[]
@@ -1406,7 +1443,7 @@ return(<View >
 
           return {...file, expanded: false};
       });
-      console.log('Get Activity new file', newFile)
+    //  console.log('Get Activity new file', newFile)
       this.setState({dataSource: newFile,dates:newFile.listCalculatingAmountDTO });
      let dataarray=[]
      let gpdata=[]
@@ -1427,12 +1464,12 @@ return(<View >
     else
     {
       this.setState({graphshow:'Balance'})
-      console.log(gpdata)
+     // console.log(gpdata)
       mass=gpdata
     }
  
     this.setState({dateU:dataarray,datas:gpdata})
-       console.log('dats',this.state.datas)
+      // console.log('dats',this.state.datas)
       }
       else if (data.error === InvalidToken) {
         Alert.alert(
@@ -1459,6 +1496,7 @@ return(<View >
       // this.GetList()      
     }
     else if(num==1) {
+      console.log('btc=================>',num)
       type = 'BTC'
       this.setState({ QR_Code_Value: '' })
       cryptoType = 'BTCTEST'

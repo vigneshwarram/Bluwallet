@@ -11,7 +11,7 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import { VaultSystemApi, CryptoInvestment, CryptoTypeInvestment } from '../Api/VaultSystemApi'
 import Logo from '../../logo'
 import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
-import {CONVERT_USD,getEqualCryptoValueApi,ExchangeRequestsUrl} from '../Api/RequestUrl'
+import {CONVERT_USD,getEqualCryptoValueApi,ExchangeRequestsUrl,getuserdetails} from '../Api/RequestUrl'
 import {ExchangeList,ExchangeListLocal} from '../Api/ExchangeRequest'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from '../Utils.js/Constant'
 import LinearGradient from 'react-native-linear-gradient';
@@ -85,7 +85,7 @@ export default class  Buy  extends React.Component {
   componentDidMount()
   {
   
-     //this.OnLoad()
+    // this.OnLoad()
     console.log('Exchange view',this.state.exchangeTypeMenu)
     this.GetRoleId()
     
@@ -137,7 +137,7 @@ export default class  Buy  extends React.Component {
 
     }
     this.Load()
-    ExchangeList(params,ExchangeType,this.OnLoadResponse,this.error,this.NetworkIssue)
+    ExchangeList(params,getuserdetails,this.OnLoadResponse,this.error,this.NetworkIssue)
   }
   error=(data)=>
   {
@@ -285,7 +285,7 @@ toggleSwitch=(value)=>{
           <View style={{flexDirection: 'row',marginLeft:20}}>
           <View style={{width:'80%',padding:15,borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:10, justifyContent:"center"}}>
 <View style={{flexDirection:'row',marginLeft:20,justifyContent:'space-between'}}> 
-<View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:30}}>
+<View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:50}}>
         <Text style={{color:'#fff',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.EthAmount}</Text>
         <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
        {this.state.roleid==1 ||this.state.exchangeTypeMenu==='Users'?<Picker style={{ position:'absolute', top: 0, width: 1000, height: 3000}}

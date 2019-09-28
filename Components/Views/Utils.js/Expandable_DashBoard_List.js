@@ -48,9 +48,7 @@ export default class Expandable_DashBoard_List extends Component {
       
     }
 
-   
 
-   
   
     shouldComponentUpdate(nextProps, nextState) {
      
@@ -167,7 +165,18 @@ export default class Expandable_DashBoard_List extends Component {
 </View>
 
 </View> 
+<View>
+<View style={{justifyContent:'center',alignItems:'center',marginBottom:10,width:"100%",flexDirection:'row'}}>
+{this.props.item.transactionType=='Request'?<TouchableOpacity onPress={()=>this.props.Send(this.props.item)} style={{width:"40%",marginLeft:10}}><View >
+<LinearGradient  colors={['#f4347f', '#f85276', '#fe7a6e']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={{ width:'100%',padding:12,justifyContent:'center',alignItems:'center',marginLeft:10,borderRadius:6}}>
+<Text style={{color:'#fff',fontFamily:'Poppins-Medium'}}>Send</Text>
+</LinearGradient>
+</View></TouchableOpacity>:null}
 
+</View>
+
+
+</View>
 
 
    </View>

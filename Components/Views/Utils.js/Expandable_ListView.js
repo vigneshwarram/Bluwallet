@@ -63,7 +63,7 @@ export default class Expandable_ListView extends Component {
       let userId =await AsyncStorage.getItem('UserId') 
        if(data!='undefined')
          {
-           if(data.exchangeType=='ETH_BTC_USER' )
+           if(data.exchangeType ==='ETH_BTC_USER' || data.exchangeType ==='ETH_BTC_ADMIN' )
            {
              params=
             {
@@ -75,7 +75,7 @@ export default class Expandable_ListView extends Component {
               "exchangeStatus": data.status        
            }
            }
-           else if(data.exchangeType=='BTC_ETH_USER')
+           else if(data.exchangeType ==='BTC_ETH_USER' || data.exchangeType ==='BTC_ETH_ADMIN')
            {
             params=
             {
@@ -106,16 +106,16 @@ export default class Expandable_ListView extends Component {
            {
             "userId":userId,
             "exchangeType":data.exchangeType,
-            "toBtcWalletAddress": data.ethWalletAddress,
+            "toBtcWalletAddress": data.btcWalletAddress,
             "exchangeReqId":data.id,
             "exchangeStatus":data.status,
             
           }
          }
           this.props.onLoad()
-          if(data.exchangeType ==='ETH_BTC_USER'){
+          if(data.exchangeType ==='ETH_BTC_USER' || data.exchangeType ==='ETH_BTC_ADMIN'){
             ExchangeList(params,ETH_BTC_USER_EXCHANGE,this.ExchangeRequestResponse,this.error,this.NetworkIssue)
-          }else if(data.exchangeType ==='BTC_ETH_USER')
+          }else if(data.exchangeType ==='BTC_ETH_USER' || data.exchangeType ==='BTC_ETH_ADMIN')
           {
             ExchangeList(params,BTC_ETH_USER_EXCHANGE,this.ExchangeRequestResponse,this.error,this.NetworkIssue)
           }
@@ -132,13 +132,14 @@ export default class Expandable_ListView extends Component {
     }
     error=(data)=>
     {
-      this.props.onHide()
-      Alert.alert(       
-        data,
-        [  
-          {text: 'OK', onPress: () => this.props.refreshList},
-        ],
-      );
+      console.log('data',data)
+      // this.props.onHide()
+      // Alert.alert(       
+      //   data,
+      //   [  
+      //     {text: 'OK', onPress: () => this.props.refreshList},
+      //   ],
+      // );
     }
     NetworkIssue=(data)=>
     {

@@ -31,7 +31,7 @@ export default class VaultFilter extends React.Component {
     this.animatedvalue = new Animated.Value(0);
     this.AnimatedMarginLeft = new Animated.Value(500)
     AnimatedLeftWidth = new Animated.Value(50)
-    AnimatedWidth = new Animated.Value(50),
+    this.AnimatedWidth = new Animated.Value(50),
       AnimatedHieght = new Animated.Value(45),
      this.AnimatedTop=new Animated.Value(20),
       this.AnimatedMarginRight = new Animated.Value(500)
@@ -56,7 +56,6 @@ export default class VaultFilter extends React.Component {
       animate: false,
       Balance: null,
       Usd: null,
-      AnimatedWidth: new Animated.Value(50),
       AnimatedHieght: new Animated.Value(45),
       RightSideWidth: new Animated.Value(50),
       RightsideHeight: new Animated.Value(45),
@@ -337,13 +336,13 @@ export default class VaultFilter extends React.Component {
   pressRight = () => {
 
     Animated.sequence([
-      Animated.timing(AnimatedWidth, {
+      Animated.timing(this.AnimatedWidth, {
         toValue: 150,
         duration: 250,
         easing: Easing.inOut(Easing.ease),
         delay: 10,
       }),
-      Animated.timing(AnimatedWidth, {
+      Animated.timing(this.AnimatedWidth, {
         toValue: 50,
         duration: 250,
         easing: Easing.inOut(Easing.ease),
@@ -429,23 +428,22 @@ export default class VaultFilter extends React.Component {
                 
                 </Animated.View>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={this.pressRight} style={{position: 'absolute', right: 0}} >
-                <Animated.View style={{ height: AnimatedHieght, width: AnimatedWidth,backgroundColor:'#fff', borderTopLeftRadius: 25, borderBottomLeftRadius: 25, marginTop: 10,justifyContent:'center'  }}>
+                <Animated.View style={{ height: 45, width: this.AnimatedWidth, position: 'absolute', right: 0, marginTop: 10, }}>
+                <TouchableOpacity onPress={this.pressRight}>
+                  <View>
+                    <LinearGradient colors={['#fff', '#fff', '#fff']} style={{ justifyContent: 'center', alignItems: 'flex-start', borderTopLeftRadius: 25, borderBottomLeftRadius: 25, paddingTop: 10, paddingBottom: 10 }}>
 
-                    <View>
-                      
-                        <View style={{ flexDirection: 'row' }}>
-                          <Image style={{ marginLeft: 10, width: 30, height: 30, resizeMode: 'contain' }} source={require("../assets/Group_537.png")} ></Image>
-                          <View style={{ justifyContent: 'center', }}>
-                            <Text style={{ color: '#000', fontFamily: 'Exo2-Regular', fontSize: 12, marginLeft: 20 }}>New Vault</Text>
+                      <View style={{ flexDirection: 'row' }}>
+                        <Image style={{ marginLeft: 10, width: 30, height: 30, resizeMode: 'contain', }} source={require("../assets/Group_537.png")} ></Image>
+                        <View style={{ justifyContent: 'center' }}>
+                            <Text style={{ color: '#000', fontFamily: 'Exo2-Regular' ,fontSize: 12, marginLeft:10}}>New Vault</Text>
                           </View>
+                      </View>
 
-                        </View>
-                     
-                    </View>
-               
-                </Animated.View>
+                    </LinearGradient>
+                  </View>
                 </TouchableOpacity>
+              </Animated.View>
               </View>
               <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: "center", marginTop: 15 }}>
                 <Image style={{ width: 20, height: 20, resizeMode: 'contain' }} source={require("../assets/app2.png")} ></Image>

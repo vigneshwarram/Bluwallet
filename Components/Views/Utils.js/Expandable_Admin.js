@@ -265,7 +265,7 @@ Alert.alert(
 </View>  
 
 <View style={{marginRight:20}}>
-<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,fontFamily:'Exo2-Regular',marginBottom:10}}>{this.props.item.amountYouGet} {getAmount}</Text> 
+<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,fontFamily:'Exo2-Regular',marginBottom:10}}>{this.props.item.amountYouGet}</Text> 
 
 </View>  
 
