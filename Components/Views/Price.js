@@ -536,7 +536,7 @@ this.setState({
       {
          mass=[50, 60, 70, 95, 100, 100, 100, 80, 90, 150, 50, 40, 60, 100]
         this.setState({data:mass,BitShadowClick:true,MoneroShadowClick:false,TotalPrice:this.state.usdforBtc,EtheriumShadowClick:false,zShadowClick:false,currency:'BTC'})
-        setTimeout(this.nav, 3000);
+        setTimeout(this.nav, 1500);
       }
       nav=()=>
       {

@@ -20,3 +20,4 @@ export const REJECT='exchange/decline'
 
 //TRANSACTION HISTORY
 export const TRANSACTION_HISTORY='retrieve/exchange/userid'
+

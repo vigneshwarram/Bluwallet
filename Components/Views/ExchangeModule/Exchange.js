@@ -11,12 +11,13 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import { VaultSystemApi, CryptoInvestment, CryptoTypeInvestment } from '../Api/VaultSystemApi'
 import Logo from '../../logo'
 import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
-import {CONVERT_USD,getEqualCryptoValueApi,ExchangeRequestsUrl } from '../Api/RequestUrl'
-import {ExchangeList} from '../Api/ExchangeRequest'
+import {CONVERT_USD,getEqualCryptoValueApi,ExchangeRequestsUrl} from '../Api/RequestUrl'
+import {ExchangeList,ExchangeListLocal} from '../Api/ExchangeRequest'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from '../Utils.js/Constant'
 import LinearGradient from 'react-native-linear-gradient';
 
 let crptoType="eth"
+let roleid;
 let ExchangeType='getuserdetails'
 export default class  Buy  extends React.Component {
 
@@ -38,9 +39,11 @@ export default class  Buy  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       spinner:false,
-      EthAmount:'ETH',
+      EthAmount:'ETH-BTC',
+      coinValue:'ETH',
       ETHAmount:'0',
       BtcAmount:'BTC',
+      roleid:'',
       ethercurrentvalue:null,
       receivedAmount:'0',
       mincomercialValue:null,
@@ -84,16 +87,25 @@ export default class  Buy  extends React.Component {
   
      //this.OnLoad()
     console.log('Exchange view',this.state.exchangeTypeMenu)
+    this.GetRoleId()
     
     
   }
-  BalanceResponse = (data) => {
+  GetRoleId=async()=>
+  {
+    roleid = await AsyncStorage.getItem('roleId')
+    this.setState({roleid:roleid})
+    console.log('role id------>',roleid)
+  }
+  BalanceResponse =async (data) => {
     console.log(data)
+   
+   
     this.hide()
     if (data != 'undefined') {
       if (data.status === ResponseSuccessStatus) {
         if (data.CalculatingAmountDTO.cryptoType === 'ETH'||data.CalculatingAmountDTO.cryptoType === 'eth') {
-         this.setState({amount:data.CalculatingAmountDTO.etherAmount})
+         this.setState({amount:data.CalculatingAmountDTO.cryptoAmount})
 
         }
         else {
@@ -129,6 +141,7 @@ export default class  Buy  extends React.Component {
   }
   error=(data)=>
   {
+    this.hide()
     Alert.alert(data)
   }
   OnLoadResponse=(data)=>
@@ -270,20 +283,28 @@ toggleSwitch=(value)=>{
           </View>      
           <Text style={{fontSize:12,color:'#fff',marginTop:10,fontFamily:'Exo2-Regular'}}>How Much do you want to buy?</Text>           
           <View style={{flexDirection: 'row',marginLeft:20}}>
-          <View style={{width:'40%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:10, justifyContent:"center"}}>
+          <View style={{width:'80%',padding:15,borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:10, justifyContent:"center"}}>
 <View style={{flexDirection:'row',marginLeft:20,justifyContent:'space-between'}}> 
 <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:30}}>
         <Text style={{color:'#fff',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.EthAmount}</Text>
         <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
-        <Picker style={{ position:'absolute', top: 0, width: 1000, height: 3000}}
+       {this.state.roleid==1 ||this.state.exchangeTypeMenu==='Users'?<Picker style={{ position:'absolute', top: 0, width: 1000, height: 3000}}
    selectedValue={this.state.EthAmount}
   //  enabled={false}
   onValueChange={(itemValue, itemIndex) => this.selected1(itemValue,itemIndex)}>
   
-  <Picker.Item label="ETH" value="ETH" />
-  <Picker.Item label="BTC" value="BTC" />
-  <Picker.Item label="Bitwings" value="Bitwings" />
-  </Picker>
+  <Picker.Item label="ETH-BTC" value="ETH-BTC" />
+  <Picker.Item label="BTC-ETH" value="BTC-ETH" />
+  </Picker>:<Picker style={{ position:'absolute', top: 0, width: 1000, height: 3000}}
+   selectedValue={this.state.EthAmount}
+  //  enabled={false}
+  onValueChange={(itemValue, itemIndex) => this.selected1(itemValue,itemIndex)}>
+  
+  <Picker.Item label="ETH-BTC" value="ETH-BTC" />
+  <Picker.Item label="BTC-ETH" value="BTC-ETH" />
+ <Picker.Item label="ETH-BWN" value="ETH-BWN" />
+ <Picker.Item label="BTC-BWN" value="BTC-BWN" />
+  </Picker>} 
         </View>
         <View>
         <View>
@@ -292,28 +313,7 @@ toggleSwitch=(value)=>{
         </View>
 </View>
           </View>
-          <View style={{width:'40%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:10,marginLeft:10, justifyContent:"center",padding:10}}>
-<View style={{flexDirection:'row',marginLeft:20,justifyContent:'space-between'}}>
-
-<View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:30}}>
-        <Text style={{color:'#fff',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.BtcAmount}</Text>
-        {/* <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image>  */}
-        <Picker style={{ position:'absolute', top: 0, width: 1000, height: 3000}}
-   selectedValue={this.state.BtcAmount}
-     enabled={false}
-  onValueChange={(itemValue, itemIndex) => this.selected2(itemValue,itemIndex)}>
-    <Picker.Item label="BTC" value="BTC" />
-    <Picker.Item label="ETH" value="ETH" />
-    <Picker.Item label="Bitwings" value="Bitwings" />
-
-  </Picker>
-        </View>
-<View>
-{/* <Text style={{color:'#fff',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.secondExchangeValue}</Text> */}
-</View>
-
-</View>
-          </View>
+        
     
      </View>            
           </View>
@@ -348,7 +348,7 @@ toggleSwitch=(value)=>{
 
 </View> 
 <View style={{justifyContent:'center',alignItems:'center'}}>
-<Text style={{color:'#fff',fontSize:20,fontFamily:'Exo2-Regular'}}>{this.state.FinalValue} {this.state.ExchangeCoin}</Text>
+<Text style={{color:'#fff',fontSize:20,fontFamily:'Exo2-Regular'}}>{this.state.FinalValue} {this.state.coinValue}</Text>
 </View>
   
 <View
@@ -535,106 +535,127 @@ toggleSwitch=(value)=>{
         
       }
       selected1=(item,itemIndex)=>{
-        if(item=='ETH'){
-          this.setState({
-            BtcAmount:'BTC',
-           
-          })
-        //  crptoType='eth'
-        }
-        else
-        {
-          this.setState({
-            BtcAmount:'ETH',
-          
-          })
-        //  crptoType='BTC'
-        }
         this.setState({
           EthAmount:item,
-          ExchangeCoin:item
+          coinValue:item!=null?item.split('-',1):null,
+          ExchangeCoin:item!=null?item.split('-',1):null,
         })
       
         this.usdConvert(this.state.usdforEther)
       }
-      selected2=(item,itemIndex)=>{
-        if(item=='ETH'){
-          this.setState({
-            EthAmount:'BTC',
-          })
-        }
-        else
-        
-        {
-          this.setState({
-            EthAmount:'ETH',
-        
-          })
-        }
-        this.setState({
-          BtcAmount:item
-        })
-      }
       exchangeApi=async()=>
     {
       console.log('this.state.exchangeTypeMenu--->',this.state.exchangeTypeMenu)
-      if(this.state.exchangeTypeMenu ==='PlatForm')
+      console.log('Value',this.state.usdforEther)
+
+      if(this.state.usdforEther===0)
       {
-        if(this.state.EthAmount === 'ETH')
-        {
-            let params=
-        {
-          userId:await AsyncStorage.getItem('UserId') ,
-          exchangeMode:'ETH_BTC_ADMIN',
-          amountToTrade:this.state.FinalValue
-   
-        }
-        console.log('Request data.===>', params, this.state.FinalValue)
-        this.Load()   
-        ExchangeList(params,ExchangeRequestsUrl,this.onExchangeResponse,this.error,this.NetworkIssue)
-        }else
-        {
-  
-          let params=
-        {
-          userId:await AsyncStorage.getItem('UserId') ,
-          exchangeMode:'BTC_ETH_ADMIN',
-          amountToTrade:this.state.FinalValue
-   
-        }
-        console.log('Request data.===>', params, this.state.usdforEther)
-        this.Load()   
-        ExchangeList(params,ExchangeRequestsUrl,this.onExchangeResponse,this.error,this.NetworkIssue)
-        }
-    
-      }else{
-        if(this.state.EthAmount === 'ETH')
-        {
-            let params=
-        {
-          userId:await AsyncStorage.getItem('UserId') ,
-          exchangeMode:'ETH_BTC_USER',
-          amountToTrade:this.state.FinalValue
-   
-        }
-        console.log('Request data.===>', params, this.state.usdforEther)
-        this.Load()   
-        ExchangeList(params,ExchangeRequestsUrl,this.onExchangeResponse,this.error,this.NetworkIssue)
-        }else
-        {
-  
-          let params=
-        {
-          userId:await AsyncStorage.getItem('UserId') ,
-          exchangeMode:'BTC_ETH_USER',
-          amountToTrade:this.state.FinalValue
-   
-        }
-        console.log('Request data.===>', params, this.state.usdforEther)
-        this.Load()   
-        ExchangeList(params,ExchangeRequestsUrl,this.onExchangeResponse,this.error,this.NetworkIssue)
-        }
+        Alert.alert('Alert','Exchange Value cannot be zero')
       }
+      else
+      {
+        if(this.state.exchangeTypeMenu ==='PlatForm')
+        {
+          if(this.state.EthAmount === 'ETH-BTC')
+          {
+              let params=
+          {
+            userId:await AsyncStorage.getItem('UserId') ,
+            exchangeMode:'ETH_BTC_ADMIN',
+            amountToTrade:this.state.FinalValue
+     
+          }
+          console.log('Request data.===>', params, this.state.FinalValue)
+          this.Load()   
+          ExchangeList(params,ExchangeRequestsUrl,this.onExchangeResponse,this.error,this.NetworkIssue)
+          }
+          else if(this.state.EthAmount === 'BTC-ETH')
+          {
+    
+            let params=
+          {
+            userId:await AsyncStorage.getItem('UserId') ,
+            exchangeMode:'BTC_ETH_ADMIN',
+            amountToTrade:this.state.FinalValue
+     
+          }
+          console.log('Request data.===>', params, this.state.usdforEther)
+          this.Load()   
+          ExchangeList(params,ExchangeRequestsUrl,this.onExchangeResponse,this.error,this.NetworkIssue)
+          }
+          else if(this.state.EthAmount === 'ETH-BWN')
+          {
+            {
+    
+              let params=
+            {
+              userId:await AsyncStorage.getItem('UserId') ,
+              exchangeMode:'ETH_BWN_ADMIN',
+              amountToTrade:this.state.FinalValue
+       
+            }
+            console.log('Request data.===>', params, this.state.usdforEther)
+            this.Load()   
+            //Local API for Bitwings
+      
+            ExchangeList(params,ExchangeRequestsUrl,this.onExchangeResponse,this.error,this.NetworkIssue)
+            }
+          }
+          else if(this.state.EthAmount === 'BTC-BWN')
+          {
+            {
+    
+              let params=
+            {
+              userId:await AsyncStorage.getItem('UserId') ,
+              exchangeMode:'BTC_BWN_ADMIN',
+              amountToTrade:this.state.FinalValue
+       
+            }
+            console.log('Request data.===>', params, this.state.usdforEther)
+            this.Load()   
+         
+            ExchangeList(params,ExchangeRequestsUrl,this.onExchangeResponse,this.error,this.NetworkIssue)
+            }
+          }
+        }
+        
+        //user-user and admin - user part
+        else
+       
+        {
+          if(this.state.EthAmount === 'ETH-BTC')
+          {
+              let params=
+          {
+            userId:await AsyncStorage.getItem('UserId') ,
+            exchangeMode:'ETH_BTC_USER',
+            amountToTrade:this.state.FinalValue
+     
+          }
+          console.log('Request data.===>', params, this.state.usdforEther)
+          this.Load()   
+          ExchangeList(params,ExchangeRequestsUrl,this.onExchangeResponse,this.error,this.NetworkIssue)
+          }else if(this.state.EthAmount === 'BTC-ETH')
+          {
+    
+            let params=
+          {
+            userId:await AsyncStorage.getItem('UserId') ,
+            exchangeMode:'BTC_ETH_USER',
+            amountToTrade:this.state.FinalValue
+     
+          }
+          console.log('Request data.===>', params, this.state.usdforEther)
+          this.Load()   
+          ExchangeList(params,ExchangeRequestsUrl,this.onExchangeResponse,this.error,this.NetworkIssue)
+          }
+       
+      }
+      //user-admin part
+     
+      }
+      
         
     }
 
@@ -690,6 +711,7 @@ toggleSwitch=(value)=>{
     }
     onExchangeResponse=(data)=>
     {
+       console.log('response',data)   
       this.hide()
       if(data!=DataUndefined)
      {
@@ -758,6 +780,7 @@ toggleSwitch=(value)=>{
     {
     if(data!=DataUndefined)
     {
+      console.log('coins',this.state.ExchangeCoin)
       if(data.status===ResponseSuccessStatus)
       {
                   

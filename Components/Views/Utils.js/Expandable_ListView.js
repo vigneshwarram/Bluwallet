@@ -63,7 +63,7 @@ export default class Expandable_ListView extends Component {
       let userId =await AsyncStorage.getItem('UserId') 
        if(data!='undefined')
          {
-           if(data.exchangeType=='ETH_BTC_USER')
+           if(data.exchangeType=='ETH_BTC_USER' )
            {
              params=
             {
@@ -75,7 +75,7 @@ export default class Expandable_ListView extends Component {
               "exchangeStatus": data.status        
            }
            }
-           else
+           else if(data.exchangeType=='BTC_ETH_USER')
            {
             params=
             {
@@ -88,23 +88,56 @@ export default class Expandable_ListView extends Component {
            }
          // console.log('Expandable list params',params)
           }
-        
+          else if(data.exchangeType=='ETH_BWN_ADMIN')
+          {
+           params=
+           {
+            "userId":userId,
+            "exchangeType":data.exchangeType,
+            "toEthWalletAddress": data.ethWalletAddress,
+            "exchangeReqId":data.id,
+            "exchangeStatus":data.status,
+            
+          }
+         }
+         else if(data.exchangeType=='BTC_BWN_ADMIN')
+          {
+           params=
+           {
+            "userId":userId,
+            "exchangeType":data.exchangeType,
+            "toBtcWalletAddress": data.ethWalletAddress,
+            "exchangeReqId":data.id,
+            "exchangeStatus":data.status,
+            
+          }
+         }
           this.props.onLoad()
           if(data.exchangeType ==='ETH_BTC_USER'){
             ExchangeList(params,ETH_BTC_USER_EXCHANGE,this.ExchangeRequestResponse,this.error,this.NetworkIssue)
-          }else{
+          }else if(data.exchangeType ==='BTC_ETH_USER')
+          {
             ExchangeList(params,BTC_ETH_USER_EXCHANGE,this.ExchangeRequestResponse,this.error,this.NetworkIssue)
+          }
+          else if(data.exchangeType ==='ETH_BWN_ADMIN'){
+            ExchangeList(params,BITWINGS_ADMIN_EXCHANGE,this.ExchangeRequestResponse,this.error,this.NetworkIssue)
+          }
+          else if(data.exchangeType ==='BTC_BWN_ADMIN'){
+            console.log('Params',params)
+            ExchangeList(params,BITWINGS_ADMIN_EXCHANGE,this.ExchangeRequestResponse,this.error,this.NetworkIssue)
           }
            
          }
     }
     error=(data)=>
     {
+      this.props.onHide()
       Alert.alert('Failure',data)
     }
-    NetworkIssue=()=>
+    NetworkIssue=(data)=>
     {
-
+      this.props.onHide()
+      Alert.alert('Failure',data)
     }
     Accept=(data)=>
     {
@@ -150,8 +183,7 @@ export default class Expandable_ListView extends Component {
     }
   
     render() {
-       // datasource=this.props.item
-        console.log(this.props)
+      
         var ExchangeCoin=this.props.item.exchangeType!=null?this.props.item.exchangeType.split('_', 1):null
         var status=(this.props.item.status===0)?'Exchanged':'Exchange'
       return (

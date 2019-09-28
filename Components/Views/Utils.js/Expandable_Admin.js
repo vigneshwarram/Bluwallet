@@ -58,7 +58,7 @@ export default class Expandable_Admin extends Component {
       let userId =await AsyncStorage.getItem('UserId') 
        if(data!='undefined')
          {
-           if(data.exchangeType=='ETH_BTC_USER')
+           if(data.exchangeType=='ETH_BTC_USER' || data.exchangeType=='ETH_BTC_ADMIN')
            {
              params=
             {
@@ -70,7 +70,7 @@ export default class Expandable_Admin extends Component {
               "exchangeStatus": data.status        
            }
            }
-           else
+           else if(data.exchangeType=='BTC_ETH_USER'  || data.exchangeType=='BTC_ETH_ADMIN')
            {
             params=
             {
@@ -83,14 +83,31 @@ export default class Expandable_Admin extends Component {
            }
          // console.log('Expandable list params',params)
           }
-        
-          this.props.onLoad()
+          else
+          {
+           params=
+           {
+            "userId":userId,
+            "exchangeType":data.exchangeType,
+            "toEthWalletAddress": data.ethWalletAddress,
+            "exchangeReqId":data.id,
+            "exchangeStatus":data.status,
+            
+          }
+         }
+     
+      this.props.onLoad()
           if(data.exchangeType ==='ETH_BTC_USER'){
             ExchangeList(params,ETH_BTC_ADMIN_EXCHANGE,this.ExchangeRequestResponse,this.error,this.NetworkIssue)
-          }else{
+          }else if(data.exchangeType ==='BTC_ETH_USER'){
             ExchangeList(params,BTC_ETH_ADMIN_EXCHANGE,this.ExchangeRequestResponse,this.error,this.NetworkIssue)
           }
-           
+          // else if(data.exchangeType ==='ETH_BWN_ADMIN'){
+          //   ExchangeList(params,BITWINGS_ADMIN_EXCHANGE,this.ExchangeRequestResponse,this.error,this.NetworkIssue)
+          // }
+          // else if(data.exchangeType ==='BTC_BWN_ADMIN'){
+          //   ExchangeList(params,BITWINGS_ADMIN_EXCHANGE,this.ExchangeRequestResponse,this.error,this.NetworkIssue)
+          // }
          }
     }
     error=(data)=>
@@ -268,7 +285,7 @@ Alert.alert(
 </View> 
 <View>
 <View style={{justifyContent:'center',alignItems:'center',marginBottom:10,width:"100%",flexDirection:'row'}}>
-<TouchableOpacity  onPress={()=>this.Accept(this.props.item)} style={{width:"30%"}}>
+<TouchableOpacity disabled={status!=='Exchanged'?false:true} onPress={()=>this.Accept(this.props.item)} style={{width:"30%"}}>
 <View >
 <LinearGradient colors={[(status==='Exchanged')?'transparent':'#41da9c',(status==='Exchanged')?'transparent':'#36deaf',(status=='Exchanged')?'transparent':'#26e3ca']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{borderColor:'#26e3ca', width:'100%',padding:12,borderWidth:0.8,justifyContent:'center',alignItems:'center',marginLeft:10,borderRadius:6}}>
 <Text style={{color:(status==='Exchanged')?'#fff':'#fff',fontFamily:'Poppins-Medium'}}>{status=='Exchanged'?'Exchanged':'Accept'}</Text>

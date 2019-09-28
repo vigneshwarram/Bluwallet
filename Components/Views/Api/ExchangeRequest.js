@@ -32,5 +32,3 @@ export const ExchangeList=async(params,RequestUrl,FetchExchangedata,errors,Inter
     }
 })  
 }
-
-

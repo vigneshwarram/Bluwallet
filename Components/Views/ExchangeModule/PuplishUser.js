@@ -257,7 +257,7 @@ renderScane() {
     </DialogContent>
   </Dialog>
  </View>
- <ImageBackground source={require('../assets/Group_20501.png')} imageStyle={{resizeMode:'cover',width:'100%',height:'100%'}} style={{opacity:0.9,flex:0.33}}>
+ <ImageBackground source={require('../assets/Group_20501.png')} imageStyle={{resizeMode:'cover',width:'100%',height:'100%'}} style={{opacity:0.9,flex:0.33,zIndex:1}}>
  <View style={{position:'absolute',bottom:-10,left:0,right:0,justifyContent:'center',alignItems:"center"}}>
     <TouchableOpacity onPress={this.ExchangeLogic}> 
     <View>
