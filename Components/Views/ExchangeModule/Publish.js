@@ -335,7 +335,7 @@ renderScane() {
           {
             this.state.dataSource.length!=0? this.state.dataSource.map((item, key) =>
               (
-                <Expandable_Admin mode={this.state.mode} hidepopup={this.GetData}  popupShow={this.successStatus.bind(this)} onHide={this.hide} onLoad={this.Load}  key={item.exchangeDTOList} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
+                <Expandable_Admin refreshList={this.GetData} mode={this.state.mode}   popupShow={this.successStatus.bind(this)} onHide={this.hide} onLoad={this.Load}  key={item.exchangeDTOList} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
               )):
               <View>
               <View style={{justifyContent:'center',alignItems:'center'}}>

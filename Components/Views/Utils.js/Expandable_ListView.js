@@ -120,6 +120,7 @@ export default class Expandable_ListView extends Component {
             ExchangeList(params,BTC_ETH_USER_EXCHANGE,this.ExchangeRequestResponse,this.error,this.NetworkIssue)
           }
           else if(data.exchangeType ==='ETH_BWN_ADMIN'){
+            console.log('Params',params)
             ExchangeList(params,BITWINGS_ADMIN_EXCHANGE,this.ExchangeRequestResponse,this.error,this.NetworkIssue)
           }
           else if(data.exchangeType ==='BTC_BWN_ADMIN'){
@@ -132,12 +133,22 @@ export default class Expandable_ListView extends Component {
     error=(data)=>
     {
       this.props.onHide()
-      Alert.alert('Failure',data)
+      Alert.alert(       
+        data,
+        [  
+          {text: 'OK', onPress: () => this.props.refreshList},
+        ],
+      );
     }
     NetworkIssue=(data)=>
     {
       this.props.onHide()
-      Alert.alert('Failure',data)
+      Alert.alert(
+        data,
+        [  
+          {text: 'OK', onPress: () => this.props.refreshList},
+        ],
+      );
     }
     Accept=(data)=>
     {
@@ -164,12 +175,24 @@ export default class Expandable_ListView extends Component {
 {
   if(data.status===ResponseSuccessStatus)
   {
-    Alert.alert(data.status,data.message)
+    Alert.alert(
+      data.status,
+      data.message,
+      [  
+        {text: 'OK', onPress: () => this.props.refreshList},
+      ],
+    );
   }
   else
   {
     //this.props.popupShow()
-    Alert.alert(data.status,data.message)
+    Alert.alert(
+      data.status,
+      data.message,
+      [  
+        {text: 'OK', onPress: () => this.props.refreshList},
+      ],
+    );
   }
 }
     }

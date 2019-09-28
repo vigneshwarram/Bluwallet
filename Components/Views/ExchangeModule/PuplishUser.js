@@ -330,7 +330,7 @@ renderScane() {
           {
             this.state.dataSource.length!=0?this.state.dataSource.map((item, key) =>
               (
-                <Expandable_ListView  mode={this.state.mode} popupShow={this.successStatus} onHide={this.hide} onLoad={this.Load} key={item.exchangeDTOList} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
+                <Expandable_ListView refreshList={this.GetData}  mode={this.state.mode} popupShow={this.successStatus} onHide={this.hide} onLoad={this.Load} key={item.exchangeDTOList} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
               )):<View>
               <View style={{justifyContent:'center',alignItems:'center'}}>
               <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:15,fontFamily:'Exo2-Regular'}}>No Request Found</Text>

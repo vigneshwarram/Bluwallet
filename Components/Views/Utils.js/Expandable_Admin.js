@@ -112,7 +112,14 @@ export default class Expandable_Admin extends Component {
     }
     error=(data)=>
     {
-      Alert.alert('Failure',data)
+      
+      Alert.alert(
+        data.status,
+        data.message,
+        [  
+          {text: 'OK', onPress: () => this.props.refreshList},
+        ],
+      );
     }
     NetworkIssue=()=>
     {
@@ -147,13 +154,19 @@ Alert.alert(
   data.status,
   data.message,
   [  
-    {text: 'OK'},
+    {text: 'OK', onPress: () => this.props.refreshList},
   ],
 );
   }
   else
   {
-    Alert.alert(data.status,data.message)
+    Alert.alert(
+      data.status,
+      data.message,
+      [  
+        {text: 'OK', onPress: () => this.props.refreshList},
+      ],
+    );
   }
 }
     }
