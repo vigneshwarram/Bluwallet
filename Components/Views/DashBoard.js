@@ -439,7 +439,7 @@ export default class DashBoard extends React.Component {
             "userId": await AsyncStorage.getItem('UserId')
           }
       }
-      else {
+      if(type == 'BTC') {
         url = 'btc/transfer'
         params =
           {
@@ -447,6 +447,17 @@ export default class DashBoard extends React.Component {
             "btcAmount": this.state.sliderValue,
             "exchangeStatus": 0,
             "toBtcWalletAddress": this.state.QR_Code_Value,
+            "userId": await AsyncStorage.getItem('UserId')
+          }
+      }
+     else if (type == 'BWN') {
+        url = 'eth/transfer'
+        params =
+          {
+
+            "etherAmount": this.state.sliderValue,
+            "exchangeStatus": 0,
+            "toEthWalletAddress": this.state.QR_Code_Value,
             "userId": await AsyncStorage.getItem('UserId')
           }
       }
@@ -460,7 +471,7 @@ export default class DashBoard extends React.Component {
 
 
 
-  SendClickfromchild = async (data) => {
+  SendClickfromchild = async (data,type) => {
     console.log('data',data)
     let url;
     let params;
@@ -469,25 +480,39 @@ export default class DashBoard extends React.Component {
         params =
           {
 
-            "etherAmount": this.state.sliderValue,
-            "exchangeStatus": 0,
-            "toEthWalletAddress": this.state.QR_Code_Value,
+            "etherAmount": data.amount,
+            "exchangeStatus": data.status,
+             "requestId":data.requestId,
+            "toEthWalletAddress": data.toWalletAddress,
             "userId": await AsyncStorage.getItem('UserId')
           }
       }
-      else {
+      else if(type == 'BTC') {
         url = 'btc/transfer'
         params =
           {
 
-            "btcAmount": this.state.sliderValue,
-            "exchangeStatus": 0,
-            "toBtcWalletAddress": this.state.QR_Code_Value,
+            "btcAmount":data.amount,
+            "exchangeStatus":  data.status,
+            "toBtcWalletAddress": data.toWalletAddress,
+            "requestId":data.requestId,
+            "userId": await AsyncStorage.getItem('UserId')
+          }
+      }
+     else if (type == 'BWN') {
+        url = 'bwn/transfer'
+        params =
+          {
+
+            "etherAmount": data.amount,
+            "exchangeStatus": data.status,
+            "toEthWalletAddress": data.toWalletAddress,
+            "requestId":data.requestId,
             "userId": await AsyncStorage.getItem('UserId')
           }
       }
       this.Load()
-     // console.log('send params', params)
+      console.log('send params', params)
       SendApi(url, params, this.SendResponse)
     
 
@@ -558,6 +583,19 @@ export default class DashBoard extends React.Component {
     this.props.navigation.setParams({ bottombar: true })
   }
   renderScane() {
+    let coins=type;
+    if(type==='ETH')
+    {
+      coins='ETH'
+    }
+    else if(type==='BTC')
+    {
+      coins='BTC'
+    }
+    else
+    {
+      coins='BWN'
+    }
     return (
       <Animated.View style={{ flex: 1, width: '100%', transform: [{ scale: this.springValue }] }}>
 
@@ -668,7 +706,7 @@ export default class DashBoard extends React.Component {
               />
               <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 10 }}>
                 <Text style={{ color: '#ABB3D0', fontFamily: 'Exo2-Regular', fontSize: 18, marginTop: 10, marginLeft: 10, marginRight: 10 }}>Speed Fee :</Text>
-                <Text style={{ color: '#F4317F', fontSize: 18, marginTop: 10, marginLeft: 10, marginRight: 10 }}>{this.state.sliderValue} {(type == 'ETH') ? 'ETH' : "BTC"}</Text>
+                <Text style={{ color: '#F4317F', fontSize: 18, marginTop: 10, marginLeft: 10, marginRight: 10 }}>{this.state.sliderValue} {coins}</Text>
               </View>
             </View>
 
@@ -687,7 +725,7 @@ export default class DashBoard extends React.Component {
               </View>
               <View style={{ backgroundColor: '#fff', borderRadius: 15, marginTop: 25, height: 40, width: '40%', justifyContent: 'center' }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 20, paddingRight: 20 }}>
-                  <Text style={{ color: '#000', fontSize: 15, marginLeft: 10 }}>{(type == 'ETH') ? 'ETH' : "BTC"}</Text>
+                  <Text style={{ color: '#000', fontSize: 15, marginLeft: 10 }}>{coins}</Text>
                   <Text style={{ color: '#000', fontSize: 15, marginLeft: 10 }}>{this.state.sliderValue}</Text>
                 </View>
 
@@ -700,6 +738,19 @@ export default class DashBoard extends React.Component {
     );
   }
   renderQrCode() {
+    let coins=type;
+    if(type==='ETH')
+    {
+      coins='ETH'
+    }
+    else if(type==='BTC')
+    {
+      coins='BTC'
+    }
+    else
+    {
+      coins='BWN'
+    }
     return (
       <Animated.View style={{ flex: 1, width: '100%', transform: [{ scale: this.springValue }] }}>
         <Animated.View style={{ height: 45, width: this.AnimatedLeftWidth, position: 'absolute', left: 0, marginTop: 10, }}>
@@ -783,7 +834,7 @@ export default class DashBoard extends React.Component {
               </TouchableOpacity>
             </View>
             <View style={{ width: '80%', height: 40, borderWidth: 1, borderColor: '#4D90E9', borderRadius: 5, justifyContent: 'center', alignItems: 'center', marginTop: 10, padding: 10 }}>
-              <Text style={{ color: '#464651', fontFamily: 'Poppins-Regular', textAlign: 'center', fontSize: 8 }}>{(type == 'ETH') ? this.state.EtherWalletAddress : this.state.BtcWalletAddress}</Text>
+              <Text style={{ color: '#464651', fontFamily: 'Poppins-Regular', textAlign: 'center', fontSize: 8 }}>{(type == 'BTC') ? this.state.BtcWalletAddress : this.state.EtherWalletAddress}</Text>
             </View>
 
           </View>
@@ -809,7 +860,7 @@ export default class DashBoard extends React.Component {
               </View>
               <View style={{ backgroundColor: '#fff', borderRadius: 15, marginTop: 25, height: 40, width: '40%', justifyContent: 'center' }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 20, paddingRight: 20 }}>
-                  <Text style={{ color: '#000', fontSize: 15, marginLeft: 10 }}>{(type == 'ETH') ? 'ETH' : "BTC"}</Text>
+                  <Text style={{ color: '#000', fontSize: 15, marginLeft: 10 }}>{coins}</Text>
                   <Text style={{ color: '#000', fontSize: 15, marginLeft: 10 }}>{this.state.sliderValue}</Text>
                 </View>
 
@@ -1320,11 +1371,15 @@ return(<View >
                 </View>
                 <View style={{ flex: 1,marginTop:10 }}>
                 {
-            this.state.dataSource.map((item, key) =>
+                  this.state.dataSource.length!=0?this.state.dataSource.map((item, key) =>
               (
               
-                <ExpandabelList hide={this.hide} Send={this.SendClickfromchild.bind(this)}  key={item.listCalculatingAmountDTO} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
-              ))
+                <ExpandabelList type={type}  hide={this.hide} Send={this.SendClickfromchild.bind(this)}  key={item.listCalculatingAmountDTO} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
+              )): <View>
+              <View style={{justifyContent:'center',alignItems:'center'}}>
+              <Text style={{color:'#ABB3D0',fontWeight:'bold',opacity:1,fontSize:15,fontFamily:'Exo2-Regular'}}>No Data Found</Text>
+              </View>
+              </View>
           }
                 </View>
 
@@ -1425,7 +1480,7 @@ return(<View >
     {
       "userId": userId,
       "fetchAmountFlag": 'All',
-      "cryptoType": cryptoType,
+      "cryptoType": type,
       "flagfordates": this.state.Time
     }
     console.log('Request walletactivity data', params)

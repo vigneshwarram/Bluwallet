@@ -133,13 +133,13 @@ export default class Expandable_ListView extends Component {
     error=(data)=>
     {
       console.log('data',data)
-      // this.props.onHide()
-      // Alert.alert(       
-      //   data,
-      //   [  
-      //     {text: 'OK', onPress: () => this.props.refreshList},
-      //   ],
-      // );
+      this.props.onHide()
+      Alert.alert(       
+        data,
+        [  
+          {text: 'OK', onPress: () => this.props.refreshList()},
+        ],
+      );
     }
     NetworkIssue=(data)=>
     {
@@ -147,13 +147,14 @@ export default class Expandable_ListView extends Component {
       Alert.alert(
         data,
         [  
-          {text: 'OK', onPress: () => this.props.refreshList},
+          {text: 'OK', onPress: () => this.props.refreshList()},
         ],
       );
     }
     Accept=(data)=>
     {
-      this.SelectedExchangeRequest(data)
+  
+       this.SelectedExchangeRequest(data)
     }
     Reject=(data)=>
     {
@@ -180,7 +181,7 @@ export default class Expandable_ListView extends Component {
       data.status,
       data.message,
       [  
-        {text: 'OK', onPress: () => this.props.refreshList},
+        {text: 'OK', onPress: () => this.props.refreshList()},
       ],
     );
   }
@@ -191,7 +192,7 @@ export default class Expandable_ListView extends Component {
       data.status,
       data.message,
       [  
-        {text: 'OK', onPress: () => this.props.refreshList},
+        {text: 'OK', onPress: () => this.props.refreshList()},
       ],
     );
   }

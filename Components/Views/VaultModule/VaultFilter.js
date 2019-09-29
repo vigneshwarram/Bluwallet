@@ -457,13 +457,13 @@ export default class VaultFilter extends React.Component {
                 <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row', marginLeft: 70 }}>
                   <TouchableOpacity onPress={this.ActiviePress}>
                     <View style={{ width: 80, height: 50, borderRightWidth: 1, borderRightColor: '#4d6bc1' }}>
-                      <Text style={{ marginLeft: 10, marginTop: 15, fontSize: 15, fontWeight: 'bold', color: '#fff', fontFamily: 'Exo2-Regular', opacity: this.state.ActiveOpacity }}>Active</Text>
+                      <Text style={{ marginLeft: 10, marginTop: 15, fontSize: 15,  color: '#fff', fontFamily: 'Exo2-Regular', opacity: this.state.ActiveOpacity }}>Active</Text>
                     </View>
                   </TouchableOpacity>
 
                   <TouchableOpacity onPress={this.CompletePress}>
                     <View style={{ width: 150, height: 50 }}>
-                      <Text style={{ marginLeft: 20, marginTop: 15, fontSize: 15, fontWeight: 'bold', color: '#fff', opacity: this.state.CompleteOpacity, fontFamily: 'Exo2-Regular' }}>Completed</Text>
+                      <Text style={{ marginLeft: 20, marginTop: 15, fontSize: 15,  color: '#fff', opacity: this.state.CompleteOpacity, fontFamily: 'Exo2-Regular' }}>Completed</Text>
                     </View>
                   </TouchableOpacity>
 
@@ -531,7 +531,7 @@ export default class VaultFilter extends React.Component {
                 <Animated.View style={{marginTop: this.AnimatedTop}}>
                 <View >
                   <View style={{ justifyContent: 'center', alignItems: 'center',  }}>
-                    <Text style={{ marginLeft: 10, marginTop: 15, fontSize: 20, fontWeight: 'bold', color: '#ABB3D0', fontFamily: 'Exo2-SemiBold' }}>Balance</Text>
+                    <Text style={{ marginLeft: 10, marginTop: 15, fontSize: 20,  color: '#ABB3D0', fontFamily: 'Exo2-SemiBold' }}>Balance</Text>
                   </View>
 
                   <View style={{ marginTop: 10, justifyContent: 'center', alignItems: 'center' }}>
@@ -583,11 +583,15 @@ export default class VaultFilter extends React.Component {
                 </View>
                 <View >
                 {
-            this.state.dataSource.map((item, key) =>
+                  this.state.dataSource.length!=0?this.state.dataSource.map((item, key) =>
               (
               
                 <ExpandabelList hide={this.hide}  key={item.listofuserCryptoinvestmentdto} onClickFunction={this.update_Layout.bind(this, key)} item={item} />
-              ))
+              )):<View style={{justifyContent:'center'}}>
+              <View style={{justifyContent:'center',alignItems:'center',paddingTop:30}}>
+              <Text style={{color:'#ABB3D0',fontWeight:'bold',opacity:1,fontSize:15,fontFamily:'Exo2-Regular'}}>No Data Found</Text>
+              </View>
+              </View>
           }
                 </View>
 </Animated.View>

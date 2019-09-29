@@ -117,7 +117,7 @@ export default class Expandable_Admin extends Component {
         data.status,
         data.message,
         [  
-          {text: 'OK', onPress: () => this.props.refreshList},
+          {text: 'OK', onPress: () => this.props.refreshList()},
         ],
       );
     }
@@ -154,7 +154,7 @@ Alert.alert(
   data.status,
   data.message,
   [  
-    {text: 'OK', onPress: () => this.props.refreshList},
+    {text: 'OK', onPress: () => this.props.refreshList()},
   ],
 );
   }
@@ -164,7 +164,7 @@ Alert.alert(
       data.status,
       data.message,
       [  
-        {text: 'OK', onPress: () => this.props.refreshList},
+        {text: 'OK', onPress: () => this.props.refreshList()},
       ],
     );
   }
@@ -188,8 +188,7 @@ Alert.alert(
         : require('../assets/greenD.png');
         var status=(this.props.item.status===0)?'Exchanged':'Exchange'
         console.log('status',status)
-       // datasource=this.props.item
-        console.log(this.props)
+      
       return (
         <View>
           <TouchableOpacity activeOpacity={0.8} onPress={this.props.onClickFunction} >

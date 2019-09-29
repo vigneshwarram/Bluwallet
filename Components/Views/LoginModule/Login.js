@@ -28,10 +28,14 @@ export default class Login  extends React.Component {
       ShowAlert:false,
       alert:'',
       animate:false,
-      // Username:'testdemo2@yopmail.com',
-      // Password:'Admin@123new',
-      Username:'bluadmin@yopmail.com',
-      Password:'Admin@1234',
+      Username:'testdemo2@yopmail.com',
+      Password:'Admin@123new',
+      // Username:'bluadmin@yopmail.com',
+      // Password:'Admin@1234',
+      // Username:'vinay111@yopmail.com',
+      // Password:'Welcome@1234',
+      //   Username:'',
+      //  Password:'',
       clickr:false,
       clickopen:false,
       click:false,
@@ -56,11 +60,11 @@ export default class Login  extends React.Component {
     return true;
   }
  
-Load(){
+Load=()=>{
   this.StartImageRotateFunction();
   this.setState({animate:true})
 }
-hide(){
+hide=()=>{
   this.setState({animate:false})
 }
 space(){
@@ -244,14 +248,18 @@ SlideMenu=()=>{
         this.Login()
       
       }
+      hidebar=()=>
+      {
+        this.setState({ShowAlert:false})
+      }
       Login=()=>
       {
-        if(this.state.Username==='')
+        if(this.state.Username==='' ||this.state.Username==='undefined')
         {
         //  Alert.alert('Alert!!','Please enter username')
         this.setState({ShowAlert:true,alert:'Please enter username'})
         }
-        else if(this.state.Password==='')
+        else if(this.state.Password===''||this.state.Password==='undefined')
         {
         // Alert.alert('Alert!!','Please enter Password')
          this.setState({ShowAlert:true,alert:'Please enter Password'})
@@ -330,7 +338,7 @@ SlideMenu=()=>{
 
       LoginResult=async (data)=>
       {
-    
+      
         if(data.status=='success')
         {
             console.log('Loginresult',data)
@@ -359,9 +367,10 @@ SlideMenu=()=>{
         }
         else
         {
-          this.hide()
+         
           Alert.alert(data.message)
         }
+       
       }
       NavigationReset=(routname,dashboardpopup,kycstatus)=>
       {

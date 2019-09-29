@@ -15,8 +15,8 @@ import {CONVERT_USD,getEqualCryptoValueApi,ExchangeRequestsUrl,getuserdetails} f
 import {ExchangeList,ExchangeListLocal} from '../Api/ExchangeRequest'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from '../Utils.js/Constant'
 import LinearGradient from 'react-native-linear-gradient';
-
 let crptoType="eth"
+let type="ETH"
 let roleid;
 let ExchangeType='getuserdetails'
 export default class  Buy  extends React.Component {
@@ -127,18 +127,18 @@ export default class  Buy  extends React.Component {
 
     }
   }
-  OnLoad=async()=>
-  {
-    let type=crptoType
-    let params=
-    {
-      userId:await AsyncStorage.getItem('UserId') ,
-      cryptoType:type
+  // OnLoad=async()=>
+  // {
+  //   let type=crptoType
+  //   let params=
+  //   {
+  //     userId:await AsyncStorage.getItem('UserId') ,
+  //     cryptoType:type
 
-    }
-    this.Load()
-    ExchangeList(params,getuserdetails,this.OnLoadResponse,this.error,this.NetworkIssue)
-  }
+  //   }
+  //   this.Load()
+  //   ExchangeList(params,getuserdetails,this.OnLoadResponse,this.error,this.NetworkIssue)
+  // }
   error=(data)=>
   {
     this.hide()
@@ -535,10 +535,33 @@ toggleSwitch=(value)=>{
         
       }
       selected1=(item,itemIndex)=>{
+        let coins=''
+if(item==='ETH-BTC')
+{
+  coins='BTC'
+
+}
+else if(item==='BTC-ETH')
+{
+  coins='ETH'
+  
+}
+else if(item==='ETH-BWN')
+{
+  coins='BWN'
+  crptoType='BWN'
+}
+else if(item==='BTC-BWN')
+{
+  coins='BWN'
+  crptoType='BWN'
+}
+
         this.setState({
           EthAmount:item,
           coinValue:item!=null?item.split('-',1):null,
           ExchangeCoin:item!=null?item.split('-',1):null,
+          BtcAmount:coins
         })
       
         this.usdConvert(this.state.usdforEther)
@@ -690,11 +713,11 @@ toggleSwitch=(value)=>{
     successStatus=()=>
     {
       this.setState({visibles:true})
-      setTimeout(()=>this.navigate, 500);
+      setTimeout(this.navigate, 2000);
     }
     nav=()=>
     {
-     
+      this.setState({visibles:false})
       this.pushNavigate('PuplishUser')
     }
     pushNavigate=(routname)=>
@@ -762,14 +785,14 @@ toggleSwitch=(value)=>{
       //-----------------------------//
      usdConvert=async(UsdAmount)=>
       {
-       let type=crptoType
+        let type=crptoType
        let params=
      {
        usd:UsdAmount,
        cryptoType:type
 
      }
-     
+     console.log('params',params)
      //Get value for Network fee and Crypto amount Api
      ExchangeList(params,CONVERT_USD,this.onUsdResponse,this.error,this.NetworkIssue)
    
@@ -814,47 +837,47 @@ toggleSwitch=(value)=>{
   }
 
     //
-    cryptoValue=async()=>
-    {
-     let type=crptoType
-     console.log('Request data.===>', type,'type calling')
-     let params=
-     {
-       cryptAmount:this.state.firstExchangeValue ,
-       cryptoType:type
-     }
+    // cryptoValue=async()=>
+    // {
+    //  let type=crptoType
+    //  console.log('Request data.===>', type,'type calling')
+    //  let params=
+    //  {
+    //    cryptAmount:this.state.firstExchangeValue ,
+    //    cryptoType:type
+    //  }
 
-      //Get value for Network fee and Crypto amount Api
-      ExchangeList(params,getEqualCryptoValueApi,this.cryptoResponse,this.error,this.NetworkIssue)
-      console.log('Request data.===>','getEqualCryptoValueApi',this.cryptoResponse)
-    }
+    //   //Get value for Network fee and Crypto amount Api
+    //   ExchangeList(params,getEqualCryptoValueApi,this.cryptoResponse,this.error,this.NetworkIssue)
+    //   console.log('Request data.===>','getEqualCryptoValueApi',this.cryptoResponse)
+    // }
  
-    cryptoResponse=(data)=>
-    {
-      if(data!=DataUndefined)
-      {
-        if(data.status===ResponseSuccessStatus)
-        {
-          console.log('Request data.Re===>',data.CalculatingAmountDTO.cryptoAmount)
-          this.setState({
-            secondExchangeValue: data.CalculatingAmountDTO.cryptoAmount
-          })
-        } else if(data.error==='invalid_token')
-        {
-          Alert.alert(
-            'Error',
-            'Token Expired',
-            [
-              {text: 'OK', onPress: () => this.props.navigation.navigate("Login")},
-            ],
+    // cryptoResponse=(data)=>
+    // {
+    //   if(data!=DataUndefined)
+    //   {
+    //     if(data.status===ResponseSuccessStatus)
+    //     {
+    //       console.log('Request data.Re===>',data.CalculatingAmountDTO.cryptoAmount)
+    //       this.setState({
+    //         secondExchangeValue: data.CalculatingAmountDTO.cryptoAmount
+    //       })
+    //     } else if(data.error==='invalid_token')
+    //     {
+    //       Alert.alert(
+    //         'Error',
+    //         'Token Expired',
+    //         [
+    //           {text: 'OK', onPress: () => this.props.navigation.navigate("Login")},
+    //         ],
       
-          );
-        }
-        else{
-          Alert.alert('Alert!!','Something went wrong')
-        }
-      }
-    }
+    //       );
+    //     }
+    //     else{
+    //       Alert.alert('Alert!!','Something went wrong')
+    //     }
+    //   }
+    // }
 
 }
 
