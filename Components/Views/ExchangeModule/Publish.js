@@ -416,11 +416,13 @@ renderScane() {
       console.log('its comming success status',data)
      
        this.setState({visibles:true,successstatus:data.message})
+       setTimeout(this.nav,1500)
        
     }
     nav=()=>
     {
       this.setState({visibles:false})
+      this.GetData()
     }
     update_Layout = (index) => {
 

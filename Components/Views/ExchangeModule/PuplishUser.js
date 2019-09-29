@@ -383,13 +383,12 @@ renderScane() {
       successStatus=()=>
       {
         this.setState({visibles:true})
-        setTimeout(()=>this.nav, 650);
+        setTimeout(this.nav, 1500);
       }
       nav=()=>
       {
         this.setState({visibles:false})
-        //this.props.navigation.navigate("ExchangeMenu");
-         this.pushNavigate('ExchangeMenu')
+       this.GetData()
       }
       pushNavigate=(routname)=>
       {

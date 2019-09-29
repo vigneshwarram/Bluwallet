@@ -19,6 +19,7 @@ import {AddVaults} from '../Api/AddVault'
 import {CONVERT_USD} from '../Api/RequestUrl'
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 let type='ETH'
+let roleid;
 let timeperiod=3
 export default class AddVault extends React.Component {
 
@@ -95,8 +96,9 @@ export default class AddVault extends React.Component {
   {
      this.GetData()
   }
-  GetData=()=>
+  GetData=async()=>
   {
+    roleid = await AsyncStorage.getItem('roleId')
     this.Load()
     VaultSystemApi(type, this.BalanceResponse)
   }
@@ -127,7 +129,7 @@ export default class AddVault extends React.Component {
 
         }
 
-        else {
+        else if(data.CalculatingAmountDTO.cryptoType === 'BTC') {
           this.setState({
             Availableamount:data.CalculatingAmountDTO.btcAmount,
             Usd: data.CalculatingAmountDTO.usd,
@@ -135,7 +137,14 @@ export default class AddVault extends React.Component {
           })
 
         }
+        else  {
+          this.setState({
+            Availableamount:data.CalculatingAmountDTO.bwnAmount,
+            Usd: data.CalculatingAmountDTO.usdForBwn,
+            cointype:data.CalculatingAmountDTO.cryptoType
+          })
 
+        }
 
       }
       else if (data.error === 'invalid_token') {
@@ -422,9 +431,9 @@ HideMenu=()=>{
      
     </ScrollView>
     <View style={{marginBottom:0, width:'100%',marginTop:10}}>
-        <TouchableOpacity onPress={this.BeginAction}>
+        <TouchableOpacity  onPress={this.BeginAction}>
         <View>
-        <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:15,justifyContent:'center',alignItems:'center',}}>
+        <LinearGradient  colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:15,justifyContent:'center',alignItems:'center',}}>
 <Text style={{color:'#fff',fontSize:20,fontFamily:'Poppins-Medium'}}>Add Vault</Text>
 </LinearGradient>
         </View>
@@ -468,13 +477,18 @@ HideMenu=()=>{
       snapItem=(index)=>{
         switch (index){
           case 0:
-              this.setState({selectedimage:require('../assets/diablue.png'),usdforEther:'',fees:'0.000',usdforgasfee:'0.000',totalamount:'0.000'})
+              this.setState({usdforEther:'',fees:'0.000',usdforgasfee:'0.000',totalamount:'0.000'})
               type='ETH'
               this.GetData()
               break;
           case 1:
-              this.setState({selectedimage:require('../assets/biconback.png'),usdforEther:'',fees:'0.000',usdforgasfee:'0.000',totalamount:'0.000'})
+              this.setState({usdforEther:'',fees:'0.000',usdforgasfee:'0.000',totalamount:'0.000'})
               type='BTC'
+              this.GetData()
+            break;    
+            case 2:
+              this.setState({usdforEther:'',fees:'0.000',usdforgasfee:'0.000',totalamount:'0.000'})
+              type='BWN'
               this.GetData()
             break;    
         }
@@ -483,7 +497,7 @@ HideMenu=()=>{
       successStatus=()=>
       {
         this.setState({visibles:true})
-        setTimeout(this.nav, 650);
+        setTimeout(this.nav, 1500);
       }
       nav=()=>
       {
@@ -515,11 +529,13 @@ HideMenu=()=>{
             Alert.alert('Alert', 'Insufficient ETH Amount')
           }
          
-          else
+         else if(type=='BTC')
           {
             Alert.alert('Alert', 'Insufficient BTC Amount')
           }
-
+          else if(type=='BWN'){
+            Alert.alert('Alert', 'Insufficient BWN Amount')
+          }
         }
         else {
           let number = UsdAmount
@@ -608,7 +624,15 @@ HideMenu=()=>{
           Alert.alert(item.Status)
       }
       BeginAction=()=>{
-    this.AddVault()
+        if(roleid==1 && type=='BWN')
+        {
+Alert.alert('Alert','This operation cannot perform from Admin')
+        }
+        else
+        {
+          this.AddVault()
+        }
+   
        // this.props.navigation.navigate('ConfirmVault',{ImageName:this.state.selectedimage,ImageTitle:this.state.selectedTitle,itemColor1:this.state.ItemColor1,itemColor2:this.state.ItemColor2,itemColor3:this.state.ItemColor3 })
       }
       AddVault=async()=>

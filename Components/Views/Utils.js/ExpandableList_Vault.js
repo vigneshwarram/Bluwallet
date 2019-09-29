@@ -59,6 +59,24 @@ export default class ExpandableList_Vault extends Component {
       return false;
     }
     render() {
+      let type=this.props.item.typeOfInvestment
+      let usdvalue;
+      let image=require("../assets/etheriumshadow.png")
+      if(type=='ETH')
+      {
+       image=require("../assets/etheriumshadow.png")
+        usdvalue=this.props.item.ethValueInUsd
+      }
+     else if(type=='BTC')
+      {
+        image=require("../assets/bitcoinshadow.png")
+         usdvalue=this.props.item.btcValueInUsd
+      }
+      else
+      {
+        image=require("../assets/bitwingslogo.png")
+        usdvalue=this.props.item.cryptoAmount
+      }
       return (
         <View>
           <TouchableOpacity activeOpacity={0.8} onPress={this.props.onClickFunction} >
@@ -73,8 +91,7 @@ export default class ExpandableList_Vault extends Component {
                 <View style={{flexDirection:'row',justifyContent:'space-between',paddingLeft:5,paddingRight:5}}>
       <View style={{flexDirection:'row',marginTop:(this.props.item.typeOfInvestment === 'ETH' ||this.props.item.typeOfInvestment === 'eth' ) ?-10:0}}>
       <View>
-                                {(this.props.item.typeOfInvestment === 'ETH' ||this.props.item.typeOfInvestment === 'eth' ) ? <Image style={{ width: 50, height: 50, resizeMode: 'contain' }} source={require("../assets/etheriumshadow.png")} ></Image> :
-                                  <Image style={{ width: 50, height: 50, resizeMode: 'contain' }} source={require("../assets/bitcoinshadow.png")} ></Image>}
+         <Image style={{ width: 50, height: 50, resizeMode: 'contain' }} source={image} ></Image> 
 
                               </View>
   
@@ -95,7 +112,7 @@ export default class ExpandableList_Vault extends Component {
                         <Text style={{ color:'#fff', fontFamily: 'Exo2-Regular' }}>${this.props.item.investmentPercentInUsd}</Text>
                       </View>
                       <View>
-                      <Text style={{color: '#ABB3D0', fontFamily: 'Exo2-Regular',alignSelf:'flex-end'}}>${this.props.item.ethValueInUsd}</Text>
+                      <Text style={{color: '#ABB3D0', fontFamily: 'Exo2-Regular',alignSelf:'flex-end'}}>${usdvalue}</Text>
                       </View>
                 
                   </View>

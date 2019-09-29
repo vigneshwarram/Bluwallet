@@ -111,10 +111,10 @@ export default class VaultFilter extends React.Component {
   }
   completedClick = () => {
     if (this.state.dataSource.length != 0) {
-      console.log(this.state.dataSource)
+      //console.log(this.state.dataSource)
       let FinalResult = [];
       FinalResult = this.search(1, this.state.dataSource)
-      console.log('search Result', FinalResult)
+     // console.log('search Result', FinalResult)
       this.setState({ dataSource: FinalResult })
     }
 
@@ -251,11 +251,14 @@ export default class VaultFilter extends React.Component {
           this.setState({ Usd: data.CalculatingAmountDTO.usdforEther, Balance: data.CalculatingAmountDTO.etherAmount })
 
         }
-        else {
+        else if( (data.CalculatingAmountDTO.cryptoType === 'BTC')) {
           this.setState({ Usd: data.CalculatingAmountDTO.usdforBtc, Balance: data.CalculatingAmountDTO.btcAmount })
 
         }
+        else  {
+          this.setState({ Usd: data.CalculatingAmountDTO.usdforBtc, Balance: data.CalculatingAmountDTO.bwnAmount })
 
+        }
       }
       else if (data.error === 'invalid_token') {
         Alert.alert(
@@ -274,19 +277,23 @@ export default class VaultFilter extends React.Component {
     this.Load()
 
     console.log('Changing Type', type)
-    CryptoTypeInvestment(type, this.GetListData)
+    CryptoTypeInvestment(type, this.GetListData,this.error)
   }
   GetAllList = () => {
     this.Load()
     //CryptoInvestment(this.GetListData)
     
-    CryptoTypeInvestment(type, this.GetListData)
+    CryptoTypeInvestment(type, this.GetListData,this.error)
+  }
+  error=(error)=>
+  {
+    Alert.alert(error.message)
   }
   GetListData = (data) => {
     this.hide()
     if (data !== 'undefined') {
       if (data.status == ResponseSuccessStatus) {
-      //  console.log('VaultList', data)
+       // console.log('VaultList', data)
         let FinalResult=[]
         FinalResult=data.listofuserCryptoinvestmentdto
         const newFile =FinalResult.map((file) => {
@@ -505,7 +512,7 @@ export default class VaultFilter extends React.Component {
 
                       <View style={{marginLeft:-90}}>
                        
-                          <Image style={{ width: 150, height: 150 }} source={require("../assets/sharelogo.png")} ></Image>
+                          <Image style={{ width: 150, height: 150 }} source={require("../assets/bitwingslogo.png")} ></Image>
                         
 
                       </View>
@@ -635,9 +642,12 @@ export default class VaultFilter extends React.Component {
     if (num <= 0) {
       type = 'ETH'
     }
-    else {
+    else if(num==1) {
       type = 'BTC'
 
+    }
+    else{
+      type = 'BWN'
     }
     this.GetData()
   }

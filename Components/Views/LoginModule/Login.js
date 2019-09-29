@@ -6,6 +6,7 @@ import BackgroundIcon from '../../Background'
 import {loginApi} from '../Api/LoginApi'
 import OuthApi from '../Api/OuthApi'
 import LinearGradient from 'react-native-linear-gradient';
+import Dialog, { DialogContent } from 'react-native-popup-dialog';
 import { NavigationActions,StackActions } from 'react-navigation'
 import { ScrollView } from 'react-native-gesture-handler';
 import Snackbar from '../Utils.js/Snackbar'
@@ -27,6 +28,8 @@ export default class Login  extends React.Component {
       Coin: 'Us Doller',
       ShowAlert:false,
       alert:'',
+      visibles:false,
+      ResponseStatus:'',
       animate:false,
       Username:'testdemo2@yopmail.com',
       Password:'Admin@123new',
@@ -53,6 +56,7 @@ export default class Login  extends React.Component {
   }
   componentWillUnmount() {
     this.backHandler.remove()
+
   }
 
   handleBackPress = () => {
@@ -153,6 +157,7 @@ SlideMenu=()=>{
       
 
       <ImageBackground style={{ flex: 1, }} imageStyle={{ resizeMode: 'stretch' }} source={require('../assets/bg.png')}> 
+     
  <Snackbar Visible={this.state.ShowAlert} alert={this.state.alert}></Snackbar>
   <View style={{flex:0.4}}>
   <View  style={{justifyContent:'center',alignItems:'center',paddingTop:20
@@ -162,12 +167,19 @@ SlideMenu=()=>{
         </View>  
   </View>
   <View style={{flex:0.7,position:'relative',justifyContent:'center'}}>
- 
- <Image
-                style={{width:500,height:500, resizeMode: 'contain',opacity:0.1,position:'absolute',bottom:30,}}
-                source={require('../assets/bgLogo.png')}
-            />                       
-   
+  <Dialog
+          visible={this.state.visibles}>
+          <DialogContent>
+            <View style={{ width: 300, height: 110, alignItems: 'center' }}>
+              <View style={{ alignItems: 'center', paddingTop: 10 }}>
+                <Image style={{ width: 50, height: 50, resizeMode: 'contain' }} source={require("../assets/successtik.png")} ></Image>
+              </View>
+              <View style={{ paddingTop: 10, paddingBottom: 10 }}>
+                <Text style={{ fontSize: 15, color: '#454976', fontFamily: 'Exo2-Regular', textAlign: 'center' }}>{this.state.ResponseStatus}</Text>
+              </View>
+            </View>
+          </DialogContent>
+        </Dialog>                     
         <KeyboardAvoidingView 
   
   behavior='padding'
@@ -351,10 +363,12 @@ SlideMenu=()=>{
             await AsyncStorage.setItem('etherwalletAddress',data.loginInfo.EtherwalletAddress.toString()); 
             await AsyncStorage.setItem('bitcoinWalletReceivingAddress',data.loginInfo.bitcoinWalletReceivingAddress.toString()); 
             console.log('Loginresult',data)
+            this.hide()
             if(data.loginInfo.twoFactorAuthenticationStatus===0)
             {
-             
-               this.NavigationReset('Home',data.loginInfo.profileStatus,data.loginInfo.kycStatus) //Profile popup not apprear,kyc popup appear
+               this.setState({visibles:true,ResponseStatus:data.message})
+               setTimeout(this.nav,800)
+              
               // this.NavigationReset('Home',1,0)            
             }
             else
@@ -362,7 +376,7 @@ SlideMenu=()=>{
               this.props.navigation.navigate('PinCode',{profilestatus:data.loginInfo.profileStatus,kycstatus:data.loginInfo.kycStatus})
             }
            
-            this.hide()
+            
                
         }
         else
@@ -371,6 +385,15 @@ SlideMenu=()=>{
           Alert.alert(data.message)
         }
        
+      }
+      nav=async()=>
+      {
+     
+      let profilestatus= await AsyncStorage.getItem('profilestatus'); 
+     let  kycstatus= await AsyncStorage.getItem('kycstatus'); 
+     this.setState({visibles:false}) 
+     this.NavigationReset('Home',profilestatus,kycstatus) //Profile popup not apprear,kyc popup appear
+   
       }
       NavigationReset=(routname,dashboardpopup,kycstatus)=>
       {

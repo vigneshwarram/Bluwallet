@@ -451,7 +451,7 @@ export default class DashBoard extends React.Component {
           }
       }
      else if (type == 'BWN') {
-        url = 'eth/transfer'
+        url = 'bwn/transfer'
         params =
           {
 
@@ -538,7 +538,7 @@ export default class DashBoard extends React.Component {
     //console.log('Request response data', data)
     if (data.status === 'success') {
       this.setState({ visibles: true, ResponseStatus: data.message })
-      setTimeout(this.PopUp, 700);
+      setTimeout(this.PopUp, 1500);
     }
     else if (data.error === 'invalid_token') {
       Alert.alert(
@@ -559,7 +559,7 @@ export default class DashBoard extends React.Component {
     this.hide()
     if (data.status === 'success') {
       this.setState({ visibles: true, ResponseStatus: data.message })
-      setTimeout(this.PopUp, 700);
+      setTimeout(this.PopUp, 1500);
       this.GetData()
     }
     else if (data.error === 'invalid_token') {

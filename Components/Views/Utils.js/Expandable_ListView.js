@@ -177,13 +177,14 @@ export default class Expandable_ListView extends Component {
 {
   if(data.status===ResponseSuccessStatus)
   {
-    Alert.alert(
-      data.status,
-      data.message,
-      [  
-        {text: 'OK', onPress: () => this.props.refreshList()},
-      ],
-    );
+    this.props.popupShow(data.message)
+    // Alert.alert(
+    //   data.status,
+    //   data.message,
+    //   [  
+    //     {text: 'OK', onPress: () => this.props.refreshList()},
+    //   ],
+    // );
   }
   else
   {

@@ -52,7 +52,7 @@ export const CryptoInvestment=async(VaultResponse)=>
         console.error(error);
     });
 }
-export const CryptoTypeInvestment=async(Type,VaultResponse)=>
+export const CryptoTypeInvestment=async(Type,VaultResponse,errors)=>
 {
     fetch(Url+'fetch/user/investmentinfoforcrypto', {  
         method: 'POST',
@@ -74,6 +74,6 @@ export const CryptoTypeInvestment=async(Type,VaultResponse)=>
         return resJson;
        })
        .catch((error) => {
-        console.error(error);
+        errors(error);
     });
 }
