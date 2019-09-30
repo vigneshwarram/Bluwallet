@@ -82,7 +82,7 @@ export const ProfileUpdate=async(uri,name,registerDetails,errors)=>
       name:  name,
       type:'image/jpeg'})
       formdata.append('userId',await AsyncStorage.getItem('UserId'))
-    fetch(Url+'updateprofiledata', {  
+    fetch(Url+'updateprofileimage', {  
         method: 'POST',
         headers: {
           'Accept': 'application/json',

@@ -80,7 +80,7 @@ export default class PincodeEnable extends React.Component {
       LayoutAnimation.spring();
       this.setState({ wr: 50 })
       this.setState({ clickr: false })
-      this.props.navigation.navigate('Welcome');
+      this.props.navigation.goBack(null);
     }
   }
   SlideMenu = () => {
@@ -201,7 +201,7 @@ export default class PincodeEnable extends React.Component {
 
 
             }
-            <TouchableOpacity onPress={this.CheckitLater}>
+            { this.state.status?<TouchableOpacity onPress={this.CheckitLater}>
             <View>
 <LinearGradient colors={['#fff','#fff','#fff']}  style={{padding:15,justifyContent:'center',alignItems:'center'}}>
 <TouchableOpacity onPress={this.BeginAction}>
@@ -209,7 +209,8 @@ export default class PincodeEnable extends React.Component {
 </TouchableOpacity>
 </LinearGradient>
 </View>
-</TouchableOpacity>
+</TouchableOpacity>:null}
+            
 
           </View>
      
@@ -225,7 +226,7 @@ export default class PincodeEnable extends React.Component {
   }
   CheckitLater=()=>
   {
-    this.state.status?this.props.navigation.navigate('OtpPin'):this.props.navigation.navigate('CountrySearch')
+   this.props.navigation.navigate('CountrySearch')
   }
   BeginAction = () => {
     this.Load()

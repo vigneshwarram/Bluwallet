@@ -410,13 +410,14 @@ colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>
   successStatus=(data)=>
   {
     this.setState({visibles:true,responsemessage:data.message})
-    setTimeout(this.navigate, 700);
+    setTimeout(this.navigate, 150);
   }
   navigate=async()=>
   {
-    this.setState({visibles:false})   
+      
     await AsyncStorage.setItem('kycstatus','1'); 
     await AsyncStorage.setItem('profilestatus','1'); 
+    this.setState({visibles:false}) 
     this.props.navigation.push('Home',{profilestatus:1,kycstatus:0})
   }
 

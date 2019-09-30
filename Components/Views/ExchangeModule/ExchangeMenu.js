@@ -232,16 +232,16 @@ export default class ExchangeMenu extends React.Component {
             />
 
             <ImageBackground source={require('../assets/Group_20501.png')} imageStyle={{ resizeMode: 'cover', width: '100%', height: '100%' }} style={{ opacity: 0.9, flex: 0.33 ,zIndex:1}}>
-              <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                <View style={{ flexDirection: 'row', marginTop: 10 }}>
+              <View style={{ justifyContent: 'center', alignItems: 'center' ,marginTop: 20}}>
+                <View style={{ flexDirection: 'row' }}>
                   <Image style={{ marginRight: 10, width: 18, height: 22, resizeMode: 'contain' }} source={require("../assets/app4.png")} ></Image>
                   <Text style={{ fontSize: 16, color: '#fff', fontFamily: 'Exo2-Regular' }}>Exchange</Text>
                 </View>
-                <View style={{ width: '80%', borderRadius: 25, borderWidth: 1, borderColor: '#fff', marginTop: 5, marginBottom: 20, justifyContent: 'space-between', flexDirection: 'row' }}>
+                <View style={{ width: '80%', borderRadius: 25, borderWidth: 1, borderColor: '#fff', marginTop: 30, justifyContent: 'space-between', flexDirection: 'row' }}>
                   <View style={{ flexDirection: 'row', marginLeft: 20 }}>
                     <Image style={{ width: 20, height: 20, marginTop: 10 }} source={require("../assets/Searchicon.png")} ></Image>
                     <TextInput
-                      style={{ height: 40, width: 100, color: '#ffffff', fontFamily: 'Exo2-Regular' }}
+                      style={{ height: 40, width: 100, color: '#ffffff',fontSize: 15, fontFamily: 'Exo2-Regular' }}
                       placeholderTextColor='#ffffff'
                       keyboardType='numeric'
                       placeholder="Amount"
@@ -252,8 +252,8 @@ export default class ExchangeMenu extends React.Component {
                   </View>
                   <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', paddingRight: 10, marginLeft: -30 }}>
                     <Image style={{ width: 9, height: 7, resizeMode: 'contain', marginLeft: 10, marginRight: 10 }} source={require("../assets/darrow.png")} ></Image>
-                    <Text style={{ color: '#FFFFFF', opacity: 1, fontSize: 11, fontFamily: 'Exo2-Regular' }}>{this.state.mode}</Text>
-                    <Picker style={{ position: 'absolute', top: 0, width: 1500, height: 1500 }}
+                    <Text style={{ color: '#FFFFFF', opacity: 1, fontSize: 15, fontFamily: 'Exo2-Regular' }}>{this.state.mode}</Text>
+                    <Picker style={{ position: 'absolute', top: 0, width: 1500, height: 1500 ,fontSize: 15}}
                       selectedValue={this.state.mode}
                       onValueChange={(itemValue, itemIndex) => this.selectedcoin(itemValue, itemIndex)}>
 
@@ -266,12 +266,12 @@ export default class ExchangeMenu extends React.Component {
 
 
                 </View>
-                <View style={{ width: '45%', borderRadius: 20, borderWidth: 1, borderColor: '#fff', marginTop: 2, justifyContent: 'space-between', flexDirection: 'row' }}>
+                <View style={{ width: '45%', borderRadius: 20, borderWidth: 1, borderColor: '#fff', marginTop: 2, justifyContent: 'space-between', flexDirection: 'row' ,marginTop:10}}>
                   <View style={{ flexDirection: 'row', marginLeft: 20 }}>
                     <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                       <Image style={{ width: 20, height: 20, resizeMode: 'contain' }} source={require("../assets/tv.png")} ></Image>
                     </View>
-                    <View style={{ justifyContent: 'center', flexDirection: 'row', alignItems: 'center', marginLeft: 20, paddingTop: 5, paddingBottom: 5 }}>
+                    <View style={{ justifyContent: 'center', flexDirection: 'row', alignItems: 'center', marginLeft: 20, paddingTop: 10, paddingBottom: 10 }}>
                       <Text style={{ color: '#FFFFFF', opacity: 1, fontSize: 11, fontFamily: 'Exo2-Regular' }}>{this.state.Admin}</Text>
                       <Image style={{ width: 9, height: 7, resizeMode: 'contain', marginLeft: 10, marginRight: 10 }} source={require("../assets/darrow.png")} ></Image>
 

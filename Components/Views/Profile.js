@@ -4,17 +4,17 @@ import { View, StyleSheet, Image, ScrollView,Alert, ImageBackground, Text, Activ
 import LinearGradient from 'react-native-linear-gradient';
 import ImagePicker from 'react-native-image-picker';
 import { ProfileRetrive, TwoFactorApi, ProfileUpdate } from './Api/ProfileRegisterApi'
+import ImageResizer from 'react-native-image-resizer';
+import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
 import Spinner from 'react-native-loading-spinner-overlay';
 import { ResponseSuccessStatus, InvalidResponse } from './Utils.js/Constant'
 const options = {
   title: 'Select Avatar',
-  customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
   storageOptions: {
     skipBackup: true,
     path: 'images',
   },
 };
-
 export default class Profile extends React.Component {
 
   static navigationOptions = {
@@ -30,6 +30,7 @@ export default class Profile extends React.Component {
       cityItems: ["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate: false,
+      responsestatus:'',
       error: false,
       AnimatedWidth: new Animated.Value(50),
       AnimatedHieght: new Animated.Value(45),
@@ -252,7 +253,19 @@ export default class Profile extends React.Component {
             color='#f4347f'
             textStyle={styles.spinnerTextStyle}
           />
-
+  <Dialog 
+    visible={this.state.visibles}>
+    <DialogContent>
+     <View style={{width:300,height:110,alignItems:'center'}}>
+         <View style={{alignItems:'center',paddingTop:10}}>
+         <Image style={{width: 50, height: 50,resizeMode:'contain'}}   source={require("./assets/successtik.png")} ></Image>     
+         </View>
+         <View style={{paddingTop:10,paddingBottom:10}}>
+         <Text style={{fontSize:15,color:'#454976',fontFamily:'Exo2-Regular',textAlign:'center'}}>{this.state.responsestatus}</Text>           
+         </View>
+     </View>
+    </DialogContent>
+  </Dialog>
           <ImageBackground source={require('./assets/topCurve.png')} imageStyle={{ resizeMode: 'stretch', width: '100%', height: '100%' }} style={{ flex: 0.35, position: "relative" }}>
             <View style={{ alignItems: 'center', position: 'absolute', top: 10, left: 0, right: 0, flexDirection: 'row', justifyContent: 'center' }}>
               <Image style={{ width: 25, height: 25, resizeMode: 'contain' }}  source={require("./assets/app5.png")} ></Image>
@@ -533,14 +546,60 @@ export default class Profile extends React.Component {
 
   }
   BeginAction = () => {
-    ImagePicker.launchCamera(options, (response) => {         // Same code as in above section!
-      if (response.uri) {
-        this.setState({ proImgPath: response.uri })
-        this.UpdateProfile(response.uri, response.fileName)
+    ImagePicker.showImagePicker(options, (response) => {
+      console.log('Response = ', response);
+    
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      } else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
       }
-      //this.GetImageFile(response)         
-      console.log(response)
+       else {
+        this.setState({
+          proImgPath: response.uri
+        });
+        this.GetImageFile(response)
+        //this.UpdateProfile(response.uri, response.fileName)
+      }
     });
+   
+  }
+  requestCameraPermission=async()=> {
+    try {
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.CAMERA, {
+          'title': 'Camera App Permission',
+          'message': 'Camera App needs access to your camera '
+        }
+      )
+      if (granted === PermissionsAndroid.RESULTS.GRANTED)
+       {
+        ImagePicker.launchCamera(options, (response) => {
+          this.GetImageFile(response)
+          // Same code as in above section!
+        });
+       } else {
+        alert("CAMERA permission denied");
+      }
+    } catch (err) {
+      alert("Camera permission err", err);
+      console.warn(err);
+    }
+  }
+  GetImageFile=(data)=>
+  {
+    ImageResizer.createResizedImage(data.uri, 10, 10, 'JPEG', 80).then((response) => 
+    {
+      this.UpdateProfile(response.uri, response.name)
+     // PassportUpload(response.uri,this.Responsedata,userid)
+      console.log(response)
+    }).catch((err) => {
+      console.log(err)
+    });
+  
+    
   }
   UpdateProfile = (uri, name) => {
     this.Load()
@@ -551,9 +610,15 @@ export default class Profile extends React.Component {
     if(data.status==='success')
     {
       this.hide()
-     // console.log('data',data)
-     Alert.alert(data.status,data.message)
+      console.log('data',data)
+     this.setState({visibles:true,responsestatus:'Profile picture Updated Successfully'})
+     setTimeout(this.timeoutIn, 1500);
     }
+  }
+  timeoutIn=()=>
+  {
+    this.setState({visibles:false})
+    this.GetListData()
   }
   error=(data)=>
   {
