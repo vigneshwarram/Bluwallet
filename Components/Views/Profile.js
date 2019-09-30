@@ -112,7 +112,7 @@ export default class Profile extends React.Component {
       "twoFactorAuthenticationStatus": this.state.twofactor,
       "otpSecureKey": ""
     }
-    this.props.navigation.push('PicodeEnable', { TwoFactorParams: params })
+    this.props.navigation.push('PicodeEnable', { TwoFactorParams: params ,status:false})
     //TwoFactorApi(params,this.TwoFactorRespose)
   }
   GetListData = async () => {

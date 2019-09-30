@@ -149,7 +149,7 @@ export default class VaultFilter extends React.Component {
   }
   Animation = () => {
   
-    type='All'
+    //type='All'
     Animated.sequence([
       Animated.timing(
         this.OpacityView, {
@@ -191,7 +191,7 @@ export default class VaultFilter extends React.Component {
      this.GetAllData()
   }
   DeAnimation = () => { 
-    type='ETH'
+  //  type='ETH'
     Animated.sequence([
     
         Animated.timing(
@@ -283,7 +283,7 @@ export default class VaultFilter extends React.Component {
     this.Load()
     //CryptoInvestment(this.GetListData)
     
-    CryptoTypeInvestment(type, this.GetListData,this.error)
+    CryptoTypeInvestment('All', this.GetListData,this.error)
   }
   error=(error)=>
   {

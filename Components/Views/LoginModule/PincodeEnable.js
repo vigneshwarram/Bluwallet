@@ -3,7 +3,6 @@ import { Path } from 'react-native-svg'
 import { View, StyleSheet, Image, ScrollView, Dimensions, Text, ActivityIndicator, TouchableOpacity, LayoutAnimation, } from 'react-native';
 import { Alert } from 'react-native';
 import{TwoFactorApi} from '../Api/ProfileRegisterApi'
-import BackgroundIcon from '../../Background'
 
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -22,7 +21,7 @@ export default class PincodeEnable extends React.Component {
       cityItems: ["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate: false,
-
+      status:this.props.navigation.state.params.status,
       w: 50,
       h: 45,
       wr: 50,
@@ -202,11 +201,18 @@ export default class PincodeEnable extends React.Component {
 
 
             }
-
-
+            <TouchableOpacity onPress={this.CheckitLater}>
+            <View>
+<LinearGradient colors={['#fff','#fff','#fff']}  style={{padding:15,justifyContent:'center',alignItems:'center'}}>
+<TouchableOpacity onPress={this.BeginAction}>
+<Text style={{color:'#d2e4ff',fontFamily:'Poppins-Medium'}}>Check it later</Text>
+</TouchableOpacity>
+</LinearGradient>
+</View>
+</TouchableOpacity>
 
           </View>
-
+     
         </LinearGradient>
 
       </View>
@@ -216,6 +222,10 @@ export default class PincodeEnable extends React.Component {
   }
   clickedItemText = (item) => {
     Alert.alert(item.Status)
+  }
+  CheckitLater=()=>
+  {
+    this.state.status?this.props.navigation.navigate('OtpPin'):this.props.navigation.navigate('CountrySearch')
   }
   BeginAction = () => {
     this.Load()
@@ -232,7 +242,7 @@ export default class PincodeEnable extends React.Component {
     this.hide()
     console.log('response otp',data)
     if (data.status === 'success') {
-      this.props.navigation.navigate('OtpPin', { param: this.props.navigation.state.params.TwoFactorParams.twoFactorAuthenticationStatus })
+      this.props.navigation.navigate('OtpPin', { param: this.props.navigation.state.params.TwoFactorParams.twoFactorAuthenticationStatus ,status:this.state.status })
     }
     else {
       Alert.alert(data.status, data.message)

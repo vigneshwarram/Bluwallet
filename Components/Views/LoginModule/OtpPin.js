@@ -3,12 +3,12 @@ import { Path } from 'react-native-svg'
 import { View, StyleSheet, Image, ScrollView, Animated, Text, Keyboard, TouchableOpacity, LayoutAnimation, AsyncStorage, Easing } from 'react-native';
 import { Alert } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
 import { LoginApi, loginSecureApi } from '../Api/LoginApi'
 import{TwoFactorApi} from '../Api/ProfileRegisterApi'
 import { NavigationActions, StackActions } from 'react-navigation'
 import { ResponseSuccessStatus, InvalidResponse, DataUndefined } from '../Utils.js/Constant'
 import OTPInput from 'react-native-otp';
+import Dialog, { DialogContent } from 'react-native-popup-dialog';
 export default class OtpPin extends React.Component {
 
     static navigationOptions = {
@@ -26,6 +26,8 @@ export default class OtpPin extends React.Component {
             animate: false,
             number: 123456,
             w: 50,
+            ResponseStatus: null,
+            status:this.props.navigation.state.params.status,
             visibles: false,
             h: 45,
             wr: 50,
@@ -154,7 +156,7 @@ export default class OtpPin extends React.Component {
                                 <Image style={{ width: 50, height: 50, resizeMode: 'contain' }} source={require("../assets/successtik.png")} ></Image>
                             </View>
                             <View style={{ paddingTop: 10, paddingBottom: 10 }}>
-                                <Text style={{ fontSize: 15, color: '#454976', fontFamily: 'Exo2-Regular', textAlign: 'center' }}>Two Factor Authentication  successfully</Text>
+                                <Text style={{ fontSize: 15, color: '#454976', fontFamily: 'Exo2-Regular', textAlign: 'center' }}>{this.state.ResponseStatus}</Text>
                             </View>
                         </View>
                     </DialogContent>
@@ -230,12 +232,19 @@ export default class OtpPin extends React.Component {
         this.hide()
         console.log('DATA', data)
         if (data.status === 'success') {
-            this.props.navigation.push('Profile')
+            this.setState({visibles:true,ResponseStatus:data.message})
+            setTimeout(this.nav,1500)
+           
         }
         else {
             Alert.alert(data.status, data.message)
         }
 
+    }
+    nav=()=>
+    {
+        this.setState({visibles:false})
+        this.state.status?this.props.navigation.navigate('CountrySearch'):this.props.navigation.push('Profile')
     }
     SecureResult = async (data) => {
 

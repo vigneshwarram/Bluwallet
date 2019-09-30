@@ -26,6 +26,7 @@ export default class PinCode  extends React.Component {
       number:123456,
       w: 50,
       visibles:false,
+      ResponseStatus:'',
       h: 45,
       wr:50,
       hr:45,
@@ -157,7 +158,7 @@ SlideMenu=()=>{
          <Image style={{width: 50, height: 50,resizeMode:'contain'}}   source={require("../assets/successtik.png")} ></Image>     
          </View>
          <View style={{paddingTop:10,paddingBottom:10}}>
-         <Text style={{fontSize:15,color:'#454976',fontFamily:'Exo2-Regular',textAlign:'center'}}>Pincode Entered Successfully successfully</Text>           
+         <Text style={{fontSize:15,color:'#454976',fontFamily:'Exo2-Regular',textAlign:'center'}}>{this.state.ResponseStatus}</Text>           
          </View>
      </View>
     </DialogContent>
@@ -165,11 +166,12 @@ SlideMenu=()=>{
       <View> 
        <LinearGradient
   colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>   
-   <View  style={{justifyContent:'center',alignItems:'center',marginTop:30
-        }}>
-              <Image  style={{width: 100, height: 150}}  source={require("../assets/threelogo.png")} ></Image> 
-                       
-        </View>
+             <View style={{
+                            justifyContent: 'center', alignItems: 'center', marginTop: 30
+                        }}>
+                            <Image style={{ width: 150, height: 150,resizeMode:'contain' }} source={require("../assets/threelogo.png")} ></Image>
+
+                        </View>
       
         <View  style={{justifyContent:'center',alignItems:'center'
         }}>
@@ -228,11 +230,14 @@ SlideMenu=()=>{
        {
          if(data.status==ResponseSuccessStatus)
          {
+          this.setState({visibles:true,ResponseStatus:data.message})
+          setTimeout(this.nav,1500)
           //await AsyncStorage.setItem('loginInfo',data.loginInfo); 
-          this.NavigationReset('Home',this.state.profilestatus,this.state.kycstatus) //Profile popup not apprear,kyc popup appear        
+           
         
           
          }
+      
          else
          {
            Alert.alert(data.status,data.message)
@@ -245,10 +250,14 @@ SlideMenu=()=>{
        }
      
      }
+     nav=()=>
+     {
+      this.setState({visibles:false})
+      this.NavigationReset('Home',this.state.profilestatus,this.state.kycstatus) //Profile popup not apprear,kyc popup appear      
+     }
      NavigationReset=(routname,dashboardpopup,kycstatus)=>
      {
-      setTimeout(()=>{
-        this.setState({visibles:false})
+     
         this.props.navigation.dispatch(
           StackActions.reset({
            index: 0,
@@ -256,7 +265,7 @@ SlideMenu=()=>{
           })
          );
         
-      },3000)
+    
       
      }
 }

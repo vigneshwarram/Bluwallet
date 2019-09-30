@@ -959,7 +959,7 @@ export default class DashBoard extends React.Component {
         <View>
           <Text style={{ marginLeft: 20, fontSize: 18, color: '#fff', fontFamily: 'Exo2-Medium' }}>Complete Your Profile</Text>
           <View style={{ flexDirection: 'row', marginTop: 10 }}>
-            <Text style={{ marginLeft: 20, fontSize: 10, color: '#fff', width: '65%', fontFamily: '' }}>Complete you profile today to start using your wallet successfully </Text>
+            <Text style={{ marginLeft: 20, fontSize: 10, color: '#fff', width: '65%', fontFamily: 'Exo2-Regular',}}>Complete you profile today to start using your wallet successfully </Text>
           </View>
           <TouchableOpacity onPress={this.ContinueClick}>
             <View style={{ width: '60%', marginLeft: 20, marginTop: 30 }}>
@@ -988,7 +988,7 @@ return(<View >
   <LinearGradient colors={['#395ea4', '#446ea8', '#4c78a9']} style={{ width: '95%', marginLeft: 10, marginRight: 10, padding: 10, height: 160, marginTop: 15, borderRadius: 10 }}>
     <Text style={{ marginLeft: 20, fontSize: 18, fontWeight: 'bold', color: '#fff' }}>Document Needed</Text>
     <View style={{ flexDirection: 'row' }}>
-      <Text style={{ marginLeft: 20, fontSize: 10, color: '#fff', width: '65%' }}>we have some issue with the documents you've supplied.please try uploading them again to continue </Text>
+      <Text style={{ marginLeft: 20, fontSize: 10, color: '#fff', width: '65%',fontFamily: 'Exo2-Regular', }}>we have some issue with the documents you've supplied.please try uploading them again to continue </Text>
       <Image style={{
         marginLeft: 10, height: 50,
         width: 100,
@@ -1015,7 +1015,7 @@ return(<View >
             <View>
               <Text style={{ marginLeft: 20, fontSize: 18, color: '#fff', fontFamily: 'Exo2-Medium' }}>Complete Your Profile</Text>
               <View style={{ flexDirection: 'row', marginTop: 10 }}>
-                <Text style={{ marginLeft: 20, fontSize: 10, color: '#fff', width: '65%', fontFamily: '' }}>Complete you profile today to start using your wallet successfully </Text>
+                <Text style={{ marginLeft: 20, fontSize: 10, color: '#fff', width: '65%', fontFamily: 'Exo2-Regular',}}>Complete you profile today to start using your wallet successfully </Text>
               </View>
               <TouchableOpacity onPress={this.ContinueClick}>
                 <View style={{ width: '60%', marginLeft: 20, marginTop: 30 }}>

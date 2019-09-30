@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,ScrollView,Dimensions,Text,ActivityIndicator,Easing,TouchableOpacity,LayoutAnimation,Animated} from 'react-native';
+import { View, StyleSheet, Image,AsyncStorage,Dimensions,Text,ActivityIndicator,Easing,TouchableOpacity,LayoutAnimation,Animated} from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
-
+import { ProfileRetrive, TwoFactorApi, ProfileUpdate } from '../Api/ProfileRegisterApi'
 import LinearGradient from 'react-native-linear-gradient';
 
 export default class Welcome  extends React.Component {
@@ -43,6 +43,7 @@ export default class Welcome  extends React.Component {
   
   componentDidMount()
   {
+    this.getTwoFactors()
     //this.GetListData()
   }
 
@@ -229,7 +230,32 @@ SlideMenu=()=>{
       }
       BeginAction=()=>
       {
-        this.props.navigation.navigate('Verify');
+        this.setEnable()
+      }
+      getTwoFactors = async () => {
+        let userid = await AsyncStorage.getItem('UserId')
+        let params =
+        {
+          "userId": userid,
+        }
+        TwoFactorApi(params, this.TwoFactorRespose)
+      }
+      TwoFactorRespose = (data) => {
+        if (data.status === 'success') {
+          console.log('data', data)
+          this.setState({ twofactor: data.twoFactorStatus })
+    
+        }
+      }
+      setEnable = async () => {
+        let params =
+        {
+          "userId": await AsyncStorage.getItem('UserId'),
+          "twoFactorAuthenticationStatus": this.state.twofactor,
+          "otpSecureKey": ""
+        }
+        this.props.navigation.navigate('PicodeEnable', { TwoFactorParams: params ,status:true})
+        //TwoFactorApi(params,this.TwoFactorRespose)
       }
 }
 
