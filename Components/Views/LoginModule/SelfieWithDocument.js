@@ -4,10 +4,10 @@ import { View, StyleSheet, Image,Picker,Dimensions,Text,ActivityIndicator,Toucha
 import { Alert } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import ImageResizer from 'react-native-image-resizer';
-import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
 import BackgroundIcon from '../../Background'
 import LinearGradient from 'react-native-linear-gradient';
 import {PassportUpload,IdUpload,ResidentUpload,LicenseUpload} from '../Api/KYCApi'
+import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
 //import ImagePicker from 'react-native-customized-image-picker';
 const options = {
   title: 'Select Avatar',
@@ -39,6 +39,7 @@ export default class SelfieWithDocument  extends React.Component {
       w: 50,
       h: 45,
       wr:50,
+      kyc:false,
       hr:45,
       Ahr:80,
       Awr:80,
@@ -163,11 +164,17 @@ SlideMenu=()=>{
   }),fontSize:36,marginTop:10,fontFamily:'Exo2-Bold'}}>Uploading...</Animated.Text>
   </View>
   }
+     
+
     return (  
         
       <View style={styles.Maincontainers}>  
        
-       <Dialog 
+     
+
+       <LinearGradient
+  colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>   
+     <Dialog 
     visible={this.state.visibles}>
     <DialogContent>
      <View style={{width:300,height:110,alignItems:'center'}}>
@@ -180,10 +187,6 @@ SlideMenu=()=>{
      </View>
     </DialogContent>
   </Dialog>
-
-       <LinearGradient
-  colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>   
-   
    <View style={{flex:0.4}}>
    <View  style={{justifyContent:'center',alignItems:'center'
         }}>

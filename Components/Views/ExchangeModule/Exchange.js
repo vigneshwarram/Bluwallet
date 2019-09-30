@@ -524,11 +524,13 @@ toggleSwitch=(value)=>{
         //this.setState({visibles:false})
         if(this.state.exchangeTypeMenu ==='PlatForm')
         {
+          this.setState({visibles:false})
           this.props.navigation.navigate('Publish', {Exchange_Type: this.state.exchangeTypeMenu })
          
         }
         else
         {
+          this.setState({visibles:false})
           this.props.navigation.navigate('PuplishUser', {Exchange_Type: this.state.exchangeTypeMenu })
         }
        

@@ -99,7 +99,7 @@ export default class ExpandableList_Vault extends Component {
                   <View style={{ flexDirection: 'column',justifyContent:'space-between' }}>
   
                   <Text style={{  color: '#fff', fontFamily: "Exo2-Bold" }}> {this.props.item.typeOfInvestment}</Text>
-                  <Text style={{   color: '#ABB3D0', fontFamily: 'Exo2-Regular' }}>{this.props.item.cryptoAmount}</Text>
+                  <Text style={{   color: '#ABB3D0', fontFamily: 'Exo2-Regular',marginLeft:5 }}>{this.props.item.cryptoAmount}</Text>
                   </View>
                   <View style={{ flexDirection: 'column',justifyContent:'space-between' }}>
   
@@ -154,7 +154,7 @@ export default class ExpandableList_Vault extends Component {
 </View>  
 
 <View style={{marginRight:20}}>
-<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,fontFamily:'Exo2-Regular',marginBottom:10}}>$ {this.props.item.cryptoAmount}</Text> 
+<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,fontFamily:'Exo2-Regular',marginBottom:10}}>$ {usdvalue}</Text> 
 
 </View>  
 

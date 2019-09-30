@@ -24,6 +24,7 @@ import BankScreen from './Components/Views/BankScreen'
 import Publish from './Components/Views/ExchangeModule/Publish'
 import PuplishUser from './Components/Views/ExchangeModule/PuplishUser'
 import Welcome from './Components/Views/LoginModule/Welcome'
+import Information from './Components/Views/VaultModule/Information'
 import Verify from './Components/Views/LoginModule/Verify'
 import Address from  './Components/Views/LoginModule/Address'
 import CountrySearch from  './Components/Views/LoginModule/CountrySearch'
@@ -200,6 +201,7 @@ let CollapseExpand = (index, position) => {
         Sms:{screen:Sms},     
         Home:{screen:TabNavigator},
         AddVault:{screen:AddVault},
+        Information:{screen:Information},
         ConfirmVault:{screen:ConfirmVault},    
         Login:{screen:Login},
         VerificationCards:{screen:VerificationCards},    

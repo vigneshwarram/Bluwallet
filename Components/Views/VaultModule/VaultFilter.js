@@ -338,7 +338,7 @@ export default class VaultFilter extends React.Component {
         duration: 250,
         easing: Easing.inOut(Easing.ease),
         delay: 50,
-      })]).start();
+      })]).start(()=>this.props.navigation.navigate('Information'));
   }
   pressRight = () => {
 

@@ -338,7 +338,7 @@ SlideMenu=()=>{
   <View style={{width: '40%', height: 230,marginLeft:30,borderRadius:6}}>
   <ImageBackground  style={{width: '100%', height: '100%',borderRadius:6}} imageStyle={{resizeMode:'cover',width:'100%',height:280,borderRadius:6}} source={require("./assets/e.png")}>
       <TouchableOpacity onPress={this.EtheriumClick}>
-      <Image  style={{width:30,height:30,marginLeft:'25%',marginTop:20,
+      <Image  style={{width:40,height:40,marginLeft:'25%',marginTop:20,
     resizeMode: 'contain',tintColor:'#fff'}}   source={require("./assets/diamond.png")} ></Image>
      
         <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
@@ -358,7 +358,7 @@ SlideMenu=()=>{
        <TouchableOpacity onPress={this.EtheriumClick}>
        <View style={{height:'100%'}}>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
-    <Image  style={{width:30,height:30,
+    <Image  style={{width:40,height:40,
     resizeMode: 'contain',}}   source={require("./assets/diamond.png")} ></Image>
 
         </View>
@@ -379,7 +379,7 @@ SlideMenu=()=>{
 
       {(this.state.BitShadowClick)?<ImageBackground  style={{width: '100%', height: '100%',marginLeft:30,}} imageStyle={{resizeMode:'cover',width:'40%',height:280,borderRadius:6}} source={require("./assets/bitcoin.png")}>
       <TouchableOpacity onPress={this.BtcClick}>
-      <Image  style={{width:30,height:30,marginLeft:'18%',marginTop:20,
+      <Image  style={{width:40,height:40,marginLeft:'18%',marginTop:20,
     resizeMode: 'contain',tintColor:'#fff'}}   source={require("./assets/b.png")} ></Image>
      
         <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
@@ -398,7 +398,7 @@ SlideMenu=()=>{
        <TouchableOpacity onPress={this.BtcClick}>
        <View  style={{height:'100%'}}>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
-    <Image  style={{width:30,height:30,
+    <Image  style={{width:40,height:40,
     resizeMode: 'contain',}}   source={require("./assets/b.png")} ></Image>
 
         </View>
@@ -427,7 +427,7 @@ SlideMenu=()=>{
         <View style={{width: '40%', height: 230,marginLeft:30}}>
         <ImageBackground  style={{width: '100%', height: '100%'}} imageStyle={{resizeMode:'cover',width:'100%',height:280,borderRadius:6}} source={require("./assets/monero.png")}>
       <TouchableOpacity onPress={this.MoneroClick}>
-      <Image  style={{width:30,height:30,marginLeft:'23%',marginTop:20,
+      <Image  style={{width:40,height:40,marginLeft:'23%',marginTop:20,
     resizeMode: 'contain',tintColor:'#fff'}}   source={require("./assets/m.png")} ></Image>
      
         <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
@@ -447,7 +447,7 @@ SlideMenu=()=>{
        <TouchableOpacity onPress={this.MoneroClick}>
        <View  style={{height:'100%'}}>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
-    <Image  style={{width:30,height:30,
+    <Image  style={{width:40,height:40,
     resizeMode: 'contain',}}   source={require("./assets/m.png")} ></Image>
 
         </View>
@@ -469,7 +469,7 @@ SlideMenu=()=>{
          
       {(this.state.zShadowClick)?<ImageBackground  style={{width: '100%', height: '100%',marginLeft:30,}} imageStyle={{resizeMode:'cover',width:'40%',height:280,borderRadius:6}} source={require("./assets/z.png")}>
       <TouchableOpacity onPress={this.zClick}>
-      <Image  style={{width:30,height:30,marginLeft:'18%',marginTop:20,
+      <Image  style={{width:40,height:40,marginLeft:'18%',marginTop:20,
     resizeMode: 'contain',tintColor:'#fff'}}   source={require("./assets/zcoinyellow.png")} ></Image>
      
         <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
@@ -488,7 +488,7 @@ SlideMenu=()=>{
        <TouchableOpacity onPress={this.zClick}>
        <View  style={{height:'100%'}}>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
-    <Image  style={{width:30,height:30,
+    <Image  style={{width:40,height:40,
     resizeMode: 'contain',}}   source={require("./assets/zcoinyellow.png")} ></Image>
 
         </View>
