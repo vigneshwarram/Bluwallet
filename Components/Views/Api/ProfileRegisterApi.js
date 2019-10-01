@@ -66,8 +66,7 @@ export const ProfileRetrive=async(registerDetails)=>
         return res.json();
        })
        .then((resJson)=>{
-        registerDetails(resJson)
-       
+        registerDetails(resJson) 
         return resJson;
        })
        .catch((error) => {
