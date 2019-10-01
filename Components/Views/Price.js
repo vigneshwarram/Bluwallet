@@ -19,9 +19,11 @@ import { VaultSystemApi, CryptoInvestment, CryptoTypeInvestment } from './Api/Va
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined,InvalidToken,TokenExpired} from './Utils.js/Constant'
 import LinearGradient from 'react-native-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
-import {PriceList} from './Api/PriceApi'
+import {PriceList,Price_data_list} from './Api/PriceApi'
 let CrptoType='ETH'
 let mass=[ 50, 100, 150, 200, 100, 300, 350, 400, 300, 100, 50, 40, 60, 100]
+let massETH=[ 50, 100, 150, 200, 100, 300, 350, 400, 300, 100, 50, 40, 60, 100]
+let massBTH=[ 50, 100, 150, 200, 100, 300, 350, 400, 300, 100, 50, 40, 60, 100]
 export default class Price  extends React.Component {
 
   static navigationOptions = {
@@ -59,7 +61,50 @@ export default class Price  extends React.Component {
   
   componentDidMount()
   {
+    this.GetPriceList()
     this.GetPriceData()
+   
+  }
+  GetPriceList=()=>
+  {
+    this.Load()
+    Price_data_list(this.PriceResults,this.error)
+  }
+  PriceResults=(data)=>
+  {
+    console.log('data', data)
+    this.hide()
+    if (data != 'undefined') {
+      if (data.status === ResponseSuccessStatus) 
+      {
+        // for(let i=0;i<=data.listCrytoValues.length;i++)
+        // {
+        //   massETH.push(data.listCrytoValues[i].ethTradeValues)
+        // }
+        data.listCrytoValues.map((value) =>
+        mass.push(value.ethTradeValues)
+  
+);
+data.listCrytoValues.map((value) =>
+massETH.push(value.ethTradeValues)
+
+);
+data.listCrytoValues.map((value) =>
+massBTH.push(value.btcTradeValues)
+
+);
+       // console.log('data', data.listCrytoValues.ethTradeValues)
+        //massETH=listCrytoValues.ethTradeValues
+        //massBTH=listCrytoValues.btcTradeValues
+      }
+    }
+    else{
+
+    }
+  }
+  error=(data)=>
+  {
+ Alert.alert(data.status,data.message)
   }
   BalanceResponse = (data) => {
     console.log('data', data)
@@ -527,15 +572,16 @@ this.setState({
       }
       EtheriumClick=()=>
       {
-         mass=[50, 100, 150, 200, 100, 300, 350, 400, 300, 100, 50, 40, 60, 100]
-        this.setState({data:mass,EtheriumShadowClick:true,BitShadowClick:false,MoneroShadowClick:false,zShadowClick:false,currency:'ETH'})
+          mass=massETH
+          console.log(massETH)
+        this.setState({data:massETH,EtheriumShadowClick:true,BitShadowClick:false,MoneroShadowClick:false,zShadowClick:false,currency:'ETH'})
         this.setState({TotalPrice:this.state.usdforEther,})
        
       }
       BtcClick=()=>
       {
-         mass=[50, 60, 70, 95, 100, 100, 100, 80, 90, 150, 50, 40, 60, 100]
-        this.setState({data:mass,BitShadowClick:true,MoneroShadowClick:false,TotalPrice:this.state.usdforBtc,EtheriumShadowClick:false,zShadowClick:false,currency:'BTC'})
+          mass=massBTH
+        this.setState({data:massBTH,BitShadowClick:true,MoneroShadowClick:false,TotalPrice:this.state.usdforBtc,EtheriumShadowClick:false,zShadowClick:false,currency:'BTC'})
         setTimeout(this.nav, 1500);
       }
       nav=()=>

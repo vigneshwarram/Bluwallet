@@ -23,3 +23,5 @@ export const REJECT='exchange/decline'
 //TRANSACTION HISTORY
 export const TRANSACTION_HISTORY='retrieve/exchange/userid'
 
+export const PRICE_LIVE_DATA=''
+
