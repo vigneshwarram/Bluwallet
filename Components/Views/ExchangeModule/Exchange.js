@@ -85,7 +85,7 @@ export default class  Buy  extends React.Component {
   componentDidMount()
   {
   
-    // this.OnLoad()
+    this.OnLoad()
     console.log('Exchange view',this.state.exchangeTypeMenu)
     this.GetRoleId()
     
@@ -127,18 +127,18 @@ export default class  Buy  extends React.Component {
 
     }
   }
-  // OnLoad=async()=>
-  // {
-  //   let type=crptoType
-  //   let params=
-  //   {
-  //     userId:await AsyncStorage.getItem('UserId') ,
-  //     cryptoType:type
+  OnLoad=async()=>
+  {
+    let type=crptoType
+    let params=
+    {
+      userId:await AsyncStorage.getItem('UserId') ,
+      cryptoType:type
 
-  //   }
-  //   this.Load()
-  //   ExchangeList(params,getuserdetails,this.OnLoadResponse,this.error,this.NetworkIssue)
-  // }
+    }
+    this.Load()
+    ExchangeList(params,getuserdetails,this.OnLoadResponse,this.error,this.NetworkIssue)
+  }
   error=(data)=>
   {
     this.hide()
@@ -152,13 +152,9 @@ export default class  Buy  extends React.Component {
       if(data.status===ResponseSuccessStatus)
       {
       
-        this.setState({"usdforEther":data.CalculatingAmountDTO.usdforEther.toString(),
-        "ethercurrentvalue": data.CalculatingAmountDTO.ethercurrentvalue,
-        "cryptoType": data.CalculatingAmountDTO.cryptoType,
-        "receivedAmount":data.CalculatingAmountDTO.receivedAmount,
-        "paidAmount": data.CalculatingAmountDTO.paidAmount,
-        "mincomercialValue":data.CalculatingAmountDTO.minimumCryptoValue,
-        "maxcomercialValue":data.CalculatingAmountDTO.maximumCryptoValue}
+        this.setState({
+        "mincomercialValue":data.CalculatingAmountDTO.mincomercialValue,
+        "maxcomercialValue":data.CalculatingAmountDTO.maxcomercialValue}
         )
         this.usdConvert(this.state.usdforEther)
         VaultSystemApi(crptoType, this.BalanceResponse)
@@ -413,7 +409,7 @@ toggleSwitch=(value)=>{
 <Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Medium'}}>Commercial Limits</Text>
 </View>
   <View style={{flex:1}}>
-  <Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,fontFamily:'Exo2-Regular'}}>10-1000000 $</Text> 
+  <Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,fontFamily:'Exo2-Regular'}}>{this.state.mincomercialValue}-{this.state.maxcomercialValue} $</Text> 
   </View>
 
 </View>
@@ -460,8 +456,8 @@ toggleSwitch=(value)=>{
     borderBottomWidth: 1,
   }}
 />
-<TouchableOpacity onPress={() => this.exchangeApi()} style={{marginTop:30,paddingLeft:50,paddingRight:50}}>
-<View >
+<TouchableOpacity onPress={() => this.exchangeApi()} >
+<View style={{marginTop:30,paddingLeft:50,paddingRight:50}} >
 
 <View>
 <LinearGradient colors={['#41da9c','#36deaf','#26e3ca']}  start={{x: 0, y: 0}} end={{x: 1, y: 0}} style={{padding:12,backgroundColor:'green',justifyContent:'center',alignItems:'center',borderRadius:6}}>

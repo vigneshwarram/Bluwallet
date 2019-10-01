@@ -230,7 +230,7 @@ export default class Profile extends React.Component {
     this.props.navigation.navigate('Login')
   }
   render() {
-
+     
     console.log('this.state.proImgPath', this.state.proImgPath)
     if (this.state.animate) {
       return <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
@@ -320,7 +320,7 @@ export default class Profile extends React.Component {
             <View style={{ alignItems: 'center', position: 'absolute', bottom: 0, right: 0, justifyContent: 'center', left: 0, top: -10 }}>
             <TouchableOpacity onPress={()=>this.BeginAction()}>
             <View style={{ width: 100, height: 105, borderRadius: 25, backgroundColor: '#fff' }}>
-                {this.state.proImgPath == '' ? <Image style={{ width: 100, height: 105, borderRadius: 25 }} source={require("./assets/build.png")} /> : <Image style={{ width: 100, height: 105, borderRadius: 25 }} source={{uri:this.state.proImgPath}} />}
+               <Image style={{ width: 100, height: 105, borderRadius: 25 }} source={{uri:this.state.proImgPath}} />
                 <Image style={{ width: 25, height: 25, marginTop: -25, alignSelf: 'flex-end' }} source={require("./assets/profileround.png")} ></Image>
               </View>
             </TouchableOpacity>
@@ -590,7 +590,7 @@ export default class Profile extends React.Component {
   }
   GetImageFile=(data)=>
   {
-    ImageResizer.createResizedImage(data.uri, 10, 10, 'JPEG', 80).then((response) => 
+    ImageResizer.createResizedImage(data.uri, 100, 100, 'JPEG', 100).then((response) => 
     {
       this.UpdateProfile(response.uri, response.name)
      // PassportUpload(response.uri,this.Responsedata,userid)
