@@ -231,7 +231,7 @@ export default class ExchangeMenu extends React.Component {
               textStyle={styles.spinnerTextStyle}
             />
 
-            <ImageBackground source={require('../assets/Group_20501.png')} imageStyle={{ resizeMode: 'cover', width: '100%', height: '100%' }} style={{ opacity: 0.9, flex: 0.33 ,zIndex:1}}>
+            <ImageBackground source={require('../assets/Group_20501.png')} imageStyle={{ resizeMode: 'cover', width: '100%', height: '100%' }} style={{ opacity: 0.9, flex: 0.34 ,zIndex:1}}>
               <View style={{ justifyContent: 'center', alignItems: 'center' ,marginTop: 20}}>
                 <View style={{ flexDirection: 'row' }}>
                   <Image style={{ marginRight: 10, width: 18, height: 22, resizeMode: 'contain' }} source={require("../assets/app4.png")} ></Image>
@@ -310,7 +310,7 @@ export default class ExchangeMenu extends React.Component {
 
 
 
-            <View style={{ flex: 0.67 }}>
+            <View style={{ flex: 0.66 }}>
 
               <ScrollView contentContainerStyle={{ paddingBottom: 100 }}>
                 <View>

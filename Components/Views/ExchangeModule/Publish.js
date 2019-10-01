@@ -242,7 +242,7 @@ renderScane() {
 
  </View>
 
- <ImageBackground source={require('../assets/Group_20501.png')} imageStyle={{resizeMode:'cover',width:'100%',height:'100%'}} style={{opacity:0.9,flex:0.33}}>
+ <ImageBackground source={require('../assets/Group_20501.png')} imageStyle={{resizeMode:'cover',width:'100%',height:'100%'}} style={{opacity:0.9,flex:0.34,zIndex:1}}>
  <View style={{position:'absolute',bottom:-10,left:0,right:0,justifyContent:'center',alignItems:"center"}}>
     <TouchableOpacity onPress={this.ExchangeLogic}> 
     <View>
@@ -260,7 +260,7 @@ renderScane() {
  
  
   </View>
-<View style={{justifyContent:'center',alignItems:'flex-start',top:20,left:15,position:'absolute'}}>
+<View style={{justifyContent:'center',alignItems:'flex-start',top:30,left:15,position:'absolute'}}>
 <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
 <View>
 <Image style={{width: 15, height: 15,resizeMode:'contain'}}   source={require("../assets/back.png")} ></Image> 
@@ -270,7 +270,7 @@ renderScane() {
       
  <View style={{justifyContent:'center',alignItems:'center'}}>
 
-          <View style={{flexDirection:'row',marginTop:10}}>
+          <View style={{flexDirection:'row',marginTop:20}}>
           <View style={{justifyContent:"center",alignItems:'center'}}>
           <Image style={{marginRight:10,width: 18, height: 22,resizeMode:'contain'}}   source={require("../assets/app4.png")} ></Image>     
           </View>
@@ -278,7 +278,7 @@ renderScane() {
           <Text style={{fontSize:20,color:'#fff',fontFamily:'Exo2-Regular '}}>Exchange</Text>
           </View>
          
-          <View style={{width:'80%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:20, justifyContent:'space-between',flexDirection:'row'}}>
+          <View style={{width:'80%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:20,marginBottom:20, justifyContent:'space-between',flexDirection:'row'}}>
 <View style={{flexDirection:'row',marginLeft:20}}>
 <Image  style={{width: 20, height: 20,marginTop:10}}  source={require("../assets/Searchicon.png")} ></Image> 
 <TextInput
@@ -329,7 +329,7 @@ renderScane() {
   
   </View>  
 
-  <View style={{flex:0.6,marginTop:20}}>
+  <View style={{flex:0.66,marginTop:20}}>
   <ScrollView contentContainerStyle={{paddingBottom: 100}}>
   <View>
           {

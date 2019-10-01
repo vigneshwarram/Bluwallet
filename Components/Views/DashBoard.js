@@ -455,14 +455,14 @@ export default class DashBoard extends React.Component {
         params =
           {
 
-            "etherAmount": this.state.sliderValue,
+            "bitwingsAmount": this.state.sliderValue,
             "exchangeStatus": 0,
             "toEthWalletAddress": this.state.QR_Code_Value,
             "userId": await AsyncStorage.getItem('UserId')
           }
       }
       this.Load()
-    //  console.log('send params', params)
+     console.log('send params', params)
       SendApi(url, params, this.SendResponse)
     }
 
@@ -504,7 +504,7 @@ export default class DashBoard extends React.Component {
         params =
           {
 
-            "etherAmount": data.amount,
+            "bitwingsAmount": data.amount,
             "exchangeStatus": data.status,
             "toEthWalletAddress": data.toWalletAddress,
             "requestId":data.requestId,
@@ -810,7 +810,7 @@ export default class DashBoard extends React.Component {
                   size={120}
                   color='#529DF3'
                   logoMargin={10}
-                  value={(type === 'ETH') ? this.state.EtherWalletAddress : this.state.BtcWalletAddress}
+                  value={(type === 'BTC') ? this.state.BtcWalletAddress: this.state.EtherWalletAddress}
                   logo={{ uri: base64Logo }}
                   logoSize={100}
                   logoBackgroundColor='transparent'
@@ -1425,7 +1425,7 @@ return(<View >
   }
   readFromClipboard = async () => {
     console.log('its comming')
-    await Clipboard.setString((type == 'ETH') ? this.state.EtherWalletAddress : this.state.BtcWalletAddress);
+    await Clipboard.setString((type == 'BTC') ? this.state.BtcWalletAddress:this.state.EtherWalletAddress);
     Alert.alert('address copied')
   };
   BalanceResponse = (data) => {

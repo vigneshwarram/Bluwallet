@@ -31,14 +31,14 @@ export default class Login  extends React.Component {
       visibles:false,
       ResponseStatus:'',
       animate:false,
-      // Username:'testdemo2@yopmail.com',
-      // Password:'Admin@123new',
+      Username:'testdemo2@yopmail.com',
+      Password:'Admin@123new',
       // Username:'bluadmin@yopmail.com',
       // Password:'Admin@1234',
       // Username:'vinay111@yopmail.com',
       // Password:'Welcome@1234',
-        Username:'',
-       Password:'',
+      //   Username:'',
+      //  Password:'',
       clickr:false,
       clickopen:false,
       click:false,
@@ -297,7 +297,8 @@ SlideMenu=()=>{
         if( data.error==='invalid_grant')
         {
           console.log('login error', data.error_description)
-          Alert.alert('Alert','Incorrect username and password.')
+          this.setState({ShowAlert:true,alert:'Incorrect username and password.'})
+          // Alert.alert('Alert','Incorrect username and password.')
           this.setState({Username:''})
           this.setState({Password:''})
 
