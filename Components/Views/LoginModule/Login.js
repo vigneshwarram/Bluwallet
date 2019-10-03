@@ -31,14 +31,14 @@ export default class Login  extends React.Component {
       visibles:false,
       ResponseStatus:'',
       animate:false,
-      // Username:'testdemo2@yopmail.com',
-      // Password:'Admin@123new',
+      Username:'testdemo2@yopmail.com',
+      Password:'Admin@123new',
       // Username:'bluadmin@yopmail.com',
       // Password:'Admin@1234',
       // Username:'vinay111@yopmail.com',
       // Password:'Welcome@1234',
-        Username:'',
-        Password:'',
+        // Username:'',
+        // Password:'',
       clickr:false,
       clickopen:false,
       click:false,
@@ -205,7 +205,6 @@ SlideMenu=()=>{
          // Adding hint in TextInput using Placeholder option.
          placeholder="Password"
          placeholderTextColor="#3d5498" 
-      
          style={styles.inputBox}
          secureTextEntry={true}
          onChangeText={(text) => this.setState({Password:text,ShowAlert:false})}
@@ -365,17 +364,23 @@ SlideMenu=()=>{
             await AsyncStorage.setItem('bitcoinWalletReceivingAddress',data.loginInfo.bitcoinWalletReceivingAddress.toString()); 
             console.log('Loginresult',data)
             this.hide()
-            if(data.loginInfo.twoFactorAuthenticationStatus===0)
-            {
-               this.setState({visibles:true,ResponseStatus:data.message})
-               setTimeout(this.nav,800)
-              
-              // this.NavigationReset('Home',1,0)            
-            }
-            else
-            {
-              this.props.navigation.navigate('PinCode',{profilestatus:data.loginInfo.profileStatus,kycstatus:data.loginInfo.kycStatus})
-            }
+            if(data.loginInfo.secretPin==0)
+{  if(data.loginInfo.twoFactorAuthenticationStatus===0)
+  {
+     this.setState({visibles:true,ResponseStatus:data.message})
+     setTimeout(this.nav,800)
+    
+    // this.NavigationReset('Home',1,0)            
+  }
+  else
+  {
+    this.props.navigation.navigate('PinCode',{profilestatus:data.loginInfo.profileStatus,kycstatus:data.loginInfo.kycStatus})
+  }
+}
+else
+{
+  this.props.navigation.navigate('SetUpPin');
+}          
            
             
                

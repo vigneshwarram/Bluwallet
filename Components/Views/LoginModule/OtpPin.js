@@ -8,6 +8,7 @@ import{TwoFactorApi} from '../Api/ProfileRegisterApi'
 import { NavigationActions, StackActions } from 'react-navigation'
 import { ResponseSuccessStatus, InvalidResponse, DataUndefined } from '../Utils.js/Constant'
 import OTPInput from 'react-native-otp';
+import PinView from 'react-native-pin-view'
 import Dialog, { DialogContent } from 'react-native-popup-dialog';
 export default class OtpPin extends React.Component {
 
@@ -177,19 +178,17 @@ export default class OtpPin extends React.Component {
                             <Text style={{ color: '#4e649f', opacity: 1, fontSize: 18, marginTop: 20, fontFamily: 'Exo2-Bold' }}>Please Enter OTP</Text>
 
                         </View>
-                        <View style={{
-                            justifyContent: 'center', alignItems: 'center', marginTop: 20
-                        }}>
-                            <OTPInput
-                                value={this.state.otp}
-                        
-                                onChange={this.handleOTPChange}
-                                tintColor="#354e91"
-                                otpLength={6}
-                            />
-
-
-                        </View>
+                        <View  style={{width:'100%', marginTop:20,zIndex:1
+        }}>
+             <PinView
+        onPress={this.onPress}
+        onComplete={this.onComplete}
+        // pinLength={this.state.pin.length}
+        pinLength={4} // You can also use like that.
+        />
+      
+                       
+        </View>
                         <View style={{ justifyContent: 'center', alignItems: 'center', position: 'absolute', bottom: 100, left: 70 }}>
                             <Image
                                 style={{ width: 250, height: 250, resizeMode: 'contain', opacity: 0.02 }}
@@ -215,17 +214,17 @@ export default class OtpPin extends React.Component {
         console.log(pin)
         // Check if the PIN is correct here
     }
-    handleOTPChange = async (otp) => {
-        if (otp.length >= 6) {
+    onComplete = async (inputtedPin, clear) => {
+      
             this.Load()
             let params =
             {
                 "userId": await AsyncStorage.getItem('UserId'),
                 "twoFactorAuthenticationStatus": this.state.param,
-                "otpSecureKey": otp
+                "otpSecureKey": inputtedPin
             }
             TwoFactorApi(params, this.TwoFactorRespose)
-        }
+        
 
     }
     TwoFactorRespose = (data) => {

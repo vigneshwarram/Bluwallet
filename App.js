@@ -46,6 +46,9 @@ import SelfieWithDocument from  './Components/Views/LoginModule/SelfieWithDocume
 import PincodeEnable from  './Components/Views/LoginModule/PincodeEnable'
 import OtpPin from  './Components/Views/LoginModule/OtpPin'
 import DocumentFront from  './Components/Views/LoginModule/DocumentFront'
+import SetUpPin  from './Components/Views/NewPinModule/SetUpPin'
+import PinLogin  from './Components/Views/NewPinModule/PinLogin'
+import ConfirmPin  from './Components/Views/NewPinModule/ConfirmPin'
 import RetrivePassword from  './Components/Views/LoginModule/RetrivePassword'
 import {
   createStackNavigator,createBottomTabNavigator,createAppContainer
@@ -193,7 +196,11 @@ let CollapseExpand = (index, position) => {
       const MainNavigator =createStackNavigator({
        
         //Publish:{screen:Publish},
+      
         Launch: { screen: Launch },
+        SetUpPin:{screen:SetUpPin},
+        PinLogin:{screen:PinLogin},
+        ConfirmPin:{screen:ConfirmPin},
        //UploadProgress:{screen:UploadProgress},
         TakePhoto:{screen:TakePhoto},    
         RetrivePassword:{screen:RetrivePassword}, 

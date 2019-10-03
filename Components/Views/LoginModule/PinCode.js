@@ -7,7 +7,7 @@ import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-
 import {LoginApi,loginSecureApi} from '../Api/LoginApi'
 import { NavigationActions,StackActions } from 'react-navigation'
 import {ResponseSuccessStatus,InvalidResponse,DataUndefined} from '../Utils.js/Constant'
-import OTPInput from 'react-native-otp';
+import PinView from 'react-native-pin-view'
 export default class PinCode  extends React.Component {
 
   static navigationOptions = {
@@ -178,23 +178,23 @@ SlideMenu=()=>{
                <Text style={{color:'#4e649f',opacity:1,fontSize:18,marginTop:20,fontFamily:'Exo2-Bold'}}>Please Enter OTP</Text>
                        
         </View>
-        <View  style={{justifyContent:'center',alignItems:'center', marginTop:20
+        <View  style={{width:'100%', marginTop:20,zIndex:1
         }}>
-             <OTPInput
-  value={this.state.otp}
-  onChange={this.handleOTPChange}
-  tintColor="#354e91"
-  otpLength={6}
-/>
+             <PinView
+        onPress={this.onPress}
+        onComplete={this.onComplete}
+        // pinLength={this.state.pin.length}
+        pinLength={4} // You can also use like that.
+        />
       
                        
         </View>
-        <View style={{justifyContent:'center',alignItems:'center',position:'absolute',bottom:100,left:70}}>
+        {/* <View style={{justifyContent:'center',alignItems:'center',position:'absolute',bottom:100,left:70}}>
         <Image
                 style={{width:250,height:250,resizeMode: 'contain',opacity:0.02}}
                 source={require('../assets/dlogo.png')}
             />            
-        </View>  
+        </View>   */}
   
  </LinearGradient> 
  </View>
@@ -211,17 +211,10 @@ SlideMenu=()=>{
       BeginAction=()=>{
         this.props.navigation.navigate('Address');
       }
-      recievePin(pin){
-        console.log(pin)
-        // Check if the PIN is correct here
-     }
-     handleOTPChange=async(otp)=>{
-       if(otp.length>=6)
-       {   
+   
+     onComplete=async(inputtedPin, clear)=>{   
          this.Load()   
-        loginSecureApi(otp,this.SecureResult)
-      
-       }
+        loginSecureApi(inputtedPin,this.SecureResult)
      }
      SecureResult=async(data)=>
      {

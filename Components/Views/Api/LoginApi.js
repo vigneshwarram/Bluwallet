@@ -122,3 +122,38 @@ export const loginSecureApi=async(params,LoginSecureResult,errors,NetworkError)=
    
 }
 
+export const PinLogin=async(params,LoginResult,errors,NetworkError)=>
+{
+  let token=await AsyncStorage.getItem('AccessToken')
+  NetInfo.isConnected.fetch().then(isConnected => {
+    if(isConnected)
+    {
+    
+      console.log('Token',isConnected)
+       fetch('http://bluwallet.colan.in/bluewallet-0.0.1-SNAPSHOT/API/mobile/savesecuritypin', {  
+           method: 'POST',
+           headers: {
+             'authorization':'bearer '+token.trim(), 
+             'Content-Type':'application/json'
+           },
+               body: JSON.stringify(params)
+         }).then((res)=> {
+             console.log(res)
+           return res.json();
+          })
+          .then((resJson)=>{
+           console.log("success",resJson);
+           LoginResult(resJson)
+           return resJson;
+          })
+          .catch((error) => {
+           console.error(error);
+           errors(error.message)
+       }); 
+    }
+    else
+    {
+      NetworkError('Please check your network connection')
+    }
+})  
+}

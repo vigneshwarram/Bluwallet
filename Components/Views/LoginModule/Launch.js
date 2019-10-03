@@ -11,6 +11,7 @@ const optionalConfigObject = {
   imageColor: '#5099f0', // Android
   imageErrorColor: '#ff0000', // Android
   sensorDescription: 'Touch sensor', // Android
+  cancelText: 'Cancel',
   sensorErrorDescription: 'Failed', // Android
   fallbackLabel: 'Show Passcode', // iOS (if empty, then label is hidden)
   unifiedErrors: false, // use unified error messages (default false)
@@ -38,6 +39,7 @@ export default class Launch extends React.Component {
       slide: false,
       visible: false,
       hidden: false,
+      Touchid:false,
       app1color: '#fff',
       app5color: '#fff'
     };
@@ -57,7 +59,22 @@ export default class Launch extends React.Component {
       let kycstatus = await AsyncStorage.getItem('kycstatus'); 
       let profilestatus= await AsyncStorage.getItem('profilestatus'); 
       if (userid != null) {
-        this.GetAuthenticiate(userid,profilestatus,kycstatus)
+        TouchID.isSupported(optionalConfigObject)
+  .then(biometryType => {
+    // Success code
+    if (biometryType === 'FaceID') {
+        console.log('FaceID is supported.');
+    } else {
+      this.GetAuthenticiate(userid,profilestatus,kycstatus);
+    }
+  })
+  .catch(error => {
+    // Failure code
+    console.log(error);
+  });
+        
+          this.props.navigation.navigate('PinLogin')
+        
         console.log('user id', userid)
       }
       else {
@@ -72,13 +89,14 @@ export default class Launch extends React.Component {
     // 
   }
   GetAuthenticiate = async (userids,profilestatus,kycstatus) => {
-
+         
     TouchID.authenticate('To skip login use your fingerprint', optionalConfigObject)
       .then(success => {
 
         console.log('touch id success', success)
-
+        this.setState({Touchid:true})
         if (userids == null) {
+         
           this.props.navigation.navigate('Login')
         }
         else {
@@ -254,6 +272,7 @@ export default class Launch extends React.Component {
   }
   LoginAction = () => {
     this.props.navigation.navigate('Login');
+   
   }
 }
 
