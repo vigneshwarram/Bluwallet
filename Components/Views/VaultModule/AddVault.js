@@ -16,7 +16,7 @@ import { ResponseSuccessStatus, InvalidResponse, DataUndefined, InvalidToken, To
 import ImageCarousel from 'react-native-image-carousel';
 const { width } = Dimensions.get('window');
 import {AddVaults} from '../Api/AddVault'
-import {CONVERT_USD} from '../Api/RequestUrl'
+import {CONVERT_USD,VaultCalculation} from '../Api/RequestUrl'
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
 let type='ETH'
 let roleid;
@@ -477,17 +477,17 @@ HideMenu=()=>{
       snapItem=(index)=>{
         switch (index){
           case 0:
-              this.setState({usdforEther:'',fees:'0.000',usdforgasfee:'0.000',totalamount:'0.000'})
+              this.setState({usdforEther:'',fees:'0.000',usdforgasfee:'0.000',totalamount:'0.000',usd:'0.00'})
               type='ETH'
               this.GetData()
               break;
           case 1:
-              this.setState({usdforEther:'',fees:'0.000',usdforgasfee:'0.000',totalamount:'0.000'})
+              this.setState({usdforEther:'',fees:'0.000',usdforgasfee:'0.000',totalamount:'0.000',usd:'0.00'})
               type='BTC'
               this.GetData()
             break;    
             case 2:
-              this.setState({usdforEther:'',fees:'0.000',usdforgasfee:'0.000',totalamount:'0.000'})
+              this.setState({usdforEther:'',fees:'0.000',usdforgasfee:'0.000',totalamount:'0.000',usd:'0.00'})
               type='BWN'
               this.GetData()
             break;    
@@ -560,18 +560,43 @@ HideMenu=()=>{
       usdConvert = async (amount) => {
         //   let type=crptoType
         console.log('Request data.===>', type, "type calling")
-        let params =
-        {
-          usd: amount,
-          cryptoType: type
-    
+        let params ;
+        if(type=='ETH'){
+          params =
+          {
+            etherAmount: amount,
+            cryptoType: type
+      
+          }
         }
+        else if(type=='BTC'){
+          params =
+          {
+            btcAmount: amount,
+            cryptoType: type
+      
+          }
+        }
+        else{
+          params =
+          {
+            bwnAmount: amount,
+            cryptoType: type
+      
+          }
+        }
+       
         //Get value for Network fee and Crypto amount Api
-        ExchangeList(params,CONVERT_USD, this.onUsdResponse,this.error,this.NetworkIssue)
+        ExchangeList(params,VaultCalculation, this.onUsdResponse,this.error,this.NetworkIssue)
         console.log('Request data.===>', this.onUsdResponse)
     
       }
       error=(data)=>
+  {
+    this.hide()
+    Alert.alert('Alert',data)
+  }
+  NetworkIssue=(data)=>
   {
     this.hide()
     Alert.alert('Alert',data)
@@ -582,21 +607,21 @@ HideMenu=()=>{
             console.log('Coverted ETH Amount', data)
             if(type=='ETH')
             {
-              this.setState({usdforgasfee:data.CalculatingAmountDTO.usdforgasfee,fees:data.CalculatingAmountDTO.gasfee,usd:data.CalculatingAmountDTO.usd})
+              this.setState({usdforgasfee:data.CalculatingAmountDTO.usdforgasfee,fees:data.CalculatingAmountDTO.gasfee,usd:data.CalculatingAmountDTO.usdforEther})
+            }
+            else if(type=='BTC')
+            {
+              this.setState({usdforgasfee:data.CalculatingAmountDTO.usdfoestimationfee,fees:data.CalculatingAmountDTO.fee,usd:data.CalculatingAmountDTO.usdforBtc})
             }
             else
             {
-              this.setState({usdforgasfee:data.CalculatingAmountDTO.usdfoestimationfee,fees:data.CalculatingAmountDTO.fee,usd:data.CalculatingAmountDTO.usd})
+              this.setState({usdforgasfee:data.CalculatingAmountDTO.usdforgasfee,fees:data.CalculatingAmountDTO.gasfee,usd:data.CalculatingAmountDTO.usdforEther})
             }
-          
             let totalamount='';
-           
-            if(this.state.usdforEther!='')
-            {
+                      
+              totalamount=data.CalculatingAmountDTO.totalamount
             
-              totalamount=parseFloat(this.state.usdforEther)+parseFloat(data.CalculatingAmountDTO.gasfee)
-              //let parsenum= parseFloat(totalamount).toFixed(1)
-            }
+            
             this.setState({totalamount:totalamount})
           }
           else if (data.error === 'invalid_token') {

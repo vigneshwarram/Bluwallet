@@ -4,6 +4,7 @@ import { View, StyleSheet, Image,TextInput,Dimensions,Text,ActivityIndicator,Tou
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 import RegisterApi from '../Api/RegisterApi'
+import Dialog, { DialogContent } from 'react-native-popup-dialog';
 import OuthApi from '../Api/OuthApi'
 import RNPasswordStrengthMeter from 'react-native-password-strength-meter';
 import LinearGradient from 'react-native-linear-gradient';
@@ -31,7 +32,9 @@ export default class NewWallet  extends React.Component {
       clickopen:false,
       click:false,
       slide:false,
+      ResponseStatus:'',
       visible: false,
+      visibles:false,
       hidden: false,
       app1color:'#fff',
       app5color:'#fff'
@@ -127,8 +130,22 @@ SlideMenu=()=>{
       <View style={styles.Maincontainers}>  
 <LinearGradient
  colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>  
+  <View>
+  <Dialog
+          visible={this.state.visibles}>
+          <DialogContent>
+            <View style={{ width: 300, height: 110, alignItems: 'center' }}>
+              <View style={{ alignItems: 'center', paddingTop: 10 }}>
+                <Image style={{ width: 50, height: 50, resizeMode: 'contain' }} source={require("../assets/successtik.png")} ></Image>
+              </View>
+              <View style={{ paddingTop: 10, paddingBottom: 10 }}>
+                <Text style={{ fontSize: 15, color: '#454976', fontFamily: 'Exo2-Regular', textAlign: 'center' }}>{this.state.ResponseStatus}</Text>
+              </View>
+            </View>
+          </DialogContent>
+        </Dialog>  
+  </View>
   
- 
  <ScrollView>
 <View style={{flex:1}}>
   <View style={{flex:0.9}}> 
@@ -310,12 +327,9 @@ SlideMenu=()=>{
       {
         this.hide()
         if(Registerdata.status==ResponseSuccessStatus)
-        {
-          
-         // await AsyncStorage.setItem('AccessToken',Registerdata.retrieveData.AccessToken); 
-         // await AsyncStorage.setItem('userId',Registerdata.retrieveData.userId); 
-         this.props.navigation.navigate('Sms',{'email':this.state.Username})
-         
+        {        
+          this.setState({visibles:true,ResponseStatus:Registerdata.message})
+          setTimeout(this.nav,1500)
         }
         else if(Registerdata.status=='failure')
         {
@@ -326,6 +340,11 @@ SlideMenu=()=>{
           Alert.alert('Alert',Registerdata.message)
         }
         console.log("Register", Registerdata)
+      }
+      nav=()=>
+      {
+        this.setState({visibles:false})
+        this.props.navigation.navigate('Sms',{'email':this.state.Username})
       }
       errorResponse=(data)=>
       {

@@ -4,7 +4,7 @@ export const CONVERT_USD='convertusdtocrypptovalue'
 export const getEqualCryptoValueApi='getequavalentcryptovalue'
 export const ExchangeRequestsUrl='exchange/request'
 export const AdminRequest='eth_btc/admin/exchange'
-
+export const VaultCalculation='vaultcalculation'
 export const getuserdetails='getuserdetails'
 export const exchangeAdmin_ETC_BTC_Api='eth_btc/admin/exchange'
 //EXCHANGE REQUESTS
