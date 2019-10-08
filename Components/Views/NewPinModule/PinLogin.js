@@ -213,7 +213,7 @@ SlideMenu=()=>{
         
           let params={
            userId: await AsyncStorage.getItem('UserId'),
-           securityPin:inputtedPin,
+           securityPinValue:inputtedPin,
            securityKeyReset:''
           }
          PinLogin(params,this.SuccessCallback,this.error)
