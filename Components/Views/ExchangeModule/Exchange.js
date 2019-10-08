@@ -546,13 +546,13 @@ else if(item==='BTC-ETH')
 }
 else if(item==='ETH-BWN')
 {
-  coins='BWN'
-  crptoType='BWN'
+  coins='BTC'
+  crptoType='ETH'
 }
 else if(item==='BTC-BWN')
 {
-  coins='BWN'
-  crptoType='BWN'
+  coins='BTC'
+  crptoType='BTC'
 }
 
         this.setState({
@@ -783,7 +783,7 @@ else if(item==='BTC-BWN')
       //-----------------------------//
      usdConvert=async(UsdAmount)=>
       {
-        let type=crptoType
+        //let type=crptoType
        let params=
      {
        usd:UsdAmount,

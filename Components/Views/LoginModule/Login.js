@@ -364,8 +364,9 @@ SlideMenu=()=>{
             await AsyncStorage.setItem('bitcoinWalletReceivingAddress',data.loginInfo.bitcoinWalletReceivingAddress.toString()); 
             console.log('Loginresult',data)
             this.hide()
-            if(data.loginInfo.secretPin==0)
-{  if(data.loginInfo.twoFactorAuthenticationStatus===0)
+            if(data.loginInfo.secretPin==1)
+{ 
+   if(data.loginInfo.twoFactorAuthenticationStatus===0)
   {
      this.setState({visibles:true,ResponseStatus:data.message})
      setTimeout(this.nav,800)
