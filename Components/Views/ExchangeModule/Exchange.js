@@ -606,7 +606,7 @@ else if(item==='BTC-BWN')
           }
           else if(this.state.EthAmount === 'ETH-BWN')
           {
-            {
+            
     
               let params=
             {
@@ -615,16 +615,16 @@ else if(item==='BTC-BWN')
               amountToTrade:this.state.FinalValue
        
             }
-            console.log('Request data.===>', params, this.state.usdforEther)
+            console.log('Request data.===>', params)
             this.Load()   
             //Local API for Bitwings
       
             ExchangeList(params,ExchangeRequestsUrl,this.onExchangeResponse,this.error,this.NetworkIssue)
-            }
+            
           }
           else if(this.state.EthAmount === 'BTC-BWN')
           {
-            {
+            
     
               let params=
             {
@@ -637,7 +637,7 @@ else if(item==='BTC-BWN')
             this.Load()   
          
             ExchangeList(params,ExchangeRequestsUrl,this.onExchangeResponse,this.error,this.NetworkIssue)
-            }
+            
           }
         }
         

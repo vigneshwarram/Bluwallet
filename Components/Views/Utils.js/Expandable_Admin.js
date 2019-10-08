@@ -58,24 +58,24 @@ export default class Expandable_Admin extends Component {
       let userId =await AsyncStorage.getItem('UserId') 
        if(data!='undefined')
          {
-           if(data.exchangeType=='ETH_BTC_USER' || data.exchangeType=='ETH_BTC_ADMIN')
+           if(data.exchangeType=='BTC_ETH_USER'  || data.exchangeType=='BTC_ETH_ADMIN' )
            {
              params=
             {
 
               "userId": userId,
-              "etherAmount": data.amountToTrade,
+              "etherAmount": data.amountYouGet,
               "toEthWalletAddress": data.ethWalletAddress,
               "exchangeReqId": data.id,
               "exchangeStatus": data.status        
            }
            }
-           else if(data.exchangeType=='BTC_ETH_USER'  || data.exchangeType=='BTC_ETH_ADMIN')
+           else if( data.exchangeType=='ETH_BTC_USER' || data.exchangeType=='ETH_BTC_ADMIN')
            {
             params=
             {
              "userId":userId,
-             "btcAmount":data.amountToTrade,
+             "btcAmount":data.amountYouGet,
              "toBtcWalletAddress":data.btcWalletAddress,
              "exchangeReqId":data.id,
              "exchangeStatus":data.status,
@@ -97,10 +97,11 @@ export default class Expandable_Admin extends Component {
          }
      
       this.props.onLoad()
-          if(data.exchangeType ==='ETH_BTC_USER'){
-            ExchangeList(params,ETH_BTC_ADMIN_EXCHANGE,this.ExchangeRequestResponse,this.error,this.NetworkIssue)
-          }else if(data.exchangeType ==='BTC_ETH_USER'){
+          if(data.exchangeType ==='ETH_BTC_USER' || data.exchangeType=='ETH_BTC_ADMIN'){
             ExchangeList(params,BTC_ETH_ADMIN_EXCHANGE,this.ExchangeRequestResponse,this.error,this.NetworkIssue)
+          }else if(data.exchangeType ==='BTC_ETH_USER'  || data.exchangeType=='BTC_ETH_ADMIN' ){
+            ExchangeList(params,ETH_BTC_ADMIN_EXCHANGE,this.ExchangeRequestResponse,this.error,this.NetworkIssue)
+           
           }
           // else if(data.exchangeType ==='ETH_BWN_ADMIN'){
           //   ExchangeList(params,BITWINGS_ADMIN_EXCHANGE,this.ExchangeRequestResponse,this.error,this.NetworkIssue)
@@ -260,7 +261,7 @@ export default class Expandable_Admin extends Component {
 </View>
 <View style={{flexDirection:'row',justifyContent:'space-between',borderColor:'#5496FF',borderWidth:0.5,}}>
 <View style={{marginLeft:20}}>
-<Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Medium',marginBottom:10}}>Amount you Get</Text>
+<Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Medium',marginBottom:10}}>Amount to Trade</Text>
 </View>  
 
 <View style={{marginRight:20}}>
@@ -271,7 +272,7 @@ export default class Expandable_Admin extends Component {
 </View>
 <View style={{flexDirection:'row',justifyContent:'space-between',borderColor:'#5496FF',borderWidth:0.5}}>
 <View style={{marginLeft:20}}>
-<Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Medium',marginBottom:10}}>Amount to Trade</Text>
+<Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Medium',marginBottom:10}}>Amount you Get </Text>
 
 </View>  
 

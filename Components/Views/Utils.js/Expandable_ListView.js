@@ -63,24 +63,24 @@ export default class Expandable_ListView extends Component {
       let userId =await AsyncStorage.getItem('UserId') 
        if(data!='undefined')
          {
-           if(data.exchangeType ==='ETH_BTC_USER' || data.exchangeType ==='ETH_BTC_ADMIN' )
+           if(data.exchangeType === 'BTC_ETH_USER' || data.exchangeType === 'BTC_ETH_ADMIN' )
            {
              params=
             {
 
               "userId": userId,
-              "etherAmount": data.amountToTrade,
+              "etherAmount": data.amountYouGet,
               "toEthWalletAddress": data.ethWalletAddress,
               "exchangeReqId": data.id,
               "exchangeStatus": data.status        
            }
            }
-           else if(data.exchangeType ==='BTC_ETH_USER' || data.exchangeType ==='BTC_ETH_ADMIN')
+           else if(data.exchangeType ==='ETH_BTC_USER' || data.exchangeType ==='ETH_BTC_ADMIN')
            {
             params=
             {
              "userId":userId,
-             "btcAmount":data.amountToTrade,
+             "btcAmount":data.amountYouGet,
              "toBtcWalletAddress":data.btcWalletAddress,
              "exchangeReqId":data.id,
              "exchangeStatus":data.status,
@@ -114,10 +114,13 @@ export default class Expandable_ListView extends Component {
          }
           this.props.onLoad()
           if(data.exchangeType ==='ETH_BTC_USER' || data.exchangeType ==='ETH_BTC_ADMIN'){
-            ExchangeList(params,ETH_BTC_USER_EXCHANGE,this.ExchangeRequestResponse,this.error,this.NetworkIssue)
+            console.log('Params',params)
+            ExchangeList(params,BTC_ETH_USER_EXCHANGE,this.ExchangeRequestResponse,this.error,this.NetworkIssue)
+           
           }else if(data.exchangeType ==='BTC_ETH_USER' || data.exchangeType ==='BTC_ETH_ADMIN')
           {
-            ExchangeList(params,BTC_ETH_USER_EXCHANGE,this.ExchangeRequestResponse,this.error,this.NetworkIssue)
+            console.log('Params',params)
+            ExchangeList(params,ETH_BTC_USER_EXCHANGE,this.ExchangeRequestResponse,this.error,this.NetworkIssue)
           }
           else if(data.exchangeType ==='ETH_BWN_ADMIN'){
             console.log('Params',params)
@@ -209,7 +212,7 @@ export default class Expandable_ListView extends Component {
     }
   
     render() {
-      
+      console.log('response',this.props.item)
         var ExchangeCoin=this.props.item.exchangeType!=null?this.props.item.exchangeType.split('_', 1):null
         var status=(this.props.item.status===0)?'Exchanged':'Exchange'
       return (
@@ -258,52 +261,49 @@ export default class Expandable_ListView extends Component {
          
 
                 <View style={{marginLeft:30,marginRight:30}}>
-          <View style={{flexDirection:'row',justifyContent:'space-between',borderColor:'#5496FF',borderWidth:0.5,marginLeft:20}}>
-<View style={{alignItems:'center',justifyContent:'center',marginLeft:20}} >
-<Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Medium',marginBottom:10}}>Amount to Trade</Text>
-</View>  
-
-<View >
-<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,textAlign:'center',fontFamily:'Exo2-Regular',marginBottom:10}}>{this.props.item.amountToTrade} {ExchangeCoin}</Text> 
-
-</View>  
-<View></View>
-</View>
-    <View style={{flexDirection:'row',justifyContent:'space-between',borderColor:'#5496FF',borderWidth:0.5,marginLeft:20}}>
-<View style={{marginLeft:20}}>
+          <View style={{flexDirection:'row',justifyContent:'space-between',borderColor:'#5496FF',borderWidth:0.5,}}>
+<View style={{marginLeft:20}} >
 <Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Medium',marginBottom:10}}>Amount you Get</Text>
 </View>  
 
-<View >
+<View style={{marginRight:20}}>
+<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,textAlign:'center',fontFamily:'Exo2-Regular',marginBottom:10}}>{this.props.item.amountToTrade} {ExchangeCoin}</Text> 
+
+</View>  
+
+</View>
+    <View style={{flexDirection:'row',justifyContent:'space-between',borderColor:'#5496FF',borderWidth:0.5}}>
+<View style={{marginLeft:20}}>
+<Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Medium',marginBottom:10}}>Amount To Trade</Text>
+</View>  
+
+<View style={{marginRight:20}}>
 <Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,textAlign:'center',fontFamily:'Exo2-Regular',marginBottom:10}}>{this.props.item.amountYouGet} </Text> 
 
 </View>  
-<View></View>
 </View>
-   <View style={{flexDirection:'row',justifyContent:'space-between',borderColor:'#5496FF',marginLeft:20,borderWidth:0.5}}>
+   <View style={{flexDirection:'row',justifyContent:'space-between',borderColor:'#5496FF',borderWidth:0.5}}>
 <View style={{marginLeft:20}}>
 <Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Medium',marginBottom:10}}>Fee</Text>
 <Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Medium',marginBottom:10}}>TOTAL</Text>
 </View>  
 
-<View >
+<View style={{marginRight:20}}>
 <Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,textAlign:'center',fontFamily:'Exo2-Regular',marginBottom:10,marginLeft:20}}>{this.props.item.transactionFee}</Text> 
 <Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,textAlign:'center',fontFamily:'Exo2-Regular',marginBottom:10,marginLeft:20}}>{this.props.item.totalAmount}</Text> 
 
 </View>  
-<View></View>
 </View>
 
-    <View style={{flexDirection:'row',justifyContent:'space-between',borderColor:'#5496FF',borderWidth:0.5,marginLeft:20}}>
+    <View style={{flexDirection:'row',justifyContent:'space-between',borderColor:'#5496FF',borderWidth:0.5}}>
 <View style={{marginLeft:20}}>
 <Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Medium',marginBottom:10}}>Details</Text>
 </View>  
 
-<View >
+<View  style={{marginRight:20}}>
 <Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,textAlign:'center',fontFamily:'Exo2-Regular',marginBottom:10}}>RENT MONEY</Text> 
 
 </View>  
-<View></View>
 </View>
 <View style={{justifyContent:'center',alignItems:'center',marginBottom:10,width:"100%",flexDirection:'row',marginTop:10}}>
 <TouchableOpacity disabled={status!=='Exchanged'?false:true} onPress={()=>this.Accept(this.props.item)} style={{width:"40%"}}>
