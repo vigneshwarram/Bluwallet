@@ -67,7 +67,20 @@ export default class ExchangeMenu_Expandable extends Component {
         ? require('../assets/exchange.png')
         : require('../assets/greenD.png');
         var status=(this.props.item.status===0)?'Exchanged':'Exchange'
-    
+        let GetAmount;
+    if(this.props.item.exchangeType==='ETH_BTC_ADMIN' || this.props.item.exchangeType==='ETH_BTC_USER'){
+      GetAmount='BTC'
+    }
+    else if(this.props.item.exchangeType==='BTC_ETH_ADMIN'  || this.props.item.exchangeType==='BTC_ETH_USER'){
+      GetAmount='ETH'
+    }
+    else if(this.props.item.exchangeType==='ETH_BWN_ADMIN'){
+      GetAmount='BWN'
+    }
+    else if(this.props.item.exchangeType==='BTC_BWN_ADMIN'){
+      GetAmount='BWN'
+    }
+   
       return (
         <View>
           <TouchableOpacity activeOpacity={0.8} onPress={this.props.onClickFunction} >
@@ -126,7 +139,7 @@ export default class ExchangeMenu_Expandable extends Component {
          
 
          <View style={{paddingLeft:50,paddingRight:50,paddingBottom:20}}>
-   <View style={{flexDirection:'row',justifyContent:'space-between',borderColor:'#5496FF',borderWidth:0.5,}}>
+   {/* <View style={{flexDirection:'row',justifyContent:'space-between',borderColor:'#5496FF',borderWidth:0.5,}}>
 <View style={{marginLeft:20}} >
 <Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Medium',marginBottom:10}}>Exchange Type</Text>
 </View>  
@@ -136,14 +149,14 @@ export default class ExchangeMenu_Expandable extends Component {
 
 </View>  
 
-</View>
+</View> */}
 <View style={{flexDirection:'row',justifyContent:'space-between',borderColor:'#5496FF',borderWidth:0.5,}}>
 <View style={{marginLeft:20}}>
 <Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Medium',marginBottom:10}}>Amount you Get</Text>
 </View>  
 
 <View style={{marginRight:20}}>
-<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,fontFamily:'Exo2-Regular',marginBottom:10}}>{this.props.item.amountYouGet} </Text> 
+<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,fontFamily:'Exo2-Regular',marginBottom:10}}>{this.props.item.amountYouGet} {GetAmount} </Text> 
 
 </View>  
 
@@ -160,7 +173,18 @@ export default class ExchangeMenu_Expandable extends Component {
 </View>  
 
 </View>
+ <View style={{flexDirection:'row',justifyContent:'space-between',borderColor:'#5496FF',borderWidth:0.5}}>
+<View style={{marginLeft:20}}>
+<Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Medium',marginBottom:10}}>Fee</Text>
+<Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Medium',marginBottom:10}}>TOTAL</Text>
+</View>  
 
+<View style={{marginRight:20}}>
+<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,textAlign:'center',fontFamily:'Exo2-Regular',marginBottom:10,marginLeft:20}}>{this.props.item.transactionFee} {ExchangeCoin}</Text> 
+<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,textAlign:'center',fontFamily:'Exo2-Regular',marginBottom:10,marginLeft:20}}>{this.props.item.totalAmount} {ExchangeCoin}</Text> 
+
+</View>  
+</View>
 <View style={{flexDirection:'row',justifyContent:'space-between',borderColor:'#5496FF',borderWidth:0.5,}}>
 <View style={{marginLeft:20}}>
 <Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Medium',marginBottom:10}}>Date</Text>

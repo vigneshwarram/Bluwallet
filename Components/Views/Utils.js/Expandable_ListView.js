@@ -215,6 +215,19 @@ export default class Expandable_ListView extends Component {
       console.log('response',this.props.item)
         var ExchangeCoin=this.props.item.exchangeType!=null?this.props.item.exchangeType.split('_', 1):null
         var status=(this.props.item.status===0)?'Exchanged':'Exchange'
+        let GetAmount;
+        if(this.props.item.exchangeType==='ETH_BTC_ADMIN' || this.props.item.exchangeType==='ETH_BTC_USER'){
+          GetAmount='BTC'
+        }
+        else if(this.props.item.exchangeType==='BTC_ETH_ADMIN'  || this.props.item.exchangeType==='BTC_ETH_USER'){
+          GetAmount='ETH'
+        }
+        else if(this.props.item.exchangeType==='ETH_BWN_ADMIN'){
+          GetAmount='BWN'
+        }
+        else if(this.props.item.exchangeType==='BTC_BWN_ADMIN'){
+          GetAmount='BWN'
+        }
       return (
         <View>
   
@@ -278,7 +291,7 @@ export default class Expandable_ListView extends Component {
 </View>  
 
 <View style={{marginRight:20}}>
-<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,textAlign:'center',fontFamily:'Exo2-Regular',marginBottom:10}}>{this.props.item.amountYouGet} </Text> 
+<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,textAlign:'center',fontFamily:'Exo2-Regular',marginBottom:10}}>{this.props.item.amountYouGet} {GetAmount}</Text> 
 
 </View>  
 </View>
@@ -289,8 +302,8 @@ export default class Expandable_ListView extends Component {
 </View>  
 
 <View style={{marginRight:20}}>
-<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,textAlign:'center',fontFamily:'Exo2-Regular',marginBottom:10,marginLeft:20}}>{this.props.item.transactionFee}</Text> 
-<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,textAlign:'center',fontFamily:'Exo2-Regular',marginBottom:10,marginLeft:20}}>{this.props.item.totalAmount}</Text> 
+<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,textAlign:'center',fontFamily:'Exo2-Regular',marginBottom:10,marginLeft:20}}>{this.props.item.transactionFee} {GetAmount}</Text> 
+<Text style={{fontSize:12,color:'#a9b4d4',marginTop:10,textAlign:'center',fontFamily:'Exo2-Regular',marginBottom:10,marginLeft:20}}>{this.props.item.totalAmount} {GetAmount}</Text> 
 
 </View>  
 </View>
