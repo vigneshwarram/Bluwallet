@@ -21,7 +21,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { ScrollView } from 'react-native-gesture-handler';
 import {PriceList,Price_data_list} from './Api/PriceApi'
 let CrptoType='ETH'
-let mass=[ 50, 100, 150, 200, 100, 300, 350, 400, 300, 100, 50, 40, 60, 100]
+let mass=[0,0,0,0,0]
 let massETH=[ 50, 100, 150, 200, 100, 300, 350, 400, 300, 100, 50, 40, 60, 100]
 let massBTH=[ 50, 100, 150, 200, 100, 300, 350, 400, 300, 100, 50, 40, 60, 100]
 export default class Price  extends React.Component {
@@ -81,14 +81,18 @@ export default class Price  extends React.Component {
         // {
         //   massETH.push(data.listCrytoValues[i].ethTradeValues)
         // }
+        mass=[]
         data.listCrytoValues.map((value) =>
+       
         mass.push(value.ethTradeValues)
   
 );
+massETH=[]
 data.listCrytoValues.map((value) =>
 massETH.push(value.ethTradeValues)
 
 );
+massBTH=[]
 data.listCrytoValues.map((value) =>
 massBTH.push(value.btcTradeValues)
 
@@ -301,7 +305,7 @@ SlideMenu=()=>{
          </View>
 <Text style={{fontSize:25,color:'#fff',marginLeft:10,fontFamily:'Exo2-Medium'}}>{this.state.TotalPrice}</Text>      
         
-<View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:20}}>
+{/* <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:20}}>
         <Text style={{color:'#fff',opacity:1,fontSize:18,fontFamily:'Exo2-Regular'}}>{this.state.Amount}</Text>
         <Image  style={{width: 10, height: 10,marginLeft:10,resizeMode:'contain',tintColor:"#fff"}}  source={require("./assets/down_arrow.png")} ></Image>
         <Picker style={{ position:'absolute', top: 0, width: 500, height: 3000 }}
@@ -310,7 +314,7 @@ SlideMenu=()=>{
   
   <Picker.Item label="USDollar" value="USDollar" />
   </Picker>
-        </View>
+        </View> */}
 
           
     
@@ -581,8 +585,9 @@ this.setState({
       BtcClick=()=>
       {
           mass=massBTH
+          console.log(massBTH)
         this.setState({data:massBTH,BitShadowClick:true,MoneroShadowClick:false,TotalPrice:this.state.usdforBtc,EtheriumShadowClick:false,zShadowClick:false,currency:'BTC'})
-        setTimeout(this.nav, 1500);
+        // setTimeout(this.nav, 1500);
       }
       nav=()=>
       {

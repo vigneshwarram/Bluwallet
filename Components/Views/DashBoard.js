@@ -26,7 +26,7 @@ import { AreaChart, Grid } from 'react-native-svg-charts'
 import { VaultSystemApi, CryptoInvestment, CryptoTypeInvestment } from './Api/VaultSystemApi'
 import { SendApi, RequestPaymentApi } from './Api/SendAndRecieveApi'
 import { ResponseSuccessStatus, InvalidResponse, DataUndefined, InvalidToken, TokenExpired } from './Utils.js/Constant'
-import {  CONVERT_USD } from './Api/RequestUrl'
+import {  CONVERT_USD,VaultCalculation } from './Api/RequestUrl'
 import {  ExchangeList } from './Api/ExchangeRequest'
 import { getactivitydata } from './Api/WalletActivity'
 import * as shape from 'd3-shape'
@@ -84,6 +84,7 @@ export default class DashBoard extends React.Component {
       visibles: false,
       spinner: false,
       usdforEther: '',
+      USDValue:'',
       sliderValue: 0,
       blurclick:false,
       ResponseStatus: null,
@@ -424,8 +425,8 @@ export default class DashBoard extends React.Component {
     if (this.state.QR_Code_Value == null) {
       Alert.alert('Alert', 'Please enter Wallet  Address')
     }
-    else if (this.state.sliderValue == 0) {
-      Alert.alert('Alert', 'Please enter amount to transfer')
+    else if (this.state.usdforEther == 0) {
+      Alert.alert('Alert', 'Please enter '+type+'amount to transfer')
     }
     else {
       if (type == 'ETH') {
@@ -433,7 +434,7 @@ export default class DashBoard extends React.Component {
         params =
           {
 
-            "etherAmount": this.state.sliderValue,
+            "etherAmount": this.state.usdforEther,
             "exchangeStatus": 0,
             "toEthWalletAddress": this.state.QR_Code_Value,
             "userId": await AsyncStorage.getItem('UserId')
@@ -444,7 +445,7 @@ export default class DashBoard extends React.Component {
         params =
           {
 
-            "btcAmount": this.state.sliderValue,
+            "btcAmount": this.state.usdforEther,
             "exchangeStatus": 0,
             "toBtcWalletAddress": this.state.QR_Code_Value,
             "userId": await AsyncStorage.getItem('UserId')
@@ -455,7 +456,7 @@ export default class DashBoard extends React.Component {
         params =
           {
 
-            "bitwingsAmount": this.state.sliderValue,
+            "bitwingsAmount": this.state.usdforEther,
             "exchangeStatus": 0,
             "toEthWalletAddress": this.state.QR_Code_Value,
             "userId": await AsyncStorage.getItem('UserId')
@@ -526,7 +527,7 @@ export default class DashBoard extends React.Component {
     params =
       {
         "network": type,
-        "requestAmount": this.state.sliderValue,
+        "requestAmount": this.state.usdforEther,
         "toAddress": this.state.QR_Code_Value,
         "userId": id
       }
@@ -586,14 +587,17 @@ export default class DashBoard extends React.Component {
     let coins=type;
     if(type==='ETH')
     {
+      source=require('./assets/etheriumlogo.png')
       coins='ETH'
     }
     else if(type==='BTC')
     {
+      source=require('./assets/Biocoinorange.png')
       coins='BTC'
     }
     else
     {
+      source=require('./assets/bitwingslogo.png')
       coins='BWN'
     }
     return (
@@ -636,13 +640,13 @@ export default class DashBoard extends React.Component {
                   value={this.state.usdforEther}
                 />
               </View>
-              <View style={{ marginTop: -15 }}>
-                {/* {
-                  (type === 'ETH') ? <Image style={{ width: 25, height: 25, resizeMode: 'contain' }} source={require("./assets/diamond.png")} ></Image> :
-                    <Image style={{ width: 20, height: 20, resizeMode: 'contain' }} source={require("./assets/bshadow.png")} ></Image>
+              <View style={{ marginTop: -10 }}>
+ 
+                   <Image style={{ width: 50, height: 50, resizeMode: 'contain' }} source={source} ></Image>
+                   
 
-                } */}
-                <Text style={{fontSize:30,color:'#000'}}>$</Text>
+                
+                {/* <Text style={{fontSize:30,color:'#000'}}>$</Text> */}
               </View>
 
 
@@ -686,13 +690,14 @@ export default class DashBoard extends React.Component {
               <TextInput
                 style={{ height: 40, fontFamily: 'Exo2-Regular' }}
                 placeholder="write here your wallet address codee"
+                onChangeText={(text)=>{this.setState({QR_Code_Value:text})}}
                 value={(this.state.QR_Code_Value===null)?this.state.clickedItemText:this.state.QR_Code_Value}
                 placeholderTextColor="#ABB3D0"
               />
             </View>
 
           </View>
-          <View style={{ backgroundColor: '#fff', borderRadius: 15, marginTop: 10, height: 120 }}>
+          {/* <View style={{ backgroundColor: '#fff', borderRadius: 15, marginTop: 10, height: 120 }}>
             <View style={{ justifyContent: 'center', alignItems: 'center' }}>
               <Text style={{ color: '#ABB3D0', fontFamily: 'Exo2-Regular', fontSize: 18, marginTop: 10, marginLeft: 10, marginRight: 10 }}>Speed Bar</Text>
               <Slider
@@ -710,7 +715,7 @@ export default class DashBoard extends React.Component {
               </View>
             </View>
 
-          </View>
+          </View> */}
         </View>
 
         <View style={{ position: 'absolute', bottom: 0, width: '100%', left: 0 }}>
@@ -718,14 +723,14 @@ export default class DashBoard extends React.Component {
             <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', }}>
               <View style={{ backgroundColor: '#fff', borderRadius: 15, marginTop: 25, height: 40, width: '40%', justifyContent: 'center' }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 20, paddingRight: 20 }}>
-                  <Text style={{ color: '#000', fontSize: 15, marginLeft: 10 }}>USD</Text>
+                  <Text style={{ color: '#000', fontSize: 15, marginLeft: 10 }}>{coins}</Text>
                   <Text style={{ color: '#000', fontSize: 15, marginLeft: 10 }}>{this.state.usdforEther}</Text>
                 </View>
 
               </View>
               <View style={{ backgroundColor: '#fff', borderRadius: 15, marginTop: 25, height: 40, width: '40%', justifyContent: 'center' }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 20, paddingRight: 20 }}>
-                  <Text style={{ color: '#000', fontSize: 15, marginLeft: 10 }}>{coins}</Text>
+                  <Text style={{ color: '#000', fontSize: 15, marginLeft: 10 }}>USD</Text>
                   <Text style={{ color: '#000', fontSize: 15, marginLeft: 10 }}>{this.state.sliderValue}</Text>
                 </View>
 
@@ -741,14 +746,17 @@ export default class DashBoard extends React.Component {
     let coins=type;
     if(type==='ETH')
     {
+      source=require('./assets/etheriumlogo.png')
       coins='ETH'
     }
     else if(type==='BTC')
     {
+      source=require('./assets/Biocoinorange.png')
       coins='BTC'
     }
     else
     {
+      source=require('./assets/bitwingslogo.png')
       coins='BWN'
     }
     return (
@@ -777,24 +785,21 @@ export default class DashBoard extends React.Component {
             <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 10 }}>
               <Text style={styles.instructions2}>Amount</Text>
               <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', }}>
-                <View>
+                <View style={{padding: 15}}>
                   <TextInput
                     style={styles.instructions3}
                     placeholder="0.000"
                     placeholderTextColor="#000"
-                    maxLength={8}
+                    maxLength={10}
                     keyboardType="number-pad"
                     onChangeText={(text) => this.ChangeText(text)}
                     value={this.state.usdforEther}
                   />
                 </View>
-                <View style={{ marginTop: -15 }}>
-                  {/* {
-                    (type === 'ETH') ? <Image style={{ width: 25, height: 25, resizeMode: 'contain' }} source={require("./assets/diamond.png")} ></Image> :
-                      <Image style={{ width: 25, height: 25, resizeMode: 'contain' }} source={require("./assets/bshadow.png")} ></Image>
-
-                  } */}
-                  <Text style={{fontSize:30,color:'#000'}}>$</Text>
+                <View style={{ marginTop: -10 }}>
+                 <Image style={{ width: 50, height: 50, resizeMode: 'contain' }} source={source} ></Image> 
+                   
+                  {/* <Text style={{fontSize:30,color:'#000'}}>$</Text> */}
                 </View>
 
 
@@ -853,14 +858,14 @@ export default class DashBoard extends React.Component {
             <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', }}>
               <View style={{ backgroundColor: '#fff', borderRadius: 15, marginTop: 25, height: 40, width: '40%', justifyContent: 'center' }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 20, paddingRight: 20 }}>
-                  <Text style={{ color: '#000', fontSize: 15, marginLeft: 10 }}>USD</Text>
+                  <Text style={{ color: '#000', fontSize: 15, marginLeft: 10 }}>{coins}</Text>
                   <Text style={{ color: '#000', fontSize: 15, marginLeft: 10 }}>{this.state.usdforEther}</Text>
                 </View>
 
               </View>
               <View style={{ backgroundColor: '#fff', borderRadius: 15, marginTop: 25, height: 40, width: '40%', justifyContent: 'center' }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingLeft: 20, paddingRight: 20 }}>
-                  <Text style={{ color: '#000', fontSize: 15, marginLeft: 10 }}>{coins}</Text>
+                  <Text style={{ color: '#000', fontSize: 15, marginLeft: 10 }}>USD</Text>
                   <Text style={{ color: '#000', fontSize: 15, marginLeft: 10 }}>{this.state.sliderValue}</Text>
                 </View>
 
@@ -899,7 +904,16 @@ export default class DashBoard extends React.Component {
     if (data != DataUndefined) {
       if (data.status === ResponseSuccessStatus) {
         console.log('Coverted ETH Amount', data)
-        this.setState({ sliderValue: data.CalculatingAmountDTO.cryptoAmount })
+        if(data.CalculatingAmountDTO.cryptoType=='ETH'){
+          this.setState({ sliderValue: data.CalculatingAmountDTO.usdforEther })
+        }
+        else if(data.CalculatingAmountDTO.cryptoType=='BTC'){
+          this.setState({ sliderValue: data.CalculatingAmountDTO.usdforBtc })
+        }
+        else{
+          this.setState({ sliderValue: data.CalculatingAmountDTO.usdforEther })
+        }
+       
       }
       else if (data.error === 'invalid_token') {
         Alert.alert(
@@ -923,14 +937,33 @@ export default class DashBoard extends React.Component {
   usdConvert = async (amount) => {
     //   let type=crptoType
     console.log('Request data.===>', type, "type calling")
-    let params =
-    {
-      usd: amount,
-      cryptoType: type
-
+    if(type=='ETH'){
+      params =
+      {
+        etherAmount: amount,
+        cryptoType: type
+  
+      }
+    }
+    else if(type=='BTC'){
+      params =
+      {
+        btcAmount: amount,
+        cryptoType: type,
+        where:'dashboard'
+  
+      }
+    }
+    else{
+      params =
+      {
+        bwnAmount: amount,
+        cryptoType: type
+  
+      }
     }
     //Get value for Network fee and Crypto amount Api
-    ExchangeList(params,CONVERT_USD, this.onUsdResponse,this.error,this.NetworkIssue)
+    ExchangeList(params,VaultCalculation, this.onUsdResponse,this.error,this.NetworkIssue)
     console.log('Request data.===>', this.onUsdResponse)
 
   }
@@ -1321,7 +1354,7 @@ return(<View >
                         </View>
                       </View>
 
-                      <Text style={{ marginTop: 1, fontSize: 12, fontWeight: 'bold', color: '#ABB3D0', fontFamily: 'Exo2-Medium' }}>{this.state.currentUsdforEther}$</Text>
+                      <Text style={{ marginTop: 1, fontSize: 12, fontWeight: 'bold', color: '#ABB3D0', fontFamily: 'Exo2-Medium' }}>${this.state.currentUsdforEther}</Text>
                     </View>
                     <View style={{ marginLeft: 40 }}>
                       <View style={{ flexDirection: 'row' }}>
@@ -1331,18 +1364,18 @@ return(<View >
                         </View>
                       </View>
 
-                      <Text style={{ marginTop: 1, fontSize: 12, color: '#ABB3D0', fontFamily: 'Exo2-Regular' }}>{this.state.currentUsdforBtc}$</Text>
+                      <Text style={{ marginTop: 1, fontSize: 12, color: '#ABB3D0', fontFamily: 'Exo2-Regular' }}>${this.state.currentUsdforBtc}</Text>
                     </View>
-                    <View style={{ marginLeft: 40 }}>
+                    {/* <View style={{ marginLeft: 40 }}>
                       <View style={{ flexDirection: 'row' }}>
-                        <Text style={{ fontSize: 12, color: '#5496FF', fontFamily: 'Exo2-Medium' }}>XRP</Text>
+                        <Text style={{ fontSize: 12, color: '#5496FF', fontFamily: 'Exo2-Medium' }}>BWN</Text>
                         <View style={{ marginTop: 3 }}>
                           <Image style={{ resizeMode: 'contain', width: 10, height: 10 }} source={require("./assets/green.png")} ></Image>
                         </View>
                       </View>
 
                       <Text style={{ marginTop: 1, fontSize: 12, fontWeight: 'bold', color: '#ABB3D0', fontFamily: 'Exo2-Regular' }}>50$</Text>
-                    </View>
+                    </View> */}
 
                   </View>
                 </View>
