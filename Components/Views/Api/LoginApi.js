@@ -46,7 +46,7 @@ export const ForgotAPI=async(email,LoginResult,errors,NetworkError)=>
   NetInfo.isConnected.fetch().then(isConnected => {
     if(isConnected)
     {
-      fetch("http://bluwallet.colan.in/bluewallet-0.0.1-SNAPSHOT/API/mobile/forgot/password", {  
+      fetch("http://35.176.189.200:8080/bluewallet-0.0.1-SNAPSHOT/API/mobile/forgot/password", {  
         method: 'POST',
         headers: {
           'Content-Type':'application/json'
@@ -130,7 +130,7 @@ export const PinLogin=async(params,LoginResult,errors,NetworkError)=>
     {
     
       console.log('Token',isConnected)
-       fetch('http://bluwallet.colan.in/bluewallet-0.0.1-SNAPSHOT/API/mobile/savesecuritypin', {  
+       fetch('http://35.176.189.200:8080/bluewallet-0.0.1-SNAPSHOT/API/mobile/savesecuritypin', {  
            method: 'POST',
            headers: {
              'authorization':'bearer '+token.trim(), 

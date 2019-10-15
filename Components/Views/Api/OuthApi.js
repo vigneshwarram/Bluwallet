@@ -11,7 +11,7 @@ import CheckConnectivity from './CheckInternet'
     formdata.append("username",params.email)
     formdata.append("password",params.password)
     formdata.append("grant_type",'password')
-           fetch('http://bluwallet.colan.in/bluewallet-0.0.1-SNAPSHOT/oauth/token', {  
+           fetch('http://35.176.189.200:8080/bluewallet-0.0.1-SNAPSHOT/oauth/token', {  
           // fetch('http://192.168.2.19:9091/oauth/token', {  
             method: 'POST',
             headers: {

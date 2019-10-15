@@ -577,7 +577,7 @@ this.setState({
       EtheriumClick=()=>
       {
           mass=massETH
-          console.log(massETH)
+          console.log('data',massETH)
         this.setState({data:massETH,EtheriumShadowClick:true,BitShadowClick:false,MoneroShadowClick:false,zShadowClick:false,currency:'ETH'})
         this.setState({TotalPrice:this.state.usdforEther,})
        

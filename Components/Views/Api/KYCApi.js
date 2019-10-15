@@ -68,7 +68,7 @@ formdata.append("idCardDocumentBack",{
         type: 'image/jpeg'
     })
         formdata.append('userId',userId)
-    fetch('http://bluwallet.colan.in/bluewallet-0.0.1-SNAPSHOT/API/bluewallet/upload/kyc', {  
+    fetch('http://35.176.189.200:8080/bluewallet-0.0.1-SNAPSHOT/API/bluewallet/upload/kyc', {  
         method: 'POST',
         headers: {
             'Content-Type': 'multipart/form-data',
@@ -112,7 +112,7 @@ formdata.append("residentPermitDocumentFront ",{
         type: 'image/jpeg'
     })
         formdata.append('userId',userId)
-    fetch('http://bluwallet.colan.in/bluewallet-0.0.1-SNAPSHOT/API/bluewallet/upload/kyc', {  
+    fetch('http://35.176.189.200:8080/bluewallet-0.0.1-SNAPSHOT/API/bluewallet/upload/kyc', {  
         method: 'POST',
         headers: {
             'Content-Type': 'multipart/form-data',
@@ -156,7 +156,7 @@ formdata.append("drivingLicenceDocumentFront ",{
         type: 'image/jpeg'
     })
         formdata.append('userId',userId)
-    fetch('http://bluwallet.colan.in/bluewallet-0.0.1-SNAPSHOT/API/bluewallet/upload/kyc', {  
+    fetch('http://35.176.189.200:8080/bluewallet-0.0.1-SNAPSHOT/API/bluewallet/upload/kyc', {  
         method: 'POST',
         headers: {
             'Content-Type': 'multipart/form-data',

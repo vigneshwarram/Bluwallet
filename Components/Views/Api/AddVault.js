@@ -2,7 +2,7 @@ import Url from './CommonApi'
 import{AsyncStorage} from 'react-native'
 export const AddVaults=async(params,data,error)=>
 {
-    fetch("http://bluwallet.colan.in/bluewallet-0.0.1-SNAPSHOT/API/useractivities/ethOrbtc/investment", {  
+    fetch("http://35.176.189.200:8080/bluewallet-0.0.1-SNAPSHOT/API/useractivities/ethOrbtc/investment", {  
         method: 'POST',
         headers: {
           'Accept': 'application/json',
