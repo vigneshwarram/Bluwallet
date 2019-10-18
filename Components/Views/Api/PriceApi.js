@@ -1,4 +1,4 @@
-import Url from './CommonApi'
+import {Url,PriceDataListUrl} from './CommonApi'
 import{AsyncStorage} from 'react-native'
 export const PriceList=async(PriceListdata)=>
 {
@@ -29,7 +29,7 @@ export const PriceList=async(PriceListdata)=>
 }
 export const Price_data_list= async(CountryStateData,ErrorResponse)=>
 {
-    fetch('http://35.176.189.200:8080/bluewallet-0.0.1-SNAPSHOT/API/mobile/crypto/tradevalues', {  
+    fetch(PriceDataListUrl, {  
       
         method: 'GET',
         headers: {

@@ -1,4 +1,4 @@
-import Url from './CommonApi'
+import {Url,ForgetPasswordUrl,PinLoginURL} from './CommonApi'
 import{AsyncStorage,NetInfo,Alert} from 'react-native'
 import CheckConnectivity from './CheckInternet'
  export const loginApi=async(params,LoginResult,errors,NetworkError)=>
@@ -46,7 +46,8 @@ export const ForgotAPI=async(email,LoginResult,errors,NetworkError)=>
   NetInfo.isConnected.fetch().then(isConnected => {
     if(isConnected)
     {
-      fetch("http://35.176.189.200:8080/bluewallet-0.0.1-SNAPSHOT/API/mobile/forgot/password", {  
+     // fetch("http://35.176.189.200:8080/bluewallet-0.0.1-SNAPSHOT/API/mobile/forgot/password", {  
+        fetch(ForgetPasswordUrl, {  
         method: 'POST',
         headers: {
           'Content-Type':'application/json'
@@ -130,7 +131,7 @@ export const PinLogin=async(params,LoginResult,errors,NetworkError)=>
     {
     
       console.log('Token',isConnected)
-       fetch('http://35.176.189.200:8080/bluewallet-0.0.1-SNAPSHOT/API/mobile/savesecuritypin', {  
+       fetch(PinLoginURL, {  
            method: 'POST',
            headers: {
              'authorization':'bearer '+token.trim(), 
