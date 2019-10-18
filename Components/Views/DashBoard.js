@@ -93,6 +93,7 @@ export default class DashBoard extends React.Component {
       Start_Scanner: false,
       QrButton: false,
       currentUsdforBtc: null,
+      currentUsdforBwn:null,
       dataImage: [{ 'image1': require("./assets/etherem.png"), 'image1': require("./assets/etherem.png") }],
       cityItems: ["US Dollar,Indian,Eutherium"],
       Amount: 'USDollar',
@@ -1366,7 +1367,7 @@ return(<View >
 
                       <Text style={{ marginTop: 1, fontSize: 12, color: '#ABB3D0', fontFamily: 'Exo2-Regular' }}>${this.state.currentUsdforBtc}</Text>
                     </View>
-                    {/* <View style={{ marginLeft: 40 }}>
+                    <View style={{ marginLeft: 40 }}>
                       <View style={{ flexDirection: 'row' }}>
                         <Text style={{ fontSize: 12, color: '#5496FF', fontFamily: 'Exo2-Medium' }}>BWN</Text>
                         <View style={{ marginTop: 3 }}>
@@ -1374,8 +1375,8 @@ return(<View >
                         </View>
                       </View>
 
-                      <Text style={{ marginTop: 1, fontSize: 12, fontWeight: 'bold', color: '#ABB3D0', fontFamily: 'Exo2-Regular' }}>50$</Text>
-                    </View> */}
+                      <Text style={{ marginTop: 1, fontSize: 12, fontWeight: 'bold', color: '#ABB3D0', fontFamily: 'Exo2-Regular' }}>${this.state.currentUsdforBwn}</Text>
+                    </View>
 
                   </View>
                 </View>
@@ -1469,7 +1470,7 @@ return(<View >
         if (data.CalculatingAmountDTO.cryptoType === 'ETH') {
           this.setState({
             Usd: data.CalculatingAmountDTO.usdforEther, Balance: data.CalculatingAmountDTO.etherAmount,
-            currentUsdforEther: data.CalculatingAmountDTO.currentUsdforEther, currentUsdforBtc: data.CalculatingAmountDTO.currentUsdforBtc
+            currentUsdforEther: data.CalculatingAmountDTO.currentUsdforEther, currentUsdforBtc: data.CalculatingAmountDTO.currentUsdforBtc,currentUsdforBwn:data.CalculatingAmountDTO.currentUsdforBitWings
           })
 
 
@@ -1478,7 +1479,7 @@ return(<View >
         else if (data.CalculatingAmountDTO.cryptoType === 'BTC') {
           this.setState({
             Usd: data.CalculatingAmountDTO.usdforBtc, Balance: data.CalculatingAmountDTO.btcAmount,
-            currentUsdforEther: data.CalculatingAmountDTO.currentUsdforEther, currentUsdforBtc: data.CalculatingAmountDTO.currentUsdforBtc
+            currentUsdforEther: data.CalculatingAmountDTO.currentUsdforEther, currentUsdforBtc: data.CalculatingAmountDTO.currentUsdforBtc,currentUsdforBwn:data.CalculatingAmountDTO.currentUsdforBitWings
           })
 
         }
@@ -1486,7 +1487,7 @@ return(<View >
         {
           this.setState({
             Usd: data.CalculatingAmountDTO.usdForBwn, Balance: data.CalculatingAmountDTO.bwnAmount,
-            currentUsdforEther: data.CalculatingAmountDTO.currentUsdforEther, currentUsdforBtc: data.CalculatingAmountDTO.currentUsdforBtc
+            currentUsdforEther: data.CalculatingAmountDTO.currentUsdforEther, currentUsdforBtc: data.CalculatingAmountDTO.currentUsdforBtc,currentUsdforBwn:data.CalculatingAmountDTO.currentUsdforBitWings
           })
         }
         this.GetList()
@@ -1535,6 +1536,7 @@ return(<View >
       this.setState({dataSource: newFile,dates:newFile.listCalculatingAmountDTO });
      let dataarray=[]
      let gpdata=[]
+  
       let newdates =FinalResult.map((file,key) => {
 
         if(key<10)

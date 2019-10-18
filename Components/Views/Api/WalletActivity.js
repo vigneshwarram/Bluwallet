@@ -1,4 +1,4 @@
-import Url from './CommonApi'
+import {Url} from './CommonApi'
 import{AsyncStorage} from 'react-native'
 export const getactivitydata=async(params,VaultResponse,errors)=>
 {

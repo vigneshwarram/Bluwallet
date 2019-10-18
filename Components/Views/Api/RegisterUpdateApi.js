@@ -1,4 +1,4 @@
-import Url from './CommonApi'
+import {Url} from './CommonApi'
 import{AsyncStorage,NetInfo} from 'react-native'
 
 const registerUpdateApi=async(params,RegisterUpdateResponse)=>

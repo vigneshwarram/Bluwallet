@@ -22,6 +22,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import {PriceList,Price_data_list} from './Api/PriceApi'
 let CrptoType='ETH'
 let mass=[0,0,0,0,0]
+let massBWN=[0,0,0,0,0]
 let massETH=[ 50, 100, 150, 200, 100, 300, 350, 400, 300, 100, 50, 40, 60, 100]
 let massBTH=[ 50, 100, 150, 200, 100, 300, 350, 400, 300, 100, 50, 40, 60, 100]
 export default class Price  extends React.Component {
@@ -39,7 +40,7 @@ export default class Price  extends React.Component {
       cityItems:["US Dollar,Indian,Euthereum"],
       Amount: 'USDollar',
       usdforEther:'',usdforBtc:'',
-      
+      BwnCurrent:'',
       EtheriumShadowClick:false,
       animate:false,
       spinner:false,
@@ -82,19 +83,24 @@ export default class Price  extends React.Component {
         //   massETH.push(data.listCrytoValues[i].ethTradeValues)
         // }
         mass=[]
-        data.listCrytoValues.map((value) =>
+        data.listCrytoValues[0].map((value) =>
        
         mass.push(value.ethTradeValues)
   
 );
 massETH=[]
-data.listCrytoValues.map((value) =>
+data.listCrytoValues[0].map((value) =>
 massETH.push(value.ethTradeValues)
 
 );
 massBTH=[]
-data.listCrytoValues.map((value) =>
+data.listCrytoValues[0].map((value) =>
 massBTH.push(value.btcTradeValues)
+
+);
+massBWN=[]
+data.listCrytoValues[1].map((value) =>
+massBWN.push(value.bitwingInUsd)
 
 );
        // console.log('data', data.listCrytoValues.ethTradeValues)
@@ -116,7 +122,7 @@ massBTH.push(value.btcTradeValues)
     if (data != 'undefined') {
       if (data.status === ResponseSuccessStatus) {
         this.setState({TotalPrice:data.CalculatingAmountDTO.currentUsdforEther,})
-       this.setState({usdforEther: data.CalculatingAmountDTO.currentUsdforEther,usdforBtc:data.CalculatingAmountDTO.currentUsdforBtc}) 
+       this.setState({usdforEther: data.CalculatingAmountDTO.currentUsdforEther,usdforBtc:data.CalculatingAmountDTO.currentUsdforBtc,BwnCurrent:data.CalculatingAmountDTO.currentUsdforBitWings}) 
       }
       else if (data.error === 'invalid_token') {
         Alert.alert(
@@ -473,37 +479,37 @@ SlideMenu=()=>{
         </View>
         <View style={{flexDirection:'row',marginTop:20}}>
         {(this.state.MoneroShadowClick)?
-        <View style={{width: '40%', height: 230,marginLeft:30}}>
-        <ImageBackground  style={{width: '100%', height: '100%'}} imageStyle={{resizeMode:'cover',width:'100%',height:280,borderRadius:6}} source={require("./assets/monero.png")}>
+        <View style={{width: '40%', height: 250,marginLeft:30}}>
+        <ImageBackground  style={{width: '100%', height: '100%'}} imageStyle={{resizeMode:'cover',width:'100%',height:330,borderRadius:6}} source={require("./assets/Group_2120.png")}>
       <TouchableOpacity onPress={this.MoneroClick}>
       <Image  style={{width:40,height:40,marginLeft:'23%',marginTop:20,
-    resizeMode: 'contain',tintColor:'#fff'}}   source={require("./assets/m.png")} ></Image>
+    resizeMode: 'contain',tintColor:'#fff'}}   source={require("./assets/bitwingslogo.png")} ></Image>
      
         <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
  
-        <Text style={{color:'#fff',fontSize:15,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Monero</Text>
-            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>XMR</Text>
+        <Text style={{color:'#fff',fontSize:15,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Bitwings</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>BWN</Text>
 
             <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Price</Text>
-            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>121.6</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>{this.state.BwnCurrent} $</Text>
         </View>
        </TouchableOpacity>
 
       </ImageBackground>
         </View>:
-        <View style={{backgroundColor:'transparent',width: '40%', height: 240,marginLeft:30,borderWidth:0.25,borderColor:'#5496FF',borderRadius:6}} >
+        <View style={{backgroundColor:'transparent',width: '40%', height: 250,marginLeft:30,borderWidth:0.25,borderColor:'#5496FF',borderRadius:6}} >
      
        <TouchableOpacity onPress={this.MoneroClick}>
        <View  style={{height:'100%'}}>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
     <Image  style={{width:40,height:40,
-    resizeMode: 'contain',}}   source={require("./assets/m.png")} ></Image>
+    resizeMode: 'contain',}}   source={require("./assets/bitwingslogo.png")} ></Image>
 
         </View>
         <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:10}}>
         
-        <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Monero</Text>
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>XMR</Text>
+        <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Bitwings</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>BWN</Text>
 
             <Text style={{color:'#5597ff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Price</Text>
             <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>121.6</Text>
@@ -516,7 +522,7 @@ SlideMenu=()=>{
       }
       
          
-      {(this.state.zShadowClick)?<ImageBackground  style={{width: '100%', height: '100%',marginLeft:30,}} imageStyle={{resizeMode:'cover',width:'40%',height:280,borderRadius:6}} source={require("./assets/z.png")}>
+      {/* {(this.state.zShadowClick)?<ImageBackground  style={{width: '100%', height: '100%',marginLeft:30,}} imageStyle={{resizeMode:'cover',width:'40%',height:280,borderRadius:6}} source={require("./assets/z.png")}>
       <TouchableOpacity onPress={this.zClick}>
       <Image  style={{width:40,height:40,marginLeft:'18%',marginTop:20,
     resizeMode: 'contain',tintColor:'#fff'}}   source={require("./assets/zcoinyellow.png")} ></Image>
@@ -554,7 +560,7 @@ SlideMenu=()=>{
       
    
        </View>
-      }
+      } */}
          
         </View>
  </View>
@@ -598,7 +604,9 @@ this.setState({
       MoneroClick=()=>
       {
         console.log('Monero click')
-        this.setState({BitShadowClick:false,MoneroShadowClick:true,EtheriumShadowClick:false,zShadowClick:false})
+        mass=massBWN
+        console.log('massBWN',massBWN)
+        this.setState({data:massBWN,BitShadowClick:false,MoneroShadowClick:true,EtheriumShadowClick:false,zShadowClick:false,currency:'BWN',TotalPrice:this.state.BwnCurrent+' $'})
        
       }
       zClick=()=>

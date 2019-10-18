@@ -1,4 +1,4 @@
-import Url from './CommonApi'
+import {Url} from './CommonApi'
 import{AsyncStorage,NetInfo} from 'react-native'
 export const ExchangeList=async(params,RequestUrl,FetchExchangedata,errors,InternetIssue)=>
 {
