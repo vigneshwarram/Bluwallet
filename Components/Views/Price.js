@@ -23,6 +23,7 @@ import {PriceList,Price_data_list} from './Api/PriceApi'
 let CrptoType='ETH'
 let mass=[0,0,0,0,0]
 let massBWN=[0,0,0,0,0]
+let massLTC=[0,0,0,0,0]
 let massETH=[ 50, 100, 150, 200, 100, 300, 350, 400, 300, 100, 50, 40, 60, 100]
 let massBTH=[ 50, 100, 150, 200, 100, 300, 350, 400, 300, 100, 50, 40, 60, 100]
 export default class Price  extends React.Component {
@@ -46,6 +47,8 @@ export default class Price  extends React.Component {
       spinner:false,
       zShadowClick:false,
       BitShadowClick:false,
+      BchCurrent:'',
+      LtcCurrent:'',
       MoneroShadowClick:false,
       etheriumOpacity:0.4,
        data : [ 50, 60, 70, 95, 100, 120, 100, 80, 90, 60, 50, 40, 60, 100 ],
@@ -74,46 +77,42 @@ export default class Price  extends React.Component {
   PriceResults=(data)=>
   {
     console.log('data', data)
-    this.hide()
+   
     if (data != 'undefined') {
       if (data.status === ResponseSuccessStatus) 
       {
-        // for(let i=0;i<=data.listCrytoValues.length;i++)
-        // {
-        //   massETH.push(data.listCrytoValues[i].ethTradeValues)
-        // }
         mass=[]
-        data.listCrytoValues[0].map((value) =>
-       
-        mass.push(value.ethTradeValues)
-  
-);
-massETH=[]
-data.listCrytoValues[0].map((value) =>
-massETH.push(value.ethTradeValues)
-
-);
-massBTH=[]
-data.listCrytoValues[0].map((value) =>
-massBTH.push(value.btcTradeValues)
-
-);
-massBWN=[]
-data.listCrytoValues[1].map((value) =>
-massBWN.push(value.bitwingInUsd)
-
-);
-       // console.log('data', data.listCrytoValues.ethTradeValues)
-        //massETH=listCrytoValues.ethTradeValues
-        //massBTH=listCrytoValues.btcTradeValues
+        massETH=[]
+        massBTH=[]
+        massBWN=[]
+        massLTC=[]
+         for(let i=0;i<data.listCrytoValues[0].length;i++)
+         {
+           let item=data.listCrytoValues[0]
+             mass.push(item[i].ethTradeValues)
+            massETH.push(item[i].ethTradeValues)
+            massBTH.push(item[i].btcTradeValues),
+            massBWN.push(item[i].bchTradeValues)
+            massLTC.push(item[i].ltcTradeValues)
+            if(i==data.listCrytoValues[0].length-1){
+              this.setState({BchCurrent:item[i].bchTradeValues,LtcCurrent:item[i].ltcTradeValues})
+            }
+            
+            console.log('item', item[i].bchTradeValues)
+             //  
+            
+         }
+   
       }
     }
     else{
-
+Alert.alert('Alert','Server problem')
     }
+    this.hide()
   }
   error=(data)=>
   {
+    this.hide()
  Alert.alert(data.status,data.message)
   }
   BalanceResponse = (data) => {
@@ -309,7 +308,7 @@ SlideMenu=()=>{
          <View style={{justifyContent:'center',alignItems:'center'}}>
          <Text style={{fontSize:18,color:'#fff',fontFamily:'Exo2-Regular'}}>{this.state.currency}</Text> 
          </View>
-<Text style={{fontSize:25,color:'#fff',marginLeft:10,fontFamily:'Exo2-Medium'}}>{this.state.TotalPrice}</Text>      
+<Text style={{fontSize:25,color:'#fff',marginLeft:10,fontFamily:'Exo2-Medium'}}>{this.state.TotalPrice} $</Text>      
         
 {/* <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:20}}>
         <Text style={{color:'#fff',opacity:1,fontSize:18,fontFamily:'Exo2-Regular'}}>{this.state.Amount}</Text>
@@ -402,7 +401,7 @@ SlideMenu=()=>{
             <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>ETH</Text>
 
             <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Price</Text>
-            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>{this.state.usdforEther}</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>{this.state.usdforEther} $</Text>
         </View>
        </TouchableOpacity>
 
@@ -423,7 +422,7 @@ SlideMenu=()=>{
             <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>ETH</Text>
 
             <Text style={{color:'#5597ff',fontSize:15,marginTop:20,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Price</Text>
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>{this.state.usdforEther}</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>{this.state.usdforEther} $</Text>
         </View>
         </View>
        </TouchableOpacity>
@@ -443,7 +442,7 @@ SlideMenu=()=>{
             <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>BTC</Text>
 
             <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Price</Text>
-            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>{this.state.usdforBtc}</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>{this.state.usdforBtc} $</Text>
         </View>
        </TouchableOpacity>
 
@@ -463,7 +462,7 @@ SlideMenu=()=>{
             <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>BTC</Text>
 
             <Text style={{color:'#5597ff',fontSize:15,marginTop:20,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Price</Text>
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>{this.state.usdforBtc}</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>{this.state.usdforBtc} $</Text>
         </View>
         </View>
        </TouchableOpacity>
@@ -480,18 +479,18 @@ SlideMenu=()=>{
         <View style={{flexDirection:'row',marginTop:20}}>
         {(this.state.MoneroShadowClick)?
         <View style={{width: '40%', height: 250,marginLeft:30}}>
-        <ImageBackground  style={{width: '100%', height: '100%'}} imageStyle={{resizeMode:'cover',width:'100%',height:330,borderRadius:6}} source={require("./assets/Group_2120.png")}>
+        <ImageBackground  style={{width: '100%', height: '100%'}} imageStyle={{resizeMode:'cover',width:'100%',height:330,borderRadius:6}} source={require("./assets/bitlium.png")}>
       <TouchableOpacity onPress={this.MoneroClick}>
       <Image  style={{width:40,height:40,marginLeft:'23%',marginTop:20,
-    resizeMode: 'contain',tintColor:'#fff'}}   source={require("./assets/bitwingslogo.png")} ></Image>
+    resizeMode: 'contain',tintColor:'#fff'}}   source={require("./assets/bitliumicon.png")} ></Image>
      
         <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
  
-        <Text style={{color:'#fff',fontSize:15,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Bitwings</Text>
-            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>BWN</Text>
+        <Text style={{color:'#fff',fontSize:15,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>BCH</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>BCH</Text>
 
             <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Price</Text>
-            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>{this.state.BwnCurrent} $</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>{this.state.BchCurrent} $</Text>
         </View>
        </TouchableOpacity>
 
@@ -503,16 +502,16 @@ SlideMenu=()=>{
        <View  style={{height:'100%'}}>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
     <Image  style={{width:40,height:40,
-    resizeMode: 'contain',}}   source={require("./assets/bitwingslogo.png")} ></Image>
+    resizeMode: 'contain',}}   source={require("./assets/bitliumicon.png")} ></Image>
 
         </View>
         <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:10}}>
         
-        <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Bitwings</Text>
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>BWN</Text>
+        <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>BCH</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>BCH</Text>
 
             <Text style={{color:'#5597ff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Price</Text>
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>121.6</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>{this.state.BchCurrent} $</Text>
         </View>
         </View>
        </TouchableOpacity>
@@ -522,18 +521,19 @@ SlideMenu=()=>{
       }
       
          
-      {/* {(this.state.zShadowClick)?<ImageBackground  style={{width: '100%', height: '100%',marginLeft:30,}} imageStyle={{resizeMode:'cover',width:'40%',height:280,borderRadius:6}} source={require("./assets/z.png")}>
+      {(this.state.zShadowClick)?
+      <ImageBackground  style={{width: '100%', height: '100%',marginLeft:30,}} imageStyle={{resizeMode:'cover',width:'40%',height:330,borderRadius:6}} source={require("./assets/litlium.png")}>
       <TouchableOpacity onPress={this.zClick}>
       <Image  style={{width:40,height:40,marginLeft:'18%',marginTop:20,
-    resizeMode: 'contain',tintColor:'#fff'}}   source={require("./assets/zcoinyellow.png")} ></Image>
+    resizeMode: 'contain',tintColor:'#fff'}}   source={require("./assets/litliumicon.png")} ></Image>
      
         <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:30}}>
  
-        <Text style={{color:'#fff',fontSize:15,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Monero</Text>
-            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>XMR</Text>
+        <Text style={{color:'#fff',fontSize:15,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>LTC</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>LTC</Text>
 
             <Text style={{color:'#fff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Price</Text>
-            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>121.6</Text>
+            <Text style={{color:'#fff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>{this.state.LtcCurrent} $</Text>
         </View>
        </TouchableOpacity>
 
@@ -544,23 +544,23 @@ SlideMenu=()=>{
        <View  style={{height:'100%'}}>
     <View style={{justifyContent:'center',alignItems:'center',marginTop:20}}>
     <Image  style={{width:40,height:40,
-    resizeMode: 'contain',}}   source={require("./assets/zcoinyellow.png")} ></Image>
+    resizeMode: 'contain',}}   source={require("./assets/litliumicon.png")} ></Image>
 
         </View>
         <View style={{justifyContent:'center',alignItems:'flex-start',marginLeft:10,marginTop:10}}>
         
-        <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Monero</Text>
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>XMR</Text>
+        <Text style={{color:'#5597ff',fontSize:15,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>LTC</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>LTC</Text>
 
             <Text style={{color:'#5597ff',fontSize:15,marginTop:30,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>Price</Text>
-            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>121.6</Text>
+            <Text style={{color:'#5597ff',fontSize:15,marginTop:10,fontWeight:'bold',fontFamily:'Exo2-Regular'}}>{this.state.LtcCurrent} $</Text>
         </View>
         </View>
        </TouchableOpacity>
       
    
        </View>
-      } */}
+      }
          
         </View>
  </View>
@@ -606,12 +606,13 @@ this.setState({
         console.log('Monero click')
         mass=massBWN
         console.log('massBWN',massBWN)
-        this.setState({data:massBWN,BitShadowClick:false,MoneroShadowClick:true,EtheriumShadowClick:false,zShadowClick:false,currency:'BWN',TotalPrice:this.state.BwnCurrent+' $'})
+        this.setState({data:massBWN,BitShadowClick:false,MoneroShadowClick:true,EtheriumShadowClick:false,zShadowClick:false,currency:'BCH',TotalPrice:this.state.BchCurrent})
        
       }
       zClick=()=>
       {
-        this.setState({BitShadowClick:false,MoneroShadowClick:false,EtheriumShadowClick:false,zShadowClick:true})
+        mass=massLTC
+        this.setState({data:massLTC,BitShadowClick:false,MoneroShadowClick:false,EtheriumShadowClick:false,zShadowClick:true,currency:'LTC',TotalPrice:this.state.LtcCurrent})
       }
 }
 
