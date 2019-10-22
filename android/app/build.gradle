@@ -149,6 +149,7 @@ keyPassword MYAPP_RELEASE_KEY_PASSWORD}}}
 }
 
 dependencies {
+    implementation project(':react-native-splash-screen')
     implementation project(':react-native-image-resizer')
     implementation project(':react-native-camera-kit')
 

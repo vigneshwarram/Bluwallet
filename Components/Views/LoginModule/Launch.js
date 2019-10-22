@@ -5,6 +5,7 @@ import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 import { NavigationActions, StackActions } from 'react-navigation'
 import LinearGradient from 'react-native-linear-gradient';
+import SplashScreen from 'react-native-splash-screen'
 import TouchID from 'react-native-touch-id';
 const optionalConfigObject = {
   title: 'Authentication Required for Login', // Android
@@ -47,10 +48,11 @@ export default class Launch extends React.Component {
   }
 
   componentDidMount() {
+      SplashScreen.hide();
     StatusBar.setBarStyle('light-content', true)
     StatusBar.setBackgroundColor("#354E91")
     this.CheckUserSignedIn()
-
+   
     //this.GetListData()
   }
   CheckUserSignedIn = async () => {
