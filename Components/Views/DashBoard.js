@@ -762,7 +762,7 @@ export default class DashBoard extends React.Component {
     }
     return (
       <Animated.View style={{ flex: 1, width: '100%', transform: [{ scale: this.springValue }] }}>
-        <Animated.View style={{ height: 45, width: this.AnimatedLeftWidth, position: 'absolute', left: 0, marginTop: 10, }}>
+        <Animated.View style={{ height: 45, width: this.AnimatedLeftWidth, position: 'absolute', left: 0, marginTop: 10,zIndex:1 }}>
           <TouchableOpacity onPress={this.CloseLeftAction}>
             <View>
               <LinearGradient colors={['#F4317F', '#FF7C6E']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={{ justifyContent: 'center', borderTopRightRadius: 25, borderBottomRightRadius: 25, alignItems: 'flex-end', paddingTop: 15, paddingBottom: 15 }}>
@@ -1173,7 +1173,7 @@ return(<View >
             <View style={{ justifyContent: 'space-between', flexDirection: 'row', }}>
 
 
-              <Animated.View style={{ height: this.AnimatedHieght, width: this.AnimatedWidth, position: 'absolute', left: 0, marginTop: 10, }}>
+              <Animated.View style={{ height: this.AnimatedHieght, width: this.AnimatedWidth, position: 'absolute', left: 0, marginTop: 10,zIndex:1 }}>
                 <TouchableOpacity onPress={this._onPress.bind(this)}>
                   <View>
                     <LinearGradient colors={['#f4347f', '#F4317F', '#F4317F']} style={{ justifyContent: 'center', borderTopRightRadius: 25, borderBottomRightRadius: 25, alignItems: 'flex-end', paddingTop: 10, paddingBottom: 10 }}>
