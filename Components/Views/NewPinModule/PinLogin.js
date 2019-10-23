@@ -219,6 +219,10 @@ SlideMenu=()=>{
          PinLogin(params,this.SuccessCallback,this.error)
            //  Alert.alert('Alert','Confirm pin and new pins are equal')
        }
+       error=(data)=>{
+         this.hide()
+          Alert.alert(data.status,data.message)
+       }
        SuccessCallback=(data)=>
        {
          if(data!='undefined'){
