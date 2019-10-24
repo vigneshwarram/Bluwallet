@@ -927,7 +927,7 @@ export default class DashBoard extends React.Component {
         );
       }
       else {
-        Alert.alert(data.status, 'Something went wrong')
+        Alert.alert(data.status, data.message)
       }
 
       //Get value for Network fee and Crypto amount Apil̥
