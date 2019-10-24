@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -12,7 +13,6 @@
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* MySurveyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MySurveyTests.m */; };
-		073179C2F366419CB5D21E54 /* libRNCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C23C80C05C164685853CFB68 /* libRNCamera.a */; };
 		11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
@@ -25,6 +25,7 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		192C0171FD8E4768929AD9EC /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0270F5592F2A46A587130949 /* libRNSVG.a */; };
 		2119B626743A48C0893A1333 /* libimageCropPicker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FC523FD00A6A4EB5A3E4F524 /* libimageCropPicker.a */; };
+		22284F62D70629D3CAE435CF /* Pods_MySurveyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31414C457E9277CED8773D9D /* Pods_MySurveyTests.framework */; };
 		2631A9C4E44F4BBCA15B57ED /* libTouchID.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 070C90B9E5EA4C0BB253A4EC /* libTouchID.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -41,10 +42,13 @@
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		4E7C8FC47CFD4D7A98359280 /* libSajjadBlurOverlay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B92298B6EA4834883D2DA7 /* libSajjadBlurOverlay.a */; };
 		505F545D3E2441519CD51F9E /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6972B0B89BA74EAD8FBF7380 /* libRNGestureHandler.a */; };
+		5EEB67B0C31248AF9F5D0FE6 /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E55A8E2BF440C7BDF6C6BE /* libSplashScreen.a */; };
 		6E50B80098244EFB90CFC615 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F501EA59A5B447DB212CE19 /* libRNVectorIcons.a */; };
 		72A37EE23DA84B11BA00F3CD /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F83B7061F8D84E08911E97EA /* libRNFetchBlob.a */; };
+		7858FCBE18923A77D4D74ACF /* Pods_MySurvey_tvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 685319DF6BD7AD1F2BA32A38 /* Pods_MySurvey_tvOS.framework */; };
 		7A8FD4274F82462D9CF008B1 /* libRNDeviceInfo-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1149A4B1C72D4641B5BF1D1C /* libRNDeviceInfo-tvOS.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		89DE873CB0A707CDF0BB2D6A /* Pods_MySurvey_tvOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 993C133A293DCFED1690079F /* Pods_MySurvey_tvOSTests.framework */; };
 		976CEAA7F0244F13BBAADD18 /* libRNSVG-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A4354E75D07345EB804E6576 /* libRNSVG-tvOS.a */; };
 		A7CB60DBF4554580942093FF /* libRNMyLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 23E40966E5C2442B990C7776 /* libRNMyLibrary.a */; };
 		AC7A96F31267449D8FB1DA3D /* libRNReanimated.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BA21E4B71D2F4590B02837EC /* libRNReanimated.a */; };
@@ -65,7 +69,14 @@
 		B2210FC92335F7B400A09ABD /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2210FAA2335F7B400A09ABD /* Poppins-Light.ttf */; };
 		B2210FCA2335F7B400A09ABD /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2210FAB2335F7B400A09ABD /* Roboto-Bold.ttf */; };
 		B2210FCC2335F7B400A09ABD /* Exo2-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B2210FAD2335F7B400A09ABD /* Exo2-Light.otf */; };
+		BA6D3C6D2360368900BC615D /* Pods_MySurvey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EA7596628E4A75E1F3635D /* Pods_MySurvey.framework */; };
+		BA6D3C6E2360368900BC615D /* Pods_MySurvey.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F4EA7596628E4A75E1F3635D /* Pods_MySurvey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BADDBF732360396400C94089 /* QBImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BADDBF722360396400C94089 /* QBImagePicker.framework */; };
+		BADDBF742360396400C94089 /* QBImagePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BADDBF722360396400C94089 /* QBImagePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BADDBFB12360399F00C94089 /* RSKImageCropper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BADDBFB02360399F00C94089 /* RSKImageCropper.framework */; };
+		BADDBFB22360399F00C94089 /* RSKImageCropper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BADDBFB02360399F00C94089 /* RSKImageCropper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF3D6BC1D3C7403AB9971F96 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 419EAE011B814635869FD0C7 /* FontAwesome5_Solid.ttf */; };
+		C94FEDF8DF0385E853B3DFDF /* Pods_MySurvey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EA7596628E4A75E1F3635D /* Pods_MySurvey.framework */; };
 		D3EFC87BFDD840AD8EE147AE /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 92380C099CA148B68C499452 /* libRCTVideo.a */; };
 		D60ACFBA463744A89957EEC9 /* libRNVectorIcons-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA76198AF73B4EFBA5A231E1 /* libRNVectorIcons-tvOS.a */; };
 		D63AB3D902674567A6F21D21 /* libRCTImageResizer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5B66761C84468E81E60A99 /* libRCTImageResizer.a */; };
@@ -75,7 +86,6 @@
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2971642150620600B7C4FE /* JavaScriptCore.framework */; };
 		F574C4E2173648DFA96D68C1 /* libBVLinearGradient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABC33BF792874DD9A2FB1DBF /* libBVLinearGradient.a */; };
-		5EEB67B0C31248AF9F5D0FE6 /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8E55A8E2BF440C7BDF6C6BE /* libSplashScreen.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -380,13 +390,6 @@
 			remoteGlobalIDString = 2646934E1CFB2A6B00F3A740;
 			remoteInfo = ReactNativeCameraKit;
 		};
-		B2210EEE2335E59F00A09ABD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 650065A82856432E93C66ABE /* RNCamera.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 4107012F1ACB723B00C6AA39;
-			remoteInfo = RNCamera;
-		};
 		B2210EF22335E59F00A09ABD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7897F471FD6D4EB0B0381A98 /* RNGestureHandler.xcodeproj */;
@@ -506,7 +509,30 @@
 			remoteGlobalIDString = A15C300E1CD25C330074CB35;
 			remoteInfo = RNFetchBlob;
 		};
+		BA6D3B5C2360281000BC615D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4A6F69E10F2B48DAAEDCDA21 /* SplashScreen.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D7682761D8E76B80014119E;
+			remoteInfo = SplashScreen;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BA6D3C712360368900BC615D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BA6D3C6E2360368900BC615D /* Pods_MySurvey.framework in Embed Frameworks */,
+				BADDBFB22360399F00C94089 /* RSKImageCropper.framework in Embed Frameworks */,
+				BADDBF742360396400C94089 /* QBImagePicker.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
@@ -519,6 +545,7 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* MySurveyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MySurveyTests.m; sourceTree = "<group>"; };
 		0270F5592F2A46A587130949 /* libRNSVG.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNSVG.a; sourceTree = "<group>"; };
+		05214DA51CCB7B6C74E6A2A3 /* Pods-MySurvey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySurvey.debug.xcconfig"; path = "Target Support Files/Pods-MySurvey/Pods-MySurvey.debug.xcconfig"; sourceTree = "<group>"; };
 		070C90B9E5EA4C0BB253A4EC /* libTouchID.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libTouchID.a; sourceTree = "<group>"; };
 		0E70E5830E0C431BA5817116 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		109E75409CF24CD48F720F6C /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
@@ -538,21 +565,25 @@
 		1F501EA59A5B447DB212CE19 /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
 		207CDDA5BE844057999CBAA1 /* libRNImagePicker.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNImagePicker.a; sourceTree = "<group>"; };
 		23E40966E5C2442B990C7776 /* libRNMyLibrary.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNMyLibrary.a; sourceTree = "<group>"; };
+		28B2E4AE41FCC79D70CEB1EE /* Pods-MySurvey-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySurvey-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-MySurvey-tvOS/Pods-MySurvey-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* MySurvey-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MySurvey-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* MySurvey-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MySurvey-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E7F043286FB49CDB2C570F2 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
+		31414C457E9277CED8773D9D /* Pods_MySurveyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySurveyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		34F989FB142D4726A17B9220 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		3C5B66761C84468E81E60A99 /* libRCTImageResizer.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTImageResizer.a; sourceTree = "<group>"; };
 		40F03B77D10C46F299F4D4B6 /* RCTImageResizer.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTImageResizer.xcodeproj; path = "../node_modules/react-native-image-resizer/ios/RCTImageResizer.xcodeproj"; sourceTree = "<group>"; };
 		419EAE011B814635869FD0C7 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		42F89C6E36694E42B3FC2FD4 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		48FB33BCB2EE415D84EDBB79 /* BVLinearGradient.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = BVLinearGradient.xcodeproj; path = "../node_modules/react-native-linear-gradient/BVLinearGradient.xcodeproj"; sourceTree = "<group>"; };
+		4A6F69E10F2B48DAAEDCDA21 /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
 		4B11AA051C754207B0B37489 /* ReactNativeCameraKit.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeCameraKit.xcodeproj; path = "../node_modules/react-native-camera-kit/ios/lib/ReactNativeCameraKit.xcodeproj"; sourceTree = "<group>"; };
 		5350F15F88D24510AA71BDD2 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		59E687C221704D21BF55FFDD /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
-		650065A82856432E93C66ABE /* RNCamera.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNCamera.xcodeproj; path = "../node_modules/react-native-camera/ios/RNCamera.xcodeproj"; sourceTree = "<group>"; };
+		5F8549FC05BC15E28935CFF2 /* Pods-MySurveyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySurveyTests.release.xcconfig"; path = "Target Support Files/Pods-MySurveyTests/Pods-MySurveyTests.release.xcconfig"; sourceTree = "<group>"; };
+		685319DF6BD7AD1F2BA32A38 /* Pods_MySurvey_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySurvey_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6972B0B89BA74EAD8FBF7380 /* libRNGestureHandler.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNGestureHandler.a; sourceTree = "<group>"; };
 		6D32B1D84C474872BA574186 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		6E543DC05FEF4264A3F12EB7 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
@@ -562,10 +593,12 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		79D4404E1BC04F2DA4B91E15 /* TouchID.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = TouchID.xcodeproj; path = "../node_modules/react-native-touch-id/TouchID.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		861A58207A98F5DD0745DEB3 /* Pods-MySurvey-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySurvey-tvOS.release.xcconfig"; path = "Target Support Files/Pods-MySurvey-tvOS/Pods-MySurvey-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		88447C226E8F47F890914269 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		8F18C9D6CE554F088B583181 /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		92380C099CA148B68C499452 /* libRCTVideo.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTVideo.a; sourceTree = "<group>"; };
 		9711DB856E6C43A5AA150234 /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		993C133A293DCFED1690079F /* Pods_MySurvey_tvOSTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySurvey_tvOSTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A289C0DB8D5C4429BFAB5456 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		A4354E75D07345EB804E6576 /* libRNSVG-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNSVG-tvOS.a"; sourceTree = "<group>"; };
 		A6037367CF9A4DE8A1329E08 /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTVideo.xcodeproj; path = "../node_modules/react-native-video/ios/RCTVideo.xcodeproj"; sourceTree = "<group>"; };
@@ -604,22 +637,27 @@
 		B2210FAF2335F7B400A09ABD /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = AntDesign.ttf; path = ../android/app/src/main/assets/fonts/AntDesign.ttf; sourceTree = "<group>"; };
 		B26942F73BE541CAA7779B02 /* RNFetchBlob.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFetchBlob.xcodeproj; path = "../node_modules/react-native-fetch-blob/ios/RNFetchBlob.xcodeproj"; sourceTree = "<group>"; };
 		B9561DAA2F3E4389A0BB9EE4 /* libRNDeviceInfo.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNDeviceInfo.a; sourceTree = "<group>"; };
+		B9C49A3702122873D604262E /* Pods-MySurvey-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySurvey-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-MySurvey-tvOSTests/Pods-MySurvey-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		BA21E4B71D2F4590B02837EC /* libRNReanimated.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNReanimated.a; sourceTree = "<group>"; };
 		BA80DE93328D4443AE826B1C /* RNSVG.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNSVG.xcodeproj; path = "../node_modules/react-native-svg/ios/RNSVG.xcodeproj"; sourceTree = "<group>"; };
+		BADDBF722360396400C94089 /* QBImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = QBImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BADDBFB02360399F00C94089 /* RSKImageCropper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RSKImageCropper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE1063E77D6B4EED8B2DC55C /* imageCropPicker.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = imageCropPicker.xcodeproj; path = "../node_modules/react-native-customized-image-picker/ios/imageCropPicker.xcodeproj"; sourceTree = "<group>"; };
-		C23C80C05C164685853CFB68 /* libRNCamera.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNCamera.a; sourceTree = "<group>"; };
 		C2EA823613D14FBF81515779 /* RNMyLibrary.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNMyLibrary.xcodeproj; path = "../node_modules/react-native-first/ios/RNMyLibrary.xcodeproj"; sourceTree = "<group>"; };
+		C8E55A8E2BF440C7BDF6C6BE /* libSplashScreen.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libSplashScreen.a; sourceTree = "<group>"; };
+		CFA10F0F34193DC8773029BD /* Pods-MySurvey-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySurvey-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-MySurvey-tvOSTests/Pods-MySurvey-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D2E349A0794E49BDBE3501D5 /* RNImagePicker.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNImagePicker.xcodeproj; path = "../node_modules/react-native-image-picker/ios/RNImagePicker.xcodeproj"; sourceTree = "<group>"; };
 		D4B92298B6EA4834883D2DA7 /* libSajjadBlurOverlay.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libSajjadBlurOverlay.a; sourceTree = "<group>"; };
 		DA76198AF73B4EFBA5A231E1 /* libRNVectorIcons-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNVectorIcons-tvOS.a"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F0F75CF2CEBA467984EB55BE /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
+		F4EA7596628E4A75E1F3635D /* Pods_MySurvey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySurvey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F83B7061F8D84E08911E97EA /* libRNFetchBlob.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFetchBlob.a; sourceTree = "<group>"; };
+		FB37299A4885DACB34294B9E /* Pods-MySurveyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySurveyTests.debug.xcconfig"; path = "Target Support Files/Pods-MySurveyTests/Pods-MySurveyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FB9EE84A35B4497D96D32B81 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		FC523FD00A6A4EB5A3E4F524 /* libimageCropPicker.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libimageCropPicker.a; sourceTree = "<group>"; };
-		4A6F69E10F2B48DAAEDCDA21 /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; name = "SplashScreen.xcodeproj"; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		C8E55A8E2BF440C7BDF6C6BE /* libSplashScreen.a */ = {isa = PBXFileReference; name = "libSplashScreen.a"; path = "libSplashScreen.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		FF08B35591C0AAA5C5EA43CE /* Pods-MySurvey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySurvey.release.xcconfig"; path = "Target Support Files/Pods-MySurvey/Pods-MySurvey.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -628,6 +666,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */,
+				22284F62D70629D3CAE435CF /* Pods_MySurveyTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,8 +681,10 @@
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
+				BADDBF732360396400C94089 /* QBImagePicker.framework in Frameworks */,
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
+				BADDBFB12360399F00C94089 /* RSKImageCropper.framework in Frameworks */,
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
@@ -660,11 +701,12 @@
 				A7CB60DBF4554580942093FF /* libRNMyLibrary.a in Frameworks */,
 				6E50B80098244EFB90CFC615 /* libRNVectorIcons.a in Frameworks */,
 				D3EFC87BFDD840AD8EE147AE /* libRCTVideo.a in Frameworks */,
-				073179C2F366419CB5D21E54 /* libRNCamera.a in Frameworks */,
 				E3A08A8F43414A02A2ECF985 /* libReactNativeCameraKit.a in Frameworks */,
 				72A37EE23DA84B11BA00F3CD /* libRNFetchBlob.a in Frameworks */,
+				BA6D3C6D2360368900BC615D /* Pods_MySurvey.framework in Frameworks */,
 				D63AB3D902674567A6F21D21 /* libRCTImageResizer.a in Frameworks */,
 				5EEB67B0C31248AF9F5D0FE6 /* libSplashScreen.a in Frameworks */,
+				C94FEDF8DF0385E853B3DFDF /* Pods_MySurvey.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -684,6 +726,7 @@
 				7A8FD4274F82462D9CF008B1 /* libRNDeviceInfo-tvOS.a in Frameworks */,
 				976CEAA7F0244F13BBAADD18 /* libRNSVG-tvOS.a in Frameworks */,
 				D60ACFBA463744A89957EEC9 /* libRNVectorIcons-tvOS.a in Frameworks */,
+				7858FCBE18923A77D4D74ACF /* Pods_MySurvey_tvOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -692,6 +735,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */,
+				89DE873CB0A707CDF0BB2D6A /* Pods_MySurvey_tvOSTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -820,8 +864,27 @@
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
+				F4EA7596628E4A75E1F3635D /* Pods_MySurvey.framework */,
+				685319DF6BD7AD1F2BA32A38 /* Pods_MySurvey_tvOS.framework */,
+				993C133A293DCFED1690079F /* Pods_MySurvey_tvOSTests.framework */,
+				31414C457E9277CED8773D9D /* Pods_MySurveyTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2E2D8317F47D6A87AE9D0CD3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				05214DA51CCB7B6C74E6A2A3 /* Pods-MySurvey.debug.xcconfig */,
+				FF08B35591C0AAA5C5EA43CE /* Pods-MySurvey.release.xcconfig */,
+				28B2E4AE41FCC79D70CEB1EE /* Pods-MySurvey-tvOS.debug.xcconfig */,
+				861A58207A98F5DD0745DEB3 /* Pods-MySurvey-tvOS.release.xcconfig */,
+				CFA10F0F34193DC8773029BD /* Pods-MySurvey-tvOSTests.debug.xcconfig */,
+				B9C49A3702122873D604262E /* Pods-MySurvey-tvOSTests.release.xcconfig */,
+				FB37299A4885DACB34294B9E /* Pods-MySurveyTests.debug.xcconfig */,
+				5F8549FC05BC15E28935CFF2 /* Pods-MySurveyTests.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
@@ -869,7 +932,6 @@
 				C2EA823613D14FBF81515779 /* RNMyLibrary.xcodeproj */,
 				109E75409CF24CD48F720F6C /* RNVectorIcons.xcodeproj */,
 				A6037367CF9A4DE8A1329E08 /* RCTVideo.xcodeproj */,
-				650065A82856432E93C66ABE /* RNCamera.xcodeproj */,
 				4B11AA051C754207B0B37489 /* ReactNativeCameraKit.xcodeproj */,
 				B26942F73BE541CAA7779B02 /* RNFetchBlob.xcodeproj */,
 				40F03B77D10C46F299F4D4B6 /* RCTImageResizer.xcodeproj */,
@@ -890,6 +952,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				BADDBFB02360399F00C94089 /* RSKImageCropper.framework */,
+				BADDBF722360396400C94089 /* QBImagePicker.framework */,
 				13B07FAE1A68108700A75B9A /* MySurvey */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* MySurveyTests */,
@@ -897,6 +961,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				8EC4F2FC07424F1387E5B830 /* Resources */,
 				B2210EA12335E59C00A09ABD /* Recovered References */,
+				2E2D8317F47D6A87AE9D0CD3 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -991,13 +1056,13 @@
 				23E40966E5C2442B990C7776 /* libRNMyLibrary.a */,
 				1F501EA59A5B447DB212CE19 /* libRNVectorIcons.a */,
 				92380C099CA148B68C499452 /* libRCTVideo.a */,
-				C23C80C05C164685853CFB68 /* libRNCamera.a */,
 				144D19A9D1404CF2A7FD064A /* libReactNativeCameraKit.a */,
 				F83B7061F8D84E08911E97EA /* libRNFetchBlob.a */,
 				3C5B66761C84468E81E60A99 /* libRCTImageResizer.a */,
 				1149A4B1C72D4641B5BF1D1C /* libRNDeviceInfo-tvOS.a */,
 				A4354E75D07345EB804E6576 /* libRNSVG-tvOS.a */,
 				DA76198AF73B4EFBA5A231E1 /* libRNVectorIcons-tvOS.a */,
+				C8E55A8E2BF440C7BDF6C6BE /* libSplashScreen.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -1056,14 +1121,6 @@
 			isa = PBXGroup;
 			children = (
 				B2210EE92335E59F00A09ABD /* libRCTImageResizer.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		B2210EDD2335E59F00A09ABD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				B2210EEF2335E59F00A09ABD /* libRNCamera.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1136,6 +1193,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		BA6D3B592360281000BC615D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BA6D3B5D2360281000BC615D /* libSplashScreen.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1143,6 +1208,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "MySurveyTests" */;
 			buildPhases = (
+				EAD1D00AD7DD38C434757B1A /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
@@ -1161,10 +1227,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MySurvey" */;
 			buildPhases = (
+				BEC5E282A50BEC172EDA09DE /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				BA6D3C712360368900BC615D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1179,6 +1247,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "MySurvey-tvOS" */;
 			buildPhases = (
+				E9D03EF0D66FCB4DFCABF5BF /* [CP] Check Pods Manifest.lock */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
 				2D02E4791E0B4A5D006451C7 /* Resources */,
@@ -1197,6 +1266,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "MySurvey-tvOSTests" */;
 			buildPhases = (
+				53CA26602B399610BA639315 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -1222,10 +1292,11 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = Y3EW23KC44;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = P3VWQ5JVV3;
+						DevelopmentTeam = Y3EW23KC44;
 						ProvisioningStyle = Automatic;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -1321,10 +1392,6 @@
 					ProjectRef = 4B11AA051C754207B0B37489 /* ReactNativeCameraKit.xcodeproj */;
 				},
 				{
-					ProductGroup = B2210EDD2335E59F00A09ABD /* Products */;
-					ProjectRef = 650065A82856432E93C66ABE /* RNCamera.xcodeproj */;
-				},
-				{
 					ProductGroup = B2210F072335E59F00A09ABD /* Products */;
 					ProjectRef = 180CBC3B876A45848F005F8B /* RNDeviceInfo.xcodeproj */;
 				},
@@ -1359,6 +1426,10 @@
 				{
 					ProductGroup = B2210ED72335E59F00A09ABD /* Products */;
 					ProjectRef = 73F5C00B12364B0EB9A32183 /* SajjadBlurOverlay.xcodeproj */;
+				},
+				{
+					ProductGroup = BA6D3B592360281000BC615D /* Products */;
+					ProjectRef = 4A6F69E10F2B48DAAEDCDA21 /* SplashScreen.xcodeproj */;
 				},
 				{
 					ProductGroup = B2210F092335E59F00A09ABD /* Products */;
@@ -1663,13 +1734,6 @@
 			remoteRef = B2210EEB2335E59F00A09ABD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		B2210EEF2335E59F00A09ABD /* libRNCamera.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNCamera.a;
-			remoteRef = B2210EEE2335E59F00A09ABD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		B2210EF32335E59F00A09ABD /* libRNGestureHandler.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1789,6 +1853,13 @@
 			remoteRef = B2210F362335E5A000A09ABD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		BA6D3B5D2360281000BC615D /* libSplashScreen.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSplashScreen.a;
+			remoteRef = BA6D3B5C2360281000BC615D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1871,6 +1942,94 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
+		53CA26602B399610BA639315 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MySurvey-tvOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BEC5E282A50BEC172EDA09DE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MySurvey-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E9D03EF0D66FCB4DFCABF5BF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MySurvey-tvOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EAD1D00AD7DD38C434757B1A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MySurveyTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1938,8 +2097,10 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB37299A4885DACB34294B9E /* Pods-MySurveyTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = Y3EW23KC44;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1958,11 +2119,10 @@
 					"$(SRCROOT)..\node_modules\neact-native-firstios",
 					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
 					"$(SRCROOT)..\node_modules\neact-native-videoios/**",
-					"$(SRCROOT)..\node_modules\neact-native-cameraios/**",
 					"$(SRCROOT)..\node_modules\neact-native-camera-kitioslibReactNativeCameraKit",
 					"$(SRCROOT)..\node_modules\neact-native-fetch-blobios/**",
 					"$(SRCROOT)..\node_modules\neact-native-image-resizeriosRCTImageResizer",
-					"$(SRCROOT)\..\node_modules\react-native-splash-screen\ios",
+					"$(SRCROOT)..\node_modules\neact-native-splash-screenios",
 				);
 				INFOPLIST_FILE = MySurveyTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -2003,9 +2163,11 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F8549FC05BC15E28935CFF2 /* Pods-MySurveyTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = Y3EW23KC44;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)..\node_modules\neact-native-gesture-handlerios/**",
@@ -2020,11 +2182,10 @@
 					"$(SRCROOT)..\node_modules\neact-native-firstios",
 					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
 					"$(SRCROOT)..\node_modules\neact-native-videoios/**",
-					"$(SRCROOT)..\node_modules\neact-native-cameraios/**",
 					"$(SRCROOT)..\node_modules\neact-native-camera-kitioslibReactNativeCameraKit",
 					"$(SRCROOT)..\node_modules\neact-native-fetch-blobios/**",
 					"$(SRCROOT)..\node_modules\neact-native-image-resizeriosRCTImageResizer",
-					"$(SRCROOT)\..\node_modules\react-native-splash-screen\ios",
+					"$(SRCROOT)..\node_modules\neact-native-splash-screenios",
 				);
 				INFOPLIST_FILE = MySurveyTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -2066,13 +2227,14 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05214DA51CCB7B6C74E6A2A3 /* Pods-MySurvey.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = P3VWQ5JVV3;
+				DEVELOPMENT_TEAM = Y3EW23KC44;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)..\node_modules\neact-native-gesture-handlerios/**",
@@ -2087,11 +2249,10 @@
 					"$(SRCROOT)..\node_modules\neact-native-firstios",
 					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
 					"$(SRCROOT)..\node_modules\neact-native-videoios/**",
-					"$(SRCROOT)..\node_modules\neact-native-cameraios/**",
 					"$(SRCROOT)..\node_modules\neact-native-camera-kitioslibReactNativeCameraKit",
 					"$(SRCROOT)..\node_modules\neact-native-fetch-blobios/**",
 					"$(SRCROOT)..\node_modules\neact-native-image-resizeriosRCTImageResizer",
-					"$(SRCROOT)\..\node_modules\react-native-splash-screen\ios",
+					"$(SRCROOT)..\node_modules\neact-native-splash-screenios",
 				);
 				INFOPLIST_FILE = MySurvey/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -2111,12 +2272,13 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF08B35591C0AAA5C5EA43CE /* Pods-MySurvey.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P3VWQ5JVV3;
+				DEVELOPMENT_TEAM = Y3EW23KC44;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)..\node_modules\neact-native-gesture-handlerios/**",
@@ -2131,11 +2293,10 @@
 					"$(SRCROOT)..\node_modules\neact-native-firstios",
 					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
 					"$(SRCROOT)..\node_modules\neact-native-videoios/**",
-					"$(SRCROOT)..\node_modules\neact-native-cameraios/**",
 					"$(SRCROOT)..\node_modules\neact-native-camera-kitioslibReactNativeCameraKit",
 					"$(SRCROOT)..\node_modules\neact-native-fetch-blobios/**",
 					"$(SRCROOT)..\node_modules\neact-native-image-resizeriosRCTImageResizer",
-					"$(SRCROOT)\..\node_modules\react-native-splash-screen\ios",
+					"$(SRCROOT)..\node_modules\neact-native-splash-screenios",
 				);
 				INFOPLIST_FILE = MySurvey/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -2155,6 +2316,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28B2E4AE41FCC79D70CEB1EE /* Pods-MySurvey-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2179,11 +2341,10 @@
 					"$(SRCROOT)..\node_modules\neact-native-firstios",
 					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
 					"$(SRCROOT)..\node_modules\neact-native-videoios/**",
-					"$(SRCROOT)..\node_modules\neact-native-cameraios/**",
 					"$(SRCROOT)..\node_modules\neact-native-camera-kitioslibReactNativeCameraKit",
 					"$(SRCROOT)..\node_modules\neact-native-fetch-blobios/**",
 					"$(SRCROOT)..\node_modules\neact-native-image-resizeriosRCTImageResizer",
-					"$(SRCROOT)\..\node_modules\react-native-splash-screen\ios",
+					"$(SRCROOT)..\node_modules\neact-native-splash-screenios",
 				);
 				INFOPLIST_FILE = "MySurvey-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2225,6 +2386,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 861A58207A98F5DD0745DEB3 /* Pods-MySurvey-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -2249,11 +2411,10 @@
 					"$(SRCROOT)..\node_modules\neact-native-firstios",
 					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
 					"$(SRCROOT)..\node_modules\neact-native-videoios/**",
-					"$(SRCROOT)..\node_modules\neact-native-cameraios/**",
 					"$(SRCROOT)..\node_modules\neact-native-camera-kitioslibReactNativeCameraKit",
 					"$(SRCROOT)..\node_modules\neact-native-fetch-blobios/**",
 					"$(SRCROOT)..\node_modules\neact-native-image-resizeriosRCTImageResizer",
-					"$(SRCROOT)\..\node_modules\react-native-splash-screen\ios",
+					"$(SRCROOT)..\node_modules\neact-native-splash-screenios",
 				);
 				INFOPLIST_FILE = "MySurvey-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2295,6 +2456,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CFA10F0F34193DC8773029BD /* Pods-MySurvey-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -2318,11 +2480,10 @@
 					"$(SRCROOT)..\node_modules\neact-native-firstios",
 					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
 					"$(SRCROOT)..\node_modules\neact-native-videoios/**",
-					"$(SRCROOT)..\node_modules\neact-native-cameraios/**",
 					"$(SRCROOT)..\node_modules\neact-native-camera-kitioslibReactNativeCameraKit",
 					"$(SRCROOT)..\node_modules\neact-native-fetch-blobios/**",
 					"$(SRCROOT)..\node_modules\neact-native-image-resizeriosRCTImageResizer",
-					"$(SRCROOT)\..\node_modules\react-native-splash-screen\ios",
+					"$(SRCROOT)..\node_modules\neact-native-splash-screenios",
 				);
 				INFOPLIST_FILE = "MySurvey-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -2364,6 +2525,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B9C49A3702122873D604262E /* Pods-MySurvey-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -2387,11 +2549,10 @@
 					"$(SRCROOT)..\node_modules\neact-native-firstios",
 					"$(SRCROOT)..\node_modules\neact-native-vector-iconsRNVectorIconsManager",
 					"$(SRCROOT)..\node_modules\neact-native-videoios/**",
-					"$(SRCROOT)..\node_modules\neact-native-cameraios/**",
 					"$(SRCROOT)..\node_modules\neact-native-camera-kitioslibReactNativeCameraKit",
 					"$(SRCROOT)..\node_modules\neact-native-fetch-blobios/**",
 					"$(SRCROOT)..\node_modules\neact-native-image-resizeriosRCTImageResizer",
-					"$(SRCROOT)\..\node_modules\react-native-splash-screen\ios",
+					"$(SRCROOT)..\node_modules\neact-native-splash-screenios",
 				);
 				INFOPLIST_FILE = "MySurvey-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

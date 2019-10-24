@@ -1,0 +1,6 @@
+framework module Pods_MySurvey_tvOS {
+  umbrella header "Pods-MySurvey-tvOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

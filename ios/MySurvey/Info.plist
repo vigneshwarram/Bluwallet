@@ -48,7 +48,7 @@
 		<string>inbox-gmail</string>
 	</array>
 	<key>NSCameraUsageDescription</key>
-	<string>Your own description of the purpose</string>
+	<string>To allow for photo</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>NSAppTransportSecurity</key>
@@ -71,6 +71,8 @@
 		<string>Exo2-SemiBold.otf</string>
 		<string>Exo2-Regular.otf</string>
 		<string>Poppins-Medium.ttf</string>
+		<string>Poppins-Regular.ttf</string>
+		<string>Exo2-Medium.ttf</string>
 	</array>
 </dict>
 </plist>
