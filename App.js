@@ -49,6 +49,7 @@ import DocumentFront from  './Components/Views/LoginModule/DocumentFront'
 import SetUpPin  from './Components/Views/NewPinModule/SetUpPin'
 import PinLogin  from './Components/Views/NewPinModule/PinLogin'
 import ConfirmPin  from './Components/Views/NewPinModule/ConfirmPin'
+import ResendEmail from './Components/Views/LoginModule/ResendEmail'
 import RetrivePassword from  './Components/Views/LoginModule/RetrivePassword'
 import {
   createStackNavigator,createBottomTabNavigator,createAppContainer
@@ -219,6 +220,7 @@ let CollapseExpand = (index, position) => {
         DocumentBackside:{screen:DocumentBackside},  
         DashBoard:{screen:DashBoard},        
         ForgotPassword:{screen:ForgotPassword},
+        ResendEmail:{screen:ResendEmail},
         Confirm:{screen:Confirm},
        // Price:{screen:Price},                
         Profile:{screen:Profile},     

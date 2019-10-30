@@ -40,14 +40,14 @@ import CheckConnectivity from './CheckInternet'
 })  
 }
 
-export const ForgotAPI=async(email,LoginResult,errors,NetworkError)=>
+export const ForgotAPI=async(url,email,LoginResult,errors,NetworkError)=>
 {  
  
   NetInfo.isConnected.fetch().then(isConnected => {
     if(isConnected)
     {
      // fetch("http://35.176.189.200:8080/bluewallet-0.0.1-SNAPSHOT/API/mobile/forgot/password", {  
-        fetch(ForgetPasswordUrl, {  
+        fetch(url, {  
         method: 'POST',
         headers: {
           'Content-Type':'application/json'
@@ -66,7 +66,7 @@ export const ForgotAPI=async(email,LoginResult,errors,NetworkError)=>
         return resJson;
        })
        .catch((error) => {
-        console.error(error);
+       // console.error(error);
         errors(error.message)
     }); 
     }

@@ -2,11 +2,14 @@ import * as React from 'react';
 import { Path } from 'react-native-svg'
 import { View, StyleSheet, Image, Animated, TextInput,ImageBackground, Text, Easing, TouchableOpacity, LayoutAnimation, KeyboardAvoidingView, BackHandler, AsyncStorage } from 'react-native';
 import { Alert } from 'react-native';
+import {Url,ForgetPasswordUrl,PinLoginURL} from '../Api/CommonApi'
 import BackgroundIcon from '../../Background'
+import Dialog, {SlideAnimation, DialogContent } from 'react-native-popup-dialog';
 import { ForgotAPI } from '../Api/LoginApi'
 import LinearGradient from 'react-native-linear-gradient';
 import { NavigationActions, StackActions } from 'react-navigation'
 import { ScrollView } from 'react-native-gesture-handler';
+import { openInbox } from 'react-native-email-link'
 export default class RetrivePassword extends React.Component {
 
     static navigationOptions = {
@@ -16,6 +19,9 @@ export default class RetrivePassword extends React.Component {
 
     constructor(props) {
         super(props);
+        this.AnimatedLeftWidth = new Animated.Value(50)
+        this.AnimatedRightWidth = new Animated.Value(50)
+        this.RotateValueHolder = new Animated.Value(0);
         this.RotateValueHolder = new Animated.Value(0);
         this.state = {
             dataSource: [],
@@ -31,7 +37,8 @@ export default class RetrivePassword extends React.Component {
             visible: false,
             hidden: false,
             app1color: '#fff',
-            app5color: '#fff'
+            app5color: '#fff',
+            ResponseStatus:''
         };
 
     }
@@ -44,7 +51,7 @@ export default class RetrivePassword extends React.Component {
     }
 
     handleBackPress = () => {
-        this.props.navigation.navigate('Launch'); // works best when the goBack is async
+        this.props.navigation.goBack(null); // works best when the goBack is async
         return true;
     }
 
@@ -55,6 +62,14 @@ export default class RetrivePassword extends React.Component {
     hide() {
         this.setState({ animate: false })
     }
+    BeginAction=()=>{
+        /*
+        this.props.navigation.navigate('DashBoard',{
+          DashBoardPopup: false,
+        });
+        */
+       openInbox()
+      }
     space() {
         return (<View style={{ height: 10, width: 1, backgroundColor: 'black' }} />)
     }
@@ -81,6 +96,28 @@ export default class RetrivePassword extends React.Component {
             this.setState({ clickr: false })
         }
     }
+    CloseLeftAction = () => {
+        Animated.sequence
+        ([
+          Animated.timing(this.AnimatedLeftWidth, {
+            toValue: 150,
+            duration: 250,
+            easing: Easing.inOut(Easing.ease),
+            delay: 10,
+          }),
+          Animated.timing(this.AnimatedLeftWidth, {
+            toValue: 50,
+            duration: 250,
+            easing: Easing.inOut(Easing.ease),
+            delay: 10,
+          })
+        ]).start(()=>this.exit());
+        
+    
+      }
+      exit=()=>{
+        this.setState({visibles:false})
+      }
     SlideMenu = () => {
         if (!this.state.slide) {
             LayoutAnimation.spring();
@@ -142,7 +179,60 @@ export default class RetrivePassword extends React.Component {
 
 
 <ImageBackground style={{ flex: 1, }} imageStyle={{ resizeMode: 'stretch' }} source={require('../assets/bg.png')}>
+<Dialog
+ dialogAnimation={new SlideAnimation({
+      slideFrom: 'bottom',
+    })}
+  onTouchOutside={() => {
+      this.setState({ visibles: false })
+    }}
+          visible={this.state.visibles}>
+          <DialogContent>
+            <View style={{ flex:1,}}>
+            <Animated.View style={{ height: 45, width: this.AnimatedLeftWidth, position: 'absolute', left: -20, marginTop: 10, }}>
+          <TouchableOpacity onPress={this.CloseLeftAction}>
+            <View>
+              <LinearGradient colors={['#F4317F', '#FF7C6E']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={{ justifyContent: 'center', borderTopRightRadius: 25, borderBottomRightRadius: 25, alignItems: 'flex-end', paddingTop: 15, paddingBottom: 15 }}>
 
+                <View style={{ flexDirection: 'row' }}>
+                  <View style={{ justifyContent: 'center', alignItems: 'flex-start', }}>
+                    <Text style={{ color: '#fff', fontFamily: 'Exo2-Regular', fontSize: 15, marginLeft: -60 }}>Exit</Text>
+                  </View>
+
+                  <Image style={{ marginRight: 10, width: 20, height: 20 }} source={require("../assets/cancel.png")} ></Image>
+
+                </View>
+
+              </LinearGradient>
+            </View>
+          </TouchableOpacity>
+        </Animated.View>
+            <View style={{ flex:0.7, alignItems: 'center',justifyContent:'center'}}>
+            <View style={{ alignItems: 'center', paddingTop: 10 }}>
+                <Image style={{ width: 50, height: 50, resizeMode: 'contain' }} source={require("../assets/successtik.png")} ></Image>
+              </View>
+              <View style={{ paddingTop: 10, paddingBottom: 10,paddingLeft:20,paddingRight:20 }}>
+                <Text style={{ fontSize: 15, color: '#454976', fontFamily: 'Exo2-Regular', textAlign: 'center' }}>{this.state.ResponseStatus}</Text>
+              </View>
+            </View>
+            <View style={{flex:0.3,justifyContent:'flex-end'}}>
+            <TouchableOpacity style={{height:100}}  onPress={this.BeginAction}>
+                  <View >
+                  <LinearGradient colors={['#41d99c','#34ddb2','#21e4d3']} start={{x: 0, y: 0}} end={{x: 1, y: 0}}  style={{justifyContent:'center',alignItems:'center'}}>
+          
+          <Text style={{color:'#fff',fontSize:20,fontFamily:'Poppins-Medium'}}>Go to email</Text>
+          
+          </LinearGradient>
+          </View>
+           </TouchableOpacity>
+           </View>
+            </View>
+          
+                  
+                
+                    
+          </DialogContent>
+        </Dialog>  
                     <View style={{ flex: 0.4 }}>
                         <View style={{
                             justifyContent: 'center', alignItems: 'center', paddingTop: 20
@@ -217,14 +307,28 @@ export default class RetrivePassword extends React.Component {
         }
         else {
             this.Load()
-            ForgotAPI(this.state.Username, this.ForgotResult)
+            ForgotAPI(ForgetPasswordUrl,this.state.Username, this.ForgotResult,this.error,this.networkerror)
         }
 
+    }
+    error=(errors)=>{
+        this.hide()
+        Alert.alert('Failure',errors)
+    }
+    networkerror=(errors)=>{
+        this.hide()
+        Alert.alert('Failure',errors)
     }
     ForgotResult = (data) => {
         this.hide()
         if (data.status === 'success') {
-            this.props.navigation.navigate('ForgotPassword')
+           // this.props.navigation.navigate('ForgotPassword')
+           this.setState({visibles:true,ResponseStatus:data.message})
+          // setTimeout(this.nav,800)
+
+        }
+        else{
+            Alert.alert(data.status,data.message)
         }
     }
 

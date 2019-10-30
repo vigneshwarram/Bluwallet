@@ -227,10 +227,15 @@ SlideMenu=()=>{
 </View>
 </TouchableOpacity> 
   <TouchableOpacity onPress={this.ForgotAction}>
-<View style={{justifyContent:'center',alignItems:'center',marginVertical:50}}>
-<Text style={{color:'#3d5498',fontSize:18,fontFamily:'Exo2-Regular'}}>FORGOT THE PASSWORD</Text>
+<View style={{justifyContent:'center',alignItems:'center',marginTop:30}}>
+<Text style={{color:'#3d5498',fontSize:18,fontFamily:'Exo2-Regular',}}>FORGOT THE PASSWORD</Text>
 </View>
 </TouchableOpacity>  
+  <TouchableOpacity onPress={this.ResendAction}>
+<View style={{justifyContent:'center',alignItems:'center',marginTop:30}}>
+<Text style={{color:'#3d5498',fontSize:18,fontFamily:'Exo2-Regular'}}>RESEND EMAIL</Text>
+</View>
+</TouchableOpacity>
        </View> 
        </KeyboardAvoidingView> 
   </View> 
@@ -346,6 +351,11 @@ SlideMenu=()=>{
       {
         //this.setState({ShowAlert:true})
          this.props.navigation.navigate('RetrivePassword')
+      }
+      ResendAction=()=>
+      {
+        //this.setState({ShowAlert:true})
+         this.props.navigation.navigate('ResendEmail')
       }
 
       LoginResult=async (data)=>
