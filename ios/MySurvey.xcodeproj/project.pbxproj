@@ -70,13 +70,11 @@
 		B2210FCA2335F7B400A09ABD /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2210FAB2335F7B400A09ABD /* Roboto-Bold.ttf */; };
 		B2210FCC2335F7B400A09ABD /* Exo2-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B2210FAD2335F7B400A09ABD /* Exo2-Light.otf */; };
 		BA6D3C6D2360368900BC615D /* Pods_MySurvey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EA7596628E4A75E1F3635D /* Pods_MySurvey.framework */; };
-		BA6D3C6E2360368900BC615D /* Pods_MySurvey.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F4EA7596628E4A75E1F3635D /* Pods_MySurvey.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BADDBF732360396400C94089 /* QBImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BADDBF722360396400C94089 /* QBImagePicker.framework */; };
 		BADDBF742360396400C94089 /* QBImagePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BADDBF722360396400C94089 /* QBImagePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BADDBFB12360399F00C94089 /* RSKImageCropper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BADDBFB02360399F00C94089 /* RSKImageCropper.framework */; };
 		BADDBFB22360399F00C94089 /* RSKImageCropper.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BADDBFB02360399F00C94089 /* RSKImageCropper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF3D6BC1D3C7403AB9971F96 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 419EAE011B814635869FD0C7 /* FontAwesome5_Solid.ttf */; };
-		C94FEDF8DF0385E853B3DFDF /* Pods_MySurvey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4EA7596628E4A75E1F3635D /* Pods_MySurvey.framework */; };
 		D3EFC87BFDD840AD8EE147AE /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 92380C099CA148B68C499452 /* libRCTVideo.a */; };
 		D60ACFBA463744A89957EEC9 /* libRNVectorIcons-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA76198AF73B4EFBA5A231E1 /* libRNVectorIcons-tvOS.a */; };
 		D63AB3D902674567A6F21D21 /* libRCTImageResizer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C5B66761C84468E81E60A99 /* libRCTImageResizer.a */; };
@@ -525,7 +523,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				BA6D3C6E2360368900BC615D /* Pods_MySurvey.framework in Embed Frameworks */,
 				BADDBFB22360399F00C94089 /* RSKImageCropper.framework in Embed Frameworks */,
 				BADDBF742360396400C94089 /* QBImagePicker.framework in Embed Frameworks */,
 			);
@@ -706,7 +703,6 @@
 				BA6D3C6D2360368900BC615D /* Pods_MySurvey.framework in Frameworks */,
 				D63AB3D902674567A6F21D21 /* libRCTImageResizer.a in Frameworks */,
 				5EEB67B0C31248AF9F5D0FE6 /* libSplashScreen.a in Frameworks */,
-				C94FEDF8DF0385E853B3DFDF /* Pods_MySurvey.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

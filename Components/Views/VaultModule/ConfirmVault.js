@@ -185,6 +185,7 @@ HideMenu=()=>{
   </View>
   }
     return (  
+      <SafeAreaView style={{flex:1,backgroundColor:'#354E91'}}>
       <View style={styles.Maincontainers}>    
       <LinearGradient colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{height:'100%'}}>
       <View style={{bottom:150,marginLeft:100,position:'absolute'}}>
@@ -288,7 +289,7 @@ justifyContent:'center',alignItems:"center"}} colors= {[this.props.navigation.st
        
 </LinearGradient>
       </View>
-  
+  </SafeAreaView>
     );
       }
      

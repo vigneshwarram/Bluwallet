@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image, ScrollView,Alert, ImageBackground, Text, ActivityIndicator, TouchableOpacity, Animated, Easing, AsyncStorage } from 'react-native';
+import { View, StyleSheet, Image, ScrollView,Alert, ImageBackground, Text, ActivityIndicator, TouchableOpacity, Animated, Easing, AsyncStorage,SafeAreaView } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import ImagePicker from 'react-native-image-picker';
 import { ProfileRetrive, TwoFactorApi, ProfileUpdate } from './Api/ProfileRegisterApi'
@@ -242,7 +242,7 @@ export default class Profile extends React.Component {
       </View>
     }
     return (
- 
+      <SafeAreaView style={{flex:1,backgroundColor:'#354E91'}}>
       <View style={styles.Maincontainers}>
         <LinearGradient colors={['#354E91', '#314682', '#283563', '#222B50', '#21284A']} style={{ flex: 1 }}>
           <Spinner
@@ -525,7 +525,7 @@ export default class Profile extends React.Component {
 
         </LinearGradient>
       </View>
-
+</SafeAreaView>
     );
   }
   clickedItemText = (item) => {

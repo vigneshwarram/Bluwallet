@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image, Picker, NativeModules, Text, ActivityIndicator, TouchableOpacity, LayoutAnimation, Dimensions, Animated, Easing } from 'react-native';
+import { View, StyleSheet, Image, Picker, NativeModules, Text, ActivityIndicator, TouchableOpacity, LayoutAnimation, Dimensions, Animated, Easing ,SafeAreaView} from 'react-native';
 import { Alert } from 'react-native';
 const { UIManager } = NativeModules;
 import Carousel from 'react-native-snap-carousel';
@@ -405,6 +405,7 @@ export default class VaultFilter extends React.Component {
       </View>
     }
     return (
+      <SafeAreaView style={{flex:1,backgroundColor:'#354E91'}}>
       <View style={styles.Maincontainers}>
         <LinearGradient colors={['#354E91', '#314682', '#283563', '#222B50', '#21284A']} style={{ height: '100%' }}>
           <Spinner
@@ -611,7 +612,7 @@ export default class VaultFilter extends React.Component {
 
         </LinearGradient>
       </View>
-
+</SafeAreaView>
     );
   }
   clickedItemText = (item) => {

@@ -251,17 +251,26 @@ export default class ExchangeMenu extends React.Component {
                     />
                   </View>
                   <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', paddingRight: 10, marginLeft: -30 }}>
-                    <Image style={{ width: 9, height: 7, resizeMode: 'contain', marginLeft: 10, marginRight: 10 }} source={require("../assets/darrow.png")} ></Image>
-                    <Text style={{ color: '#FFFFFF', opacity: 1, fontSize: 15, fontFamily: 'Exo2-Regular' }}>{this.state.mode}</Text>
-                    <Picker style={{ position: 'absolute', top: 0, width: 1500, height: 1500 ,fontSize: 15}}
-                      selectedValue={this.state.mode}
-                      onValueChange={(itemValue, itemIndex) => this.selectedcoin(itemValue, itemIndex)}>
-
-                      <Picker.Item label="All" value="All" />
-                      <Picker.Item label="BTC" value="BTC" />
-                      <Picker.Item label="ETH" value="ETH" />
-                      <Picker.Item label="Bitwings" value="BWN" />
-                    </Picker>
+                  <View style={{flexDirection:'row',justifyContent:'space-around'}}>
+                        <RNPickerSelect
+                        textInputProps={{ color: '#fff' }}
+                        style={styles.inputIOS}
+                        placeholder={{
+                          label: 'Amount',
+                          value: 'null',
+                          color: 'red',
+                        }}
+                        onValueChange={(itemValue, itemIndex) => this.selectedcoin(itemValue, itemIndex)}
+                        items={[
+                          { label:"All" ,value:"All"  },
+                          { label:"BTC" ,value:"BTC" },
+                          {label:"ETH", value:"ETH"},
+                          {label:"Bitwings" ,value:"BWN"}
+                        ]}
+                      /> 
+                       <Image style={{ width: 9, height: 7, resizeMode: 'contain', marginLeft: 10, marginRight: 10 ,alignSelf:'center'}} source={require("../assets/darrow.png")} ></Image>
+                      </View> 
+              
                   </View>
 
 
@@ -272,27 +281,40 @@ export default class ExchangeMenu extends React.Component {
                       <Image style={{ width: 20, height: 20, resizeMode: 'contain' }} source={require("../assets/tv.png")} ></Image>
                     </View>
                     <View style={{ justifyContent: 'center', flexDirection: 'row', alignItems: 'center', marginLeft: 20, paddingTop: 10, paddingBottom: 10 }}>
-                      <Text style={{ color: '#FFFFFF', opacity: 1, fontSize: 11, fontFamily: 'Exo2-Regular' }}>{this.state.Admin}</Text>
-                      <Image style={{ width: 9, height: 7, resizeMode: 'contain', marginLeft: 10, marginRight: 10 }} source={require("../assets/darrow.png")} ></Image>
-
-                      {Platform.OS === 'ios' ? <RNPickerSelect
-
+                      {/* <Text style={{ color: '#FFFFFF', opacity: 1, fontSize: 11, fontFamily: 'Exo2-Regular' }}>{this.state.Admin}</Text>
+                      <Image style={{ width: 9, height: 7, resizeMode: 'contain', marginLeft: 10, marginRight: 10 }} source={require("../assets/darrow.png")} ></Image> */}
+{ roleid==0?    <View style={{flexDirection:'row',justifyContent:'space-around'}}>
+                        <RNPickerSelect
+                         placeholder={{
+                          label: 'Select Role',
+                          value: 'Select Role',
+                          color: '#fff',
+                        }}
+                        textInputProps={{ color: '#fff' }}
+                        style={styles.inputIOS}
                         onValueChange={(itemValue, itemIndex) => this.selectedPlatform(itemValue, itemIndex)}
                         items={[
                           { label: "PlatForm", value: "PlatForm" },
                           { label: "Users" },
                         ]}
-                      /> :  roleid==0? <Picker style={{ position: 'absolute', top: 0, width: 1000, height: 1000 }}
-                        selectedValue={this.state.Admin}
-                        onValueChange={(itemValue, itemIndex) => this.selectedPlatform(itemValue, itemIndex)}>
-
-                       <Picker.Item label="PlatForm" value="PlatForm" /> 
-                          <Picker.Item label="Users" value="Users" />
-                        </Picker>:<Picker style={{ position: 'absolute', top: 0, width: 1000, height: 1000 }}
-                        selectedValue={this.state.Admin}
-                        onValueChange={(itemValue, itemIndex) => this.selectedPlatform(itemValue, itemIndex)}>
-                          <Picker.Item label="Users" value="Users" />
-                        </Picker>}
+                      /> 
+                       <Image style={{ width: 9, height: 7, resizeMode: 'contain', marginLeft: 10, marginRight: 10 ,alignSelf:'center'}} source={require("../assets/darrow.png")} ></Image>
+                      </View> :   <View style={{flexDirection:'row',justifyContent:'space-around'}}>
+                        <RNPickerSelect
+                        textInputProps={{ color: '#fff' }}
+                        placeholder={{
+                          label: 'Select Role',
+                          value: 'Select Role',
+                          color: 'red',
+                        }}
+                        style={styles.inputIOS}
+                        onValueChange={(itemValue, itemIndex) => this.selectedPlatform(itemValue, itemIndex)}
+                        items={[
+                          { label: "Users" ,value:'Users'},
+                        ]}
+                      /> 
+                       <Image style={{ width: 9, height: 7, resizeMode: 'contain', marginLeft: 10, marginRight: 10 ,alignSelf:'center'}} source={require("../assets/darrow.png")} ></Image>
+                      </View> }
 
                     </View>
 
@@ -568,6 +590,16 @@ export default class ExchangeMenu extends React.Component {
 const styles = StyleSheet.create({
   spinnerTextStyle: {
     color: '#FFF'
+  },
+  inputIOS: {
+    fontSize: 16,
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 4,
+    color: 'black',
+    paddingRight: 30, // to ensure the text is never behind the icon
   },
   Maincontainers: {
     flex: 1,

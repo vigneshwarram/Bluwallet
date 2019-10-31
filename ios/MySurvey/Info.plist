@@ -64,6 +64,8 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>To allow photo library</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Exo2-Bold.otf</string>

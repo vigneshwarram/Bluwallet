@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image, ScrollView, Switch, Text, ActivityIndicator, TouchableOpacity, Animated, Easing } from 'react-native';
+import { View, StyleSheet, Image, ScrollView, Switch, Text, ActivityIndicator, TouchableOpacity, Animated, Easing ,SafeAreaView} from 'react-native';
 import { Alert } from 'react-native';
 
 
@@ -136,7 +136,7 @@ export default class CreditCard extends React.Component {
       </View>
     }
     return (
-
+      <SafeAreaView style={{flex:1,backgroundColor:'#354E91'}}>
       <View style={styles.Maincontainers}>
         <ScrollView contentContainerStyle={{paddingBottom:100,backgroundColor:'#21284A'}}>
           <View style={{ flex: 1, }}>
@@ -359,7 +359,7 @@ export default class CreditCard extends React.Component {
           </View>
         </ScrollView>
       </View>
-
+</SafeAreaView>
 
     );
   }

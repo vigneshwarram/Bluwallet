@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image,AsyncStorage ,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,Dimensions,TextInput} from 'react-native';
+import { View, StyleSheet, Image,AsyncStorage ,NativeModules,Text,ActivityIndicator,TouchableOpacity,LayoutAnimation,Dimensions,TextInput,SafeAreaView} from 'react-native';
 import { Alert } from 'react-native';
 const { UIManager } = NativeModules;
 import Carousel from 'react-native-snap-carousel';
@@ -244,6 +244,7 @@ HideMenu=()=>{
   </View>
   }
     return (  
+      <SafeAreaView style={{flex:1,backgroundColor:'#354E91'}}>
       <View style={styles.Maincontainers}>    
       <LinearGradient colors= {['#FFFFFF','#DFE1ED','#CCCFE2']} style={{flex:1}}>
       <View style={{paddingLeft:20,paddingRight:20}}>
@@ -456,7 +457,7 @@ HideMenu=()=>{
        
 </LinearGradient>
       </View>
-  
+  </SafeAreaView>
     );
       }
       snapItemMonths=(index)=>
