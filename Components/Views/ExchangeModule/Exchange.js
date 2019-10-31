@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet,TextInput , Image,Picker,ImageBackground,ScrollView,Text,Animated,ActivityIndicator,TouchableOpacity,AsyncStorage,KeyboardAvoidingView,Easing} from 'react-native';
+import { View, StyleSheet,TextInput , Image,Picker,Platform,ImageBackground,ScrollView,Text,Animated,ActivityIndicator,TouchableOpacity,AsyncStorage,KeyboardAvoidingView,Easing} from 'react-native';
 import { Alert } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import { Switch} from 'react-native'
 import * as shape from 'd3-shape'
 import Modal from "react-native-simple-modal";
 import {StackActions} from 'react-navigation'
+import RNPickerSelect from 'react-native-picker-select';
 import Spinner from 'react-native-loading-spinner-overlay';
 import { VaultSystemApi, CryptoInvestment, CryptoTypeInvestment } from '../Api/VaultSystemApi'
 import Logo from '../../logo'
@@ -281,9 +282,46 @@ toggleSwitch=(value)=>{
           <View style={{flexDirection: 'row',marginLeft:20}}>
           <View style={{width:'80%',padding:15,borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:10, justifyContent:"center"}}>
 <View style={{flexDirection:'row',marginLeft:20,justifyContent:'space-between'}}> 
-<View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:50}}>
+{ Platform.OS === 'ios' ?<View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:50}}>
+        <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
+       
+       {this.state.roleid==1 ||this.state.exchangeTypeMenu==='Users'?<View style={{flexDirection:'row',justifyContent:'space-around'}}>
+                    <RNPickerSelect
+                         placeholder={{
+                          label: 'ETH-BTC',
+                          value: 'ETH-BTC',
+                          color: 'transparent',
+                        }}
+                        textInputProps={{ color: '#fff' }}
+                        style={styles.inputIOS}
+                        onValueChange={(itemValue, itemIndex) => this.selected1(itemValue, itemIndex)}
+                        items={[
+                          { label: "ETH-BTC", value: "ETH-BTC" },
+						     { label: "BTC-ETH", value: "BTC-ETH" },
+                        
+                        ]}
+                      /> </View>:<View style={{flexDirection:'row',justifyContent:'space-around'}}>
+                    <RNPickerSelect
+                         placeholder={{
+                          label: 'ETH-BTC',
+                          value: 'ETH-BTC',
+                          color: 'transparent',
+                        }}
+                        textInputProps={{ color: '#fff' }}
+                        style={styles.inputIOS}
+                        onValueChange={(itemValue, itemIndex) => this.selected1(itemValue, itemIndex)}
+                        items={[
+                          { label: "ETH-BTC", value: "ETH-BTC" },
+						     { label: "BTC-ETH", value: "BTC-ETH" },
+							   { label: "ETH-BWN", value: "ETH-BWN" },
+						     { label: "BTC-BWN", value: "BTC-BWN" },
+                        
+                        ]}
+                      /> </View>} 
+        </View>:<View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:50}}>
         <Text style={{color:'#fff',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.EthAmount}</Text>
         <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
+       
        {this.state.roleid==1 ||this.state.exchangeTypeMenu==='Users'?<Picker style={{ position:'absolute', top: 0, width: 1000, height: 3000}}
    selectedValue={this.state.EthAmount}
   //  enabled={false}
@@ -301,7 +339,7 @@ toggleSwitch=(value)=>{
  <Picker.Item label="ETH-BWN" value="ETH-BWN" />
  <Picker.Item label="BTC-BWN" value="BTC-BWN" />
   </Picker>} 
-        </View>
+        </View>}
         <View>
         <View>
 {/* <Text style={{color:'#fff',opacity:1,fontSize:12,fontFamily:'Exo2-Regular',marginRight:10}}>{this.state.firstExchangeValue}</Text> */}

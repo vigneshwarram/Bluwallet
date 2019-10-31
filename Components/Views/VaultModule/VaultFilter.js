@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image, Picker, NativeModules, Text, ActivityIndicator, TouchableOpacity, LayoutAnimation, Dimensions, Animated, Easing ,SafeAreaView} from 'react-native';
+import { View, StyleSheet, Image, Picker, NativeModules,Platform, Text, ActivityIndicator, TouchableOpacity, LayoutAnimation, Dimensions, Animated, Easing ,SafeAreaView} from 'react-native';
 import { Alert } from 'react-native';
 const { UIManager } = NativeModules;
 import Carousel from 'react-native-snap-carousel';
@@ -14,6 +14,7 @@ import { ResponseSuccessStatus, InvalidResponse } from '../Utils.js/Constant'
 import ImageCarousel from 'react-native-image-carousel';
 const { width } = Dimensions.get('window');
 import { FlatList, ScrollView } from 'react-native-gesture-handler';
+import RNPickerSelect from 'react-native-picker-select';
 import ExpandabelList from '../Utils.js/ExpandableList_Vault'
 let type = 'ETH';
 let CompletedData;
@@ -573,15 +574,31 @@ export default class VaultFilter extends React.Component {
 
 
                       <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', marginLeft: -60 }}>
-                        <Text style={{ color: '#ABB3D0', opacity: 1, fontSize: 12, fontFamily: 'Exo2-Regular' }}>{this.state.Amount}</Text>
-                        <Image style={{ width: 10, height: 10, marginLeft: 10, tintColor: '#ABB3D0' }} source={require("../assets/down_arrow.png")} ></Image>
-                        <Picker style={{ position: 'absolute', top: 0, width: 1000, height: 3000 }}
-                          selectedValue={this.state.Amount}
-                          onValueChange={(itemValue, itemIndex) => this.selectedPrice(itemValue, itemIndex)}>
-
-                          <Picker.Item label="USDollar" value="USDollar" />
-                      
-                        </Picker>
+                      { Platform.OS === 'ios' ? <View style={{flexDirection:'row',justifyContent:'space-around'}}>
+                    <RNPickerSelect
+                         placeholder={{
+                          label: 'USDollar',
+                          value: 'USDollar',
+                          color: '#ABB3D0',
+                        }}
+                        textInputProps={{ color: '#ABB3D0' }}
+                        style={styles.inputIOS}
+                        onValueChange={(itemValue, itemIndex) => this.selectedAmount(itemValue, itemIndex)}
+                        items={[
+                          { label: "USDollar", value: "USDollar" },
+                        
+                        ]}
+                      /> 
+                      <Image style={{ width: 10, height: 10, marginLeft: 10,alignSelf:'center' }} source={require("../assets/down_arrow.png")} ></Image>
+                      </View>:<View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', marginLeft: 20 }}>
+                      <Text style={{ color: '#ABB3D0', opacity: 1, fontSize: 12, fontFamily: 'Exo2-Regular' }}>{this.state.Amount}</Text>
+                    <Image style={{ width: 10, height: 10, marginLeft: 10 }} source={require("../assets/down_arrow.png")} ></Image>
+                    <Picker style={{ position: 'absolute', top: 0, width: 3000, height: 3000 }}
+                      selectedValue={this.state.Amount}
+                      onValueChange={(itemValue, itemIndex) => this.selectedAmount(itemValue, itemIndex)}>
+                      <Picker.Item label="USDollar" value="USDollar" />
+                    </Picker>
+                      </View>}  
                       </View>
 
 
@@ -621,6 +638,12 @@ export default class VaultFilter extends React.Component {
   AllClick = () => {
 
     (!this.state.AnimationFlag) ? this.Animation() : this.DeAnimation()
+
+  }
+  selectedAmount = (item, itemIndex) => {
+    this.setState({
+      Amount: item
+    })
 
   }
   update_Layout = (index) => {

@@ -250,8 +250,8 @@ export default class ExchangeMenu extends React.Component {
                       maxLength={10}
                     />
                   </View>
-                  <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', paddingRight: 10, marginLeft: -30 }}>
-                  <View style={{flexDirection:'row',justifyContent:'space-around'}}>
+                  <View >
+                  { Platform.OS === 'ios' ? <View style={{flexDirection:'row',justifyContent:'space-around'}}>
                         <RNPickerSelect
                         textInputProps={{ color: '#fff' }}
                         style={styles.inputIOS}
@@ -269,7 +269,19 @@ export default class ExchangeMenu extends React.Component {
                         ]}
                       /> 
                        <Image style={{ width: 9, height: 7, resizeMode: 'contain', marginLeft: 10, marginRight: 10 ,alignSelf:'center'}} source={require("../assets/darrow.png")} ></Image>
-                      </View> 
+                      </View> :<View style={{ justifyContent: 'center', flexDirection: 'row', alignItems: 'center', paddingRight: 10, marginLeft: -30,marginTop:10 }}>
+                      <Image style={{ width: 9, height: 7, resizeMode: 'contain', marginLeft: 10, marginRight: 10 }} source={require("../assets/darrow.png")} ></Image>
+                    <Text style={{ color: '#FFFFFF', opacity: 1, fontSize: 15, fontFamily: 'Exo2-Regular' }}>{this.state.mode}</Text>
+                    <Picker style={{ position: 'absolute', top: 0, width: 1500, height: 1500 ,fontSize: 15}}
+                      selectedValue={this.state.mode}
+                      onValueChange={(itemValue, itemIndex) => this.selectedcoin(itemValue, itemIndex)}>
+                      <Picker.Item label="All" value="All" />
+                      <Picker.Item label="BTC" value="BTC" />
+                      <Picker.Item label="ETH" value="ETH" />
+                      <Picker.Item label="Bitwings" value="BWN" />
+                    </Picker>
+                      </View> }
+                 
               
                   </View>
 
@@ -280,10 +292,14 @@ export default class ExchangeMenu extends React.Component {
                     <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                       <Image style={{ width: 20, height: 20, resizeMode: 'contain' }} source={require("../assets/tv.png")} ></Image>
                     </View>
-                    <View style={{ justifyContent: 'center', flexDirection: 'row', alignItems: 'center', marginLeft: 20, paddingTop: 10, paddingBottom: 10 }}>
+                    <View>
                       {/* <Text style={{ color: '#FFFFFF', opacity: 1, fontSize: 11, fontFamily: 'Exo2-Regular' }}>{this.state.Admin}</Text>
                       <Image style={{ width: 9, height: 7, resizeMode: 'contain', marginLeft: 10, marginRight: 10 }} source={require("../assets/darrow.png")} ></Image> */}
-{ roleid==0?    <View style={{flexDirection:'row',justifyContent:'space-around'}}>
+
+
+{ Platform.OS === 'ios' ? roleid==0?
+
+<View style={{flexDirection:'row',justifyContent:'space-around'}}>
                         <RNPickerSelect
                          placeholder={{
                           label: 'Select Role',
@@ -299,7 +315,7 @@ export default class ExchangeMenu extends React.Component {
                         ]}
                       /> 
                        <Image style={{ width: 9, height: 7, resizeMode: 'contain', marginLeft: 10, marginRight: 10 ,alignSelf:'center'}} source={require("../assets/darrow.png")} ></Image>
-                      </View> :   <View style={{flexDirection:'row',justifyContent:'space-around'}}>
+                      </View>:<View style={{flexDirection:'row',justifyContent:'space-around'}}>
                         <RNPickerSelect
                         textInputProps={{ color: '#fff' }}
                         placeholder={{
@@ -314,7 +330,25 @@ export default class ExchangeMenu extends React.Component {
                         ]}
                       /> 
                        <Image style={{ width: 9, height: 7, resizeMode: 'contain', marginLeft: 10, marginRight: 10 ,alignSelf:'center'}} source={require("../assets/darrow.png")} ></Image>
-                      </View> }
+                      </View>:
+                      roleid==0?
+                      <View style={{ justifyContent: 'center', flexDirection: 'row', alignItems: 'center', marginLeft: 20, paddingTop: 10, paddingBottom: 10 }}>
+                      <Text style={{ color: '#FFFFFF', opacity: 1, fontSize: 11, fontFamily: 'Exo2-Regular' }}>{this.state.Admin}</Text>
+                      <Image style={{ width: 9, height: 7, resizeMode: 'contain', marginLeft: 10, marginRight: 10 }} source={require("../assets/darrow.png")} ></Image>
+                       <Picker style={{ position: 'absolute', top: 0, width: 1000, height: 1000 }}
+                        selectedValue={this.state.Admin}
+                        onValueChange={(itemValue, itemIndex) => this.selectedPlatform(itemValue, itemIndex)}>
+
+                       <Picker.Item label="PlatForm" value="PlatForm" /> 
+                          <Picker.Item label="Users" value="Users" />
+                        </Picker></View>:
+                        <View style={{ justifyContent: 'center', flexDirection: 'row', alignItems: 'center', marginLeft: 20, paddingTop: 10, paddingBottom: 10 }}>
+                      <Text style={{ color: '#FFFFFF', opacity: 1, fontSize: 11, fontFamily: 'Exo2-Regular' }}>{this.state.Admin}</Text>
+                      <Image style={{ width: 9, height: 7, resizeMode: 'contain', marginLeft: 10, marginRight: 10 }} source={require("../assets/darrow.png")} ></Image><Picker style={{ position: 'absolute', top: 0, width: 1000, height: 1000 }}
+                        selectedValue={this.state.Admin}
+                        onValueChange={(itemValue, itemIndex) => this.selectedPlatform(itemValue, itemIndex)}>
+                          <Picker.Item label="Users" value="Users" />
+                        </Picker></View>}
 
                     </View>
 

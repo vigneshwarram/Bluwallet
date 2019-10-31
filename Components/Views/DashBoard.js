@@ -1323,8 +1323,8 @@ return(<View >
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'center', width: '100%', marginTop: 20, alignItems: 'center' }}>
                   <Text style={{ fontSize: 12, color: '#F5F6F9', fontFamily: 'Exo2-Regular' }}>{this.state.Usd}</Text>
-                  <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', marginLeft: 20 }}>
-                    <View style={{flexDirection:'row',justifyContent:'space-around'}}>
+                  <View >
+                { Platform.OS === 'ios' ? <View style={{flexDirection:'row',justifyContent:'space-around'}}>
                     <RNPickerSelect
                          placeholder={{
                           label: 'USDollar',
@@ -1340,7 +1340,15 @@ return(<View >
                         ]}
                       /> 
                       <Image style={{ width: 10, height: 10, marginLeft: 10,alignSelf:'center' }} source={require("./assets/down_arrow.png")} ></Image>
-                      </View>
+                      </View>:<View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', marginLeft: 20 }}>
+                      <Text style={{ color: '#ABB3D0', opacity: 1, fontSize: 12, fontFamily: 'Exo2-Regular' }}>{this.state.Amount}</Text>
+                    <Image style={{ width: 10, height: 10, marginLeft: 10 }} source={require("./assets/down_arrow.png")} ></Image>
+                    <Picker style={{ position: 'absolute', top: 0, width: 3000, height: 3000 }}
+                      selectedValue={this.state.Amount}
+                      onValueChange={(itemValue, itemIndex) => this.selectedAmount(itemValue, itemIndex)}>
+                      <Picker.Item label="USDollar" value="USDollar" />
+                    </Picker>
+                      </View>}   
                   </View>
 
 
@@ -1395,8 +1403,8 @@ return(<View >
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginLeft: 30, marginRight: 30, marginTop: 10 }}>
                   <Text style={{ marginLeft: 20, fontSize: 12, color: '#ABB3D0', fontFamily: 'Exo2-Medium' }}>Activity</Text>
 
-                  <View style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', padding: 10, backgroundColor: '#2c4b9d', borderRadius: 15 }}>
-                    <View style={{flexDirection:'row',justifyContent:'space-around'}}>
+                  <View>
+                 { Platform.OS === 'ios' ? <View style={{flexDirection:'row',justifyContent:'space-around'}}>
                         <RNPickerSelect
                         textInputProps={{ color: '#5496FF' }}
                         style={styles.inputIOS}
@@ -1414,7 +1422,17 @@ return(<View >
                         ]}
                       /> 
                        <Image style={{ width: 9, height: 7, resizeMode: 'contain', marginLeft: 10, marginRight: 10 ,alignSelf:'center',tintColor:'#5496FF'}} source={require("./assets/darrow.png")} ></Image>
-                      </View> 
+                      </View>:<View  style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center', padding: 10, backgroundColor: '#2c4b9d', borderRadius: 15 }}>
+                      <Image style={{ width: 10, height: 10, tintColor: '#5496FF' }} source={require("./assets/down_arrow.png")} ></Image>
+                    <Text style={{ color: '#5496FF', opacity: 1, fontSize: 12, marginLeft: 5, fontFamily: 'Exo2-Bold' }}>{this.state.Time}</Text>
+                    <Picker style={{ position: 'absolute', top: 0, width: 3000, height: 3000 }}
+                      selectedValue={this.state.Time}
+                      onValueChange={(itemValue, itemIndex) => this.selectedTime(itemValue, itemIndex)}>
+                      <Picker.Item label="Today" value="today" />
+                      <Picker.Item label="week" value="week" />
+                      <Picker.Item label="Month" value="month" />
+                    </Picker>
+                      </View> }  
                
                   </View>
 
