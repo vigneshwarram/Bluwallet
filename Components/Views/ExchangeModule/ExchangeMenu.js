@@ -251,7 +251,8 @@ export default class ExchangeMenu extends React.Component {
                     />
                   </View>
                   <View >
-                  { Platform.OS === 'ios' ? <View style={{flexDirection:'row',justifyContent:'space-around'}}>
+                  { Platform.OS === 'ios' ? <View style={{flexDirection:'row',justifyContent:'space-around',
+                marginTop:13}}>
                         <RNPickerSelect
                         textInputProps={{ color: '#fff' }}
                         style={styles.inputIOS}
@@ -287,8 +288,8 @@ export default class ExchangeMenu extends React.Component {
 
 
                 </View>
-                <View style={{ width: '45%', borderRadius: 20, borderWidth: 1, borderColor: '#fff', marginTop: 2, justifyContent: 'space-between', flexDirection: 'row' ,marginTop:10}}>
-                  <View style={{ flexDirection: 'row', marginLeft: 20 }}>
+                <View style={{ width: '45%', borderRadius: 20, borderWidth: 1, borderColor: '#fff', marginTop: 2, justifyContent: 'space-between', flexDirection: 'row' ,marginTop:10,padding:5}}>
+                  <View style={{ flexDirection: 'row', marginLeft: 20,justifyContent:'space-around' }}>
                     <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                       <Image style={{ width: 20, height: 20, resizeMode: 'contain' }} source={require("../assets/tv.png")} ></Image>
                     </View>
@@ -299,7 +300,7 @@ export default class ExchangeMenu extends React.Component {
 
 { Platform.OS === 'ios' ? roleid==0?
 
-<View style={{flexDirection:'row',justifyContent:'space-around'}}>
+<View style={{flexDirection:'row',justifyContent:'space-around',marginLeft:5}}>
                         <RNPickerSelect
                          placeholder={{
                           label: 'Select Role',
@@ -315,7 +316,7 @@ export default class ExchangeMenu extends React.Component {
                         ]}
                       /> 
                        <Image style={{ width: 9, height: 7, resizeMode: 'contain', marginLeft: 10, marginRight: 10 ,alignSelf:'center'}} source={require("../assets/darrow.png")} ></Image>
-                      </View>:<View style={{flexDirection:'row',justifyContent:'space-around'}}>
+                      </View>:<View style={{flexDirection:'row',justifyContent:'space-around',marginLeft:5}}>
                         <RNPickerSelect
                         textInputProps={{ color: '#fff' }}
                         placeholder={{

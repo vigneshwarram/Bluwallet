@@ -386,7 +386,7 @@ export default class DashBoard extends React.Component {
       }
       requestCameraPermission();
     } else {
-      that.setState({ QR_Code_Value: null });
+      that.setState({ QR_Code_Value: null ,QrButton:true});
       that.setState({ Start_Scanner: true });
     }
   }
@@ -406,13 +406,6 @@ export default class DashBoard extends React.Component {
     openOverlay()
     this.props.navigation.setParams({ bottombar: false })
  
-  //   Alert.alert('Alert',QR_Code)
-  //   
-  //  //this._onPress()
-  //  
-  //    //openOverlay()
-  //   // this.setState({pops:true})
-  // //  console.log('This popup overlay is not openenng')
   }
   Scanner = () => {
     closeOverlay()
@@ -577,6 +570,7 @@ export default class DashBoard extends React.Component {
     }
     else {
       Alert.alert(data.status, data.message)
+      this.hide()
     }
   //  console.log('send response', data)
   }
@@ -605,7 +599,7 @@ export default class DashBoard extends React.Component {
     return (
       <Animated.View style={{ flex: 1, width: '100%', transform: [{ scale: this.springValue }] }}>
 
-        <Animated.View style={{ height: 45, width: this.AnimatedLeftWidth, position: 'absolute', left: 0, marginTop: 10, }}>
+        <Animated.View style={{ height: 45, width: this.AnimatedLeftWidth, position: 'absolute', left: 0, marginTop: 10, zIndex:1}}>
           <TouchableOpacity onPress={this.CloseLeftAction}>
             <View>
               <LinearGradient colors={['#F4317F', '#FF7C6E']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={{ justifyContent: 'center', borderTopRightRadius: 25, borderBottomRightRadius: 25, alignItems: 'flex-end', paddingTop: 15, paddingBottom: 15 }}>
@@ -1116,7 +1110,7 @@ return(<View >
       <SafeAreaView style={{flex:1,backgroundColor:'#354E91'}}>
       <View style={styles.Maincontainers}>
       
-      { (this.state.QrButton) ?<View style={{zIndex:1,flex:1}}><CameraKitCameraScreen
+      { (this.state.QrButton) ?<View style={{zIndex:1,flex:1,position:'absolute',top:0,left:0,right:0,bottom:0}}><CameraKitCameraScreen
         showFrame={true}
         closeaction={this.closeleft}
         scanBarcode={true}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet,TextInput , Image,Picker,Platform,ImageBackground,ScrollView,Text,Animated,ActivityIndicator,TouchableOpacity,AsyncStorage,KeyboardAvoidingView,Easing} from 'react-native';
+import { View, StyleSheet,TextInput , Image,Picker,Platform,ImageBackground,ScrollView,Text,Animated,SafeAreaView,TouchableOpacity,AsyncStorage,KeyboardAvoidingView,Easing} from 'react-native';
 import { Alert } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import { Switch} from 'react-native'
@@ -206,7 +206,7 @@ toggleSwitch=(value)=>{
 
    
     return (  
-   
+      <SafeAreaView style={{flex:1,backgroundColor:'#354E91'}}>
       <View style={styles.Maincontainers}>  
                  <LinearGradient  colors= {['#354E91','#314682','#283563','#222B50','#21284A']} style={styles.Maincontainers} >
                  <Spinner
@@ -257,7 +257,7 @@ toggleSwitch=(value)=>{
  
  
   </View>
-  <TouchableOpacity onPress={this._onPress} style={{position: 'absolute', left: 0}}>
+  <TouchableOpacity onPress={this._onPress} style={{position: 'absolute', left: 0,zIndex:1}}>
                 <Animated.View style={{ backgroundColor:'#fff', borderColor: '#fff',justifyContent:'center',alignItems:'flex-end', borderRightWidth: 1, borderLeftWidth: 0, borderTopWidth: 1, borderBottomWidth: 1, height: 45, width: AnimatedLeftWidth, borderTopRightRadius: 25, borderBottomRightRadius: 25, marginTop: 10 }}>
               
                     <View>
@@ -300,7 +300,7 @@ toggleSwitch=(value)=>{
 						     { label: "BTC-ETH", value: "BTC-ETH" },
                         
                         ]}
-                      /> </View>:<View style={{flexDirection:'row',justifyContent:'space-around'}}>
+                      /></View>:<View style={{flexDirection:'row',justifyContent:'space-around'}}>
                     <RNPickerSelect
                          placeholder={{
                           label: 'ETH-BTC',
@@ -317,7 +317,7 @@ toggleSwitch=(value)=>{
 						     { label: "BTC-BWN", value: "BTC-BWN" },
                         
                         ]}
-                      /> </View>} 
+                      /></View>} 
         </View>:<View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',marginLeft:50}}>
         <Text style={{color:'#fff',opacity:1,fontSize:12,fontFamily:'Exo2-Regular'}}>{this.state.EthAmount}</Text>
         <Image  style={{width: 10, height: 10,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
@@ -412,7 +412,7 @@ toggleSwitch=(value)=>{
 />
 <View style={{flexDirection:'row',marginLeft:20}}>  
 <View style={{flex:1}}>
-<Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Mediumr'}}>{this.state.BtcAmount} price Dolar</Text>
+<Text style={{fontSize:12,color:'#5496FF',marginTop:10,fontFamily:'Exo2-Medium'}}>{this.state.BtcAmount} price Dolar</Text>
 </View>
 
 <View style={{flexDirection:'row',flex:1}}>
@@ -516,7 +516,7 @@ toggleSwitch=(value)=>{
       </View>
 </LinearGradient>
      </View>
-  
+  </SafeAreaView>
     
     );
       }
@@ -771,7 +771,7 @@ else if(item==='BTC-BWN')
     onExchangeResponse=(data)=>
     {
        console.log('response',data)   
-      this.hide()
+    
       if(data!=DataUndefined)
      {
       if(data.status===ResponseSuccessStatus)
@@ -799,6 +799,7 @@ else if(item==='BTC-BWN')
       //this.cryptoValue()
       //console.log('Request data.===>', 'cryptoValue()')
     }
+    this.hide()
   }
     
 

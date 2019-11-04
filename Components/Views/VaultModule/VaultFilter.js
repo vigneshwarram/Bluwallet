@@ -478,7 +478,7 @@ export default class VaultFilter extends React.Component {
 
                 </View>
                 <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                  <Animated.View style={{ opacity: this.OpacityView }}>
+                  <Animated.View style={{ opacity: this.OpacityView,zIndex:1}}>
                     <View style={{ marginTop: 20, }}>
                       <View style={{ justifyContent: 'center', alignItems: 'center', height: 150 }}>
                         <Carousel

@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet,TextInput,Platform, Image,Picker,UIManager,ImageBackground,LayoutAnimation, FlatList,Text,ActivityIndicator,ScrollView,TouchableOpacity,Easing,Animated ,AsyncStorage} from 'react-native';
+import { View, StyleSheet,TextInput,Platform, Image,Picker,UIManager,ImageBackground,LayoutAnimation, SafeAreaView,Text,ActivityIndicator,ScrollView,TouchableOpacity,Easing,Animated ,AsyncStorage} from 'react-native';
 import { Alert } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
 import LinearGradient from 'react-native-linear-gradient';
+import RNPickerSelect from 'react-native-picker-select';
 import Spinner from 'react-native-loading-spinner-overlay';
 import BlurOverlay,{closeOverlay,openOverlay} from 'react-native-blur-overlay';
 import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
@@ -200,7 +201,7 @@ renderScane() {
    
 
     return (  
-   
+      <SafeAreaView style={{flex:1,backgroundColor:'#354E91'}}>
       <View style={styles.Maincontainers}>  
       <BlurOverlay
                     radius={14}
@@ -260,7 +261,7 @@ renderScane() {
  
  
   </View>
-<View style={{justifyContent:'center',alignItems:'flex-start',top:30,left:15,position:'absolute'}}>
+<View style={{justifyContent:'center',alignItems:'flex-start',top:30,left:15,position:'absolute',zIndex:1}}>
 <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
 <View>
 <Image style={{width: 15, height: 15,resizeMode:'contain'}}   source={require("../assets/back.png")} ></Image> 
@@ -326,7 +327,6 @@ renderScane() {
       
 </ImageBackground>
           <View style={{justifyContent:'center',alignItems:'center'}}>
-  
   </View>  
 
   <View style={{flex:0.66,marginTop:20}}>
@@ -341,25 +341,14 @@ renderScane() {
               <View style={{justifyContent:'center',alignItems:'center'}}>
               <Text style={{color:'#fff',fontWeight:'bold',opacity:1,fontSize:15,fontFamily:'Exo2-Regular'}}>No Request Found</Text>
               </View>
-              </View>
-           
+              </View>      
           }
-  </View>
-       
+  </View>       
      </ScrollView>
          </View>
- 
-        
-
-   
-
-  
-
-
 </LinearGradient>
-     </View>
-  
-    
+     </View>  
+    </SafeAreaView>
     );
       }
       clickedItemText=async(item)=>

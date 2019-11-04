@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet,TextInput, AsyncStorage ,Image,Picker,LayoutAnimation,ImageBackground,Text,ActivityIndicator,TouchableOpacity,Easing,Animated,UIManager,Platform} from 'react-native';
+import { View, StyleSheet,TextInput, AsyncStorage ,Image,Picker,LayoutAnimation,ImageBackground,Text,SafeAreaView,TouchableOpacity,Easing,Animated,UIManager,Platform} from 'react-native';
 import { Alert } from 'react-native';
 import { AreaChart, Grid } from 'react-native-svg-charts'
 import * as shape from 'd3-shape'
+import RNPickerSelect from 'react-native-picker-select';
 import LinearGradient from 'react-native-linear-gradient';
 import BlurOverlay,{closeOverlay,openOverlay} from 'react-native-blur-overlay';
 import Dialog, { DialogFooter, DialogButton, DialogContent } from 'react-native-popup-dialog';
@@ -220,7 +221,7 @@ renderScane() {
       />
   )
     return (  
-   
+      <SafeAreaView style={{flex:1,backgroundColor:'#354E91'}}>
       <View style={styles.Maincontainers}>  
       <BlurOverlay
                     radius={14}
@@ -275,7 +276,7 @@ renderScane() {
  
  
   </View>
-<View style={{justifyContent:'center',alignItems:'flex-start',top:20,left:15,position:'absolute'}}>
+<View style={{justifyContent:'center',alignItems:'flex-start',top:20,left:15,position:'absolute',zIndex:1}}>
 <TouchableOpacity onPress={()=>this.props.navigation.goBack()}>
 <View>
 <Image style={{width: 15, height: 15,resizeMode:'contain'}}   source={require("../assets/back.png")} ></Image> 
@@ -290,7 +291,7 @@ renderScane() {
           <Image style={{marginRight:10,width: 18, height: 22,resizeMode:'contain'}}   source={require("../assets/app4.png")} ></Image>     
           </View>
          
-          <Text style={{fontSize:20,color:'#fff',fontFamily:'Exo2-Regular '}}>Exchange</Text>
+          <Text style={{fontSize:20,color:'#fff',fontFamily:'Exo2-Regular'}}>Exchange</Text>
           </View>
          
           <View style={{width:'70%',borderRadius:25,borderWidth:1,borderColor:'#fff',marginTop:10,marginBottom:20, justifyContent:'space-between',flexDirection:'row'}}>
@@ -306,19 +307,37 @@ renderScane() {
           maxLength={10}
         />
 </View>
-      <View style={{justifyContent:'space-between',flexDirection:'row',alignItems:'center',paddingRight:10,marginLeft:-30}}>
-<Image  style={{width: 9, height: 7,resizeMode:'contain',marginLeft:10,marginRight:10}}  source={require("../assets/darrow.png")} ></Image> 
-<Text style={{color:'#FFFFFF',opacity:1,fontSize:11,fontFamily:'Exo2-Regular'}}>{this.state.mode}</Text>
-  <Picker style={{ position:'absolute', top: 0, width: 1500, height: 1500}}
-        selectedValue={this.state.mode}
-       onValueChange={(itemValue, itemIndex) => this.selectedcoin(itemValue,itemIndex)}>
-       
-       <Picker.Item label="All" value="All" />
-       <Picker.Item label="BTC" value="BTC" />
-       <Picker.Item label="ETH" value="ETH" />
-       <Picker.Item label="Bitwings" value="BWN" />
-       </Picker>
-        </View> 
+{ Platform.OS === 'ios' ? <View style={{flexDirection:'row',justifyContent:'space-around',
+                marginTop:13}}>
+                        <RNPickerSelect
+                        textInputProps={{ color: '#fff' }}
+                        style={styles.inputIOS}
+                        placeholder={{
+                          label: 'Amount',
+                          value: 'null',
+                          color: 'red',
+                        }}
+                        onValueChange={(itemValue, itemIndex) => this.selectedcoin(itemValue, itemIndex)}
+                        items={[
+                          { label:"All" ,value:"All"  },
+                          { label:"BTC" ,value:"BTC" },
+                          {label:"ETH", value:"ETH"},
+                          {label:"Bitwings" ,value:"BWN"}
+                        ]}
+                      /> 
+                       <Image style={{ width: 9, height: 7, resizeMode: 'contain', marginLeft: 10, marginRight: 10}} source={require("../assets/darrow.png")} ></Image>
+                      </View> :<View style={{ justifyContent: 'center', flexDirection: 'row', alignItems: 'center', paddingRight: 10, marginLeft: -30,marginTop:10 }}>
+                      <Image style={{ width: 9, height: 7, resizeMode: 'contain', marginLeft: 10, marginRight: 10 }} source={require("../assets/darrow.png")} ></Image>
+                    <Text style={{ color: '#FFFFFF', opacity: 1, fontSize: 15, fontFamily: 'Exo2-Regular' }}>{this.state.mode}</Text>
+                    <Picker style={{ position: 'absolute', top: 0, width: 1500, height: 1500 ,fontSize: 15}}
+                      selectedValue={this.state.mode}
+                      onValueChange={(itemValue, itemIndex) => this.selectedcoin(itemValue, itemIndex)}>
+                      <Picker.Item label="All" value="All" />
+                      <Picker.Item label="BTC" value="BTC" />
+                      <Picker.Item label="ETH" value="ETH" />
+                      <Picker.Item label="Bitwings" value="BWN" />
+                    </Picker>
+                      </View> } 
           </View>
           </View>   
       
@@ -357,7 +376,7 @@ renderScane() {
 
 </LinearGradient>
      </View>
-  
+     </SafeAreaView>
     
     );
       }
