@@ -396,6 +396,7 @@ SlideMenu=()=>{
         {
          
           Alert.alert(data.message)
+          this.hide()
         }
        
       }
