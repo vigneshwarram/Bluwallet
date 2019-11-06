@@ -249,7 +249,7 @@ SlideMenu=()=>{
      let kycstatus= await AsyncStorage.getItem('kycstatus'); 
       this.setState({visibles:false})
       
-      this.NavigationReset('Home',profilestatus,kycstatus) //Profile popup not apprear,kyc popup appear      
+      this.props.navigation.navigate('Sms',{'email':this.props.navigation.state.params.email})    
      }
      NavigationReset=(routname,dashboardpopup,kycstatus)=>
      {

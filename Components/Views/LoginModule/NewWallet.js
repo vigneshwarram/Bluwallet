@@ -344,7 +344,8 @@ SlideMenu=()=>{
       nav=()=>
       {
         this.setState({visibles:false})
-        this.props.navigation.navigate('Sms',{'email':this.state.Username})
+       // this.props.navigation.navigate('Sms',{'email':this.state.Username})
+       this.props.navigation.navigate('SetUpPin',{'email':this.state.Username});
       }
       errorResponse=(data)=>
       {

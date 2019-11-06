@@ -329,7 +329,7 @@ SlideMenu=()=>{
          
 
           </View>
-<View style={{position:'absolute',bottom:-15,left:-60,right:0,opacity:0.7,width:'100%'}}>
+<View style={{position:'absolute',bottom:-15,left:-60,right:0,opacity:0.7,width:'100%',zIndex:1}}>
 <LineChart
     data={{
       datasets: [{

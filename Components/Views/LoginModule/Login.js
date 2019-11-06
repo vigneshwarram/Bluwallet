@@ -374,8 +374,7 @@ SlideMenu=()=>{
             await AsyncStorage.setItem('bitcoinWalletReceivingAddress',data.loginInfo.bitcoinWalletReceivingAddress.toString()); 
             console.log('Loginresult',data)
             this.hide()
-            if(data.loginInfo.secretPin==1)
-{ 
+  
    if(data.loginInfo.twoFactorAuthenticationStatus===0)
   {
      this.setState({visibles:true,ResponseStatus:data.message})
@@ -387,11 +386,8 @@ SlideMenu=()=>{
   {
     this.props.navigation.navigate('PinCode',{profilestatus:data.loginInfo.profileStatus,kycstatus:data.loginInfo.kycStatus})
   }
-}
-else
-{
-  this.props.navigation.navigate('SetUpPin');
-}          
+
+         
            
             
                

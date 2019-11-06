@@ -125,7 +125,7 @@ export const loginSecureApi=async(params,LoginSecureResult,errors,NetworkError)=
 
 export const PinLogin=async(params,LoginResult,errors,NetworkError)=>
 {
-  let token=await AsyncStorage.getItem('AccessToken')
+ // let token=await AsyncStorage.getItem('AccessToken')
   NetInfo.isConnected.fetch().then(isConnected => {
     if(isConnected)
     {
@@ -134,7 +134,7 @@ export const PinLogin=async(params,LoginResult,errors,NetworkError)=>
        fetch(PinLoginURL, {  
            method: 'POST',
            headers: {
-             'authorization':'bearer '+token.trim(), 
+            //  'authorization':'bearer '+token.trim(), 
              'Content-Type':'application/json'
            },
                body: JSON.stringify(params)

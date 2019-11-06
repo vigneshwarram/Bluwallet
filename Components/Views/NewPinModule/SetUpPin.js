@@ -214,7 +214,7 @@ SlideMenu=()=>{
        
       }
       onComplete=(inputtedPin, clear)=> {
-        this.props.navigation.navigate('ConfirmPin',{newpin:inputtedPin});
+        this.props.navigation.navigate('ConfirmPin',{newpin:inputtedPin,email:this.props.navigation.state.params.email});
       }
       recievePin(pin){
         console.log(pin)
