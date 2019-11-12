@@ -325,10 +325,12 @@ SlideMenu=()=>{
       }
       RegisterResponse=async(Registerdata)=>
       {
+        console.log(Registerdata)
         this.hide()
         if(Registerdata.status==ResponseSuccessStatus)
         {        
           this.setState({visibles:true,ResponseStatus:Registerdata.message})
+          await AsyncStorage.setItem('Uid',Registerdata.retrieveData.userId.toString())
           setTimeout(this.nav,1500)
         }
         else if(Registerdata.status=='failure')

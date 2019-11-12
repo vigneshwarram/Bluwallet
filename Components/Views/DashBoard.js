@@ -415,6 +415,14 @@ export default class DashBoard extends React.Component {
 
   }
   SendClick = async () => {
+    let id= await AsyncStorage.getItem('roleId'); 
+    let role=''
+    if(id==='1'){
+     role='admin'
+    }
+    else{
+      role='user'
+    }
     let url;
     let params;
     if (this.state.QR_Code_Value == null) {
@@ -453,6 +461,7 @@ export default class DashBoard extends React.Component {
 
             "bitwingsAmount": this.state.usdforEther,
             "exchangeStatus": 0,
+            "bwnRole":role,
             "toEthWalletAddress": this.state.QR_Code_Value,
             "userId": await AsyncStorage.getItem('UserId')
           }
@@ -468,6 +477,14 @@ export default class DashBoard extends React.Component {
 
 
   SendClickfromchild = async (data,type) => {
+   let id= await AsyncStorage.getItem('roleId'); 
+   let role=''
+   if(id==='1'){
+    role='admin'
+   }
+   else{
+     role='user'
+   }
     console.log('data',data)
     let url;
     let params;
@@ -502,6 +519,7 @@ export default class DashBoard extends React.Component {
 
             "bitwingsAmount": data.amount,
             "exchangeStatus": data.status,
+            "bwnRole":role,
             "toEthWalletAddress": data.toWalletAddress,
             "requestId":data.requestId,
             "userId": await AsyncStorage.getItem('UserId')

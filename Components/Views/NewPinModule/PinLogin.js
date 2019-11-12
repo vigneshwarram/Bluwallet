@@ -32,6 +32,7 @@ export default class PinLogins  extends React.Component {
       wr:50,
       hr:45,
       Ahr:80,
+      ActiveColor:'#4865b1',
       Awr:80,
       clickr:false,
       clickopen:false,
@@ -180,6 +181,7 @@ SlideMenu=()=>{
         }}>
              <PinView
         onPress={this.onPress}
+        ActiveColor={this.state.ActiveColor}
         onComplete={this.onComplete}
         // pinLength={this.state.pin.length}
         pinLength={4} // You can also use like that.
@@ -208,7 +210,9 @@ SlideMenu=()=>{
       {
           Alert.alert(item.Status)
       }
-    
+      onPress=(inputtedPin, clear, pressed) =>{
+        this.setState({ActiveColor:'#4865b1'})
+      }
       onComplete=async(inputtedPin, clear)=> {
         
           let params={
@@ -244,7 +248,8 @@ SlideMenu=()=>{
           }
            else
            {
-             Alert.alert(data.status,data.message)
+             this.setState({ActiveColor:'#FF0000'})
+           //  Alert.alert(data.status,data.message)
            }
          }
          else{

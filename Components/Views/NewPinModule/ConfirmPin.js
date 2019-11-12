@@ -29,6 +29,7 @@ export default class ConfirmPin  extends React.Component {
       w: 50,
       visibles:false,
       ResponseStatus:'',
+      ActiveColor:'#4865b1',
       h: 45,
       wr:50,
       hr:45,
@@ -185,6 +186,7 @@ SlideMenu=()=>{
         }}>
              <PinView
         onPress={this.onPress}
+        ActiveColor={this.state.ActiveColor}
         onComplete={this.onComplete}
         // pinLength={this.state.pin.length}
         pinLength={4} // You can also use like that.
@@ -213,15 +215,18 @@ SlideMenu=()=>{
       {
           Alert.alert(item.Status)
       }
-    
+      onPress=(inputtedPin, clear, pressed) =>{
+        this.setState({ActiveColor:'#4865b1'})
+      }
       onComplete=async(inputtedPin, clear)=> {
        if(this.props.navigation.state.params.newpin===inputtedPin)
        {
          let params={
-          userId: await AsyncStorage.getItem('UserId'),
+          userId: await AsyncStorage.getItem('Uid'),
           securityPinValue:inputtedPin,
           securityKeyReset:'securitykeyreset'
          }
+         console.log(params)
         PinLogin(params,this.SuccessCallback,this.error)
           //  Alert.alert('Alert','Confirm pin and new pins are equal')
 
@@ -239,14 +244,17 @@ SlideMenu=()=>{
           {
             
             this.setState({visibles:true,ResponseStatus:data.message})
-            setTimeout(this.nav,1000)
+            setTimeout(this.nav,500)
           }
         }
       }
+      error=(data)=>{
+        Alert.alert('Alert',data)
+      }
      nav=async()=>
      {
-     let profilestatus= await AsyncStorage.getItem('profilestatus'); 
-     let kycstatus= await AsyncStorage.getItem('kycstatus'); 
+    //  let profilestatus= await AsyncStorage.getItem('profilestatus'); 
+    //  let kycstatus= await AsyncStorage.getItem('kycstatus'); 
       this.setState({visibles:false})
       
       this.props.navigation.navigate('Sms',{'email':this.props.navigation.state.params.email})    

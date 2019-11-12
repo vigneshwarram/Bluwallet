@@ -25,6 +25,7 @@ export default class OtpPin extends React.Component {
             cityItems: ["US Doller,Indian,Eutherium"],
             Coin: 'Us Doller',
             animate: false,
+            ActiveColor:'#4865b1',
             number: 123456,
             w: 50,
             ResponseStatus: null,
@@ -183,8 +184,9 @@ export default class OtpPin extends React.Component {
              <PinView
         onPress={this.onPress}
         onComplete={this.onComplete}
+        ActiveColor={this.state.ActiveColor}
         // pinLength={this.state.pin.length}
-        pinLength={4} // You can also use like that.
+        pinLength={6} // You can also use like that.
         />
       
                        
@@ -214,6 +216,9 @@ export default class OtpPin extends React.Component {
         console.log(pin)
         // Check if the PIN is correct here
     }
+    onPress=(inputtedPin, clear, pressed) =>{
+        this.setState({ActiveColor:'#4865b1'})
+      }
     onComplete = async (inputtedPin, clear) => {
       
             this.Load()
@@ -236,7 +241,8 @@ export default class OtpPin extends React.Component {
            
         }
         else {
-            Alert.alert(data.status, data.message)
+            this.setState({ActiveColor:'#FF0000'})
+          //  Alert.alert(data.status, data.message)
         }
 
     }

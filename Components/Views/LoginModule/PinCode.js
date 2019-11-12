@@ -24,6 +24,7 @@ export default class PinCode  extends React.Component {
       Coin: 'Us Doller',
       animate:false,
       number:123456,
+      ActiveColor:'#4865b1',
       w: 50,
       visibles:false,
       ResponseStatus:'',
@@ -182,9 +183,10 @@ SlideMenu=()=>{
         }}>
              <PinView
         onPress={this.onPress}
+        ActiveColor={this.state.ActiveColor}
         onComplete={this.onComplete}
         // pinLength={this.state.pin.length}
-        pinLength={4} // You can also use like that.
+        pinLength={6} // You can also use like that.
         />
       
                        
@@ -215,7 +217,11 @@ SlideMenu=()=>{
      onComplete=async(inputtedPin, clear)=>{   
          this.Load()   
         loginSecureApi(inputtedPin,this.SecureResult)
+        
      }
+     onPress=(inputtedPin, clear, pressed) =>{
+      this.setState({ActiveColor:'#4865b1'})
+    }
      SecureResult=async(data)=>
      {
        this.hide()
@@ -233,7 +239,8 @@ SlideMenu=()=>{
       
          else
          {
-           Alert.alert(data.status,data.message)
+          this.setState({ActiveColor:'#FF0000'})
+          // Alert.alert(data.status,data.message)
          }
       
        }

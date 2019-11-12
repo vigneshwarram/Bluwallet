@@ -24,6 +24,7 @@ export default class SetUpPin  extends React.Component {
       cityItems:["US Doller,Indian,Eutherium"],
       Coin: 'Us Doller',
       animate:false,
+      ActiveColor:'#4865b1',
       number:123456,
       w: 50,
       visibles:false,
@@ -120,7 +121,9 @@ SlideMenu=()=>{
      
     
   }
-
+  onPress=(inputtedPin, clear, pressed) =>{
+    this.setState({ActiveColor:'#4865b1'})
+  }
   render() {
     const RotateData = this.RotateValueHolder.interpolate({
       inputRange: [0, 1],
@@ -188,6 +191,7 @@ SlideMenu=()=>{
              <PinView
         onPress={this.onPress}
         onComplete={this.onComplete}
+        ActiveColor={this.state.ActiveColor}
         // pinLength={this.state.pin.length}
         pinLength={4} // You can also use like that.
         />
