@@ -478,7 +478,7 @@ export default class ExchangeMenu extends React.Component {
     this.ExchangeReset()
     this.Publicreset()
     this.SellReset()
-    setTimeout(this.navigateBuy, 1000)
+    setTimeout(this.navigateBuy, 200)
 
   }
   navigateBuy = () => {
@@ -495,7 +495,7 @@ export default class ExchangeMenu extends React.Component {
     this.ExchangeReset()
     this.Publicreset()
     this.BuyReset()
-    setTimeout(this.navigateSend, 1000)
+    setTimeout(this.navigateSend, 200)
 
   }
   navigateSend = () => {
@@ -514,7 +514,7 @@ export default class ExchangeMenu extends React.Component {
     this.ExchangeReset()
     this.BuyReset()
     this.SellReset()
-    setTimeout(this.navigatePublic, 500)
+    setTimeout(this.navigatePublic, 200)
 
 
   }
@@ -542,7 +542,7 @@ export default class ExchangeMenu extends React.Component {
     this.BuyReset()
     this.Publicreset()
     this.SellReset()
-    setTimeout(this.navigateExchange, 500)
+    setTimeout(this.navigateExchange, 200)
 
 
   }

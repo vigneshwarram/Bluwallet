@@ -267,7 +267,7 @@ export default class Profile extends React.Component {
      </View>
     </DialogContent>
   </Dialog>
-          <ImageBackground source={require('./assets/topCurve.png')} imageStyle={{ resizeMode: 'stretch', width: '100%', height: '100%' }} style={{ flex: 0.35, position: "relative" }}>
+          <ImageBackground source={require('./assets/topCurve.png')} imageStyle={{ resizeMode: 'stretch', width: '100%', height: '100%' }} style={{ flex: 0.35, position: "relative" ,zIndex:1}}>
             <View style={{ alignItems: 'center', position: 'absolute', top: 10, left: 0, right: 0, flexDirection: 'row', justifyContent: 'center' }}>
               <Image style={{ width: 25, height: 25, resizeMode: 'contain' }}  source={require("./assets/app5.png")} ></Image>
               <Text style={{
@@ -275,14 +275,14 @@ export default class Profile extends React.Component {
                   'bold', marginLeft: 10, fontFamily: 'Exo2-Regular'
               }}>User</Text>
             </View>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between' ,zIndex:1}}>
               <Animated.View style={{
                 backgroundColor: '#fff', height: this.state.AnimatedHieght, width: this.state.AnimatedWidth, justifyContent: 'center', borderWidth: 1, alignItems: 'flex-end',
                 borderColor: '#fff',
                 marginTop: 10,
                 borderTopEndRadius: 25, borderBottomEndRadius: 25,
               }}>
-                <TouchableOpacity onPress={this._onPress}>
+                <TouchableOpacity onPress={()=>this._onPress()}>
                   <View>
 
                     <View style={{ flexDirection: 'row' ,justifyContent:'space-between'}}>
@@ -301,7 +301,7 @@ export default class Profile extends React.Component {
                 </TouchableOpacity>
               </Animated.View>
               <Animated.View style={{ backgroundColor: '#fff', height: this.state.RightsideHeight, width: this.state.RightSideWidth, justifyContent: 'center', borderTopStartRadius: 25, borderBottomStartRadius: 25, marginTop: 10 }}>
-                <TouchableOpacity onPress={this.pressRight}>
+                <TouchableOpacity onPress={()=>this.pressRight()}>
                   <View >
 
                     <View style={{ flexDirection: 'row' }}>

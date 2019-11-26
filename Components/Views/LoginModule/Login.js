@@ -378,7 +378,7 @@ SlideMenu=()=>{
    if(data.loginInfo.twoFactorAuthenticationStatus===0)
   {
      this.setState({visibles:true,ResponseStatus:data.message})
-     setTimeout(this.nav,800)
+     setTimeout(this.nav,500)
     
     // this.NavigationReset('Home',1,0)            
   }

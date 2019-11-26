@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Path } from 'react-native-svg'
-import { View, StyleSheet, Image, Animated, TextInput,ImageBackground, Text, Easing, TouchableOpacity, LayoutAnimation, KeyboardAvoidingView, BackHandler, AsyncStorage } from 'react-native';
+import { View, StyleSheet, Image, Animated, TextInput,ImageBackground, Text, Easing, TouchableOpacity, LayoutAnimation, KeyboardAvoidingView, BackHandler, SafeAreaView } from 'react-native';
 import { Alert } from 'react-native';
 import BackgroundIcon from '../../Background'
 import { ForgotAPI } from '../Api/LoginApi'
@@ -175,7 +175,7 @@ export default class ResendEmails extends React.Component {
             </View>
         }
         return (
-
+            <SafeAreaView style={{flex:1,backgroundColor:'#354E91'}}>
             <View style={styles.Maincontainers} >
 
 
@@ -190,7 +190,7 @@ export default class ResendEmails extends React.Component {
           visible={this.state.visibles}>
           <DialogContent>
             <View style={{ flex:1,}}>
-            <Animated.View style={{ height: 45, width: this.AnimatedLeftWidth, position: 'absolute', left: -20, marginTop: 10, }}>
+            <Animated.View style={{ height: 45, width: this.AnimatedLeftWidth, position: 'absolute', left: -20, marginTop: 10,zIndex:1 }}>
           <TouchableOpacity onPress={this.CloseLeftAction}>
             <View>
               <LinearGradient colors={['#F4317F', '#FF7C6E']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} style={{ justifyContent: 'center', borderTopRightRadius: 25, borderBottomRightRadius: 25, alignItems: 'flex-end', paddingTop: 15, paddingBottom: 15 }}>
@@ -291,7 +291,7 @@ export default class ResendEmails extends React.Component {
 
 
             </View>
-
+</SafeAreaView>
 
         );
     }

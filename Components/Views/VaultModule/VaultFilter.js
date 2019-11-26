@@ -421,7 +421,7 @@ export default class VaultFilter extends React.Component {
           <ScrollView contentContainerStyle={{ paddingBottom: 90 }}>
             <View style={{ flex: 1 }}>
               <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
-              <TouchableOpacity onPress={this._onPress} style={{position: 'absolute', left: 0}}>
+              <TouchableOpacity onPress={this._onPress} style={{position: 'absolute', left: 0,zIndex:1}}>
                 <Animated.View style={{ borderColor: '#c978f8',justifyContent:'center',alignItems:'flex-end', borderRightWidth: 1, borderLeftWidth: 0, borderTopWidth: 1, borderBottomWidth: 1, height: 45, width: AnimatedLeftWidth, borderTopRightRadius: 25, borderBottomRightRadius: 25, marginTop: 10 }}>
               
                     <View>
@@ -437,7 +437,7 @@ export default class VaultFilter extends React.Component {
                 
                 </Animated.View>
                 </TouchableOpacity>
-                <Animated.View style={{ height: 45, width: this.AnimatedWidth, position: 'absolute', right: 0, marginTop: 10, }}>
+                <Animated.View style={{ height: 45, width: this.AnimatedWidth, position: 'absolute', right: 0, marginTop: 10,zIndex:1 }}>
                 <TouchableOpacity onPress={this.pressRight}>
                   <View>
                     <LinearGradient colors={['#fff', '#fff', '#fff']} style={{ justifyContent: 'center', alignItems: 'flex-start', borderTopLeftRadius: 25, borderBottomLeftRadius: 25, paddingTop: 10, paddingBottom: 10 }}>

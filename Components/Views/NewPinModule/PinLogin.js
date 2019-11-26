@@ -162,9 +162,9 @@ SlideMenu=()=>{
      </View>
     </DialogContent>
   </Dialog>
-      <View> 
+      <View style={{flex:1}}> 
        <LinearGradient
-  colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{height:'100%'}}>   
+  colors={['#ffffff','#e1e5ef','#e1e5ef']} style={{flex:1}}>   
              <View style={{
                             justifyContent: 'center', alignItems: 'center', marginTop: 30
                         }}>
@@ -234,7 +234,7 @@ SlideMenu=()=>{
            {
              
              this.setState({visibles:true,ResponseStatus:data.message})
-             setTimeout(this.nav,1000)
+             setTimeout(this.nav,200)
            }
            else if (data.error === 'invalid_token') {
             Alert.alert(
