@@ -1,6 +1,6 @@
 import {Url} from './CommonApi'
 import{AsyncStorage} from 'react-native'
-export const SendApi=async(url,params,data)=>
+export const SendApi=async(url,params,data,errors)=>
 {
     fetch(Url+url, {  
         method: 'POST',
@@ -19,10 +19,10 @@ export const SendApi=async(url,params,data)=>
         return resJson;
        })
        .catch((error) => {
-        console.error(error);
+        errors(error);
     });
 }
-export const RequestPaymentApi=async(params,data)=>
+export const RequestPaymentApi=async(params,data,errors)=>
 {
     fetch(Url+'request', {  
         method: 'POST',
@@ -41,6 +41,6 @@ export const RequestPaymentApi=async(params,data)=>
         return resJson;
        })
        .catch((error) => {
-        console.error(error);
+        errors(error);
     });
 }

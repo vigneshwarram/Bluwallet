@@ -468,7 +468,7 @@ export default class DashBoard extends React.Component {
       }
       this.Load()
      console.log('send params', params)
-      SendApi(url, params, this.SendResponse)
+      SendApi(url, params, this.SendResponse,this.error,this.networkissue)
     }
 
 
@@ -545,7 +545,7 @@ export default class DashBoard extends React.Component {
         "userId": id
       }
    // console.log('Request params', params)
-    RequestPaymentApi(params, this.RequestResponse)
+    RequestPaymentApi(params, this.RequestResponse,this.error)
   }
   RequestResponse = (data) => {
     this.hide()
@@ -565,12 +565,15 @@ export default class DashBoard extends React.Component {
       );
     }
     else {
-      Alert.alert(data.status, data.message)
+      setTimeout(() => {
+        Alert.alert(data.status, data.message)
+      }, 200);
     }
   }
   SendResponse = data => {
-    this.GraphAnimation()
     this.hide()
+    this.GraphAnimation()
+    console.log('Reponse',data)
     if (data.status === 'success') {
       this.setState({ visibles: true, ResponseStatus: data.message })
       setTimeout(this.PopUp, 1500);
@@ -587,8 +590,11 @@ export default class DashBoard extends React.Component {
       );
     }
     else {
-      Alert.alert(data.status, data.message)
-      this.hide()
+      setTimeout(() => {
+        Alert.alert(data.status, data.message)
+      }, 200);
+     
+     
     }
   //  console.log('send response', data)
   }
@@ -1504,7 +1510,10 @@ return(<View >
   error=(data)=>
   {
     this.hide()
-    Alert.alert('Alert',data)
+    setTimeout(() => {
+      Alert.alert(data.status, data.message)
+    }, 200);
+    
   }
   readFromClipboard = async () => {
     console.log('its comming')
@@ -1568,7 +1577,7 @@ return(<View >
     }
     console.log('Request walletactivity data', params)
     this.Load()
-    getactivitydata(params, this.ListData)
+    getactivitydata(params, this.ListData,this.error)
   }
   ListData = (data) => {
     this.hide()
@@ -1621,7 +1630,10 @@ return(<View >
         );
       }
       else {
-        Alert.alert(data.status,data.message)
+        setTimeout(() => {
+          Alert.alert(data.status,data.message)
+        }, 200);
+       
       }
     }
     this.GraphAnimation()
