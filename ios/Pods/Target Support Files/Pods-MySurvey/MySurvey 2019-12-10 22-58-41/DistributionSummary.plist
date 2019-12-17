@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>MySurvey.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>armv7</string>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>E14018D3CAD07B8A46A8BB3162AAA9ACBB64311A</string>
+				<key>dateExpires</key>
+				<string>09/12/20</string>
+				<key>type</key>
+				<string>iOS Development</string>
+			</dict>
+			<key>embeddedBinaries</key>
+			<array>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>armv7</string>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>E14018D3CAD07B8A46A8BB3162AAA9ACBB64311A</string>
+						<key>dateExpires</key>
+						<string>09/12/20</string>
+						<key>type</key>
+						<string>iOS Development</string>
+					</dict>
+					<key>name</key>
+					<string>QBImagePicker.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>Y3EW23KC44</string>
+						<key>name</key>
+						<string>Sarfaraz T</string>
+					</dict>
+				</dict>
+				<dict>
+					<key>architectures</key>
+					<array>
+						<string>armv7</string>
+						<string>arm64</string>
+					</array>
+					<key>certificate</key>
+					<dict>
+						<key>SHA1</key>
+						<string>E14018D3CAD07B8A46A8BB3162AAA9ACBB64311A</string>
+						<key>dateExpires</key>
+						<string>09/12/20</string>
+						<key>type</key>
+						<string>iOS Development</string>
+					</dict>
+					<key>name</key>
+					<string>RSKImageCropper.framework</string>
+					<key>team</key>
+					<dict>
+						<key>id</key>
+						<string>Y3EW23KC44</string>
+						<key>name</key>
+						<string>Sarfaraz T</string>
+					</dict>
+				</dict>
+			</array>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>Y3EW23KC44.com.coinways</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>Y3EW23KC44</string>
+				<key>get-task-allow</key>
+				<true/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>Y3EW23KC44.com.coinways</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>MySurvey.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>bc020541-a1f3-4f64-9ae3-16b3415e3b71</string>
+				<key>name</key>
+				<string>iOS Team Provisioning Profile: *</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>Y3EW23KC44</string>
+				<key>name</key>
+				<string>Sarfaraz T</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
